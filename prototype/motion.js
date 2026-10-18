@@ -1,6 +1,9 @@
 /* Sprite state machine and layered spell renderer. Simulation time drives every frame. */
 const Motion = (() => {
-  const hero = new Image(), enemies = new Image();
+  const hero = new Image(), heroine=new Image(),enemies = new Image();
+  heroine.src='assets/hero-tinglan-motion-v1.webp';
+  // Rows were measured independently; generated pose sheets are not uniform grids.
+  const heroineRects=Array.from({length:3},(_,row)=>Array.from({length:4},(_,col)=>[col*384,[0,330,638][row],384,[330,308,386][row],col*384+220,[321,636,1013][row]]));
   const golden=new Image();golden.src='assets/golden-guardians.webp';const goldenUV=[[[9, 8, 331, 354, 174.5, 362], [435, 18, 289, 344, 579.5, 362], [724, 6, 362, 356, 905.0, 362], [1086, 76, 348, 286, 1260.0, 362]], [[27, 362, 335, 362, 194.5, 724], [362, 362, 362, 362, 543.0, 724], [732, 362, 354, 362, 909.0, 724], [1086, 362, 355, 327, 1263.5, 689]], [[59, 724, 291, 341, 204.5, 1065], [378, 724, 324, 346, 540.0, 1070], [727, 724, 359, 343, 906.5, 1067], [1086, 726, 359, 291, 1265.5, 1017]]];
   const bosses = new Image();bosses.src='assets/journey-bosses.png';
   const bossAttacks = new Image();bossAttacks.src='assets/bosses-attack.png';
@@ -153,13 +156,24 @@ const Motion = (() => {
   }
   function drawHero(pen,actor,size,time,alpha=1,forcedFrame=null){
     const f=forcedFrame||frame(actor,'hero'),c=actor.cultivation||{realm:0,layer:1};
+    const female=HeroIdentity.clean(actor.heroId)==='tinglan',sheet=female?heroine:hero;
+    const anchor=female?[[[5,5],[5,5],[5,5],[5,5]],[[-16,20],[-8,12],[1,20],[2,20]],[[-3,-10],[-1,-10],[-3,7],[3,7]]][f.row][f.col]:[0,0];
+    const manifestation=front=>{pen.save();pen.translate(anchor[0],anchor[1]);RealmVisuals.body(pen,c,time,f.state,front,actor.moving);pen.restore();};
     const progress=actor.attackLength?1-(actor.attack||0)/actor.attackLength:0;
     const lunge=actor.attack>0?Math.sin(Math.min(1,progress)*Math.PI)*5:0;
     pen.save();pen.translate(actor.x+(actor.flash>0?Math.sin(actor.flash*35)*2:0)+Math.cos(actor.attackAngle||0)*lunge,actor.y+Math.sin(actor.attackAngle||0)*lunge);
     pen.scale((actor.look||1)*size/116,size/116);pen.globalAlpha=alpha;
-    RealmVisuals.body(pen,c,time,f.state,false,actor.moving);
-    if(hero.complete&&hero.naturalWidth){const [sx,sy,sw,sh,px,py]=sourceRect('hero',f,hero),s=116/362;pen.save();if(actor.flash>0)pen.filter='brightness(1.55)';pen.drawImage(hero,sx,sy,sw,sh,(sx-px)*s,(sy-py)*s,sw*s,sh*s);pen.restore();}
-    RealmVisuals.body(pen,c,time,f.state,true,actor.moving);pen.restore();
+    manifestation(false);
+    if(sheet.complete&&sheet.naturalWidth){
+      const [sx,sy,sw,sh,px,py]=female?heroineRects[f.row][f.col]:sourceRect('hero',f,hero),s=116/(female?386:362);pen.save();if(actor.flash>0)pen.filter='brightness(1.55)';
+      // Two thrusts extend into the next nominal cell; exclude the neighbouring blade,
+      // then sample each owner's tip separately instead of copying the next character.
+      const cut=female&&f.row===1&&f.col>=2;if(cut){pen.save();pen.beginPath();pen.rect((sx-px)*s,(sy-py)*s,sw*s,sh*s);pen.rect((sx-px)*s,(sy-py+(f.col===2?72:91))*s,(f.col===2?70:155)*s,(f.col===2?18:21)*s);pen.clip('evenodd');}
+      pen.drawImage(sheet,sx,sy,sw,sh,(sx-px)*s,(sy-py)*s,sw*s,sh*s);if(cut)pen.restore();
+      if(female&&f.row===1&&(f.col===1||f.col===2)){const x=(f.col+1)*384,y=f.col===1?406:426,w=f.col===1?62:155;pen.drawImage(sheet,x,y,w,18,(x-px)*s,(y-py)*s,w*s,18*s);}
+      pen.restore();
+    }
+    manifestation(true);pen.restore();
   }
   function update(dt){
     // All damage/projectiles are created on the release pose, after visible anticipation.
@@ -334,11 +348,11 @@ const Motion = (() => {
     ctx.save();ctx.fillStyle=rgba('#020b16',fade*.18);ctx.fillRect(0,0,W,H);ctx.globalAlpha=fade;ctx.fillStyle='#f4e3ba';ctx.textAlign='center';ctx.font='28px KaiTi,serif';ctx.shadowBlur=16;ctx.shadowColor='#74cced';ctx.fillText('天 剑 · 归 一',W/2,H*.25);ctx.font='10px Microsoft YaHei,sans-serif';ctx.fillStyle='#bfe4ed';ctx.fillText(u.age<.9?'聚 天 地 灵 气':'一 剑 镇 万 邪',W/2,H*.25+25);ctx.restore();
   }
   function resize(sx,sy){Encounters.resize(sx,sy);for(const e of effects){e.x*=sx;e.y*=sy;}for(const e of echoes){e.actor.x*=sx;e.actor.y*=sy;}}
-  function preview(pen,time,c){
+  function preview(pen,time,c,heroId='xiaoguo'){
     pen.clearRect(0,0,340,430);const color=RealmVisuals.get(c).color;const g=pen.createRadialGradient(170,230,5,170,230,150);g.addColorStop(0,color+'18');g.addColorStop(1,color+'00');pen.fillStyle=g;pen.fillRect(0,0,340,430);
     pen.save();pen.translate(170,345);pen.scale(1,.38);pen.strokeStyle=color;pen.lineWidth=1.3;for(let k=0;k<RealmVisuals.get(c).rings;k++){pen.beginPath();pen.arc(0,0,90+k*12,0,Math.PI*2);pen.stroke();}pen.rotate(time*.2);for(let i=0;i<9;i++){pen.rotate(Math.PI*2/9);pen.fillStyle=i<(c.layer||1)?color:'#3d4842';pen.fillRect(100,-3,10,6);}pen.restore();
-    drawHero(pen,{x:170,y:335+Math.sin(time*2)*2,cultivation:c,animTime:time,look:1},240,time,1,{row:2,col:Math.floor(time*1.6)%2,state:'idle'});
+    drawHero(pen,{x:170,y:335+Math.sin(time*2)*2,heroId,cultivation:c,animTime:time,look:1},240,time,1,{row:2,col:Math.floor(time*1.6)%2,state:'idle'});
     for(let i=0;i<Math.min(6,2+c.realm);i++){const a=time*.6+i*Math.PI*2/Math.min(6,2+c.realm),x=170+Math.cos(a)*100,y=260+Math.sin(a)*45;pen.save();pen.translate(x,y);pen.rotate(a+.7);pen.fillStyle=color;pen.beginPath();pen.moveTo(0,-23);pen.lineTo(4,9);pen.lineTo(0,5);pen.lineTo(-4,9);pen.closePath();pen.fill();pen.restore();}
   }
-  return {preview,drawHero,cancelSpells,emit,cast,bindSpells,frame,drawActor,step,update,echo,glow,rune,sword,drawGround,drawOver,drawProjectile,drawShield,drawPool,drawUltimate,drawScreen,resize,reset(){RealmVisuals.reset();Encounters.reset();effects.length=0;echoes.length=0;pendingCasts.length=0;activeCast=null;releasingCast=false;},status(){return {hero:hero.complete&&hero.naturalWidth>0,enemies:enemies.complete&&enemies.naturalWidth>0,bossWalk:bossWalk.complete&&bossWalk.naturalWidth>0,bossAttacks:bossAttacks.complete&&bossAttacks.naturalWidth>0,effects:effects.length,pendingCasts:pendingCasts.length+(activeCast&&!activeCast.released?1:0),activeCast:activeCast?.key||null};}};
+  return {preview,drawHero,cancelSpells,emit,cast,bindSpells,frame,drawActor,step,update,echo,glow,rune,sword,drawGround,drawOver,drawProjectile,drawShield,drawPool,drawUltimate,drawScreen,resize,reset(){RealmVisuals.reset();Encounters.reset();effects.length=0;echoes.length=0;pendingCasts.length=0;activeCast=null;releasingCast=false;},status(){return {hero:hero.complete&&hero.naturalWidth>0,heroine:heroine.complete&&heroine.naturalWidth>0,enemies:enemies.complete&&enemies.naturalWidth>0,bossWalk:bossWalk.complete&&bossWalk.naturalWidth>0,bossAttacks:bossAttacks.complete&&bossAttacks.naturalWidth>0,effects:effects.length,pendingCasts:pendingCasts.length+(activeCast&&!activeCast.released?1:0),activeCast:activeCast?.key||null};}};
 })();

@@ -1,3 +1,15 @@
+/* Appearance is cosmetic; every identity shares the same combat and growth rules. */
+const HeroIdentity=(()=>{
+  const all=[{id:'xiaoguo',name:'孙小果',short:'小果',glyph:'果',gender:'男剑仙',color:'#d8bd81',desc:'循毫寻圣 · 白衣执剑'},
+    {id:'tinglan',name:'沈听澜',short:'听澜',glyph:'澜',gender:'女剑仙',color:'#a0dcd5',desc:'听澜问道 · 月白青衣'}];
+  const valid=id=>all.some(h=>h.id===id),clean=id=>valid(id)?id:'xiaoguo';
+  const get=(id)=>all.find(h=>h.id===clean(id))||all[0];
+  const text=(s,id)=>clean(id)==='tinglan'?s.replaceAll('孙小果','沈听澜').replaceAll('小果','听澜'):s;
+  const stories=new Map();
+  function stage(s,id){if(clean(id)==='xiaoguo')return s;const key=s.id+':'+id;if(!stories.has(key))stories.set(key,{...s,story:s.story.map(t=>text(t,id)),reveal:text(s.reveal,id),clue:{...s.clue,text:text(s.clue.text,id)}});return stories.get(key);}
+  function frame(time){if(G.state!=='start')return;for(const h of all){const canvas=document.getElementById('heroChoice-'+h.id);if(!canvas?.getContext)continue;const p=canvas.getContext('2d');p.setTransform(2,0,0,2,0,0);p.clearRect(0,0,160,190);Motion.drawHero(p,{x:80,y:178,heroId:h.id,cultivation:{realm:0,layer:1},look:1},145,time,1,{row:2,col:Math.floor(time*1.6)%2,state:'idle'});}}
+  return {all,valid,clean,get,text,stage,frame};
+})();
 /* One source for spell caps, bounded multi-hit budgets and cultivation visuals. */
 const SpellGrowth=(()=>{
   const realm=()=>typeof P!=='undefined'&&P?P.cultivation.realm:0;

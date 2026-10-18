@@ -46,9 +46,9 @@ const Journey = (() => {
   stages.push(...GoldenChapters);
   stages.forEach((s,i)=>Object.assign(s,ChapterCatalog.get(i),{title:s.title,name:s.subtitle}));
   const backgrounds=stages.map(s=>{const image=new Image();image.src=s.background;return image;});
-  const run={stage:0,difficulty:'normal',ultimate:'heaven',completed:[],time:0,checkpoint:null,tier:0};
+  const run={stage:0,difficulty:'normal',ultimate:'heaven',heroId:'xiaoguo',completed:[],time:0,checkpoint:null,tier:0};
   let menuStage=0;
-  const stage=()=>stages[run.stage];
+  const stage=()=>HeroIdentity.stage(stages[run.stage],typeof P!=='undefined'&&P?P.heroId:run.heroId);
   // Each ordeal compounds pressure on top of the chosen global difficulty.
   const pressure=()=>({damage:[1,1.12,1.25][run.stage%3]*(1+.22*Math.floor(run.stage/3)),spawn:Math.max(.8,1-.025*run.stage),projectile:Math.min(1.2,1+.025*run.stage),warning:Math.max(.85,1-.025*run.stage),speed:Math.min(1.2,1+.025*run.stage)});
   const difficulty=()=>{const base=difficulties[run.difficulty],p=pressure();return {...base,mobHp:base.mobHp*1.22**(run.tier||0),bossHp:base.bossHp*1.22**(run.tier||0),damage:base.damage*p.damage*1.18**(run.tier||0),spawn:base.spawn*p.spawn,projectile:base.projectile*p.projectile,warning:base.warning*p.warning,speed:p.speed};};
@@ -66,7 +66,7 @@ const Journey = (() => {
     menuStage=selected();const preview=stages[menuStage];
     const inherited=JourneyProgress.replay(menuStage,run.difficulty,difficulties);
     const inheritance=inherited?'继承等级 Lv.'+inherited.level+' · 术法 '+Object.keys(inherited.spells).length+' 门 · 法宝 '+inherited.equips.length+' 件 · 强化与剑意保留':'筑基一层 · 从等级 Lv.1 启程 · 成长永久保留';
-    ov.innerHTML=`<div class="journey-menu"><div class="journey-heading"><div class="overline">重 走 西 游 · 八 十 一 难</div><h1>寻圣</h1><div class="subtitle">剑仙孙小果 · 第一卷<br>被删去的姓名</div><p>大圣不见了。取经路还在替人写结局。<br>你循一根金毫，走进四十二段未肯沉默的旧事，筑基与金丹六关现已开启。</p></div>
+    ov.innerHTML=`<div class="journey-menu"><div class="journey-heading"><div class="overline">重 走 西 游 · 八 十 一 难</div><h1>寻圣</h1><div class="subtitle">剑仙${HeroIdentity.get(run.heroId).name} · 第一卷<br>被删去的姓名</div><p>大圣不见了。取经路还在替人写结局。<br>你循一根金毫，走进四十二段未肯沉默的旧事，筑基与金丹六关现已开启。</p><section class="hero-picker"><h3>选择同行剑仙</h3><div class="hero-choices">${HeroIdentity.all.map(h=>`<button data-hero="${h.id}" class="hero-choice ${run.heroId===h.id?'selected':''}" aria-label="选择${h.name} · ${h.gender}" aria-pressed="${run.heroId===h.id}" style="--hero:${h.color}"><canvas id="heroChoice-${h.id}" width="320" height="380" aria-hidden="true"></canvas><strong>${h.name}</strong><span>${h.gender}</span><small>${h.desc}</small></button>`).join('')}</div><small>两位剑仙能力相同 · 切换保留当前成长<br>选择后继续历程，或重新出征</small></section></div>
       <div class="journey-chapters">${stages.map((s,i)=>`<button class="chapter-card ${i===menuStage?'selected':''}" data-stage="${i}" ${JourneyProgress.canSelect(i)?'':'disabled'} aria-label="${s.title} · ${i<JourneyProgress.cleared()?'已通关，可重战':JourneyProgress.canSelect(i)?'可出征':'先通关'+stages[i-1].title}" aria-pressed="${i===menuStage}" style="--chapter:${s.color};background-image:linear-gradient(0deg,#071418f5,#07141812),url('${s.background}')"><span class="chapter-index">第 ${s.no} 难</span><strong>${s.title}</strong><span>${s.subtitle}</span><small>守关 · ${s.boss}</small><em class="chapter-lock">${i<JourneyProgress.cleared()?'已通关 · 可重战':JourneyProgress.canSelect(i)?(i===0?'由此启程':'前难已破 · 可出征'):i%3===0?'锁定 · 需'+Cultivation.realms[Math.floor(i/3)]+'及前篇通关':'锁定 · 先破前难'}</em></button>`).join('')}</div><details class="chapter-roadmap"><summary>十四境 · 四十二关历程 / 查看后续篇章</summary><div>${ChapterCatalog.all.slice(6).map(c=>`<span>${Cultivation.realms[c.realm]} · ${c.name} <small>制作中 · 未开放</small></span>`).join('')}</div></details>
       <div class="chapter-preview"><span>${preview.theme}</span><small>${preview.mechanic}</small><small>此难妖众：${Encounters.family(menuStage).units.map(e=>e.name).join(' · ')}</small><small>${inheritance}</small><small class="pressure-note">${menuStage===0?'劫压起点':'累积劫压 +'+menuStage+'：伤害 +'+Math.round((([1,1.12,1.25][menuStage%3]*(1+.22*Math.floor(menuStage/3)))-1)*100)+'% · 移速 +'+Math.round((Math.min(1.2,1+.025*menuStage)-1)*100)+'% · 增援更密，飞弹更快'}</small></div>
       <div class="journey-options"><section><h3>所历之难 <small>难度决定容错，不锁剧情</small></h3><div class="difficulty-options">${Object.entries(difficulties).map(([id,d])=>`<button data-difficulty="${id}" class="option ${run.difficulty===id?'selected':''}" aria-pressed="${run.difficulty===id}"><strong>${d.name}</strong><small>${d.tag}</small></button>`).join('')}</div><p>${difficulty().desc}</p></section>
@@ -75,6 +75,7 @@ const Journey = (() => {
     ov.querySelectorAll('[data-stage]').forEach(n=>n.onclick=()=>{const index=Number(n.dataset.stage);if(!JourneyProgress.canSelect(index))return;menuStage=index;menu();});
     ov.querySelectorAll('[data-difficulty]').forEach(n=>n.onclick=()=>{run.difficulty=n.dataset.difficulty;menu();});
     ov.querySelectorAll('[data-ultimate]').forEach(n=>n.onclick=()=>{run.ultimate=n.dataset.ultimate;menu();});
+    ov.querySelectorAll('[data-hero]').forEach(n=>n.onclick=()=>{if(HeroIdentity.valid(n.dataset.hero)){run.heroId=n.dataset.hero;menu();}});
     document.getElementById('startBtn').onclick=startGame;CharacterUI.decorateMenu();
   }
   function intro(){
@@ -105,7 +106,7 @@ const Journey = (() => {
     if(['story','levelup','chest','journal','map'].includes(G.state))return;
     const before=G.state;if(before==='playing')clearInput();G.state='journal';
     const ov=document.getElementById('overlay');ov.classList.remove('hidden');
-    ov.innerHTML=`<div class="panel chronicle-panel"><h2>寻 圣 残 卷</h2><p class="sub">大圣未归，账须有人重算</p>${stages.map((s,i)=>`<div class="clue-reward"><small>第 ${s.no} 难 · ${s.title}</small><strong>${i<JourneyProgress.cleared()?s.clue.name:'线索未得'}</strong><p>${i<JourneyProgress.cleared()?s.clue.text:s.theme}</p></div>`).join('')}<p class="hintline">取前三难之名为原典；孙小果、守关者与隐秘账册为独立原创演义。</p><button class="btn" id="closeJournalBtn">合 卷</button></div>`;
+    ov.innerHTML=`<div class="panel chronicle-panel"><h2>寻 圣 残 卷</h2><p class="sub">大圣未归，账须有人重算</p>${stages.map((s,i)=>`<div class="clue-reward"><small>第 ${s.no} 难 · ${s.title}</small><strong>${i<JourneyProgress.cleared()?s.clue.name:'线索未得'}</strong><p>${HeroIdentity.text(i<JourneyProgress.cleared()?s.clue.text:s.theme,P.heroId)}</p></div>`).join('')}<p class="hintline">取前三难之名为原典；孙小果、沈听澜、守关者与隐秘账册为独立原创演义。</p><button class="btn" id="closeJournalBtn">合 卷</button></div>`;
     document.getElementById('closeJournalBtn').onclick=()=>{if(before==='start')menu();else if(before==='win'||before==='dead'){G.state=before;showEnd(before==='win');}else if(before==='paused'){G.state='playing';togglePause();}else {ov.classList.add('hidden');G.state=before;last=performance.now();}};
   }
   function warning(base){return Math.max(.65,base*difficulty().warning);}

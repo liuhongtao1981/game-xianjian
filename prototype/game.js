@@ -215,7 +215,7 @@ function newPlayer(){
     ...World.spawn(),vx:0,vy:0,r:15, hp:120, maxHp:120, shield:0, shieldMax:70,
     speed:238, dmg:1, cdr:1, crit:0.05, pickup:118, xpMul:1, armor:0, regen:0, poison:false,
     level:1, xp:0, xpNext:10,growthChoices:0,
-    spells:{ yujian:1 }, t:{ yujian:0.5 },
+    heroId:HeroIdentity.clean(Journey.run.heroId),spells:{ yujian:1 }, t:{ yujian:0.5 },
     orbitAngle:0, orbitHit:new Map(),
     dash:0, dashCd:0, invuln:0, facing:{ x:1, y:0 }, flash:0,
     equips:[], energy:100, ultCd:0, animTime:0,moving:false,attack:0,attackLength:.32,look:1,cultivation:Cultivation.fresh()
@@ -1366,6 +1366,8 @@ function syncHUD(){
   document.getElementById('dashStatus').textContent=P.dashCd>0?P.dashCd.toFixed(1)+'s':'空格 · 闪避';
   const stage=Journey.stage(),profile=Journey.difficulty();
   document.getElementById('chapterTitle').textContent=stage.no+' · '+stage.title;
+  document.getElementById('heroName').textContent=HeroIdentity.get(P.heroId).name;
+  document.getElementById('heroGlyph').textContent=HeroIdentity.get(P.heroId).glyph;
   document.getElementById('identitySub').textContent='无籍剑仙 · '+profile.name;
   document.getElementById('locationTitle').textContent=stage.place+' · '+World.region();
   document.getElementById('locationSubtitle').textContent=stage.subtitle+' · 轮回劫阶 '+(Journey.run.tier||0)+' · 累积劫压 '+Journey.run.stage+' · 寻圣线索 '+JourneyProgress.cleared()+'/3';
@@ -1520,6 +1522,7 @@ function loop(now){
   Sound.sync(G.state,Journey.run.stage,G.bossSpawned&&!!G.boss&&G.boss.hp>0);
   render();
   CharacterUI.frame(now/1000);
+  HeroIdentity.frame(now/1000);
   syncHUD();
   drawJoystick();
   requestAnimationFrame(loop);

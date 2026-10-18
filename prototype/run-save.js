@@ -32,6 +32,7 @@ const RunSave=(()=>{
   function init(){
     const primary=read(key),fallback=primary?null:read(backup),old=primary||fallback?null:read(legacyKey)||read(legacyKey+'-backup');data=primary||fallback||old;
     if(data){revision=data.revision;try{JourneyProgress.restore(data.progress);}catch{data=null;}message=fallback?'已恢复备份存档':old?'旧档已安全迁移 · 九层历程':'已有自动存档';}
+    Journey.run.heroId=HeroIdentity.clean(data?.run.player.heroId);
     window.addEventListener('storage',event=>{if(event.key!==key||!event.newValue)return;try{receive(JSON.parse(event.newValue));}catch{}});
     window.addEventListener('pagehide',()=>save('离开网页'));window.addEventListener('beforeunload',()=>save('退出网页'));
     window.addEventListener('blur',()=>save('窗口失焦'));document.addEventListener('visibilitychange',()=>{if(document.hidden)save('切换网页');});
@@ -58,17 +59,21 @@ const RunSave=(()=>{
     const old=data?.run,legacy=JourneyProgress.replay(stage,Journey.run.difficulty,Journey.difficulties);
     if(old&&!newCycle&&(old.queue>0||old.chestReward||old.pendingLore!==null&&old.pendingLore!==undefined||old.coreReward))return false;
     let build=old?clone(old.player):legacy?migrateBuild(legacy):null;
+    if(build)build.heroId=HeroIdentity.clean(Journey.run.heroId);
     if(build){const prior=old?.difficulty||Journey.run.difficulty;build.maxHp+=Journey.difficulties[Journey.run.difficulty].hp-Journey.difficulties[prior].hp;build.hp=build.hp<=0?build.maxHp:Math.max(1,Math.min(build.maxHp,build.hp));}
     if(newCycle){const finale=G.state==='win'&&Journey.run.stage===41&&!G.coreReward||G.state==='start'&&old?.state==='win'&&old.stage===41&&!old.coreReward;if(JourneyProgress.cleared()<42||!finale)return false;cycle=(old?.cycle??cycle)+1;ledger={};}
     else if(old){cycle=old.cycle;ledger=clone(old.ledger);}
     if(newReplay||old?.state==='win'&&stage<JourneyProgress.cleared()){for(const k of Object.keys(ledger))if(!k.startsWith('first:')&&new RegExp('^(boss|core|site|elite):'+stage+'(?::|$)').test(k))delete ledger[k];}
     suppress=true;Journey.begin(stage);enabled=true;Journey.run.stage=stage;Journey.run.tier=0;Journey.run.checkpoint=build;reset();bossEntry=null;suppress=false;Journey.intro();save('开始历程');return true;
   }
-  function continueRun(){
+  function continueRun(heroId=null){
+    const requested=HeroIdentity.valid(heroId)?heroId:null;
+    if(requested)Journey.run.heroId=requested;
     if(!data){const s=summary();return s?start(s.stage):false;}
     const latest=read(key);if(latest&&latest.revision>data.revision)data=latest;
     const s=clone(data.run);conflict=false;suppress=true;enabled=true;revision=data.revision;cycle=s.cycle;ledger=s.ledger;bossEntry=s.bossEntry;
-    JourneyProgress.restore(data.progress);Object.assign(Journey.run,{stage:s.stage,difficulty:s.difficulty,ultimate:s.ultimate,tier:s.tier,completed:s.completed,time:s.campaignTime,checkpoint:s.player});reset();Journey.run.checkpoint=s.checkpoint;
+    const priorHero=HeroIdentity.clean(s.player.heroId);if(requested){s.player.heroId=requested;if(s.checkpoint)s.checkpoint.heroId=requested;}
+    JourneyProgress.restore(data.progress);Object.assign(Journey.run,{heroId:HeroIdentity.clean(s.player.heroId),stage:s.stage,difficulty:s.difficulty,ultimate:s.ultimate,tier:s.tier,completed:s.completed,time:s.campaignTime,checkpoint:s.player});reset();Journey.run.checkpoint=s.checkpoint;
     const frame=s.bossSpawned&&s.state!=='win'&&s.state!=='dead'?s.bossEntry:s;
     World.importState(frame.world);EncounterDirector.importState(frame.director);P.x=frame.x;P.y=frame.y;World.resolve(P,true);World.camera(0,true);G.time=s.time;G.kills=s.kills;G.queue=s.queue;choicesCache=s.choices;G.chests=frame.chests||[];
     G.chestReward=s.chestReward;G.pendingLore=s.pendingLore??null;G.coreReward=s.coreReward;
@@ -79,7 +84,7 @@ const RunSave=(()=>{
     else if(G.queue>0)showLevelUp(s.choices.length?s.choices:null);
     else if(s.state==='story')Journey.intro();
     else {G.state='playing';togglePause();}
-    suppress=false;renderSpells();renderEquips();syncHUD();return true;
+    suppress=false;if(requested&&requested!==priorHero&&!save('切换剑仙')){P.heroId=priorHero;Journey.run.heroId=priorHero;if(Journey.run.checkpoint)Journey.run.checkpoint.heroId=priorHero;if(G.state==='story')Journey.intro();}renderSpells();renderEquips();syncHUD();return true;
   }
   function retry(){
     if(!['dead','paused'].includes(G.state))return false;const build=JourneyProgress.capture(P);build.hp=build.maxHp;build.shield=0;
