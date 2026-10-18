@@ -1,0 +1,249 @@
+{
+  "tool": "Built-in image_gen.imagegen",
+  "useCase": "stylized-concept",
+  "intent": "New free-roaming terrain maps using existing arena images as visual references",
+  "generatedDate": "2026-10-18",
+  "transparentBackground": false,
+  "targetWorldSize": {
+    "width": 3600,
+    "height": 2600
+  },
+  "coordinateConvention": "Normalized image coordinates; origin top-left, x increases right, y increases downward. Visual navigation anchors are approximate and must be used with the game collision geometry.",
+  "sharedVisualReview": "All assets inspected from generated pixels: consistent high oblique orthographic camera, no sky/horizon/text/HUD/characters, distinct materials per chapter, continuous broad route connecting three side courts and upper-right boss arena. Images are rectangular textures with irregular traversable land shapes, so full-rectangle movement is inappropriate; collision should follow stone land and bridges. Tool produced 1448x1086 native pixels despite request for larger output; no programmatic image editing or upscaling performed.",
+  "assets": [
+    {
+      "id": "exile",
+      "file": "prototype/assets/world-exile.png",
+      "width": 1448,
+      "height": 1086,
+      "reference": "E:/dev/仙剑2/prototype/assets/journey-exile.png",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14bab-eb64-74b3-bf47-aef070590ac4\\exec-480d70cc-1fef-4df8-9e19-2cdaeebdbba0.png",
+      "prompt": "Use case: stylized-concept. Asset type: production background for a free-roaming 2D action game, a single coherent large terrain map. This is a NEW map; use the attached scene only for materials and atmosphere. Image composition: horizontal 4:3, very high orthographic oblique bird's-eye camera, almost overhead (75–80 degrees), consistent scale everywhere, complete contiguous map from edge to edge with NO horizon, NO sky, NO perspective vanishing point. Request high resolution, ideally 2048 x 1536 or larger. The camera will crop and scroll over this map in game.\nPrecise navigation layout: the starting clearing is centered at 18% of image width and 80% of height, lower left. A BROAD winding flat stone route runs from that clearing through the central open courtyard, then reaches a LARGE ROUND EMPTY boss plaza centered at 78% of width, 27% of height, in the upper right. Boss plaza extends about 17% of image width from its center and is fully walkable. Two clear optional branching paths lead to small side courtyards in the upper left (24%,28%) and lower right (75%,78%). Main route at least 15% of image width. All areas are smoothly connected and at the same ground level; only very shallow decorative thresholds. At least 80% of the central map interior is traversable flat ground. Tiny ruins, stones, vegetation and poles are at the outer edges only, not blocking the route. NO interior roofed buildings, NO large raised objects covering playable areas, NO dividing barriers. Outer perimeter has rock, broken wall or riverbank to mark map bounds.\nPremium realistic Chinese dark-mythology art direction, tactile weathered materials, subtle wet reflections and environmental storytelling. This must look like a seamless real game environment, not a board-game map, not a diagram. Fine varied paving but NO perfectly regular visible square grid. No characters, no monsters, no player, no UI, no labels, no letters, no text, no watermark, no decorative border. Keep gameplay ground readable and evenly lit.\nTheme: the Exile Cloister of Old Mount Ling, a silent ruined Buddhist court. Muted charcoal-grey stone, warm aged gold inlays, thin ash, weathered bronze, broken bell fragments placed only along the perimeter, torn ochre prayer pennants, a few stone votive lamps. Lower-left entrance has ruined gate remnants at the far margin. Upper-right circular boss court has a worn golden lotus pattern engraved flush into the paving, surrounded by broad open space. Upper-left side court has a small broken prayer pedestal along its outside edge; lower-right side court has a fallen bronze bell close to the boundary. Cool overcast night-like ambient light with soft gold lantern illumination. Very little fog, no cloud covering the map.",
+      "visualNavigation": {
+        "spawn": [
+          0.22,
+          0.79
+        ],
+        "boss": [
+          0.79,
+          0.25
+        ],
+        "upperSide": [
+          0.19,
+          0.15
+        ],
+        "lowerSide": [
+          0.81,
+          0.77
+        ],
+        "mainRoute": [
+          [
+            0.22,
+            0.79
+          ],
+          [
+            0.25,
+            0.6
+          ],
+          [
+            0.41,
+            0.44
+          ],
+          [
+            0.52,
+            0.34
+          ],
+          [
+            0.79,
+            0.25
+          ]
+        ],
+        "upperBranch": [
+          [
+            0.41,
+            0.29
+          ],
+          [
+            0.33,
+            0.21
+          ],
+          [
+            0.19,
+            0.15
+          ]
+        ],
+        "lowerBranch": [
+          [
+            0.5,
+            0.57
+          ],
+          [
+            0.65,
+            0.66
+          ],
+          [
+            0.81,
+            0.77
+          ]
+        ],
+        "notes": "Broad central stone ground and open circular boss court; narrow rocky bays intrude into bottom-center and left edge. Upper-left shrine is elevated only by shallow steps. Stone rails mark non-walkable boundary."
+      }
+    },
+    {
+      "id": "birth",
+      "file": "prototype/assets/world-birth.png",
+      "width": 1448,
+      "height": 1086,
+      "reference": "E:/dev/仙剑2/prototype/assets/journey-birth.png",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14bab-eb64-74b3-bf47-aef070590ac4\\exec-c264454a-b34a-4799-8033-e0b09a9f7b74.png",
+      "prompt": "Use case: stylized-concept. Asset type: production background for a free-roaming 2D action game, a single coherent large terrain map. This is a NEW map; use the attached scene only for materials and atmosphere. Image composition: horizontal 4:3, very high orthographic oblique bird's-eye camera, almost overhead (75–80 degrees), consistent scale everywhere, complete contiguous map from edge to edge with NO horizon, NO sky, NO perspective vanishing point. Request high resolution, ideally 2048 x 1536 or larger. The camera will crop and scroll over this map in game.\nPrecise navigation layout: the starting clearing is centered at 18% of image width and 80% of height, lower left. A BROAD winding flat stone route runs from that clearing through the central open courtyard, then reaches a LARGE ROUND EMPTY boss plaza centered at 78% of width, 27% of height, in the upper right. Boss plaza extends about 17% of image width from its center and is fully walkable. Two clear optional branching paths lead to small side courtyards in the upper left (24%,28%) and lower right (75%,78%). Main route at least 15% of image width. All areas are smoothly connected and at the same ground level; only very shallow decorative thresholds. At least 80% of the central map interior is traversable flat ground. Tiny ruins, stones, vegetation and poles are at the outer edges only, not blocking the route. NO interior roofed buildings, NO large raised objects covering playable areas, NO dividing barriers. Outer perimeter has rock, broken wall or riverbank to mark map bounds.\nPremium realistic Chinese dark-mythology art direction, tactile weathered materials, subtle wet reflections and environmental storytelling. This must look like a seamless real game environment, not a board-game map, not a diagram. Fine varied paving but NO perfectly regular visible square grid. No characters, no monsters, no player, no UI, no labels, no letters, no text, no watermark, no decorative border. Keep gameplay ground readable and evenly lit.\nTheme: the Blood Edict Courtyard of the ruined Chen residence, after rain at night. Slate grey irregular wet paving with tasteful crimson silk and paper edict scraps at edges, dark lacquered broken walls and sparse red lantern posts only at perimeter. The whole playable interior is a sprawling open courtyard complex with broad connecting paths, no roofs blocking view. Lower-left entrance stone forecourt is open. Upper-right boss plaza has an engraved circular imperial seal ornament flush in the stone, with red silk near its far outer rim. Upper-left side court and lower-right side court have sparse crumbled stone seating at outer edges. Cool blue reflected ambient light makes terrain clearly readable, warm restrained red lantern highlights. No standing water obstructing paths, only shallow reflective puddles.",
+      "visualNavigation": {
+        "spawn": [
+          0.2,
+          0.79
+        ],
+        "boss": [
+          0.77,
+          0.24
+        ],
+        "upperSide": [
+          0.22,
+          0.14
+        ],
+        "lowerSide": [
+          0.81,
+          0.77
+        ],
+        "mainRoute": [
+          [
+            0.2,
+            0.79
+          ],
+          [
+            0.31,
+            0.59
+          ],
+          [
+            0.47,
+            0.42
+          ],
+          [
+            0.63,
+            0.34
+          ],
+          [
+            0.77,
+            0.24
+          ]
+        ],
+        "upperBranch": [
+          [
+            0.43,
+            0.34
+          ],
+          [
+            0.34,
+            0.24
+          ],
+          [
+            0.22,
+            0.14
+          ]
+        ],
+        "lowerBranch": [
+          [
+            0.56,
+            0.55
+          ],
+          [
+            0.68,
+            0.65
+          ],
+          [
+            0.81,
+            0.77
+          ]
+        ],
+        "notes": "Broad connected grey-stone central court, upper-right seal arena, red-silk perimeter; rocky bays intrude at bottom-center and left edge. Small outer steps at starting boundary; keep actors inside the stone paving."
+      }
+    },
+    {
+      "id": "river",
+      "file": "prototype/assets/world-river.png",
+      "width": 1448,
+      "height": 1086,
+      "reference": "E:/dev/仙剑2/prototype/assets/journey-river.png",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a14bab-eb64-74b3-bf47-aef070590ac4\\exec-912488f5-45a4-4985-aed6-7cc0e047044d.png",
+      "prompt": "Use case: stylized-concept. Asset type: production background for a free-roaming 2D action game, a single coherent large terrain map. This is a NEW map; use the attached scene only for materials and atmosphere. Image composition: horizontal 4:3, very high orthographic oblique bird's-eye camera, almost overhead (75–80 degrees), consistent scale everywhere, complete contiguous map from edge to edge with NO horizon, NO sky, NO perspective vanishing point. Request high resolution, ideally 2048 x 1536 or larger. The camera will crop and scroll over this map in game.\nPrecise navigation layout: the starting clearing is centered at 18% of image width and 80% of height, lower left. A BROAD winding flat stone route runs from that clearing through the central open courtyard, then reaches a LARGE ROUND EMPTY boss plaza centered at 78% of width, 27% of height, in the upper right. Boss plaza extends about 17% of image width from its center and is fully walkable. Two clear optional branching paths lead to small side courtyards in the upper left (24%,28%) and lower right (75%,78%). Main route at least 15% of image width. All areas are smoothly connected and at the same ground level; only very shallow decorative thresholds. At least 80% of the central map interior is traversable flat ground. Tiny ruins, stones, vegetation and poles are at the outer edges only, not blocking the route. NO interior roofed buildings, NO large raised objects covering playable areas, NO dividing barriers. Outer perimeter has rock, broken wall or riverbank to mark map bounds.\nPremium realistic Chinese dark-mythology art direction, tactile weathered materials, subtle wet reflections and environmental storytelling. This must look like a seamless real game environment, not a board-game map, not a diagram. Fine varied paving but NO perfectly regular visible square grid. No characters, no monsters, no player, no UI, no labels, no letters, no text, no watermark, no decorative border. Keep gameplay ground readable and evenly lit.\nTheme: the Old Crossing of the Hong River in moonlight. A single contiguous broad island-like wet stone embankment with winding connected stone walkways and clear empty courts. Deep teal river water ONLY hugs the outer perimeter and thin shallow drainage channels stay strictly at the far edges. All central playable ground and all routes are dry enough to walk, no interior water barrier, no disconnected islands. Short wide wooden decking can decorate lower-left entry and lower-right side court, fully joined to surrounding ground. A few mooring posts, reed clumps, small empty boats and lotus lanterns are along the extreme outer water edge. Upper-right boss plaza is broad flat slate with a worn circular wave pattern, absolutely no pool in its center. Upper-left side court includes a small stone lantern at its outer edge. Silver-blue moonlight and subtle amber lotus lamp light, realistic ripple reflections and wet stone textures. No moon or sky visible because camera is almost overhead.",
+      "visualNavigation": {
+        "spawn": [
+          0.2,
+          0.71
+        ],
+        "boss": [
+          0.77,
+          0.23
+        ],
+        "upperSide": [
+          0.19,
+          0.17
+        ],
+        "lowerSide": [
+          0.79,
+          0.72
+        ],
+        "mainRoute": [
+          [
+            0.2,
+            0.71
+          ],
+          [
+            0.31,
+            0.6
+          ],
+          [
+            0.44,
+            0.45
+          ],
+          [
+            0.59,
+            0.34
+          ],
+          [
+            0.77,
+            0.23
+          ]
+        ],
+        "upperBranch": [
+          [
+            0.43,
+            0.43
+          ],
+          [
+            0.33,
+            0.27
+          ],
+          [
+            0.19,
+            0.17
+          ]
+        ],
+        "lowerBranch": [
+          [
+            0.49,
+            0.47
+          ],
+          [
+            0.63,
+            0.55
+          ],
+          [
+            0.79,
+            0.72
+          ]
+        ],
+        "notes": "Land is fully contiguous; all four courtyard branches connect to the center. Deep water bays fill outer quadrants including lower-center. Starting court visually centers near y=0.71, slightly above requested y=0.80. Bottom-left wooden approach reaches y=0.95; recommended gameplay spawn is on the stone court at (0.20,0.71)."
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "guanyin",
+  "text": "一息尚存。",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "fc1951e0359b0b7f48167fb895e53b5ae4ec346a0b9bebdac28306f0638f3019",
+  "source_sha256": "47bb921fb56fbcca2f048972b0d1b674035785b400f841bf9fff8d4b04a50d19",
+  "mixed_sha256": "aa7c82a5ded3e6bd182f6e8be3d5b4ed9a98bdd9f0b80af1b577cba288790dbd",
+  "duration": 2.188,
+  "size": 27404,
+  "file": "assets/audio/voice-v2/guanyin.mp3",
+  "source": "assets/audio/voice-v2/source/guanyin.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

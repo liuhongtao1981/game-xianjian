@@ -1,0 +1,25 @@
+{
+  "id": "bingxin",
+  "text": "心定，剑不乱。",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "fa10202ce6e1aa45e256b27cff92d345ce6eb6545a295815af679ba7046089ad",
+  "source_sha256": "1d29f56995b614a3727ca78f844a135ed19b8f92726a75c07973ddf6b0518778",
+  "mixed_sha256": "99bff8db9be5c94275cc2c3abd3a4cd0875c87a9ad44d8978a7fc5e574c787d7",
+  "duration": 2.716,
+  "size": 33740,
+  "file": "assets/audio/voice-v2/bingxin.mp3",
+  "source": "assets/audio/voice-v2/source/bingxin.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

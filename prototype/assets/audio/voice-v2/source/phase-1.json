@@ -1,0 +1,25 @@
+{
+  "id": "phase-1",
+  "text": "印还在，命就断不了。",
+  "speaker": "血诏司命",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "-5%",
+  "pitch": "-10Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "abe555d1d7868337c573306bee70a28a73b5fa44f3d1db3befc640b98ba70fbf",
+  "source_sha256": "ab0acdb831f9b0acc2d7122f5e0de45021332fc7c9d50d8712e157fb7abaed0e",
+  "mixed_sha256": "a6a857912dab322f6f7ed5d0f6d47766b62fd641a25e522516b1e6a20842627e",
+  "duration": 3.268,
+  "size": 40364,
+  "file": "assets/audio/voice-v2/phase-1.mp3",
+  "source": "assets/audio/voice-v2/source/phase-1.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.4",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

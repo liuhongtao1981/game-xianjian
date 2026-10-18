@@ -1,0 +1,135 @@
+{
+  "generatedAt": "2026-10-18T00:59:31.455Z",
+  "setup": {
+    "difficulty": "normal",
+    "route": "main route plus both elite challenges",
+    "initialLevel": 1,
+    "initialSpells": {
+      "yujian": 1
+    },
+    "initialEquipment": [],
+    "reactionSeconds": 0.1,
+    "simulationHz": 30,
+    "fullCampaign": false
+  },
+  "limitations": [
+    "Scripted navigation and complete live enemy-attack geometry; not human playtesting.",
+    "No HP, damage, enemy health, cooldown, camp or wave edits during a fight.",
+    "Choices and existing pickups use normal game rules. Timings exclude time spent reading upgrade and reward screens.",
+    "Timeouts and deaths are preserved, without retries or healing resets."
+  ],
+  "runs": [
+    {
+      "seed": 81,
+      "cleared": 1,
+      "rows": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 193,
+          "level": 10,
+          "hp": 120,
+          "damageTaken": 0,
+          "kills": 236,
+          "combatSeconds": 126,
+          "maxGapSeconds": 6,
+          "routeIndex": 11,
+          "routeLength": 11,
+          "beforeBoss": {
+            "time": 154,
+            "level": 9,
+            "hp": 120,
+            "spawned": 216,
+            "killed": 216,
+            "peak": 14,
+            "patrols": 0,
+            "cleared": 9,
+            "eliteCamps": 2
+          },
+          "spells": {
+            "yujian": 3,
+            "wulei": 2,
+            "sanmei": 1,
+            "wanjian": 4,
+            "guanyin": 1
+          },
+          "equips": [
+            "tiangang",
+            "nvwa"
+          ],
+          "director": {
+            "spawned": 220,
+            "killed": 220,
+            "peak": 14,
+            "patrols": 0
+          },
+          "camps": [
+            {
+              "id": 0,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 1,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 2,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 3,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 4,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 5,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 6,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 7,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 8,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

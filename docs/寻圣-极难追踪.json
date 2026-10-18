@@ -1,0 +1,121 @@
+{
+  "note": "Seeded scripted agent; not human completion rates. 2 fixed seeds per difficulty/loadout, each stage capped at 420 simulation seconds.",
+  "runs": [
+    {
+      "difficulty": "nightmare",
+      "ultimate": "river",
+      "seed": 81,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 162,
+          "level": 14,
+          "hp": 120,
+          "helpers": [
+            {
+              "name": "缄言戒印",
+              "hp": 175
+            },
+            {
+              "name": "缄言戒印",
+              "hp": 175
+            },
+            {
+              "name": "缄言戒印",
+              "hp": 133
+            }
+          ],
+          "bossRemaining": 0,
+          "casts": 8
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 243,
+          "level": 18,
+          "hp": 138,
+          "helpers": [],
+          "bossRemaining": 0,
+          "casts": 11
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 122,
+          "level": 19,
+          "hp": 137,
+          "helpers": [
+            {
+              "name": "锁魂河灯",
+              "hp": 188
+            },
+            {
+              "name": "锁魂河灯",
+              "hp": 188
+            }
+          ],
+          "bossRemaining": 0,
+          "casts": 6
+        }
+      ]
+    },
+    {
+      "difficulty": "nightmare",
+      "ultimate": "river",
+      "seed": 108,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 166,
+          "level": 13,
+          "hp": 70,
+          "helpers": [
+            {
+              "name": "缄言戒印",
+              "hp": 175
+            },
+            {
+              "name": "缄言戒印",
+              "hp": 175
+            },
+            {
+              "name": "缄言戒印",
+              "hp": 175
+            }
+          ],
+          "bossRemaining": 0,
+          "casts": 7
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 315,
+          "level": 18,
+          "hp": 150,
+          "helpers": [],
+          "bossRemaining": 0,
+          "casts": 14
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 160,
+          "level": 19,
+          "hp": 141,
+          "helpers": [
+            {
+              "name": "锁魂河灯",
+              "hp": 188
+            }
+          ],
+          "bossRemaining": 0,
+          "casts": 6
+        }
+      ]
+    }
+  ]
+}

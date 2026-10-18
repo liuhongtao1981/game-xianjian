@@ -1,0 +1,47 @@
+{
+  "composer": "Project-authored procedural pentatonic score; Karplus–Strong plucked strings, flute, harmonic drone, bells and drums.",
+  "tracks": [
+    {
+      "file": "assets/audio/music/exile-field.mp3",
+      "title": "失声禅庭·断钟·行路",
+      "bpm": 72,
+      "duration": 53.333,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/exile-boss.mp3",
+      "title": "失声禅庭·断钟·守关",
+      "bpm": 100,
+      "duration": 38.4,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/birth-field.mp3",
+      "title": "血诏陈府·夜诏·行路",
+      "bpm": 86,
+      "duration": 44.651,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/birth-boss.mp3",
+      "title": "血诏陈府·夜诏·守关",
+      "bpm": 112,
+      "duration": 34.286,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/river-field.mp3",
+      "title": "夜渡洪江·逆水·行路",
+      "bpm": 68,
+      "duration": 56.471,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/river-boss.mp3",
+      "title": "夜渡洪江·逆水·守关",
+      "bpm": 104,
+      "duration": 36.923,
+      "original": true
+    }
+  ]
+}

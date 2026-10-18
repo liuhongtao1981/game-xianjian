@@ -1,0 +1,31 @@
+/* A victory unlocks replay; reaching a chapter alone never unlocks it. */
+const JourneyProgress=(()=>{
+  const key='xunsheng-progress-v1',fields=['maxHp','hp','shieldMax','speed','dmg','cdr','crit','pickup','xpMul','armor','regen','level','xp','xpNext'];
+  let data={version:1,cleared:0,entries:{}};
+  function copy(value){return JSON.parse(JSON.stringify(value));}
+  function cleanBuild(b){return {...Object.fromEntries(fields.map(k=>[k,b[k]])),poison:b.poison===true,spells:{...b.spells},equips:[...b.equips]};}
+  function validBuild(b){
+    return b&&fields.every(k=>Number.isFinite(b[k])&&Math.abs(b[k])<1e7)&&b.maxHp>0&&b.hp>0&&b.hp<=b.maxHp&&b.speed>0&&b.dmg>0&&b.cdr>0&&b.level>=1&&b.spells&&Object.entries(b.spells).every(([k,v])=>['yujian','wanjian','wulei','sanmei','bingxin','gudu','jiushen','guanyin'].includes(k)&&Number.isInteger(v)&&v>=1&&v<=10)&&Array.isArray(b.equips)&&b.equips.length<=8&&b.equips.every(v=>['mujian','jifeng','jiuhu','wudu','nvwa','tiangang','juling','huxin'].includes(v));
+  }
+  try{
+    const saved=JSON.parse(localStorage.getItem(key));
+    if(saved?.version===1&&Number.isInteger(saved.cleared)&&saved.cleared>=0&&saved.cleared<=3){
+      data.cleared=saved.cleared;
+      for(const i of [1,2]){const e=saved.entries?.[i];if(e&&['story','normal','hard','nightmare'].includes(e.difficulty)&&validBuild(e.build))data.entries[i]={difficulty:e.difficulty,build:cleanBuild(e.build)};}
+      // Broken or older saves cannot expose a chapter without an entry build.
+      if(data.cleared>1&&!data.entries[1])data.cleared=1;
+      if(data.cleared>2&&!data.entries[2])data.cleared=2;
+    }
+  }catch{}
+  function persist(){try{localStorage.setItem(key,JSON.stringify(data));}catch{/* Private/file browsing still supports session progression. */}}
+  function entry(stage,build,difficulty){if(stage<1||stage>2||!validBuild(build))return;data.entries[stage]={difficulty,build:cleanBuild(build)};persist();}
+  function clear(stage){if(stage===data.cleared){data.cleared=Math.min(3,data.cleared+1);persist();}}
+  function canSelect(stage){return Number.isInteger(stage)&&stage>=0&&stage<=2&&stage<=data.cleared;}
+  function replay(stage,difficulty,profiles){
+    if(!canSelect(stage)||stage===0||!data.entries[stage])return null;
+    const entry=data.entries[stage],build=copy(entry.build),fraction=build.hp/build.maxHp;
+    build.maxHp=Math.max(1,build.maxHp+profiles[difficulty].hp-profiles[entry.difficulty].hp);
+    build.hp=Math.min(build.maxHp,Math.max(build.maxHp*.7,build.maxHp*fraction));return build;
+  }
+  return {key,entry,clear,canSelect,replay,cleared:()=>data.cleared,snapshot:()=>copy(data)};
+})();

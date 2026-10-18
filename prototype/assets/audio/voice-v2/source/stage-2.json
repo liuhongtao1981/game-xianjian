@@ -1,0 +1,25 @@
+{
+  "id": "stage-2",
+  "text": "孙小果顺洪江寻到一只永不腐烂的木板。血书上的字，每逢满月便会变成另一个人的笔迹。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "d168dbc742e8b91ff8ac8a0d16b2327554a6535862bfe848e857fe03866605a3",
+  "source_sha256": "78438344710b50993fdeffcbcafcbfba92f0240e115a57eb3ae1e2348180f1de",
+  "mixed_sha256": "5c6506a60f641a8e9b7c62ad2350e9fc2cf34e50df465622d75a1471e83d43c9",
+  "duration": 9.364,
+  "size": 113516,
+  "file": "assets/audio/voice-v2/stage-2.mp3",
+  "source": "assets/audio/voice-v2/source/stage-2.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

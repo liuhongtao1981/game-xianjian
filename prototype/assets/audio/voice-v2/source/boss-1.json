@@ -1,0 +1,25 @@
+{
+  "id": "boss-1",
+  "text": "真假不在纸上，在谁活着盖印。",
+  "speaker": "血诏司命",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "-5%",
+  "pitch": "-10Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "298d5bba3dcfb2e61180e2617b7590ff0c7ea8f280759a80d3aea957a04d2b90",
+  "source_sha256": "5b71e767c31fd068b7c9995ae4b2ba712e26a0543a9db963fcdf0bcc9b5c1faa",
+  "mixed_sha256": "9f2537eb6e4483fa976e7551f256c8b48c5328d921190bc04700d9928694e756",
+  "duration": 4.084,
+  "size": 50156,
+  "file": "assets/audio/voice-v2/boss-1.mp3",
+  "source": "assets/audio/voice-v2/source/boss-1.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.4",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

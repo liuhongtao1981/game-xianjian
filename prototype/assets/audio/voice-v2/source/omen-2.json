@@ -1,0 +1,25 @@
+{
+  "id": "omen-2",
+  "text": "潮里留着一线生路。",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "34baad32940f7efc65b571ef0aa3c20d73f3d459ce3d1ad37039a76787df6d85",
+  "source_sha256": "b56bf4169f672bc1c3f585c5efcc2e6a02ed064909d7376bd145f908e892dcbc",
+  "mixed_sha256": "9c9255311a6493cb181cd8a1a10b57545c5dfde6a07964c0c1db021ae627926b",
+  "duration": 3.076,
+  "size": 38060,
+  "file": "assets/audio/voice-v2/omen-2.mp3",
+  "source": "assets/audio/voice-v2/source/omen-2.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

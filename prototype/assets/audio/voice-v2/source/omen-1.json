@@ -1,0 +1,25 @@
+{
+  "id": "omen-1",
+  "text": "刀势未尽，先避开。",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "46aed752dc11b7d919cacadb25583652cba19d3a1259a57692bcfb612ed4c85d",
+  "source_sha256": "bf67f43245052b94de2e63914100d198ed45314a02b92d97363fdd0c5b0b04ca",
+  "mixed_sha256": "190ccfae60caddf0ac82d926e72dce2911a980045bd9fb35d8beee7b93e590e0",
+  "duration": 3.076,
+  "size": 38060,
+  "file": "assets/audio/voice-v2/omen-1.mp3",
+  "source": "assets/audio/voice-v2/source/omen-1.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

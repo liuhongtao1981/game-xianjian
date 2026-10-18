@@ -1,0 +1,26 @@
+{
+  "id": "boss-0",
+  "text": "你以为受贬的是金蝉？被贬的，是敢问价的人。",
+  "speaker": "缄口监院",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-9%",
+  "pitch": "-10Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "4a544d24b23fe670ce0329ed17c851a4b2ab00188b89b82a4c1b3e753a08f1b9",
+  "source_sha256": "bbaee54b2b7ff4d48809a215757e5b7e19fd8e1d76c2406cda05a1c1be2e300a",
+  "mixed_sha256": "b13c08d61fafffe17818b20133fe9ee89ef438405ecffe357561ea0d42528cc1",
+  "duration": 5.338,
+  "size": 65132,
+  "file": "assets/audio/voice-v2/boss-0.mp3",
+  "source": "assets/audio/voice-v2/source/boss-0.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=2.0",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:54:0.075",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

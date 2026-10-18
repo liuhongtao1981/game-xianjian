@@ -1,0 +1,25 @@
+{
+  "id": "wanjian",
+  "text": "万剑，随我！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "13b87268e9b7fd6fbef9422f70f0e5ec39166f10bbbe0599fc3c1f7992328931",
+  "source_sha256": "381c1378d352fc1da7ad03ef426c980335000c1e66200b0424148466531e98cd",
+  "mixed_sha256": "e746bb89bb7fab8cc59aee3a72d0c5185e7bca7139dd403f83c1e503bca780dd",
+  "duration": 2.596,
+  "size": 32300,
+  "file": "assets/audio/voice-v2/wanjian.mp3",
+  "source": "assets/audio/voice-v2/source/wanjian.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

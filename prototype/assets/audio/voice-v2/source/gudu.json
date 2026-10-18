@@ -1,0 +1,25 @@
+{
+  "id": "gudu",
+  "text": "蛊雾，散。",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "ee90568b9120e5605c0b062fb39ff78a636c8aaf6eb35ed3c88469eaed27926c",
+  "source_sha256": "c2a4ef5dfb70cd8533488c79baa96d03d3349a0916e1a0e4b0eb901ef7205049",
+  "mixed_sha256": "c5b1c4f8b241eb73c28cd98d96e0dea8fb66f83058149581b6370ea8e5e85bde",
+  "duration": 2.38,
+  "size": 29708,
+  "file": "assets/audio/voice-v2/gudu.mp3",
+  "source": "assets/audio/voice-v2/source/gudu.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

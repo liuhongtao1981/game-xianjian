@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    </defs>
+<g>
+    <!-- 背后的木剑 -->
+    <g transform="rotate(24 338 300)">
+      <rect x="330" y="140" width="18" height="196" rx="9" fill="#D7E2E8" stroke="#2A2320" stroke-width="6"/>
+      <rect x="312" y="326" width="54" height="16" rx="8" fill="#8A5A3B" stroke="#2A2320" stroke-width="5"/>
+      <circle cx="339" cy="356" r="11" fill="#2E4A78" stroke="#2A2320" stroke-width="5"/>
+    </g>
+
+    <!-- 马尾（后层） -->
+    <path d="M334 132 C392 108 432 148 414 200 C404 230 370 234 356 214 C382 196 380 158 342 154 Z"
+          fill="#2A2320" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M356 150 C382 140 400 152 398 176" fill="none" stroke="#4A3B33" stroke-width="6" stroke-linecap="round" opacity=".8"/>
+    <circle cx="346" cy="146" r="10" fill="#2E4A78" stroke="#2A2320" stroke-width="5"/>
+
+    <!-- 腿 -->
+    <rect x="212" y="378" width="36" height="74" rx="18" fill="#3D5F8F" stroke="#2A2320" stroke-width="6"/>
+    <rect x="264" y="378" width="36" height="74" rx="18" fill="#3D5F8F" stroke="#2A2320" stroke-width="6"/>
+    <rect x="200" y="436" width="52" height="28" rx="13" fill="#6B4A32" stroke="#2A2320" stroke-width="6"/>
+    <rect x="260" y="436" width="52" height="28" rx="13" fill="#6B4A32" stroke="#2A2320" stroke-width="6"/>
+
+    <!-- 衣身 -->
+    <path d="M206 296 Q256 278 306 296 L320 392 Q256 410 192 392 Z"
+          fill="#EAF1F5" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M206 296 Q256 280 306 296 L300 352 Q256 366 212 352 Z"
+          fill="#3D5F8F" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <!-- 衣襟 -->
+    <path d="M256 300 L256 384" fill="none" stroke="#2A2320" stroke-width="6" stroke-linecap="round" opacity=".85"/>
+    <!-- 腰带 -->
+    <rect x="194" y="346" width="124" height="24" rx="12" fill="#2E4A78" stroke="#2A2320" stroke-width="6"/>
+    <circle cx="318" cy="358" r="12" fill="#2E4A78" stroke="#2A2320" stroke-width="5"/>
+
+    <!-- 手臂 -->
+    <rect x="166" y="298" width="32" height="92" rx="16" fill="#EAF1F5" stroke="#2A2320" stroke-width="6" transform="rotate(7 182 344)"/>
+    <circle cx="178" cy="394" r="17" fill="#F6D3B4" stroke="#2A2320" stroke-width="6"/>
+    <rect x="314" y="298" width="32" height="92" rx="16" fill="#EAF1F5" stroke="#2A2320" stroke-width="6" transform="rotate(-7 330 344)"/>
+    <circle cx="334" cy="394" r="17" fill="#F6D3B4" stroke="#2A2320" stroke-width="6"/>
+
+    <!-- 酒葫芦 -->
+    <g transform="translate(303 378) rotate(-10)">
+      <path d="M0 -12 c9 0 12 7 12 13 c0 8 -6 13 -12 13 c-6 0 -12 -5 -12 -13 c0 -6 3 -13 12 -13 Z"
+            fill="#E8A04A" stroke="#2A2320" stroke-width="5"/>
+      <rect x="-5" y="-20" width="10" height="8" rx="3" fill="#C9A55F" stroke="#2A2320" stroke-width="4"/>
+      <path d="M-11 1 q11 6 22 0" fill="none" stroke="#C8503F" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <!-- 头 -->
+    <circle cx="256" cy="206" r="92" fill="#F6D3B4" stroke="#2A2320" stroke-width="6"/>
+    <circle cx="166" cy="216" r="14" fill="#F6D3B4" stroke="#2A2320" stroke-width="6"/>
+    <circle cx="346" cy="216" r="14" fill="#F6D3B4" stroke="#2A2320" stroke-width="6"/>
+
+    <!-- 头发 -->
+    <path d="M164 208 C154 124 204 98 256 98 C308 98 358 124 348 208 C338 166 318 148 300 154 C292 130 268 126 256 146 C244 126 220 130 212 154 C194 148 174 166 164 208 Z"
+          fill="#2A2320" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M186 152 C206 118 240 110 256 110 C276 110 304 118 320 144" fill="none" stroke="#4A3B33" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+
+    <!-- 眉 -->
+    <path d="M202 186 Q222 176 242 184" fill="none" stroke="#2A2320" stroke-width="7" stroke-linecap="round"/>
+    <path d="M270 184 Q290 176 310 186" fill="none" stroke="#2A2320" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- 眼 -->
+    <ellipse cx="222" cy="214" rx="23" ry="27" fill="#FFFDF6" stroke="#2A2320" stroke-width="5"/>
+    <circle cx="224" cy="218" r="15" fill="#C98A3E"/>
+    <circle cx="224" cy="218" r="8" fill="#2A2320"/>
+    <circle cx="229" cy="210" r="5" fill="#FFFFFF"/>
+    <circle cx="218" cy="224" r="2.6" fill="#FFFFFF" opacity=".9"/>
+
+    <ellipse cx="290" cy="214" rx="23" ry="27" fill="#FFFDF6" stroke="#2A2320" stroke-width="5"/>
+    <circle cx="288" cy="218" r="15" fill="#C98A3E"/>
+    <circle cx="288" cy="218" r="8" fill="#2A2320"/>
+    <circle cx="293" cy="210" r="5" fill="#FFFFFF"/>
+    <circle cx="282" cy="224" r="2.6" fill="#FFFFFF" opacity=".9"/>
+
+    <!-- 鼻 / 嘴 / 腮红 -->
+    <path d="M254 236 q4 6 9 2" fill="none" stroke="#2A2320" stroke-width="5" stroke-linecap="round"/>
+    <path d="M236 256 Q256 270 278 252" fill="none" stroke="#2A2320" stroke-width="6" stroke-linecap="round"/>
+    <path d="M278 252 q6 4 10 0" fill="none" stroke="#2A2320" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="192" cy="242" rx="15" ry="9" fill="#E89B8B" opacity=".45"/>
+    <ellipse cx="320" cy="242" rx="15" ry="9" fill="#E89B8B" opacity=".45"/>
+
+    <!-- 小虎牙 -->
+    <path d="M266 260 l5 9 l6 -8" fill="#FFFFFF" stroke="#2A2320" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+</svg>
+

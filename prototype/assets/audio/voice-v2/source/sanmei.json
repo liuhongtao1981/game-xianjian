@@ -1,0 +1,25 @@
+{
+  "id": "sanmei",
+  "text": "三昧真火，起！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "30bc227274bc658818149205a3001e44ee257ec0344ece6772cb8ba52867ea49",
+  "source_sha256": "f1d26f9422445093af769e004baf3bc7434aecc4bf2e57ad136fd8834b7dd108",
+  "mixed_sha256": "647dc79c073bdf85d3ed6b1688862da4dd5a7bb259afc49601afc3410e7e13ef",
+  "duration": 2.836,
+  "size": 35180,
+  "file": "assets/audio/voice-v2/sanmei.mp3",
+  "source": "assets/audio/voice-v2/source/sanmei.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

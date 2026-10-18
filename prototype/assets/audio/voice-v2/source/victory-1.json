@@ -1,0 +1,25 @@
+{
+  "id": "victory-1",
+  "text": "司命的面具后挂着一排空白官印。它从不问诏令真假，只问印泥是否够红。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "c42ee57237e257a043691b0812c653db156c8fce6105e88aaef53e753a8737d9",
+  "source_sha256": "48befb1b7c588c3af67ea50c46ee3b6efdbba7801d047621f91b0a6030f953c5",
+  "mixed_sha256": "aa079f2d37e2adadc497375444d9b1d539234bff28d86c82b9cdf73a5c7b87c1",
+  "duration": 8.14,
+  "size": 98828,
+  "file": "assets/audio/voice-v2/victory-1.mp3",
+  "source": "assets/audio/voice-v2/source/victory-1.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "phase-2",
+  "text": "借满江亡魂，再点一次灯。",
+  "speaker": "沉灯河伯",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-9%",
+  "pitch": "-13Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "4493723188c0bf19b5c27366e860779b615fadd329f150b0feec6c6b57340b0a",
+  "source_sha256": "4c021ef628c7cc445b5ba9c238f07cd5149dedfdf04a681a69894459787ed4cd",
+  "mixed_sha256": "8b7112ea3ad75a3610a3407e3603d8a154ef16d3521c0ca476fdadaafcf9b3c1",
+  "duration": 3.356,
+  "size": 41228,
+  "file": "assets/audio/voice-v2/phase-2.mp3",
+  "source": "assets/audio/voice-v2/source/phase-2.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=2.0",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:112:0.085",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

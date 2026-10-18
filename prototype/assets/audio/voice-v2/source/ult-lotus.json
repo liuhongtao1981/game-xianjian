@@ -1,0 +1,25 @@
+{
+  "id": "ult-lotus",
+  "text": "莲华开处，生死由我！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "0fcdf0d725815ab4a8261280ac619d24dcd87112c92541b5451979fcfd2daf2b",
+  "source_sha256": "7000c1e482ce9ca383c7a864264505494307408a43a6d243e8e196c7cacb22cb",
+  "mixed_sha256": "46c299417e54e0a03ef74be36e81f83499764ab5bb2e7914ee85e9c3b98b29ab",
+  "duration": 3.58,
+  "size": 44108,
+  "file": "assets/audio/voice-v2/ult-lotus.mp3",
+  "source": "assets/audio/voice-v2/source/ult-lotus.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

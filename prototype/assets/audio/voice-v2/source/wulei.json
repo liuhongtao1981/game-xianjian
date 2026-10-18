@@ -1,0 +1,25 @@
+{
+  "id": "wulei",
+  "text": "五雷，诛邪！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "7db16545e0a869a43075962fadd740f040ce60185d16bdfc6bcb11c5a11c59ca",
+  "source_sha256": "dda1b1d7d9dddca1269e1fb3d1bcb2734ccf4d9f8f4ad9e3aa204d90bd445607",
+  "mixed_sha256": "71977bacc756252d4d5ac9bc68642ec2b8a495398de0200499796629f07ca799",
+  "duration": 2.404,
+  "size": 29996,
+  "file": "assets/audio/voice-v2/wulei.mp3",
+  "source": "assets/audio/voice-v2/source/wulei.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

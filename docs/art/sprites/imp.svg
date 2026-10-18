@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<g>
+    <!-- 耳朵 -->
+    <path d="M198 236 C148 210 146 172 180 168 C214 164 236 194 236 222 Z" fill="#7FBFA8" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M314 236 C364 210 366 172 332 168 C298 164 276 194 276 222 Z" fill="#7FBFA8" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <!-- 角 -->
+    <path d="M244 206 L256 166 L268 206 Z" fill="#D9B877" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <!-- 脚 -->
+    <ellipse cx="206" cy="430" rx="34" ry="18" fill="#5E9C88" stroke="#2A2320" stroke-width="6"/>
+    <ellipse cx="306" cy="430" rx="34" ry="18" fill="#5E9C88" stroke="#2A2320" stroke-width="6"/>
+    <!-- 身体 -->
+    <path d="M256 216 C330 216 352 284 352 340 C352 400 312 428 256 428 C200 428 160 400 160 340 C160 284 182 216 256 216 Z"
+          fill="#7FBFA8" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <!-- 肚皮 -->
+    <ellipse cx="256" cy="360" rx="60" ry="54" fill="#B9E0CE"/>
+    <!-- 斑点 -->
+    <circle cx="196" cy="300" r="10" fill="#5E9C88" opacity=".8"/>
+    <circle cx="322" cy="318" r="8" fill="#5E9C88" opacity=".8"/>
+    <circle cx="300" cy="392" r="7" fill="#5E9C88" opacity=".7"/>
+    <!-- 手 -->
+    <rect x="132" y="312" width="30" height="62" rx="15" fill="#7FBFA8" stroke="#2A2320" stroke-width="6" transform="rotate(18 147 343)"/>
+    <rect x="350" y="312" width="30" height="62" rx="15" fill="#7FBFA8" stroke="#2A2320" stroke-width="6" transform="rotate(-18 365 343)"/>
+    <!-- 眼睛 -->
+    <ellipse cx="220" cy="304" rx="26" ry="30" fill="#FFFDF6" stroke="#2A2320" stroke-width="5"/>
+    <circle cx="223" cy="308" r="16" fill="#2F6F63"/>
+    <circle cx="223" cy="308" r="8" fill="#2A2320"/>
+    <circle cx="229" cy="300" r="5" fill="#FFFFFF"/>
+    <ellipse cx="292" cy="304" rx="26" ry="30" fill="#FFFDF6" stroke="#2A2320" stroke-width="5"/>
+    <circle cx="289" cy="308" r="16" fill="#2F6F63"/>
+    <circle cx="289" cy="308" r="8" fill="#2A2320"/>
+    <circle cx="295" cy="300" r="5" fill="#FFFFFF"/>
+    <!-- 嘴 -->
+    <path d="M214 352 Q256 392 298 352 Q256 374 214 352 Z" fill="#2A2320"/>
+    <path d="M228 358 l8 12 l8 -10" fill="#FFFFFF" stroke="#2A2320" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M268 360 l8 10 l8 -12" fill="#FFFFFF" stroke="#2A2320" stroke-width="3" stroke-linejoin="round"/>
+    <!-- 腮红 -->
+    <ellipse cx="188" cy="342" rx="13" ry="8" fill="#E89B8B" opacity=".45"/>
+    <ellipse cx="324" cy="342" rx="13" ry="8" fill="#E89B8B" opacity=".45"/>
+  </g>
+</svg>

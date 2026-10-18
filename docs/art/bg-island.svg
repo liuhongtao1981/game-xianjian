@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#070D16"/>
+      <stop offset=".5" stop-color="#12202E"/>
+      <stop offset="1" stop-color="#1B3340"/>
+    </linearGradient>
+    <radialGradient id="moonGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#F4EAD5" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#F4EAD5" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1C3B48"/>
+      <stop offset="1" stop-color="#0A1820"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+
+  <!-- 星 -->
+  <g fill="#F4EAD5">
+    <circle cx="180" cy="120" r="2.5" opacity=".8"/><circle cx="320" cy="70" r="2" opacity=".6"/>
+    <circle cx="520" cy="150" r="2.2" opacity=".7"/><circle cx="760" cy="90" r="2.6" opacity=".8"/>
+    <circle cx="980" cy="60" r="2" opacity=".55"/><circle cx="1380" cy="120" r="2.4" opacity=".75"/>
+    <circle cx="1500" cy="260" r="2" opacity=".6"/><circle cx="420" cy="250" r="1.8" opacity=".5"/>
+    <circle cx="1260" cy="90" r="1.8" opacity=".6"/><circle cx="880" cy="210" r="1.6" opacity=".5"/>
+  </g>
+
+  <!-- 月 -->
+  <circle cx="1200" cy="220" r="210" fill="url(#moonGlow)"/>
+  <circle cx="1200" cy="220" r="96" fill="#F4EAD5"/>
+  <circle cx="1175" cy="200" r="14" fill="#E6D8BC" opacity=".7"/>
+  <circle cx="1226" cy="246" r="20" fill="#E6D8BC" opacity=".55"/>
+  <circle cx="1200" cy="178" r="8" fill="#E6D8BC" opacity=".5"/>
+
+  <!-- 云 -->
+  <g fill="none" stroke="#9FC4CF" stroke-width="5" opacity=".18" stroke-linecap="round">
+    <path d="M880 300 q60 -26 120 0 t120 0"/>
+    <path d="M1000 348 q50 -20 100 0 t100 0"/>
+    <path d="M300 180 q54 -22 108 0 t108 0"/>
+  </g>
+
+  <!-- 远山 -->
+  <path d="M0 560 L150 430 L260 500 L400 360 L540 500 L640 440 L780 560 Z" fill="#152838" opacity=".9"/>
+  <path d="M700 560 L860 400 L980 500 L1120 380 L1270 500 L1400 430 L1600 560 Z" fill="#152838" opacity=".75"/>
+
+  <!-- 中景山 -->
+  <path d="M-40 640 L120 500 L240 590 L390 470 L520 590 L620 540 L760 640 Z" fill="#1B3540" stroke="#0A141C" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M820 640 L980 490 L1100 580 L1240 460 L1380 580 L1500 520 L1640 640 Z" fill="#1B3540" stroke="#0A141C" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- 岛与塔 -->
+  <g>
+    <path d="M120 660 q40 -46 96 -46 q66 0 96 46 l-18 40 q-74 26 -156 0 Z" fill="#22454B" stroke="#0A141C" stroke-width="6"/>
+    <g fill="#16323A" stroke="#0A141C" stroke-width="5">
+      <rect x="236" y="520" width="80" height="30" rx="6"/>
+      <rect x="248" y="486" width="56" height="34" rx="6"/>
+      <rect x="260" y="456" width="32" height="30" rx="5"/>
+      <path d="M220 520 q56 -26 112 0 Z"/>
+      <path d="M236 486 q42 -22 84 0 Z"/>
+      <path d="M248 456 q28 -18 56 0 Z"/>
+      <rect x="270" y="516" width="12" height="14" fill="#F2DDA8" stroke="none"/>
+    </g>
+    <!-- 灯笼 -->
+    <g>
+      <line x1="196" y1="620" x2="196" y2="650" stroke="#0A141C" stroke-width="4"/>
+      <ellipse cx="196" cy="660" rx="11" ry="14" fill="#E0704F"/>
+      <ellipse cx="196" cy="660" rx="22" ry="26" fill="#E0704F" opacity=".18"/>
+      <line x1="300" y1="610" x2="300" y2="640" stroke="#0A141C" stroke-width="4"/>
+      <ellipse cx="300" cy="650" rx="10" ry="13" fill="#E0704F"/>
+      <ellipse cx="300" cy="650" rx="20" ry="24" fill="#E0704F" opacity=".16"/>
+    </g>
+  </g>
+
+  <!-- 水面 -->
+  <path d="M0 640 L1600 640 L1600 900 L0 900 Z" fill="url(#water)"/>
+  <g stroke="#8FD8EF" stroke-width="4" stroke-linecap="round" opacity=".22">
+    <path d="M120 700 q60 -12 120 0 t120 0"/>
+    <path d="M780 730 q70 -14 140 0 t140 0"/>
+    <path d="M300 790 q80 -16 160 0 t160 0"/>
+    <path d="M1080 820 q60 -12 120 0 t120 0"/>
+  </g>
+  <!-- 月影 -->
+  <g opacity=".35">
+    <ellipse cx="1200" cy="720" rx="70" ry="10" fill="#F4EAD5"/>
+    <ellipse cx="1200" cy="748" rx="46" ry="7" fill="#F4EAD5"/>
+    <ellipse cx="1200" cy="770" rx="28" ry="5" fill="#F4EAD5"/>
+  </g>
+
+  <!-- 前景荷叶 -->
+  <g>
+    <ellipse cx="220" cy="850" rx="120" ry="34" fill="#26564F" stroke="#0A141C" stroke-width="6"/>
+    <ellipse cx="140" cy="880" rx="90" ry="28" fill="#1C433F" stroke="#0A141C" stroke-width="6"/>
+    <ellipse cx="1380" cy="860" rx="140" ry="38" fill="#26564F" stroke="#0A141C" stroke-width="6"/>
+    <ellipse cx="1500" cy="890" rx="100" ry="30" fill="#1C433F" stroke="#0A141C" stroke-width="6"/>
+    <!-- 荷花 -->
+    <g transform="translate(300 800)">
+      <path d="M0 0 q-22 -30 0 -46 q22 16 0 46 Z" fill="#F2A0B8" stroke="#0A141C" stroke-width="4"/>
+      <path d="M0 0 q-38 -14 -34 -36 q30 2 34 36 Z" fill="#E88AA6" stroke="#0A141C" stroke-width="4"/>
+      <path d="M0 0 q38 -14 34 -36 q-30 2 -34 36 Z" fill="#E88AA6" stroke="#0A141C" stroke-width="4"/>
+    </g>
+  </g>
+
+  <!-- 飘落花瓣 -->
+  <g fill="#F2A0B8" opacity=".8">
+    <ellipse cx="480" cy="300" rx="7" ry="4" transform="rotate(24 480 300)"/>
+    <ellipse cx="600" cy="420" rx="6" ry="3.5" transform="rotate(-18 600 420)"/>
+    <ellipse cx="980" cy="360" rx="7" ry="4" transform="rotate(40 980 360)"/>
+    <ellipse cx="1320" cy="520" rx="8" ry="4.5" transform="rotate(-30 1320 520)"/>
+    <ellipse cx="760" cy="560" rx="6" ry="3.5" transform="rotate(12 760 560)"/>
+  </g>
+
+  <!-- 底部渐隐 -->
+  <rect x="0" y="820" width="1600" height="80" fill="#050A0E" opacity=".55"/>
+</svg>

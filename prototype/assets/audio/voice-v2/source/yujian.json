@@ -1,0 +1,25 @@
+{
+  "id": "yujian",
+  "text": "御剑，去。",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "d88f1222a26a664067746bd238f80140e0d84a205a9799c90b963bc0283ec32a",
+  "source_sha256": "10d917dbf57d84e598540582a19e564732efa835219eb9a867e22be9bc128cfd",
+  "mixed_sha256": "63173cf3743027ab8699a672c928aa085f7467b11d3cb609fb39938cc5a0fb74",
+  "duration": 2.38,
+  "size": 29708,
+  "file": "assets/audio/voice-v2/yujian.mp3",
+  "source": "assets/audio/voice-v2/source/yujian.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "jiushen",
+  "text": "借酒，斩妖！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "3771e914e378fa7d0e683a98ae230152a80d175b45ba063a1f80eabf7639593e",
+  "source_sha256": "3df6ccca54f8d6c5a940111fc1fb0d7de1b0f505ab1b215f48426aadc16e32de",
+  "mixed_sha256": "04ed6cbd43a7d44ae35c8f0ee78f022c59d14550ed2a880a0552bb8a917cd3aa",
+  "duration": 2.5,
+  "size": 31148,
+  "file": "assets/audio/voice-v2/jiushen.mp3",
+  "source": "assets/audio/voice-v2/source/jiushen.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

@@ -1,0 +1,16 @@
+# Local browser verification and generated caches
+.playwright-mcp/
+node_modules/
+__pycache__/
+*.py[cod]
+.cache/
+tmp/
+
+# Local environment and editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

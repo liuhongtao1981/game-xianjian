@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<g>
+    <!-- 水波 -->
+    <ellipse cx="256" cy="430" rx="180" ry="42" fill="#6FB6E8" opacity=".35"/>
+    <path d="M96 430 q40 -18 80 0 t80 0 t80 0 t80 0" fill="none" stroke="#6FB6E8" stroke-width="8" stroke-linecap="round" opacity=".6"/>
+    <!-- 侧鳍 -->
+    <path d="M120 300 q-56 10 -64 62 q46 8 74 -18 Z" fill="#6A4E9E" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M392 300 q56 10 64 62 q-46 8 -74 -18 Z" fill="#6A4E9E" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <!-- 角 -->
+    <path d="M188 214 q-26 -60 6 -86 q24 34 24 78 Z" fill="#C9A55F" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M324 214 q26 -60 -6 -86 q-24 34 -24 78 Z" fill="#C9A55F" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <!-- 身体 -->
+    <path d="M256 186 C352 186 396 258 396 336 C396 402 340 436 256 436 C172 436 116 402 116 336 C116 258 160 186 256 186 Z"
+          fill="#4A5E9E" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <!-- 肚皮 -->
+    <ellipse cx="256" cy="356" rx="86" ry="70" fill="#7E96C8"/>
+    <!-- 背刺 -->
+    <path d="M256 186 l16 -22 l14 22 l16 -18 l10 22" fill="#6A4E9E" stroke="#2A2320" stroke-width="5" stroke-linejoin="round"/>
+    <!-- 眼睛 -->
+    <circle cx="208" cy="296" r="26" fill="#8FE8E0" stroke="#2A2320" stroke-width="6"/>
+    <circle cx="208" cy="296" r="11" fill="#14202E"/>
+    <circle cx="216" cy="288" r="5" fill="#FFFFFF"/>
+    <circle cx="304" cy="296" r="26" fill="#8FE8E0" stroke="#2A2320" stroke-width="6"/>
+    <circle cx="304" cy="296" r="11" fill="#14202E"/>
+    <circle cx="312" cy="288" r="5" fill="#FFFFFF"/>
+    <!-- 眉骨 -->
+    <path d="M176 262 q32 -18 60 2" fill="none" stroke="#2A2320" stroke-width="7" stroke-linecap="round"/>
+    <path d="M276 264 q30 -20 60 -2" fill="none" stroke="#2A2320" stroke-width="7" stroke-linecap="round"/>
+    <!-- 大嘴 -->
+    <path d="M168 352 Q256 408 344 352 Q256 380 168 352 Z" fill="#14202E" stroke="#2A2320" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M186 354 l10 20 l12 -16 l10 22 l12 -18 l10 20 l12 -16 l10 18 l12 -14 l10 16 l12 -12"
+          fill="#FFFDF6" stroke="#2A2320" stroke-width="3" stroke-linejoin="round"/>
+    <!-- 腮 -->
+    <path d="M150 330 q-18 6 -20 22 q18 4 28 -6" fill="#6A4E9E" stroke="#2A2320" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M362 330 q18 6 20 22 q-18 4 -28 -6" fill="#6A4E9E" stroke="#2A2320" stroke-width="5" stroke-linejoin="round"/>
+    <!-- 气泡 -->
+    <circle cx="132" cy="220" r="9" fill="none" stroke="#8FE8E0" stroke-width="4" opacity=".8"/>
+    <circle cx="108" cy="192" r="6" fill="none" stroke="#8FE8E0" stroke-width="4" opacity=".7"/>
+    <circle cx="392" cy="236" r="7" fill="none" stroke="#8FE8E0" stroke-width="4" opacity=".7"/>
+  </g>
+</svg>

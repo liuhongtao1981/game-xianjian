@@ -1,0 +1,26 @@
+{
+  "id": "phase-0",
+  "text": "万声皆寂。诸戒，归身！",
+  "speaker": "缄口监院",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-9%",
+  "pitch": "-10Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "74fbb5d825a7c3060cffae11634e6d1c03dc61f021efacbe5b472fb624f6868f",
+  "source_sha256": "df0f501abc6c35f7d284a520bb3fccdfce109026bf534556d8171e925c5497b0",
+  "mixed_sha256": "ca003099ff15617659fe01bab7a04f2ba43ef3b1b05afe3394408251bd0c672d",
+  "duration": 3.754,
+  "size": 46124,
+  "file": "assets/audio/voice-v2/phase-0.mp3",
+  "source": "assets/audio/voice-v2/source/phase-0.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=2.0",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:54:0.075",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

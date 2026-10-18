@@ -1,0 +1,25 @@
+{
+  "id": "weakness-1",
+  "text": "诏令断了，趁它收刀！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "89254acea9ffb1fead045e9ed99bc88b13b121a2c608704c6f682d30a44df632",
+  "source_sha256": "9b1e76299f89161ceac44a65dd13611fc8993bfbd8b72e2097e53c5d8aa46180",
+  "mixed_sha256": "f88f8b7c8a18c758fed6cbadd6ab7efaf9566fa68fadf6d8b37c9ac905e44191",
+  "duration": 3.292,
+  "size": 40652,
+  "file": "assets/audio/voice-v2/weakness-1.mp3",
+  "source": "assets/audio/voice-v2/source/weakness-1.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

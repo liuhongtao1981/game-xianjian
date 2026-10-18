@@ -1,0 +1,25 @@
+{
+  "id": "defeat",
+  "text": "剑折，路未尽。",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "d0d953c34dd85ce6ff8993e5427d214ce5e21225aed284e2dccb50ad6f7ed18d",
+  "source_sha256": "acff14c0e58d6da9f32bc669aa81090f38a6ce778e0612bc579d07ef2cfe486c",
+  "mixed_sha256": "bc22dd971cde591c7eef9bf0edcde8a576ceaadb3f7f20db65f173727176fbb0",
+  "duration": 2.764,
+  "size": 34316,
+  "file": "assets/audio/voice-v2/defeat.mp3",
+  "source": "assets/audio/voice-v2/source/defeat.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}
