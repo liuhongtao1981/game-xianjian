@@ -238,6 +238,7 @@ function reset(){
   G.P = newPlayer();
   P = G.P;
   Journey.restore(P);
+  SpellGift.ensure();SpellGift.sync();
   G.runChoices=P.growthChoices;
   World.reset();
   EncounterDirector.reset();
@@ -931,11 +932,11 @@ function pickCard(i){
 function applyChoice(c){
   if (c.kind === 'new'){
     if(c.key==='wanjian')Sound.spell('wanjian');
-    P.spells[c.key] = 1;
+    SpellGift.permanent(c.key);
     P.t[c.key] = .2;
     addText(P.x, P.y - 40, '习得 ' + c.name, c.color, 17);
   } else if (c.kind === 'up'){
-    P.spells[c.key] = Math.min(SPELLS[c.key].max, P.spells[c.key] + 1);
+    if(P.spells[c.key]<SPELLS[c.key].max)SpellGift.permanent(c.key);
   } else if(c.kind==='recover'){
     heal(20);
   } else {
@@ -1001,7 +1002,7 @@ function applyReward(r){
     if (e) e.apply();
     renderEquips();
   } else if (r.kind === 'spell'){
-    P.spells[r.key] = 1;
+    SpellGift.permanent(r.key);
     P.t[r.key] = .2;
     renderSpells();
   } else {

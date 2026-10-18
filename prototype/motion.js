@@ -75,6 +75,7 @@ const Motion = (() => {
     activeCast=pendingCasts.shift();activeCast.remaining=activeCast.key==='yujian'?.14:.22;activeCast.released=false;
     cast(activeCast.key,castTarget(activeCast.key));
   }
+  function cancelSpells(keys){for(let i=pendingCasts.length-1;i>=0;i--)if(keys.includes(pendingCasts[i].key))pendingCasts.splice(i,1);if(activeCast&&!activeCast.released&&keys.includes(activeCast.key)){activeCast=null;P.attack=0;}}
   function frame(actor,key){
     if(key==='hero'){
       if(G.ultimate && G.ultimate.age<.88)return {row:2,col:3,state:'ultimate'};
@@ -86,6 +87,7 @@ const Motion = (() => {
     return {row:rows[key],col:actor.moving?Math.floor((actor.walkDistance||0)/24)%4:0,state:actor.moving?'move':'idle'};
   }
   function drawActor(actor,key,size,alpha=1){
+    if(key==='hero'){drawHero(ctx,actor,size,actor.animTime||G.time,alpha);return;}
     if(actor.bossHelper&&actor.family>=3){
       ctx.save();ctx.translate(actor.x,actor.y);const color=actor.family===3?'#d9bd77':actor.family===4?(actor.phantom?'#9e6c69':'#ffe097'):'#bcece4';
       ctx.fillStyle='#0006';ctx.beginPath();ctx.ellipse(0,4,30,10,0,0,Math.PI*2);ctx.fill();
@@ -148,6 +150,16 @@ const Motion = (() => {
     actor.motionSpeed=distance/Math.max(.001,dt);
     if(Math.abs(dx)>.15&&!actor.action?.match(/windup|strike|recover|exposed/) && !(actor.attack>0))actor.look=dx<0?-1:1;
     actor.attack=Math.max(0,(actor.attack||0)-dt);
+  }
+  function drawHero(pen,actor,size,time,alpha=1,forcedFrame=null){
+    const f=forcedFrame||frame(actor,'hero'),c=actor.cultivation||{realm:0,layer:1};
+    const progress=actor.attackLength?1-(actor.attack||0)/actor.attackLength:0;
+    const lunge=actor.attack>0?Math.sin(Math.min(1,progress)*Math.PI)*5:0;
+    pen.save();pen.translate(actor.x+(actor.flash>0?Math.sin(actor.flash*35)*2:0)+Math.cos(actor.attackAngle||0)*lunge,actor.y+Math.sin(actor.attackAngle||0)*lunge);
+    pen.scale((actor.look||1)*size/116,size/116);pen.globalAlpha=alpha;
+    RealmVisuals.body(pen,c,time,f.state,false,actor.moving);
+    if(hero.complete&&hero.naturalWidth){const [sx,sy,sw,sh,px,py]=sourceRect('hero',f,hero),s=116/362;pen.save();if(actor.flash>0)pen.filter='brightness(1.55)';pen.drawImage(hero,sx,sy,sw,sh,(sx-px)*s,(sy-py)*s,sw*s,sh*s);pen.restore();}
+    RealmVisuals.body(pen,c,time,f.state,true,actor.moving);pen.restore();
   }
   function update(dt){
     // All damage/projectiles are created on the release pose, after visible anticipation.
@@ -325,8 +337,8 @@ const Motion = (() => {
   function preview(pen,time,c){
     pen.clearRect(0,0,340,430);const color=RealmVisuals.get(c).color;const g=pen.createRadialGradient(170,230,5,170,230,150);g.addColorStop(0,color+'18');g.addColorStop(1,color+'00');pen.fillStyle=g;pen.fillRect(0,0,340,430);
     pen.save();pen.translate(170,345);pen.scale(1,.38);pen.strokeStyle=color;pen.lineWidth=1.3;for(let k=0;k<RealmVisuals.get(c).rings;k++){pen.beginPath();pen.arc(0,0,90+k*12,0,Math.PI*2);pen.stroke();}pen.rotate(time*.2);for(let i=0;i<9;i++){pen.rotate(Math.PI*2/9);pen.fillStyle=i<(c.layer||1)?color:'#3d4842';pen.fillRect(100,-3,10,6);}pen.restore();
-    if(hero.complete&&hero.naturalWidth){const col=Math.floor(time*1.6)%2,rect=sourceRect('hero',{row:2,col},hero),[sx,sy,sw,sh,px,py]=rect,scale=.76;pen.drawImage(hero,sx,sy,sw,sh,170+(sx-px)*scale,335+(sy-py)*scale+Math.sin(time*2)*2,sw*scale,sh*scale);}
+    drawHero(pen,{x:170,y:335+Math.sin(time*2)*2,cultivation:c,animTime:time,look:1},240,time,1,{row:2,col:Math.floor(time*1.6)%2,state:'idle'});
     for(let i=0;i<Math.min(6,2+c.realm);i++){const a=time*.6+i*Math.PI*2/Math.min(6,2+c.realm),x=170+Math.cos(a)*100,y=260+Math.sin(a)*45;pen.save();pen.translate(x,y);pen.rotate(a+.7);pen.fillStyle=color;pen.beginPath();pen.moveTo(0,-23);pen.lineTo(4,9);pen.lineTo(0,5);pen.lineTo(-4,9);pen.closePath();pen.fill();pen.restore();}
   }
-  return {preview,emit,cast,bindSpells,frame,drawActor,step,update,echo,glow,rune,sword,drawGround,drawOver,drawProjectile,drawShield,drawPool,drawUltimate,drawScreen,resize,reset(){Encounters.reset();effects.length=0;echoes.length=0;pendingCasts.length=0;activeCast=null;releasingCast=false;},status(){return {hero:hero.complete&&hero.naturalWidth>0,enemies:enemies.complete&&enemies.naturalWidth>0,bossWalk:bossWalk.complete&&bossWalk.naturalWidth>0,bossAttacks:bossAttacks.complete&&bossAttacks.naturalWidth>0,effects:effects.length,pendingCasts:pendingCasts.length+(activeCast&&!activeCast.released?1:0),activeCast:activeCast?.key||null};}};
+  return {preview,drawHero,cancelSpells,emit,cast,bindSpells,frame,drawActor,step,update,echo,glow,rune,sword,drawGround,drawOver,drawProjectile,drawShield,drawPool,drawUltimate,drawScreen,resize,reset(){RealmVisuals.reset();Encounters.reset();effects.length=0;echoes.length=0;pendingCasts.length=0;activeCast=null;releasingCast=false;},status(){return {hero:hero.complete&&hero.naturalWidth>0,enemies:enemies.complete&&enemies.naturalWidth>0,bossWalk:bossWalk.complete&&bossWalk.naturalWidth>0,bossAttacks:bossAttacks.complete&&bossAttacks.naturalWidth>0,effects:effects.length,pendingCasts:pendingCasts.length+(activeCast&&!activeCast.released?1:0),activeCast:activeCast?.key||null};}};
 })();

@@ -70,7 +70,7 @@ const RunSave=(()=>{
     const s=clone(data.run);conflict=false;suppress=true;enabled=true;revision=data.revision;cycle=s.cycle;ledger=s.ledger;bossEntry=s.bossEntry;
     JourneyProgress.restore(data.progress);Object.assign(Journey.run,{stage:s.stage,difficulty:s.difficulty,ultimate:s.ultimate,tier:s.tier,completed:s.completed,time:s.campaignTime,checkpoint:s.player});reset();Journey.run.checkpoint=s.checkpoint;
     const frame=s.bossSpawned&&s.state!=='win'&&s.state!=='dead'?s.bossEntry:s;
-    World.importState(frame.world);EncounterDirector.importState(frame.director);P.x=frame.x;P.y=frame.y;World.resolve(P);World.camera(0,true);G.time=s.time;G.kills=s.kills;G.queue=s.queue;choicesCache=s.choices;G.chests=frame.chests||[];
+    World.importState(frame.world);EncounterDirector.importState(frame.director);P.x=frame.x;P.y=frame.y;World.resolve(P,true);World.camera(0,true);G.time=s.time;G.kills=s.kills;G.queue=s.queue;choicesCache=s.choices;G.chests=frame.chests||[];
     G.chestReward=s.chestReward;G.pendingLore=s.pendingLore??null;G.coreReward=s.coreReward;
     if(s.state==='win'){G.bossSpawned=true;G.boss={hp:0,killed:true};G.state='win';Journey.showEnd(true);}
     else if(s.state==='dead'){G.state='dead';Journey.showEnd(false);}

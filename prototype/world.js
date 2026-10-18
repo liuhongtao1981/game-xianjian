@@ -32,7 +32,7 @@ const World=(()=>{
     });
   }
   function isWalkable(x,y,r=0){
-    if(!inside(x,y))return false;if(!r)return true;
+    if(!inside(x,y)||TerrainScene.blocked(Journey.run.stage,x,y,r))return false;if(!r)return true;
     for(let i=0;i<8;i++){const a=i*Math.PI/4;if(!inside(x+Math.cos(a)*r,y+Math.sin(a)*r))return false;}return true;
   }
   function project(x,y,r){
@@ -40,10 +40,16 @@ const World=(()=>{
     for(let radius=20;radius<1000;radius+=20)for(let i=0;i<24;i++){
       const a=i*Math.PI/12,px=x+Math.cos(a)*radius,py=y+Math.sin(a)*radius;
       if(isWalkable(px,py,r))return {x:px,y:py};
-    }return spawn();
+    }
+    // Older scenes may have saved a position far from a newly curved deck.
+    const scene=TerrainScene.geometry(Journey.run.stage);let best=null,distance=Infinity;
+    const consider=(px,py)=>{const d=(px-x)**2+(py-y)**2;if(d<distance&&isWalkable(px,py,r)){best={x:px,y:py};distance=d;}};
+    for(const route of scene.routes)for(const p of route.points)consider(p[0],p[1]);
+    for(const p of scene.plazas){const dx=x-p.x,dy=y-p.y,f=Math.max(1,Math.hypot(dx/(p.rx-r-10),dy/(p.ry-r-10)));consider(p.x+dx/f,p.y+dy/f);consider(p.x,p.y);}
+    return best||spawn();
   }
   function lineClear(x,y,tx,ty,r=18){
-    const steps=Math.ceil(Math.hypot(tx-x,ty-y)/32);
+    const steps=Math.ceil(Math.hypot(tx-x,ty-y)/16);
     for(let i=1;i<=steps;i++)if(!isWalkable(x+(tx-x)*i/steps,y+(ty-y)*i/steps,r))return false;
     return true;
   }
@@ -117,20 +123,19 @@ const World=(()=>{
     P.worldX=P.x;P.worldY=P.y;
     camera(0,true);
   }
-  function resolve(e){
+  function resolve(e,teleport=false){
     const r=e.r||15;
     if(active){
       const rx=combat.rx-r,ry=combat.ry-r,dx=e.x-combat.cx,dy=e.y-combat.cy,d=Math.hypot(dx/rx,dy/ry);
       if(d>1){e.x=combat.cx+dx/d;e.y=combat.cy+dy/d;}
-    }else if(!isWalkable(e.x,e.y,r)){
-      if(Number.isFinite(e.worldX)&&isWalkable(e.worldX,e.worldY,r)&&Math.hypot(e.x-e.worldX,e.y-e.worldY)<160){
-        const ox=e.worldX,oy=e.worldY,tx=e.x,ty=e.y;let low=0,high=1;
+    }else if(!teleport&&Number.isFinite(e.worldX)&&isWalkable(e.worldX,e.worldY,r)&&!lineClear(e.worldX,e.worldY,e.x,e.y,r)){
+        const ox=e.worldX,oy=e.worldY,tx=e.x,ty=e.y,steps=Math.ceil(Math.hypot(tx-ox,ty-oy)/12);let low=0,high=1;
+        for(let i=1;i<=steps;i++)if(!isWalkable(ox+(tx-ox)*i/steps,oy+(ty-oy)*i/steps,r)){low=(i-1)/steps;high=i/steps;break;}
         for(let i=0;i<9;i++){const m=(low+high)/2;if(isWalkable(ox+(tx-ox)*m,oy+(ty-oy)*m,r))low=m;else high=m;}
         e.x=ox+(tx-ox)*low;e.y=oy+(ty-oy)*low;
-        if(isWalkable(tx,e.y,r))e.x=tx;
-        if(isWalkable(e.x,ty,r))e.y=ty;
-      }else Object.assign(e,project(e.x,e.y,r));
-    }
+        if(lineClear(e.x,e.y,tx,e.y,r))e.x=tx;
+        if(lineClear(e.x,e.y,e.x,ty,r))e.y=ty;
+    }else if(!isWalkable(e.x,e.y,r))Object.assign(e,project(e.x,e.y,r));
     e.worldX=e.x;e.worldY=e.y;
   }
   function visible(e,pad=180){const v=view();return e.x>v.x-pad&&e.x<v.x+v.w+pad&&e.y>v.y-pad&&e.y<v.y+v.h+pad;}
@@ -181,9 +186,9 @@ const World=(()=>{
     ov.innerHTML=`<div class="panel chronicle-panel"><span class="overline">四境驿路</span><h2>沿旧路而行</h2><p>已清理区域可安全返回。战斗与首领阶段不能传送。</p>${sites.filter(s=>s.kind==='station').map(s=>`<button class="station-choice" data-station="${s.id}" ${!stationUnlocked(s)?'disabled':''}>${s.name} · ${stationUnlocked(s)?'已点亮':'待清理周围营地'}</button>`).join('')}<button class="btn" id="closeStationBtn">继续探路</button></div>`;
     const close=()=>{G.state='playing';ov.classList.add('hidden');clearInput();last=performance.now();};
     document.getElementById('closeStationBtn').onclick=close;
-    ov.querySelectorAll('[data-station]').forEach(b=>b.onclick=()=>{const target=sites[Number(b.dataset.station)];if(!target||!stationUnlocked(target))return;P.x=target.x;P.y=target.y;resolve(P);camera(0,true);close();RunSave.save('驿站返回');});return true;
+    ov.querySelectorAll('[data-station]').forEach(b=>b.onclick=()=>{const target=sites[Number(b.dataset.station)];if(!target||!stationUnlocked(target))return;P.x=target.x;P.y=target.y;resolve(P,true);camera(0,true);close();RunSave.save('驿站返回');});return true;
   }
-  function exportState(){return {done:sites.map(s=>s.done),visited};}
+  function exportState(){return {terrainVersion:TerrainScene.version,done:sites.map(s=>s.done),visited};}
   function importState(s){if(!s||!Array.isArray(s.done)||s.done.length!==sites.length||!s.done.every(v=>typeof v==='boolean'))throw new Error('Invalid world');sites.forEach((p,i)=>p.done=s.done[i]);visited=s.done.filter(Boolean).length;}
   function resumeLore(id){const s=sites[id];if(!s||s.kind!=='lore')throw new Error('Invalid lore');near=s;G.state='playing';if(s.done)visited--;s.done=false;return interact();}
   function toggleMap(){
@@ -192,13 +197,10 @@ const World=(()=>{
   }
   function apply(){ctx.scale(cam.zoom,cam.zoom);ctx.translate(-cam.x,-cam.y);}
   function drawBackground(){
-    const image=terrain(),fallback=Journey.background();
-    ctx.fillStyle=['#242a25','#252422','#14292d'][Journey.run.stage]||Journey.stage().story;ctx.fillRect(0,0,width,height);
-    const source=image.complete&&image.naturalWidth?image:fallback;
-    if(source?.complete&&source.naturalWidth)ctx.drawImage(source,0,0,width,height);
-    ctx.fillStyle='#03101416';ctx.fillRect(0,0,width,height);
+    TerrainScene.draw(ctx,Journey.run.stage,view(),G.time);
   }
   function drawGround(){
+    if(window.__terrainDebug||location.search.includes('collision=1'))TerrainScene.drawCollision(ctx,Journey.run.stage);
     for(const s of sites){
       if(!visible(s)||s.done||(active&&s.kind==='boss'))continue;const color=s.kind==='boss'?Journey.stage().color:'#ddc58f';
       ctx.save();ctx.translate(s.x,s.y);ctx.scale(1,.6);ctx.strokeStyle=rgba(color,s.done?.25:.65);ctx.lineWidth=s.kind==='boss'?3:1.5;
@@ -210,6 +212,7 @@ const World=(()=>{
     }
   }
   function drawProps(){
+    TerrainScene.drawProps(ctx,Journey.run.stage,view(),G.time);
     for(const s of sites){
       if(!visible(s)||s.kind==='boss'||s.done&&s.kind!=='lore')continue;
       if(s.kind==='station'){drawStation(s);continue;}
@@ -238,7 +241,7 @@ const World=(()=>{
   }
   function mapDraw(x,y,w,h,full=false){
     const image=terrain();ctx.save();ctx.fillStyle='#07161bea';ctx.fillRect(x-5,y-5,w+10,h+10);
-    if(image.complete&&image.naturalWidth){ctx.globalAlpha=full?.9:.55;ctx.drawImage(image,x,y,w,h);ctx.globalAlpha=1;}
+    TerrainScene.drawMap(ctx,Journey.run.stage,x,y,w,h);
     ctx.strokeStyle='#c9b57d88';ctx.lineWidth=1;ctx.strokeRect(x,y,w,h);
     const px=v=>x+v/width*w,py=v=>y+v/height*h;
     for(const s of sites){if(s.done)continue;ctx.fillStyle=s.kind==='boss'?'#f49d7a':'#e3c788';ctx.beginPath();ctx.arc(px(s.x),py(s.y),full?5:2.5,0,Math.PI*2);ctx.fill();if(full){ctx.font=(W<650?'10':'13')+'px Microsoft YaHei,sans-serif';ctx.textAlign=s.x>width*.7?'right':'left';ctx.fillText(s.name,px(s.x)+(s.x>width*.7?-9:9),py(s.y)+4);}}

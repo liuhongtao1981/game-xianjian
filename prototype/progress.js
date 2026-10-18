@@ -5,7 +5,7 @@ const JourneyProgress=(()=>{
   const resources={shield:0,energy:100,ultCd:0,dashCd:0};
   const spellKeys=['yujian','wanjian','wulei','sanmei','bingxin','gudu','jiushen','guanyin'];
   function copy(value){return JSON.parse(JSON.stringify(value));}
-  function cleanBuild(b){return {...Object.fromEntries(fields.map(k=>[k,b[k]])),
+  function cleanBuild(b){SpellGift.reconcile(b);return {...Object.fromEntries(fields.map(k=>[k,b[k]])),
     ...Object.fromEntries(Object.entries(resources).map(([k,v])=>[k,b[k]??v])),
     growthChoices:b.growthChoices??Math.max(0,Math.floor(b.level)-1),t:{...b.t},
     poison:b.poison===true,spells:{...b.spells},equips:[...b.equips],cultivation:Cultivation.clean(b.cultivation)};}
@@ -14,6 +14,7 @@ const JourneyProgress=(()=>{
       &&Object.keys(resources).every(k=>b[k]===undefined||Number.isFinite(b[k])&&b[k]>=0&&b[k]<1e7)
       &&(b.shield===undefined||b.shield<=b.shieldMax)&&(b.energy===undefined||b.energy<=100)
       &&(b.growthChoices===undefined||Number.isInteger(b.growthChoices)&&b.growthChoices>=0&&b.growthChoices<1e7)
+      &&(!b.cultivation?.spellGift||SpellGift.valid(b.cultivation.spellGift,b.cultivation.realm)&&SpellGift.keys.every(k=>(b.spells[k]||0)===(b.cultivation.spellGift.base[k]||0)+(b.cultivation.spellGift.levels[k]||0)))
       &&(b.t===undefined||b.t&&typeof b.t==='object'&&!Array.isArray(b.t)&&Object.entries(b.t).every(([k,v])=>spellKeys.includes(k)&&Number.isFinite(v)&&v>=0&&v<1e7));
   }
   try{

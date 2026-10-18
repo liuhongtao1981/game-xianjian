@@ -1,0 +1,30 @@
+const assert=require('node:assert/strict');
+const {createHarness}=require('./game-harness');
+let passed=0;
+const h=createHarness(),run=s=>h.evaluate(s);
+function check(name,code){assert.equal(run(`(()=>{${code}})()`),true,name);passed++;console.log('PASS '+name);}
+run('reset();G.state="character";G.enemies=[];');
+check('visible river water is blocked',`Journey.run.stage=2;reset();return !World.isWalkable(935/1448*6400,590/1086*4600,15);`);
+check('old spell levels migrate as permanent growth',`P.cultivation.realm=2;P.spells={yujian:3};delete P.cultivation.spellGift;SpellGift.ensure();return SpellGift.remaining()===6&&SpellGift.base().yujian===3;`);
+check('gift allocations apply actual levels and reserve remainder',`G.state='character';return SpellGift.apply({yujian:2,wanjian:1})&&P.spells.yujian===5&&P.spells.wanjian===1&&SpellGift.remaining()===3;`);
+check('respec preserves permanent growth and resources',`const hp=P.hp,shield=P.shield,energy=P.energy;return SpellGift.apply({sanmei:3})&&P.spells.yujian===3&&!P.spells.wanjian&&P.spells.sanmei===3&&P.t.sanmei===SPELLS.sanmei.cd*P.cdr&&P.hp===hp&&P.shield===shield&&P.energy===energy;`);
+check('permanent upgrade survives removal of gift',`applyChoice({kind:'up',key:'sanmei'});return SpellGift.apply({})&&P.spells.sanmei===1&&SpellGift.remaining()===6;`);
+check('reject over-budget, cap and invalid allocations',`return !SpellGift.apply({yujian:7})&&!SpellGift.apply({yujian:5})&&!SpellGift.apply({unknown:1});`);
+check('unsafe respec is rejected',`G.enemies=[{hp:10,x:P.x+100,y:P.y}];const ok=!SpellGift.apply({yujian:1});G.enemies=[];return ok;`);
+check('all thirteen breakthroughs grant exactly three',`for(let r=0;r<13;r++){P=newPlayer();G.P=P;P.cultivation.realm=r;P.cultivation.layer=9;P.cultivation.qi=Cultivation.need();const req=Cultivation.recipe();P.cultivation.materials[req.core]=req.coreCount;P.cultivation.materials.essence=req.essence;G.state='character';if(!Cultivation.attempt(req.coreCount,req.essence)||SpellGift.remaining()!==3*(r+1))return false;}return true;`);
+check('layering never grants more gift choices',`P.cultivation.result=null;const before=SpellGift.remaining();Cultivation.qi(Cultivation.need());return SpellGift.remaining()===before;`);
+check('all 126 realm forms have individual detail',`const forms=new Set();for(let r=0;r<14;r++)for(let layer=1;layer<=9;layer++){const v=RealmVisuals.get({realm:r,layer});forms.add(v.motif+':'+v.layer);}return forms.size===126;`);
+check('swept movement cannot cross water to another bank',`Journey.run.stage=2;reset();const ox=P.x,oy=P.y;P.x=World.bounds().w*.85;P.y=World.bounds().h*.71;World.resolve(P);return Math.hypot(P.x-ox,P.y-oy)<1000&&World.isWalkable(P.x,P.y,15);`);
+function isolated(name,source){const h=createHarness();assert.equal(h.evaluate(`(()=>{${source}})()`),true,name);passed++;console.log('PASS '+name);}
+isolated('all upgrades capped can bank every unused gift',`reset();P.cultivation.realm=1;P.spells=Object.fromEntries(SpellGift.keys.slice(0,6).map(k=>[k,6]));delete P.cultivation.spellGift;SpellGift.ensure();return SpellGift.remaining()===3&&SpellGift.keys.every(k=>!SpellGift.canAdd({},k));`);
+isolated('seven carried spells are rejected',`reset();P.cultivation.realm=5;G.state='character';return !SpellGift.apply(Object.fromEntries(SpellGift.keys.slice(1).map(k=>[k,1])));`);
+isolated('storage failure atomically restores gifts, levels and cooldowns',`startGame();G.state='character';P.cultivation.realm=1;const old=JSON.stringify([P.cultivation,P.spells,P.t]);localStorage.setItem=()=>{throw Error('quota');};return !SpellGift.apply({guanyin:1})&&JSON.stringify([P.cultivation,P.spells,P.t])===old&&RunSave.status().includes('尚未保存');`);
+isolated('existing cooldown is never reset while new spell gets full cooldown',`reset();G.state='character';P.cultivation.realm=1;P.t.yujian=8;return SpellGift.apply({yujian:1,guanyin:1})&&P.t.yujian===8&&P.t.guanyin===SPELLS.guanyin.cd*P.cdr&&SpellGift.apply({yujian:1})&&SpellGift.apply({guanyin:1})&&P.t.guanyin>=SPELLS.guanyin.cd*P.cdr;`);
+isolated('foreign writer blocks gift adjustment',`startGame();G.state='character';P.cultivation.realm=1;const saved=RunSave.snapshot();saved.writer='another';saved.revision+=10;RunSave.receive(saved);return !SpellGift.apply({yujian:1});`);
+{
+ const h=createHarness();h.evaluate(`startGame();G.state='character';P.cultivation.realm=2;SpellGift.apply({yujian:2,wanjian:2});`);const next=createHarness({storage:h.storage});assert.equal(next.evaluate(`RunSave.continueRun()&&P.spells.yujian===3&&P.spells.wanjian===2&&SpellGift.remaining()===2`),true);passed++;console.log('PASS saved gift allocations survive real restore without repeat awards');
+ const saved=JSON.parse(h.storage.get('xunsheng-save-v3'));delete saved.run.player.cultivation.spellGift;h.storage.set('xunsheng-save-v3',JSON.stringify(saved));const migrated=createHarness({storage:h.storage});assert.equal(migrated.evaluate(`RunSave.continueRun()&&SpellGift.remaining()===6&&SpellGift.base().yujian===3&&SpellGift.base().wanjian===2`),true);passed++;console.log('PASS old v3 grants realm entitlement while preserving every existing spell level');
+}
+isolated('malformed gift ledgers are rejected as corrupt snapshots',`startGame();const s=RunSave.snapshot();s.run.player.cultivation.spellGift.levels.yujian=1;return !RunSave.valid(s);`);
+for(let stage=0;stage<6;stage++)isolated('chapter '+(stage+1)+' curved decks have safe centers and blocked sides',`Journey.run.stage=${stage};reset();const scene=TerrainScene.geometry(${stage});let checked=0;for(const route of scene.routes)for(let i=2;i<route.points.length-2;i+=5){const p=route.points[i],edge=route.left[i],d=Math.hypot(edge[0]-p[0],edge[1]-p[1]),x=edge[0]+(edge[0]-p[0])/d*40,y=edge[1]+(edge[1]-p[1])/d*40;if(scene.plazas.some(q=>Math.hypot((x-q.x)/q.rx,(y-q.y)/q.ry)<1.05))continue;if(!World.isWalkable(x,y,0)){if(!World.isWalkable(p[0],p[1],20))return false;checked++;}}return checked>=4;`);
+console.log(passed+' realm upgrade and bridge regression checks passed');

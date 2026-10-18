@@ -11,6 +11,8 @@ on:
       - 'tools/check-saves.js'
       - 'tools/check-cultivation.js'
       - 'tools/check-expansion.js'
+      - 'tools/check-realm-upgrades.js'
+      - 'tools/check-world.js'
       - 'tools/game-harness.js'
       - 'tools/build-pages.js'
       - '.github/workflows/pages.yml'
@@ -38,6 +40,8 @@ jobs:
           node tools/check-expansion.js
           node tools/check-pickups.js
           node tools/check-combat.js
+          node tools/check-world.js
+          node tools/check-realm-upgrades.js
       - name: Package playable game
         run: node tools/build-pages.js
       - uses: actions/upload-pages-artifact@v3

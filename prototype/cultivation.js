@@ -4,7 +4,7 @@ const Cultivation=(()=>{
   const cores=['凝丹莲实','九曲灵参','养魂神木','虚空晶髓','阴阳并蒂莲','七彩补天芝','九霄雷液','羽化仙露','太玄玉髓','金曜仙砂','太乙道莲','混元道果','鸿蒙仙髓'];
   const upper=['maxHp','shieldMax','dmg','speed','crit','armor','pickup','regen','xpMul'];
   const fresh=()=>({realm:0,layer:1,qi:0,materials:{essence:0},floors:{},attempts:0,result:null});
-  function valid(c){return !!c&&Number.isInteger(c.realm)&&c.realm>=0&&c.realm<=13&&Number.isFinite(c.qi)&&c.qi>=0&&c.qi<=125440&&Number.isInteger(c.layer)&&c.layer>=1&&c.layer<=9&&c.materials&&typeof c.materials==='object'&&!Array.isArray(c.materials)&&Object.entries(c.materials).every(([k,v])=>(k==='essence'||/^core([1-9]|1[0-3])$/.test(k))&&Number.isInteger(v)&&v>=0&&v<=1e7)&&c.floors&&typeof c.floors==='object'&&Number.isInteger(c.attempts)&&c.attempts>=0;}
+  function valid(c){return !!c&&Number.isInteger(c.realm)&&c.realm>=0&&c.realm<=13&&Number.isFinite(c.qi)&&c.qi>=0&&c.qi<=125440&&Number.isInteger(c.layer)&&c.layer>=1&&c.layer<=9&&c.materials&&typeof c.materials==='object'&&!Array.isArray(c.materials)&&Object.entries(c.materials).every(([k,v])=>(k==='essence'||/^core([1-9]|1[0-3])$/.test(k))&&Number.isInteger(v)&&v>=0&&v<=1e7)&&c.floors&&typeof c.floors==='object'&&Number.isInteger(c.attempts)&&c.attempts>=0&&(c.spellGift===undefined||SpellGift.valid(c.spellGift,c.realm));}
   function clean(c){
     const n=fresh();if(!c||typeof c!=='object')return n;
     n.realm=Number.isInteger(c.realm)&&c.realm>=0&&c.realm<14?c.realm:0;
@@ -13,6 +13,7 @@ const Cultivation=(()=>{
     for(const k of ['essence',...cores.map((_,i)=>'core'+(i+1))])n.materials[k]=Number.isInteger(c.materials?.[k])?Math.max(0,Math.min(1e7,c.materials[k])):0;
     for(const k of [...upper,'cdr'])if(Number.isFinite(c.floors?.[k])&&c.floors[k]>0&&c.floors[k]<1e9)n.floors[k]=c.floors[k];
     n.attempts=Number.isInteger(c.attempts)?Math.max(0,c.attempts):0;
+    if(c.spellGift&&SpellGift.valid(c.spellGift,n.realm))n.spellGift=JSON.parse(JSON.stringify(c.spellGift));
     if(c.result&&typeof c.result.success==='boolean')n.result={success:c.result.success,target:Math.min(13,Math.max(1,Number(c.result.target)||1)),chance:Number(c.result.chance)||0,loss:Number(c.result.loss)||0,attempt:n.attempts};
     return n;
   }
@@ -28,7 +29,7 @@ const Cultivation=(()=>{
   function canStat(id){const key={atk:'dmg',spd:'speed',hp:'maxHp',cd:'cdr',crit:'crit',pick:'pickup'}[id],v=caps();return key==='cdr'?P.cdr>v.cdr+.00001:P[key]<v[key]-.00001;}
   function xpNeed(level){let x=10;for(let l=1;l<Math.min(level,15);l++)x=Math.floor(x*1.32+4);return level<=15?x:x+80*(level-15)+8*(level-15)**2;}
   function settle(p=P){const c=p.cultivation,target=Math.min(9,1+Math.floor(c.qi/need(c)*9));while(c.layer<target){const hp=p.maxHp;c.layer++;p.maxHp*=1.02;p.shieldMax*=1.02;p.dmg*=1.01;const limit=caps(p);for(const k of upper)p[k]=Math.min(p[k],limit[k]);p.hp=Math.min(p.maxHp,p.hp+p.maxHp-hp);}return c.layer;}
-  function qi(amount){const c=P.cultivation;c.qi=Math.min(need(c)*(c.realm===13?1:2),c.qi+amount);const old=c.layer;settle();if(c.layer>old){notifyPickup('cultivation','修炼精进 · '+label());RunSave.save('自动升层');}}
+  function qi(amount){const c=P.cultivation;c.qi=Math.min(need(c)*(c.realm===13?1:2),c.qi+amount);const old=c.layer;settle();if(c.layer>old){notifyPickup('cultivation','修炼精进 · '+label());RunSave.save('自动升层');RealmVisuals.advance(false);}}
   function addMaterial(key,n){P.cultivation.materials[key]=(P.cultivation.materials[key]||0)+n;notifyPickup('material',(key==='essence'?'灵蕴精华':cores[Number(key.slice(4))-1])+' +'+n);}
   function onKill(e){
     if(e.eventObjective||e.bossHelper||e.boss)return false;
@@ -60,6 +61,7 @@ const Cultivation=(()=>{
     if(success){const hp=P.maxHp;c.realm++;c.layer=1;P.maxHp*=1.12;P.shieldMax*=1.12;P.dmg*=1.08;constrain();P.hp=Math.min(P.maxHp,P.hp+P.maxHp-hp);c.qi=Math.min(c.qi,need(c)*(c.realm===13?1:2));settle();}
     c.result={success,target:r.target,chance:rate,loss,attempt:c.attempts};
     if(RunSave.active()&&!RunSave.save('突破结果')){P.cultivation=before;Object.assign(P,stats);return false;}
+    if(success)RealmVisuals.advance(true);
     Sound.effects(success?'level':'hit');return true;
   }
   return {realms,cores,fresh,valid,clean,recipe,need,settle,label,caps,protectLegacy,constrain,canStat,xpNeed,qi,addMaterial,onKill,victory,claimCore,chance,safe,attempt};
