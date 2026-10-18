@@ -2,10 +2,19 @@
 const JourneyProgress=(()=>{
   const key='xunsheng-progress-v1',fields=['maxHp','hp','shieldMax','speed','dmg','cdr','crit','pickup','xpMul','armor','regen','level','xp','xpNext'];
   let data={version:1,cleared:0,entries:{}};
+  const resources={shield:0,energy:100,ultCd:0,dashCd:0};
+  const spellKeys=['yujian','wanjian','wulei','sanmei','bingxin','gudu','jiushen','guanyin'];
   function copy(value){return JSON.parse(JSON.stringify(value));}
-  function cleanBuild(b){return {...Object.fromEntries(fields.map(k=>[k,b[k]])),poison:b.poison===true,spells:{...b.spells},equips:[...b.equips]};}
+  function cleanBuild(b){return {...Object.fromEntries(fields.map(k=>[k,b[k]])),
+    ...Object.fromEntries(Object.entries(resources).map(([k,v])=>[k,b[k]??v])),
+    growthChoices:b.growthChoices??Math.max(0,Math.floor(b.level)-1),t:{...b.t},
+    poison:b.poison===true,spells:{...b.spells},equips:[...b.equips]};}
   function validBuild(b){
-    return b&&fields.every(k=>Number.isFinite(b[k])&&Math.abs(b[k])<1e7)&&b.maxHp>0&&b.hp>0&&b.hp<=b.maxHp&&b.speed>0&&b.dmg>0&&b.cdr>0&&b.level>=1&&b.spells&&Object.entries(b.spells).every(([k,v])=>['yujian','wanjian','wulei','sanmei','bingxin','gudu','jiushen','guanyin'].includes(k)&&Number.isInteger(v)&&v>=1&&v<=10)&&Array.isArray(b.equips)&&b.equips.length<=8&&b.equips.every(v=>['mujian','jifeng','jiuhu','wudu','nvwa','tiangang','juling','huxin'].includes(v));
+    return b&&fields.every(k=>Number.isFinite(b[k])&&Math.abs(b[k])<1e7)&&b.maxHp>0&&b.hp>0&&b.hp<=b.maxHp&&b.speed>0&&b.dmg>0&&b.cdr>0&&b.level>=1&&b.spells&&Object.entries(b.spells).every(([k,v])=>spellKeys.includes(k)&&Number.isInteger(v)&&v>=1&&v<=10)&&Array.isArray(b.equips)&&b.equips.length<=8&&b.equips.every(v=>['mujian','jifeng','jiuhu','wudu','nvwa','tiangang','juling','huxin'].includes(v))
+      &&Object.keys(resources).every(k=>b[k]===undefined||Number.isFinite(b[k])&&b[k]>=0&&b[k]<1e7)
+      &&(b.shield===undefined||b.shield<=b.shieldMax)&&(b.energy===undefined||b.energy<=100)
+      &&(b.growthChoices===undefined||Number.isInteger(b.growthChoices)&&b.growthChoices>=0&&b.growthChoices<1e7)
+      &&(b.t===undefined||b.t&&typeof b.t==='object'&&!Array.isArray(b.t)&&Object.entries(b.t).every(([k,v])=>spellKeys.includes(k)&&Number.isFinite(v)&&v>=0&&v<1e7));
   }
   try{
     const saved=JSON.parse(localStorage.getItem(key));
@@ -27,5 +36,5 @@ const JourneyProgress=(()=>{
     build.maxHp=Math.max(1,build.maxHp+profiles[difficulty].hp-profiles[entry.difficulty].hp);
     build.hp=Math.min(build.maxHp,Math.max(build.maxHp*.7,build.maxHp*fraction));return build;
   }
-  return {key,entry,clear,canSelect,replay,cleared:()=>data.cleared,snapshot:()=>copy(data)};
+  return {key,capture:cleanBuild,entry,clear,canSelect,replay,cleared:()=>data.cleared,snapshot:()=>copy(data)};
 })();

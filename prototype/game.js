@@ -213,7 +213,7 @@ function newPlayer(){
   return {
     ...World.spawn(),vx:0,vy:0,r:15, hp:120, maxHp:120, shield:0, shieldMax:70,
     speed:238, dmg:1, cdr:1, crit:0.05, pickup:118, xpMul:1, armor:0, regen:0, poison:false,
-    level:1, xp:0, xpNext:10,
+    level:1, xp:0, xpNext:10,growthChoices:0,
     spells:{ yujian:1 }, t:{ yujian:0.5 },
     orbitAngle:0, orbitHit:new Map(),
     dash:0, dashCd:0, invuln:0, facing:{ x:1, y:0 }, flash:0,
@@ -236,6 +236,7 @@ function reset(){
   G.P = newPlayer();
   P = G.P;
   Journey.restore(P);
+  G.runChoices=P.growthChoices;
   World.reset();
   EncounterDirector.reset();
   document.getElementById("overlay").classList.remove("journey-screen","title-screen");
@@ -925,6 +926,7 @@ function pickCard(i){
   Sound.effects('ui');
   applyChoice(c);
   G.runChoices++;
+  P.growthChoices=G.runChoices;
   G.queue--;
   if (G.queue > 0){ showLevelUp(); return; }
   document.getElementById('overlay').classList.add('hidden');

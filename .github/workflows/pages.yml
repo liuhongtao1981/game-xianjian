@@ -6,6 +6,9 @@ on:
     paths:
       - 'prototype/**'
       - 'tools/check-syntax.js'
+      - 'tools/check-director.js'
+      - 'tools/check-carryover.js'
+      - 'tools/game-harness.js'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -22,7 +25,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check game scripts
-        run: node tools/check-syntax.js
+        run: |
+          node tools/check-syntax.js
+          node tools/check-director.js
+          node tools/check-carryover.js
       - name: Package playable game
         run: |
           mkdir -p _site

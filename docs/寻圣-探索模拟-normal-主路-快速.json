@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T00:59:31.455Z",
+  "generatedAt": "2026-10-18T10:16:42.199Z",
   "setup": {
     "difficulty": "normal",
     "route": "main route plus both elite challenges",
@@ -10,7 +10,8 @@
     "initialEquipment": [],
     "reactionSeconds": 0.1,
     "simulationHz": 30,
-    "fullCampaign": false
+    "fullCampaign": false,
+    "encounters": "endless-patrol-v1"
   },
   "limitations": [
     "Scripted navigation and complete live enemy-attack geometry; not human playtesting.",
@@ -26,42 +27,42 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 193,
-          "level": 10,
+          "time": 252,
+          "level": 11,
           "hp": 120,
           "damageTaken": 0,
-          "kills": 236,
-          "combatSeconds": 126,
-          "maxGapSeconds": 6,
+          "kills": 342,
+          "combatSeconds": 190,
+          "maxGapSeconds": 10,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 154,
-            "level": 9,
+            "time": 211,
+            "level": 10,
             "hp": 120,
-            "spawned": 216,
-            "killed": 216,
-            "peak": 14,
-            "patrols": 0,
+            "spawned": 345,
+            "killed": 322,
+            "peak": 21,
+            "patrols": 26,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
-            "yujian": 3,
-            "wulei": 2,
-            "sanmei": 1,
-            "wanjian": 4,
-            "guanyin": 1
+            "yujian": 2,
+            "wanjian": 5,
+            "guanyin": 1,
+            "bingxin": 2,
+            "wulei": 1,
+            "jiushen": 1
           },
           "equips": [
-            "tiangang",
-            "nvwa"
+            "mujian"
           ],
           "director": {
-            "spawned": 220,
-            "killed": 220,
-            "peak": 14,
-            "patrols": 0
+            "spawned": 349,
+            "killed": 326,
+            "peak": 21,
+            "patrols": 26
           },
           "camps": [
             {

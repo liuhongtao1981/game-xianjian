@@ -1,4 +1,4 @@
-/* One owner for finite exploration encounters and readable guardian reinforcements. */
+/* One owner for camp challenges, endless exploration and guardian reinforcements. */
 const EncounterDirector=(()=>{
   const offsets={story:-2,normal:0,hard:2,nightmare:4};
   const limits={story:24,normal:36,hard:44,nightmare:48};
@@ -32,6 +32,9 @@ const EncounterDirector=(()=>{
       const p=side<2?{x:side?v.x+v.w+margin:v.x-margin,y:v.y+t*v.h}:{x:v.x+t*v.w,y:side===2?v.y-margin:v.y+v.h+margin};
       if(distance(p,P)>=360&&World.isWalkable(p.x,p.y,28))return p;
     }return null;
+  }
+  function safePatrolPoint(p){
+    return p&&distance(p,P)>=360&&!World.visible(p,30)&&World.isWalkable(p.x,p.y,28);
   }
   function schedule(c){
     c.wave++;c.timer=null;
@@ -81,11 +84,13 @@ const EncounterDirector=(()=>{
       if(p.time===null){
         if(p.source!=='rune'&&alive+reserved>=cap())continue;
         const c=camps[p.encounterId];
+        if(p.source==='patrol'&&!safePatrolPoint(p.anchor))p.anchor=patrolPoint();
         let point=p.source==='patrol'?p.anchor:mode==='boss'?World.clipToArena({x:G.boss.x+Math.cos(p.index*Math.PI+serial)*220,y:G.boss.y+Math.sin(p.index*Math.PI+serial)*180},65):campPoint(c,p.index,p.source==='rune'?200:130+(p.index%3)*45,p.elite?45:24);
         if(!point||!World.isWalkable(point.x,point.y,p.elite?40:20))continue;
         p.point=point;p.time=1.2;if(p.source!=='rune')reserved++;
       }else{
         p.time=Math.max(0,p.time-dt);
+        if(p.source==='patrol'&&!safePatrolPoint(p.point)){p.time=null;p.point=null;continue;}
         if(p.time===0&&(p.source==='rune'||alive<cap())){
           spawn(p);p.finished=true;if(p.source!=='rune'){alive++;reserved--;}
         }
@@ -118,20 +123,22 @@ const EncounterDirector=(()=>{
       if(c.timer===null)c.timer=4;
       else {c.timer-=dt;if(c.timer<=0)schedule(c);}
     }
-    const contact=G.enemies.some(e=>ordinary(e)&&distance(e,P)<650);
-    idle=P.moving&&!contact?idle+dt:0;
-    if(idle>=8&&patrols<6&&camps.filter(isActive).length<2&&!pending.some(p=>p.source==='patrol')){
+    // Exploration never runs out of ordinary enemies, even after all camps are clear.
+    // Camp waves keep priority; a full population delays rather than deletes enemies.
+    idle=Math.min(8,idle+dt);
+    const available=cap()-G.enemies.filter(ordinary).length-pending.filter(p=>p.source!=='rune').length;
+    if(idle>=8&&available>0&&!pending.some(p=>p.source==='patrol')){
       const anchor=patrolPoint();
       if(anchor){
-        const count=4+patrols%3;patrols++;stats.patrols=patrols;
+        const count=Math.min(4+patrols%3,available);patrols++;stats.patrols=patrols;
         for(let i=0;i<count;i++){
           const p={x:anchor.x+Math.cos(i)*25,y:anchor.y+Math.sin(i)*25};
-          if(!World.isWalkable(p.x,p.y,25))Object.assign(p,anchor);
+          if(!safePatrolPoint(p))Object.assign(p,anchor);
           pending.push({encounterId:-serial++-1,source:'patrol',type:['imp','fox','snake'][i%3],anchor:p,index:i,tier:1.15,time:null});
         }idle=0;
       }
     }
-    // Unengaged patrols can leave the map without drops; their finite budget stays spent.
+    // Distant patrols leave without drops, freeing slots near the player's new location.
     G.enemies=G.enemies.filter(e=>e.source!=='patrol'||distance(e,P)<1300);
     pump(dt);
   }
@@ -141,7 +148,7 @@ const EncounterDirector=(()=>{
     if(mode==='boss')return '守关增援 '+G.enemies.filter(ordinary).length+'/6 · 诱招与破绽时停止增援';
     const active=camps.filter(isActive).sort((a,b)=>distance(a,P)-distance(b,P))[0];
     const cleared=camps.filter(c=>c.state==='cleared').length,elites=camps.filter(c=>c.kind!=='camp'&&c.state==='cleared').length;
-    if(!active)return '营地 '+cleared+'/9 · 精英 '+elites+'/2 · 沿路探寻妖踪';
+    if(!active)return '营地 '+cleared+'/9 · 精英 '+elites+'/2 · 妖潮不断 '+G.enemies.filter(ordinary).length+'/'+cap();
     const units=owned(active),runes=units.filter(e=>e.eventObjective).length;
     const title=active.kind==='ritual'?'破阵妖巢':active.kind==='bounty'?'精英悬赏':'妖众营地';
     return title+' · 第'+active.wave+'/3波 · 妖众 '+units.filter(e=>!e.eventObjective).length+(runes?' · 阵眼 '+runes:active.timer!==null?' · 增援 '+Math.max(0,Math.ceil(active.timer))+'秒':'')+' · 已清 '+cleared+'/9 · 精英 '+elites+'/2';

@@ -29,6 +29,7 @@ WASD 移动，空格闪避，Q 大招，E 交互，Tab 舆图，F 全屏。触�
 ```sh
 node tools/check-syntax.js
 node tools/check-director.js
+node tools/check-carryover.js
 node tools/check-pickups.js
 node tools/check-combat.js
 node tools/check-world.js

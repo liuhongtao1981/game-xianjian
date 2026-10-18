@@ -51,9 +51,9 @@ const Journey = (() => {
   const pressure=()=>({damage:1.075**run.stage,spawn:.96**run.stage,projectile:1.035**run.stage,warning:.98**run.stage,speed:1.04**run.stage});
   const difficulty=()=>{const base=difficulties[run.difficulty],p=pressure();return {...base,damage:base.damage*p.damage,spawn:base.spawn*p.spawn,projectile:base.projectile*p.projectile,warning:base.warning*p.warning,speed:p.speed};};
   const ultimate=()=>ultimates[run.ultimate];
-  function build(p){const value={};for(const key of ['maxHp','hp','shieldMax','speed','dmg','cdr','crit','pickup','xpMul','armor','regen','poison','level','xp','xpNext'])value[key]=p[key];value.spells={...p.spells};value.equips=[...p.equips];return value;}
+  function build(p){return JourneyProgress.capture(p);}
   function saveBuild(p){run.checkpoint=build(p);}
-  function restore(p){if(run.checkpoint){Object.assign(p,run.checkpoint,{spells:{...run.checkpoint.spells},equips:[...run.checkpoint.equips]});p.t={};}else p.hp=p.maxHp=difficulty().hp;}
+  function restore(p){if(run.checkpoint){Object.assign(p,build(run.checkpoint));}else p.hp=p.maxHp=difficulty().hp;}
   function begin(selected=0){run.stage=JourneyProgress.canSelect(selected)?selected:0;run.completed=[];run.time=0;run.checkpoint=JourneyProgress.replay(run.stage,run.difficulty,difficulties);}
   function selected(){return JourneyProgress.canSelect(menuStage)?menuStage:0;}
   function menu(){
@@ -61,9 +61,11 @@ const Journey = (() => {
     Sound.reset();Sound.sync('start',run.stage,false);
     const ov=document.getElementById('overlay');ov.classList.remove('hidden','title-screen');ov.classList.add('journey-screen');
     menuStage=selected();const preview=stages[menuStage];
+    const inherited=JourneyProgress.replay(menuStage,run.difficulty,difficulties);
+    const inheritance=inherited?'继承境界 '+inherited.level+' · 术法 '+Object.keys(inherited.spells).length+' 门 · 法宝 '+inherited.equips.length+' 件 · 强化与剑意保留':'从境界 1 启程 · 成长可带往后续关卡';
     ov.innerHTML=`<div class="journey-menu"><div class="journey-heading"><div class="overline">重 走 西 游 · 八 十 一 难</div><h1>寻圣</h1><div class="subtitle">剑仙孙小果 · 第一卷<br>被删去的姓名</div><p>大圣不见了。取经路还在替人写结局。<br>你循一根金毫，走进三段不肯沉默的旧事。</p></div>
       <div class="journey-chapters">${stages.map((s,i)=>`<button class="chapter-card ${i===menuStage?'selected':''}" data-stage="${i}" ${JourneyProgress.canSelect(i)?'':'disabled'} aria-label="${s.title} · ${i<JourneyProgress.cleared()?'已通关，可重战':JourneyProgress.canSelect(i)?'可出征':'先通关'+stages[i-1].title}" aria-pressed="${i===menuStage}" style="--chapter:${s.color};background-image:linear-gradient(0deg,#071418f5,#07141812),url('${s.background}')"><span class="chapter-index">第 ${s.no} 难</span><strong>${s.title}</strong><span>${s.subtitle}</span><small>守关 · ${s.boss}</small><em class="chapter-lock">${i<JourneyProgress.cleared()?'已通关 · 可重战':JourneyProgress.canSelect(i)?(i===0?'由此启程':'前难已破 · 可出征'):'锁定 · 先破前难'}</em></button>`).join('')}</div>
-      <div class="chapter-preview"><span>${preview.theme}</span><small>${preview.mechanic}</small><small>此难妖众：${Encounters.family(menuStage).units.map(e=>e.name).join(' · ')}</small><small class="pressure-note">${menuStage===0?'劫压起点':'累积劫压 +'+menuStage+'：伤害 +'+Math.round((1.075**menuStage-1)*100)+'% · 移速 +'+Math.round((1.04**menuStage-1)*100)+'% · 增援更密，飞弹更快'}</small></div>
+      <div class="chapter-preview"><span>${preview.theme}</span><small>${preview.mechanic}</small><small>此难妖众：${Encounters.family(menuStage).units.map(e=>e.name).join(' · ')}</small><small>${inheritance}</small><small class="pressure-note">${menuStage===0?'劫压起点':'累积劫压 +'+menuStage+'：伤害 +'+Math.round((1.075**menuStage-1)*100)+'% · 移速 +'+Math.round((1.04**menuStage-1)*100)+'% · 增援更密，飞弹更快'}</small></div>
       <div class="journey-options"><section><h3>所历之难 <small>难度决定容错，不锁剧情</small></h3><div class="difficulty-options">${Object.entries(difficulties).map(([id,d])=>`<button data-difficulty="${id}" class="option ${run.difficulty===id?'selected':''}" aria-pressed="${run.difficulty===id}"><strong>${d.name}</strong><small>${d.tag}</small></button>`).join('')}</div><p>${difficulty().desc}</p></section>
       <section><h3>携行大招 <small>每次出征选择一种</small></h3><div class="ultimate-options">${Object.entries(ultimates).map(([id,u])=>`<button data-ultimate="${id}" class="option ${run.ultimate===id?'selected':''}" aria-pressed="${run.ultimate===id}"><strong>${u.short}</strong><small>${u.role}</small></button>`).join('')}</div><p>${ultimate().name}：${ultimate().desc}</p></section></div>
       <div class="journey-footer"><div><span>逐难前行 · 已破 ${JourneyProgress.cleared()} / 3 难</span><small>通关上一难，才可选择下一难；已破章节可随时重战。<br>WASD 移动 · 空格闪避 · Q 大招 · E 交互 · Tab 舆图 · F 全屏</small></div><button class="btn" id="startBtn">${menuStage===0?'循 金 毫 · 入 第 一 难':(menuStage<JourneyProgress.cleared()?'重 战 · ':'出 征 · ')+preview.title} →</button></div></div>`;
