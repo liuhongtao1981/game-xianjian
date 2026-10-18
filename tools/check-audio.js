@@ -77,7 +77,7 @@ await check('headless balance mode stays silent',`Sound.status().music.every(m=>
 const manifest=JSON.parse(fs.readFileSync(path.join(__dirname,'../docs/audio-cues.json'),'utf8'));
 const musicManifest=JSON.parse(fs.readFileSync(path.join(__dirname,'../prototype/assets/audio/music/manifest.json'),'utf8'));
 const neuralManifest=JSON.parse(fs.readFileSync(path.join(__dirname,'../prototype/assets/audio/voice-v2/manifest.json'),'utf8'));
-assert.equal(manifest.cues.length,32);assert.equal(musicManifest.tracks.length,6);assert.equal(neuralManifest.clips.length,manifest.cues.length);
+assert.equal(manifest.cues.length,50);assert.equal(musicManifest.tracks.length,12);assert.equal(neuralManifest.clips.length,manifest.cues.length);
 for(const cue of manifest.cues){
   const clip=neuralManifest.clips.find(c=>c.id===cue.id);assert.ok(clip,cue.id);assert.equal(clip.text,cue.text);assert.equal(clip.voice,manifest.profiles[cue.role].voice);
   for(const [file,key] of [[clip.file,'mixed_sha256'],[clip.source,'source_sha256']])assert.equal(createHash('sha256').update(fs.readFileSync(path.join(__dirname,'../prototype',file))).digest('hex'),clip[key],file);
@@ -89,8 +89,8 @@ for(const file of files){
   const result=spawnSync('ffprobe',['-v','error','-show_entries','format=duration','-of','json',full],{encoding:'utf8'});assert.equal(result.status,0,file);assert.ok(Number(JSON.parse(result.stdout).format.duration)>.2,file);
   const decoded=spawnSync('ffmpeg',['-hide_banner','-loglevel','error','-i',full,'-f','null','-'],{encoding:'utf8'});assert.equal(decoded.status,0,file+' decodes');
 }
-console.log(`PASS 32 neural clips, ${legacy.length} retained legacy clips and 6 music tracks decode successfully`);
-console.log(`${count} audio behavior checks plus ${files.length} media file checks and 64 provenance hashes passed`);
+console.log(`PASS 50 neural clips, ${legacy.length} retained legacy clips and 12 music tracks decode successfully`);
+console.log(`${count} audio behavior checks plus ${files.length} media file checks and 100 provenance hashes passed`);
 
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

@@ -1,6 +1,6 @@
 # 重走西游 · 寻圣
 
-剑仙孙小果循金毫寻找大圣，进入《西游记》前三难的原创劫痕演义。浏览器游戏采用 Canvas 2D，包含自由探索、分波营地、巡逻妖众、精英挑战、构筑成长和必须破招的守关首领。
+剑仙孙小果循金毫寻找大圣，进入西游劫痕的原创演义；当前开放筑基与金丹六关，十四境四十二关按境界逐批制作。浏览器游戏采用 Canvas 2D，包含自由探索、分波营地、巡逻妖众、精英挑战、构筑成长和必须破招的守关首领。
 
 ## 运行
 
@@ -12,7 +12,7 @@ python -m http.server 4173 --directory prototype
 
 然后访问 <http://localhost:4173/>。也可直接打开 `prototype/index.html` 离线体验。
 
-支持自动存档、当前关卡续玩，以及筑基至仙王的修仙突破。按 C 打开人物状态与天材地宝面板；规则和验证见 [修仙说明](docs/寻圣-自动续关与修仙系统.md)。
+支持自动存档、当前关卡续玩，以及筑基至仙王十四境、每境九层的修仙突破。当前版本规则见 [六关发布说明](docs/九层修仙与六关发布.md)。按 C 打开人物状态与天材地宝面板；规则和验证见 [修仙说明](docs/寻圣-自动续关与修仙系统.md)。
 
 WASD 移动，空格闪避，Q 大招，E 交互，Tab 舆图，F 全屏。触屏支持左侧拖动移动和右侧操作按钮。
 
@@ -22,7 +22,7 @@ WASD 移动，空格闪避，Q 大招，E 交互，Tab 舆图，F 全屏。触�
 
 `.github/workflows/pages.yml` 会在游戏文件推送至 `main` 时检查脚本，并通过 `node tools/build-pages.js` 打包游戏入口、脚本、样式和素材；也可在 Actions 页面手动运行。发布时脚本与样式带提交版本参数，避免继续读取上版缓存。截图、预览视频和开发文档不会进入网站。
 
-在仓库 Settings → Pages 中将 Source 设为 GitHub Actions。仓库必须满足 GitHub Pages 的套餐要求；当前私有仓库若套餐不支持，需要经仓库所有者同意改为公开，或升级套餐。发布成功后的地址为 <https://liuhongtao1981.github.io/game-xianjian/>。
+在仓库 Settings → Pages 中将 Source 设为 GitHub Actions。仓库必须满足 GitHub Pages 的套餐要求；本仓库已采用公开仓库发布。发布成功后的地址为 <https://liuhongtao1981.github.io/game-xianjian/>。
 
 ## 验证
 
@@ -34,7 +34,9 @@ node tools/check-director.js
 node tools/check-carryover.js
 node tools/check-pickups.js
 node tools/check-combat.js
-node tools/check-world.js
+node tools/check-expansion.js
+node tools/check-saves.js
+node tools/check-cultivation.js
 ```
 
-脚本模拟通过不等于真人通关率；8至12分钟的真人单关目标仍需试玩校准。
+脚本模拟通过不等于真人通关率；大型地图的真人主路25至35分钟、完整探索45至60分钟目标仍需试玩校准。

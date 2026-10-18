@@ -16,31 +16,31 @@ const Bosses=(()=>{
   const config=()=>profiles[Journey.run.difficulty]||profiles.normal;
   const arena=()=>typeof World!=='undefined'?World.arena():{x:0,y:0,w:W,h:H,cx:W/2,cy:H/2};
   const alive=e=>e&&e.hp>0&&!e.killed;
-  const helpers=e=>G.enemies.filter(h=>alive(h)&&h.bossHelper&&h.bossOwner===e.id);
+  const helpers=e=>G.enemies.filter(h=>alive(h)&&h.bossHelper&&h.bossOwner===e.id&&!h.phantom);
   const bound=(point,pad=70)=>{if(typeof World!=='undefined'&&World.clipToArena)return World.clipToArena(point,pad);const a=arena();return {x:clamp(point.x,a.x+pad,a.x+a.w-pad),y:clamp(point.y,a.y+pad,a.y+a.h-pad)};};
-  function say(e,text,size=18){addText(e.x,e.y-135,text,Journey.stages[e.brain.theme].color,size);}
+  function say(e,text,size=18){addText(e.x,e.y-135,text,Journey.stage().color,size);}
   function action(e,name,duration){e.action=name;e.actionT=0;e.actionDuration=Math.max(.05,duration);e.attack=name==='windup'||name==='strike'?e.actionDuration:0;}
   function clearAttacks(e){G.telegraphs=G.telegraphs.filter(t=>t.bossOwner!==e.id);G.eshots=G.eshots.filter(t=>t.bossOwner!==e.id);e.brain.pending=null;}
   function summonHelpers(e){
     const b=e.brain,theme=b.theme,scale=config().helper;
-    const count=theme===0?3:2;
+    const count=Journey.run.stage===4?3:theme===0?3:2;const real=Math.floor(Math.random()*3);
     const center=bound({x:e.x,y:e.y},245);
     for(let i=0;i<count;i++){
       let p;
       if(theme===0){const angle=-Math.PI/2+i*Math.PI*2/3;p=bound({x:center.x+Math.cos(angle)*200,y:center.y+Math.sin(angle)*170});}
       else p=bound({x:center.x+(i?190:-190),y:center.y+(theme===1?40:85)});
       const hp=Math.round((theme===0?130:theme===1?180:220)*scale*(1+(b.round-1)*.055));
-      const h={id:G.uid++,type:theme===1?'zombie':theme===2?'snake':'imp',name:theme===0?'缄言钟心':theme===1?'续命血诏':'锁魂河灯',
-        family:theme,color:Journey.stages[theme].color,glyph:['钟','诏','灯'][theme],x:p.x,y:p.y,r:23,hp,maxHp:hp,speed:0,dmg:0,xp:8,
+      const h={id:G.uid++,type:theme===1?'zombie':theme===2?'snake':'imp',name:Journey.run.stage===3?'镇山锁柱':Journey.run.stage===4?(i===real?'金毫实印':'空影幻印'):Journey.run.stage===5?'锁喉龙鳞':theme===0?'缄言钟心':theme===1?'续命血诏':'锁魂河灯',
+        locked:Journey.run.stage===3,phantom:Journey.run.stage===4&&i!==real,family:Journey.run.stage,color:Journey.stage().color,glyph:Journey.run.stage===3?'柱':Journey.run.stage===4?(i===real?'真':'幻'):Journey.run.stage===5?'鳞':['钟','诏','灯'][theme],x:p.x,y:p.y,r:23,hp,maxHp:hp,speed:0,dmg:0,xp:8,
         boss:false,elite:false,bossHelper:true,bossOwner:e.id,seal:theme===0,clerk:theme===1,lantern:theme===2,
         atkCd:999,skillCd:999,hitCd:0,flash:0,poison:0,animTime:0,look:1,action:'guard',actionT:0,actionDuration:1};
       G.enemies.push(h);Encounters.effect('summon',{x:h.x,y:h.y,r:40,theme});
     }
-    b.helperTotal=count;b.helperBroken=0;b.mechanismReady=false;b.duelFailures=0;
-    say(e,b.round===1?tells[theme]:'护体重结 · 再寻破绽',16);
+    b.helperTotal=Journey.run.stage===4?1:count;b.charged=false;b.helperBroken=0;b.mechanismReady=false;b.duelFailures=0;
+    say(e,b.round===1?['先破钟心 · 诱锤收势','断双诏 · 侧避问斩','灭河灯 · 连渡潮隙','诱重砸 · 断镇山锁柱','辨实印 · 诱尽三段追链','破锁鳞 · 冲岸迎雷潮'][Journey.run.stage]:'护体重结 · 再寻破绽',16);
   }
   function init(e){
-    const theme=Journey.run.stage;
+    const theme=Journey.run.stage%3;
     e.brain={theme,round:1,breaks:0,attackIndex:0,token:0,pending:null,helperTotal:0,helperBroken:0,mechanismReady:false,windowDamage:0,windowRemaining:0,blockedNotice:0,exhausted:false,phaseAnnounced:false};
     e.phase=1;e.attackAngle=Math.atan2(P.y-e.y,P.x-e.x);e.speed=Journey.stage().bossSpeed*1.65*Journey.difficulty().speed;
     action(e,'guard',1.5);summonHelpers(e);
@@ -50,12 +50,12 @@ const Bosses=(()=>{
     clearAttacks(e);b.breaks++;b.exhausted=false;b.windowDamage=0;b.windowRemaining=Math.ceil(e.maxHp*config().quota);
     action(e,'exposed',config().window);e.attack=0;e.kb=0;
     say(e,['锤势已尽 · 钟身破绽','血诏已断 · 收刀破绽','潮势已尽 · 逆鳞破绽'][b.theme],22);
-    Sound.weakness?.(b.theme);Encounters.effect('phase',{x:e.x,y:e.y,r:125,theme:b.theme});
+    Sound.weakness?.(Journey.run.stage);Encounters.effect('phase',{x:e.x,y:e.y,r:125,theme:b.theme});
     G.shake=Math.max(G.shake,7);
   }
   function close(e){
     const b=e.brain;b.round++;b.exhausted=false;b.windowRemaining=0;b.windowDamage=0;
-    if(e.hp<=e.maxHp*.5&&!b.phaseAnnounced){e.phase=2;b.phaseAnnounced=true;Sound.guardian(b.theme,true);say(e,Journey.stage().boss+' · 怒相',21);}
+    if(e.hp<=e.maxHp*.5&&!b.phaseAnnounced){e.phase=2;b.phaseAnnounced=true;Sound.guardian(Journey.run.stage,true);say(e,Journey.stage().boss+' · 怒相',21);}
     action(e,'guard',1.3*config().pace);summonHelpers(e);
   }
   function hazard(e,point,options){
@@ -71,7 +71,7 @@ const Bosses=(()=>{
     let warning=Journey.warning((kind==='tide'?1.65:kind==='duel'?1.22:1.12)*config().pace),recovery=.85;
     const target=bound({x:P.x,y:P.y});
     if(kind==='bell'){
-      hazard(e,target,{r:e.phase===2?108:94,dmg:32,life:warning,label:mechanism?'镇音重锤 · 避开后等收锤':'镇音重锤 · 引向钟心',bossSkill:'bell'});
+      hazard(e,target,{r:e.phase===2?108:94,dmg:32,life:warning,label:Journey.run.stage===3?(mechanism?'裂山终锤 · 躲开后斩石心':'镇山重砸 · 引向锁柱'):mechanism?'镇音重锤 · 避开后等收锤':'镇音重锤 · 引向钟心',bossSkill:'bell'});
       say(e,names[0][0]);
     }else if(kind==='ring'){
       hazard(e,{x:e.x,y:e.y},{r:125,dmg:24,life:warning,label:'八律封口 · 离开钟身',bossSkill:'ring'});
@@ -82,6 +82,7 @@ const Bosses=(()=>{
       hazard(e,mid,{shape:'line',angle:e.attackAngle,length,r:kind==='rush'?38:32,dmg:kind==='duel'?34:30,life:warning,label:kind==='duel'?'第一诏 · 向侧面闪避':kind==='rush'?(b.theme===2?'回澜枪 · 侧身躲开':'金刚踏庭 · 侧身躲开'):'断籍横斩',bossSkill:kind});
       if(kind==='duel'){
         hazard(e,mid,{shape:'line',angle:e.attackAngle+.64,length:250,r:35,dmg:36,life:warning+.6,label:'第二诏 · 仍须避开',bossSkill:kind});
+        if(Journey.run.stage===4)hazard(e,mid,{shape:'line',angle:e.attackAngle-.64,length:300,r:36,dmg:38,life:warning+1.2,label:'第三追链 · 横向脱身',bossSkill:kind});
         recovery=1.1;
       }
       const end=bound({x:e.x+dx/d*Math.min(d,kind==='rush'?350:190),y:e.y+dy/d*Math.min(d,kind==='rush'?350:190)});
@@ -98,7 +99,7 @@ const Bosses=(()=>{
       const safe=Journey.run.difficulty==='story'?190:Journey.run.difficulty==='normal'?160:Journey.run.difficulty==='hard'?144:130;
       const gap=clamp(P.x+(P.x<a.cx?80:-80),a.x+safe/2+45,a.x+a.w-safe/2-45),y=clamp(P.y,a.y+90,a.y+a.h-90);
       for(let i=0;i<2;i++)hazard(e,{x:a.cx,y},{shape:'tide',left:a.x,right:a.x+a.w,arenaX:a.x,arenaWidth:a.w,r:58,gap,safe,dmg:38+i*3,life:warning+i*.8,label:i?'第二重潮 · 守住青色缺口':'逆流断潮 · 进入青色缺口',bossSkill:'tide'});
-      recovery=1.05;say(e,names[2][2]);
+      recovery=1.05;say(e,Journey.run.stage===5?'导雷双潮 · 守住干岸':names[2][2]);
     }
     b.pending.recovery=recovery;
     action(e,'windup',warning);Encounters.effect('summon',{x:e.x,y:e.y,r:75,theme:b.theme});
@@ -106,13 +107,14 @@ const Bosses=(()=>{
   function projectiles(e,pending){
     const theme=e.brain.theme,profile=Journey.difficulty();
     const angles=theme===0?Array.from({length:e.phase===2?12:9},(_,i)=>e.attackAngle+i*Math.PI*2/(e.phase===2?12:9)):[-.36,-.18,0,.18,.36].map(x=>e.attackAngle+x);
-    for(const angle of angles)G.eshots.push({x:e.x,y:e.y-18,vx:Math.cos(angle)*(theme===0?205:245)*profile.projectile,vy:Math.sin(angle)*(theme===0?205:245)*profile.projectile,r:theme===0?7:8,dmg:theme===0?16:19,life:4,color:Journey.stages[theme].color,theme,trail:[],bossOwner:e.id});
+    for(const angle of angles)G.eshots.push({x:e.x,y:e.y-18,vx:Math.cos(angle)*(theme===0?205:245)*profile.projectile,vy:Math.sin(angle)*(theme===0?205:245)*profile.projectile,r:theme===0?7:8,dmg:theme===0?16:19,life:4,color:Journey.stage().color,theme,trail:[],bossOwner:e.id});
   }
   function finishAttack(e){
     const b=e.brain,p=b.pending;if(!p){action(e,'guard',.7);return;}
     // A removed warning (for example an ultimate clearing it) is not a successful dodge.
     const earned=p.mechanism&&p.impacts===p.expected&&p.passed&&!helpers(e).length;
     if(earned){open(e);return;}
+    if(Journey.run.stage===5&&b.mechanismReady&&p.kind==='rush'&&p.passed&&p.impacts===p.expected){b.charged=true;say(e,'冲岸露鳞 · 迎两重导雷潮',18);}
     if(p.mechanism){b.duelFailures++;say(e,['须避开重锤落地 · 再诱一锤','未能诱尽双斩 · 再避一轮','须在青色潮隙内接过两重洪潮'][b.theme],15);}
     b.pending=null;action(e,'guard',(e.phase===2?.7:1.15)*config().pace);
   }
@@ -125,13 +127,13 @@ const Bosses=(()=>{
       if(e.actionT>=e.actionDuration||b.exhausted)close(e);
       return;
     }
-    if(!helpers(e).length&&!b.mechanismReady){b.mechanismReady=true;say(e,['钟心碎 · 诱锤落地，避开后等收锤','血诏断 · 引出双斩再侧移','河灯灭 · 站进两重潮的青色缺口'][b.theme],18);Sound.omen?.(b.theme);}
+    if(!helpers(e).length&&!b.mechanismReady){b.mechanismReady=true;say(e,['钟心碎 · 诱锤落地，避开后等收锤','血诏断 · 引出双斩再侧移','河灯灭 · 站进两重潮的青色缺口'][b.theme],18);Sound.omen?.(Journey.run.stage);}
     if(e.action==='guard'){
       const dx=P.x-e.x,dy=P.y-e.y,d=Math.hypot(dx,dy)||1;
       e.look=dx>=0?1:-1;
       if(d>240){const p=bound({x:e.x+dx/d*e.speed*dt,y:e.y+dy/d*e.speed*dt});e.x=p.x;e.y=p.y;}
       if(e.actionT>=e.actionDuration){
-        if(b.mechanismReady)prepare(e,['bell','duel','tide'][b.theme],true);
+        if(b.mechanismReady){if(Journey.run.stage===5&&!b.charged)prepare(e,'rush');else prepare(e,['bell','duel','tide'][b.theme],true);}
         else {const list=b.theme===0?['bell','ring','bell','rush']:b.theme===1?['slash','edict','duel']:['rush','lantern','lantern'];prepare(e,list[b.attackIndex++%list.length]);}
       }
       return;
@@ -163,15 +165,17 @@ const Bosses=(()=>{
   function onHelperKilled(h){
     if(!h.bossHelper)return;
     const e=G.boss;if(!alive(e)||!e.brain||h.bossOwner!==e.id)return;
-    e.brain.helperBroken++;
+    e.brain.helperBroken++;if(Journey.run.stage===4)for(const ghost of G.enemies.filter(x=>x.phantom)){ghost.hp=0;ghost.killed=true;}
     Encounters.effect('phase',{x:h.x,y:h.y,r:55,theme:e.brain.theme});
   }
   function damageMultiplier(e){return e.boss?(e.brain&&e.action==='exposed'&&!e.brain.exhausted?3:0):1;}
   function filterDamage(e,damage){
+    if(e.locked)return 0;
+    if(e.phantom){if((e.phantomCd||0)<G.time){e.phantomCd=G.time+3;for(let i=0;i<2&&G.enemies.filter(h=>h.hp>0&&!h.boss&&!h.bossHelper).length<6;i++)spawnEnemy('fox',false,World.clipToArena({x:e.x+60*i,y:e.y+40},55),{source:'boss',encounterId:-1,tier:1.3});addText(e.x,e.y-55,'幻印反噬 · 追猎来袭',Journey.stage().color,15);}return 0;}
     if(!e.boss)return damage;
     const b=e.brain;
     if(!b||e.action!=='exposed'||b.exhausted){
-      if(b&&b.blockedNotice<=0){b.blockedNotice=1.2;addText(e.x,e.y-90,b.mechanismReady?'护体 · 诱招待收势':'护体 · 先破机关',Journey.stages[b.theme].color,15);}
+      if(b&&b.blockedNotice<=0){b.blockedNotice=1.2;addText(e.x,e.y-90,b.mechanismReady?'护体 · 诱招待收势':'护体 · 先破机关',Journey.stage().color,15);}
       return 0;
     }
     const allowed=Math.max(0,Math.min(Math.round(damage),b.windowRemaining,e.hp));
@@ -185,8 +189,8 @@ const Bosses=(()=>{
     const total=b.helperTotal,left=helpers(e).length;
     let title,hint;
     if(exposed){title='破绽 '+remaining.toFixed(1)+' 秒';hint='全力攻本体 · 本轮伤害已用 '+Math.round(b.windowDamage/e.maxHp*100)+'%';}
-    else if(left){title=['钟心护体','血诏护体','河灯护体'][b.theme]+' · '+left+'/'+total;hint=tells[b.theme];}
-    else {title=['钟心已裂 · 诱锤后闪避','诱尽双斩，等它收刀','青色潮隙 · 连渡两重'][b.theme];hint=['等金色落点锁定，离开重锤范围；收招才露钟身。','两段刀线均已锁定方向；横向走位或闪避。','站入两重洪潮的青色缺口，逆鳞才会显露。'][b.theme];}
+    else if(left){title=['钟心护体','血诏护体','河灯护体','山契锁柱','真假籍印','锁喉龙鳞'][Journey.run.stage]+' · '+left+'/'+total;hint=Journey.stage().tell||tells[b.theme];}
+    else {title=['钟心已裂 · 诱锤后闪避','诱尽双斩，等它收刀','青色潮隙 · 连渡两重','三柱已断 · 诱终锤收势','实印已破 · 诱尽三段追链','锁鳞已破 · 冲岸后迎雷潮'][Journey.run.stage];hint=Journey.run.stage>=3?Journey.stage().tell:['等金色落点锁定，离开重锤范围；收招才露钟身。','两段刀线均已锁定方向；横向走位或闪避。','站入两重洪潮的青色缺口，逆鳞才会显露。'][b.theme];}
     return {title,hint,progress:exposed?clamp(remaining/e.actionDuration,0,1):(total-left)/Math.max(1,total),exposed,remaining:exposed?remaining:0,breaks:b.breaks,round:b.round,helpers:left,action:e.action};
   }
   return {init,update,onImpact,onHelperKilled,damageMultiplier,filterDamage,hud,profiles};

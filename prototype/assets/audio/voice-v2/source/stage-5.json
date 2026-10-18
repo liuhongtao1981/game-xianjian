@@ -1,0 +1,25 @@
+{
+  "id": "stage-5",
+  "text": "鹰愁涧的水向两岸退去，露出一条布满锁鳞的龙骨桥。桥下的哭声，来自白蛟的喉中。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "18e1f6cea145a1ee598e68b74155bada5a1efda6f45365c3f4fc04feb42ac786",
+  "source_sha256": "282406b7d2c5e11d1313cb0bcb09b508c35071877b3c00270062c70bdcfee4c4",
+  "mixed_sha256": "78473a5d3c9fe7d0afa8f8a68dd95c28f7374b5bceb4fe803bc2e1910debb41b",
+  "duration": 8.956,
+  "size": 108620,
+  "file": "assets/audio/voice-v2/stage-5.mp3",
+  "source": "assets/audio/voice-v2/source/stage-5.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

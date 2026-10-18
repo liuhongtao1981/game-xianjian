@@ -1,21 +1,22 @@
 /* A persistent world in world units; resizing a viewport never moves its inhabitants. */
 const World=(()=>{
-  const width=3600,height=2600,cam={x:0,y:0,zoom:1};
+  let width=6400,height=4600;const cam={x:0,y:0,zoom:1};
   const data=()=>WorldNavData[Journey.run.stage];
   const point=p=>({x:p.x*width,y:p.y*height});
   const land=WorldNavData.map(d=>d.polygons.map(poly=>{
-    const vertices=poly.map(([x,y])=>[x*width,y*height]);
+    const vertices=poly.map(([x,y])=>[x*d.width,y*d.height]);
     return {vertices,left:Math.min(...vertices.map(p=>p[0])),right:Math.max(...vertices.map(p=>p[0])),top:Math.min(...vertices.map(p=>p[1])),bottom:Math.max(...vertices.map(p=>p[1]))};
   }));
   let combat;
-  const images=['exile','birth','river'].map(id=>{const i=new Image();i.src='assets/world-'+id+'.png';return i;});
+  const images=ChapterCatalog.released().map(()=>new Image());
+  function terrain(){const c=ChapterCatalog.get(Journey.run.stage),image=images[c.index];if(!image.src)image.src='assets/world-'+c.id+(c.realm?'.jpg':'-v3.jpg');return image;}
   const titles=[['入山旧道','焚卷碑林','断钟外庭','封口禅坛'],['陈府后巷','血书偏院','废印长廊','司命刑庭'],['旧渡石径','沉灯浅湾','缚舟栈道','河伯祭台']];
   let sites=[],active=false,mapOpen=false,near=null,visited=0,nav=null;
   const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
   function bounds(){return {x:0,y:0,w:width,h:height};}
   function arena(){const a=data().bossArena,c=point(a),rx=a.rx*width,ry=a.ry*height;return {x:c.x-rx,y:c.y-ry,w:rx*2,h:ry*2,cx:c.x,cy:c.y,rx,ry};}
   function bossPoint(){return point(data().boss);}
-  function spawn(){return point(data().spawn);}
+  function spawn(){return {x:data().spawn.x*data().width,y:data().spawn.y*data().height};}
   function clipToArena(p,pad=15){
     const a=arena(),dx=p.x-a.cx,dy=p.y-a.cy,d=Math.hypot(dx/(a.rx-pad),dy/(a.ry-pad));
     return d>1?{x:a.cx+dx/d,y:a.cy+dy/d}:{...p};
@@ -50,7 +51,7 @@ const World=(()=>{
     let dx=tx-e.x,dy=ty-e.y,d=Math.hypot(dx,dy)||1;
     if(active||d<40||lineClear(e.x,e.y,tx,ty,e.r||18))return {x:dx/d,y:dy/d};
     // One shared distance field guides nearby foes around shores and walls.
-    const cell=40,cols=Math.ceil(width/cell),rows=Math.ceil(height/cell),id=(x,y)=>Math.round(y/cell)*cols+Math.round(x/cell);
+    const cell=64,cols=Math.ceil(width/cell),rows=Math.ceil(height/cell),id=(x,y)=>Math.round(y/cell)*cols+Math.round(x/cell);
     if(!nav){
       const walk=new Uint8Array(cols*rows),neighbors=Array.from({length:cols*rows},()=>[]);
       for(let y=0;y<rows;y++)for(let x=0;x<cols;x++)walk[y*cols+x]=isWalkable(x*cell,y*cell,23)?1:0;
@@ -102,15 +103,17 @@ const World=(()=>{
     const ease=snap?1:1-Math.exp(-dt*9);cam.x+=(x-cam.x)*ease;cam.y+=(y-cam.y)*ease;
   }
   function reset(){
-    active=false;mapOpen=false;near=null;visited=0;nav=null;combat=arena();document.body.classList.remove('on-map');
+    width=data().width;height=data().height;terrain();active=false;mapOpen=false;near=null;visited=0;nav=null;combat=arena();document.body.classList.remove('on-map');
     const lore=[
       ['残碑写着：钟声掩住的，是未曾入册的证词。','先破三枚钟心，再避过镇音重锤，收锤才露破绽。','重锤可反噬钟心；护体每次重结，都须重新诱招。'],
       ['密诏没有名字，只有反复加盖的红印。','斩断血诏之后，须诱尽两段问斩。','刀势锁定时向侧面避开；收刀，才是破绽。'],
       ['灯里封着没有名字的人，潮水替他们记账。','灭去河灯，再连渡两重洪潮的青色缺口。','只逃离洪潮，不能引出逆鳞；须迎潮守隙。']
-    ][Journey.run.stage];
+    ][Journey.run.stage]||Journey.stage().story;
     sites=data().sites.map((s,id)=>({...s,id,...point(s),text:lore[s.loreIndex],done:false,name:s.kind==='boss'?'挑战 · '+Journey.stage().boss:s.name}));
-    for(const s of sites)if(s.kind!=='boss')s.done=RunSave.claimed('site:'+Journey.run.stage+':'+s.id);
+    for(const s of sites)if(!['boss','station'].includes(s.kind))s.done=RunSave.claimed('site:'+Journey.run.stage+':'+s.id);
     visited=sites.filter(s=>s.done).length;
+    Object.assign(P,project(P.x,P.y,P.r||15));
+    for(const s of sites)if(!isWalkable(s.x,s.y,36))Object.assign(s,project(s.x,s.y,36));
     P.worldX=P.x;P.worldY=P.y;
     camera(0,true);
   }
@@ -139,18 +142,18 @@ const World=(()=>{
     // Crossing the altar is a deliberate commitment. Nearby camps cannot flood the duel.
     EncounterDirector.beginBoss();
     G.shots=[];G.eshots=[];G.telegraphs=[];
-    resolve(P);spawnBoss();RunSave.save('进入祭坛');return true;
+    Object.assign(P,clipToArena({x:combat.cx,y:combat.cy+Math.min(350,combat.ry*.6)},P.r));resolve(P);spawnBoss();camera(0,true);RunSave.save('进入祭坛');return true;
   }
   function update(dt){
     near=null;
-    if(!active)for(const s of sites){if(!s.done&&Math.hypot(P.x-s.x,P.y-s.y)<125){near=s;break;}}
+    if(!active)near=sites.filter(s=>!s.done&&Math.hypot(P.x-s.x,P.y-s.y)<125).sort((a,b)=>Math.hypot(P.x-a.x,P.y-a.y)-Math.hypot(P.x-b.x,P.y-b.y))[0]||null;
     const button=document.getElementById('interactBtn');
     if(button){button.hidden=!near||G.state!=='playing';button.textContent=near?(near.kind==='boss'?'入坛挑战':'查看 · '+near.name)+'  E':'';}
     camera(dt);
   }
   function interact(){
     if(G.state!=='playing'||!near)return false;
-    const s=near;if(s.kind==='boss')return enterBoss();
+    const s=near;if(s.kind==='boss')return enterBoss();if(s.kind==='station')return stationMenu(s);
     if(s.kind!=='lore'&&!RunSave.claim('site:'+Journey.run.stage+':'+s.id)){s.done=true;near=null;return false;}
     s.done=true;near=null;visited++;
     if(s.kind==='lore'){
@@ -165,8 +168,23 @@ const World=(()=>{
     else {openChest();}
     RunSave.save('领取事件');return true;
   }
+  function stationUnlocked(s){
+    if(s.region===0)return true;
+    const nearby=EncounterDirector.status().camps.filter(c=>Math.hypot(c.x-s.x,c.y-s.y)<Math.max(width,height)*.20);
+    return nearby.length>0&&nearby.every(c=>c.state==='cleared');
+  }
+  function drawStation(s){ctx.save();ctx.translate(s.x,s.y);ctx.fillStyle='#243831';ctx.strokeStyle=stationUnlocked(s)?'#9ee3c3':'#786e55';ctx.lineWidth=2;ctx.fillRect(-24,-65,48,65);ctx.strokeRect(-24,-65,48,65);ctx.beginPath();ctx.moveTo(-34,-65);ctx.lineTo(0,-86);ctx.lineTo(34,-65);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#e7d8af';ctx.font='25px KaiTi';ctx.textAlign='center';ctx.fillText('驿',0,-28);ctx.restore();}
+  function stationMenu(source){
+    if(!stationUnlocked(source)){notifyPickup('camp','清理周围营地后可点亮此驿站');return false;}
+    if(!Cultivation.safe()){notifyPickup('camp','附近仍有妖众，脱离战斗后再使用驿站');return false;}
+    G.state='station';clearInput();const ov=document.getElementById('overlay');ov.classList.remove('hidden');
+    ov.innerHTML=`<div class="panel chronicle-panel"><span class="overline">四境驿路</span><h2>沿旧路而行</h2><p>已清理区域可安全返回。战斗与首领阶段不能传送。</p>${sites.filter(s=>s.kind==='station').map(s=>`<button class="station-choice" data-station="${s.id}" ${!stationUnlocked(s)?'disabled':''}>${s.name} · ${stationUnlocked(s)?'已点亮':'待清理周围营地'}</button>`).join('')}<button class="btn" id="closeStationBtn">继续探路</button></div>`;
+    const close=()=>{G.state='playing';ov.classList.add('hidden');clearInput();last=performance.now();};
+    document.getElementById('closeStationBtn').onclick=close;
+    ov.querySelectorAll('[data-station]').forEach(b=>b.onclick=()=>{const target=sites[Number(b.dataset.station)];if(!target||!stationUnlocked(target))return;P.x=target.x;P.y=target.y;resolve(P);camera(0,true);close();RunSave.save('驿站返回');});return true;
+  }
   function exportState(){return {done:sites.map(s=>s.done),visited};}
-  function importState(s){if(!s||!Array.isArray(s.done)||s.done.length!==6||!s.done.every(v=>typeof v==='boolean'))throw new Error('Invalid world');sites.forEach((p,i)=>p.done=s.done[i]);visited=s.done.filter(Boolean).length;}
+  function importState(s){if(!s||!Array.isArray(s.done)||s.done.length!==sites.length||!s.done.every(v=>typeof v==='boolean'))throw new Error('Invalid world');sites.forEach((p,i)=>p.done=s.done[i]);visited=s.done.filter(Boolean).length;}
   function resumeLore(id){const s=sites[id];if(!s||s.kind!=='lore')throw new Error('Invalid lore');near=s;G.state='playing';if(s.done)visited--;s.done=false;return interact();}
   function toggleMap(){
     if(G.state==='map'){mapOpen=false;document.body.classList.remove('on-map');G.state='playing';last=performance.now();return;}
@@ -174,8 +192,8 @@ const World=(()=>{
   }
   function apply(){ctx.scale(cam.zoom,cam.zoom);ctx.translate(-cam.x,-cam.y);}
   function drawBackground(){
-    const image=images[Journey.run.stage],fallback=Journey.background();
-    ctx.fillStyle=['#242a25','#252422','#14292d'][Journey.run.stage];ctx.fillRect(0,0,width,height);
+    const image=terrain(),fallback=Journey.background();
+    ctx.fillStyle=['#242a25','#252422','#14292d'][Journey.run.stage]||Journey.stage().story;ctx.fillRect(0,0,width,height);
     const source=image.complete&&image.naturalWidth?image:fallback;
     if(source?.complete&&source.naturalWidth)ctx.drawImage(source,0,0,width,height);
     ctx.fillStyle='#03101416';ctx.fillRect(0,0,width,height);
@@ -194,6 +212,9 @@ const World=(()=>{
   function drawProps(){
     for(const s of sites){
       if(!visible(s)||s.kind==='boss'||s.done&&s.kind!=='lore')continue;
+      if(s.kind==='station'){drawStation(s);continue;}
+      if(s.kind==='chest'&&ItemCatalog.draw('chest',s.x,s.y,82,G.time))continue;
+      if(s.kind==='rest'&&ItemCatalog.draw('potion',s.x,s.y,58,G.time))continue;
       ctx.save();ctx.translate(s.x,s.y);ctx.fillStyle=s.done?'#34423a':'#646653';ctx.strokeStyle='#ad9c6f';ctx.lineWidth=2;
       if(s.kind==='lore'){ctx.beginPath();ctx.moveTo(-22,4);ctx.lineTo(-19,-61);ctx.lineTo(10,-72);ctx.lineTo(23,-57);ctx.lineTo(26,5);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#d6c69b';ctx.font='20px KaiTi,serif';ctx.textAlign='center';ctx.fillText('证',1,-30);}
       else if(s.kind==='chest'){
@@ -216,7 +237,7 @@ const World=(()=>{
     }
   }
   function mapDraw(x,y,w,h,full=false){
-    const image=images[Journey.run.stage];ctx.save();ctx.fillStyle='#07161bea';ctx.fillRect(x-5,y-5,w+10,h+10);
+    const image=terrain();ctx.save();ctx.fillStyle='#07161bea';ctx.fillRect(x-5,y-5,w+10,h+10);
     if(image.complete&&image.naturalWidth){ctx.globalAlpha=full?.9:.55;ctx.drawImage(image,x,y,w,h);ctx.globalAlpha=1;}
     ctx.strokeStyle='#c9b57d88';ctx.lineWidth=1;ctx.strokeRect(x,y,w,h);
     const px=v=>x+v/width*w,py=v=>y+v/height*h;
@@ -247,12 +268,12 @@ const World=(()=>{
       mapDraw(x,y,w,h,true);ctx.fillStyle='#ead9af';ctx.font='24px KaiTi,serif';ctx.textAlign='center';ctx.fillText(Journey.stage().place+' · 舆图',W/2,Math.max(38,y-30));ctx.font=(W<650?'10':'12')+'px Microsoft YaHei,sans-serif';ctx.fillText('青点：小果 · 金点：物资证词 · 红环：守关祭坛',W/2,H-84);ctx.fillText('营地：空心待探 · 赤色交战 · 青色已净',W/2,H-64);ctx.fillText('Tab / Esc / 地图按钮：返回探索',W/2,H-40);ctx.restore();
     }
   }
-  function region(){return titles[Journey.run.stage][active?3:P.x<1400?(P.y>1400?0:1):2];}
+  function region(){if(active)return data().regions[3];const anchors=[data().spawn,data().sites[1],data().sites[2],data().sites[4]];let best=0,dist=Infinity;anchors.forEach((p,i)=>{const d=Math.hypot(P.x-p.x*width,P.y-p.y*height);if(d<dist){best=i;dist=d;}});return data().regions[best];}
   function objective(){
     if(active)return '封界已起 · 识破'+Journey.stage().boss+'的护体机关';
     const distance=Math.round(Math.hypot(P.x-sites[5].x,P.y-sites[5].y)/10);
     return '自由寻路 · '+distance+'丈外可挑战守关者 · E 交互 / Tab 舆图';
   }
   return {bounds,arena,bossPoint,spawn,clipToArena,view,screen,camera,reset,resolve,isWalkable,steer,visible,enterBoss,update,interact,toggleMap,apply,drawBackground,drawGround,drawProps,drawLabels,drawScreen,region,objective,
-    exportState,importState,resumeLore,active:()=>active,context:()=>near,status:()=>({width,height,camera:{...cam},active,mapOpen,visited,camps:EncounterDirector.status().discovered,loaded:images.map(i=>!!(i.complete&&i.naturalWidth))})};
+    exportState,importState,resumeLore,stationUnlocked,active:()=>active,context:()=>near,status:()=>({width,height,camera:{...cam},active,mapOpen,visited,camps:EncounterDirector.status().discovered,loaded:images.map(i=>!!(i.complete&&i.naturalWidth))})};
 })();

@@ -1,0 +1,25 @@
+{
+  "id": "phase-4",
+  "text": "三链问名，今夜换你！",
+  "speaker": "无籍追猎将",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "-5%",
+  "pitch": "-10Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "bc3d337818a37da5690e50a29170511c6d8a29cf1a3805c29a6ea929a5107ec7",
+  "source_sha256": "85006ad63d097bb20662938ee6f6cfe9e56a7dacaf2ece0bb1f8335ab9221fa7",
+  "mixed_sha256": "9f290da9d2eeacb618224dc13fb961a84f7d2599a870a00fd7ee2676f4865c4d",
+  "duration": 3.484,
+  "size": 42956,
+  "file": "assets/audio/voice-v2/phase-4.mp3",
+  "source": "assets/audio/voice-v2/source/phase-4.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.4",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

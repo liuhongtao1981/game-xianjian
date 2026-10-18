@@ -1,0 +1,25 @@
+{
+  "id": "weakness-3",
+  "text": "石心露了，斩断山契！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "7681f2527a53410c46716908f4f42150f08ddcfc6caf2876c768069f85c08941",
+  "source_sha256": "4d3f82ed19376e07daa084f23e567ab0d5144f3f27e16a0d4fdbac30dc0e9b8f",
+  "mixed_sha256": "7a37fddde45545bf5ef045558a7bfbd6ee6bc03172e6653822771064a85bbe9a",
+  "duration": 3.364,
+  "size": 41516,
+  "file": "assets/audio/voice-v2/weakness-3.mp3",
+  "source": "assets/audio/voice-v2/source/weakness-3.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

@@ -1,22 +1,23 @@
 /* One owner for camp challenges, endless exploration and guardian reinforcements. */
 const EncounterDirector=(()=>{
   const offsets={story:-2,normal:0,hard:2,nightmare:4};
-  const limits={story:24,normal:36,hard:44,nightmare:48};
+  const limits={story:36,normal:48,hard:56,nightmare:64};
   let camps=[],pending=[],mode='explore',idle=0,patrols=0,bossTimer=12,serial=0;
   let stats={spawned:0,killed:0,peak:0,patrols:0};
   const living=e=>e.hp>0&&!e.killed;
   const ordinary=e=>living(e)&&!e.boss&&!e.bossHelper&&!e.eventObjective;
   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-  const cap=()=>mode==='boss'?6:Math.min(limits[Journey.run.difficulty]||36,W<650?24:Infinity);
+  const cap=()=>mode==='boss'?6:Math.min(limits[Journey.run.difficulty]||48,W<650||matchMedia('(pointer: coarse)').matches?24:Infinity);
   const owned=c=>G.enemies.filter(e=>living(e)&&e.encounterId===c.id);
   const queued=c=>pending.some(p=>p.encounterId===c.id);
   const isActive=c=>c.state==='active';
-  const tier=id=>id<2?1:[2,4,5].includes(id)?1.15:1.3;
-  const waveSize=()=>8+Journey.run.stage*2+(offsets[Journey.run.difficulty]||0);
+  const tier=id=>[0,9].includes(id)?1:[1,10].includes(id)?1.8:[2,4,5,11,12,13,14].includes(id)?4:6;
+  const waveSize=()=>ChapterCatalog.get(Journey.run.stage).wave+(offsets[Journey.run.difficulty]||0);
   const bossAllowed=()=>G.boss?.hp>0&&G.boss.action!=='exposed'&&!G.boss.brain?.mechanismReady;
   function reset(){
-    camps=WorldNavData[Journey.run.stage].camps.map(([x,y],id)=>({id,x:x*3600,y:y*2600,state:'unseen',wave:0,timer:null,
-      kind:id===3?'ritual':id===7?'bounty':'camp',runesCreated:false,sleeping:[],sleepingPending:[],kills:0}));
+    camps=WorldNavData[Journey.run.stage].camps.map(([x,y],id)=>({id,x:x*World.bounds().w,y:y*World.bounds().h,state:'unseen',wave:0,timer:null,
+      kind:[3,11].includes(id)?'ritual':[7,15].includes(id)?'bounty':'camp',runesCreated:false,sleeping:[],sleepingPending:[],kills:0}));
+    for(const c of camps){const p={x:c.x,y:c.y,r:45};World.resolve(p);c.x=p.x;c.y=p.y;}
     pending=[];mode='explore';idle=0;patrols=0;bossTimer=12;serial=0;stats={spawned:0,killed:0,peak:0,patrols:0};
   }
   function campPoint(c,index,radius=160,body=24){
@@ -111,7 +112,7 @@ const EncounterDirector=(()=>{
     }
     for(const c of camps.filter(isActive))suspend(c);
     const maxActive=P.level<3?1:2;
-    const candidates=camps.filter(c=>['unseen','dormant'].includes(c.state)&&distance(c,P)<320).sort((a,b)=>distance(a,P)-distance(b,P));
+    const candidates=camps.filter(c=>['unseen','dormant'].includes(c.state)&&distance(c,P)<400).sort((a,b)=>distance(a,P)-distance(b,P));
     for(const c of candidates){if(camps.filter(isActive).length>=maxActive)break;activate(c);}
     for(const c of camps.filter(isActive)){
       const units=owned(c),fighters=units.filter(e=>!e.eventObjective);
@@ -127,7 +128,7 @@ const EncounterDirector=(()=>{
     // Camp waves keep priority; a full population delays rather than deletes enemies.
     idle=Math.min(8,idle+dt);
     const available=cap()-G.enemies.filter(ordinary).length-pending.filter(p=>p.source!=='rune').length;
-    if(idle>=8&&available>0&&!pending.some(p=>p.source==='patrol')){
+    if(idle>=8&&camps.filter(isActive).length<2&&available>0&&!pending.some(p=>p.source==='patrol')){
       const anchor=patrolPoint();
       if(anchor){
         const count=Math.min(4+patrols%3,available);patrols++;stats.patrols=patrols;
@@ -148,10 +149,10 @@ const EncounterDirector=(()=>{
     if(mode==='boss')return '守关增援 '+G.enemies.filter(ordinary).length+'/6 · 诱招与破绽时停止增援';
     const active=camps.filter(isActive).sort((a,b)=>distance(a,P)-distance(b,P))[0];
     const cleared=camps.filter(c=>c.state==='cleared').length,elites=camps.filter(c=>c.kind!=='camp'&&c.state==='cleared').length;
-    if(!active)return '营地 '+cleared+'/9 · 精英 '+elites+'/2 · 妖潮不断 '+G.enemies.filter(ordinary).length+'/'+cap();
+    if(!active)return '营地 '+cleared+'/'+camps.length+' · 精英 '+elites+'/4 · 妖潮不断 '+G.enemies.filter(ordinary).length+'/'+cap();
     const units=owned(active),runes=units.filter(e=>e.eventObjective).length;
     const title=active.kind==='ritual'?'破阵妖巢':active.kind==='bounty'?'精英悬赏':'妖众营地';
-    return title+' · 第'+active.wave+'/3波 · 妖众 '+units.filter(e=>!e.eventObjective).length+(runes?' · 阵眼 '+runes:active.timer!==null?' · 增援 '+Math.max(0,Math.ceil(active.timer))+'秒':'')+' · 已清 '+cleared+'/9 · 精英 '+elites+'/2';
+    return title+' · 第'+active.wave+'/3波 · 妖众 '+units.filter(e=>!e.eventObjective).length+(runes?' · 阵眼 '+runes:active.timer!==null?' · 增援 '+Math.max(0,Math.ceil(active.timer))+'秒':'')+' · 已清 '+cleared+'/'+camps.length+' · 精英 '+elites+'/4';
   }
   function drawGround(){
     if(G.state==='start'||mode==='boss'&&!bossAllowed())return;
@@ -164,7 +165,7 @@ const EncounterDirector=(()=>{
   function drawMap(x,y,w,h,full){
     ctx.save();
     for(const c of camps){
-      const px=x+c.x/3600*w,py=y+c.y/2600*h,known=c.state!=='unseen';
+      const px=x+c.x/World.bounds().w*w,py=y+c.y/World.bounds().h*h,known=c.state!=='unseen';
       ctx.strokeStyle=c.state==='cleared'?'#8bbfa8':c.state==='active'?'#f4a272':'#c0b99b80';ctx.fillStyle=ctx.strokeStyle;ctx.lineWidth=1;
       ctx.beginPath();ctx.rect(px-3,py-3,6,6);if(known)ctx.fill();else ctx.stroke();
       if(full&&c.kind!=='camp'){ctx.font=(W<650?'9':'12')+'px KaiTi,serif';ctx.textAlign=c.x>2500?'right':'left';ctx.fillText((c.kind==='ritual'?'破阵':'悬赏')+(c.state==='cleared'?' · 已净':''),px+(c.x>2500?-7:7),py-8);}
@@ -180,7 +181,7 @@ const EncounterDirector=(()=>{
       slots:[...owned(c).map(unit),...c.sleeping.map(unit),...pending.filter(p=>p.encounterId===c.id).map(p=>p.snapshot?unit(p.snapshot):plan(p)),...c.sleepingPending.map(p=>p.snapshot?unit(p.snapshot):plan(p))]}))};
   }
   function importState(s){
-    if(!s||!Array.isArray(s.camps)||s.camps.length!==9)throw new Error('Invalid encounters');
+    if(!s||!Array.isArray(s.camps)||s.camps.length!==camps.length)throw new Error('Invalid encounters');
     reset();idle=Math.max(0,Math.min(8,s.idle||0));patrols=s.patrols||0;serial=s.serial||0;stats={...stats,...s.stats};
     for(const value of s.camps){const c=camps[value.id];if(!c||!['unseen','active','dormant','cleared'].includes(value.state)||!Number.isInteger(value.wave)||value.wave<0||value.wave>3||!Array.isArray(value.slots)||value.slots.length>60)throw new Error('Invalid camp');
       Object.assign(c,{wave:value.wave,timer:value.timer,runesCreated:!!value.runesCreated,kills:value.kills||0,state:value.state==='active'?'dormant':value.state});

@@ -79,3 +79,48 @@ const WorldNavData = [
     camps: [[0.24,0.66],[0.32,0.59],[0.43,0.47],[0.33,0.29],[0.54,0.36],[0.61,0.5],[0.69,0.62],[0.79,0.72],[0.63,0.34]]
   },
 ];
+
+// New terrain has independent geometry; the first nine camp IDs stay stable for old saves.
+for(let i=3;i<6;i++){
+ const ellipse=(x,y,rx,ry)=>Array.from({length:32},(_,n)=>[x+Math.cos(n*Math.PI/16)*rx,y+Math.sin(n*Math.PI/16)*ry]);
+ const corridors=[[[.12,.82],[.30,.88],[.57,.55],[.70,.43],[.69,.28],[.57,.32],[.42,.49],[.25,.65]],[[.15,.16],[.29,.12],[.47,.39],[.45,.53],[.35,.42],[.23,.26]],[[.48,.48],[.57,.43],[.79,.67],[.86,.79],[.72,.83],[.65,.65]]];
+ WorldNavData.push({id:ChapterCatalog.get(i).id,spawn:{x:.20,y:.80},boss:{x:.78,y:.24},bossArena:{x:.78,y:.24,rx:.14,ry:.16},polygons:[...corridors,ellipse(.20,.80,.14,.12),ellipse(.20,.20,.15,.13),ellipse(.79,.76,.15,.13),ellipse(.78,.24,.18,.20)],
+ sites:[{x:.36,y:.58,kind:'lore',name:'旧契残碑',loreIndex:0},{x:.20,y:.20,kind:'lore',name:'隐名证词',loreIndex:1},{x:.79,y:.76,kind:'lore',name:'劫痕遗刻',loreIndex:2},{x:.23,y:.75,kind:'chest',name:'寻圣行囊'},{x:.55,y:.43,kind:'rest',name:'山泉药庐'},{x:.65,y:.39,kind:'boss',name:'守关祭坛'}],
+ camps:[[.25,.76],[.33,.65],[.43,.52],[.20,.21],[.57,.38],[.57,.58],[.68,.66],[.79,.76],[.65,.39]]});
+}
+WorldNavData.forEach((d,index)=>{
+ const c=ChapterCatalog.get(index);d.width=c.width;d.height=c.height;
+ const additions=index<3?[[.24,.78],[.29,.62],[.39,.50],[.47,.42],[.49,.27],[.25,.18],[.60,.51],[.74,.72],[.62,.36]]:[[.18,.79],[.29,.71],[.38,.57],[.48,.48],[.35,.31],[.23,.19],[.64,.59],[.76,.71],[.60,.41]];
+ d.camps.push(...additions);d.elites=[3,7,11,15];
+ d.regions=index<3?['旧路山门','证词支境','残卷外庭','守关禁坛']:index===3?['碎石驿','镇契碑林','断锁峡道','压山坛']:index===4?['荒驿前街','藏籍山寨','追名峡口','问籍刑庭']:['芦洲旧渡','锁鳞浅滩','龙骨长桥','沉鳞龙渊'];
+ const points=[d.spawn,{x:d.sites[1].x,y:d.sites[1].y},{x:d.sites[2].x,y:d.sites[2].y},{x:d.sites[4].x,y:d.sites[4].y}];
+ for(let j=0;j<2;j++){const p=points[j+1];d.sites.push({x:p.x+.025,y:p.y+.025,kind:'chest',name:['隐径珍藏','远行遗匣'][j]},{x:p.x-.025,y:p.y+.025,kind:'rest',name:'旅人药囊'});}
+ points.forEach((p,j)=>d.sites.push({x:p.x+.035,y:p.y,kind:'station',region:j,name:d.regions[j]+'驿站'}));
+});
+
+// Match the generated plazas and bridges in world space, rather than a bounding rectangle.
+for(let i=3;i<6;i++){
+ const d=WorldNavData[i],ellipse=(x,y,rx,ry)=>Array.from({length:40},(_,n)=>[x+Math.cos(n*Math.PI/20)*rx,y+Math.sin(n*Math.PI/20)*ry]);
+ const bridge=(x,y,tx,ty,w)=>{const dx=(tx-x)*d.width,dy=(ty-y)*d.height,len=Math.hypot(dx,dy),ox=-dy/len*w/d.width,oy=dx/len*w/d.height;return [[x+ox,y+oy],[tx+ox,ty+oy],[tx-ox,ty-oy],[x-ox,y-oy]];};
+ d.polygons=[ellipse(.20,.78,.145,.15),ellipse(.46,.45,.09,.09),ellipse(.19,.17,.14,.13),ellipse(.79,.75,.14,.15),ellipse(.78,.23,.17,.185),bridge(.20,.78,.46,.45,230),bridge(.46,.45,.78,.23,230),bridge(.19,.17,.46,.45,220),bridge(.46,.45,.79,.75,220)];
+ d.spawn={x:.20,y:.80};d.sites[5]={...d.sites[5],x:.64,y:.32};
+}
+
+// Independently traced routes for the remade opening trilogy.
+const OpeningLayouts=[
+ {spawn:[.39,.80],hub:[.46,.47],left:[.20,.15],right:[.81,.73],boss:[.81,.19],main:[[.39,.80],[.43,.62],[.46,.47],[.60,.40],[.67,.24],[.81,.19]],upper:[[.46,.47],[.42,.32],[.35,.24],[.20,.15]],lower:[[.46,.47],[.60,.48],[.70,.62],[.81,.73]]},
+ {spawn:[.32,.76],hub:[.51,.39],left:[.18,.13],right:[.80,.65],boss:[.81,.18],main:[[.32,.76],[.37,.61],[.46,.48],[.51,.39],[.58,.30],[.70,.25],[.81,.18]],upper:[[.51,.39],[.48,.23],[.36,.21],[.18,.13]],lower:[[.51,.39],[.60,.46],[.65,.53],[.80,.65]]},
+ {spawn:[.19,.71],hub:[.46,.30],left:[.20,.13],right:[.85,.71],boss:[.80,.18],main:[[.19,.71],[.31,.52],[.39,.39],[.46,.30],[.63,.23],[.80,.18]],upper:[[.46,.30],[.35,.22],[.20,.13]],lower:[[.46,.30],[.58,.42],[.69,.56],[.85,.71]]}
+];
+OpeningLayouts.forEach((l,i)=>{
+ const d=WorldNavData[i],ellipse=(p,rx,ry)=>Array.from({length:40},(_,n)=>[p[0]+Math.cos(n*Math.PI/20)*rx,p[1]+Math.sin(n*Math.PI/20)*ry]);
+ const bridge=(p,q,w=180)=>{const dx=(q[0]-p[0])*d.width,dy=(q[1]-p[1])*d.height,len=Math.hypot(dx,dy),x=-dy/len*w/d.width,y=dx/len*w/d.height;return [[p[0]+x,p[1]+y],[q[0]+x,q[1]+y],[q[0]-x,q[1]-y],[p[0]-x,p[1]-y]];};
+ d.polygons=[ellipse(l.spawn,.105,.10),ellipse(l.hub,.09,.095),ellipse(l.left,.105,.085),ellipse(l.right,.105,.10),ellipse(l.boss,.145,.135)];
+ for(const route of [l.main,l.upper,l.lower])for(let j=1;j<route.length;j++){d.polygons.push(bridge(route[j-1],route[j]));d.polygons.push(ellipse(route[j],.036,.05));}
+ d.spawn={x:l.spawn[0],y:l.spawn[1]};d.boss={x:l.boss[0],y:l.boss[1]};d.bossArena={...d.boss,rx:.13,ry:.12};
+ const along=(route,t)=>{const f=t*(route.length-1),j=Math.min(route.length-2,Math.floor(f)),k=f-j;return [route[j][0]+(route[j+1][0]-route[j][0])*k,route[j][1]+(route[j+1][1]-route[j][1])*k];};
+ d.camps=[along(l.main,.02),along(l.main,.16),along(l.main,.32),l.left,along(l.upper,.50),along(l.main,.48),along(l.lower,.65),l.right,along(l.main,.74),[l.spawn[0]+.035,l.spawn[1]+.025],along(l.main,.25),along(l.main,.4),along(l.upper,.75),along(l.main,.61),along(l.lower,.35),along(l.lower,.86),[l.right[0]+.035,l.right[1]+.015],along(l.main,.85)];
+ const mid=along(l.main,.62),entry=along(l.main,.80),positions=[l.hub,l.left,l.right,[l.spawn[0]+.04,l.spawn[1]-.03],mid,entry];
+ for(let j=0;j<6;j++)Object.assign(d.sites[j],{x:positions[j][0],y:positions[j][1]});
+ const extras=[l.left,l.left,l.right,l.right,l.spawn,l.left,l.right,mid];for(let j=6;j<14;j++){const p=extras[j-6];Object.assign(d.sites[j],{x:p[0]+(j%2?.025:-.025),y:p[1]+.025});}
+});

@@ -52,7 +52,7 @@ const ExplorationPilot=(()=>{
     }
   }
   function route(full){
-    const ids=full?[0,1,2,3,4,5,6,7,8]:[0,1,2,4,3,7,8];
+    const ids=full?Array.from({length:18},(_,i)=>i):[0,1,2,11,4,3,7,8];
     const items=[];
     for(const id of ids){items.push({kind:'camp',id});if(id===0)items.push({kind:'site',id:3});if(id===2)items.push({kind:'site',id:0});if(id===4)items.push({kind:'site',id:4});if(full&&id===3)items.push({kind:'site',id:1});if(full&&id===7)items.push({kind:'site',id:2});}
     items.push({kind:'site',id:5});return items;
@@ -73,7 +73,7 @@ const ExplorationPilot=(()=>{
             const s=EncounterDirector.status();let target=path[index];
             while(target&&target.kind==='camp'&&s.camps[target.id].state==='cleared'){index++;target=path[index];}
             if(!target)break;
-            const point=target.kind==='camp'?s.camps[target.id]:{x:WorldNavData[Journey.run.stage].sites[target.id].x*3600,y:WorldNavData[Journey.run.stage].sites[target.id].y*2600};
+            const point=target.kind==='camp'?s.camps[target.id]:{x:WorldNavData[Journey.run.stage].sites[target.id].x*World.bounds().w,y:WorldNavData[Journey.run.stage].sites[target.id].y*World.bounds().h};
             if(target.kind==='site'&&dist(point,P)<100){
               World.update(0);
               if(World.context()){
@@ -91,7 +91,7 @@ const ExplorationPilot=(()=>{
       }
       clearInput();const s=EncounterDirector.status();
       rows.push({stage:Journey.run.stage+1,state:G.state,time:Math.round(G.time),level:P.level,hp:Math.round(P.hp),damageTaken:Math.round(damage),kills:G.kills,combatSeconds:Math.round(combatTime),maxGapSeconds:Math.round(maxGap),routeIndex:index,routeLength:path.length,beforeBoss,spells:{...P.spells},equips:[...P.equips],director:s.stats,camps:s.camps.map(c=>({id:c.id,state:c.state,wave:c.wave,remaining:c.remaining,runes:c.runes}))});
-      if(G.state!=='win'||stage===(options.stages||3)-1)break;(G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('power');
+      if(G.state!=='win'||stage===(options.stages||3)-1)break;if(G.coreReward)Cultivation.claimCore(G.coreReward.max);if(ChapterCatalog.get(Journey.run.stage+1).realm>P.cultivation.realm){CharacterUI.toggle();const r=Cultivation.recipe();if(!Cultivation.attempt(r.coreCount,r.essence))break;P.cultivation.result=null;CharacterUI.close();}Journey.next('power');
     }
     return {cleared:rows.filter(r=>r.state==='win').length,rows};
   }

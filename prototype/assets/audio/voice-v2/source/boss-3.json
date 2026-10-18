@@ -1,0 +1,26 @@
+{
+  "id": "boss-3",
+  "text": "山能压人，落款才能压住一个名字。",
+  "speaker": "压山石魁",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-9%",
+  "pitch": "-10Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "8f94e8f1119b8762135f961a624d325cc5b274a2d4e537904209b03710b4bca4",
+  "source_sha256": "8562fd4436fdb3ba1648fad0532f90bdb74d4e8ba1f6a4bd2fb588c1f88e9257",
+  "mixed_sha256": "f0a9a155b45f16509950e737e8a1b2573ccdd1a7db8cb9b28b9a900b9be77248",
+  "duration": 3.898,
+  "size": 47852,
+  "file": "assets/audio/voice-v2/boss-3.mp3",
+  "source": "assets/audio/voice-v2/source/boss-3.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=2",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:54:0.075",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

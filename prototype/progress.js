@@ -10,7 +10,7 @@ const JourneyProgress=(()=>{
     growthChoices:b.growthChoices??Math.max(0,Math.floor(b.level)-1),t:{...b.t},
     poison:b.poison===true,spells:{...b.spells},equips:[...b.equips],cultivation:Cultivation.clean(b.cultivation)};}
   function validBuild(b){
-    return b&&fields.every(k=>Number.isFinite(b[k])&&Math.abs(b[k])<1e7)&&b.maxHp>0&&b.hp>0&&b.hp<=b.maxHp&&b.speed>0&&b.dmg>0&&b.cdr>0&&b.level>=1&&b.spells&&Object.entries(b.spells).every(([k,v])=>spellKeys.includes(k)&&Number.isInteger(v)&&v>=1&&v<=10)&&Array.isArray(b.equips)&&b.equips.length<=8&&b.equips.every(v=>['mujian','jifeng','jiuhu','wudu','nvwa','tiangang','juling','huxin'].includes(v))
+    return b&&fields.every(k=>Number.isFinite(b[k])&&Math.abs(b[k])<1e7)&&b.maxHp>0&&b.hp>0&&b.hp<=b.maxHp&&b.speed>0&&b.dmg>0&&b.cdr>0&&b.level>=1&&b.spells&&Object.entries(b.spells).every(([k,v])=>spellKeys.includes(k)&&Number.isInteger(v)&&v>=1&&v<=18)&&Array.isArray(b.equips)&&b.equips.length<=8&&b.equips.every(v=>['mujian','jifeng','jiuhu','wudu','nvwa','tiangang','juling','huxin'].includes(v))
       &&Object.keys(resources).every(k=>b[k]===undefined||Number.isFinite(b[k])&&b[k]>=0&&b[k]<1e7)
       &&(b.shield===undefined||b.shield<=b.shieldMax)&&(b.energy===undefined||b.energy<=100)
       &&(b.growthChoices===undefined||Number.isInteger(b.growthChoices)&&b.growthChoices>=0&&b.growthChoices<1e7)
@@ -18,9 +18,9 @@ const JourneyProgress=(()=>{
   }
   try{
     const saved=JSON.parse(localStorage.getItem(key));
-    if(saved?.version===1&&Number.isInteger(saved.cleared)&&saved.cleared>=0&&saved.cleared<=3){
+    if(saved?.version===1&&Number.isInteger(saved.cleared)&&saved.cleared>=0&&saved.cleared<=42){
       data.cleared=saved.cleared;
-      for(const i of [1,2]){const e=saved.entries?.[i];if(e&&['story','normal','hard','nightmare'].includes(e.difficulty)&&validBuild(e.build))data.entries[i]={difficulty:e.difficulty,build:cleanBuild(e.build)};}
+      for(const i of Array.from({length:41},(_,j)=>j+1)){const e=saved.entries?.[i];if(e&&['story','normal','hard','nightmare'].includes(e.difficulty)&&validBuild(e.build))data.entries[i]={difficulty:e.difficulty,build:cleanBuild(e.build)};}
       // Broken or older saves cannot expose a chapter without an entry build.
       if(data.cleared>1&&!data.entries[1])data.cleared=1;
       if(data.cleared>2&&!data.entries[2])data.cleared=2;
@@ -28,13 +28,14 @@ const JourneyProgress=(()=>{
   }catch{}
   function persist(){if(typeof RunSave!=='undefined'&&RunSave.active())return;try{localStorage.setItem(key,JSON.stringify(data));}catch{/* Session progression remains available. */}}
   function restore(saved){
-    if(!saved||saved.version!==1||!Number.isInteger(saved.cleared)||saved.cleared<0||saved.cleared>3)throw new Error('Invalid chapter progress');
-    const entries={};for(const i of [1,2])if(saved.entries?.[i]){const e=saved.entries[i];if(!validBuild(e.build)||!['story','normal','hard','nightmare'].includes(e.difficulty))throw new Error('Invalid entry');entries[i]={difficulty:e.difficulty,build:cleanBuild(e.build)};}
+    if(!saved||saved.version!==1||!Number.isInteger(saved.cleared)||saved.cleared<0||saved.cleared>42)throw new Error('Invalid chapter progress');
+    const entries={};for(const i of Array.from({length:41},(_,j)=>j+1))if(saved.entries?.[i]){const e=saved.entries[i];if(!validBuild(e.build)||!['story','normal','hard','nightmare'].includes(e.difficulty))throw new Error('Invalid entry');entries[i]={difficulty:e.difficulty,build:cleanBuild(e.build)};}
     data={version:1,cleared:saved.cleared,entries};
   }
-  function entry(stage,build,difficulty){if(stage<1||stage>2||!validBuild(build))return;data.entries[stage]={difficulty,build:cleanBuild(build)};persist();}
-  function clear(stage){if(stage===data.cleared){data.cleared=Math.min(3,data.cleared+1);persist();}}
-  function canSelect(stage){return Number.isInteger(stage)&&stage>=0&&stage<=2&&stage<=data.cleared;}
+  function entry(stage,build,difficulty){if(stage<1||stage>=ChapterCatalog.playable||!validBuild(build))return;data.entries[stage]={difficulty,build:cleanBuild(build)};persist();}
+  function clear(stage){if(stage===data.cleared){data.cleared=Math.min(42,data.cleared+1);persist();}}
+  function canSelect(stage){const realm=typeof RunSave!=='undefined'&&RunSave.active()&&typeof P!=='undefined'&&P?P.cultivation.realm:typeof RunSave!=='undefined'?RunSave.snapshot()?.run.player.cultivation.realm||0:0;return Number.isInteger(stage)&&stage>=0&&stage<ChapterCatalog.playable&&stage<=data.cleared&&ChapterCatalog.get(stage).realm<=realm;}
+
   function replay(stage,difficulty,profiles){
     if(!canSelect(stage)||stage===0||!data.entries[stage])return null;
     const entry=data.entries[stage],build=copy(entry.build),fraction=build.hp/build.maxHp;

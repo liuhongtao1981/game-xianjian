@@ -1,0 +1,25 @@
+{
+  "id": "stage-4",
+  "text": "残籍驿每到黄昏便有一支空马队进山。它们载走证人，留下同样的空白名帖。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "2dd9b0b5d4f8eef609e4194aff04e0029ba9f03f59ee02aa234819d54777b3fd",
+  "source_sha256": "285dcd94e78dc7c5f07665afa67f232d34c85a96e27f9de897989caf8cae1973",
+  "mixed_sha256": "1a9eeebd0e19d46fdfc95b6cb113bcc212b39a1fc8f2e8cc038764f624a496d3",
+  "duration": 8.332,
+  "size": 101132,
+  "file": "assets/audio/voice-v2/stage-4.mp3",
+  "source": "assets/audio/voice-v2/source/stage-4.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

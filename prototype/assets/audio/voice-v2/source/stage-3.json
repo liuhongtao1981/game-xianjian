@@ -1,0 +1,25 @@
+{
+  "id": "stage-3",
+  "text": "金毫落在五行山的断碑上。孙小果没有找到大圣，只看见六百道新凿的契痕。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "3a24107fe21ec8d636dc45e593f9e41b4c6cda04adb9100426ef6ea251e8e430",
+  "source_sha256": "816617d67e990d05ae0595736805bbbce8199b10a22c0ffcbac47ea064b3d2a3",
+  "mixed_sha256": "3bb3e2a7912527ee1988e8ba68b7b2ff5afd803ddc9da5394362ca4f99e86b1e",
+  "duration": 7.876,
+  "size": 95660,
+  "file": "assets/audio/voice-v2/stage-3.mp3",
+  "source": "assets/audio/voice-v2/source/stage-3.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

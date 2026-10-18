@@ -42,6 +42,48 @@
       "bpm": 104,
       "duration": 36.923,
       "original": true
+    },
+    {
+      "file": "assets/audio/music/mountain-field.mp3",
+      "title": "五行断契·行路",
+      "bpm": 74,
+      "duration": 51.892,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/mountain-boss.mp3",
+      "title": "五行断契·守关",
+      "bpm": 108,
+      "duration": 35.556,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/outpost-field.mp3",
+      "title": "两界追名·行路",
+      "bpm": 88,
+      "duration": 43.636,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/outpost-boss.mp3",
+      "title": "两界追名·守关",
+      "bpm": 120,
+      "duration": 32,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/dragon-field.mp3",
+      "title": "鹰涧解喉·行路",
+      "bpm": 70,
+      "duration": 54.857,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/dragon-boss.mp3",
+      "title": "鹰涧解喉·守关",
+      "bpm": 106,
+      "duration": 36.226,
+      "original": true
     }
   ]
 }

@@ -5,44 +5,341 @@
   "output": "prototype/assets/audio/voice-v2",
   "fallback": "prototype/assets/audio/voice",
   "profiles": {
-    "narrator": {"voice":"zh-CN-YunyangNeural","rate":"-10%","pitch":"-6Hz","body":1.6},
-    "hero": {"voice":"zh-CN-YunxiNeural","rate":"-3%","pitch":"-5Hz","body":0.8},
-    "monk": {"voice":"zh-CN-YunyangNeural","rate":"-9%","pitch":"-10Hz","body":2.0,"echo":0.075,"delay":54},
-    "edict": {"voice":"zh-CN-YunjianNeural","rate":"-5%","pitch":"-10Hz","body":1.4},
-    "river": {"voice":"zh-CN-YunyangNeural","rate":"-9%","pitch":"-13Hz","body":2.0,"echo":0.085,"delay":112}
+    "narrator": {
+      "voice": "zh-CN-YunyangNeural",
+      "rate": "-10%",
+      "pitch": "-6Hz",
+      "body": 1.6
+    },
+    "hero": {
+      "voice": "zh-CN-YunxiNeural",
+      "rate": "-3%",
+      "pitch": "-5Hz",
+      "body": 0.8
+    },
+    "monk": {
+      "voice": "zh-CN-YunyangNeural",
+      "rate": "-9%",
+      "pitch": "-10Hz",
+      "body": 2,
+      "echo": 0.075,
+      "delay": 54
+    },
+    "edict": {
+      "voice": "zh-CN-YunjianNeural",
+      "rate": "-5%",
+      "pitch": "-10Hz",
+      "body": 1.4
+    },
+    "river": {
+      "voice": "zh-CN-YunyangNeural",
+      "rate": "-9%",
+      "pitch": "-13Hz",
+      "body": 2,
+      "echo": 0.085,
+      "delay": 112
+    }
   },
   "cues": [
-    {"id":"yujian","text":"御剑，去。","role":"hero","speaker":"孙小果"},
-    {"id":"wanjian","text":"万剑，随我！","role":"hero","speaker":"孙小果"},
-    {"id":"wulei","text":"五雷，诛邪！","role":"hero","speaker":"孙小果"},
-    {"id":"sanmei","text":"三昧真火，起！","role":"hero","speaker":"孙小果"},
-    {"id":"bingxin","text":"心定，剑不乱。","role":"hero","speaker":"孙小果"},
-    {"id":"gudu","text":"蛊雾，散。","role":"hero","speaker":"孙小果"},
-    {"id":"jiushen","text":"借酒，斩妖！","role":"hero","speaker":"孙小果"},
-    {"id":"guanyin","text":"一息尚存。","role":"hero","speaker":"孙小果"},
-    {"id":"ult-heaven","text":"以我一剑，破这天规！","role":"hero","speaker":"孙小果"},
-    {"id":"ult-lotus","text":"莲华开处，生死由我！","role":"hero","speaker":"孙小果"},
-    {"id":"ult-river","text":"命如江流，我偏逆行！","role":"hero","speaker":"孙小果"},
-    {"id":"stage-0","text":"大圣失踪后，八十一难的名册开始自行改写。无籍剑仙孙小果循一截焦黑毫毛，踏入金蝉受贬的劫痕。","role":"narrator","speaker":"说书人"},
-    {"id":"stage-1","text":"金色毫毛将孙小果引到陈府。门内每夜都传出婴儿的哭声，每到黎明，族谱便少一个名字。","role":"narrator","speaker":"说书人"},
-    {"id":"stage-2","text":"孙小果顺洪江寻到一只永不腐烂的木板。血书上的字，每逢满月便会变成另一个人的笔迹。","role":"narrator","speaker":"说书人"},
-    {"id":"boss-0","text":"你以为受贬的是金蝉？被贬的，是敢问价的人。","role":"monk","speaker":"缄口监院"},
-    {"id":"boss-1","text":"真假不在纸上，在谁活着盖印。","role":"edict","speaker":"血诏司命"},
-    {"id":"boss-2","text":"江水向东，账册向西。你要渡哪一边？","role":"river","speaker":"沉灯河伯"},
-    {"id":"phase-0","text":"万声皆寂。诸戒，归身！","role":"monk","speaker":"缄口监院"},
-    {"id":"phase-1","text":"印还在，命就断不了。","role":"edict","speaker":"血诏司命"},
-    {"id":"phase-2","text":"借满江亡魂，再点一次灯。","role":"river","speaker":"沉灯河伯"},
-    {"id":"victory","text":"这一难，破了。","role":"hero","speaker":"孙小果"},
-    {"id":"defeat","text":"剑折，路未尽。","role":"hero","speaker":"孙小果"},
-    {"id":"level","text":"剑意，更进一步。","role":"hero","speaker":"孙小果"},
-    {"id":"weakness-0","text":"钟心露了，就是现在！","role":"hero","speaker":"孙小果"},
-    {"id":"weakness-1","text":"诏令断了，趁它收刀！","role":"hero","speaker":"孙小果"},
-    {"id":"weakness-2","text":"潮势已尽，斩它逆鳞！","role":"hero","speaker":"孙小果"},
-    {"id":"omen-0","text":"听，钟声歇了。等它落印。","role":"hero","speaker":"孙小果"},
-    {"id":"omen-1","text":"刀势未尽，先避开。","role":"hero","speaker":"孙小果"},
-    {"id":"omen-2","text":"潮里留着一线生路。","role":"hero","speaker":"孙小果"},
-    {"id":"victory-0","text":"监院的铁面落地，里面没有舌头。三页证词写着同一个收讫人，却被金漆涂去姓名。","role":"narrator","speaker":"说书人"},
-    {"id":"victory-1","text":"司命的面具后挂着一排空白官印。它从不问诏令真假，只问印泥是否够红。","role":"narrator","speaker":"说书人"},
-    {"id":"victory-2","text":"河伯倒下，灯芯里传出大圣的一声冷笑。别沿着他们写好的路找我。","role":"narrator","speaker":"说书人"}
+    {
+      "id": "yujian",
+      "text": "御剑，去。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "wanjian",
+      "text": "万剑，随我！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "wulei",
+      "text": "五雷，诛邪！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "sanmei",
+      "text": "三昧真火，起！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "bingxin",
+      "text": "心定，剑不乱。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "gudu",
+      "text": "蛊雾，散。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "jiushen",
+      "text": "借酒，斩妖！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "guanyin",
+      "text": "一息尚存。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "ult-heaven",
+      "text": "以我一剑，破这天规！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "ult-lotus",
+      "text": "莲华开处，生死由我！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "ult-river",
+      "text": "命如江流，我偏逆行！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "stage-0",
+      "text": "大圣失踪后，八十一难的名册开始自行改写。无籍剑仙孙小果循一截焦黑毫毛，踏入金蝉受贬的劫痕。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "stage-1",
+      "text": "金色毫毛将孙小果引到陈府。门内每夜都传出婴儿的哭声，每到黎明，族谱便少一个名字。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "stage-2",
+      "text": "孙小果顺洪江寻到一只永不腐烂的木板。血书上的字，每逢满月便会变成另一个人的笔迹。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "boss-0",
+      "text": "你以为受贬的是金蝉？被贬的，是敢问价的人。",
+      "role": "monk",
+      "speaker": "缄口监院"
+    },
+    {
+      "id": "boss-1",
+      "text": "真假不在纸上，在谁活着盖印。",
+      "role": "edict",
+      "speaker": "血诏司命"
+    },
+    {
+      "id": "boss-2",
+      "text": "江水向东，账册向西。你要渡哪一边？",
+      "role": "river",
+      "speaker": "沉灯河伯"
+    },
+    {
+      "id": "phase-0",
+      "text": "万声皆寂。诸戒，归身！",
+      "role": "monk",
+      "speaker": "缄口监院"
+    },
+    {
+      "id": "phase-1",
+      "text": "印还在，命就断不了。",
+      "role": "edict",
+      "speaker": "血诏司命"
+    },
+    {
+      "id": "phase-2",
+      "text": "借满江亡魂，再点一次灯。",
+      "role": "river",
+      "speaker": "沉灯河伯"
+    },
+    {
+      "id": "victory",
+      "text": "这一难，破了。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "defeat",
+      "text": "剑折，路未尽。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "level",
+      "text": "剑意，更进一步。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "weakness-0",
+      "text": "钟心露了，就是现在！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "weakness-1",
+      "text": "诏令断了，趁它收刀！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "weakness-2",
+      "text": "潮势已尽，斩它逆鳞！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "omen-0",
+      "text": "听，钟声歇了。等它落印。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "omen-1",
+      "text": "刀势未尽，先避开。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "omen-2",
+      "text": "潮里留着一线生路。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "victory-0",
+      "text": "监院的铁面落地，里面没有舌头。三页证词写着同一个收讫人，却被金漆涂去姓名。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "victory-1",
+      "text": "司命的面具后挂着一排空白官印。它从不问诏令真假，只问印泥是否够红。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "victory-2",
+      "text": "河伯倒下，灯芯里传出大圣的一声冷笑。别沿着他们写好的路找我。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "stage-3",
+      "text": "金毫落在五行山的断碑上。孙小果没有找到大圣，只看见六百道新凿的契痕。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "boss-3",
+      "text": "山能压人，落款才能压住一个名字。",
+      "role": "monk",
+      "speaker": "压山石魁"
+    },
+    {
+      "id": "phase-3",
+      "text": "镇山契未断，群峰皆是牢！",
+      "role": "monk",
+      "speaker": "压山石魁"
+    },
+    {
+      "id": "victory-3",
+      "text": "石心碎开，里面不是金丹，而是一枚被反复刮去姓名的镇山印。大圣从未签过字。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "omen-3",
+      "text": "引它的重锤，砸断锁柱。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "weakness-3",
+      "text": "石心露了，斩断山契！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "stage-4",
+      "text": "残籍驿每到黄昏便有一支空马队进山。它们载走证人，留下同样的空白名帖。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "boss-4",
+      "text": "没有名字的人，也配向我问路？",
+      "role": "edict",
+      "speaker": "无籍追猎将"
+    },
+    {
+      "id": "phase-4",
+      "text": "三链问名，今夜换你！",
+      "role": "edict",
+      "speaker": "无籍追猎将"
+    },
+    {
+      "id": "victory-4",
+      "text": "面甲下是一叠湿透的路引。每夺一个名字，它就能多活一夜。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "omen-4",
+      "text": "金毫有影，只有这枚是真。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "weakness-4",
+      "text": "追链已尽，趁它收势！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "stage-5",
+      "text": "鹰愁涧的水向两岸退去，露出一条布满锁鳞的龙骨桥。桥下的哭声，来自白蛟的喉中。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "boss-5",
+      "text": "我吞下的每一字，都有人拿去换了功德。",
+      "role": "river",
+      "speaker": "封喉白蛟"
+    },
+    {
+      "id": "phase-5",
+      "text": "愿契入水，雷潮封喉！",
+      "role": "river",
+      "speaker": "封喉白蛟"
+    },
+    {
+      "id": "victory-5",
+      "text": "白蛟终于吐出一片袈裟。上面的名字都在呼吸，唯独收契者的名字是一块空白。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "omen-5",
+      "text": "冲岸露鳞，去干岸迎潮。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "weakness-5",
+      "text": "雷潮退去，斩开锁喉！",
+      "role": "hero",
+      "speaker": "孙小果"
+    }
   ]
 }

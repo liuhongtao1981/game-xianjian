@@ -1,0 +1,25 @@
+{
+  "id": "victory-4",
+  "text": "面甲下是一叠湿透的路引。每夺一个名字，它就能多活一夜。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "19dcb5c816781d33585d221266ce9cebbf508f18c82806ef5d952b8b6960f0ed",
+  "source_sha256": "cf1ca7edc333a37aa9ffd8d51f9f2e534fdff2144bc4c29aaec6ec9fa733ee15",
+  "mixed_sha256": "1826cf14ad3a026422e45e8812392f1ef90076dae4a2d1b52469f7d7e2a6c1b1",
+  "duration": 6.412,
+  "size": 78092,
+  "file": "assets/audio/voice-v2/victory-4.mp3",
+  "source": "assets/audio/voice-v2/source/victory-4.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

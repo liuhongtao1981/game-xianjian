@@ -1,0 +1,25 @@
+{
+  "id": "weakness-4",
+  "text": "追链已尽，趁它收势！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "7a753c68bf0edf487a395ad2154816532aab36ce4f4703e93d1288d63a371f0c",
+  "source_sha256": "370b9892e313968127123253e84778723a26ee85bb74c42891128805f5047fa6",
+  "mixed_sha256": "a394e4dd46cd67a157197afd15c0e499bc7312e8841511f9bb3a902a7c92e89b",
+  "duration": 3.412,
+  "size": 42092,
+  "file": "assets/audio/voice-v2/weakness-4.mp3",
+  "source": "assets/audio/voice-v2/source/weakness-4.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

@@ -1,0 +1,1059 @@
+{
+  "note": "Scripted full exploration, not human completion rates or timing",
+  "cleared": 6,
+  "rows": [
+    {
+      "stage": 1,
+      "state": "win",
+      "time": 517,
+      "level": 13,
+      "hp": 141,
+      "damageTaken": 0,
+      "kills": 816,
+      "combatSeconds": 427,
+      "maxGapSeconds": 10,
+      "routeIndex": 24,
+      "routeLength": 24,
+      "beforeBoss": {
+        "time": 478,
+        "level": 13,
+        "hp": 141,
+        "spawned": 822,
+        "killed": 796,
+        "peak": 30,
+        "patrols": 35,
+        "cleared": 18,
+        "eliteCamps": 4
+      },
+      "spells": {
+        "yujian": 2,
+        "wanjian": 5,
+        "bingxin": 1,
+        "wulei": 2,
+        "guanyin": 1,
+        "sanmei": 1
+      },
+      "equips": [
+        "nvwa",
+        "jifeng",
+        "mujian",
+        "huxin",
+        "wudu"
+      ],
+      "director": {
+        "spawned": 826,
+        "killed": 800,
+        "peak": 30,
+        "patrols": 35
+      },
+      "camps": [
+        {
+          "id": 0,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 1,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 2,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 3,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 4,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 5,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 6,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 7,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 8,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 9,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 10,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 11,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 12,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 13,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 14,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 15,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 16,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 17,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "state": "win",
+      "time": 534,
+      "level": 16,
+      "hp": 171,
+      "damageTaken": 0,
+      "kills": 922,
+      "combatSeconds": 416,
+      "maxGapSeconds": 12,
+      "routeIndex": 24,
+      "routeLength": 24,
+      "beforeBoss": {
+        "time": 490,
+        "level": 16,
+        "hp": 171,
+        "spawned": 951,
+        "killed": 907,
+        "peak": 32,
+        "patrols": 39,
+        "cleared": 18,
+        "eliteCamps": 4
+      },
+      "spells": {
+        "yujian": 2,
+        "wanjian": 5,
+        "bingxin": 1,
+        "wulei": 3,
+        "guanyin": 3,
+        "sanmei": 1
+      },
+      "equips": [
+        "nvwa",
+        "jifeng",
+        "mujian",
+        "huxin",
+        "wudu",
+        "juling",
+        "tiangang",
+        "jiuhu"
+      ],
+      "director": {
+        "spawned": 955,
+        "killed": 911,
+        "peak": 32,
+        "patrols": 39
+      },
+      "camps": [
+        {
+          "id": 0,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 1,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 2,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 3,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 4,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 5,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 6,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 7,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 8,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 9,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 10,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 11,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 12,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 13,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 14,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 15,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 16,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 17,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "state": "win",
+      "time": 525,
+      "level": 19,
+      "hp": 171,
+      "damageTaken": 0,
+      "kills": 1023,
+      "combatSeconds": 435,
+      "maxGapSeconds": 12,
+      "routeIndex": 24,
+      "routeLength": 24,
+      "beforeBoss": {
+        "time": 477,
+        "level": 19,
+        "hp": 171,
+        "spawned": 1048,
+        "killed": 1008,
+        "peak": 36,
+        "patrols": 37,
+        "cleared": 18,
+        "eliteCamps": 4
+      },
+      "spells": {
+        "yujian": 2,
+        "wanjian": 5,
+        "bingxin": 1,
+        "wulei": 4,
+        "guanyin": 5,
+        "sanmei": 1
+      },
+      "equips": [
+        "nvwa",
+        "jifeng",
+        "mujian",
+        "huxin",
+        "wudu",
+        "juling",
+        "tiangang",
+        "jiuhu"
+      ],
+      "director": {
+        "spawned": 1052,
+        "killed": 1012,
+        "peak": 36,
+        "patrols": 37
+      },
+      "camps": [
+        {
+          "id": 0,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 1,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 2,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 3,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 4,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 5,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 6,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 7,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 8,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 9,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 10,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 11,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 12,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 13,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 14,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 15,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 16,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 17,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        }
+      ]
+    },
+    {
+      "stage": 4,
+      "state": "win",
+      "time": 575,
+      "level": 21,
+      "hp": 224,
+      "damageTaken": 0,
+      "kills": 1041,
+      "combatSeconds": 453,
+      "maxGapSeconds": 12,
+      "routeIndex": 24,
+      "routeLength": 24,
+      "beforeBoss": {
+        "time": 457,
+        "level": 20,
+        "hp": 224,
+        "spawned": 1046,
+        "killed": 1007,
+        "peak": 36,
+        "patrols": 37,
+        "cleared": 18,
+        "eliteCamps": 4
+      },
+      "spells": {
+        "yujian": 2,
+        "wanjian": 6,
+        "bingxin": 1,
+        "wulei": 5,
+        "guanyin": 5,
+        "sanmei": 1
+      },
+      "equips": [
+        "nvwa",
+        "jifeng",
+        "mujian",
+        "huxin",
+        "wudu",
+        "juling",
+        "tiangang",
+        "jiuhu"
+      ],
+      "director": {
+        "spawned": 1064,
+        "killed": 1025,
+        "peak": 36,
+        "patrols": 37
+      },
+      "camps": [
+        {
+          "id": 0,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 1,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 2,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 3,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 4,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 5,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 6,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 7,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 8,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 9,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 10,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 11,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 12,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 13,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 14,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 15,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 16,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 17,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        }
+      ]
+    },
+    {
+      "stage": 5,
+      "state": "win",
+      "time": 457,
+      "level": 22,
+      "hp": 224,
+      "damageTaken": 0,
+      "kills": 1110,
+      "combatSeconds": 341,
+      "maxGapSeconds": 13,
+      "routeIndex": 24,
+      "routeLength": 24,
+      "beforeBoss": {
+        "time": 420,
+        "level": 22,
+        "hp": 224,
+        "spawned": 1137,
+        "killed": 1094,
+        "peak": 37,
+        "patrols": 33,
+        "cleared": 18,
+        "eliteCamps": 4
+      },
+      "spells": {
+        "yujian": 2,
+        "wanjian": 6,
+        "bingxin": 1,
+        "wulei": 6,
+        "guanyin": 5,
+        "sanmei": 1
+      },
+      "equips": [
+        "nvwa",
+        "jifeng",
+        "mujian",
+        "huxin",
+        "wudu",
+        "juling",
+        "tiangang",
+        "jiuhu"
+      ],
+      "director": {
+        "spawned": 1139,
+        "killed": 1104,
+        "peak": 37,
+        "patrols": 33
+      },
+      "camps": [
+        {
+          "id": 0,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 1,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 2,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 3,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 4,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 5,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 6,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 7,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 8,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 9,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 10,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 11,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 12,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 13,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 14,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 15,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 16,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 17,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        }
+      ]
+    },
+    {
+      "stage": 6,
+      "state": "win",
+      "time": 550,
+      "level": 24,
+      "hp": 224,
+      "damageTaken": 0,
+      "kills": 1239,
+      "combatSeconds": 401,
+      "maxGapSeconds": 17,
+      "routeIndex": 24,
+      "routeLength": 24,
+      "beforeBoss": {
+        "time": 492,
+        "level": 24,
+        "hp": 224,
+        "spawned": 1279,
+        "killed": 1224,
+        "peak": 46,
+        "patrols": 40,
+        "cleared": 18,
+        "eliteCamps": 4
+      },
+      "spells": {
+        "yujian": 2,
+        "wanjian": 6,
+        "bingxin": 1,
+        "wulei": 6,
+        "guanyin": 6,
+        "sanmei": 1
+      },
+      "equips": [
+        "nvwa",
+        "jifeng",
+        "mujian",
+        "huxin",
+        "wudu",
+        "juling",
+        "tiangang",
+        "jiuhu"
+      ],
+      "director": {
+        "spawned": 1283,
+        "killed": 1228,
+        "peak": 46,
+        "patrols": 40
+      },
+      "camps": [
+        {
+          "id": 0,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 1,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 2,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 3,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 4,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 5,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 6,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 7,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 8,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 9,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 10,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 11,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 12,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 13,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 14,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 15,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 16,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        },
+        {
+          "id": 17,
+          "state": "cleared",
+          "wave": 3,
+          "remaining": 0,
+          "runes": 0
+        }
+      ]
+    }
+  ]
+}

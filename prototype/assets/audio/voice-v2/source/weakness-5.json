@@ -1,0 +1,25 @@
+{
+  "id": "weakness-5",
+  "text": "雷潮退去，斩开锁喉！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "31b8e3c139c5aecccb7d5cd83eeb62790a8b98f2ecb8b3589ec09ca13023348a",
+  "source_sha256": "3bb3e6264f2447b137b40e18caba489f3e10f2e876b871cc3d93c80cec314c02",
+  "mixed_sha256": "4b03b370cc6bf452c19cb772d444733c39ee254b834123de00491b85eb089487",
+  "duration": 3.148,
+  "size": 38924,
+  "file": "assets/audio/voice-v2/weakness-5.mp3",
+  "source": "assets/audio/voice-v2/source/weakness-5.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

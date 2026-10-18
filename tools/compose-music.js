@@ -11,8 +11,12 @@ const scores=[
   {id:'birth',title:'血诏陈府·夜诏',bpm:86,root:48,scale:[0,3,5,7,10],motif:[0,1,0,3,2,null,1,0,3,4,3,1,2,0,1,null]},
   {id:'river',title:'夜渡洪江·逆水',bpm:68,root:43,scale:[0,2,5,7,9],motif:[0,null,3,2,1,null,4,3,2,1,null,0,3,2,1,null]}
 ];
+scores.push(
+ {id:'mountain',title:'五行断契',bpm:74,root:45,scale:[0,2,5,7,10],motif:[0,null,1,3,2,0,4,null,0,3,2,1,4,2,1,null]},
+ {id:'outpost',title:'两界追名',bpm:88,root:47,scale:[0,3,5,7,10],motif:[0,2,3,1,2,4,3,0,1,3,4,2,0,1,3,null]},
+ {id:'dragon',title:'鹰涧解喉',bpm:70,root:42,scale:[0,2,5,7,9],motif:[0,3,null,2,1,4,3,null,2,1,0,3,4,null,2,0]});
 function render(score,battle){
-  const bpm=battle?[100,112,104][scores.indexOf(score)]:score.bpm,beat=60/bpm,duration=64*beat;
+  const bpm=battle?[100,112,104,108,120,106][scores.indexOf(score)]:score.bpm,beat=60/bpm,duration=64*beat;
   const length=Math.ceil(duration*sr),left=new Float32Array(length),right=new Float32Array(length);
   function mix(start,dur,fn,volume,pan=0){
     const from=Math.floor(start*sr),count=Math.floor(dur*sr),gl=Math.sqrt((1-pan)*.5),gr=Math.sqrt((1+pan)*.5);

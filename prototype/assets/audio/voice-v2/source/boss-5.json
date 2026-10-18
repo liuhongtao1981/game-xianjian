@@ -1,0 +1,26 @@
+{
+  "id": "boss-5",
+  "text": "我吞下的每一字，都有人拿去换了功德。",
+  "speaker": "封喉白蛟",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-9%",
+  "pitch": "-13Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "dd1617cf3b3c9090787ed3b838090afb80e5717606c3eda87dcda17244ba76d1",
+  "source_sha256": "0aca9a04e62de81d0121fc809f331dafa721a9dc6fe795c088ff52a2aa478bdc",
+  "mixed_sha256": "76ccc7e880651ee2a72690eebff5dac3b1b21e0797580856dd2b0756cc5a57cc",
+  "duration": 4.172,
+  "size": 51020,
+  "file": "assets/audio/voice-v2/boss-5.mp3",
+  "source": "assets/audio/voice-v2/source/boss-5.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=2",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:112:0.085",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

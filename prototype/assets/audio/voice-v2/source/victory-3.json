@@ -1,0 +1,25 @@
+{
+  "id": "victory-3",
+  "text": "石心碎开，里面不是金丹，而是一枚被反复刮去姓名的镇山印。大圣从未签过字。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "37db09b481fd1962b17c1a2b096e7e280676068d8bae79db0ad103c87207a682",
+  "source_sha256": "dd3e25e2e591f86131494abfefb89956bbf4f776bcb32f347c0c23358976009f",
+  "mixed_sha256": "4431260f5bbfc6eb47614e74bf2a0861c6907f6d6a2126b3696a3d6972796ddf",
+  "duration": 8.836,
+  "size": 107180,
+  "file": "assets/audio/voice-v2/victory-3.mp3",
+  "source": "assets/audio/voice-v2/source/victory-3.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

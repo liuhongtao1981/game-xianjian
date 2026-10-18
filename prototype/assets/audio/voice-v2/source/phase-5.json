@@ -1,0 +1,26 @@
+{
+  "id": "phase-5",
+  "text": "愿契入水，雷潮封喉！",
+  "speaker": "封喉白蛟",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-9%",
+  "pitch": "-13Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "9181e44a184b71c973b50cc349874a31b4c4b6a8f0dc6cc6e1ceced76490a29e",
+  "source_sha256": "2cfb278b6692b17c1e6c98c4ec1b08c1c0ef6c140aa32d35380ef0c4cd018b92",
+  "mixed_sha256": "3861d17427e671cb24754071a470ee4d1aeb407b9dd03c3d53a2e51febded48d",
+  "duration": 3.116,
+  "size": 38348,
+  "file": "assets/audio/voice-v2/phase-5.mp3",
+  "source": "assets/audio/voice-v2/source/phase-5.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=2",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:112:0.085",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

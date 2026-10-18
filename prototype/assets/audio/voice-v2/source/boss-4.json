@@ -1,0 +1,25 @@
+{
+  "id": "boss-4",
+  "text": "没有名字的人，也配向我问路？",
+  "speaker": "无籍追猎将",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "-5%",
+  "pitch": "-10Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "04d71147097cc2c86ca3c9a78ed56c7832e56cc42be4ab66284b1ccaf59ac1e2",
+  "source_sha256": "13680414dda729f547ab56c4e8e241654e3f955a48f0a8c57ed6abe765ba8f8d",
+  "mixed_sha256": "b0a153ecb3de8051eea625e1a3e5f01f468697951c1baa5ca9bbc8e41a4434d6",
+  "duration": 3.94,
+  "size": 48428,
+  "file": "assets/audio/voice-v2/boss-4.mp3",
+  "source": "assets/audio/voice-v2/source/boss-4.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.4",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

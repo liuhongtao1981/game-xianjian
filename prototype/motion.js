@@ -1,6 +1,7 @@
 /* Sprite state machine and layered spell renderer. Simulation time drives every frame. */
 const Motion = (() => {
   const hero = new Image(), enemies = new Image();
+  const golden=new Image();golden.src='assets/golden-guardians.webp';const goldenUV=[[[9, 8, 331, 354, 174.5, 362], [435, 18, 289, 344, 579.5, 362], [724, 6, 362, 356, 905.0, 362], [1086, 76, 348, 286, 1260.0, 362]], [[27, 362, 335, 362, 194.5, 724], [362, 362, 362, 362, 543.0, 724], [732, 362, 354, 362, 909.0, 724], [1086, 362, 355, 327, 1263.5, 689]], [[59, 724, 291, 341, 204.5, 1065], [378, 724, 324, 346, 540.0, 1070], [727, 724, 359, 343, 906.5, 1067], [1086, 726, 359, 291, 1265.5, 1017]]];
   const bosses = new Image();bosses.src='assets/journey-bosses.png';
   const bossAttacks = new Image();bossAttacks.src='assets/bosses-attack.png';
   const bossWalk = new Image();bossWalk.src='assets/bosses-walk.png';
@@ -85,6 +86,15 @@ const Motion = (() => {
     return {row:rows[key],col:actor.moving?Math.floor((actor.walkDistance||0)/24)%4:0,state:actor.moving?'move':'idle'};
   }
   function drawActor(actor,key,size,alpha=1){
+    if(actor.bossHelper&&actor.family>=3){
+      ctx.save();ctx.translate(actor.x,actor.y);const color=actor.family===3?'#d9bd77':actor.family===4?(actor.phantom?'#9e6c69':'#ffe097'):'#bcece4';
+      ctx.fillStyle='#0006';ctx.beginPath();ctx.ellipse(0,4,30,10,0,0,Math.PI*2);ctx.fill();
+      const g=ctx.createLinearGradient(-25,0,25,-70);g.addColorStop(0,'#182b29');g.addColorStop(.5,actor.family===3?'#776c45':'#527a75');g.addColorStop(1,'#172e2d');ctx.fillStyle=g;ctx.strokeStyle=color;ctx.lineWidth=2;
+      if(actor.family===3){ctx.beginPath();ctx.moveTo(-22,0);ctx.lineTo(-25,-60);ctx.lineTo(-12,-76);ctx.lineTo(18,-70);ctx.lineTo(24,-4);ctx.closePath();ctx.fill();ctx.stroke();for(let i=0;i<3;i++){ctx.beginPath();ctx.ellipse(0,-14-i*17,25,7,0,0,Math.PI*2);ctx.stroke();}}
+      else {const bob=Math.sin(G.time*2+actor.id)*3;ctx.translate(0,-36+bob);ctx.rotate(actor.family===4?Math.PI/4:0);ctx.beginPath();ctx.moveTo(0,-31);ctx.quadraticCurveTo(35,-14,20,9);ctx.lineTo(0,32);ctx.lineTo(-20,9);ctx.quadraticCurveTo(-35,-14,0,-31);ctx.fill();ctx.stroke();ctx.rotate(actor.family===4?-Math.PI/4:0);}
+      ctx.fillStyle=color;ctx.font='22px KaiTi,serif';ctx.textAlign='center';ctx.fillText(actor.glyph,0,actor.family===3?-27:7);ctx.restore();
+      ctx.fillStyle='#0b1d1d';ctx.fillRect(actor.x-24,actor.y-85,48,4);ctx.fillStyle=color;ctx.fillRect(actor.x-24,actor.y-85,48*actor.hp/actor.maxHp,4);return;
+    }
     if(actor.lantern){
       const y=actor.y-30+Math.sin(G.time*3+actor.id)*4;
       ctx.save();ctx.strokeStyle='#abe7dc';ctx.lineWidth=2;Motion.glow(actor.x,y,40,'#8cebe2',.2);
@@ -93,7 +103,7 @@ const Motion = (() => {
       ctx.fillStyle='#092125';ctx.fillRect(actor.x-24,y-39,48,4);ctx.fillStyle='#a4e4d7';ctx.fillRect(actor.x-24,y-39,48*actor.hp/actor.maxHp,4);ctx.restore();return;
     }
     if(actor.seal){
-      ctx.save();ctx.translate(actor.x,actor.y-18+Math.sin(G.time*3+actor.id)*4);ctx.rotate(Math.PI/4);ctx.fillStyle='#40331d';ctx.strokeStyle='#e4cd8a';ctx.lineWidth=2;ctx.fillRect(-15,-15,30,30);ctx.strokeRect(-15,-15,30,30);ctx.rotate(-Math.PI/4);ctx.fillStyle='#f0dca2';ctx.textAlign='center';ctx.font='19px KaiTi,serif';ctx.fillText(actor.eventObjective?'阵':'戒',0,7);ctx.restore();
+      ctx.save();ctx.translate(actor.x,actor.y-18+Math.sin(G.time*3+actor.id)*4);ctx.rotate(Math.PI/4);ctx.fillStyle='#40331d';ctx.strokeStyle='#e4cd8a';ctx.lineWidth=2;ctx.fillRect(-15,-15,30,30);ctx.strokeRect(-15,-15,30,30);ctx.rotate(-Math.PI/4);ctx.fillStyle='#f0dca2';ctx.textAlign='center';ctx.font='19px KaiTi,serif';ctx.fillText(actor.glyph||(actor.eventObjective?'阵':'戒'),0,7);ctx.restore();
       ctx.fillStyle='#182320';ctx.fillRect(actor.x-22,actor.y-45,44,3);ctx.fillStyle='#e5cf91';ctx.fillRect(actor.x-22,actor.y-45,44*actor.hp/actor.maxHp,3);return;
     }
     const sheet=key==='hero'?hero:enemies;
@@ -104,8 +114,10 @@ const Motion = (() => {
     const lunge=key==='hero'&&actor.attack>0?Math.sin(Math.min(1,attackProgress)*Math.PI)*5:0;
     ctx.save();ctx.translate(actor.x+recoil+Math.cos(actor.attackAngle||0)*lunge,actor.y+Math.sin(actor.attackAngle||0)*lunge);ctx.scale(flip,1);ctx.globalAlpha=alpha;
     if(actor.flash>0)ctx.filter='brightness(1.55)';
+    else if(key==='hero'&&actor.cultivation?.realm>0){ctx.filter='drop-shadow(0px 0px 2px '+RealmVisuals.get(actor.cultivation).color+')';}
     else if(actor.clerk){ctx.globalAlpha*=.7;ctx.filter='sepia(.6) hue-rotate(320deg)';}
-    if(actor.boss&&bossWalk.complete&&bossWalk.naturalWidth&&(!['windup','strike','recover','exposed'].includes(actor.action)||!bossAttacks.complete||!bossAttacks.naturalWidth)){
+    if(actor.boss&&Journey.run.stage>=3&&golden.complete&&golden.naturalWidth){const row=Journey.run.stage-3,phase=actor.action||'guard',col=phase==='windup'?2:phase==='strike'?3:actor.moving?Math.floor((actor.walkDistance||0)/36)%2:0;drawBossFrame(golden,goldenUV[row][col],size,350);Encounters.ornament(actor,size);
+    }else if(actor.boss&&bossWalk.complete&&bossWalk.naturalWidth&&(!['windup','strike','recover','exposed'].includes(actor.action)||!bossAttacks.complete||!bossAttacks.naturalWidth)){
       const row=actor.family??Journey.stage().bossRow,col=actor.moving?Math.floor((actor.walkDistance||0)/33)%4:0;
       drawBossFrame(bossWalk,bossWalkUV[row][col],size,[285,277,277][row]);
       Encounters.ornament(actor,size);
@@ -310,5 +322,11 @@ const Motion = (() => {
     ctx.save();ctx.fillStyle=rgba('#020b16',fade*.18);ctx.fillRect(0,0,W,H);ctx.globalAlpha=fade;ctx.fillStyle='#f4e3ba';ctx.textAlign='center';ctx.font='28px KaiTi,serif';ctx.shadowBlur=16;ctx.shadowColor='#74cced';ctx.fillText('天 剑 · 归 一',W/2,H*.25);ctx.font='10px Microsoft YaHei,sans-serif';ctx.fillStyle='#bfe4ed';ctx.fillText(u.age<.9?'聚 天 地 灵 气':'一 剑 镇 万 邪',W/2,H*.25+25);ctx.restore();
   }
   function resize(sx,sy){Encounters.resize(sx,sy);for(const e of effects){e.x*=sx;e.y*=sy;}for(const e of echoes){e.actor.x*=sx;e.actor.y*=sy;}}
-  return {emit,cast,bindSpells,frame,drawActor,step,update,echo,glow,rune,sword,drawGround,drawOver,drawProjectile,drawShield,drawPool,drawUltimate,drawScreen,resize,reset(){Encounters.reset();effects.length=0;echoes.length=0;pendingCasts.length=0;activeCast=null;releasingCast=false;},status(){return {hero:hero.complete&&hero.naturalWidth>0,enemies:enemies.complete&&enemies.naturalWidth>0,bossWalk:bossWalk.complete&&bossWalk.naturalWidth>0,bossAttacks:bossAttacks.complete&&bossAttacks.naturalWidth>0,effects:effects.length,pendingCasts:pendingCasts.length+(activeCast&&!activeCast.released?1:0),activeCast:activeCast?.key||null};}};
+  function preview(pen,time,c){
+    pen.clearRect(0,0,340,430);const color=RealmVisuals.get(c).color;const g=pen.createRadialGradient(170,230,5,170,230,150);g.addColorStop(0,color+'18');g.addColorStop(1,color+'00');pen.fillStyle=g;pen.fillRect(0,0,340,430);
+    pen.save();pen.translate(170,345);pen.scale(1,.38);pen.strokeStyle=color;pen.lineWidth=1.3;for(let k=0;k<RealmVisuals.get(c).rings;k++){pen.beginPath();pen.arc(0,0,90+k*12,0,Math.PI*2);pen.stroke();}pen.rotate(time*.2);for(let i=0;i<9;i++){pen.rotate(Math.PI*2/9);pen.fillStyle=i<(c.layer||1)?color:'#3d4842';pen.fillRect(100,-3,10,6);}pen.restore();
+    if(hero.complete&&hero.naturalWidth){const col=Math.floor(time*1.6)%2,rect=sourceRect('hero',{row:2,col},hero),[sx,sy,sw,sh,px,py]=rect,scale=.76;pen.drawImage(hero,sx,sy,sw,sh,170+(sx-px)*scale,335+(sy-py)*scale+Math.sin(time*2)*2,sw*scale,sh*scale);}
+    for(let i=0;i<Math.min(6,2+c.realm);i++){const a=time*.6+i*Math.PI*2/Math.min(6,2+c.realm),x=170+Math.cos(a)*100,y=260+Math.sin(a)*45;pen.save();pen.translate(x,y);pen.rotate(a+.7);pen.fillStyle=color;pen.beginPath();pen.moveTo(0,-23);pen.lineTo(4,9);pen.lineTo(0,5);pen.lineTo(-4,9);pen.closePath();pen.fill();pen.restore();}
+  }
+  return {preview,emit,cast,bindSpells,frame,drawActor,step,update,echo,glow,rune,sword,drawGround,drawOver,drawProjectile,drawShield,drawPool,drawUltimate,drawScreen,resize,reset(){Encounters.reset();effects.length=0;echoes.length=0;pendingCasts.length=0;activeCast=null;releasingCast=false;},status(){return {hero:hero.complete&&hero.naturalWidth>0,enemies:enemies.complete&&enemies.naturalWidth>0,bossWalk:bossWalk.complete&&bossWalk.naturalWidth>0,bossAttacks:bossAttacks.complete&&bossAttacks.naturalWidth>0,effects:effects.length,pendingCasts:pendingCasts.length+(activeCast&&!activeCast.released?1:0),activeCast:activeCast?.key||null};}};
 })();

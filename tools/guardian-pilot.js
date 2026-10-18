@@ -12,7 +12,7 @@ const GuardianPilot=(()=>{
     return Math.hypot(dx,dy)-t.r-P.r;
   }
   function destination(){
-    const boss=G.boss,live=G.enemies.filter(e=>e.hp>0),helpers=live.filter(e=>e.bossHelper);
+    const boss=G.boss,live=G.enemies.filter(e=>e.hp>0),helpers=live.filter(e=>e.bossHelper&&!e.phantom);
     const tide=G.telegraphs.find(t=>t.shape==='tide'&&t.bossSkill==='tide');
     if(tide)return {x:tide.gap,y:tide.y,ritual:true};
     if(boss.action==='exposed')return {x:boss.x,y:boss.y+55};

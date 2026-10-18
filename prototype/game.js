@@ -151,6 +151,7 @@ const SPELLS = {
   }
 };
 
+SpellCombat.install(SPELLS);
 Motion.bindSpells?.(SPELLS);
 
 /* ---------------- 强化卡 ---------------- */
@@ -226,7 +227,7 @@ function reset(){
   document.getElementById('overlay').classList.add('hidden');
   G.state='playing'; G.time=0; G.kills=0; G.shake=0; G.queue=0;
   G.enemies=[]; G.shots=[]; G.eshots=[]; G.orbs=[]; G.parts=[]; G.texts=[];
-  G.chests=[]; G.pools=[]; G.auras=[]; G.bolts=[]; G.heals=[];
+  G.chests=[]; G.spellPulses=[];G.pools=[]; G.auras=[]; G.bolts=[]; G.heals=[];
   G.telegraphs=[]; G.ultimate=null; G.ultimateCasts=0;
   G.pickups=[];G.chestReward=null;G.runChoices=0;
   G.pendingLore=null;G.coreReward=null;
@@ -634,27 +635,8 @@ function updateSpells(dt){
       P.t[key] = SPELLS[key].cd * P.cdr;
     }
   }
-  const lv = P.spells.wanjian;
-  if (lv){
-    P.orbitAngle += (1.6 + lv * .18) * dt;
-    const count = 1 + lv;
-    const radius = 62 + lv * 3;
-    const now = G.time;
-    for (let i = 0; i < count; i++){
-      const a = P.orbitAngle + i * TAU / count;
-      const sx = P.x + Math.cos(a) * radius, sy = P.y + Math.sin(a) * radius;
-      for (const e of G.enemies){
-        if (e.hp <= 0) continue;
-        if (Math.hypot(e.x - sx, e.y - sy) < e.r + 8){
-          const lastTime = P.orbitHit.get(e.id) || -9;
-          if (now - lastTime > .45){
-            P.orbitHit.set(e.id, now);
-            hurt(e, 10 + lv * 6, '#cfe7f2');
-          }
-        }
-      }
-    }
-  }
+  SpellCombat.update(dt);
+  if(P.spells.wanjian){P.orbitAngle+=(1.6+Math.min(5,P.spells.wanjian)*.18)*dt;for(const sword of SpellCombat.orbit(P))for(const e of G.enemies){if(e.hp<=0)continue;if(Math.hypot(e.x-sword.x,e.y-sword.y)<e.r+9&&G.time-(P.orbitHit.get(e.id)??-9)>.45){P.orbitHit.set(e.id,G.time);hurt(e,sword.damage,'#cfe7f2');}}}
 }
 
 function updateShots(dt){
@@ -663,9 +645,9 @@ function updateShots(dt){
     s.trail.push({ x:s.x, y:s.y });
     if (s.trail.length > 9) s.trail.shift();
     for (const e of G.enemies){
-      if (e.hp <= 0 || s.hit.has(e.id)) continue;
+      if (e.hp <= 0 || s.hit.has(e.id)||s.volleyHits?.has(e.id)) continue;
       if (Math.hypot(e.x - s.x, e.y - s.y) < e.r + s.r){
-        s.hit.add(e.id);
+        s.hit.add(e.id);s.volleyHits?.add(e.id);
         hurt(e, s.dmg, s.color,{ultimate:s.ultimate});
         if (s.pierce-- <= 0){ s.life = 0; break; }
       }
@@ -746,13 +728,14 @@ function updatePools(dt){
   for (const p of G.pools){
     p.life -= dt;
     p.tick -= dt;
-    if (p.tick <= 0){
+    if (!p.poisonPool&&p.tick <= 0){
       p.tick = .5;
       for (const e of G.enemies){
         if (e.hp > 0 && Math.hypot(e.x - p.x, e.y - p.y) < p.r + e.r) hurt(e, p.dps * .5, p.color,{ultimate:p.ultimate});
       }
     }
   }
+  for(const e of G.enemies){if(e.hp<=0||(e.poolNext??0)>G.time)continue;const touching=G.pools.filter(p=>p.poisonPool&&p.life>0&&Math.hypot(e.x-p.x,e.y-p.y)<p.r+e.r);if(touching.length){e.poolNext=G.time+.5;hurt(e,Math.max(...touching.map(p=>p.dps))*.5,'#7fbfa8');}}
   G.pools = G.pools.filter(p => p.life > 0);
 }
 
@@ -975,11 +958,12 @@ function openChest(restoredReward=null,alreadyApplied=false){
   const ov = document.getElementById('overlay');
   ov.classList.remove('hidden');
   ov.innerHTML = `
-    <div class="panel">
-      <h2>宝 箱</h2>
+    <div class="panel treasure-panel">
+      <div class="reward-casket">${ItemCatalog.icon('elite-chest','宝箱已开启')}</div>
+      <h2>宝 箱 · 已开启</h2>
       <p class="sub">${reward.kind === 'equip' ? '法 宝' : (reward.kind === 'spell' ? '术 法' : '丹 药')}</p>
       <div class="reward" style="--c:${reward.color}">
-        <div class="cicon">${reward.glyph}</div>
+        <div class="cicon">${reward.kind==='equip'?ItemCatalog.icon(reward.id,reward.name):reward.kind==='heal'?ItemCatalog.icon('potion',reward.name):reward.glyph}</div>
         <div>
           <div class="cname">${reward.name}</div>
           <div class="cdesc">${reward.desc}</div>
@@ -1141,6 +1125,7 @@ function drawPools(){ for(const pool of G.pools)Motion.drawPool(pool); }
 
 function drawChests(){
   for (const c of G.chests){
+    if(ItemCatalog.draw('elite-chest',c.x,c.y,80,c.t))continue;
     const bob = Math.sin(c.t * 2.4) * 3;
     const g = ctx.createRadialGradient(c.x, c.y + bob, 2, c.x, c.y + bob, 44);
     g.addColorStop(0, 'rgba(242,221,168,.45)');
@@ -1180,6 +1165,7 @@ function drawOrbs(){
 
 function drawHeals(){
   for (const h of G.heals){
+    if(ItemCatalog.draw('potion',h.x,h.y,32,G.time))continue;
     ctx.save();
     ctx.globalAlpha = h.life < 3 ? Math.min(1, h.life / 3) : 1;
     ctx.fillStyle = '#9fe3b8';
@@ -1216,15 +1202,8 @@ function drawPlayer(){
   const shadow=ctx.createRadialGradient(p.x,p.y+5,2,p.x,p.y+5,34);
   shadow.addColorStop(0,'#0009');shadow.addColorStop(1,'#0000');ctx.fillStyle=shadow;
   ctx.beginPath();ctx.ellipse(p.x,p.y+5,34,11,0,0,TAU);ctx.fill();ctx.restore();
-  if(p.spells.wanjian){
-    const count=1+p.spells.wanjian,radius=62+p.spells.wanjian*3;
-    for(let i=0;i<count;i++){
-      const a=p.orbitAngle+i*TAU/count;
-      const x=p.x+Math.cos(a)*radius,y=p.y+Math.sin(a)*radius;
-      ctx.save();ctx.strokeStyle='#b8ecff40';ctx.lineWidth=2;ctx.beginPath();ctx.arc(p.x,p.y,radius,a-.55,a);ctx.stroke();ctx.restore();
-      Motion.sword(x,y,a+Math.PI/2,40,'#b6eaff');
-    }
-  }
+  RealmVisuals.draw(p.cultivation,p.x,p.y,G.time);
+  if(p.spells.wanjian)for(const sword of SpellCombat.orbit(p))Motion.sword(sword.x,sword.y,sword.a+Math.PI/2,40,RealmVisuals.get(p.cultivation).color);
   Motion.drawActor(p,'hero',116);
   Motion.drawShield(p);
 }
@@ -1370,7 +1349,7 @@ function syncHUD(){
   document.getElementById('lvl').textContent = P.level;
   document.getElementById('shieldTxt').textContent = '护盾 ' + Math.round(P.shield);
   document.getElementById('cultivationLabel').textContent=Cultivation.label();
-  const recipe=Cultivation.recipe();document.getElementById('cultivationQi').textContent=recipe?'突破修为 '+Math.floor(P.cultivation.qi)+' / '+recipe.qi:'仙王道圆';
+  const recipe=Cultivation.recipe();document.getElementById('cultivationQi').textContent='本境修为 '+Math.floor(P.cultivation.qi)+' / '+Cultivation.need()+' · '+P.cultivation.layer+'/9层';
   const saveStatus=document.getElementById('saveStatus');saveStatus.textContent=RunSave.status();saveStatus.setAttribute('data-error',String(RunSave.status().includes('尚未保存')||RunSave.conflicted()));
   document.getElementById('timer').textContent = fmt(G.time);
   document.getElementById('kills').textContent = '斩妖 ' + G.kills;
@@ -1539,6 +1518,7 @@ function loop(now){
   if (G.state === 'playing') update(dt);
   Sound.sync(G.state,Journey.run.stage,G.bossSpawned&&!!G.boss&&G.boss.hp>0);
   render();
+  CharacterUI.frame(now/1000);
   syncHUD();
   drawJoystick();
   requestAnimationFrame(loop);

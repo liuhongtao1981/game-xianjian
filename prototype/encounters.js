@@ -18,8 +18,9 @@ const Encounters=(()=>{
       {name:'逆鳞江妖',role:'ranged',glyph:'鳞',hp:36,speed:63,dmg:7,r:16,xp:8},
       {name:'缚舟锚尸',role:'heavy',glyph:'锚',hp:82,speed:44,dmg:11,r:21,xp:13}]}
   ];
-  const sheets=families.map(f=>{const img=new Image();img.src='assets/bestiary-'+f.id+'.png';return img;});
-  const attackSheets=families.map(f=>{const img=new Image();img.src='assets/bestiary-'+f.id+'-attack.png';return img;});
+  for(let i=3;i<6;i++){const c=GoldenChapters[i-3];families.push({id:c.id,color:c.color,units:families[i%3].units.map((u,j)=>({...u,name:c.mobNames[keys[j]],hp:u.hp*(1+(i-2)*.1),speed:u.speed,glyph:[['石','链','碑','卫'],['役','獒','弩','盾'],['鬼','刃','珠','锚']][i-3][j]}))});}
+  const sheets=families.map(f=>{const img=new Image();img.src='assets/bestiary-'+f.id+(families.indexOf(f)>=3?'.webp':'.png');return img;});
+  const attackSheets=families.map(f=>{const img=new Image();img.src='assets/bestiary-'+f.id+(families.indexOf(f)>=3?'.webp':'-attack.png');return img;});
   const attackUV=[[[[41,97,215,233,160,327],[358,116,237,211,487,324],[676,119,251,210,790,326],[1013,142,204,183,1131,322]],[[50,393,240,230,176,620],[347,394,276,196,478,587],[663,405,263,231,809,633],[984,422,235,206,1114,625]],[[48,672,233,243,167,912],[353,677,250,235,458,909],[669,679,268,234,784,910],[1002,677,211,252,1098,926]],[[57,933,212,249,168,1179],[362,958,272,227,475,1182],[669,969,281,216,793,1182],[1009,968,208,227,1124,1192]]],[[[80,86,173,192,173,275],[373,97,247,176,476,270],[663,115,247,159,765,271],[997,112,182,160,1098,269]],[[71,373,182,213,164,583],[331,370,274,216,466,583],[640,369,291,217,774,583],[998,373,185,213,1094,583]],[[61,680,204,202,182,879],[337,682,303,199,456,878],[681,679,250,202,789,878],[1000,687,187,195,1107,879]],[[76,949,199,215,186,1161],[372,974,215,184,480,1155],[674,982,213,180,794,1159],[1002,980,186,180,1113,1157]]],[[[84,110,170,185,164,292],[371,125,211,170,460,292],[675,121,244,173,768,291],[1007,136,167,159,1089,292]],[[87,401,173,182,158,580],[367,398,235,182,417,577],[670,408,244,163,773,568],[1012,405,176,176,1102,578]],[[76,674,181,195,166,866],[366,666,219,208,461,871],[659,668,307,209,775,874],[1011,668,177,206,1105,871]],[[78,952,181,195,175,1144],[376,950,224,197,463,1144],[674,981,226,166,782,1144],[1003,984,173,161,1091,1142]]]];
   const attackHeights=[[211,218,239,227],[168,215,201,182],[172,179,207,181]];
   const effects=[];
@@ -99,7 +100,7 @@ const Encounters=(()=>{
     const speed=e.speed*desired;e.x+=direction.x*speed*dt;e.y+=direction.y*speed*dt;
   }
   function effect(kind,data){effects.push({kind,age:0,duration:kind==='phase'?1.25:.72,...data});if(effects.length>64)effects.shift();}
-  function impact(t){effect('impact',{...t,theme:t.theme??Journey.run.stage});Sound.effects(['bell-impact','edict-impact','tide-impact'][t.theme??Journey.run.stage]);}
+  function impact(t){effect('impact',{...t,theme:t.theme??Journey.run.stage});Sound.effects(['bell-impact','edict-impact','tide-impact'][(t.theme??Journey.run.stage)%3]);}
   function update(dt){for(let i=effects.length-1;i>=0;i--){effects[i].age+=dt;if(effects[i].age>=effects[i].duration)effects.splice(i,1);}}
   function drawActor(e,key,size){
     const theme=e.family??Journey.run.stage,acting=['windup','strike','recover'].includes(e.action),attackSheet=attackSheets[theme];
@@ -108,9 +109,10 @@ const Encounters=(()=>{
     const row=keys.indexOf(key);if(row<0)return false;
     const p=(e.actionT||0)/(e.actionDuration||1);
     const frame=attacking?(e.action==='windup'?0:e.action==='strike'?(p<.55?1:2):3):(e.moving?Math.floor((e.walkDistance||0)/(e.type==='fox'?29:24))%4:0),cw=sheet.naturalWidth/4,ch=sheet.naturalHeight/4;
+    if(theme>=3){const [sx,sy,sw,sh,px,py]=GoldenMobUV[theme-3][row][acting?(e.action==='windup'?2:e.action==='strike'?3:0):(e.moving?Math.floor((e.walkDistance||0)/28)%2:0)],scale=size/(row===3?290:245);ctx.drawImage(sheet,sx,sy,sw,sh,(sx-px)*scale,(sy-py)*scale,sw*scale,sh*scale);return true;}
     // Attack frames use measured foot pivots and uniform body scale within each row.
     if(attacking){
-      const [sx,sy,sw,sh,px,py]=attackUV[theme][row][frame],scale=size*1.18/attackHeights[theme][row];
+      const [sx,sy,sw,sh,px,py]=attackUV[theme%3][row][frame],scale=size*1.18/attackHeights[theme%3][row];
       const lift=e.attackKind==='rush'&&e.action==='strike'?Math.sin(Math.PI*Math.min(1,p))*12:0;
       ctx.drawImage(sheet,sx,sy,sw,sh,(sx-px)*scale,(sy-py)*scale-lift,sw*scale,sh*scale);
     }else ctx.drawImage(sheet,frame*cw,row*ch,cw,ch,-size*.63,-size*1.2,size*1.26,size*1.26);

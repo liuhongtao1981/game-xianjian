@@ -1,12 +1,12 @@
 /* Offline audio: original music, newly generated neural Mandarin performances and Web Audio effects. */
 const Sound = (() => {
   // VOICE_CUES_START (kept in sync with docs/audio-cues.json by make-voices-v2.py)
-  const voiceCues = {"yujian":["孙小果","御剑，去。"],"wanjian":["孙小果","万剑，随我！"],"wulei":["孙小果","五雷，诛邪！"],"sanmei":["孙小果","三昧真火，起！"],"bingxin":["孙小果","心定，剑不乱。"],"gudu":["孙小果","蛊雾，散。"],"jiushen":["孙小果","借酒，斩妖！"],"guanyin":["孙小果","一息尚存。"],"ult-heaven":["孙小果","以我一剑，破这天规！"],"ult-lotus":["孙小果","莲华开处，生死由我！"],"ult-river":["孙小果","命如江流，我偏逆行！"],"stage-0":["说书人","大圣失踪后，八十一难的名册开始自行改写。无籍剑仙孙小果循一截焦黑毫毛，踏入金蝉受贬的劫痕。"],"stage-1":["说书人","金色毫毛将孙小果引到陈府。门内每夜都传出婴儿的哭声，每到黎明，族谱便少一个名字。"],"stage-2":["说书人","孙小果顺洪江寻到一只永不腐烂的木板。血书上的字，每逢满月便会变成另一个人的笔迹。"],"boss-0":["缄口监院","你以为受贬的是金蝉？被贬的，是敢问价的人。"],"boss-1":["血诏司命","真假不在纸上，在谁活着盖印。"],"boss-2":["沉灯河伯","江水向东，账册向西。你要渡哪一边？"],"phase-0":["缄口监院","万声皆寂。诸戒，归身！"],"phase-1":["血诏司命","印还在，命就断不了。"],"phase-2":["沉灯河伯","借满江亡魂，再点一次灯。"],"victory":["孙小果","这一难，破了。"],"defeat":["孙小果","剑折，路未尽。"],"level":["孙小果","剑意，更进一步。"],"weakness-0":["孙小果","钟心露了，就是现在！"],"weakness-1":["孙小果","诏令断了，趁它收刀！"],"weakness-2":["孙小果","潮势已尽，斩它逆鳞！"],"omen-0":["孙小果","听，钟声歇了。等它落印。"],"omen-1":["孙小果","刀势未尽，先避开。"],"omen-2":["孙小果","潮里留着一线生路。"],"victory-0":["说书人","监院的铁面落地，里面没有舌头。三页证词写着同一个收讫人，却被金漆涂去姓名。"],"victory-1":["说书人","司命的面具后挂着一排空白官印。它从不问诏令真假，只问印泥是否够红。"],"victory-2":["说书人","河伯倒下，灯芯里传出大圣的一声冷笑。别沿着他们写好的路找我。"]};
+  const voiceCues = {"yujian":["孙小果","御剑，去。"],"wanjian":["孙小果","万剑，随我！"],"wulei":["孙小果","五雷，诛邪！"],"sanmei":["孙小果","三昧真火，起！"],"bingxin":["孙小果","心定，剑不乱。"],"gudu":["孙小果","蛊雾，散。"],"jiushen":["孙小果","借酒，斩妖！"],"guanyin":["孙小果","一息尚存。"],"ult-heaven":["孙小果","以我一剑，破这天规！"],"ult-lotus":["孙小果","莲华开处，生死由我！"],"ult-river":["孙小果","命如江流，我偏逆行！"],"stage-0":["说书人","大圣失踪后，八十一难的名册开始自行改写。无籍剑仙孙小果循一截焦黑毫毛，踏入金蝉受贬的劫痕。"],"stage-1":["说书人","金色毫毛将孙小果引到陈府。门内每夜都传出婴儿的哭声，每到黎明，族谱便少一个名字。"],"stage-2":["说书人","孙小果顺洪江寻到一只永不腐烂的木板。血书上的字，每逢满月便会变成另一个人的笔迹。"],"boss-0":["缄口监院","你以为受贬的是金蝉？被贬的，是敢问价的人。"],"boss-1":["血诏司命","真假不在纸上，在谁活着盖印。"],"boss-2":["沉灯河伯","江水向东，账册向西。你要渡哪一边？"],"phase-0":["缄口监院","万声皆寂。诸戒，归身！"],"phase-1":["血诏司命","印还在，命就断不了。"],"phase-2":["沉灯河伯","借满江亡魂，再点一次灯。"],"victory":["孙小果","这一难，破了。"],"defeat":["孙小果","剑折，路未尽。"],"level":["孙小果","剑意，更进一步。"],"weakness-0":["孙小果","钟心露了，就是现在！"],"weakness-1":["孙小果","诏令断了，趁它收刀！"],"weakness-2":["孙小果","潮势已尽，斩它逆鳞！"],"omen-0":["孙小果","听，钟声歇了。等它落印。"],"omen-1":["孙小果","刀势未尽，先避开。"],"omen-2":["孙小果","潮里留着一线生路。"],"victory-0":["说书人","监院的铁面落地，里面没有舌头。三页证词写着同一个收讫人，却被金漆涂去姓名。"],"victory-1":["说书人","司命的面具后挂着一排空白官印。它从不问诏令真假，只问印泥是否够红。"],"victory-2":["说书人","河伯倒下，灯芯里传出大圣的一声冷笑。别沿着他们写好的路找我。"],"stage-3":["说书人","金毫落在五行山的断碑上。孙小果没有找到大圣，只看见六百道新凿的契痕。"],"boss-3":["压山石魁","山能压人，落款才能压住一个名字。"],"phase-3":["压山石魁","镇山契未断，群峰皆是牢！"],"victory-3":["说书人","石心碎开，里面不是金丹，而是一枚被反复刮去姓名的镇山印。大圣从未签过字。"],"omen-3":["孙小果","引它的重锤，砸断锁柱。"],"weakness-3":["孙小果","石心露了，斩断山契！"],"stage-4":["说书人","残籍驿每到黄昏便有一支空马队进山。它们载走证人，留下同样的空白名帖。"],"boss-4":["无籍追猎将","没有名字的人，也配向我问路？"],"phase-4":["无籍追猎将","三链问名，今夜换你！"],"victory-4":["说书人","面甲下是一叠湿透的路引。每夺一个名字，它就能多活一夜。"],"omen-4":["孙小果","金毫有影，只有这枚是真。"],"weakness-4":["孙小果","追链已尽，趁它收势！"],"stage-5":["说书人","鹰愁涧的水向两岸退去，露出一条布满锁鳞的龙骨桥。桥下的哭声，来自白蛟的喉中。"],"boss-5":["封喉白蛟","我吞下的每一字，都有人拿去换了功德。"],"phase-5":["封喉白蛟","愿契入水，雷潮封喉！"],"victory-5":["说书人","白蛟终于吐出一片袈裟。上面的名字都在呼吸，唯独收契者的名字是一块空白。"],"omen-5":["孙小果","冲岸露鳞，去干岸迎潮。"],"weakness-5":["孙小果","雷潮退去，斩开锁喉！"]};
   // VOICE_CUES_END
   const defaults={music:.42,effects:.65,voice:.85,muted:false};
   let settings={...defaults};
   try{const saved=JSON.parse(localStorage.getItem('xunsheng-audio')||'null');if(saved)for(const k of ['music','effects','voice']){if(Number.isFinite(saved[k]))settings[k]=Math.max(0,Math.min(1,saved[k]));}if(saved)settings.muted=!!saved.muted;}catch(_){}
-  const musicNames=['exile','birth','river'],music=new Map(),cooldowns=new Map(),voices=new Map();
+  const musicNames=['exile','birth','river','mountain','outpost','dragon'],music=new Map(),cooldowns=new Map(),voices=new Map();
   let context=null,effectBus=null,compressor=null,reverb=null,activated=false,scene='start',stage=0,boss=false;
   let currentTrack='',voice=null,lastVoice=-Infinity,lastSync=0,lastStatus='',hidden=false,serial=0,noiseSeed=0x81ac;
   let subtitle=null,ordinaryCalls=0;
@@ -14,7 +14,7 @@ const Sound = (() => {
   const nodes=new Set();
   const clock=()=>performance.now()/1000;
   const random=()=>{noiseSeed^=noiseSeed<<13;noiseSeed^=noiseSeed>>>17;noiseSeed^=noiseSeed<<5;return (noiseSeed>>>0)/4294967296;};
-  const permitted=()=>activated&&!settings.muted&&!hidden&&!['paused','journal','bench','map'].includes(scene);
+  const permitted=()=>activated&&!settings.muted&&!hidden&&!['paused','journal','bench','map','character','station'].includes(scene);
   function persist(){try{localStorage.setItem('xunsheng-audio',JSON.stringify(settings));}catch(_){}updateControls();}
   function updateControls(){
     const button=document.getElementById('audioBtn');if(button){button.textContent=settings.muted?'♫ 已静音':'♫ 声音';button.setAttribute('aria-label',settings.muted?'声音设置，当前静音':'声音设置');}
@@ -162,7 +162,7 @@ const Sound = (() => {
     if(voice)voice.audio.volume=settings.muted||hidden?0:settings.voice;
     if(!playing&&!voice?.audition)stopVoice();
     const combat=state==='playing'&&isBoss;
-    const wanted=musicNames[Math.max(0,Math.min(2,index))]+(combat?'-boss':'-field');
+    const wanted=musicNames[Math.max(0,Math.min(5,index))]+(combat?'-boss':'-field');
     currentTrack=wanted;
     const selected=playing&&settings.music>0?track(wanted):null;
     if(force&&selected){selected.failed=false;selected.retryAt=0;}

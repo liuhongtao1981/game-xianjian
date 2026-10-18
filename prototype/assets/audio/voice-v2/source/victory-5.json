@@ -1,0 +1,25 @@
+{
+  "id": "victory-5",
+  "text": "白蛟终于吐出一片袈裟。上面的名字都在呼吸，唯独收契者的名字是一块空白。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "e65dcb6270b3174e93a5bcbcbac36540e8138341f192f3744b3dd27cf7d65922",
+  "source_sha256": "3e8ea157eac0c3fdeb6b413ecf504b18dbe6f6565be700ae8cd9dfd9f9f3d6e1",
+  "mixed_sha256": "423dcb3314468820640c7e528c0873a3aee8d77cdb9ed67ca15bb0ec56cee146",
+  "duration": 8.404,
+  "size": 101996,
+  "file": "assets/audio/voice-v2/victory-5.mp3",
+  "source": "assets/audio/voice-v2/source/victory-5.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

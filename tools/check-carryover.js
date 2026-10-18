@@ -22,8 +22,8 @@ check('real next-stage reset preserves the complete build and applies only the c
   return Journey.run.stage===1&&JSON.stringify(JourneyProgress.capture(P))===JSON.stringify(expected)&&G.runChoices===8&&G.state==='story';`,h);
 check('third chapter inherits the second chapter upgrades and current resources',`
   G.state='playing';P.level=11;P.xp=23.25;P.xpNext=400;P.spells.wanjian=4;P.shield=18;P.energy=0;P.ultCd=11;P.t.bingxin=2;P.growthChoices=10;
-  ${victory}if(!(G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('body'))return false;
-  return Journey.run.stage===2&&P.level===11&&P.xp===23.25&&P.xpNext===400&&P.spells.wanjian===4&&P.maxHp===210&&P.shield===18&&P.energy===0&&P.ultCd===11&&P.t.bingxin===2&&G.runChoices===10;`,h);
+  ${victory}const expectedHp=P.maxHp+20;if(!(G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('body'))return false;
+  return Journey.run.stage===2&&P.level===11&&P.xp===23.25&&P.xpNext===400&&P.spells.wanjian===4&&P.maxHp===expectedHp&&P.shield===18&&P.energy===0&&P.ultCd===11&&P.t.bingxin===2&&G.runChoices===10;`,h);
 check('chapter entry restores the full saved build after browser reload',`
   Journey.begin(2);reset();return P.level===11&&P.xp===23.25&&P.shield===18&&P.energy===0&&P.ultCd===11&&P.t.bingxin===2&&P.equips.includes('wudu')&&G.runChoices===10;`,createHarness({storage:h.storage}));
 check('retry restores independent entry timers without retaining failed-stage changes',`
