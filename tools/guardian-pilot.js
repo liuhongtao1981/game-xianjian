@@ -75,6 +75,7 @@ const GuardianPilot=(()=>{
     Journey.begin();Journey.run.difficulty=options.difficulty;Journey.run.ultimate=options.ultimate;botMode=false;reset();
     P.level=6;P.xp=0;P.xpNext=10;for(let i=1;i<6;i++)P.xpNext=Math.floor(P.xpNext*1.32+4);
     P.spells={yujian:3,wanjian:2,wulei:1};
+    if(options.realm){P.cultivation.realm=options.realm;Journey.run.tier=options.realm;const limits=Cultivation.caps();P.level=50;P.xpNext=Cultivation.xpNeed(50);P.maxHp=P.hp=limits.maxHp*.7;P.shieldMax=limits.shieldMax*.7;P.dmg=limits.dmg*.7;P.cdr=limits.cdr;P.crit=.4;P.spells={yujian:5,wanjian:5,wulei:5,sanmei:5,bingxin:5,guanyin:5};}
     const stages=[];
     for(let stage=0;stage<3;stage++){
       G.state='playing';
@@ -94,7 +95,7 @@ const GuardianPilot=(()=>{
       clearInput();
       stages.push({stage:Journey.run.stage+1,state:G.state,time:Math.round(G.time*10)/10,hp:Math.round(P.hp),minHp:Math.round(minHp),damageTaken:Math.round(damageTaken),level:P.level,spells:{...P.spells},bossRemaining:Math.round(G.boss.hp),bossMax:G.boss.maxHp,earnedOpenings:G.boss.brain.breaks,round:G.boss.brain.round,mechanismFailures,helpers:G.enemies.filter(e=>e.bossHelper&&e.hp>0).length,casts:G.ultimateCasts,stationarySeconds:Math.round(stationary)});
       if(G.state!=='win'||stage===2)break;
-      Journey.next('power');
+      (G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('power');
     }
     return {cleared:stages.filter(s=>s.state==='win').length,stages};
   }

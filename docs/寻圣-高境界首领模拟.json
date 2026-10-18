@@ -1,0 +1,168 @@
+{
+  "kind": "boss-only",
+  "setup": "Lv50, six max-rank spells, 70% of realm HP/damage caps, no invulnerability or damage edits during combat; 0.1 second full-information scripted reactions",
+  "runs": [
+    {
+      "realm": 6,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 23.5,
+          "hp": 1847,
+          "minHp": 1847,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 7914,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 5
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 27.4,
+          "hp": 1847,
+          "minHp": 1847,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 11870,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 10
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 29.7,
+          "hp": 1847,
+          "minHp": 1847,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 17146,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 18
+        }
+      ]
+    },
+    {
+      "realm": 13,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 23.6,
+          "hp": 10399,
+          "minHp": 10399,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 31834,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 7
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 24.5,
+          "hp": 10399,
+          "minHp": 10399,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 47751,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 11
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 28.9,
+          "hp": 10399,
+          "minHp": 10399,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 68973,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 0,
+          "stationarySeconds": 17
+        }
+      ]
+    }
+  ]
+}

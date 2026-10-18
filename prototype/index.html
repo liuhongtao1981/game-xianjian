@@ -145,10 +145,11 @@
 <link rel="stylesheet" href="cinematic.css" />
 <link rel="stylesheet" href="journey.css" />
 <link rel="stylesheet" href="sound.css" />
+<link rel="stylesheet" href="character.css" />
 </head>
 <body>
 <canvas id="game"></canvas>
-<div class="window-controls"><button id="mapBtn" aria-label="展开或关闭地图">舆图 Tab</button><button id="journalBtn">寻圣残卷</button><button id="audioBtn" aria-controls="audioPanel" aria-expanded="false">♫ 声音</button><button id="fullscreenBtn" title="F 切换全屏">⛶ 全屏 <kbd>F</kbd></button><a href="./index.html" target="_blank" rel="noopener" title="在独立窗口游玩">↗ 独立窗口</a><span id="screenNotice" role="status"></span></div>
+<div class="window-controls"><button id="characterBtn" title="C 人物状态">人物 C</button><button id="mapBtn" aria-label="展开或关闭地图">舆图 Tab</button><button id="journalBtn">寻圣残卷</button><button id="audioBtn" aria-controls="audioPanel" aria-expanded="false">♫ 声音</button><button id="fullscreenBtn" title="F 切换全屏">⛶ 全屏 <kbd>F</kbd></button><a href="./index.html" target="_blank" rel="noopener" title="在独立窗口游玩">↗ 独立窗口</a><span id="screenNotice" role="status"></span></div>
 <aside id="audioPanel" class="sound-panel" hidden aria-label="声音设置">
   <div class="sound-heading"><strong>声入西行</strong><button id="closeAudioBtn" aria-label="关闭声音设置">×</button></div>
   <p id="audioStatus" role="status">点击入劫后启用声音 · M 静音</p>
@@ -165,7 +166,8 @@
       <div class="identity"><span class="portrait">果</span><div><strong>孙小果</strong><small id="identitySub">无籍剑仙 · 循毫寻圣</small></div><span class="realm">剑修</span></div>
       <div class="hp"><i id="hpFill"></i><b id="hpText">100 / 100</b></div>
       <div class="xp"><i id="xpFill"></i></div>
-      <div class="meta"><span>境界 <b id="lvl">1</b></span><span id="shieldTxt">护盾 0</span></div>
+      <div class="meta"><span>等级 Lv.<b id="lvl">1</b></span><span id="shieldTxt">护盾 0</span></div>
+      <div class="cultivation-hud"><span id="cultivationLabel">筑基·初期</span><span id="cultivationQi">突破修为 0 / 320</span><small id="saveStatus" role="status">自动存档待启用</small></div>
     </div>
     <div class="pane mid">
       <div class="chapter" id="chapterTitle">壹 · 金蝉遭贬</div>
@@ -191,6 +193,7 @@
 <div class="overlay hidden" id="overlay"></div>
 
 <script src="sound.js"></script>
+<script src="cultivation.js"></script>
 <script src="progress.js"></script>
 <script src="encounters.js"></script>
 <script src="journey.js"></script>
@@ -199,6 +202,8 @@
 <script src="world.js"></script>
 <script src="director.js"></script>
 <script src="motion.js"></script>
+<script src="run-save.js"></script>
+<script src="character.js"></script>
 <script src="game.js"></script>
 </body>
 </html>

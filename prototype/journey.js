@@ -44,25 +44,26 @@ const Journey = (() => {
       reward:'前三难已破。五行山的石缝里，正有人替你磨剑。'}
   ];
   const backgrounds=stages.map(s=>{const image=new Image();image.src=s.background;return image;});
-  const run={stage:0,difficulty:'normal',ultimate:'heaven',completed:[],time:0,checkpoint:null};
+  const run={stage:0,difficulty:'normal',ultimate:'heaven',completed:[],time:0,checkpoint:null,tier:0};
   let menuStage=0;
   const stage=()=>stages[run.stage];
   // Each ordeal compounds pressure on top of the chosen global difficulty.
   const pressure=()=>({damage:1.075**run.stage,spawn:.96**run.stage,projectile:1.035**run.stage,warning:.98**run.stage,speed:1.04**run.stage});
-  const difficulty=()=>{const base=difficulties[run.difficulty],p=pressure();return {...base,damage:base.damage*p.damage,spawn:base.spawn*p.spawn,projectile:base.projectile*p.projectile,warning:base.warning*p.warning,speed:p.speed};};
+  const difficulty=()=>{const base=difficulties[run.difficulty],p=pressure();return {...base,mobHp:base.mobHp*1.22**(run.tier||0),bossHp:base.bossHp*1.22**(run.tier||0),damage:base.damage*p.damage*1.18**(run.tier||0),spawn:base.spawn*p.spawn,projectile:base.projectile*p.projectile,warning:base.warning*p.warning,speed:p.speed};};
   const ultimate=()=>ultimates[run.ultimate];
   function build(p){return JourneyProgress.capture(p);}
   function saveBuild(p){run.checkpoint=build(p);}
   function restore(p){if(run.checkpoint){Object.assign(p,build(run.checkpoint));}else p.hp=p.maxHp=difficulty().hp;}
-  function begin(selected=0){run.stage=JourneyProgress.canSelect(selected)?selected:0;run.completed=[];run.time=0;run.checkpoint=JourneyProgress.replay(run.stage,run.difficulty,difficulties);}
+  function begin(selected=0){run.stage=JourneyProgress.canSelect(selected)?selected:0;run.completed=[];run.time=0;run.tier=0;run.checkpoint=JourneyProgress.replay(run.stage,run.difficulty,difficulties);}
   function selected(){return JourneyProgress.canSelect(menuStage)?menuStage:0;}
   function menu(){
+    RunSave.save('返回卷首');
     G.state='start';clearInput();document.body.classList.add('on-title');
     Sound.reset();Sound.sync('start',run.stage,false);
     const ov=document.getElementById('overlay');ov.classList.remove('hidden','title-screen');ov.classList.add('journey-screen');
     menuStage=selected();const preview=stages[menuStage];
     const inherited=JourneyProgress.replay(menuStage,run.difficulty,difficulties);
-    const inheritance=inherited?'继承境界 '+inherited.level+' · 术法 '+Object.keys(inherited.spells).length+' 门 · 法宝 '+inherited.equips.length+' 件 · 强化与剑意保留':'从境界 1 启程 · 成长可带往后续关卡';
+    const inheritance=inherited?'继承等级 Lv.'+inherited.level+' · 术法 '+Object.keys(inherited.spells).length+' 门 · 法宝 '+inherited.equips.length+' 件 · 强化与剑意保留':'筑基初期 · 从等级 Lv.1 启程 · 成长永久保留';
     ov.innerHTML=`<div class="journey-menu"><div class="journey-heading"><div class="overline">重 走 西 游 · 八 十 一 难</div><h1>寻圣</h1><div class="subtitle">剑仙孙小果 · 第一卷<br>被删去的姓名</div><p>大圣不见了。取经路还在替人写结局。<br>你循一根金毫，走进三段不肯沉默的旧事。</p></div>
       <div class="journey-chapters">${stages.map((s,i)=>`<button class="chapter-card ${i===menuStage?'selected':''}" data-stage="${i}" ${JourneyProgress.canSelect(i)?'':'disabled'} aria-label="${s.title} · ${i<JourneyProgress.cleared()?'已通关，可重战':JourneyProgress.canSelect(i)?'可出征':'先通关'+stages[i-1].title}" aria-pressed="${i===menuStage}" style="--chapter:${s.color};background-image:linear-gradient(0deg,#071418f5,#07141812),url('${s.background}')"><span class="chapter-index">第 ${s.no} 难</span><strong>${s.title}</strong><span>${s.subtitle}</span><small>守关 · ${s.boss}</small><em class="chapter-lock">${i<JourneyProgress.cleared()?'已通关 · 可重战':JourneyProgress.canSelect(i)?(i===0?'由此启程':'前难已破 · 可出征'):'锁定 · 先破前难'}</em></button>`).join('')}</div>
       <div class="chapter-preview"><span>${preview.theme}</span><small>${preview.mechanic}</small><small>此难妖众：${Encounters.family(menuStage).units.map(e=>e.name).join(' · ')}</small><small>${inheritance}</small><small class="pressure-note">${menuStage===0?'劫压起点':'累积劫压 +'+menuStage+'：伤害 +'+Math.round((1.075**menuStage-1)*100)+'% · 移速 +'+Math.round((1.04**menuStage-1)*100)+'% · 增援更密，飞弹更快'}</small></div>
@@ -72,7 +73,7 @@ const Journey = (() => {
     ov.querySelectorAll('[data-stage]').forEach(n=>n.onclick=()=>{const index=Number(n.dataset.stage);if(!JourneyProgress.canSelect(index))return;menuStage=index;menu();});
     ov.querySelectorAll('[data-difficulty]').forEach(n=>n.onclick=()=>{run.difficulty=n.dataset.difficulty;menu();});
     ov.querySelectorAll('[data-ultimate]').forEach(n=>n.onclick=()=>{run.ultimate=n.dataset.ultimate;menu();});
-    document.getElementById('startBtn').onclick=startGame;
+    document.getElementById('startBtn').onclick=startGame;CharacterUI.decorateMenu();
   }
   function intro(){
     const s=stage();G.state='story';clearInput();document.body.classList.remove('on-title');
@@ -84,18 +85,18 @@ const Journey = (() => {
   function showEnd(victory){
     const s=stage(),ov=document.getElementById('overlay');clearInput();ov.classList.remove('hidden','journey-screen','title-screen');
     Sound.sync(victory?'win':'dead',run.stage,false);
-    if(victory&&G.state==='win'&&G.boss?.killed&&G.boss.hp<=0&&P.hp>0&&!run.completed.includes(run.stage)){run.completed.push(run.stage);run.time+=G.time;if(run.stage<2){const entry=build(P);entry.hp=Math.max(entry.hp,entry.maxHp*.7);JourneyProgress.entry(run.stage+1,entry,run.difficulty);}JourneyProgress.clear(run.stage);}
+    if(victory&&G.state==='win'&&G.boss?.killed&&G.boss.hp<=0&&P.hp>0&&!run.completed.includes(run.stage)){run.completed.push(run.stage);run.time+=G.time;Cultivation.victory();if(run.stage<2){const entry=build(P);entry.hp=Math.max(entry.hp,entry.maxHp*.7);JourneyProgress.entry(run.stage+1,entry,run.difficulty);}JourneyProgress.clear(run.stage);}
     const finale=run.stage===2;
-    ov.innerHTML=`<div class="panel chronicle-panel"><span class="overline">${victory?'劫 痕 已 破':'此 路 未 尽'} · ${difficulty().name}</span><h2>${victory?(finale?'三 难 既 破 · 圣 踪 初 现':s.title+' · 已破'):'剑折 · 再寻'}</h2><div class="statline"><span>历劫 <b>${fmt(G.time)}</b></span><span>斩敌 <b>${G.kills}</b></span><span>境界 <b>${P.level}</b></span></div><p class="end-narrative">${victory?s.reveal:'生命已归零。本难重新挑战时，将保留入关前的构筑。'}</p>${victory?`<div class="clue-reward"><small>寻圣线索 ${run.stage+1} / 3</small><strong>${s.clue.name}</strong><p>${s.clue.text}</p></div>`:''}
-      ${victory&&!finale?`<h3>带一份行粮，继续下一难</h3><div class="camp-rewards"><button data-camp="power"><strong>磨剑</strong><small>伤害 +10%</small></button><button data-camp="body"><strong>养生</strong><small>生命上限 +20</small></button><button data-camp="focus"><strong>静心</strong><small>术法冷却 -8%</small></button></div><p class="hintline">三选一后前往${stages[run.stage+1].title} · 构筑继承，生命至少恢复至 70%</p>`:`<button class="btn" id="againBtn">${victory?'重 走 三 难':'再 入 此 难'}</button>`}<button class="linkbtn" id="menuBtn">返回卷首 / 重选难度与大招</button></div>`;
+    ov.innerHTML=`<div class="panel chronicle-panel"><span class="overline">${victory?'劫 痕 已 破':'此 路 未 尽'} · ${difficulty().name}</span><h2>${victory?(finale?'三 难 既 破 · 圣 踪 初 现':s.title+' · 已破'):'剑折 · 再寻'}</h2><div class="statline"><span>历劫 <b>${fmt(G.time)}</b></span><span>斩敌 <b>${G.kills}</b></span><span>等级 <b>${P.level}</b> · ${Cultivation.label()}</span></div><p class="end-narrative">${victory?s.reveal:'生命已归零。等级、经验、术法、法宝、修仙境界与材料永久保留；重试不重复发放本轮已领稀有奖励。'}</p>${victory?`<div class="clue-reward"><small>寻圣线索 ${run.stage+1} / 3</small><strong>${s.clue.name}</strong><p>${s.clue.text}</p></div>`:''}
+      ${victory?CharacterUI.coreRewardHTML():''}${victory&&!finale?`<h3>带一份行粮，继续下一难</h3><div class="camp-rewards"><button data-camp="power"><strong>磨剑</strong><small>伤害 +10%</small></button><button data-camp="body"><strong>养生</strong><small>生命上限 +20</small></button><button data-camp="focus"><strong>静心</strong><small>术法冷却 -8%</small></button></div><p class="hintline">三选一后前往${stages[run.stage+1].title} · 构筑继承，生命至少恢复至 70%</p>`:`<button class="btn" id="againBtn">${victory?'轮 回 重 战':'再 入 此 难'}</button>`}<button class="linkbtn" id="menuBtn">返回卷首 / 重选难度与大招</button></div>`;
     ov.querySelectorAll('[data-camp]').forEach(n=>n.onclick=()=>next(n.dataset.camp));
-    const again=document.getElementById('againBtn');if(again)again.onclick=()=>{if(victory){begin();reset();intro();}else{reset();intro();}};
-    document.getElementById('menuBtn').onclick=menu;
+    const again=document.getElementById('againBtn');if(again)again.onclick=()=>{if(victory){RunSave.start(0,true);}else{RunSave.retry();}};
+    CharacterUI.bindCoreReward();RunSave.save(victory?'通关':'死亡');document.getElementById('menuBtn').onclick=()=>{RunSave.save('返回卷首');menu();};
   }
   function next(reward){
-    if(G.state!=='win'||run.stage>=2||!run.completed.includes(run.stage))return false;
-    if(reward==='power')P.dmg*=1.1;else if(reward==='body')P.maxHp+=20;else if(reward==='focus')P.cdr=Math.max(.55,P.cdr*.92);else return false;
-    P.hp=Math.min(P.maxHp,Math.max(P.hp,P.maxHp*.55)+P.maxHp*.15);run.stage++;saveBuild(P);JourneyProgress.entry(run.stage,run.checkpoint,run.difficulty);reset();intro();return true;
+    if(G.state!=='win'||G.coreReward||run.stage>=2||!run.completed.includes(run.stage))return false;
+    if(reward==='power')P.dmg*=1.1;else if(reward==='body')P.maxHp+=20;else if(reward==='focus')P.cdr=Math.max(Cultivation.caps().cdr,P.cdr*.92);else return false;
+    Cultivation.constrain();P.hp=Math.min(P.maxHp,Math.max(P.hp,P.maxHp*.55)+P.maxHp*.15);run.stage++;saveBuild(P);JourneyProgress.entry(run.stage,run.checkpoint,run.difficulty);reset();intro();RunSave.stageChanged();return true;
   }
   function journal(){
     if(['story','levelup','chest','journal','map'].includes(G.state))return;

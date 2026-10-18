@@ -12,6 +12,8 @@ python -m http.server 4173 --directory prototype
 
 然后访问 <http://localhost:4173/>。也可直接打开 `prototype/index.html` 离线体验。
 
+支持自动存档、当前关卡续玩，以及筑基至仙王的修仙突破。按 C 打开人物状态与天材地宝面板；规则和验证见 [修仙说明](docs/寻圣-自动续关与修仙系统.md)。
+
 WASD 移动，空格闪避，Q 大招，E 交互，Tab 舆图，F 全屏。触屏支持左侧拖动移动和右侧操作按钮。
 
 玩法、素材、验证命令和当前验证边界见 [游戏说明](prototype/README.md)；完整机制见 [关卡与战斗设计](docs/寻圣-前三难关卡与战斗设计.md)。

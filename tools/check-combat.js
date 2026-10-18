@@ -71,13 +71,13 @@ check('lotus heals shields and creates persistent field',`Journey.run.ultimate='
 check('lotus retains distant hostile projectiles',`Journey.run.ultimate='lotus';G.eshots=[{x:P.x+400,y:P.y}];tryUltimate();updateUltimate(.7);return G.eshots.length===1`);
 check('river launches eighteen ultimate projectiles',`Journey.run.ultimate='river';tryUltimate();updateUltimate(1.1);return G.shots.length===18&&G.shots.every(s=>s.ultimate)`);
 check('late ultimate kills cannot refund energy',`spawnEnemy('imp');P.energy=0;hurt(G.enemies[0],999,'#ffffff',{ultimate:{bossDamage:0}});return P.energy===0`);
-check('uncleared stage cannot advance',`return !Journey.next('power')&&Journey.run.stage===0`);
-check('victory carries build and camp reward into next ordeal',`challenge();P.spells.wulei=2;P.hp=15;defeat();const damage=P.dmg;return Journey.next('power')&&Journey.run.stage===1&&P.dmg===damage*1.1&&P.spells.wulei===2&&P.hp>=P.maxHp*.7&&G.state==='story'`);
-check('retry discards failed-stage loot',`challenge();defeat();Journey.next('power');const dmg=P.dmg;P.dmg=99;P.spells.jiushen=5;reset();return P.dmg===dmg&&!P.spells.jiushen&&Journey.run.stage===1`);
+check('uncleared stage cannot advance',`return !(G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('power')&&Journey.run.stage===0`);
+check('victory carries build and camp reward into next ordeal',`challenge();P.spells.wulei=2;P.hp=15;defeat();const damage=P.dmg;return (G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('power')&&Journey.run.stage===1&&P.dmg===damage*1.1&&P.spells.wulei===2&&P.hp>=P.maxHp*.7&&G.state==='story'`);
+check('retry discards failed-stage loot',`challenge();defeat();(G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('power');const dmg=P.dmg;P.dmg=99;P.spells.jiushen=5;reset();return P.dmg===dmg&&!P.spells.jiushen&&Journey.run.stage===1`);
 check('blood guardian needs broken decrees and actual dodged slashes',`challenge();return openWindow()&&G.boss.brain.breaks===1&&G.boss.action==='exposed'`,1);
 check('river guardian needs broken lamps and two safe tide impacts',`challenge();return openWindow()&&G.boss.brain.breaks===1&&G.boss.action==='exposed'`,2);
 check('tide cannot hit beyond its world bounds',`P.x=500;P.y=700;G.telegraphs=[{shape:'tide',x:2800,y:700,left:2170,right:3430,gap:2800,safe:150,r:50,dmg:30,life:.01}];updateTelegraphs(.02);return P.hp===120`,2);
-check('final ordeal cannot advance beyond campaign',`challenge();defeat();return !Journey.next('power')&&Journey.run.stage===2&&Journey.run.completed.includes(2)`,2);
+check('final ordeal cannot advance beyond campaign',`challenge();defeat();return !(G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('power')&&Journey.run.stage===2&&Journey.run.completed.includes(2)`,2);
 check('story difficulty grants larger health buffer',`return P.hp===160&&P.maxHp===160`,0,'story');
 check('nightmare incoming damage is scaled',`hurtPlayer(20);return P.hp===90`,0,'nightmare');
 check('warning duration retains readable minimum',`return Journey.warning(.2)>=.65`,2,'nightmare');

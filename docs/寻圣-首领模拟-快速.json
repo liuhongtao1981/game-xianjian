@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T21:32:38.798Z",
+  "generatedAt": "2026-10-18T10:42:55.887Z",
   "note": "Deterministic state-aware scripted guardian benchmark, NOT human completion rates or full exploration campaign results. Normal simulation damage/cooldowns/collision and mechanism requirements remain intact. The pilot moves through joystick inputs and uses ordinary spells, dodge and ultimate; it never changes HP, enemy HP or exposure during a fight.",
   "setup": {
     "initialLevel": 6,
@@ -36,7 +36,7 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 36.6,
+          "time": 38,
           "hp": 160,
           "minHp": 160,
           "damageTaken": 0,
@@ -44,7 +44,8 @@
           "spells": {
             "yujian": 3,
             "wanjian": 2,
-            "wulei": 2
+            "wulei": 1,
+            "jiushen": 1
           },
           "bossRemaining": 0,
           "bossMax": 1728,
@@ -53,7 +54,7 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 10
+          "stationarySeconds": 12
         },
         {
           "stage": 2,
@@ -62,12 +63,12 @@
           "hp": 160,
           "minHp": 160,
           "damageTaken": 0,
-          "level": 8,
+          "level": 7,
           "spells": {
             "yujian": 3,
             "wanjian": 2,
-            "wulei": 2,
-            "bingxin": 1
+            "wulei": 1,
+            "jiushen": 1
           },
           "bossRemaining": 0,
           "bossMax": 2592,
@@ -75,13 +76,13 @@
           "round": 4,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 18
+          "casts": 1,
+          "stationarySeconds": 19
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 43.7,
+          "time": 45.3,
           "hp": 160,
           "minHp": 160,
           "damageTaken": 0,
@@ -89,7 +90,8 @@
           "spells": {
             "yujian": 3,
             "wanjian": 2,
-            "wulei": 2,
+            "wulei": 1,
+            "jiushen": 1,
             "bingxin": 1
           },
           "bossRemaining": 0,
@@ -98,8 +100,8 @@
           "round": 4,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 25
+          "casts": 1,
+          "stationarySeconds": 28
         }
       ]
     },
@@ -112,13 +114,13 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 43.8,
+          "time": 47.3,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 7,
           "spells": {
-            "yujian": 4,
+            "yujian": 3,
             "wanjian": 2,
             "wulei": 1
           },
@@ -129,21 +131,20 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 18
+          "stationarySeconds": 15
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 50.3,
+          "time": 48.6,
           "hp": 120,
-          "minHp": 112,
-          "damageTaken": 8,
+          "minHp": 120,
+          "damageTaken": 0,
           "level": 8,
           "spells": {
-            "yujian": 4,
+            "yujian": 3,
             "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 3600,
@@ -151,22 +152,21 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 21
+          "casts": 1,
+          "stationarySeconds": 22
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 49.4,
+          "time": 49,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
-          "level": 9,
+          "level": 8,
           "spells": {
-            "yujian": 5,
+            "yujian": 3,
             "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 5200,
@@ -174,8 +174,8 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 27
+          "casts": 1,
+          "stationarySeconds": 28
         }
       ]
     },
@@ -188,15 +188,16 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 54,
+          "time": 54.1,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 7,
           "spells": {
-            "yujian": 4,
+            "yujian": 3,
             "wanjian": 2,
-            "wulei": 1
+            "wulei": 1,
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 2832,
@@ -205,19 +206,19 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 21
+          "stationarySeconds": 19
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 48.1,
+          "time": 47.1,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 8,
           "spells": {
-            "yujian": 4,
-            "wanjian": 2,
+            "yujian": 3,
+            "wanjian": 3,
             "wulei": 1,
             "bingxin": 1
           },
@@ -227,23 +228,22 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 19
+          "casts": 1,
+          "stationarySeconds": 20
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 50.2,
+          "time": 53.3,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 9,
           "spells": {
-            "yujian": 4,
-            "wanjian": 2,
+            "yujian": 3,
+            "wanjian": 3,
             "wulei": 1,
-            "bingxin": 1,
-            "guanyin": 1
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 6136,
@@ -252,7 +252,7 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 28
+          "stationarySeconds": 27
         }
       ]
     },
@@ -265,10 +265,10 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 47.7,
-          "hp": 111,
-          "minHp": 96,
-          "damageTaken": 24,
+          "time": 47.8,
+          "hp": 72,
+          "minHp": 72,
+          "damageTaken": 48,
           "level": 7,
           "spells": {
             "yujian": 3,
@@ -282,19 +282,19 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 16
+          "stationarySeconds": 14
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 51.8,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
+          "time": 53.5,
+          "hp": 84,
+          "minHp": 84,
+          "damageTaken": 29,
           "level": 8,
           "spells": {
-            "yujian": 3,
-            "wanjian": 3,
+            "yujian": 4,
+            "wanjian": 2,
             "wulei": 1
           },
           "bossRemaining": 0,
@@ -303,22 +303,22 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 20
+          "casts": 1,
+          "stationarySeconds": 24
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 55.8,
-          "hp": 120,
-          "minHp": 87,
-          "damageTaken": 33,
+          "time": 52.8,
+          "hp": 11,
+          "minHp": 3,
+          "damageTaken": 99,
           "level": 9,
           "spells": {
-            "yujian": 3,
-            "wanjian": 3,
+            "yujian": 4,
+            "wanjian": 2,
             "wulei": 1,
-            "guanyin": 1
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 7020,
@@ -327,12 +327,16 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 25
+          "stationarySeconds": 24
         }
       ]
     }
   ],
   "controlsNote": "Same initial build and actual combat, but the control approaches the boss and casts ultimate whenever ready. It does not read telegraphs or seek the required recovery/tide mechanisms.",
+  "metricNotes": {
+    "damageTaken": "Actual HP lost after shields, counted over the entire fight; excludes absorbed shield damage.",
+    "mechanismFailures": "Cumulative failed ritual attempts across all guardian rounds, including cancelled warnings."
+  },
   "controls": [
     {
       "difficulty": "story",

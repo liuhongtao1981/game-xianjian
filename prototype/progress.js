@@ -8,7 +8,7 @@ const JourneyProgress=(()=>{
   function cleanBuild(b){return {...Object.fromEntries(fields.map(k=>[k,b[k]])),
     ...Object.fromEntries(Object.entries(resources).map(([k,v])=>[k,b[k]??v])),
     growthChoices:b.growthChoices??Math.max(0,Math.floor(b.level)-1),t:{...b.t},
-    poison:b.poison===true,spells:{...b.spells},equips:[...b.equips]};}
+    poison:b.poison===true,spells:{...b.spells},equips:[...b.equips],cultivation:Cultivation.clean(b.cultivation)};}
   function validBuild(b){
     return b&&fields.every(k=>Number.isFinite(b[k])&&Math.abs(b[k])<1e7)&&b.maxHp>0&&b.hp>0&&b.hp<=b.maxHp&&b.speed>0&&b.dmg>0&&b.cdr>0&&b.level>=1&&b.spells&&Object.entries(b.spells).every(([k,v])=>spellKeys.includes(k)&&Number.isInteger(v)&&v>=1&&v<=10)&&Array.isArray(b.equips)&&b.equips.length<=8&&b.equips.every(v=>['mujian','jifeng','jiuhu','wudu','nvwa','tiangang','juling','huxin'].includes(v))
       &&Object.keys(resources).every(k=>b[k]===undefined||Number.isFinite(b[k])&&b[k]>=0&&b[k]<1e7)
@@ -26,7 +26,12 @@ const JourneyProgress=(()=>{
       if(data.cleared>2&&!data.entries[2])data.cleared=2;
     }
   }catch{}
-  function persist(){try{localStorage.setItem(key,JSON.stringify(data));}catch{/* Private/file browsing still supports session progression. */}}
+  function persist(){if(typeof RunSave!=='undefined'&&RunSave.active())return;try{localStorage.setItem(key,JSON.stringify(data));}catch{/* Session progression remains available. */}}
+  function restore(saved){
+    if(!saved||saved.version!==1||!Number.isInteger(saved.cleared)||saved.cleared<0||saved.cleared>3)throw new Error('Invalid chapter progress');
+    const entries={};for(const i of [1,2])if(saved.entries?.[i]){const e=saved.entries[i];if(!validBuild(e.build)||!['story','normal','hard','nightmare'].includes(e.difficulty))throw new Error('Invalid entry');entries[i]={difficulty:e.difficulty,build:cleanBuild(e.build)};}
+    data={version:1,cleared:saved.cleared,entries};
+  }
   function entry(stage,build,difficulty){if(stage<1||stage>2||!validBuild(build))return;data.entries[stage]={difficulty,build:cleanBuild(build)};persist();}
   function clear(stage){if(stage===data.cleared){data.cleared=Math.min(3,data.cleared+1);persist();}}
   function canSelect(stage){return Number.isInteger(stage)&&stage>=0&&stage<=2&&stage<=data.cleared;}
@@ -36,5 +41,5 @@ const JourneyProgress=(()=>{
     build.maxHp=Math.max(1,build.maxHp+profiles[difficulty].hp-profiles[entry.difficulty].hp);
     build.hp=Math.min(build.maxHp,Math.max(build.maxHp*.7,build.maxHp*fraction));return build;
   }
-  return {key,capture:cleanBuild,entry,clear,canSelect,replay,cleared:()=>data.cleared,snapshot:()=>copy(data)};
+  return {key,capture:cleanBuild,validBuild,restore,entry,clear,canSelect,replay,cleared:()=>data.cleared,snapshot:()=>copy(data)};
 })();

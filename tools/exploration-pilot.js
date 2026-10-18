@@ -91,7 +91,7 @@ const ExplorationPilot=(()=>{
       }
       clearInput();const s=EncounterDirector.status();
       rows.push({stage:Journey.run.stage+1,state:G.state,time:Math.round(G.time),level:P.level,hp:Math.round(P.hp),damageTaken:Math.round(damage),kills:G.kills,combatSeconds:Math.round(combatTime),maxGapSeconds:Math.round(maxGap),routeIndex:index,routeLength:path.length,beforeBoss,spells:{...P.spells},equips:[...P.equips],director:s.stats,camps:s.camps.map(c=>({id:c.id,state:c.state,wave:c.wave,remaining:c.remaining,runes:c.runes}))});
-      if(G.state!=='win'||stage===(options.stages||3)-1)break;Journey.next('power');
+      if(G.state!=='win'||stage===(options.stages||3)-1)break;(G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('power');
     }
     return {cleared:rows.filter(r=>r.state==='win').length,rows};
   }

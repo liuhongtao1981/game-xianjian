@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T00:39:16.246Z",
+  "generatedAt": "2026-10-18T10:47:54.481Z",
   "note": "Deterministic state-aware scripted guardian benchmark, NOT human completion rates or full exploration campaign results. Normal simulation damage/cooldowns/collision and mechanism requirements remain intact. The pilot moves through joystick inputs and uses ordinary spells, dodge and ultimate; it never changes HP, enemy HP or exposure during a fight.",
   "setup": {
     "initialLevel": 6,
@@ -38,16 +38,16 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 36.9,
+          "time": 38,
           "hp": 160,
-          "minHp": 151,
-          "damageTaken": 9,
+          "minHp": 160,
+          "damageTaken": 0,
           "level": 7,
           "spells": {
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "guanyin": 1
+            "jiushen": 1
           },
           "bossRemaining": 0,
           "bossMax": 1728,
@@ -61,7 +61,7 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 41.4,
+          "time": 41,
           "hp": 160,
           "minHp": 160,
           "damageTaken": 0,
@@ -70,7 +70,7 @@
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "guanyin": 1
+            "jiushen": 1
           },
           "bossRemaining": 0,
           "bossMax": 2592,
@@ -78,22 +78,23 @@
           "round": 4,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 18
+          "casts": 1,
+          "stationarySeconds": 19
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 48,
+          "time": 45.3,
           "hp": 160,
           "minHp": 160,
           "damageTaken": 0,
           "level": 8,
           "spells": {
             "yujian": 3,
-            "wanjian": 3,
+            "wanjian": 2,
             "wulei": 1,
-            "guanyin": 1
+            "jiushen": 1,
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 3744,
@@ -101,7 +102,7 @@
           "round": 4,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
+          "casts": 1,
           "stationarySeconds": 28
         }
       ]
@@ -115,16 +116,16 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 37.8,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
+          "time": 37.2,
+          "hp": 159,
+          "minHp": 151,
+          "damageTaken": 9,
           "level": 7,
           "spells": {
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "guanyin": 1
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 1728,
@@ -138,7 +139,7 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 41.4,
+          "time": 41,
           "hp": 160,
           "minHp": 160,
           "damageTaken": 0,
@@ -147,7 +148,462 @@
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
+            "bingxin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2592,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 20
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 44.2,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "bingxin": 1,
             "guanyin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3744,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 25
+        }
+      ]
+    },
+    {
+      "difficulty": "story",
+      "ultimate": "heaven",
+      "seed": 20261018,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 38,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 1728,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 12
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 41,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2592,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 20
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 43.4,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1,
+            "bingxin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3744,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 25
+        }
+      ]
+    },
+    {
+      "difficulty": "story",
+      "ultimate": "lotus",
+      "seed": 81,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 37.6,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "jiushen": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 1728,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 12
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 42.2,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "jiushen": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2592,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 19
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 44.2,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1,
+            "jiushen": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3744,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 28
+        }
+      ]
+    },
+    {
+      "difficulty": "story",
+      "ultimate": "lotus",
+      "seed": 108,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 36.9,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "sanmei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 1728,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 14
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 41.2,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "sanmei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2592,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 17
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 44.2,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1,
+            "sanmei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3744,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 27
+        }
+      ]
+    },
+    {
+      "difficulty": "story",
+      "ultimate": "lotus",
+      "seed": 20261018,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 37.6,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 1728,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 13
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 40.6,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2592,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 20
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 44.1,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3744,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 29
+        }
+      ]
+    },
+    {
+      "difficulty": "story",
+      "ultimate": "river",
+      "seed": 81,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 37.5,
+          "hp": 160,
+          "minHp": 151,
+          "damageTaken": 9,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 2
+          },
+          "bossRemaining": 0,
+          "bossMax": 1728,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 13
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 41.5,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 2
+          },
+          "bossRemaining": 0,
+          "bossMax": 2592,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 18
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 44.2,
+          "hp": 148,
+          "minHp": 148,
+          "damageTaken": 12,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 2
+          },
+          "bossRemaining": 0,
+          "bossMax": 3744,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 27
+        }
+      ]
+    },
+    {
+      "difficulty": "story",
+      "ultimate": "river",
+      "seed": 108,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 36.6,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "bingxin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 1728,
+          "earnedOpenings": 4,
+          "round": 4,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 12
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 44.4,
+          "hp": 160,
+          "minHp": 160,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 2592,
@@ -161,235 +617,7 @@
         {
           "stage": 3,
           "state": "win",
-          "time": 44.8,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 4,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3744,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 28
-        }
-      ]
-    },
-    {
-      "difficulty": "story",
-      "ultimate": "heaven",
-      "seed": 20261018,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 41.6,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 1728,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 13
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 41.4,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2592,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 18
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 44.9,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 4,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3744,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 27
-        }
-      ]
-    },
-    {
-      "difficulty": "story",
-      "ultimate": "lotus",
-      "seed": 81,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 36.6,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 1728,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 14
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 45.4,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2592,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 1,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 22
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 42.7,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 3,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3744,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 26
-        }
-      ]
-    },
-    {
-      "difficulty": "story",
-      "ultimate": "lotus",
-      "seed": 108,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 41.2,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 1728,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 14
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 42,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2592,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 21
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 45.1,
+          "time": 44.7,
           "hp": 160,
           "minHp": 160,
           "damageTaken": 0,
@@ -406,85 +634,7 @@
           "round": 4,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 28
-        }
-      ]
-    },
-    {
-      "difficulty": "story",
-      "ultimate": "lotus",
-      "seed": 20261018,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 37.6,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 1728,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 12
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 45.5,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2592,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 1,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 22
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 45.2,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3744,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
+          "casts": 1,
           "stationarySeconds": 26
         }
       ]
@@ -492,170 +642,22 @@
     {
       "difficulty": "story",
       "ultimate": "river",
-      "seed": 81,
+      "seed": 20261018,
       "cleared": 3,
       "stages": [
         {
           "stage": 1,
           "state": "win",
-          "time": 36.6,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 6,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 1728,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 1,
-          "stationarySeconds": 11
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 41.1,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2592,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 21
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 44.6,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3744,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 27
-        }
-      ]
-    },
-    {
-      "difficulty": "story",
-      "ultimate": "river",
-      "seed": 108,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 37.6,
+          "time": 40.1,
           "hp": 159,
           "minHp": 151,
           "damageTaken": 9,
           "level": 7,
           "spells": {
-            "yujian": 4,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 1728,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 12
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 44.7,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 4,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2592,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 21
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 44.3,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 4,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3744,
-          "earnedOpenings": 4,
-          "round": 4,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 28
-        }
-      ]
-    },
-    {
-      "difficulty": "story",
-      "ultimate": "river",
-      "seed": 20261018,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 36.9,
-          "hp": 160,
-          "minHp": 160,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
             "yujian": 3,
             "wanjian": 2,
-            "wulei": 1
+            "wulei": 1,
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 1728,
@@ -663,13 +665,13 @@
           "round": 4,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 1,
+          "casts": 2,
           "stationarySeconds": 13
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 41,
+          "time": 42.3,
           "hp": 160,
           "minHp": 160,
           "damageTaken": 0,
@@ -677,7 +679,8 @@
           "spells": {
             "yujian": 3,
             "wanjian": 2,
-            "wulei": 1
+            "wulei": 1,
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 2592,
@@ -685,13 +688,13 @@
           "round": 4,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 21
+          "casts": 1,
+          "stationarySeconds": 18
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 44.6,
+          "time": 45.9,
           "hp": 160,
           "minHp": 160,
           "damageTaken": 0,
@@ -700,7 +703,7 @@
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "guanyin": 1
+            "bingxin": 2
           },
           "bossRemaining": 0,
           "bossMax": 3744,
@@ -708,8 +711,8 @@
           "round": 4,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 27
+          "casts": 1,
+          "stationarySeconds": 28
         }
       ]
     },
@@ -722,84 +725,7 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 50,
-          "hp": 120,
-          "minHp": 104,
-          "damageTaken": 16,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2400,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 16
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 50,
-          "hp": 114,
-          "minHp": 100,
-          "damageTaken": 20,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3600,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 22
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 59.2,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 5200,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 1,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 32
-        }
-      ]
-    },
-    {
-      "difficulty": "normal",
-      "ultimate": "heaven",
-      "seed": 108,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 42.8,
+          "time": 47.3,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
@@ -807,84 +733,7 @@
           "spells": {
             "yujian": 3,
             "wanjian": 2,
-            "wulei": 2
-          },
-          "bossRemaining": 0,
-          "bossMax": 2400,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 18
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 49.3,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 2,
-            "gudu": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3600,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 21
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 55,
-          "hp": 113,
-          "minHp": 98,
-          "damageTaken": 22,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 2,
-            "gudu": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 5200,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 28
-        }
-      ]
-    },
-    {
-      "difficulty": "normal",
-      "ultimate": "heaven",
-      "seed": 20261018,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 48.1,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 2400,
@@ -898,16 +747,15 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 49.7,
+          "time": 48.6,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 8,
           "spells": {
             "yujian": 3,
-            "wanjian": 3,
-            "wulei": 1,
-            "bingxin": 1
+            "wanjian": 2,
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 3600,
@@ -915,65 +763,11 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
+          "casts": 1,
           "stationarySeconds": 22
         },
         {
           "stage": 3,
-          "state": "win",
-          "time": 53,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 3,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 5200,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 31
-        }
-      ]
-    },
-    {
-      "difficulty": "normal",
-      "ultimate": "lotus",
-      "seed": 81,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 49.7,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "jiushen": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2400,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 17
-        },
-        {
-          "stage": 2,
           "state": "win",
           "time": 49,
           "hp": 120,
@@ -983,33 +777,7 @@
           "spells": {
             "yujian": 3,
             "wanjian": 2,
-            "wulei": 1,
-            "jiushen": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3600,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 22
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 52.6,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "jiushen": 1,
-            "bingxin": 1
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 5200,
@@ -1017,177 +785,27 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 30
+          "casts": 1,
+          "stationarySeconds": 28
         }
       ]
     },
     {
       "difficulty": "normal",
-      "ultimate": "lotus",
+      "ultimate": "heaven",
       "seed": 108,
       "cleared": 3,
       "stages": [
         {
           "stage": 1,
           "state": "win",
-          "time": 49.9,
+          "time": 51,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 7,
           "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2400,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 17
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 45.9,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3600,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 20
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 60,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 5200,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 34
-        }
-      ]
-    },
-    {
-      "difficulty": "normal",
-      "ultimate": "lotus",
-      "seed": 20261018,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 49.9,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 2
-          },
-          "bossRemaining": 0,
-          "bossMax": 2400,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 17
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 51.9,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 3
-          },
-          "bossRemaining": 0,
-          "bossMax": 3600,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 1,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 21
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 52.7,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 3
-          },
-          "bossRemaining": 0,
-          "bossMax": 5200,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 29
-        }
-      ]
-    },
-    {
-      "difficulty": "normal",
-      "ultimate": "river",
-      "seed": 81,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 50.7,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
+            "yujian": 4,
             "wanjian": 2,
             "wulei": 1
           },
@@ -1203,7 +821,7 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 48.7,
+          "time": 48.9,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
@@ -1211,154 +829,6 @@
           "spells": {
             "yujian": 4,
             "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3600,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 19
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 51.5,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 4,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 5200,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 27
-        }
-      ]
-    },
-    {
-      "difficulty": "normal",
-      "ultimate": "river",
-      "seed": 108,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 42.8,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2400,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 16
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 45,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 4,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3600,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 20
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 51.1,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 4,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 5200,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 30
-        }
-      ]
-    },
-    {
-      "difficulty": "normal",
-      "ultimate": "river",
-      "seed": 20261018,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 50.6,
-          "hp": 113,
-          "minHp": 113,
-          "damageTaken": 7,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 3,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2400,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 17
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 48.7,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 3,
             "wulei": 1,
             "bingxin": 1
           },
@@ -1368,93 +838,17 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 23
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 56.8,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 3,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 5200,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 29
-        }
-      ]
-    },
-    {
-      "difficulty": "hard",
-      "ultimate": "heaven",
-      "seed": 81,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 53.9,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2832,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
+          "casts": 1,
           "stationarySeconds": 21
         },
         {
-          "stage": 2,
-          "state": "win",
-          "time": 54.1,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 4248,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 23
-        },
-        {
           "stage": 3,
           "state": "win",
-          "time": 55.4,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 9,
+          "time": 55.8,
+          "hp": 102,
+          "minHp": 102,
+          "damageTaken": 18,
+          "level": 8,
           "spells": {
             "yujian": 4,
             "wanjian": 2,
@@ -1462,20 +856,20 @@
             "bingxin": 1
           },
           "bossRemaining": 0,
-          "bossMax": 6136,
+          "bossMax": 5200,
           "earnedOpenings": 5,
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 30
+          "stationarySeconds": 32
         }
       ]
     },
     {
-      "difficulty": "hard",
+      "difficulty": "normal",
       "ultimate": "heaven",
-      "seed": 108,
+      "seed": 20261018,
       "cleared": 3,
       "stages": [
         {
@@ -1490,21 +884,21 @@
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "bingxin": 1
+            "guanyin": 1
           },
           "bossRemaining": 0,
-          "bossMax": 2832,
+          "bossMax": 2400,
           "earnedOpenings": 5,
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 21
+          "stationarySeconds": 18
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 48,
+          "time": 50.6,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
@@ -1513,35 +907,33 @@
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "bingxin": 1,
-            "guanyin": 1
+            "guanyin": 2
           },
           "bossRemaining": 0,
-          "bossMax": 4248,
+          "bossMax": 3600,
           "earnedOpenings": 5,
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 19
+          "casts": 1,
+          "stationarySeconds": 21
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 55.2,
+          "time": 51.2,
           "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
+          "minHp": 98,
+          "damageTaken": 22,
           "level": 8,
           "spells": {
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "bingxin": 1,
-            "guanyin": 1
+            "guanyin": 2
           },
           "bossRemaining": 0,
-          "bossMax": 6136,
+          "bossMax": 5200,
           "earnedOpenings": 5,
           "round": 5,
           "mechanismFailures": 0,
@@ -1552,24 +944,473 @@
       ]
     },
     {
-      "difficulty": "hard",
-      "ultimate": "heaven",
-      "seed": 20261018,
+      "difficulty": "normal",
+      "ultimate": "lotus",
+      "seed": 81,
       "cleared": 3,
       "stages": [
         {
           "stage": 1,
           "state": "win",
-          "time": 50.9,
+          "time": 49.9,
           "hp": 120,
-          "minHp": 100,
-          "damageTaken": 20,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2400,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 16
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 49.3,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 2
+          },
+          "bossRemaining": 0,
+          "bossMax": 3600,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 20
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 52.3,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 2
+          },
+          "bossRemaining": 0,
+          "bossMax": 5200,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 32
+        }
+      ]
+    },
+    {
+      "difficulty": "normal",
+      "ultimate": "lotus",
+      "seed": 108,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 47,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
           "level": 7,
           "spells": {
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
             "guanyin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2400,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 16
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 48.7,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "guanyin": 2
+          },
+          "bossRemaining": 0,
+          "bossMax": 3600,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 20
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 56.7,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "guanyin": 2
+          },
+          "bossRemaining": 0,
+          "bossMax": 5200,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 30
+        }
+      ]
+    },
+    {
+      "difficulty": "normal",
+      "ultimate": "lotus",
+      "seed": 20261018,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 47.4,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2400,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 16
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 44.3,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3600,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 19
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 48.2,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 5200,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 28
+        }
+      ]
+    },
+    {
+      "difficulty": "normal",
+      "ultimate": "river",
+      "seed": 81,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 43.7,
+          "hp": 104,
+          "minHp": 104,
+          "damageTaken": 16,
+          "level": 7,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2400,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 14
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 48.7,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1,
+            "bingxin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3600,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 22
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 51,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1,
+            "bingxin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 5200,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 28
+        }
+      ]
+    },
+    {
+      "difficulty": "normal",
+      "ultimate": "river",
+      "seed": 108,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 47.3,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2400,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 17
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 48.1,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3600,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 20
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 52.2,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 5200,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 29
+        }
+      ]
+    },
+    {
+      "difficulty": "normal",
+      "ultimate": "river",
+      "seed": 20261018,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 47.4,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2400,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 16
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 48.1,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3600,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 21
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 55,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 5200,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 32
+        }
+      ]
+    },
+    {
+      "difficulty": "hard",
+      "ultimate": "heaven",
+      "seed": 81,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 54.1,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 2832,
@@ -1583,16 +1424,16 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 48.5,
+          "time": 47.1,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 8,
           "spells": {
-            "yujian": 4,
-            "wanjian": 2,
+            "yujian": 3,
+            "wanjian": 3,
             "wulei": 1,
-            "guanyin": 1
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 4248,
@@ -1600,23 +1441,96 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
+          "casts": 1,
           "stationarySeconds": 20
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 52.7,
+          "time": 53.3,
           "hp": 120,
-          "minHp": 93,
-          "damageTaken": 27,
+          "minHp": 120,
+          "damageTaken": 0,
           "level": 9,
           "spells": {
-            "yujian": 4,
-            "wanjian": 2,
+            "yujian": 3,
+            "wanjian": 3,
             "wulei": 1,
-            "guanyin": 1,
             "bingxin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 6136,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 27
+        }
+      ]
+    },
+    {
+      "difficulty": "hard",
+      "ultimate": "heaven",
+      "seed": 108,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 50.6,
+          "hp": 83,
+          "minHp": 68,
+          "damageTaken": 60,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2832,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 16
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 58.2,
+          "hp": 120,
+          "minHp": 101,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 4248,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 25
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 52.5,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 6136,
@@ -1631,6 +1545,85 @@
     },
     {
       "difficulty": "hard",
+      "ultimate": "heaven",
+      "seed": 20261018,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 50.9,
+          "hp": 120,
+          "minHp": 111,
+          "damageTaken": 9,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "guanyin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2832,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 18
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 47.6,
+          "hp": 110,
+          "minHp": 96,
+          "damageTaken": 24,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "guanyin": 1,
+            "sanmei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 4248,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 21
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 58.5,
+          "hp": 120,
+          "minHp": 93,
+          "damageTaken": 27,
+          "level": 9,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 2,
+            "guanyin": 1,
+            "sanmei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 6136,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 1,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 31
+        }
+      ]
+    },
+    {
+      "difficulty": "hard",
       "ultimate": "lotus",
       "seed": 81,
       "cleared": 3,
@@ -1638,15 +1631,16 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 53.4,
+          "time": 53.3,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 7,
           "spells": {
-            "yujian": 4,
+            "yujian": 3,
             "wanjian": 2,
-            "wulei": 1
+            "wulei": 1,
+            "guanyin": 1
           },
           "bossRemaining": 0,
           "bossMax": 2832,
@@ -1660,14 +1654,14 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 50.2,
+          "time": 48.1,
           "hp": 120,
-          "minHp": 96,
-          "damageTaken": 32,
+          "minHp": 120,
+          "damageTaken": 0,
           "level": 8,
           "spells": {
-            "yujian": 4,
-            "wanjian": 2,
+            "yujian": 3,
+            "wanjian": 3,
             "wulei": 1,
             "guanyin": 1
           },
@@ -1675,22 +1669,22 @@
           "bossMax": 4248,
           "earnedOpenings": 5,
           "round": 5,
-          "mechanismFailures": 1,
+          "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 19
+          "casts": 1,
+          "stationarySeconds": 21
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 55.2,
+          "time": 51.9,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 8,
           "spells": {
-            "yujian": 4,
-            "wanjian": 2,
+            "yujian": 3,
+            "wanjian": 3,
             "wulei": 1,
             "guanyin": 1
           },
@@ -1701,7 +1695,7 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 30
+          "stationarySeconds": 27
         }
       ]
     },
@@ -1732,20 +1726,20 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 19
+          "stationarySeconds": 17
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 53.7,
+          "time": 50.9,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 8,
           "spells": {
-            "yujian": 4,
+            "yujian": 3,
             "wanjian": 2,
-            "wulei": 1,
+            "wulei": 2,
             "guanyin": 1
           },
           "bossRemaining": 0,
@@ -1754,21 +1748,100 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 27
+          "casts": 1,
+          "stationarySeconds": 24
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 53.7,
+          "time": 50.8,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 2,
+            "guanyin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 6136,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 27
+        }
+      ]
+    },
+    {
+      "difficulty": "hard",
+      "ultimate": "lotus",
+      "seed": 20261018,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 47.8,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "jiushen": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2832,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 18
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 47.6,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "jiushen": 1,
+            "guanyin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 4248,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 18
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 57,
+          "hp": 120,
+          "minHp": 99,
+          "damageTaken": 21,
           "level": 9,
           "spells": {
             "yujian": 4,
             "wanjian": 2,
             "wulei": 1,
+            "jiushen": 1,
             "guanyin": 1
           },
           "bossRemaining": 0,
@@ -1784,83 +1857,6 @@
     },
     {
       "difficulty": "hard",
-      "ultimate": "lotus",
-      "seed": 20261018,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 50.6,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2832,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 20
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 50.7,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 2
-          },
-          "bossRemaining": 0,
-          "bossMax": 4248,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 22
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 56.8,
-          "hp": 120,
-          "minHp": 106,
-          "damageTaken": 14,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 2
-          },
-          "bossRemaining": 0,
-          "bossMax": 6136,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 29
-        }
-      ]
-    },
-    {
-      "difficulty": "hard",
       "ultimate": "river",
       "seed": 81,
       "cleared": 3,
@@ -1868,7 +1864,7 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 47.8,
+          "time": 47.5,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
@@ -1886,21 +1882,22 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 19
+          "stationarySeconds": 18
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 46.3,
+          "time": 48.2,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 8,
           "spells": {
-            "yujian": 4,
+            "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "bingxin": 1
+            "bingxin": 1,
+            "guanyin": 1
           },
           "bossRemaining": 0,
           "bossMax": 4248,
@@ -1908,22 +1905,23 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 19
+          "casts": 1,
+          "stationarySeconds": 22
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 54.4,
+          "time": 55.9,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
           "level": 9,
           "spells": {
-            "yujian": 5,
-            "wanjian": 2,
+            "yujian": 3,
+            "wanjian": 3,
             "wulei": 1,
-            "bingxin": 1
+            "bingxin": 1,
+            "guanyin": 1
           },
           "bossRemaining": 0,
           "bossMax": 6136,
@@ -1932,7 +1930,7 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 27
+          "stationarySeconds": 25
         }
       ]
     },
@@ -1946,9 +1944,86 @@
           "stage": 1,
           "state": "win",
           "time": 47.8,
+          "hp": 108,
+          "minHp": 100,
+          "damageTaken": 20,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "gudu": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 2832,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 18
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 57.9,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1,
+            "gudu": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 4248,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 27
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 51.2,
+          "hp": 66,
+          "minHp": 66,
+          "damageTaken": 54,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1,
+            "gudu": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 6136,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 25
+        }
+      ]
+    },
+    {
+      "difficulty": "hard",
+      "ultimate": "river",
+      "seed": 20261018,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 47.8,
+          "hp": 100,
+          "minHp": 100,
+          "damageTaken": 20,
           "level": 7,
           "spells": {
             "yujian": 4,
@@ -1967,39 +2042,37 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 45.1,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
+          "time": 49.9,
+          "hp": 78,
+          "minHp": 70,
+          "damageTaken": 48,
           "level": 8,
           "spells": {
             "yujian": 4,
             "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 4248,
           "earnedOpenings": 5,
           "round": 5,
-          "mechanismFailures": 0,
+          "mechanismFailures": 1,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 18
+          "casts": 1,
+          "stationarySeconds": 19
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 54.3,
-          "hp": 120,
-          "minHp": 93,
-          "damageTaken": 27,
+          "time": 52.2,
+          "hp": 96,
+          "minHp": 96,
+          "damageTaken": 0,
           "level": 8,
           "spells": {
             "yujian": 4,
             "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 6136,
@@ -2007,87 +2080,8 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 26
-        }
-      ]
-    },
-    {
-      "difficulty": "hard",
-      "ultimate": "river",
-      "seed": 20261018,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 47.8,
-          "hp": 120,
-          "minHp": 100,
-          "damageTaken": 20,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 2832,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 20
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 50.4,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 4248,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 22
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 56.9,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 6136,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 26
+          "casts": 1,
+          "stationarySeconds": 29
         }
       ]
     },
@@ -2095,6 +2089,81 @@
       "difficulty": "nightmare",
       "ultimate": "heaven",
       "seed": 81,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 47.8,
+          "hp": 72,
+          "minHp": 72,
+          "damageTaken": 48,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3240,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 14
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 53.5,
+          "hp": 84,
+          "minHp": 84,
+          "damageTaken": 29,
+          "level": 8,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 4860,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 24
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 52.8,
+          "hp": 11,
+          "minHp": 3,
+          "damageTaken": 99,
+          "level": 9,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1,
+            "bingxin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 7020,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 24
+        }
+      ]
+    },
+    {
+      "difficulty": "nightmare",
+      "ultimate": "heaven",
+      "seed": 108,
       "cleared": 3,
       "stages": [
         {
@@ -2109,7 +2178,7 @@
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "jiushen": 1
+            "guanyin": 1
           },
           "bossRemaining": 0,
           "bossMax": 3240,
@@ -2118,21 +2187,21 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 18
+          "stationarySeconds": 17
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 48.1,
-          "hp": 91,
-          "minHp": 91,
-          "damageTaken": 29,
+          "time": 55.8,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
           "level": 8,
           "spells": {
-            "yujian": 3,
+            "yujian": 4,
             "wanjian": 2,
-            "wulei": 2,
-            "jiushen": 1
+            "wulei": 1,
+            "guanyin": 1
           },
           "bossRemaining": 0,
           "bossMax": 4860,
@@ -2141,107 +2210,30 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 21
+          "stationarySeconds": 24
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 59.7,
-          "hp": 92,
-          "minHp": 84,
-          "damageTaken": 66,
-          "level": 9,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 2,
-            "jiushen": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 7020,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 1,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 28
-        }
-      ]
-    },
-    {
-      "difficulty": "nightmare",
-      "ultimate": "heaven",
-      "seed": 108,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 48.5,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3240,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 16
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 51.7,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 4860,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 19
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 59.4,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
+          "time": 48.4,
+          "hp": 135,
+          "minHp": 107,
+          "damageTaken": 33,
           "level": 9,
           "spells": {
             "yujian": 4,
             "wanjian": 2,
             "wulei": 1,
-            "bingxin": 1
+            "guanyin": 1
           },
           "bossRemaining": 0,
           "bossMax": 7020,
           "earnedOpenings": 5,
           "round": 5,
-          "mechanismFailures": 1,
+          "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 30
+          "casts": 1,
+          "stationarySeconds": 23
         }
       ]
     },
@@ -2254,10 +2246,10 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 49.9,
-          "hp": 103,
+          "time": 48.2,
+          "hp": 120,
           "minHp": 72,
-          "damageTaken": 70,
+          "damageTaken": 48,
           "level": 7,
           "spells": {
             "yujian": 3,
@@ -2272,21 +2264,22 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 18
+          "stationarySeconds": 15
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 45,
-          "hp": 91,
-          "minHp": 91,
-          "damageTaken": 41,
+          "time": 50.8,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
           "level": 8,
           "spells": {
-            "yujian": 4,
+            "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "guanyin": 1
+            "guanyin": 1,
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 4860,
@@ -2294,31 +2287,32 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 19
+          "casts": 1,
+          "stationarySeconds": 23
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 64.4,
+          "time": 59.2,
           "hp": 120,
-          "minHp": 87,
-          "damageTaken": 64,
+          "minHp": 120,
+          "damageTaken": 0,
           "level": 9,
           "spells": {
-            "yujian": 5,
+            "yujian": 3,
             "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
+            "wulei": 2,
+            "guanyin": 1,
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 7020,
           "earnedOpenings": 5,
           "round": 5,
-          "mechanismFailures": 2,
+          "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 33
+          "stationarySeconds": 28
         }
       ]
     },
@@ -2332,15 +2326,14 @@
           "stage": 1,
           "state": "win",
           "time": 50.7,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
+          "hp": 117,
+          "minHp": 88,
+          "damageTaken": 32,
           "level": 7,
           "spells": {
-            "yujian": 3,
+            "yujian": 4,
             "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 3240,
@@ -2362,8 +2355,7 @@
           "spells": {
             "yujian": 4,
             "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 4860,
@@ -2371,13 +2363,13 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 21
+          "casts": 1,
+          "stationarySeconds": 19
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 64.4,
+          "time": 54.2,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
@@ -2385,17 +2377,16 @@
           "spells": {
             "yujian": 4,
             "wanjian": 2,
-            "wulei": 2,
-            "bingxin": 1
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 7020,
           "earnedOpenings": 5,
           "round": 5,
-          "mechanismFailures": 2,
+          "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 35
+          "stationarySeconds": 25
         }
       ]
     },
@@ -2408,16 +2399,16 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 49,
-          "hp": 106,
-          "minHp": 77,
-          "damageTaken": 43,
+          "time": 48.2,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
           "level": 7,
           "spells": {
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "jiushen": 1
+            "bingxin": 1
           },
           "bossRemaining": 0,
           "bossMax": 3240,
@@ -2426,12 +2417,12 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 19
+          "stationarySeconds": 16
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 48.2,
+          "time": 55.9,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
@@ -2440,8 +2431,8 @@
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "jiushen": 1,
-            "bingxin": 1
+            "bingxin": 1,
+            "sanmei": 1
           },
           "bossRemaining": 0,
           "bossMax": 4860,
@@ -2449,32 +2440,33 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 20
+          "casts": 1,
+          "stationarySeconds": 25
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 57.7,
+          "time": 63.4,
           "hp": 120,
           "minHp": 120,
           "damageTaken": 0,
-          "level": 8,
+          "level": 9,
           "spells": {
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "jiushen": 1,
-            "bingxin": 1
+            "bingxin": 1,
+            "sanmei": 1,
+            "guanyin": 1
           },
           "bossRemaining": 0,
           "bossMax": 7020,
           "earnedOpenings": 5,
           "round": 5,
-          "mechanismFailures": 0,
+          "mechanismFailures": 1,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 32
+          "stationarySeconds": 35
         }
       ]
     },
@@ -2487,13 +2479,13 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 47.2,
-          "hp": 120,
-          "minHp": 112,
-          "damageTaken": 8,
+          "time": 53.2,
+          "hp": 140,
+          "minHp": 120,
+          "damageTaken": 0,
           "level": 7,
           "spells": {
-            "yujian": 4,
+            "yujian": 3,
             "wanjian": 2,
             "wulei": 1
           },
@@ -2501,24 +2493,24 @@
           "bossMax": 3240,
           "earnedOpenings": 5,
           "round": 5,
-          "mechanismFailures": 0,
+          "mechanismFailures": 1,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 15
+          "stationarySeconds": 19
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 47.4,
-          "hp": 120,
-          "minHp": 120,
+          "time": 52.3,
+          "hp": 140,
+          "minHp": 140,
           "damageTaken": 0,
           "level": 8,
           "spells": {
-            "yujian": 4,
+            "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "bingxin": 1
+            "guanyin": 1
           },
           "bossRemaining": 0,
           "bossMax": 4860,
@@ -2527,29 +2519,29 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 19
+          "stationarySeconds": 23
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 57.7,
-          "hp": 120,
-          "minHp": 120,
+          "time": 67.9,
+          "hp": 140,
+          "minHp": 140,
           "damageTaken": 0,
-          "level": 8,
+          "level": 9,
           "spells": {
             "yujian": 4,
             "wanjian": 2,
             "wulei": 1,
-            "bingxin": 1
+            "guanyin": 1
           },
           "bossRemaining": 0,
           "bossMax": 7020,
           "earnedOpenings": 5,
           "round": 5,
-          "mechanismFailures": 0,
+          "mechanismFailures": 1,
           "helpers": 0,
-          "casts": 2,
+          "casts": 1,
           "stationarySeconds": 34
         }
       ]
@@ -2564,7 +2556,83 @@
           "stage": 1,
           "state": "win",
           "time": 44.6,
-          "hp": 111,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 3240,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 20
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 45.6,
+          "hp": 120,
+          "minHp": 120,
+          "damageTaken": 0,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 3,
+            "wulei": 1,
+            "guanyin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 4860,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 21
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 50,
+          "hp": 120,
+          "minHp": 87,
+          "damageTaken": 33,
+          "level": 9,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 3,
+            "wulei": 1,
+            "guanyin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 7020,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 24
+        }
+      ]
+    },
+    {
+      "difficulty": "nightmare",
+      "ultimate": "river",
+      "seed": 108,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 44.6,
+          "hp": 96,
           "minHp": 96,
           "damageTaken": 24,
           "level": 7,
@@ -2585,16 +2653,15 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 50.5,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
+          "time": 46.6,
+          "hp": 91,
+          "minHp": 91,
+          "damageTaken": 29,
           "level": 8,
           "spells": {
             "yujian": 4,
             "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 4860,
@@ -2602,22 +2669,21 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 17
+          "casts": 1,
+          "stationarySeconds": 18
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 51.8,
-          "hp": 115,
-          "minHp": 56,
-          "damageTaken": 109,
-          "level": 9,
+          "time": 56.2,
+          "hp": 48,
+          "minHp": 48,
+          "damageTaken": 76,
+          "level": 8,
           "spells": {
             "yujian": 4,
             "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 2
+            "wulei": 1
           },
           "bossRemaining": 0,
           "bossMax": 7020,
@@ -2626,84 +2692,7 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 24
-        }
-      ]
-    },
-    {
-      "difficulty": "nightmare",
-      "ultimate": "river",
-      "seed": 108,
-      "cleared": 3,
-      "stages": [
-        {
-          "stage": 1,
-          "state": "win",
-          "time": 47.4,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 7,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 1
-          },
-          "bossRemaining": 0,
-          "bossMax": 3240,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 17
-        },
-        {
-          "stage": 2,
-          "state": "win",
-          "time": 50.7,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 8,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "bingxin": 2
-          },
-          "bossRemaining": 0,
-          "bossMax": 4860,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 23
-        },
-        {
-          "stage": 3,
-          "state": "win",
-          "time": 56.5,
-          "hp": 120,
-          "minHp": 120,
-          "damageTaken": 0,
-          "level": 9,
-          "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "wulei": 2,
-            "bingxin": 2
-          },
-          "bossRemaining": 0,
-          "bossMax": 7020,
-          "earnedOpenings": 5,
-          "round": 5,
-          "mechanismFailures": 0,
-          "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 26
+          "stationarySeconds": 27
         }
       ]
     },
@@ -2717,7 +2706,7 @@
           "stage": 1,
           "state": "win",
           "time": 47.2,
-          "hp": 120,
+          "hp": 96,
           "minHp": 96,
           "damageTaken": 24,
           "level": 7,
@@ -2725,7 +2714,7 @@
             "yujian": 3,
             "wanjian": 2,
             "wulei": 1,
-            "guanyin": 1
+            "jiushen": 1
           },
           "bossRemaining": 0,
           "bossMax": 3240,
@@ -2734,21 +2723,21 @@
           "mechanismFailures": 0,
           "helpers": 0,
           "casts": 2,
-          "stationarySeconds": 18
+          "stationarySeconds": 16
         },
         {
           "stage": 2,
           "state": "win",
-          "time": 55.8,
+          "time": 51.3,
           "hp": 120,
-          "minHp": 108,
-          "damageTaken": 12,
+          "minHp": 114,
+          "damageTaken": 0,
           "level": 8,
           "spells": {
             "yujian": 3,
-            "wanjian": 2,
+            "wanjian": 3,
             "wulei": 1,
-            "guanyin": 1
+            "jiushen": 1
           },
           "bossRemaining": 0,
           "bossMax": 4860,
@@ -2756,32 +2745,31 @@
           "round": 5,
           "mechanismFailures": 0,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 22
+          "casts": 1,
+          "stationarySeconds": 21
         },
         {
           "stage": 3,
           "state": "win",
-          "time": 52.9,
-          "hp": 104,
-          "minHp": 82,
-          "damageTaken": 66,
+          "time": 59.9,
+          "hp": 83,
+          "minHp": 75,
+          "damageTaken": 45,
           "level": 9,
           "spells": {
             "yujian": 3,
-            "wanjian": 2,
-            "wulei": 1,
-            "guanyin": 1,
+            "wanjian": 3,
+            "wulei": 2,
             "jiushen": 1
           },
           "bossRemaining": 0,
           "bossMax": 7020,
           "earnedOpenings": 5,
           "round": 5,
-          "mechanismFailures": 0,
+          "mechanismFailures": 2,
           "helpers": 0,
-          "casts": 2,
-          "stationarySeconds": 23
+          "casts": 1,
+          "stationarySeconds": 30
         }
       ]
     }

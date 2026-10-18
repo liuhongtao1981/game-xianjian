@@ -159,8 +159,8 @@ const STATS = [
   { id:'atk', name:'剑意', glyph:'锋', color:'#e0a0a0', tag:'强化', desc:'所有伤害 +15%。', apply(){ P.dmg *= 1.15; } },
   { id:'spd', name:'疾行', glyph:'行', color:'#9fd8ef', tag:'强化', desc:'移动速度 +8%。', apply(){ P.speed *= 1.08; } },
   { id:'hp',  name:'铁骨', glyph:'骨', color:'#d9b877', tag:'强化', desc:'最大生命 +20，并回复 20。', apply(){ P.maxHp += 20; heal(20); } },
-  { id:'cd',  name:'凝神', glyph:'凝', color:'#b8a0e0', tag:'强化', desc:'术法冷却 -8%。', apply(){ P.cdr = Math.max(0.55, P.cdr * 0.92); } },
-  { id:'crit',name:'会心', glyph:'心', color:'#f2dda8', tag:'强化', desc:'暴击率 +6%。', apply(){ P.crit = Math.min(0.6, P.crit + 0.06); } },
+  { id:'cd',  name:'凝神', glyph:'凝', color:'#b8a0e0', tag:'强化', desc:'术法冷却 -8%。', apply(){ P.cdr = Math.max(Cultivation.caps().cdr, P.cdr * 0.92); } },
+  { id:'crit',name:'会心', glyph:'心', color:'#f2dda8', tag:'强化', desc:'暴击率 +6%。', apply(){ P.crit = Math.min(Cultivation.caps().crit, P.crit + 0.06); } },
   { id:'pick',name:'聚灵', glyph:'灵', color:'#7fbfa8', tag:'强化', desc:'拾取范围 +30%。', apply(){ P.pickup *= 1.3; } }
 ];
 
@@ -174,7 +174,7 @@ const EQUIPS = [
   { id:'nvwa', name:'女娲血玉', glyph:'血', color:'#e0704f', desc:'每秒回复 3 点护盾。', apply(){ P.regen = 3; } },
   { id:'tiangang', name:'天罡战气', glyph:'罡', color:'#f2dda8', desc:'暴击率 +10%，伤害 +10%。', apply(){ P.crit += .1; P.dmg *= 1.1; } },
   { id:'juling', name:'聚灵珠', glyph:'珠', color:'#7fbfa8', desc:'拾取范围 +40%，灵气收益 +15%。', apply(){ P.pickup *= 1.4; P.xpMul *= 1.15; } },
-  { id:'huxin', name:'护心镜', glyph:'护', color:'#b8a0e0', desc:'受到伤害 -15%。', apply(){ P.armor = Math.min(0.6, P.armor + 0.15); } }
+  { id:'huxin', name:'护心镜', glyph:'护', color:'#b8a0e0', desc:'受到伤害 -15%。', apply(){ P.armor = Math.min(Cultivation.caps().armor, P.armor + 0.15); } }
 ];
 
 /* ---------------- 敌人 ---------------- */
@@ -193,7 +193,7 @@ const G = {
   P:null, enemies:[], shots:[], eshots:[], orbs:[], parts:[], texts:[],
   chests:[], pools:[], auras:[], bolts:[], heals:[],
   spawn:0, eliteT:45, chestT:60, boss:null, bossSpawned:false,
-  uid:1, telegraphs:[], ultimate:null, ultimateCasts:0,pickups:[],chestReward:null,runChoices:0
+  uid:1, telegraphs:[], ultimate:null, ultimateCasts:0,pickups:[],chestReward:null,runChoices:0,pendingLore:null,coreReward:null
 };
 
 const keys = {};
@@ -217,7 +217,7 @@ function newPlayer(){
     spells:{ yujian:1 }, t:{ yujian:0.5 },
     orbitAngle:0, orbitHit:new Map(),
     dash:0, dashCd:0, invuln:0, facing:{ x:1, y:0 }, flash:0,
-    equips:[], energy:100, ultCd:0, animTime:0,moving:false,attack:0,attackLength:.32,look:1
+    equips:[], energy:100, ultCd:0, animTime:0,moving:false,attack:0,attackLength:.32,look:1,cultivation:Cultivation.fresh()
   };
 }
 
@@ -229,6 +229,7 @@ function reset(){
   G.chests=[]; G.pools=[]; G.auras=[]; G.bolts=[]; G.heals=[];
   G.telegraphs=[]; G.ultimate=null; G.ultimateCasts=0;
   G.pickups=[];G.chestReward=null;G.runChoices=0;
+  G.pendingLore=null;G.coreReward=null;
   Motion.reset();
   Sound.reset();
   clearInput();
@@ -340,6 +341,7 @@ function killEnemy(e, fromUltimate=false){
   EncounterDirector.onEnemyKilled(e);
   if(e.eventObjective){burst(e.x,e.y,Journey.stage().color,12,100);Sound.effects('chest');return;}
   Bosses.onHelperKilled(e);
+  const essence=P.cultivation.materials.essence;const rare=Cultivation.onKill(e);
   G.kills++;
   if (!G.ultimate&&!fromUltimate) P.energy = Math.min(100, P.energy + (e.elite ? 8 : 2));
   P.orbitHit.delete(e.id);
@@ -349,8 +351,9 @@ function killEnemy(e, fromUltimate=false){
     G.orbs.push({ x:e.x + rand(-14,14), y:e.y + rand(-14,14), vx:rand(-60,60), vy:rand(-60,60),
       value: Math.max(0, e.xp / n), life: 20 });
   }
-  if (e.elite) spawnChest(e.x, e.y);
+  if (e.elite&&rare) spawnChest(e.x, e.y);
   if (Math.random() < .035 || e.elite) G.heals.push({ x:e.x + rand(-10,10), y:e.y + rand(-10,10), life:20 });
+  if(!e.boss&&!e.bossHelper&&(e.elite||essence!==P.cultivation.materials.essence))RunSave.save('拾取材料');
 }
 
 function hurtPlayer(dmg){
@@ -436,6 +439,8 @@ function spawnBoss(){
 function update(dt){
   if (G.state !== 'playing' || dt <= 0) return;
   G.time += dt;
+  RunSave.tick(dt);
+  if(G.queue>0){showLevelUp(choicesCache.length?choicesCache:null);return;}
   updatePickupNotices(dt);
   G.shake = Math.max(0, G.shake - dt * 26);
 
@@ -831,23 +836,24 @@ function gainXP(v){
   while (P.xp >= P.xpNext){
     P.xp -= P.xpNext;
     P.level++;
-    P.xpNext = Math.floor(P.xpNext * 1.32 + 4);
+    P.xpNext = Cultivation.xpNeed(P.level);
     G.queue++;
     heal(8);
   }
   if (G.queue > 0 && G.state === 'playing') showLevelUp();
+  if(G.queue>0)RunSave.save('经验成长');
 }
 
-function showLevelUp(){
+function showLevelUp(restoredChoices=null){
   Sound.effects('level');
   Sound.speak('level',25,30);
-  choicesCache = buildChoices();
+  choicesCache = restoredChoices||buildChoices();
   G.state = 'levelup';
   const ov = document.getElementById('overlay');
   ov.classList.remove('hidden');
   ov.innerHTML = `
     <div class="panel">
-      <h2>境 界 提 升</h2>
+      <h2>等 级 提 升</h2>
       <p class="sub">三 选 一</p>
       <div class="choices">
         ${choicesCache.map((c, i) => cardHTML(c, i)).join('')}
@@ -858,6 +864,7 @@ function showLevelUp(){
     node.onclick = () => pickCard(Number(node.dataset.i));
   });
   if (AUTOPICK) setTimeout(() => { if (G.state === 'levelup') pickCard(0); }, 30);
+  RunSave.save('待选升级');
 }
 
 function cardHTML(c, i){
@@ -886,6 +893,7 @@ function buildChoices(){
     }
   }
   for (const s of STATS){
+    if(!Cultivation.canStat(s.id))continue;
     pool.push({ kind:'stat', id:s.id, name:s.name, glyph:s.glyph, color:s.color, tag:s.tag, desc:s.desc, lvl:'' });
   }
   shuffle(pool);
@@ -898,7 +906,9 @@ function buildChoices(){
     if (out.length === 3) break;
   }
   while (out.length < 3){
-    const s = pick(STATS);
+    const available=STATS.filter(s=>Cultivation.canStat(s.id));
+    if(!available.length){out.push({kind:'recover',name:'调息',glyph:'息',color:'#9cecc3',tag:'恢复',desc:'当前强化均已封顶，回复 20 生命。',lvl:''});continue;}
+    const s = pick(available);
     out.push({ kind:'stat', id:s.id, name:s.name, glyph:s.glyph, color:s.color, tag:s.tag, desc:s.desc, lvl:'' });
   }
   if(G.runChoices<3&&!out.some(c=>c.kind==='new'||c.kind==='up')){
@@ -928,6 +938,7 @@ function pickCard(i){
   G.runChoices++;
   P.growthChoices=G.runChoices;
   G.queue--;
+  RunSave.save('升级已选');
   if (G.queue > 0){ showLevelUp(); return; }
   document.getElementById('overlay').classList.add('hidden');
   G.state = 'playing';
@@ -942,22 +953,25 @@ function applyChoice(c){
     addText(P.x, P.y - 40, '习得 ' + c.name, c.color, 17);
   } else if (c.kind === 'up'){
     P.spells[c.key] = Math.min(SPELLS[c.key].max, P.spells[c.key] + 1);
+  } else if(c.kind==='recover'){
+    heal(20);
   } else {
     const s = STATS.find(x => x.id === c.id);
     if (s) s.apply();
   }
+  Cultivation.constrain();
   renderSpells();
   syncHUD();
 }
 
 /* ---------------- 宝箱 ---------------- */
 
-function openChest(){
+function openChest(restoredReward=null,alreadyApplied=false){
   Sound.effects('chest');
   G.state = 'chest';
-  const reward = rollChestReward();
+  const reward = restoredReward||rollChestReward();
   G.chestReward=reward;
-  applyReward(reward);
+  if(!alreadyApplied)applyReward(reward);
   const ov = document.getElementById('overlay');
   ov.classList.remove('hidden');
   ov.innerHTML = `
@@ -976,6 +990,7 @@ function openChest(){
     </div>`;
   document.getElementById('takeBtn').onclick = closeChest;
   if (AUTOPICK) setTimeout(() => { if (G.state === 'chest') closeChest(); }, 30);
+  RunSave.save('宝箱奖励');
 }
 
 function rollChestReward(){
@@ -1008,6 +1023,7 @@ function applyReward(r){
   } else {
     heal(50);
   }
+  Cultivation.constrain();
 }
 
 function closeChest(){
@@ -1017,6 +1033,7 @@ function closeChest(){
   if (G.queue > 0){ showLevelUp(); return; }
   G.state = 'playing';
   syncHUD();
+  RunSave.save('宝箱已收下');
 }
 
 /* ---------------- 结束 ---------------- */
@@ -1342,15 +1359,19 @@ function drawUltimate(){ Motion.drawUltimate(); }
 function syncHUD(){
   if (!P) return;
   document.body.classList.toggle('in-dialog',!['playing','map'].includes(G.state));
+  document.body.classList.toggle('character-open',G.state==='character');
   const notice=document.getElementById('pickupNotice'),item=G.pickups[0];
   notice.hidden=G.state!=='playing'||!item;
   if(item)notice.textContent=item.kind==='xp'?'灵蕴 +'+Number(item.amount.toFixed(1)):item.text;
   document.getElementById('encounterStatus').textContent=EncounterDirector.hud();
   document.getElementById('hpFill').style.width = Math.max(0, P.hp / P.maxHp * 100) + '%';
-  document.getElementById('hpText').textContent = Math.ceil(P.hp) + ' / ' + P.maxHp;
+  document.getElementById('hpText').textContent = Math.ceil(P.hp) + ' / ' + Math.ceil(P.maxHp);
   document.getElementById('xpFill').style.width = Math.min(100, P.xp / P.xpNext * 100) + '%';
   document.getElementById('lvl').textContent = P.level;
   document.getElementById('shieldTxt').textContent = '护盾 ' + Math.round(P.shield);
+  document.getElementById('cultivationLabel').textContent=Cultivation.label();
+  const recipe=Cultivation.recipe();document.getElementById('cultivationQi').textContent=recipe?'突破修为 '+Math.floor(P.cultivation.qi)+' / '+recipe.qi:'仙王道圆';
+  const saveStatus=document.getElementById('saveStatus');saveStatus.textContent=RunSave.status();saveStatus.setAttribute('data-error',String(RunSave.status().includes('尚未保存')||RunSave.conflicted()));
   document.getElementById('timer').textContent = fmt(G.time);
   document.getElementById('kills').textContent = '斩妖 ' + G.kills;
   const ready=G.state==='playing' && P.energy>=100 && P.ultCd<=0 && !G.ultimate;
@@ -1367,7 +1388,7 @@ function syncHUD(){
   document.getElementById('chapterTitle').textContent=stage.no+' · '+stage.title;
   document.getElementById('identitySub').textContent='无籍剑仙 · '+profile.name;
   document.getElementById('locationTitle').textContent=stage.place+' · '+World.region();
-  document.getElementById('locationSubtitle').textContent=stage.subtitle+' · 累积劫压 '+Journey.run.stage+' · 寻圣线索 '+JourneyProgress.cleared()+'/3';
+  document.getElementById('locationSubtitle').textContent=stage.subtitle+' · 轮回劫阶 '+(Journey.run.tier||0)+' · 累积劫压 '+Journey.run.stage+' · 寻圣线索 '+JourneyProgress.cleared()+'/3';
   document.getElementById('objectiveText').textContent=G.state==='win'?stage.title+' · 已破':(G.bossSpawned?'击杀守关 · '+stage.boss:'自由探路 · 寻找守关祭坛');
   const helpers=G.enemies.filter(e=>(e.seal||e.clerk||e.lantern)&&e.hp>0).length;
   document.getElementById('objectiveDetail').textContent=G.boss&&G.boss.hp>0?Bosses.hud(G.boss).hint:World.objective();
@@ -1408,6 +1429,8 @@ window.addEventListener('keydown', e => {
   if(k==='f'&&!e.repeat){e.preventDefault();toggleFullscreen();return;}
   if(e.repeat && ['Escape','KeyQ','Space','Enter'].includes(e.code)) return;
   if(k==='tab'){e.preventDefault();if(!e.repeat)World.toggleMap();return;}
+  if(k==='c'&&!e.repeat){e.preventDefault();CharacterUI.toggle();return;}
+  if(G.state==='character'&&e.key==='Escape'){e.preventDefault();CharacterUI.close();return;}
   if(k==='e'&&!e.repeat){e.preventDefault();World.interact();return;}
   if(G.state==='map'&&e.key==='Escape'){e.preventDefault();World.toggleMap();return;}
   if(k==='q'){ e.preventDefault();tryUltimate(); }
@@ -1419,7 +1442,7 @@ window.addEventListener('keydown', e => {
   }
   if (e.key === 'Enter' && G.state === 'chest') closeChest();
   if (G.state === 'levelup' && ['1','2','3'].includes(e.key)) pickCard(Number(e.key) - 1);
-  if (k === 'r' && (G.state === 'dead' || G.state === 'win')) reset();
+  if (k === 'r' && G.state === 'dead') RunSave.retry();
 });
 window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
 function clearInput(){
@@ -1476,7 +1499,7 @@ canvas.addEventListener('pointercancel', endJoy);
 
 /* ---------------- 开场 / 循环 ---------------- */
 
-function startGame(){ Journey.begin(Journey.selected()); reset(); Journey.intro(); }
+function startGame(){ RunSave.start(Journey.selected()); }
 
 function togglePause(){
   if (G.state === 'playing'){
@@ -1488,9 +1511,9 @@ function togglePause(){
       <div class="panel">
         <h2>暂 停</h2>
         <p class="sub">ESC 继 续</p>
-        <p class="desc">坚持 ${fmt(G.time)} · 境界 ${P.level} · 斩妖 ${G.kills}</p>
+        <p class="desc">历劫 ${fmt(G.time)} · 等级 Lv.${P.level} · ${Cultivation.label()} · 斩妖 ${G.kills}</p>
         <button class="btn" id="resumeBtn">继 续</button>
-        <button class="linkbtn" id="restartBtn" style="margin-left:10px">重 开</button>
+        <button class="linkbtn" id="restartBtn" style="margin-left:10px">重入本关 · 保留成长</button>
         <button class="linkbtn" id="pauseMenuBtn">返回卷首 · 重新出征</button>
         <p class="hintline">Esc 返回战斗</p>
       </div>`;
@@ -1498,7 +1521,7 @@ function togglePause(){
     document.getElementById('pauseMenuBtn').onclick=Journey.menu;
     document.getElementById('restartBtn').onclick = () => {
       ov.classList.add('hidden');
-      reset();
+      RunSave.retry();
     };
   } else if (G.state === 'paused'){
     document.getElementById('overlay').classList.add('hidden');
@@ -1563,7 +1586,9 @@ function bench(n, sec){
 }
 
 /* 启动 */
+RunSave.init();
 reset();
+CharacterUI.init();
 G.state = 'start';
 if ('ontouchstart' in window){
   document.querySelector('.hint').innerHTML = '<kbd>左侧拖动</kbd> 移动 <kbd>右侧点击</kbd> 闪避 <kbd>天剑按钮</kbd> 大招';

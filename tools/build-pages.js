@@ -7,7 +7,8 @@ fs.mkdirSync(output,{recursive:true});
 for(const name of fs.readdirSync(source)){
   if(name==='index.html'||/\.(js|css)$/.test(name))fs.copyFileSync(path.join(source,name),path.join(output,name));
 }
-fs.cpSync(path.join(source,'assets'),path.join(output,'assets'),{recursive:true});
+function copyTree(from,to){fs.mkdirSync(to,{recursive:true});for(const item of fs.readdirSync(from,{withFileTypes:true})){const a=path.join(from,item.name),b=path.join(to,item.name);if(item.isDirectory())copyTree(a,b);else fs.copyFileSync(a,b);}}
+copyTree(path.join(source,'assets'),path.join(output,'assets'));
 const entry=path.join(output,'index.html');
 const html=fs.readFileSync(entry,'utf8').replace(/(src|href)="([^"?]+\.(?:js|css))"/g,(_,attribute,file)=>`${attribute}="${file}?v=${version}"`);
 fs.writeFileSync(entry,html);

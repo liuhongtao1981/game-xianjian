@@ -108,7 +108,9 @@ const World=(()=>{
       ['密诏没有名字，只有反复加盖的红印。','斩断血诏之后，须诱尽两段问斩。','刀势锁定时向侧面避开；收刀，才是破绽。'],
       ['灯里封着没有名字的人，潮水替他们记账。','灭去河灯，再连渡两重洪潮的青色缺口。','只逃离洪潮，不能引出逆鳞；须迎潮守隙。']
     ][Journey.run.stage];
-    sites=data().sites.map(s=>({...s,...point(s),text:lore[s.loreIndex],done:false,name:s.kind==='boss'?'挑战 · '+Journey.stage().boss:s.name}));
+    sites=data().sites.map((s,id)=>({...s,id,...point(s),text:lore[s.loreIndex],done:false,name:s.kind==='boss'?'挑战 · '+Journey.stage().boss:s.name}));
+    for(const s of sites)if(s.kind!=='boss')s.done=RunSave.claimed('site:'+Journey.run.stage+':'+s.id);
+    visited=sites.filter(s=>s.done).length;
     P.worldX=P.x;P.worldY=P.y;
     camera(0,true);
   }
@@ -131,12 +133,13 @@ const World=(()=>{
   function visible(e,pad=180){const v=view();return e.x>v.x-pad&&e.x<v.x+v.w+pad&&e.y>v.y-pad&&e.y<v.y+v.h+pad;}
   function enterBoss(){
     if(active||G.bossSpawned)return false;
+    RunSave.prepareBoss();
     active=true;mapOpen=false;near=null;
     const button=document.getElementById('interactBtn');if(button)button.hidden=true;
     // Crossing the altar is a deliberate commitment. Nearby camps cannot flood the duel.
     EncounterDirector.beginBoss();
     G.shots=[];G.eshots=[];G.telegraphs=[];
-    resolve(P);spawnBoss();return true;
+    resolve(P);spawnBoss();RunSave.save('进入祭坛');return true;
   }
   function update(dt){
     near=null;
@@ -148,18 +151,23 @@ const World=(()=>{
   function interact(){
     if(G.state!=='playing'||!near)return false;
     const s=near;if(s.kind==='boss')return enterBoss();
+    if(s.kind!=='lore'&&!RunSave.claim('site:'+Journey.run.stage+':'+s.id)){s.done=true;near=null;return false;}
     s.done=true;near=null;visited++;
     if(s.kind==='lore'){
+      G.pendingLore=s.id;
       clearInput();G.state='journal';const ov=document.getElementById('overlay');ov.classList.remove('hidden','journey-screen','title-screen');
       ov.innerHTML=`<div class="panel chronicle-panel world-lore"><span class="overline">${Journey.stage().place} · 劫痕证词</span><h2>${s.name}</h2><p class="end-narrative">${s.text}</p><p class="hintline">参悟灵蕴 +35 · 恢复 12% 生命</p><button class="btn" id="closeWorldLore">收 下 证 词 · 继 续 探 路</button></div>`;
-      const close=document.getElementById('closeWorldLore');close.onclick=()=>{if(G.state!=='journal')return;clearInput();ov.classList.add('hidden');G.state='playing';last=performance.now();gainXP(35);heal(P.maxHp*.12);notifyPickup('lore','证词已收录 · 灵蕴 +'+Number((35*P.xpMul).toFixed(1)));Sound.effects('chest');};close.focus?.();
+      const close=document.getElementById('closeWorldLore');close.onclick=()=>{if(G.state!=='journal'||G.pendingLore===null)return;G.pendingLore=null;clearInput();ov.classList.add('hidden');G.state='playing';last=performance.now();if(RunSave.claim('site:'+Journey.run.stage+':'+s.id)){gainXP(35);heal(P.maxHp*.12);notifyPickup('lore','证词已收录 · 灵蕴 +'+Number((35*P.xpMul).toFixed(1)));Sound.effects('chest');}RunSave.save('收录证词');};close.focus?.();
     }else if(s.kind==='rest'){
       const hp=P.hp,energy=P.energy;heal(P.maxHp*.45);P.energy=Math.min(100,P.energy+35);
       notifyPickup('rest','补给已领取 · '+(P.hp>hp?'生命 +'+Math.round(P.hp-hp):'生命已满')+' · '+(P.energy>energy?'剑意 +'+Math.round(P.energy-energy):'剑意已满'));Sound.effects('guanyin');
     }
     else {openChest();}
-    return true;
+    RunSave.save('领取事件');return true;
   }
+  function exportState(){return {done:sites.map(s=>s.done),visited};}
+  function importState(s){if(!s||!Array.isArray(s.done)||s.done.length!==6||!s.done.every(v=>typeof v==='boolean'))throw new Error('Invalid world');sites.forEach((p,i)=>p.done=s.done[i]);visited=s.done.filter(Boolean).length;}
+  function resumeLore(id){const s=sites[id];if(!s||s.kind!=='lore')throw new Error('Invalid lore');near=s;G.state='playing';if(s.done)visited--;s.done=false;return interact();}
   function toggleMap(){
     if(G.state==='map'){mapOpen=false;document.body.classList.remove('on-map');G.state='playing';last=performance.now();return;}
     if(G.state!=='playing')return;clearInput();mapOpen=true;document.body.classList.add('on-map');G.state='map';
@@ -246,5 +254,5 @@ const World=(()=>{
     return '自由寻路 · '+distance+'丈外可挑战守关者 · E 交互 / Tab 舆图';
   }
   return {bounds,arena,bossPoint,spawn,clipToArena,view,screen,camera,reset,resolve,isWalkable,steer,visible,enterBoss,update,interact,toggleMap,apply,drawBackground,drawGround,drawProps,drawLabels,drawScreen,region,objective,
-    active:()=>active,context:()=>near,status:()=>({width,height,camera:{...cam},active,mapOpen,visited,camps:EncounterDirector.status().discovered,loaded:images.map(i=>!!(i.complete&&i.naturalWidth))})};
+    exportState,importState,resumeLore,active:()=>active,context:()=>near,status:()=>({width,height,camera:{...cam},active,mapOpen,visited,camps:EncounterDirector.status().discovered,loaded:images.map(i=>!!(i.complete&&i.naturalWidth))})};
 })();

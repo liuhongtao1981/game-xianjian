@@ -1,0 +1,847 @@
+{
+  "generatedAt": "2026-10-18T10:42:11.884Z",
+  "kind": "economy-only",
+  "assumptions": [
+    {
+      "name": "主路与双精英",
+      "minutes": 27,
+      "kills": 900,
+      "elite": 6,
+      "bosses": 3,
+      "gamble": false
+    },
+    {
+      "name": "完整探索",
+      "minutes": 36,
+      "kills": 1400,
+      "elite": 6,
+      "bosses": 3,
+      "gamble": false
+    },
+    {
+      "name": "普通怪刷取与缺材冒险",
+      "minutes": 1,
+      "kills": 35,
+      "elite": 0,
+      "bosses": 0,
+      "gamble": true
+    }
+  ],
+  "limitations": [
+    "Uses actual cultivation/loot/probability logic with fixed kill and route rates.",
+    "Does not simulate navigation, damage, deaths, skill choices or human decisions.",
+    "Twenty-hour targets need human playtesting; this report is not a completion-time promise."
+  ],
+  "runs": [
+    {
+      "seed": 81,
+      "strategy": "主路与双精英",
+      "realm": "仙王",
+      "minutes": 2967,
+      "hours": 49.45,
+      "rounds": 110,
+      "kills": 98900,
+      "failures": 0,
+      "reached": [
+        {
+          "realm": "金丹",
+          "minutes": 18,
+          "rounds": 1,
+          "kills": 600
+        },
+        {
+          "realm": "元婴",
+          "minutes": 63,
+          "rounds": 3,
+          "kills": 2100
+        },
+        {
+          "realm": "化神",
+          "minutes": 135,
+          "rounds": 5,
+          "kills": 4500
+        },
+        {
+          "realm": "炼虚",
+          "minutes": 207,
+          "rounds": 8,
+          "kills": 6900
+        },
+        {
+          "realm": "合体",
+          "minutes": 306,
+          "rounds": 12,
+          "kills": 10200
+        },
+        {
+          "realm": "大乘",
+          "minutes": 432,
+          "rounds": 16,
+          "kills": 14400
+        },
+        {
+          "realm": "渡劫",
+          "minutes": 558,
+          "rounds": 21,
+          "kills": 18600
+        },
+        {
+          "realm": "真仙",
+          "minutes": 781,
+          "rounds": 29,
+          "kills": 26033
+        },
+        {
+          "realm": "玄仙",
+          "minutes": 1069,
+          "rounds": 40,
+          "kills": 35633
+        },
+        {
+          "realm": "金仙",
+          "minutes": 1423,
+          "rounds": 53,
+          "kills": 47433
+        },
+        {
+          "realm": "太乙金仙",
+          "minutes": 1854,
+          "rounds": 69,
+          "kills": 61800
+        },
+        {
+          "realm": "大罗金仙",
+          "minutes": 2367,
+          "rounds": 88,
+          "kills": 78900
+        },
+        {
+          "realm": "仙王",
+          "minutes": 2967,
+          "rounds": 110,
+          "kills": 98900
+        }
+      ]
+    },
+    {
+      "seed": 81,
+      "strategy": "完整探索",
+      "realm": "仙王",
+      "minutes": 2902,
+      "hours": 48.37,
+      "rounds": 81,
+      "kills": 112855,
+      "failures": 0,
+      "reached": [
+        {
+          "realm": "金丹",
+          "minutes": 24,
+          "rounds": 1,
+          "kills": 933
+        },
+        {
+          "realm": "元婴",
+          "minutes": 84,
+          "rounds": 3,
+          "kills": 3266
+        },
+        {
+          "realm": "化神",
+          "minutes": 180,
+          "rounds": 5,
+          "kills": 7000
+        },
+        {
+          "realm": "炼虚",
+          "minutes": 276,
+          "rounds": 8,
+          "kills": 10733
+        },
+        {
+          "realm": "合体",
+          "minutes": 408,
+          "rounds": 12,
+          "kills": 15866
+        },
+        {
+          "realm": "大乘",
+          "minutes": 576,
+          "rounds": 16,
+          "kills": 22400
+        },
+        {
+          "realm": "渡劫",
+          "minutes": 744,
+          "rounds": 21,
+          "kills": 28933
+        },
+        {
+          "realm": "真仙",
+          "minutes": 948,
+          "rounds": 27,
+          "kills": 36866
+        },
+        {
+          "realm": "玄仙",
+          "minutes": 1188,
+          "rounds": 33,
+          "kills": 46200
+        },
+        {
+          "realm": "金仙",
+          "minutes": 1444,
+          "rounds": 41,
+          "kills": 56155
+        },
+        {
+          "realm": "太乙金仙",
+          "minutes": 1850,
+          "rounds": 52,
+          "kills": 71944
+        },
+        {
+          "realm": "大罗金仙",
+          "minutes": 2334,
+          "rounds": 65,
+          "kills": 90766
+        },
+        {
+          "realm": "仙王",
+          "minutes": 2902,
+          "rounds": 81,
+          "kills": 112855
+        }
+      ]
+    },
+    {
+      "seed": 81,
+      "strategy": "普通怪刷取与缺材冒险",
+      "realm": "仙王",
+      "minutes": 7311,
+      "hours": 121.85,
+      "rounds": 7311,
+      "kills": 255885,
+      "failures": 227,
+      "reached": [
+        {
+          "realm": "金丹",
+          "minutes": 13,
+          "rounds": 13,
+          "kills": 455
+        },
+        {
+          "realm": "元婴",
+          "minutes": 145,
+          "rounds": 145,
+          "kills": 5075
+        },
+        {
+          "realm": "化神",
+          "minutes": 371,
+          "rounds": 371,
+          "kills": 12985
+        },
+        {
+          "realm": "炼虚",
+          "minutes": 532,
+          "rounds": 532,
+          "kills": 18620
+        },
+        {
+          "realm": "合体",
+          "minutes": 749,
+          "rounds": 749,
+          "kills": 26215
+        },
+        {
+          "realm": "大乘",
+          "minutes": 1029,
+          "rounds": 1029,
+          "kills": 36015
+        },
+        {
+          "realm": "渡劫",
+          "minutes": 1567,
+          "rounds": 1567,
+          "kills": 54845
+        },
+        {
+          "realm": "真仙",
+          "minutes": 2298,
+          "rounds": 2298,
+          "kills": 80430
+        },
+        {
+          "realm": "玄仙",
+          "minutes": 3113,
+          "rounds": 3113,
+          "kills": 108955
+        },
+        {
+          "realm": "金仙",
+          "minutes": 4621,
+          "rounds": 4621,
+          "kills": 161735
+        },
+        {
+          "realm": "太乙金仙",
+          "minutes": 5285,
+          "rounds": 5285,
+          "kills": 184975
+        },
+        {
+          "realm": "大罗金仙",
+          "minutes": 6075,
+          "rounds": 6075,
+          "kills": 212625
+        },
+        {
+          "realm": "仙王",
+          "minutes": 7311,
+          "rounds": 7311,
+          "kills": 255885
+        }
+      ]
+    },
+    {
+      "seed": 108,
+      "strategy": "主路与双精英",
+      "realm": "仙王",
+      "minutes": 2967,
+      "hours": 49.45,
+      "rounds": 110,
+      "kills": 98900,
+      "failures": 0,
+      "reached": [
+        {
+          "realm": "金丹",
+          "minutes": 18,
+          "rounds": 1,
+          "kills": 600
+        },
+        {
+          "realm": "元婴",
+          "minutes": 63,
+          "rounds": 3,
+          "kills": 2100
+        },
+        {
+          "realm": "化神",
+          "minutes": 135,
+          "rounds": 5,
+          "kills": 4500
+        },
+        {
+          "realm": "炼虚",
+          "minutes": 207,
+          "rounds": 8,
+          "kills": 6900
+        },
+        {
+          "realm": "合体",
+          "minutes": 306,
+          "rounds": 12,
+          "kills": 10200
+        },
+        {
+          "realm": "大乘",
+          "minutes": 432,
+          "rounds": 16,
+          "kills": 14400
+        },
+        {
+          "realm": "渡劫",
+          "minutes": 558,
+          "rounds": 21,
+          "kills": 18600
+        },
+        {
+          "realm": "真仙",
+          "minutes": 781,
+          "rounds": 29,
+          "kills": 26033
+        },
+        {
+          "realm": "玄仙",
+          "minutes": 1069,
+          "rounds": 40,
+          "kills": 35633
+        },
+        {
+          "realm": "金仙",
+          "minutes": 1423,
+          "rounds": 53,
+          "kills": 47433
+        },
+        {
+          "realm": "太乙金仙",
+          "minutes": 1854,
+          "rounds": 69,
+          "kills": 61800
+        },
+        {
+          "realm": "大罗金仙",
+          "minutes": 2367,
+          "rounds": 88,
+          "kills": 78900
+        },
+        {
+          "realm": "仙王",
+          "minutes": 2967,
+          "rounds": 110,
+          "kills": 98900
+        }
+      ]
+    },
+    {
+      "seed": 108,
+      "strategy": "完整探索",
+      "realm": "仙王",
+      "minutes": 2902,
+      "hours": 48.37,
+      "rounds": 81,
+      "kills": 112855,
+      "failures": 0,
+      "reached": [
+        {
+          "realm": "金丹",
+          "minutes": 24,
+          "rounds": 1,
+          "kills": 933
+        },
+        {
+          "realm": "元婴",
+          "minutes": 84,
+          "rounds": 3,
+          "kills": 3266
+        },
+        {
+          "realm": "化神",
+          "minutes": 180,
+          "rounds": 5,
+          "kills": 7000
+        },
+        {
+          "realm": "炼虚",
+          "minutes": 276,
+          "rounds": 8,
+          "kills": 10733
+        },
+        {
+          "realm": "合体",
+          "minutes": 408,
+          "rounds": 12,
+          "kills": 15866
+        },
+        {
+          "realm": "大乘",
+          "minutes": 576,
+          "rounds": 16,
+          "kills": 22400
+        },
+        {
+          "realm": "渡劫",
+          "minutes": 744,
+          "rounds": 21,
+          "kills": 28933
+        },
+        {
+          "realm": "真仙",
+          "minutes": 948,
+          "rounds": 27,
+          "kills": 36866
+        },
+        {
+          "realm": "玄仙",
+          "minutes": 1188,
+          "rounds": 33,
+          "kills": 46200
+        },
+        {
+          "realm": "金仙",
+          "minutes": 1444,
+          "rounds": 41,
+          "kills": 56155
+        },
+        {
+          "realm": "太乙金仙",
+          "minutes": 1850,
+          "rounds": 52,
+          "kills": 71944
+        },
+        {
+          "realm": "大罗金仙",
+          "minutes": 2334,
+          "rounds": 65,
+          "kills": 90766
+        },
+        {
+          "realm": "仙王",
+          "minutes": 2902,
+          "rounds": 81,
+          "kills": 112855
+        }
+      ]
+    },
+    {
+      "seed": 108,
+      "strategy": "普通怪刷取与缺材冒险",
+      "realm": "仙王",
+      "minutes": 11296,
+      "hours": 188.27,
+      "rounds": 11296,
+      "kills": 395360,
+      "failures": 252,
+      "reached": [
+        {
+          "realm": "金丹",
+          "minutes": 5,
+          "rounds": 5,
+          "kills": 175
+        },
+        {
+          "realm": "元婴",
+          "minutes": 27,
+          "rounds": 27,
+          "kills": 945
+        },
+        {
+          "realm": "化神",
+          "minutes": 331,
+          "rounds": 331,
+          "kills": 11585
+        },
+        {
+          "realm": "炼虚",
+          "minutes": 536,
+          "rounds": 536,
+          "kills": 18760
+        },
+        {
+          "realm": "合体",
+          "minutes": 765,
+          "rounds": 765,
+          "kills": 26775
+        },
+        {
+          "realm": "大乘",
+          "minutes": 979,
+          "rounds": 979,
+          "kills": 34265
+        },
+        {
+          "realm": "渡劫",
+          "minutes": 1584,
+          "rounds": 1584,
+          "kills": 55440
+        },
+        {
+          "realm": "真仙",
+          "minutes": 2637,
+          "rounds": 2637,
+          "kills": 92295
+        },
+        {
+          "realm": "玄仙",
+          "minutes": 3229,
+          "rounds": 3229,
+          "kills": 113015
+        },
+        {
+          "realm": "金仙",
+          "minutes": 6475,
+          "rounds": 6475,
+          "kills": 226625
+        },
+        {
+          "realm": "太乙金仙",
+          "minutes": 7747,
+          "rounds": 7747,
+          "kills": 271145
+        },
+        {
+          "realm": "大罗金仙",
+          "minutes": 10446,
+          "rounds": 10446,
+          "kills": 365610
+        },
+        {
+          "realm": "仙王",
+          "minutes": 11296,
+          "rounds": 11296,
+          "kills": 395360
+        }
+      ]
+    },
+    {
+      "seed": 20261018,
+      "strategy": "主路与双精英",
+      "realm": "仙王",
+      "minutes": 2967,
+      "hours": 49.45,
+      "rounds": 110,
+      "kills": 98900,
+      "failures": 0,
+      "reached": [
+        {
+          "realm": "金丹",
+          "minutes": 18,
+          "rounds": 1,
+          "kills": 600
+        },
+        {
+          "realm": "元婴",
+          "minutes": 63,
+          "rounds": 3,
+          "kills": 2100
+        },
+        {
+          "realm": "化神",
+          "minutes": 135,
+          "rounds": 5,
+          "kills": 4500
+        },
+        {
+          "realm": "炼虚",
+          "minutes": 207,
+          "rounds": 8,
+          "kills": 6900
+        },
+        {
+          "realm": "合体",
+          "minutes": 306,
+          "rounds": 12,
+          "kills": 10200
+        },
+        {
+          "realm": "大乘",
+          "minutes": 432,
+          "rounds": 16,
+          "kills": 14400
+        },
+        {
+          "realm": "渡劫",
+          "minutes": 558,
+          "rounds": 21,
+          "kills": 18600
+        },
+        {
+          "realm": "真仙",
+          "minutes": 781,
+          "rounds": 29,
+          "kills": 26033
+        },
+        {
+          "realm": "玄仙",
+          "minutes": 1069,
+          "rounds": 40,
+          "kills": 35633
+        },
+        {
+          "realm": "金仙",
+          "minutes": 1423,
+          "rounds": 53,
+          "kills": 47433
+        },
+        {
+          "realm": "太乙金仙",
+          "minutes": 1854,
+          "rounds": 69,
+          "kills": 61800
+        },
+        {
+          "realm": "大罗金仙",
+          "minutes": 2367,
+          "rounds": 88,
+          "kills": 78900
+        },
+        {
+          "realm": "仙王",
+          "minutes": 2967,
+          "rounds": 110,
+          "kills": 98900
+        }
+      ]
+    },
+    {
+      "seed": 20261018,
+      "strategy": "完整探索",
+      "realm": "仙王",
+      "minutes": 2902,
+      "hours": 48.37,
+      "rounds": 81,
+      "kills": 112855,
+      "failures": 0,
+      "reached": [
+        {
+          "realm": "金丹",
+          "minutes": 24,
+          "rounds": 1,
+          "kills": 933
+        },
+        {
+          "realm": "元婴",
+          "minutes": 84,
+          "rounds": 3,
+          "kills": 3266
+        },
+        {
+          "realm": "化神",
+          "minutes": 180,
+          "rounds": 5,
+          "kills": 7000
+        },
+        {
+          "realm": "炼虚",
+          "minutes": 276,
+          "rounds": 8,
+          "kills": 10733
+        },
+        {
+          "realm": "合体",
+          "minutes": 408,
+          "rounds": 12,
+          "kills": 15866
+        },
+        {
+          "realm": "大乘",
+          "minutes": 576,
+          "rounds": 16,
+          "kills": 22400
+        },
+        {
+          "realm": "渡劫",
+          "minutes": 744,
+          "rounds": 21,
+          "kills": 28933
+        },
+        {
+          "realm": "真仙",
+          "minutes": 948,
+          "rounds": 27,
+          "kills": 36866
+        },
+        {
+          "realm": "玄仙",
+          "minutes": 1188,
+          "rounds": 33,
+          "kills": 46200
+        },
+        {
+          "realm": "金仙",
+          "minutes": 1444,
+          "rounds": 41,
+          "kills": 56155
+        },
+        {
+          "realm": "太乙金仙",
+          "minutes": 1850,
+          "rounds": 52,
+          "kills": 71944
+        },
+        {
+          "realm": "大罗金仙",
+          "minutes": 2334,
+          "rounds": 65,
+          "kills": 90766
+        },
+        {
+          "realm": "仙王",
+          "minutes": 2902,
+          "rounds": 81,
+          "kills": 112855
+        }
+      ]
+    },
+    {
+      "seed": 20261018,
+      "strategy": "普通怪刷取与缺材冒险",
+      "realm": "仙王",
+      "minutes": 9205,
+      "hours": 153.42,
+      "rounds": 9205,
+      "kills": 322175,
+      "failures": 213,
+      "reached": [
+        {
+          "realm": "金丹",
+          "minutes": 17,
+          "rounds": 17,
+          "kills": 595
+        },
+        {
+          "realm": "元婴",
+          "minutes": 48,
+          "rounds": 48,
+          "kills": 1680
+        },
+        {
+          "realm": "化神",
+          "minutes": 102,
+          "rounds": 102,
+          "kills": 3570
+        },
+        {
+          "realm": "炼虚",
+          "minutes": 292,
+          "rounds": 292,
+          "kills": 10220
+        },
+        {
+          "realm": "合体",
+          "minutes": 772,
+          "rounds": 772,
+          "kills": 27020
+        },
+        {
+          "realm": "大乘",
+          "minutes": 1151,
+          "rounds": 1151,
+          "kills": 40285
+        },
+        {
+          "realm": "渡劫",
+          "minutes": 2383,
+          "rounds": 2383,
+          "kills": 83405
+        },
+        {
+          "realm": "真仙",
+          "minutes": 3026,
+          "rounds": 3026,
+          "kills": 105910
+        },
+        {
+          "realm": "玄仙",
+          "minutes": 3434,
+          "rounds": 3434,
+          "kills": 120190
+        },
+        {
+          "realm": "金仙",
+          "minutes": 4759,
+          "rounds": 4759,
+          "kills": 166565
+        },
+        {
+          "realm": "太乙金仙",
+          "minutes": 5644,
+          "rounds": 5644,
+          "kills": 197540
+        },
+        {
+          "realm": "大罗金仙",
+          "minutes": 8278,
+          "rounds": 8278,
+          "kills": 289730
+        },
+        {
+          "realm": "仙王",
+          "minutes": 9205,
+          "rounds": 9205,
+          "kills": 322175
+        }
+      ]
+    }
+  ]
+}

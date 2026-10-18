@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-18T10:16:42.199Z",
+  "generatedAt": "2026-10-18T10:41:26.936Z",
   "setup": {
+    "encounters": "cultivation-autosave-v2",
     "difficulty": "normal",
     "route": "main route plus both elite challenges",
     "initialLevel": 1,
@@ -10,8 +11,7 @@
     "initialEquipment": [],
     "reactionSeconds": 0.1,
     "simulationHz": 30,
-    "fullCampaign": false,
-    "encounters": "endless-patrol-v1"
+    "fullCampaign": false
   },
   "limitations": [
     "Scripted navigation and complete live enemy-attack geometry; not human playtesting.",
@@ -27,42 +27,42 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 252,
+          "time": 227,
           "level": 11,
-          "hp": 120,
-          "damageTaken": 0,
-          "kills": 342,
-          "combatSeconds": 190,
-          "maxGapSeconds": 10,
+          "hp": 170,
+          "damageTaken": 32,
+          "kills": 329,
+          "combatSeconds": 192,
+          "maxGapSeconds": 6,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 211,
+            "time": 177,
             "level": 10,
-            "hp": 120,
-            "spawned": 345,
-            "killed": 322,
+            "hp": 170,
+            "spawned": 321,
+            "killed": 307,
             "peak": 21,
-            "patrols": 26,
+            "patrols": 22,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
-            "yujian": 2,
-            "wanjian": 5,
-            "guanyin": 1,
-            "bingxin": 2,
-            "wulei": 1,
-            "jiushen": 1
+            "yujian": 3,
+            "wanjian": 2,
+            "sanmei": 1,
+            "guanyin": 4
           },
           "equips": [
-            "mujian"
+            "tiangang",
+            "juling",
+            "jiuhu"
           ],
           "director": {
-            "spawned": 349,
-            "killed": 326,
+            "spawned": 327,
+            "killed": 313,
             "peak": 21,
-            "patrols": 26
+            "patrols": 22
           },
           "camps": [
             {

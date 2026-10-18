@@ -8,6 +8,8 @@ on:
       - 'tools/check-syntax.js'
       - 'tools/check-director.js'
       - 'tools/check-carryover.js'
+      - 'tools/check-saves.js'
+      - 'tools/check-cultivation.js'
       - 'tools/game-harness.js'
       - 'tools/build-pages.js'
       - '.github/workflows/pages.yml'
@@ -30,6 +32,8 @@ jobs:
           node tools/check-syntax.js
           node tools/check-director.js
           node tools/check-carryover.js
+          node tools/check-saves.js
+          node tools/check-cultivation.js
       - name: Package playable game
         run: node tools/build-pages.js
       - uses: actions/upload-pages-artifact@v3

@@ -72,7 +72,7 @@ const EncounterDirector=(()=>{
       if(p.source==='rune')Object.assign(e,{name:'妖巢阵眼',eventObjective:true,seal:true,glyph:'阵',hp:Math.round((45+Journey.run.stage*15)*Journey.difficulty().mobHp),maxHp:Math.round((45+Journey.run.stage*15)*Journey.difficulty().mobHp),r:20,speed:0,dmg:0,xp:0});
       else stats.spawned++;
     }
-    World.resolve(e);return e;
+    e.directorIndex=p.index;e.spawnTier=p.tier||tier(p.encounterId);World.resolve(e);return e;
   }
   function pump(dt){
     if(mode==='boss'&&!bossAllowed()){
@@ -173,5 +173,19 @@ const EncounterDirector=(()=>{
   function status(){return {mode,cap:cap(),waveSize:waveSize(),alive:G.enemies.filter(ordinary).length,pending:pending.length,warnings:pending.filter(p=>p.time!==null).map(p=>({x:p.point.x,y:p.point.y,time:p.time,source:p.source})),
     discovered:camps.filter(c=>c.state!=='unseen').length,cleared:camps.filter(c=>c.state==='cleared').length,patrols,stats:{...stats},
     camps:camps.map(c=>({id:c.id,x:c.x,y:c.y,state:c.state,kind:c.kind,wave:c.wave,remaining:owned(c).filter(e=>!e.eventObjective).length,runes:owned(c).filter(e=>e.eventObjective).length,sleeping:c.sleeping.length,pending:pending.filter(p=>p.encounterId===c.id).length,timer:c.timer}))};}
-  return {reset,update,onEnemyKilled,beginBoss,hud,drawGround,drawMap,status};
+  function exportState(){
+    const plan=p=>({type:p.type,source:p.source,elite:!!p.elite,index:p.index||0,tier:p.tier||1.15});
+    const unit=e=>plan({type:e.type,source:e.eventObjective?'rune':'camp',elite:e.elite,index:e.directorIndex,tier:e.spawnTier});
+    return {idle,patrols,serial,stats:{...stats},camps:camps.map(c=>({id:c.id,state:c.state,wave:c.wave,timer:c.timer,runesCreated:c.runesCreated,kills:c.kills,
+      slots:[...owned(c).map(unit),...c.sleeping.map(unit),...pending.filter(p=>p.encounterId===c.id).map(p=>p.snapshot?unit(p.snapshot):plan(p)),...c.sleepingPending.map(p=>p.snapshot?unit(p.snapshot):plan(p))]}))};
+  }
+  function importState(s){
+    if(!s||!Array.isArray(s.camps)||s.camps.length!==9)throw new Error('Invalid encounters');
+    reset();idle=Math.max(0,Math.min(8,s.idle||0));patrols=s.patrols||0;serial=s.serial||0;stats={...stats,...s.stats};
+    for(const value of s.camps){const c=camps[value.id];if(!c||!['unseen','active','dormant','cleared'].includes(value.state)||!Number.isInteger(value.wave)||value.wave<0||value.wave>3||!Array.isArray(value.slots)||value.slots.length>60)throw new Error('Invalid camp');
+      Object.assign(c,{wave:value.wave,timer:value.timer,runesCreated:!!value.runesCreated,kills:value.kills||0,state:value.state==='active'?'dormant':value.state});
+      c.sleepingPending=value.slots.map(p=>{if(!['imp','fox','snake','zombie'].includes(p.type)||!['camp','rune'].includes(p.source)||!Number.isFinite(p.tier))throw new Error('Invalid spawn');return {...p,encounterId:c.id,time:null};});
+    }
+  }
+  return {reset,update,onEnemyKilled,beginBoss,hud,drawGround,drawMap,status,exportState,importState};
 })();

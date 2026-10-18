@@ -27,8 +27,8 @@ check('ordinary kills never unlock chapters',`reset();spawnEnemy('imp');killEnem
 check('first actual guardian victory unlocks exactly next chapter',`reset();return realVictory()&&JourneyProgress.cleared()===1&&JourneyProgress.canSelect(1)&&!JourneyProgress.canSelect(2)`);
 check('victory saves next entry before leaving result screen',`return !!JourneyProgress.snapshot().entries[1]&&JourneyProgress.snapshot().entries[1].build.hp>=84`);
 check('reopening result cannot duplicate clear',`Journey.showEnd(true);return JourneyProgress.cleared()===1`);
-check('camp reward carries build into unlocked chapter',`P.spells.wulei=2;P.equips=['mujian'];return Journey.next('body')&&Journey.run.stage===1&&G.state==='story'&&P.maxHp===140&&JourneyProgress.snapshot().entries[1].build.maxHp===140`);
-check('camp cannot grant free repeated reward',`const damage=P.dmg;return !Journey.next('power')&&P.dmg===damage&&Journey.run.stage===1`);
+check('camp reward carries build into unlocked chapter',`P.spells.wulei=2;P.equips=['mujian'];return (G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('body')&&Journey.run.stage===1&&G.state==='story'&&P.maxHp===140&&JourneyProgress.snapshot().entries[1].build.maxHp===140`);
+check('camp cannot grant free repeated reward',`const damage=P.dmg;return !(G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('power')&&P.dmg===damage&&Journey.run.stage===1`);
 check('chapter arrival never unlocks the following chapter',`return JourneyProgress.cleared()===1&&!JourneyProgress.canSelect(2)`);
 check('unlocked next chapter may be selected after predecessor victory',`Journey.begin(1);reset();return Journey.run.stage===1&&P.maxHp===140&&P.spells.wulei===2`);
 check('second actual guardian victory unlocks third chapter',`return realVictory()&&JourneyProgress.cleared()===2&&JourneyProgress.canSelect(2)&&!!JourneyProgress.snapshot().entries[2]`);

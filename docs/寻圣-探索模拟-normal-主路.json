@@ -1,6 +1,7 @@
 {
-  "generatedAt": "2026-10-18T10:17:37.609Z",
+  "generatedAt": "2026-10-18T10:43:16.696Z",
   "setup": {
+    "encounters": "cultivation-autosave-v2",
     "difficulty": "normal",
     "route": "main route plus both elite challenges",
     "initialLevel": 1,
@@ -10,8 +11,7 @@
     "initialEquipment": [],
     "reactionSeconds": 0.1,
     "simulationHz": 30,
-    "fullCampaign": true,
-    "encounters": "endless-patrol-v1"
+    "fullCampaign": true
   },
   "limitations": [
     "Scripted navigation and complete live enemy-attack geometry; not human playtesting.",
@@ -27,42 +27,42 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 252,
+          "time": 227,
           "level": 11,
-          "hp": 120,
-          "damageTaken": 0,
-          "kills": 342,
-          "combatSeconds": 190,
-          "maxGapSeconds": 10,
+          "hp": 170,
+          "damageTaken": 32,
+          "kills": 329,
+          "combatSeconds": 192,
+          "maxGapSeconds": 6,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 211,
+            "time": 177,
             "level": 10,
-            "hp": 120,
-            "spawned": 345,
-            "killed": 322,
+            "hp": 170,
+            "spawned": 321,
+            "killed": 307,
             "peak": 21,
-            "patrols": 26,
+            "patrols": 22,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
-            "yujian": 2,
-            "wanjian": 5,
-            "guanyin": 1,
-            "bingxin": 2,
-            "wulei": 1,
-            "jiushen": 1
+            "yujian": 3,
+            "wanjian": 2,
+            "sanmei": 1,
+            "guanyin": 4
           },
           "equips": [
-            "mujian"
+            "tiangang",
+            "juling",
+            "jiuhu"
           ],
           "director": {
-            "spawned": 349,
-            "killed": 326,
+            "spawned": 327,
+            "killed": 313,
             "peak": 21,
-            "patrols": 26
+            "patrols": 22
           },
           "camps": [
             {
@@ -133,44 +133,45 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 223,
+          "time": 260,
           "level": 13,
-          "hp": 120,
-          "damageTaken": 0,
-          "kills": 375,
-          "combatSeconds": 148,
+          "hp": 170,
+          "damageTaken": 16,
+          "kills": 393,
+          "combatSeconds": 200,
           "maxGapSeconds": 8,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 178,
+            "time": 211,
             "level": 13,
-            "hp": 120,
-            "spawned": 375,
-            "killed": 360,
-            "peak": 24,
-            "patrols": 22,
+            "hp": 170,
+            "spawned": 399,
+            "killed": 376,
+            "peak": 26,
+            "patrols": 26,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
-            "yujian": 2,
-            "wanjian": 5,
-            "guanyin": 3,
-            "bingxin": 2,
-            "wulei": 1,
-            "jiushen": 1
+            "yujian": 3,
+            "wanjian": 2,
+            "sanmei": 1,
+            "guanyin": 5,
+            "gudu": 1,
+            "bingxin": 1
           },
           "equips": [
-            "mujian",
-            "wudu",
+            "tiangang",
+            "juling",
+            "jiuhu",
             "nvwa"
           ],
           "director": {
-            "spawned": 379,
-            "killed": 364,
-            "peak": 24,
-            "patrols": 22
+            "spawned": 405,
+            "killed": 382,
+            "peak": 26,
+            "patrols": 26
           },
           "camps": [
             {
@@ -241,47 +242,48 @@
         {
           "stage": 3,
           "state": "win",
-          "time": 200,
-          "level": 14,
-          "hp": 120,
+          "time": 242,
+          "level": 15,
+          "hp": 170,
           "damageTaken": 0,
-          "kills": 411,
-          "combatSeconds": 156,
-          "maxGapSeconds": 8,
+          "kills": 431,
+          "combatSeconds": 206,
+          "maxGapSeconds": 7,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 153,
-            "level": 14,
-            "hp": 120,
-            "spawned": 414,
-            "killed": 396,
-            "peak": 24,
-            "patrols": 19,
+            "time": 194,
+            "level": 15,
+            "hp": 170,
+            "spawned": 438,
+            "killed": 414,
+            "peak": 26,
+            "patrols": 24,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
             "yujian": 3,
-            "wanjian": 5,
-            "guanyin": 3,
-            "bingxin": 2,
-            "wulei": 1,
-            "jiushen": 1
+            "wanjian": 2,
+            "sanmei": 1,
+            "guanyin": 5,
+            "gudu": 1,
+            "bingxin": 2
           },
           "equips": [
-            "mujian",
-            "wudu",
-            "nvwa",
             "tiangang",
+            "juling",
+            "jiuhu",
+            "nvwa",
+            "wudu",
             "jifeng",
             "huxin"
           ],
           "director": {
-            "spawned": 418,
-            "killed": 400,
-            "peak": 24,
-            "patrols": 19
+            "spawned": 444,
+            "killed": 420,
+            "peak": 26,
+            "patrols": 24
           },
           "camps": [
             {
@@ -358,44 +360,41 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 248,
+          "time": 216,
           "level": 11,
-          "hp": 140,
+          "hp": 120,
           "damageTaken": 7,
-          "kills": 332,
-          "combatSeconds": 195,
-          "maxGapSeconds": 11,
+          "kills": 316,
+          "combatSeconds": 170,
+          "maxGapSeconds": 7,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 198,
+            "time": 166,
             "level": 10,
-            "hp": 140,
-            "spawned": 336,
-            "killed": 310,
-            "peak": 22,
-            "patrols": 24,
+            "hp": 120,
+            "spawned": 315,
+            "killed": 294,
+            "peak": 21,
+            "patrols": 20,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
-            "yujian": 2,
+            "yujian": 1,
             "gudu": 1,
-            "wanjian": 3,
-            "guanyin": 2,
+            "wanjian": 5,
             "wulei": 1,
-            "sanmei": 1
+            "sanmei": 3
           },
           "equips": [
-            "nvwa",
-            "mujian",
-            "juling"
+            "mujian"
           ],
           "director": {
-            "spawned": 342,
-            "killed": 316,
-            "peak": 22,
-            "patrols": 24
+            "spawned": 321,
+            "killed": 300,
+            "peak": 21,
+            "patrols": 20
           },
           "camps": [
             {
@@ -466,47 +465,44 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 235,
+          "time": 218,
           "level": 13,
-          "hp": 140,
+          "hp": 120,
           "damageTaken": 0,
-          "kills": 375,
-          "combatSeconds": 167,
+          "kills": 368,
+          "combatSeconds": 168,
           "maxGapSeconds": 7,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 190,
+            "time": 174,
             "level": 13,
-            "hp": 140,
-            "spawned": 384,
-            "killed": 360,
-            "peak": 22,
-            "patrols": 23,
+            "hp": 120,
+            "spawned": 375,
+            "killed": 353,
+            "peak": 21,
+            "patrols": 21,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
-            "yujian": 3,
+            "yujian": 1,
             "gudu": 1,
-            "wanjian": 3,
-            "guanyin": 3,
-            "wulei": 1,
-            "sanmei": 1
+            "wanjian": 5,
+            "wulei": 2,
+            "sanmei": 3,
+            "bingxin": 1
           },
           "equips": [
-            "nvwa",
             "mujian",
-            "juling",
-            "jifeng",
-            "huxin",
-            "tiangang"
+            "nvwa",
+            "jifeng"
           ],
           "director": {
-            "spawned": 388,
-            "killed": 364,
-            "peak": 22,
-            "patrols": 23
+            "spawned": 379,
+            "killed": 357,
+            "peak": 21,
+            "patrols": 21
           },
           "camps": [
             {
@@ -577,49 +573,47 @@
         {
           "stage": 3,
           "state": "win",
-          "time": 215,
+          "time": 188,
           "level": 15,
-          "hp": 170,
+          "hp": 120,
           "damageTaken": 0,
-          "kills": 426,
-          "combatSeconds": 173,
-          "maxGapSeconds": 5,
+          "kills": 406,
+          "combatSeconds": 146,
+          "maxGapSeconds": 6,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 168,
-            "level": 15,
-            "hp": 170,
-            "spawned": 423,
-            "killed": 411,
-            "peak": 24,
-            "patrols": 20,
+            "time": 140,
+            "level": 14,
+            "hp": 120,
+            "spawned": 408,
+            "killed": 389,
+            "peak": 27,
+            "patrols": 17,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
-            "yujian": 3,
+            "yujian": 2,
             "gudu": 1,
-            "wanjian": 4,
-            "guanyin": 3,
-            "wulei": 1,
-            "sanmei": 2
+            "wanjian": 5,
+            "wulei": 2,
+            "sanmei": 3,
+            "bingxin": 1
           },
           "equips": [
-            "nvwa",
             "mujian",
-            "juling",
+            "nvwa",
             "jifeng",
-            "huxin",
-            "tiangang",
+            "juling",
             "wudu",
-            "jiuhu"
+            "huxin"
           ],
           "director": {
-            "spawned": 427,
-            "killed": 415,
-            "peak": 24,
-            "patrols": 20
+            "spawned": 414,
+            "killed": 395,
+            "peak": 27,
+            "patrols": 17
           },
           "camps": [
             {
@@ -696,43 +690,43 @@
         {
           "stage": 1,
           "state": "win",
-          "time": 288,
+          "time": 261,
           "level": 11,
-          "hp": 150,
-          "damageTaken": 24,
-          "kills": 366,
-          "combatSeconds": 242,
-          "maxGapSeconds": 8,
+          "hp": 120,
+          "damageTaken": 0,
+          "kills": 345,
+          "combatSeconds": 202,
+          "maxGapSeconds": 11,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 227,
-            "level": 11,
-            "hp": 150,
-            "spawned": 355,
-            "killed": 342,
+            "time": 210,
+            "level": 10,
+            "hp": 120,
+            "spawned": 345,
+            "killed": 323,
             "peak": 20,
-            "patrols": 28,
+            "patrols": 26,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
             "yujian": 2,
-            "wanjian": 2,
-            "sanmei": 1,
-            "guanyin": 2,
-            "bingxin": 1
+            "wulei": 2,
+            "wanjian": 3,
+            "guanyin": 1,
+            "bingxin": 1,
+            "jiushen": 1
           },
           "equips": [
-            "juling",
-            "tiangang",
-            "jiuhu"
+            "huxin",
+            "juling"
           ],
           "director": {
-            "spawned": 363,
-            "killed": 350,
+            "spawned": 351,
+            "killed": 329,
             "peak": 20,
-            "patrols": 28
+            "patrols": 26
           },
           "camps": [
             {
@@ -803,45 +797,45 @@
         {
           "stage": 2,
           "state": "win",
-          "time": 243,
-          "level": 14,
-          "hp": 150,
+          "time": 240,
+          "level": 13,
+          "hp": 120,
           "damageTaken": 0,
-          "kills": 394,
+          "kills": 387,
           "combatSeconds": 183,
-          "maxGapSeconds": 8,
+          "maxGapSeconds": 7,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 192,
+            "time": 196,
             "level": 13,
-            "hp": 150,
+            "hp": 120,
             "spawned": 384,
-            "killed": 377,
-            "peak": 29,
+            "killed": 372,
+            "peak": 26,
             "patrols": 23,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "sanmei": 2,
-            "guanyin": 3,
-            "bingxin": 1,
+            "yujian": 2,
+            "wulei": 2,
+            "wanjian": 3,
+            "guanyin": 1,
+            "bingxin": 2,
             "jiushen": 1
           },
           "equips": [
+            "huxin",
             "juling",
-            "tiangang",
-            "jiuhu",
-            "wudu",
-            "huxin"
+            "jifeng",
+            "mujian",
+            "tiangang"
           ],
           "director": {
-            "spawned": 390,
-            "killed": 383,
-            "peak": 29,
+            "spawned": 388,
+            "killed": 376,
+            "peak": 26,
             "patrols": 23
           },
           "camps": [
@@ -913,47 +907,47 @@
         {
           "stage": 3,
           "state": "win",
-          "time": 201,
+          "time": 207,
           "level": 15,
           "hp": 150,
           "damageTaken": 0,
-          "kills": 393,
-          "combatSeconds": 160,
-          "maxGapSeconds": 7,
+          "kills": 417,
+          "combatSeconds": 163,
+          "maxGapSeconds": 5,
           "routeIndex": 11,
           "routeLength": 11,
           "beforeBoss": {
-            "time": 154,
+            "time": 157,
             "level": 15,
             "hp": 150,
-            "spawned": 417,
-            "killed": 378,
-            "peak": 26,
+            "spawned": 418,
+            "killed": 400,
+            "peak": 24,
             "patrols": 19,
             "cleared": 9,
             "eliteCamps": 2
           },
           "spells": {
-            "yujian": 3,
-            "wanjian": 2,
-            "sanmei": 2,
-            "guanyin": 3,
-            "bingxin": 1,
+            "yujian": 2,
+            "wulei": 3,
+            "wanjian": 3,
+            "guanyin": 2,
+            "bingxin": 2,
             "jiushen": 1
           },
           "equips": [
-            "juling",
-            "tiangang",
-            "jiuhu",
-            "wudu",
             "huxin",
+            "juling",
             "jifeng",
-            "nvwa"
+            "mujian",
+            "tiangang",
+            "wudu",
+            "jiuhu"
           ],
           "director": {
-            "spawned": 421,
-            "killed": 382,
-            "peak": 26,
+            "spawned": 424,
+            "killed": 406,
+            "peak": 24,
             "patrols": 19
           },
           "camps": [
