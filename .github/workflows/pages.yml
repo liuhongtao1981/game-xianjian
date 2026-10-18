@@ -9,6 +9,7 @@ on:
       - 'tools/check-director.js'
       - 'tools/check-carryover.js'
       - 'tools/game-harness.js'
+      - 'tools/build-pages.js'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -30,14 +31,7 @@ jobs:
           node tools/check-director.js
           node tools/check-carryover.js
       - name: Package playable game
-        run: |
-          mkdir -p _site
-          cp prototype/index.html prototype/*.js prototype/*.css _site/
-          cp -R prototype/assets _site/assets
-          touch _site/.nojekyll
-          test -s _site/index.html
-          test -s _site/assets/hero-motion.png
-          test -s _site/assets/audio/music/birth-field.mp3
+        run: node tools/build-pages.js
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

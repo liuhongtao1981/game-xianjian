@@ -18,7 +18,7 @@ WASD 移动，空格闪避，Q 大招，E 交互，Tab 舆图，F 全屏。触�
 
 ## GitHub Pages 发布
 
-`.github/workflows/pages.yml` 会在游戏文件推送至 `main` 时检查脚本，并发布游戏入口、脚本、样式和素材；也可在 Actions 页面手动运行。截图、预览视频和开发文档不会进入网站。
+`.github/workflows/pages.yml` 会在游戏文件推送至 `main` 时检查脚本，并通过 `node tools/build-pages.js` 打包游戏入口、脚本、样式和素材；也可在 Actions 页面手动运行。发布时脚本与样式带提交版本参数，避免继续读取上版缓存。截图、预览视频和开发文档不会进入网站。
 
 在仓库 Settings → Pages 中将 Source 设为 GitHub Actions。仓库必须满足 GitHub Pages 的套餐要求；当前私有仓库若套餐不支持，需要经仓库所有者同意改为公开，或升级套餐。发布成功后的地址为 <https://liuhongtao1981.github.io/game-xianjian/>。
 
