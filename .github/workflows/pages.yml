@@ -1,0 +1,52 @@
+name: Deploy game to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'prototype/**'
+      - 'tools/check-syntax.js'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check game scripts
+        run: node tools/check-syntax.js
+      - name: Package playable game
+        run: |
+          mkdir -p _site
+          cp prototype/index.html prototype/*.js prototype/*.css _site/
+          cp -R prototype/assets _site/assets
+          touch _site/.nojekyll
+          test -s _site/index.html
+          test -s _site/assets/hero-motion.png
+          test -s _site/assets/audio/music/birth-field.mp3
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Publish game
+        id: deployment
+        uses: actions/deploy-pages@v4

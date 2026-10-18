@@ -5,6 +5,7 @@ __pycache__/
 *.py[cod]
 .cache/
 tmp/
+_site/
 
 # Local environment and editor files
 .env
