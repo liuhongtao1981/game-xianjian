@@ -13,7 +13,7 @@ function createHarness(options={}){
     window:{innerWidth:options.width??1440,innerHeight:options.height??900,devicePixelRatio:1,addEventListener(){}},
     document:{body:node(),createElement:()=>node(),addEventListener(){},querySelector:()=>node(),getElementById(id){if(id==='game')return canvas;if(!nodes.has(id))nodes.set(id,node());return nodes.get(id);}}};
   vm.createContext(context);
-  for(const file of ['sound.js','chapters.js','chapters-content.js','growth.js','spell-combat.js','items.js','cultivation.js','progress.js','golden-uv.js','encounters.js','journey.js','bosses.js','world-nav.js','world.js','director.js','motion.js','run-save.js','character.js','game.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../prototype',file),'utf8'),context);
+  for(const file of ['sound.js','chapters.js','chapters-content.js','growth.js','spell-combat.js','items.js','cultivation.js','combat-scaling.js','progress.js','golden-uv.js','encounters.js','journey.js','bosses.js','world-nav.js','world.js','director.js','motion.js','run-save.js','character.js','game.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../prototype',file),'utf8'),context);
   return {context,storage,evaluate:source=>vm.runInContext(source,context)};
 }
 module.exports={createHarness};

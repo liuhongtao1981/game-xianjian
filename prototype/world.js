@@ -141,7 +141,7 @@ const World=(()=>{
   function visible(e,pad=180){const v=view();return e.x>v.x-pad&&e.x<v.x+v.w+pad&&e.y>v.y-pad&&e.y<v.y+v.h+pad;}
   function enterBoss(){
     if(active||G.bossSpawned)return false;
-    RunSave.prepareBoss();
+    CombatScaling.lockBoss();RunSave.prepareBoss();
     active=true;mapOpen=false;near=null;
     const button=document.getElementById('interactBtn');if(button)button.hidden=true;
     // Crossing the altar is a deliberate commitment. Nearby camps cannot flood the duel.

@@ -1,0 +1,908 @@
+{
+  "generatedAt": "2026-10-19T00:26:10.633Z",
+  "limitations": [
+    "Scripted navigation using actual browser game simulation at 30 Hz; not human playtesting.",
+    "No combat stats, enemy health, mechanism or reward edits during routes.",
+    "The policy reads full hazard geometry; times exclude reward reading and character planning.",
+    "Timeouts and deaths are preserved.",
+    "Main-route bot also clears incidental nearby camps. Golden bosses use a declared level-50, realm-one build; this is not a fresh six-chapter journey.",
+    "The 25–35 minute human pacing and long-term cultivation economy require human playtesting; scripted route times do not certify those targets."
+  ],
+  "routes": [
+    {
+      "route": "main",
+      "cleared": 1,
+      "rows": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 873,
+          "level": 16,
+          "hp": 171,
+          "damageTaken": 43,
+          "kills": 936,
+          "combatSeconds": 765,
+          "maxGapSeconds": 19,
+          "routeIndex": 12,
+          "routeLength": 12,
+          "beforeBoss": {
+            "time": 814,
+            "level": 16,
+            "hp": 171,
+            "spawned": 955,
+            "killed": 927,
+            "peak": 30,
+            "patrols": 64,
+            "cleared": 17,
+            "eliteCamps": 4
+          },
+          "spells": {
+            "yujian": 2,
+            "wanjian": 5,
+            "wulei": 2,
+            "sanmei": 2,
+            "bingxin": 1,
+            "guanyin": 2
+          },
+          "equips": [
+            "tiangang",
+            "juling",
+            "mujian",
+            "huxin",
+            "nvwa",
+            "jifeng",
+            "wudu",
+            "jiuhu"
+          ],
+          "director": {
+            "spawned": 963,
+            "killed": 935,
+            "peak": 30,
+            "patrols": 64
+          },
+          "camps": [
+            {
+              "id": 0,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 1,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 2,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 3,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 4,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 5,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 6,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 7,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 8,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 9,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 10,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 11,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 12,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 13,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 14,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 15,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 16,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 17,
+              "state": "active",
+              "wave": 2,
+              "remaining": 0,
+              "runes": 0
+            }
+          ]
+        }
+      ],
+      "progress": {
+        "xp": 660.0725326347898,
+        "xpNext": 1124,
+        "totalExperience": 4745.07253263479,
+        "pendingUpgrades": 0,
+        "pendingCore": {
+          "max": 1,
+          "count": 2
+        },
+        "qi": 640,
+        "materials": {
+          "essence": 100,
+          "core1": 5
+        },
+        "threat": {
+          "risk": 2.3263462843670815,
+          "rewards": {
+            "xp": 1.8526461039193416,
+            "qi": 1.4263230519596708,
+            "essence": 0.08045164656854792,
+            "medicine": 0.04109032931370959,
+            "chest": 0.005654197588225749,
+            "core": 0.18270987941128747
+          },
+          "peak": {
+            "output": 337.81116426276424,
+            "survival": 258.59861143807893,
+            "sustain": 13.203643237669702,
+            "realm": 0.8888888888888888
+          }
+        }
+      }
+    },
+    {
+      "route": "full",
+      "cleared": 1,
+      "rows": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 1057,
+          "level": 16,
+          "hp": 141,
+          "damageTaken": 7,
+          "kills": 1055,
+          "combatSeconds": 919,
+          "maxGapSeconds": 12,
+          "routeIndex": 24,
+          "routeLength": 24,
+          "beforeBoss": {
+            "time": 1000,
+            "level": 16,
+            "hp": 141,
+            "spawned": 1068,
+            "killed": 1046,
+            "peak": 29,
+            "patrols": 85,
+            "cleared": 18,
+            "eliteCamps": 4
+          },
+          "spells": {
+            "yujian": 3,
+            "wanjian": 4,
+            "wulei": 4,
+            "sanmei": 1,
+            "bingxin": 2,
+            "guanyin": 2
+          },
+          "equips": [
+            "huxin",
+            "jifeng",
+            "mujian",
+            "tiangang"
+          ],
+          "director": {
+            "spawned": 1076,
+            "killed": 1054,
+            "peak": 29,
+            "patrols": 85
+          },
+          "camps": [
+            {
+              "id": 0,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 1,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 2,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 3,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 4,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 5,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 6,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 7,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 8,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 9,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 10,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 11,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 12,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 13,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 14,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 15,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 16,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 17,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            }
+          ]
+        }
+      ],
+      "progress": {
+        "xp": 386.9673720254196,
+        "xpNext": 1124,
+        "totalExperience": 4471.9673720254195,
+        "pendingUpgrades": 0,
+        "pendingCore": {
+          "max": 1,
+          "count": 1
+        },
+        "qi": 640,
+        "materials": {
+          "essence": 108,
+          "core1": 4
+        },
+        "threat": {
+          "risk": 2.102646731062472,
+          "rewards": {
+            "xp": 1.7505445366991212,
+            "qi": 1.3752722683495606,
+            "essence": 0.07680516202496862,
+            "medicine": 0.040361032404993724,
+            "chest": 0.005216619442996235,
+            "core": 0.1608309721498117
+          },
+          "peak": {
+            "output": 286.0055438825108,
+            "survival": 223.30449379102012,
+            "sustain": 11.561264822134387,
+            "realm": 0.8888888888888888
+          }
+        }
+      }
+    },
+    {
+      "route": "patrol",
+      "cleared": 0,
+      "rows": [
+        {
+          "stage": 1,
+          "state": "playing",
+          "time": 600,
+          "level": 13,
+          "hp": 141,
+          "damageTaken": 0,
+          "kills": 533,
+          "combatSeconds": 368,
+          "maxGapSeconds": 9,
+          "routeIndex": 1,
+          "routeLength": 2,
+          "beforeBoss": null,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 2,
+            "wulei": 2,
+            "bingxin": 1,
+            "gudu": 1,
+            "jiushen": 1
+          },
+          "equips": [
+            "huxin"
+          ],
+          "director": {
+            "spawned": 539,
+            "killed": 533,
+            "peak": 30,
+            "patrols": 58
+          },
+          "camps": [
+            {
+              "id": 0,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 1,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 2,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 3,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 4,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 5,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 6,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 7,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 8,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 9,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 10,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 11,
+              "state": "cleared",
+              "wave": 3,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 12,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 13,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 14,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 15,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 16,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            },
+            {
+              "id": 17,
+              "state": "unseen",
+              "wave": 0,
+              "remaining": 0,
+              "runes": 0
+            }
+          ]
+        }
+      ],
+      "progress": {
+        "xp": 228.22381018167832,
+        "xpNext": 590,
+        "totalExperience": 1905.2238101816783,
+        "pendingUpgrades": 0,
+        "pendingCore": null,
+        "qi": 640,
+        "materials": {
+          "essence": 44,
+          "core1": 2
+        },
+        "threat": {
+          "risk": 1.980241889324462,
+          "rewards": {
+            "xp": 1.6899736678043107,
+            "qi": 1.3449868339021553,
+            "essence": 0.07464191670729681,
+            "medicine": 0.039928383341459366,
+            "chest": 0,
+            "core": 0.14785150024378088
+          },
+          "peak": {
+            "output": 199.60100699366433,
+            "survival": 223.30449379102012,
+            "sustain": 5.434782608695651,
+            "realm": 0.8888888888888888
+          }
+        }
+      }
+    }
+  ],
+  "guardians": [
+    {
+      "start": 0,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 78.2,
+          "hp": 119,
+          "minHp": 104,
+          "damageTaken": 16,
+          "level": 7,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 4305,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 35
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 82.7,
+          "hp": 138,
+          "minHp": 108,
+          "damageTaken": 19,
+          "level": 8,
+          "spells": {
+            "yujian": 3,
+            "wanjian": 2,
+            "wulei": 1,
+            "guanyin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 6884,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 45
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 88.1,
+          "hp": 141,
+          "minHp": 108,
+          "damageTaken": 87,
+          "level": 9,
+          "spells": {
+            "yujian": 4,
+            "wanjian": 2,
+            "wulei": 1,
+            "guanyin": 1
+          },
+          "bossRemaining": 0,
+          "bossMax": 11085,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 49
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 4,
+          "state": "win",
+          "time": 122.1,
+          "hp": 582,
+          "minHp": 538,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 86050,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 3,
+          "stationarySeconds": 59
+        },
+        {
+          "stage": 5,
+          "state": "win",
+          "time": 45,
+          "hp": 630,
+          "minHp": 582,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 119897,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 23
+        },
+        {
+          "stage": 6,
+          "state": "win",
+          "time": 68.9,
+          "hp": 630,
+          "minHp": 630,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 169508,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 2,
+          "stationarySeconds": 45
+        }
+      ]
+    }
+  ],
+  "randomness": "Native browser Math.random; measured route outcomes are samples, not seeded reproducibility.",
+  "validation": {
+    "automatedChecks": 365,
+    "syntaxScripts": 20,
+    "pressureChecks": 38,
+    "standing": {
+      "seconds": 60,
+      "initialHp": 600,
+      "finalHp": 171,
+      "initialShield": 250,
+      "finalShield": 0,
+      "armor": 0.6,
+      "regen": 3,
+      "cdr": 0.55,
+      "spells": {
+        "bingxin": 5,
+        "guanyin": 5
+      },
+      "enemies": 12,
+      "policy": "No movement, normal auto spells; actual AI and damage paths."
+    },
+    "highRealmGuardian": {
+      "setup": "Seed 81; declared realm-six level-50 build at the first altar, carry earned progression to the next two. Not an exploration run.",
+      "cleared": 3,
+      "stages": [
+        {
+          "stage": 1,
+          "state": "win",
+          "time": 28.3,
+          "hp": 1847,
+          "minHp": 1847,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 106699,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 9
+        },
+        {
+          "stage": 2,
+          "state": "win",
+          "time": 40,
+          "hp": 1847,
+          "minHp": 1847,
+          "damageTaken": 0,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 167861,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 20
+        },
+        {
+          "stage": 3,
+          "state": "win",
+          "time": 52,
+          "hp": 1823,
+          "minHp": 1747,
+          "damageTaken": 200,
+          "level": 50,
+          "spells": {
+            "yujian": 5,
+            "wanjian": 5,
+            "wulei": 5,
+            "sanmei": 5,
+            "bingxin": 5,
+            "guanyin": 5
+          },
+          "bossRemaining": 0,
+          "bossMax": 254300,
+          "earnedOpenings": 5,
+          "round": 5,
+          "mechanismFailures": 0,
+          "helpers": 0,
+          "casts": 1,
+          "stationarySeconds": 31
+        }
+      ]
+    },
+    "browser": {
+      "distinctForms": 252,
+      "poseFacingZeroShieldRenders": 2016,
+      "bossExperienceChoiceRefresh": true,
+      "desktopAndMobile": true,
+      "crowds": [
+        {
+          "count": 24,
+          "msPerUpdateRender": 3.67
+        },
+        {
+          "count": 48,
+          "msPerUpdateRender": 7.21
+        }
+      ],
+      "note": "Headless Edge synthetic timing; not mobile hardware FPS."
+    }
+  }
+}

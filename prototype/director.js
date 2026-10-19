@@ -15,6 +15,7 @@ const EncounterDirector=(()=>{
   const waveSize=()=>ChapterCatalog.get(Journey.run.stage).wave+(offsets[Journey.run.difficulty]||0);
   const bossAllowed=()=>G.boss?.hp>0&&G.boss.action!=='exposed'&&!G.boss.brain?.mechanismReady;
   function reset(){
+    CombatScaling.reset();
     camps=WorldNavData[Journey.run.stage].camps.map(([x,y],id)=>({id,x:x*World.bounds().w,y:y*World.bounds().h,state:'unseen',wave:0,timer:null,
       kind:[3,11].includes(id)?'ritual':[7,15].includes(id)?'bounty':'camp',runesCreated:false,sleeping:[],sleepingPending:[],kills:0}));
     for(const c of camps){const p={x:c.x,y:c.y,r:45};World.resolve(p);c.x=p.x;c.y=p.y;}
@@ -39,10 +40,11 @@ const EncounterDirector=(()=>{
   }
   function schedule(c){
     c.wave++;c.timer=null;
+    c.threat=CombatScaling.snapshot('camp',tier(c.id));
     const templates=c.id<2?['imp','imp','fox','imp','fox','imp','imp','fox']:['imp','fox','imp','snake','imp','fox','zombie','imp'];
     const count=waveSize();
     for(let i=0;i<count;i++)pending.push({encounterId:c.id,source:'camp',type:templates[(i+c.wave-1)%templates.length],
-      elite:c.wave===3&&c.kind!=='camp'&&i===count-1,tier:tier(c.id),index:i,time:null});
+      elite:c.wave===3&&c.kind!=='camp'&&i===count-1,tier:tier(c.id),index:i,time:null,threat:c.threat,trait:CombatScaling.trait(templates[(i+c.wave-1)%templates.length],c.threat,c.wave===3&&c.kind!=='camp'&&i===count-1),rewardKey:'camp:'+c.id+':'+c.wave+':'+i});
     if(c.kind==='ritual'&&!c.runesCreated){
       c.runesCreated=true;
       for(let i=0;i<3;i++)pending.push({encounterId:c.id,source:'rune',type:'imp',index:i,time:null});
@@ -51,7 +53,7 @@ const EncounterDirector=(()=>{
   function activate(c){
     c.state='active';
     if(c.sleeping.length||c.sleepingPending.length){
-      for(const e of c.sleeping)pending.push({encounterId:c.id,source:e.eventObjective?'rune':'camp',snapshot:e,type:e.type,elite:e.elite,index:0,time:null});
+      for(const e of c.sleeping)pending.push({encounterId:c.id,source:e.eventObjective?'rune':'camp',snapshot:e,type:e.type,elite:e.elite,index:e.directorIndex||0,time:null});
       pending.push(...c.sleepingPending.map(p=>({...p,time:null,point:null})));
       c.sleeping=[];c.sleepingPending=[];
     }else if(!c.wave)schedule(c);
@@ -69,7 +71,7 @@ const EncounterDirector=(()=>{
     if(p.snapshot){e=p.snapshot;e.x=p.point.x;e.y=p.point.y;e.worldX=e.x;e.worldY=e.y;G.enemies.push(e);}
     else{
       const elite=p.elite,kind=elite?(camps[p.encounterId]?.kind==='ritual'?'zombie':'fox'):p.type;
-      e=spawnEnemy(kind,elite,p.point,{encounterId:p.encounterId,source:p.source,tier:p.tier||1.15});
+      e=spawnEnemy(kind,elite,p.point,{encounterId:p.encounterId,source:p.source,tier:p.tier||1.15,threat:p.threat,trait:p.trait,rewardKey:p.rewardKey});
       if(p.source==='rune')Object.assign(e,{name:'妖巢阵眼',eventObjective:true,seal:true,glyph:'阵',hp:Math.round((45+Journey.run.stage*15)*Journey.difficulty().mobHp),maxHp:Math.round((45+Journey.run.stage*15)*Journey.difficulty().mobHp),r:20,speed:0,dmg:0,xp:0});
       else stats.spawned++;
     }
@@ -106,7 +108,7 @@ const EncounterDirector=(()=>{
       bossTimer-=dt;
       if(bossTimer<=0&&bossAllowed()&&!pending.length&&G.enemies.filter(ordinary).length<6){
         const roles=[['imp','fox'],['imp','snake'],['imp','zombie']][serial++%3];
-        roles.forEach((type,index)=>pending.push({encounterId:-1,source:'boss',type,index,tier:1.3,time:null}));bossTimer=12*Journey.difficulty().spawn;
+        const threat=CombatScaling.bossProfile();roles.forEach((type,index)=>pending.push({encounterId:-1,source:'boss',type,index,tier:1.3,time:null,threat,trait:null,rewardKey:'guard:'+serial+':'+index}));bossTimer=12*Journey.difficulty().spawn;
       }
       pump(dt);return;
     }
@@ -132,10 +134,11 @@ const EncounterDirector=(()=>{
       const anchor=patrolPoint();
       if(anchor){
         const count=Math.min(4+patrols%3,available);patrols++;stats.patrols=patrols;
+        const threat=CombatScaling.snapshot('patrol');
         for(let i=0;i<count;i++){
           const p={x:anchor.x+Math.cos(i)*25,y:anchor.y+Math.sin(i)*25};
           if(!safePatrolPoint(p))Object.assign(p,anchor);
-          pending.push({encounterId:-serial++-1,source:'patrol',type:['imp','fox','snake'][i%3],anchor:p,index:i,tier:1.15,time:null});
+          const type=['imp','fox','snake'][i%3];pending.push({encounterId:-serial++-1,source:'patrol',type,anchor:p,index:i,tier:1.15,time:null,threat,trait:CombatScaling.trait(type,threat),rewardKey:'patrol:'+patrols+':'+i});
         }idle=0;
       }
     }
@@ -175,17 +178,21 @@ const EncounterDirector=(()=>{
     discovered:camps.filter(c=>c.state!=='unseen').length,cleared:camps.filter(c=>c.state==='cleared').length,patrols,stats:{...stats},
     camps:camps.map(c=>({id:c.id,x:c.x,y:c.y,state:c.state,kind:c.kind,wave:c.wave,remaining:owned(c).filter(e=>!e.eventObjective).length,runes:owned(c).filter(e=>e.eventObjective).length,sleeping:c.sleeping.length,pending:pending.filter(p=>p.encounterId===c.id).length,timer:c.timer}))};}
   function exportState(){
-    const plan=p=>({type:p.type,source:p.source,elite:!!p.elite,index:p.index||0,tier:p.tier||1.15});
-    const unit=e=>plan({type:e.type,source:e.eventObjective?'rune':'camp',elite:e.elite,index:e.directorIndex,tier:e.spawnTier});
-    return {idle,patrols,serial,stats:{...stats},camps:camps.map(c=>({id:c.id,state:c.state,wave:c.wave,timer:c.timer,runesCreated:c.runesCreated,kills:c.kills,
+    const plan=p=>({type:p.type,source:p.source,elite:!!p.elite,index:p.index||0,tier:p.tier||1.15,threat:p.threat||null,trait:p.trait||null,rewardKey:p.rewardKey||null});
+    const unit=e=>plan({type:e.type,source:e.eventObjective?'rune':'camp',elite:e.elite,index:e.directorIndex,tier:e.spawnTier,threat:e.threat,trait:e.trait,rewardKey:e.combatId});
+    const patrolSlots=[...G.enemies.filter(e=>living(e)&&e.source==='patrol').map(e=>({...unit(e),source:'patrol',anchor:{x:e.x,y:e.y},encounterId:e.encounterId})),...pending.filter(p=>p.source==='patrol').map(p=>({...plan(p),anchor:p.anchor,encounterId:p.encounterId}))];
+    return {idle,patrols,serial,patrolSlots,scaling:CombatScaling.exportState(),stats:{...stats},camps:camps.map(c=>({id:c.id,state:c.state,wave:c.wave,timer:c.timer,runesCreated:c.runesCreated,kills:c.kills,threat:c.threat||null,
       slots:[...owned(c).map(unit),...c.sleeping.map(unit),...pending.filter(p=>p.encounterId===c.id).map(p=>p.snapshot?unit(p.snapshot):plan(p)),...c.sleepingPending.map(p=>p.snapshot?unit(p.snapshot):plan(p))]}))};
   }
   function importState(s){
     if(!s||!Array.isArray(s.camps)||s.camps.length!==camps.length)throw new Error('Invalid encounters');
-    reset();idle=Math.max(0,Math.min(8,s.idle||0));patrols=s.patrols||0;serial=s.serial||0;stats={...stats,...s.stats};
+    reset();CombatScaling.importState(s.scaling);idle=Math.max(0,Math.min(8,s.idle||0));patrols=s.patrols||0;serial=s.serial||0;stats={...stats,...s.stats};
+    for(const p of s.patrolSlots||[]){if(p.threat&&!CombatScaling.validSnapshot(p.threat))throw Error('Invalid patrol threat');pending.push({...p,source:'patrol',time:null,threat:p.threat||CombatScaling.snapshot('patrol')});}
     for(const value of s.camps){const c=camps[value.id];if(!c||!['unseen','active','dormant','cleared'].includes(value.state)||!Number.isInteger(value.wave)||value.wave<0||value.wave>3||!Array.isArray(value.slots)||value.slots.length>60)throw new Error('Invalid camp');
-      Object.assign(c,{wave:value.wave,timer:value.timer,runesCreated:!!value.runesCreated,kills:value.kills||0,state:value.state==='active'?'dormant':value.state});
-      c.sleepingPending=value.slots.map(p=>{if(!['imp','fox','snake','zombie'].includes(p.type)||!['camp','rune'].includes(p.source)||!Number.isFinite(p.tier))throw new Error('Invalid spawn');return {...p,encounterId:c.id,time:null};});
+      if(value.threat&&!CombatScaling.validSnapshot(value.threat))throw Error('Invalid camp threat');
+      Object.assign(c,{wave:value.wave,timer:value.timer,runesCreated:!!value.runesCreated,kills:value.kills||0,state:value.state==='active'?'dormant':value.state,threat:value.threat||null});
+      let legacy=null;
+      c.sleepingPending=value.slots.map(p=>{if(!['imp','fox','snake','zombie'].includes(p.type)||!['camp','rune'].includes(p.source)||!Number.isFinite(p.tier)||p.threat&&!CombatScaling.validSnapshot(p.threat)||p.trait&&!['breaker','volley','flank'].includes(p.trait))throw new Error('Invalid spawn');if(p.source!=='rune'&&!p.threat)legacy=legacy||c.threat||CombatScaling.snapshot('camp',tier(c.id));const threat=p.threat||legacy;return {...p,threat,trait:p.source==='rune'?null:p.trait===undefined?CombatScaling.trait(p.type,threat,p.elite):p.trait,rewardKey:p.rewardKey||'camp:'+c.id+':'+c.wave+':'+p.index,encounterId:c.id,time:null};});
     }
   }
   return {reset,update,onEnemyKilled,beginBoss,hud,drawGround,drawMap,status,exportState,importState};

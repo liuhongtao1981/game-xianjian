@@ -158,7 +158,7 @@ const Motion = (() => {
     const f=forcedFrame||frame(actor,'hero'),c=actor.cultivation||{realm:0,layer:1};
     const female=HeroIdentity.clean(actor.heroId)==='tinglan',sheet=female?heroine:hero;
     const anchor=female?[[[5,5],[5,5],[5,5],[5,5]],[[-16,20],[-8,12],[1,20],[2,20]],[[-3,-10],[-1,-10],[-3,7],[3,7]]][f.row][f.col]:[0,0];
-    const manifestation=front=>{pen.save();pen.translate(anchor[0],anchor[1]);RealmVisuals.body(pen,c,time,f.state,front,actor.moving);pen.restore();};
+    const manifestation=front=>{pen.save();pen.translate(anchor[0],anchor[1]);RealmVisuals.body(pen,c,time,f.state,front,actor.moving,false,{preview:!!actor.preview});pen.restore();};
     const progress=actor.attackLength?1-(actor.attack||0)/actor.attackLength:0;
     const lunge=actor.attack>0?Math.sin(Math.min(1,progress)*Math.PI)*5:0;
     pen.save();pen.translate(actor.x+(actor.flash>0?Math.sin(actor.flash*35)*2:0)+Math.cos(actor.attackAngle||0)*lunge,actor.y+Math.sin(actor.attackAngle||0)*lunge);
@@ -351,7 +351,7 @@ const Motion = (() => {
   function preview(pen,time,c,heroId='xiaoguo'){
     pen.clearRect(0,0,340,430);const color=RealmVisuals.get(c).color;const g=pen.createRadialGradient(170,230,5,170,230,150);g.addColorStop(0,color+'18');g.addColorStop(1,color+'00');pen.fillStyle=g;pen.fillRect(0,0,340,430);
     pen.save();pen.translate(170,345);pen.scale(1,.38);pen.strokeStyle=color;pen.lineWidth=1.3;for(let k=0;k<RealmVisuals.get(c).rings;k++){pen.beginPath();pen.arc(0,0,90+k*12,0,Math.PI*2);pen.stroke();}pen.rotate(time*.2);for(let i=0;i<9;i++){pen.rotate(Math.PI*2/9);pen.fillStyle=i<(c.layer||1)?color:'#3d4842';pen.fillRect(100,-3,10,6);}pen.restore();
-    drawHero(pen,{x:170,y:335+Math.sin(time*2)*2,heroId,cultivation:c,animTime:time,look:1},240,time,1,{row:2,col:Math.floor(time*1.6)%2,state:'idle'});
+    drawHero(pen,{x:170,y:335+Math.sin(time*2)*2,preview:true,heroId,cultivation:c,animTime:time,look:1},240,time,1,{row:2,col:Math.floor(time*1.6)%2,state:'idle'});
     for(let i=0;i<Math.min(6,2+c.realm);i++){const a=time*.6+i*Math.PI*2/Math.min(6,2+c.realm),x=170+Math.cos(a)*100,y=260+Math.sin(a)*45;pen.save();pen.translate(x,y);pen.rotate(a+.7);pen.fillStyle=color;pen.beginPath();pen.moveTo(0,-23);pen.lineTo(4,9);pen.lineTo(0,5);pen.lineTo(-4,9);pen.closePath();pen.fill();pen.restore();}
   }
   return {preview,drawHero,cancelSpells,emit,cast,bindSpells,frame,drawActor,step,update,echo,glow,rune,sword,drawGround,drawOver,drawProjectile,drawShield,drawPool,drawUltimate,drawScreen,resize,reset(){RealmVisuals.reset();Encounters.reset();effects.length=0;echoes.length=0;pendingCasts.length=0;activeCast=null;releasingCast=false;},status(){return {hero:hero.complete&&hero.naturalWidth>0,heroine:heroine.complete&&heroine.naturalWidth>0,enemies:enemies.complete&&enemies.naturalWidth>0,bossWalk:bossWalk.complete&&bossWalk.naturalWidth>0,bossAttacks:bossAttacks.complete&&bossAttacks.naturalWidth>0,effects:effects.length,pendingCasts:pendingCasts.length+(activeCast&&!activeCast.released?1:0),activeCast:activeCast?.key||null};}};

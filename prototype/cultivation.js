@@ -3,12 +3,13 @@ const Cultivation=(()=>{
   const realms=['筑基','金丹','元婴','化神','炼虚','合体','大乘','渡劫','真仙','玄仙','金仙','太乙金仙','大罗金仙','仙王'];
   const cores=['凝丹莲实','九曲灵参','养魂神木','虚空晶髓','阴阳并蒂莲','七彩补天芝','九霄雷液','羽化仙露','太玄玉髓','金曜仙砂','太乙道莲','混元道果','鸿蒙仙髓'];
   const upper=['maxHp','shieldMax','dmg','speed','crit','armor','pickup','regen','xpMul'];
-  const fresh=()=>({realm:0,layer:1,qi:0,materials:{essence:0},floors:{},attempts:0,result:null});
-  function valid(c){return !!c&&Number.isInteger(c.realm)&&c.realm>=0&&c.realm<=13&&Number.isFinite(c.qi)&&c.qi>=0&&c.qi<=125440&&Number.isInteger(c.layer)&&c.layer>=1&&c.layer<=9&&c.materials&&typeof c.materials==='object'&&!Array.isArray(c.materials)&&Object.entries(c.materials).every(([k,v])=>(k==='essence'||/^core([1-9]|1[0-3])$/.test(k))&&Number.isInteger(v)&&v>=0&&v<=1e7)&&c.floors&&typeof c.floors==='object'&&Number.isInteger(c.attempts)&&c.attempts>=0&&(c.spellGift===undefined||SpellGift.valid(c.spellGift,c.realm));}
+  const fresh=()=>({realm:0,layer:1,qi:0,qiRemainder:0,materials:{essence:0},floors:{},attempts:0,result:null});
+  function valid(c){return !!c&&Number.isInteger(c.realm)&&c.realm>=0&&c.realm<=13&&Number.isFinite(c.qi)&&c.qi>=0&&c.qi<=125440&&(c.qiRemainder===undefined||Number.isFinite(c.qiRemainder)&&c.qiRemainder>=0&&c.qiRemainder<1)&&Number.isInteger(c.layer)&&c.layer>=1&&c.layer<=9&&c.materials&&typeof c.materials==='object'&&!Array.isArray(c.materials)&&Object.entries(c.materials).every(([k,v])=>(k==='essence'||/^core([1-9]|1[0-3])$/.test(k))&&Number.isInteger(v)&&v>=0&&v<=1e7)&&c.floors&&typeof c.floors==='object'&&Number.isInteger(c.attempts)&&c.attempts>=0&&(c.spellGift===undefined||SpellGift.valid(c.spellGift,c.realm));}
   function clean(c){
     const n=fresh();if(!c||typeof c!=='object')return n;
     n.realm=Number.isInteger(c.realm)&&c.realm>=0&&c.realm<14?c.realm:0;
     n.qi=Number.isFinite(c.qi)?Math.max(0,Math.min(125440,c.qi)):0;
+    n.qiRemainder=n.qi-Math.floor(n.qi);
     n.layer=Math.max(1,Math.min(9,Number.isInteger(c.layer)?c.layer:1+Math.floor(Math.min(8,n.qi/(320*(n.realm+1)**2)*9))));
     for(const k of ['essence',...cores.map((_,i)=>'core'+(i+1))])n.materials[k]=Number.isInteger(c.materials?.[k])?Math.max(0,Math.min(1e7,c.materials[k])):0;
     for(const k of [...upper,'cdr'])if(Number.isFinite(c.floors?.[k])&&c.floors[k]>0&&c.floors[k]<1e9)n.floors[k]=c.floors[k];
@@ -29,20 +30,21 @@ const Cultivation=(()=>{
   function canStat(id){const key={atk:'dmg',spd:'speed',hp:'maxHp',cd:'cdr',crit:'crit',pick:'pickup'}[id],v=caps();return key==='cdr'?P.cdr>v.cdr+.00001:P[key]<v[key]-.00001;}
   function xpNeed(level){let x=10;for(let l=1;l<Math.min(level,15);l++)x=Math.floor(x*1.32+4);return level<=15?x:x+80*(level-15)+8*(level-15)**2;}
   function settle(p=P){const c=p.cultivation,target=Math.min(9,1+Math.floor(c.qi/need(c)*9));while(c.layer<target){const hp=p.maxHp;c.layer++;p.maxHp*=1.02;p.shieldMax*=1.02;p.dmg*=1.01;const limit=caps(p);for(const k of upper)p[k]=Math.min(p[k],limit[k]);p.hp=Math.min(p.maxHp,p.hp+p.maxHp-hp);}return c.layer;}
-  function qi(amount){const c=P.cultivation;c.qi=Math.min(need(c)*(c.realm===13?1:2),c.qi+amount);const old=c.layer;settle();if(c.layer>old){notifyPickup('cultivation','修炼精进 · '+label());RunSave.save('自动升层');RealmVisuals.advance(false);}}
+  function qi(amount,save=true){const c=P.cultivation;c.qi=Math.min(need(c)*(c.realm===13?1:2),c.qi+amount);c.qiRemainder=c.qi-Math.floor(c.qi);const old=c.layer;settle();if(c.layer>old){notifyPickup('cultivation','修炼精进 · '+label());if(save)RunSave.save('自动升层');RealmVisuals.advance(false);}}
   function addMaterial(key,n){P.cultivation.materials[key]=(P.cultivation.materials[key]||0)+n;notifyPickup('material',(key==='essence'?'灵蕴精华':cores[Number(key.slice(4))-1])+' +'+n);}
   function onKill(e){
     if(e.eventObjective||e.bossHelper||e.boss)return false;
-    qi(e.elite?30:2);
+    const risk=CombatRewards.forEnemy(e);qi((e.elite?30:2)*risk.qi,false);
     const rare=!e.elite||RunSave.claim('elite:'+Journey.run.stage+':'+e.encounterId);
-    if(e.elite&&rare){const reward=ChapterCatalog.reward(Journey.run.stage);addMaterial(reward.core,1);}
-    if(e.elite&&rare)addMaterial('essence',4);else if(!e.elite&&Math.random()<.05)addMaterial('essence',1);
+    if(e.elite&&rare){const reward=ChapterCatalog.reward(Journey.run.stage);addMaterial(reward.core,1+CombatRewards.coreBonus(e));}
+    if(e.elite&&rare)addMaterial('essence',Math.ceil(4*risk.qi));else if(!e.elite&&Math.random()<risk.essence)addMaterial('essence',1);
     return rare;
   }
   function victory(){
     const reward=ChapterCatalog.reward(Journey.run.stage),firstClear=!RunSave.claimed('first:boss:'+Journey.run.stage);
-    if(RunSave.claim('boss:'+Journey.run.stage)){const first=RunSave.claim('first:boss:'+Journey.run.stage);qi(first?reward.qi:150);addMaterial('essence',first?reward.essence:8);}
-    if(!RunSave.claimed('core:'+Journey.run.stage))G.coreReward={max:Math.min(13,ChapterCatalog.get(Journey.run.stage).realm+1),count:firstClear?reward.count:1};
+    const risk=CombatRewards.forEnemy(G.boss),first=RunSave.claim('boss:'+Journey.run.stage);
+    if(first){if(G.boss?.xp)gainXP(G.boss.xp,false);const initial=RunSave.claim('first:boss:'+Journey.run.stage);qi((initial?reward.qi:150)*risk.qi,false);addMaterial('essence',Math.ceil((initial?reward.essence:8)*risk.qi));}
+    if(!G.coreReward&&!RunSave.claimed('core:'+Journey.run.stage))G.coreReward={max:Math.min(13,ChapterCatalog.get(Journey.run.stage).realm+1),count:(firstClear?reward.count:1)+(first?CombatRewards.coreBonus(G.boss):0)};
   }
   function claimCore(target){
     if(G.state!=='win'||!G.coreReward||!Number.isInteger(target)||target<1||target>G.coreReward.max)return false;
@@ -59,9 +61,10 @@ const Cultivation=(()=>{
     const rate=chance(core,essence),success=rate===100||Math.random()*100<rate,loss=success?r.qi:r.qi*.1;
     c.materials[r.core]=(c.materials[r.core]||0)-core;c.materials.essence-=essence;c.qi=Math.max(0,c.qi-loss);c.attempts++;
     if(success){const hp=P.maxHp;c.realm++;c.layer=1;P.maxHp*=1.12;P.shieldMax*=1.12;P.dmg*=1.08;constrain();P.hp=Math.min(P.maxHp,P.hp+P.maxHp-hp);c.qi=Math.min(c.qi,need(c)*(c.realm===13?1:2));settle();}
+    c.qiRemainder=c.qi-Math.floor(c.qi);
     c.result={success,target:r.target,chance:rate,loss,attempt:c.attempts};
     if(RunSave.active()&&!RunSave.save('突破结果')){P.cultivation=before;Object.assign(P,stats);return false;}
-    if(success)RealmVisuals.advance(true);
+    if(success){CombatScaling.observe();RealmVisuals.advance(true);}
     Sound.effects(success?'level':'hit');return true;
   }
   return {realms,cores,fresh,valid,clean,recipe,need,settle,label,caps,protectLegacy,constrain,canStat,xpNeed,qi,addMaterial,onKill,victory,claimCore,chance,safe,attempt};

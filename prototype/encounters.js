@@ -28,7 +28,7 @@ const Encounters=(()=>{
   function unit(key,index=Journey.run.stage){return {...family(index).units[keys.indexOf(key)],color:family(index).color};}
   function projectile(e,angle,speed=190,offset=0){
     const theme=e.family??Journey.run.stage,color=family(theme).color;
-    G.eshots.push({x:e.x,y:e.y-15,vx:Math.cos(angle+offset)*speed*Journey.difficulty().projectile,vy:Math.sin(angle+offset)*speed*Journey.difficulty().projectile,r:6,dmg:e.dmg,life:4.5,color,theme,trail:[]});
+    G.eshots.push({x:e.x,y:e.y-15,vx:Math.cos(angle+offset)*speed*Journey.difficulty().projectile,vy:Math.sin(angle+offset)*speed*Journey.difficulty().projectile,r:6,dmg:e.dmg,damageContext:{kind:e.elite?'elite':'ordinary',scale:e.threat?.damage||1,shieldFactor:e.trait==='breaker'?1.5:1},life:4.5,color,theme,trail:[]});
   }
   // Combat phases own both the pose and the hit. Proximity alone never deals damage.
   const attacks={
@@ -42,7 +42,7 @@ const Encounters=(()=>{
     const spec=attacks[kind];e.attackKind=kind;e.attackAngle=angle;e.attackOrigin={x:e.x,y:e.y};
     e.attackDistance=kind==='rush'?Math.min(spec.range,Math.max(120,d+38)):spec.range;
     e.strikeHit=false;e.look=Math.cos(angle)<0?-1:1;e.moving=false;e.attackLength=spec.windup+spec.strike+spec.recover;
-    setAction(e,'windup',Math.max(.32,spec.windup*Journey.difficulty().warning));
+    setAction(e,'windup',Math.max(.65,spec.windup*Journey.difficulty().warning));
   }
   function hitArc(e,spec){
     const dx=P.x-e.x,dy=P.y-e.y,d=Math.hypot(dx,dy),a=Math.atan2(dy,dx)-e.attackAngle;
@@ -54,25 +54,27 @@ const Encounters=(()=>{
     if(kind==='ranged'){
       const spread=theme===0?[0]:theme===1?[-.15,0,.15]:[-.09,.09];
       for(const angle of spread)projectile(e,e.attackAngle,theme===0?195:215,angle);
+      if(e.trait==='volley')e.followup={delay:.28,angle:e.attackAngle};
       effect('summon',{x:e.x,y:e.y,r:32,theme});return;
     }
     if(kind==='rush')return;
     const hit=hitArc(e,spec);e.strikeHit=true;
     Motion.emit('slash',e.x,e.y-16,{angle:e.attackAngle,duration:spec.strike+.13,r:spec.range*.82,color});
     if(kind==='heavy')effect('impact',{x:e.x+Math.cos(e.attackAngle)*55,y:e.y+Math.sin(e.attackAngle)*55,r:52,theme,duration:.55});
-    if(hit)hurtPlayer(e.dmg*(kind==='heavy'?1.65:1.2));
+    if(hit)hurtPlayer(e.dmg*(kind==='heavy'?1.65:1.2),e);
   }
   function rushStep(e,dt){
     const oldX=e.x,oldY=e.y,speed=e.attackDistance/attacks.rush.strike;
     e.x+=Math.cos(e.attackAngle)*speed*dt;e.y+=Math.sin(e.attackAngle)*speed*dt;
     if(!e.strikeHit){
       const vx=e.x-oldX,vy=e.y-oldY,t=Math.max(0,Math.min(1,((P.x-oldX)*vx+(P.y-oldY)*vy)/(vx*vx+vy*vy||1)));
-      if(Math.hypot(P.x-oldX-vx*t,P.y-oldY-vy*t)<P.r+e.r+7){hurtPlayer(e.dmg*1.5);e.strikeHit=true;}
+      if(Math.hypot(P.x-oldX-vx*t,P.y-oldY-vy*t)<P.r+e.r+7){hurtPlayer(e.dmg*1.5,e);e.strikeHit=true;}
     }
     if((e.actionT% .08)<dt)Motion.emit('hit',e.x,e.y,{duration:.2,color:family(e.family??Journey.run.stage).color});
   }
   function attackMob(e,dt,dx,dy,d){
     const role=unit(e.type,e.family??Journey.run.stage).role;
+    if(e.followup){e.followup.delay-=dt;if(e.followup.delay<=0){projectile(e,e.followup.angle,205,-.06);projectile(e,e.followup.angle,205,.06);e.followup=null;}}
     e.atkCd=(e.atkCd??0)-dt;e.skillCd=(e.skillCd??1.5)-dt;
     if(e.action==='windup'||e.action==='strike'||e.action==='recover'){
       const spec=attacks[e.attackKind];
@@ -96,7 +98,7 @@ const Encounters=(()=>{
     if(kind){beginAttack(e,kind,Math.atan2(dy,dx),d);return;}
     // Ranged foes plant their feet in casting distance; melee slows naturally before contact.
     const desired=role==='ranged'?(d<205?-.55:d>330?1:0):(d>e.r+P.r+14?1:0);
-    const direction=desired>0&&typeof World!=='undefined'&&World.steer?World.steer(e,P.x,P.y):{x:dx/d,y:dy/d};
+    const direction=desired>0&&typeof World!=='undefined'&&World.steer?World.steer(e,P.x+(e.trait==='flank'&&d>140?-dy/d*120*(e.id%2?1:-1):0),P.y+(e.trait==='flank'&&d>140?dx/d*120*(e.id%2?1:-1):0)):{x:dx/d,y:dy/d};
     const speed=e.speed*desired;e.x+=direction.x*speed*dt;e.y+=direction.y*speed*dt;
   }
   function effect(kind,data){effects.push({kind,age:0,duration:kind==='phase'?1.25:.72,...data});if(effects.length>64)effects.shift();}

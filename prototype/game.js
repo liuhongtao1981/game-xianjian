@@ -213,7 +213,7 @@ if (QS.has('noanim')) document.body.classList.add('noanim');
 function newPlayer(){
   return {
     ...World.spawn(),vx:0,vy:0,r:15, hp:120, maxHp:120, shield:0, shieldMax:70,
-    speed:238, dmg:1, cdr:1, crit:0.05, pickup:118, xpMul:1, armor:0, regen:0, poison:false,
+    speed:238, dmg:1, cdr:1, crit:0.05, pickup:118, xpMul:1, armor:0, regen:0, shieldDelay:0, poison:false,
     level:1, xp:0, xpNext:10,growthChoices:0,
     heroId:HeroIdentity.clean(Journey.run.heroId),spells:{ yujian:1 }, t:{ yujian:0.5 },
     orbitAngle:0, orbitHit:new Map(),
@@ -343,27 +343,31 @@ function killEnemy(e, fromUltimate=false){
   EncounterDirector.onEnemyKilled(e);
   if(e.eventObjective){burst(e.x,e.y,Journey.stage().color,12,100);Sound.effects('chest');return;}
   Bosses.onHelperKilled(e);
-  const essence=P.cultivation.materials.essence;const rare=Cultivation.onKill(e);
+  if(e.bossHelper){burst(e.x,e.y,e.color,12,100);return;}
+  const essence=P.cultivation.materials.essence,layer=P.cultivation.layer,qiBefore=P.cultivation.qi;const rare=Cultivation.onKill(e);
   G.kills++;
   if (!G.ultimate&&!fromUltimate) P.energy = Math.min(100, P.energy + (e.elite ? 8 : 2));
   P.orbitHit.delete(e.id);
   burst(e.x, e.y, e.color, e.boss ? 60 : (e.elite ? 28 : 12), e.boss ? 280 : 160);
-  const n = e.boss ? 10 : (e.elite ? 5 : 1);
+  if(!e.boss)addText(e.x,e.y-40,'灵蕴 +'+Number((e.xp*P.xpMul).toFixed(1))+' · 修为 +'+Number((P.cultivation.qi-qiBefore).toFixed(1)), '#c4dfb3',11);
+  const n = e.boss ? 0 : (e.elite ? 5 : 1);
   for (let i = 0; i < n; i++){
     G.orbs.push({ x:e.x + rand(-14,14), y:e.y + rand(-14,14), vx:rand(-60,60), vy:rand(-60,60),
       value: Math.max(0, e.xp / n), life: 20 });
   }
   if (e.elite&&rare) spawnChest(e.x, e.y);
-  if (Math.random() < .035 || e.elite) G.heals.push({ x:e.x + rand(-10,10), y:e.y + rand(-10,10), life:20 });
-  if(!e.boss&&!e.bossHelper&&(e.elite||essence!==P.cultivation.materials.essence))RunSave.save('拾取材料');
+  if(!e.boss&&!e.elite&&Math.random()<CombatRewards.forEnemy(e).chest&&RunSave.claim('drop:'+Journey.run.stage+':'+e.combatId)){spawnChest(e.x,e.y,{kind:'enhanced',rewardId:e.combatId});}
+  if (Math.random() < CombatRewards.forEnemy(e).medicine || e.elite) G.heals.push({ x:e.x + rand(-10,10), y:e.y + rand(-10,10), life:20 });
+  if(!e.boss&&!e.bossHelper&&(e.elite||essence!==P.cultivation.materials.essence||layer!==P.cultivation.layer))RunSave.save('拾取材料');
 }
 
-function hurtPlayer(dmg){
+function hurtPlayer(dmg,source=null){
   if (P.invuln > 0 || G.state !== 'playing') return;
-  dmg = Math.round(dmg * (1 - P.armor) * Journey.difficulty().damage);
+  const hit=CombatScaling.hit(dmg,source);dmg=hit.damage;
+  if(dmg>0)P.shieldDelay=3;
   if (P.shield > 0){
-    const a = Math.min(P.shield, dmg);
-    P.shield -= a; dmg -= a;
+    const a = Math.min(P.shield, dmg*hit.shieldFactor);
+    P.shield -= a; dmg = Math.max(0,dmg-a/hit.shieldFactor);
   }
   if (dmg > 0){
     P.hp -= dmg;
@@ -371,7 +375,7 @@ function hurtPlayer(dmg){
     P.flash = .18;
     G.shake = Math.min(10, 4 + dmg * .3);
     Sound.effects('hurt');
-    addText(P.x, P.y - 26, '-' + dmg, '#ff9d86', 15);
+    addText(P.x, P.y - 26, '-' + Math.round(dmg), '#ff9d86', 15);
   }
   if (P.hp <= 0){ P.hp = 0; die(); }
 }
@@ -395,7 +399,7 @@ function spawnEnemy(typeKey, elite,point,options={}){
     xp:t.xp * (elite ? 4 : .35), elite:!!elite, boss:false,encounterId:options.encounterId,source:options.source,
     skillCd:rand(4,8),atkCd:rand(1,2.5), hitCd:0, flash:0, poison:0,animTime:rand(0,2),look:pos.x<P.x?1:-1
   });
-  return G.enemies.at(-1);
+  const e=G.enemies.at(-1);if(options.source!=='rune')CombatScaling.decorate(e,options.threat,options);return e;
 }
 
 function spawnWave(){
@@ -413,18 +417,18 @@ function spawnElite(){
   spawnEnemy(pick(pool), true);
 }
 
-function spawnChest(x, y){
+function spawnChest(x, y,metadata={}){
   const point={x:x!==undefined?x:P.x+rand(-160,160),y:y!==undefined?y:P.y+rand(-160,160),r:12};
-  World.resolve(point);G.chests.push({x:point.x,y:point.y,t:0});
+  World.resolve(point);if(G.chests.length>=30){Cultivation.addMaterial('essence',8);return;}G.chests.push({x:point.x,y:point.y,t:0,...metadata});
 }
 
 function spawnBoss(){
   if (G.bossSpawned) return;
   G.bossSpawned = true;
-  const s=Journey.stage(),hp=Math.round(s.bossHp*Journey.difficulty().bossHp);
+  const threat=CombatScaling.bossProfile(),s=Journey.stage(),hp=Math.round(s.bossHp*Journey.difficulty().bossHp*threat.hp);
   const b = {
     id:G.uid++, type:'boss', name:s.boss, glyph:s.bossGlyph, color:s.color,
-    ...World.bossPoint(),r:48, hp, maxHp:hp, speed:s.bossSpeed, dmg:24, xp:60,
+    ...World.bossPoint(),r:48, hp, maxHp:hp, speed:s.bossSpeed, dmg:24, xp:60*threat.rewards.xp,threat,
     elite:false, boss:true, atkCd:2.5, hitCd:0, flash:0, poison:0, summonCd:6, slamCd:4, phase:1
   };
   G.enemies.push(b);
@@ -546,7 +550,8 @@ function updatePlayer(dt){
   }
   P.x+=P.vx*dt;P.y+=P.vy*dt;World.resolve(P);
 
-  if (P.regen > 0) P.shield = Math.min(P.shieldMax, P.shield + P.regen * dt);
+  P.shieldDelay=Math.max(0,(P.shieldDelay||0)-dt);
+  P.shield=Math.min(P.shieldMax,P.shield+CombatScaling.regenState().rate*dt);
   Motion.step(P,dt,P.x-oldX,P.y-oldY);
   if(P.moving&&P.dash<=0)Sound.effects('step');
   if(P.dash>0)Motion.echo(P);
@@ -615,7 +620,7 @@ function updateTelegraphs(dt){
       if(t.shape==='tide')hit=P.x>(t.left??0)-P.r&&P.x<(t.right??World.bounds().w)+P.r&&Math.abs(dy)<t.r+P.r&&Math.abs(P.x-t.gap)>Math.max(0,t.safe/2-P.r);
       Encounters.impact(t);
       Bosses.onImpact(t,hit&&P.invuln<=0);
-      if(hit)hurtPlayer(t.dmg);
+      if(hit)hurtPlayer(t.dmg,t.damageContext);
     }
   }
   G.telegraphs=G.telegraphs.filter(t=>t.life>0);
@@ -662,7 +667,7 @@ function updateShots(dt){
     if(s.trail){s.trail.push({x:s.x,y:s.y});if(s.trail.length>7)s.trail.shift();}
     if (Math.hypot(P.x - s.x, P.y - s.y) < P.r + s.r){
       s.life = 0;
-      hurtPlayer(s.dmg);
+      hurtPlayer(s.dmg,s.damageContext);
     }
   }
   G.eshots = G.eshots.filter(s => s.life > 0);
@@ -789,7 +794,7 @@ function updateChests(dt){
   const opened = G.chests.find(c => c.open);
   if (opened){
     G.chests = G.chests.filter(c => c !== opened);
-    openChest();
+    openChest(null,false,opened.kind==='enhanced');
   }
 }
 
@@ -815,7 +820,7 @@ function updateFx(dt){
 
 /* ---------------- 经验 / 升级 ---------------- */
 
-function gainXP(v){
+function gainXP(v,save=true){
   P.xp += v * P.xpMul;
   while (P.xp >= P.xpNext){
     P.xp -= P.xpNext;
@@ -825,7 +830,8 @@ function gainXP(v){
     heal(8);
   }
   if (G.queue > 0 && G.state === 'playing') showLevelUp();
-  if(G.queue>0)RunSave.save('经验成长');
+  if(G.queue>0&&G.state==='win')choicesCache=[];
+  if(save&&G.queue>0)RunSave.save('经验成长');
 }
 
 function showLevelUp(restoredChoices=null){
@@ -926,6 +932,7 @@ function pickCard(i){
   if (G.queue > 0){ showLevelUp(); return; }
   document.getElementById('overlay').classList.add('hidden');
   G.state = 'playing';
+  if(settleCombat())return;
   syncHUD();
 }
 
@@ -950,10 +957,10 @@ function applyChoice(c){
 
 /* ---------------- 宝箱 ---------------- */
 
-function openChest(restoredReward=null,alreadyApplied=false){
+function openChest(restoredReward=null,alreadyApplied=false,enhanced=false){
   Sound.effects('chest');
   G.state = 'chest';
-  const reward = restoredReward||rollChestReward();
+  const reward = restoredReward||(enhanced?CombatRewards.enhancedChest():rollChestReward());
   G.chestReward=reward;
   if(!alreadyApplied)applyReward(reward);
   const ov = document.getElementById('overlay');
@@ -962,7 +969,7 @@ function openChest(restoredReward=null,alreadyApplied=false){
     <div class="panel treasure-panel">
       <div class="reward-casket">${ItemCatalog.icon('elite-chest','宝箱已开启')}</div>
       <h2>宝 箱 · 已开启</h2>
-      <p class="sub">${reward.kind === 'equip' ? '法 宝' : (reward.kind === 'spell' ? '术 法' : '丹 药')}</p>
+      <p class="sub">${reward.kind === 'equip' ? '法 宝' : (['spell','spell-up'].includes(reward.kind) ? '术 法' : reward.kind==='material'?'材 料':'丹 药')}</p>
       <div class="reward" style="--c:${reward.color}">
         <div class="cicon">${reward.kind==='equip'?ItemCatalog.icon(reward.id,reward.name):reward.kind==='heal'?ItemCatalog.icon('potion',reward.name):reward.glyph}</div>
         <div>
@@ -1001,10 +1008,12 @@ function applyReward(r){
     const e = EQUIPS.find(x => x.id === r.id);
     if (e) e.apply();
     renderEquips();
-  } else if (r.kind === 'spell'){
+  } else if (r.kind === 'spell'||r.kind==='spell-up'){
     SpellGift.permanent(r.key);
     P.t[r.key] = .2;
     renderSpells();
+  } else if(r.kind==='material'){
+    for(const [key,n] of Object.entries(r.materials))Cultivation.addMaterial(key,n);
   } else {
     heal(50);
   }
@@ -1126,7 +1135,7 @@ function drawPools(){ for(const pool of G.pools)Motion.drawPool(pool); }
 
 function drawChests(){
   for (const c of G.chests){
-    if(ItemCatalog.draw('elite-chest',c.x,c.y,80,c.t))continue;
+    if(ItemCatalog.draw(c.kind==='enhanced'?'boss-chest':'elite-chest',c.x,c.y,80,c.t))continue;
     const bob = Math.sin(c.t * 2.4) * 3;
     const g = ctx.createRadialGradient(c.x, c.y + bob, 2, c.x, c.y + bob, 44);
     g.addColorStop(0, 'rgba(242,221,168,.45)');
@@ -1187,6 +1196,7 @@ function drawEnemies(){
     const sw=e.boss?70:e.elite?35:22;
     ctx.save();ctx.fillStyle='#0006';ctx.beginPath();ctx.ellipse(e.x,e.y+5,sw,sw*.3,0,0,TAU);ctx.fill();ctx.restore();
     Motion.drawActor(e,e.type,size);
+    if(e.trait){ctx.save();const badge={breaker:['破障','#ffc083'],volley:['联射','#f3a4b9'],flank:['侧袭','#b3cff4']}[e.trait];ctx.font='bold 12px KaiTi,serif';ctx.textAlign='center';ctx.fillStyle='#081012df';ctx.fillRect(e.x-21,e.y-size-25,42,19);ctx.fillStyle=badge[1];ctx.fillText(badge[0],e.x,e.y-size-11);ctx.restore();}
     if(e.elite){ctx.fillStyle='#080e10';ctx.fillRect(e.x-25,e.y-size*.82,50,3);ctx.fillStyle='#dfc58a';ctx.fillRect(e.x-25,e.y-size*.82,50*e.hp/e.maxHp,3);}
   }
 }
@@ -1344,6 +1354,7 @@ function syncHUD(){
   notice.hidden=G.state!=='playing'||!item;
   if(item)notice.textContent=item.kind==='xp'?'灵蕴 +'+Number(item.amount.toFixed(1)):item.text;
   document.getElementById('encounterStatus').textContent=EncounterDirector.hud();
+  document.getElementById('scalingStatus').textContent=CombatScaling.hud();
   document.getElementById('hpFill').style.width = Math.max(0, P.hp / P.maxHp * 100) + '%';
   document.getElementById('hpText').textContent = Math.ceil(P.hp) + ' / ' + Math.ceil(P.maxHp);
   document.getElementById('xpFill').style.width = Math.min(100, P.xp / P.xpNext * 100) + '%';

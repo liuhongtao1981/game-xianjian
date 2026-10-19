@@ -95,7 +95,7 @@ const GuardianPilot=(()=>{
       clearInput();
       stages.push({stage:Journey.run.stage+1,state:G.state,time:Math.round(G.time*10)/10,hp:Math.round(P.hp),minHp:Math.round(minHp),damageTaken:Math.round(damageTaken),level:P.level,spells:{...P.spells},bossRemaining:Math.round(G.boss.hp),bossMax:G.boss.maxHp,earnedOpenings:G.boss.brain.breaks,round:G.boss.brain.round,mechanismFailures,helpers:G.enemies.filter(e=>e.bossHelper&&e.hp>0).length,casts:G.ultimateCasts,stationarySeconds:Math.round(stationary)});
       if(G.state!=='win'||stage===2)break;
-      (G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('power');
+      if(G.coreReward)Cultivation.claimCore(G.coreReward.max);while(G.queue>0){showLevelUp();chooseCard();}Journey.next('power');
     }
     return {cleared:stages.filter(s=>s.state==='win').length,stages};
   }

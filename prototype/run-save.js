@@ -14,10 +14,13 @@ const RunSave=(()=>{
     if(!s.director||!Array.isArray(s.director.camps)||s.director.camps.length!==WorldNavData[s.stage].camps.length||!s.ledger||typeof s.ledger!=='object'||!Array.isArray(s.chests)||s.chests.length>30||!Array.isArray(s.completed)||!s.completed.every(v=>Number.isInteger(v)&&v>=0&&v<ChapterCatalog.playable))return false;
     for(const c of s.director.camps)if(!c||!Number.isInteger(c.id)||c.id<0||c.id>=WorldNavData[s.stage].camps.length||!Number.isInteger(c.wave)||c.wave<0||c.wave>3||!['active','dormant','unseen','cleared'].includes(c.state)||!Array.isArray(c.slots)||c.slots.length>60||c.slots.some(p=>!['imp','fox','snake','zombie'].includes(p.type)||!['camp','rune'].includes(p.source)||!Number.isFinite(p.tier)))return false;
     if(s.bossSpawned&&s.state!=='win'&&(!s.bossEntry||!s.bossEntry.world||!s.bossEntry.director||!Number.isFinite(s.bossEntry.x)||!Number.isFinite(s.bossEntry.y)))return false;
-    if(s.chestReward&&!['equip','spell','heal'].includes(s.chestReward.kind))return false;
+    if(s.chestReward){const r=s.chestReward;if(!['equip','spell','spell-up','heal','material'].includes(r.kind))return false;if(['spell','spell-up'].includes(r.kind)&&!SpellGift.keys.includes(r.key))return false;if(r.kind==='material'&&(!r.materials||Object.entries(r.materials).some(([k,n])=>!(k==='essence'||/^core([1-9]|1[0-3])$/.test(k))||!Number.isInteger(n)||n<1||n>1000)))return false;}
+    for(const f of [s,s.bossEntry].filter(Boolean)){if(f.director.scaling&&!CombatScaling.validState(f.director.scaling))return false;for(const c of f.director.camps){if(c.threat&&!CombatScaling.validSnapshot(c.threat))return false;for(const p of c.slots)if(!validSlot(p))return false;}if(f.director.patrolSlots&&(!Array.isArray(f.director.patrolSlots)||f.director.patrolSlots.length>64||f.director.patrolSlots.some(p=>!validSlot(p))))return false;}
+    if(s.chests.some(c=>c.kind!==undefined&&c.kind!=='enhanced'))return false;
     if(s.choices.some(c=>!['stat','up','new','recover'].includes(c.kind)||(c.kind==='stat'?!['atk','spd','hp','cd','crit','pick'].includes(c.id):c.kind==='recover'?false:!['yujian','wanjian','wulei','sanmei','bingxin','gudu','jiushen','guanyin'].includes(c.key))))return false;
     return true;
   }
+  function validSlot(p){return !!p&&['imp','fox','snake','zombie'].includes(p.type)&&['camp','rune','patrol'].includes(p.source)&&Number.isFinite(p.tier)&&p.tier>0&&p.tier<100&&(!p.anchor||Number.isFinite(p.anchor.x)&&Number.isFinite(p.anchor.y))&&(!p.threat||CombatScaling.validSnapshot(p.threat))&&(!p.trait||['breaker','volley','flank'].includes(p.trait))&&(!p.rewardKey||typeof p.rewardKey==='string'&&p.rewardKey.length<180);}
   function read(k){try{let d=JSON.parse(localStorage.getItem(k));if(k.startsWith(legacyKey)&&d?.version===2)d=migrateV2(d);return valid(d)?d:null;}catch{return null;}}
   function migrateV2(value){
     const d=clone(value),s=d.run;if(!s||!Number.isInteger(s.stage)||s.stage<0||s.stage>2||!s.world||!Array.isArray(s.world.done)||s.world.done.length!==6||!s.director||s.director.camps?.length!==9)return null;
@@ -40,11 +43,12 @@ const RunSave=(()=>{
   function receive(newer){if(valid(newer)&&newer.writer!==writer&&newer.revision>revision){conflict=true;message='另一窗口有新进度 · 请重新载入';clearInput();if(G.state!=='start'){G.state='save-conflict';const ov=document.getElementById('overlay');ov.classList.remove('hidden');ov.innerHTML='<div class="panel"><h2>历程已在另一窗口更新</h2><p>此窗口已停止保存，避免覆盖较新的成长。</p><button class="btn" id="reloadSaveBtn">载入最新存档</button></div>';document.getElementById('reloadSaveBtn').onclick=()=>{data=newer;revision=newer.revision;conflict=false;continueRun();};}}}
   function summary(){if(data)return {stage:data.run.stage,level:data.run.player.level,realm:Cultivation.label(data.run.player.cultivation),savedAt:data.savedAt};const old=JourneyProgress.snapshot(),stage=Math.min(ChapterCatalog.playable-1,old.cleared);const entry=old.entries[stage];return entry?{stage,level:entry.build.level,realm:'筑基·一层',savedAt:null}:null;}
   function capture(){
+    CombatScaling.observe();
     return {version:3,revision:revision+1,writer,savedAt:Date.now(),progress:JourneyProgress.snapshot(),run:{cycle,tier:Journey.run.tier||0,ledger:clone(ledger),
       chapterId:ChapterCatalog.get(Journey.run.stage).id,stage:Journey.run.stage,difficulty:Journey.run.difficulty,ultimate:Journey.run.ultimate,completed:[...Journey.run.completed],campaignTime:Journey.run.time,
       player:JourneyProgress.capture(P),checkpoint:clone(Journey.run.checkpoint),x:P.x,y:P.y,time:G.time,kills:G.kills,state:G.state,
       queue:G.queue,choices:clone(choicesCache),chestReward:clone(G.chestReward),pendingLore:G.pendingLore,coreReward:clone(G.coreReward),
-      chests:G.chests.map(c=>({x:c.x,y:c.y,t:c.t||0,rewardId:c.rewardId||null})),world:World.exportState(),director:EncounterDirector.exportState(),bossSpawned:G.bossSpawned,bossEntry:clone(bossEntry)}};
+      chests:G.chests.map(c=>({x:c.x,y:c.y,t:c.t||0,kind:c.kind,rewardId:c.rewardId||null})),world:World.exportState(),director:EncounterDirector.exportState(),bossSpawned:G.bossSpawned,bossEntry:clone(bossEntry)}};
   }
   function save(reason='自动保存'){
     if(suppress||!enabled||!P)return true;if(conflict)return false;if(G.state==='start')return true;
@@ -63,7 +67,7 @@ const RunSave=(()=>{
     if(build){const prior=old?.difficulty||Journey.run.difficulty;build.maxHp+=Journey.difficulties[Journey.run.difficulty].hp-Journey.difficulties[prior].hp;build.hp=build.hp<=0?build.maxHp:Math.max(1,Math.min(build.maxHp,build.hp));}
     if(newCycle){const finale=G.state==='win'&&Journey.run.stage===41&&!G.coreReward||G.state==='start'&&old?.state==='win'&&old.stage===41&&!old.coreReward;if(JourneyProgress.cleared()<42||!finale)return false;cycle=(old?.cycle??cycle)+1;ledger={};}
     else if(old){cycle=old.cycle;ledger=clone(old.ledger);}
-    if(newReplay||old?.state==='win'&&stage<JourneyProgress.cleared()){for(const k of Object.keys(ledger))if(!k.startsWith('first:')&&new RegExp('^(boss|core|site|elite):'+stage+'(?::|$)').test(k))delete ledger[k];}
+    if(newReplay||old?.state==='win'&&stage<JourneyProgress.cleared()){for(const k of Object.keys(ledger))if(!k.startsWith('first:')&&new RegExp('^(boss|core|site|elite|drop):'+stage+'(?::|$)').test(k))delete ledger[k];}
     suppress=true;Journey.begin(stage);enabled=true;Journey.run.stage=stage;Journey.run.tier=0;Journey.run.checkpoint=build;reset();bossEntry=null;suppress=false;Journey.intro();save('开始历程');return true;
   }
   function continueRun(heroId=null){
@@ -74,10 +78,11 @@ const RunSave=(()=>{
     const s=clone(data.run);conflict=false;suppress=true;enabled=true;revision=data.revision;cycle=s.cycle;ledger=s.ledger;bossEntry=s.bossEntry;
     const priorHero=HeroIdentity.clean(s.player.heroId);if(requested){s.player.heroId=requested;if(s.checkpoint)s.checkpoint.heroId=requested;}
     JourneyProgress.restore(data.progress);Object.assign(Journey.run,{heroId:HeroIdentity.clean(s.player.heroId),stage:s.stage,difficulty:s.difficulty,ultimate:s.ultimate,tier:s.tier,completed:s.completed,time:s.campaignTime,checkpoint:s.player});reset();Journey.run.checkpoint=s.checkpoint;
-    const frame=s.bossSpawned&&s.state!=='win'&&s.state!=='dead'?s.bossEntry:s;
+    const postVictory=s.bossSpawned&&s.completed.includes(s.stage)&&s.state!=='dead';
+    const frame=s.bossSpawned&&!postVictory&&s.state!=='win'&&s.state!=='dead'?s.bossEntry:s;
     World.importState(frame.world);EncounterDirector.importState(frame.director);P.x=frame.x;P.y=frame.y;World.resolve(P,true);World.camera(0,true);G.time=s.time;G.kills=s.kills;G.queue=s.queue;choicesCache=s.choices;G.chests=frame.chests||[];
     G.chestReward=s.chestReward;G.pendingLore=s.pendingLore??null;G.coreReward=s.coreReward;
-    if(s.state==='win'){G.bossSpawned=true;G.boss={hp:0,killed:true};G.state='win';Journey.showEnd(true);}
+    if(s.state==='win'||postVictory){G.bossSpawned=true;G.boss={hp:0,killed:true};G.state='win';if(s.state==='levelup'&&G.queue>0)showLevelUp(s.choices.length?s.choices:null);else Journey.showEnd(true);}
     else if(s.state==='dead'){G.state='dead';Journey.showEnd(false);}
     else if(s.chestReward){G.state='playing';openChest(s.chestReward,true);}
     else if(G.pendingLore!==null)World.resumeLore(G.pendingLore);
@@ -91,7 +96,7 @@ const RunSave=(()=>{
     const queue=G.queue,offers=clone(choicesCache);Journey.run.checkpoint=build;reset();G.queue=queue;choicesCache=offers;bossEntry=null;Journey.intro();save('死亡重试');return true;
   }
   function prepareBoss(){bossEntry={x:P.x,y:P.y,world:World.exportState(),director:EncounterDirector.exportState(),chests:clone(G.chests)};}
-  function beginChapter(stage){if(stage<JourneyProgress.cleared())for(const k of Object.keys(ledger))if(!k.startsWith('first:')&&new RegExp('^(boss|core|site|elite):'+stage+'(?::|$)').test(k))delete ledger[k];}
+  function beginChapter(stage){if(stage<JourneyProgress.cleared())for(const k of Object.keys(ledger))if(!k.startsWith('first:')&&new RegExp('^(boss|core|site|elite|drop):'+stage+'(?::|$)').test(k))delete ledger[k];}
   function stageChanged(){bossEntry=null;save('进入下一难');}
   function claim(id){if(!enabled)return true;if(ledger[id])return false;ledger[id]=true;return true;}
   return {key,backup,init,save,tick,start,continueRun,retry,prepareBoss,beginChapter,stageChanged,summary,receive,valid,

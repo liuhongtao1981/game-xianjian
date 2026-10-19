@@ -2,7 +2,7 @@
 const JourneyProgress=(()=>{
   const key='xunsheng-progress-v1',fields=['maxHp','hp','shieldMax','speed','dmg','cdr','crit','pickup','xpMul','armor','regen','level','xp','xpNext'];
   let data={version:1,cleared:0,entries:{}};
-  const resources={shield:0,energy:100,ultCd:0,dashCd:0};
+  const resources={shield:0,energy:100,ultCd:0,dashCd:0,shieldDelay:0};
   const spellKeys=['yujian','wanjian','wulei','sanmei','bingxin','gudu','jiushen','guanyin'];
   function copy(value){return JSON.parse(JSON.stringify(value));}
   function cleanBuild(b){SpellGift.reconcile(b);return {...Object.fromEntries(fields.map(k=>[k,b[k]])),

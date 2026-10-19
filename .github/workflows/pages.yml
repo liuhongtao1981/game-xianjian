@@ -14,6 +14,10 @@ on:
       - 'tools/check-realm-upgrades.js'
       - 'tools/check-world.js'
       - 'tools/check-heroes.js'
+      - 'tools/check-pressure.js'
+      - 'tools/check-actor-motion.js'
+      - 'tools/check-bosses.js'
+      - 'tools/check-encounters.js'
       - 'tools/game-harness.js'
       - 'tools/build-pages.js'
       - '.github/workflows/pages.yml'
@@ -44,6 +48,10 @@ jobs:
           node tools/check-world.js
           node tools/check-realm-upgrades.js
           node tools/check-heroes.js
+          node tools/check-pressure.js
+          node tools/check-actor-motion.js
+          node tools/check-bosses.js
+          node tools/check-encounters.js
       - name: Package playable game
         run: node tools/build-pages.js
       - uses: actions/upload-pages-artifact@v3

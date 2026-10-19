@@ -61,7 +61,7 @@ const ExplorationPilot=(()=>{
     Journey.begin();Journey.run.difficulty=options.difficulty||'normal';Journey.run.ultimate=options.ultimate||'heaven';reset();botMode=false;
     const rows=[];
     for(let stage=0;stage<(options.stages||3);stage++){
-      G.state='playing';const path=route(options.full),read=new Set();let index=0,nextInput=0,beforeBoss=null,maxGap=0,gap=0,combatTime=0,damage=0,lastHp=P.hp;
+      G.state='playing';const path=options.patrol?[{kind:'camp',id:0},{kind:'patrol'}]:route(options.full),read=new Set();let index=0,nextInput=0,beforeBoss=null,maxGap=0,gap=0,combatTime=0,damage=0,lastHp=P.hp;
       for(let frame=0;frame<(options.maxSeconds||1500)/step;frame++){
         if(G.state==='levelup'){choose();continue;}
         if(G.state==='chest'){closeChest();continue;}
@@ -73,7 +73,7 @@ const ExplorationPilot=(()=>{
             const s=EncounterDirector.status();let target=path[index];
             while(target&&target.kind==='camp'&&s.camps[target.id].state==='cleared'){index++;target=path[index];}
             if(!target)break;
-            const point=target.kind==='camp'?s.camps[target.id]:{x:WorldNavData[Journey.run.stage].sites[target.id].x*World.bounds().w,y:WorldNavData[Journey.run.stage].sites[target.id].y*World.bounds().h};
+            const point=target.kind==='camp'?s.camps[target.id]:target.kind==='patrol'?{x:s.camps[0].x+Math.cos(G.time*.025)*300,y:s.camps[0].y+Math.sin(G.time*.025)*200}:{x:WorldNavData[Journey.run.stage].sites[target.id].x*World.bounds().w,y:WorldNavData[Journey.run.stage].sites[target.id].y*World.bounds().h};
             if(target.kind==='site'&&dist(point,P)<100){
               World.update(0);
               if(World.context()){
@@ -91,7 +91,7 @@ const ExplorationPilot=(()=>{
       }
       clearInput();const s=EncounterDirector.status();
       rows.push({stage:Journey.run.stage+1,state:G.state,time:Math.round(G.time),level:P.level,hp:Math.round(P.hp),damageTaken:Math.round(damage),kills:G.kills,combatSeconds:Math.round(combatTime),maxGapSeconds:Math.round(maxGap),routeIndex:index,routeLength:path.length,beforeBoss,spells:{...P.spells},equips:[...P.equips],director:s.stats,camps:s.camps.map(c=>({id:c.id,state:c.state,wave:c.wave,remaining:c.remaining,runes:c.runes}))});
-      if(G.state!=='win'||stage===(options.stages||3)-1)break;if(G.coreReward)Cultivation.claimCore(G.coreReward.max);if(ChapterCatalog.get(Journey.run.stage+1).realm>P.cultivation.realm){CharacterUI.toggle();const r=Cultivation.recipe();if(!Cultivation.attempt(r.coreCount,r.essence))break;P.cultivation.result=null;CharacterUI.close();}Journey.next('power');
+      if(G.state!=='win'||stage===(options.stages||3)-1)break;if(G.coreReward)Cultivation.claimCore(G.coreReward.max);while(G.queue>0){showLevelUp();choose();}if(ChapterCatalog.get(Journey.run.stage+1).realm>P.cultivation.realm){CharacterUI.toggle();const r=Cultivation.recipe();if(!Cultivation.attempt(r.coreCount,r.essence))break;P.cultivation.result=null;CharacterUI.close();}Journey.next('power');
     }
     return {cleared:rows.filter(r=>r.state==='win').length,rows};
   }

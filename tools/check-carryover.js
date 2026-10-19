@@ -11,11 +11,11 @@ const seed=`Journey.begin(0);reset();
   P.armor=.18;P.regen=1.5;P.poison=true;P.spells={yujian:4,wanjian:3,bingxin:2};
   P.equips=['mujian','wudu'];P.energy=27;P.ultCd=8.4;P.dashCd=.7;
   P.t={yujian:.6,bingxin:4.2};P.growthChoices=8;G.runChoices=8;`;
-const victory=`spawnBoss();G.boss.hp=0;G.boss.killed=true;win();`;
+const victory=`spawnBoss();var bossExperience=G.boss.xp*P.xpMul;G.boss.hp=0;G.boss.killed=true;win();`;
 const h=createHarness();
 check('victory saves all growth, shield, charge and cooldowns before reward selection',`${seed}${victory}
   const b=JourneyProgress.snapshot().entries[1].build;
-  return b.level===9&&b.xp===17.5&&b.xpNext===240&&b.shield===63&&b.energy===27&&b.ultCd===8.4&&b.dashCd===.7&&b.t.bingxin===4.2&&b.growthChoices===8&&b.poison&&b.armor===.18&&b.spells.wanjian===3;`,h);
+  return b.level===9&&b.xp===17.5+bossExperience&&b.xpNext===240&&b.shield===63&&b.energy===27&&b.ultCd===8.4&&b.dashCd===.7&&b.t.bingxin===4.2&&b.growthChoices===8&&b.poison&&b.armor===.18&&b.spells.wanjian===3;`,h);
 check('real next-stage reset preserves the complete build and applies only the chosen reward',`
   if(G.coreReward)Cultivation.claimCore(G.coreReward.max);const expected=JourneyProgress.capture(P);expected.dmg*=1.1;expected.hp=Math.min(expected.maxHp,Math.max(expected.hp,expected.maxHp*.55)+expected.maxHp*.15);
   if(!(G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('power'))return false;
@@ -23,9 +23,10 @@ check('real next-stage reset preserves the complete build and applies only the c
 check('third chapter inherits the second chapter upgrades and current resources',`
   G.state='playing';P.level=11;P.xp=23.25;P.xpNext=400;P.spells.wanjian=4;P.shield=18;P.energy=0;P.ultCd=11;P.t.bingxin=2;P.growthChoices=10;
   ${victory}const expectedHp=P.maxHp+20;if(!(G.coreReward&&Cultivation.claimCore(G.coreReward.max),Journey.next)('body'))return false;
-  return Journey.run.stage===2&&P.level===11&&P.xp===23.25&&P.xpNext===400&&P.spells.wanjian===4&&P.maxHp===expectedHp&&P.shield===18&&P.energy===0&&P.ultCd===11&&P.t.bingxin===2&&G.runChoices===10;`,h);
+  return Journey.run.stage===2&&P.level===11&&P.xp===23.25+bossExperience&&P.xpNext===400&&P.spells.wanjian===4&&P.maxHp===expectedHp&&P.shield===18&&P.energy===0&&P.ultCd===11&&P.t.bingxin===2&&G.runChoices===10;`,h);
+const chapterThreeXP=h.evaluate('P.xp');
 check('chapter entry restores the full saved build after browser reload',`
-  Journey.begin(2);reset();return P.level===11&&P.xp===23.25&&P.shield===18&&P.energy===0&&P.ultCd===11&&P.t.bingxin===2&&P.equips.includes('wudu')&&G.runChoices===10;`,createHarness({storage:h.storage}));
+  Journey.begin(2);reset();return P.level===11&&P.xp===${chapterThreeXP}&&P.shield===18&&P.energy===0&&P.ultCd===11&&P.t.bingxin===2&&P.equips.includes('wudu')&&G.runChoices===10;`,createHarness({storage:h.storage}));
 check('retry restores independent entry timers without retaining failed-stage changes',`
   const old=JourneyProgress.capture(P);G.state='playing';P.level=99;P.energy=100;P.t.bingxin=0;P.spells.wanjian=1;P.equips.length=0;reset();
   return JSON.stringify(JourneyProgress.capture(P))===JSON.stringify(old);`,h);

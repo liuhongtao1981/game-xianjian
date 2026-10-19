@@ -20,11 +20,11 @@ function tick(e,dt){const dx=P.x-e.x,dy=P.y-e.y;Encounters.attackMob(e,dt,dx,dy,
 function arena(){P.x=50;P.y=0;P.hp=100;hits=0;G.eshots=[];G.enemies=[];Motion.reset();}`);
 check('touching a melee enemy starts a visible windup without damage',`arena();var e=enemy();tick(e,.01);e.action==='windup'&&P.hp===100`);
 check('melee remains harmless throughout anticipation',`tick(e,.3);e.action==='windup'&&P.hp===100`);
-check('melee damage occurs exactly as the strike pose starts',`tick(e,.17);e.action==='strike'&&P.hp===88&&hits===1`);
+check('melee damage occurs exactly as the strike pose starts',`tick(e,.36);e.action==='strike'&&P.hp===88&&hits===1`);
 check('one melee swing cannot damage twice',`tick(e,.1);tick(e,.1);e.action==='recover'&&hits===1`);
 check('melee feet remain planted during recovery',`const old=e.x;tick(e,.3);e.x===old&&e.action==='recover'`);
-check('dodging out of a locked attack direction avoids the hit',`arena();e=enemy();tick(e,.01);P.y=100;tick(e,.5);P.hp===100`);
-check('moving behind an enemy avoids its forward swing',`arena();e=enemy();tick(e,.01);P.x=-50;tick(e,.5);P.hp===100`);
+check('dodging out of a locked attack direction avoids the hit',`arena();e=enemy();tick(e,.01);P.y=100;tick(e,.66);P.hp===100`);
+check('moving behind an enemy avoids its forward swing',`arena();e=enemy();tick(e,.01);P.x=-50;tick(e,.66);P.hp===100`);
 check('ranged enemies prepare their cast before spawning projectiles',`arena();P.x=300;e=enemy('snake');tick(e,.01);tick(e,.4);e.action==='windup'&&G.eshots.length===0`);
 check('ranged shots spawn on release and keep the locked aim',`P.y=100;tick(e,.37);G.eshots.length===1&&Math.abs(G.eshots[0].vy)<.001`);
 check('rush movement cannot start during its warning',`arena();P.x=200;e=enemy('fox');tick(e,.01);tick(e,.5);e.x===0&&e.action==='windup'&&hits===0`);

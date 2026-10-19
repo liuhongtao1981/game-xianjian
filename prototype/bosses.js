@@ -29,9 +29,9 @@ const Bosses=(()=>{
       let p;
       if(theme===0){const angle=-Math.PI/2+i*Math.PI*2/3;p=bound({x:center.x+Math.cos(angle)*200,y:center.y+Math.sin(angle)*170});}
       else p=bound({x:center.x+(i?190:-190),y:center.y+(theme===1?40:85)});
-      const hp=Math.round((theme===0?130:theme===1?180:220)*scale*(1+(b.round-1)*.055));
+      const hp=Math.round((theme===0?130:theme===1?180:220)*scale*(e.threat?.helper||1)*(1+(b.round-1)*.055));
       const h={id:G.uid++,type:theme===1?'zombie':theme===2?'snake':'imp',name:Journey.run.stage===3?'镇山锁柱':Journey.run.stage===4?(i===real?'金毫实印':'空影幻印'):Journey.run.stage===5?'锁喉龙鳞':theme===0?'缄言钟心':theme===1?'续命血诏':'锁魂河灯',
-        locked:Journey.run.stage===3,phantom:Journey.run.stage===4&&i!==real,family:Journey.run.stage,color:Journey.stage().color,glyph:Journey.run.stage===3?'柱':Journey.run.stage===4?(i===real?'真':'幻'):Journey.run.stage===5?'鳞':['钟','诏','灯'][theme],x:p.x,y:p.y,r:23,hp,maxHp:hp,speed:0,dmg:0,xp:8,
+        locked:Journey.run.stage===3,phantom:Journey.run.stage===4&&i!==real,family:Journey.run.stage,color:Journey.stage().color,glyph:Journey.run.stage===3?'柱':Journey.run.stage===4?(i===real?'真':'幻'):Journey.run.stage===5?'鳞':['钟','诏','灯'][theme],x:p.x,y:p.y,r:23,hp,maxHp:hp,speed:0,dmg:0,xp:0,threat:e.threat,
         boss:false,elite:false,bossHelper:true,bossOwner:e.id,seal:theme===0,clerk:theme===1,lantern:theme===2,
         atkCd:999,skillCd:999,hitCd:0,flash:0,poison:0,animTime:0,look:1,action:'guard',actionT:0,actionDuration:1};
       G.enemies.push(h);Encounters.effect('summon',{x:h.x,y:h.y,r:40,theme});
@@ -61,7 +61,7 @@ const Bosses=(()=>{
   function hazard(e,point,options){
     const b=e.brain,token=b.pending.token;
     const life=options.life??Journey.warning(1.1);
-    Journey.hazard(point.x,point.y,{...options,life,total:life,boss:true,bossOwner:e.id,bossToken:token,theme:b.theme});
+    Journey.hazard(point.x,point.y,{...options,damageContext:{kind:'boss',scale:e.threat?.damage||1,shieldFactor:1},life,total:life,boss:true,bossOwner:e.id,bossToken:token,theme:b.theme});
     b.pending.expected++;b.pending.lastImpact=Math.max(b.pending.lastImpact,life);
   }
   function prepare(e,kind,mechanism=false){
@@ -107,7 +107,7 @@ const Bosses=(()=>{
   function projectiles(e,pending){
     const theme=e.brain.theme,profile=Journey.difficulty();
     const angles=theme===0?Array.from({length:e.phase===2?12:9},(_,i)=>e.attackAngle+i*Math.PI*2/(e.phase===2?12:9)):[-.36,-.18,0,.18,.36].map(x=>e.attackAngle+x);
-    for(const angle of angles)G.eshots.push({x:e.x,y:e.y-18,vx:Math.cos(angle)*(theme===0?205:245)*profile.projectile,vy:Math.sin(angle)*(theme===0?205:245)*profile.projectile,r:theme===0?7:8,dmg:theme===0?16:19,life:4,color:Journey.stage().color,theme,trail:[],bossOwner:e.id});
+    for(const angle of angles)G.eshots.push({x:e.x,y:e.y-18,vx:Math.cos(angle)*(theme===0?205:245)*profile.projectile,vy:Math.sin(angle)*(theme===0?205:245)*profile.projectile,r:theme===0?7:8,dmg:theme===0?16:19,damageContext:{kind:'boss',scale:e.threat?.damage||1,shieldFactor:1},life:4,color:Journey.stage().color,theme,trail:[],bossOwner:e.id});
   }
   function finishAttack(e){
     const b=e.brain,p=b.pending;if(!p){action(e,'guard',.7);return;}
@@ -171,7 +171,7 @@ const Bosses=(()=>{
   function damageMultiplier(e){return e.boss?(e.brain&&e.action==='exposed'&&!e.brain.exhausted?3:0):1;}
   function filterDamage(e,damage){
     if(e.locked)return 0;
-    if(e.phantom){if((e.phantomCd||0)<G.time){e.phantomCd=G.time+3;for(let i=0;i<2&&G.enemies.filter(h=>h.hp>0&&!h.boss&&!h.bossHelper).length<6;i++)spawnEnemy('fox',false,World.clipToArena({x:e.x+60*i,y:e.y+40},55),{source:'boss',encounterId:-1,tier:1.3});addText(e.x,e.y-55,'幻印反噬 · 追猎来袭',Journey.stage().color,15);}return 0;}
+    if(e.phantom){if((e.phantomCd||0)<G.time){e.phantomCd=G.time+3;for(let i=0;i<2&&G.enemies.filter(h=>h.hp>0&&!h.boss&&!h.bossHelper).length<6;i++)spawnEnemy('fox',false,World.clipToArena({x:e.x+60*i,y:e.y+40},55),{source:'boss',encounterId:-1,tier:1.3,threat:e.threat,trait:null});addText(e.x,e.y-55,'幻印反噬 · 追猎来袭',Journey.stage().color,15);}return 0;}
     if(!e.boss)return damage;
     const b=e.brain;
     if(!b||e.action!=='exposed'||b.exhausted){
