@@ -649,7 +649,7 @@ function updateShots(dt){
     s.trail.push({ x:s.x, y:s.y });
     if (s.trail.length > 9) s.trail.shift();
     for (const e of G.enemies){
-      if (e.hp <= 0 || s.hit.has(e.id)||s.volleyHits?.has(e.id)) continue;
+      if (!Bosses.targetable(e) || s.hit.has(e.id)||s.volleyHits?.has(e.id)) continue;
       if (Math.hypot(e.x - s.x, e.y - s.y) < e.r + s.r){
         s.hit.add(e.id);s.volleyHits?.add(e.id);
         hurt(e, s.dmg, s.color,{ultimate:s.ultimate});
