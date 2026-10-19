@@ -1065,6 +1065,7 @@ function render(){
   World.drawGround();
   EncounterDirector.drawGround();
   drawPools();
+  SpellCombat.drawGround();
   drawTelegraphs();
   Motion.drawGround();
   drawChests();

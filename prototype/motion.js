@@ -62,21 +62,20 @@ const Motion = (() => {
       const release=spec.cast;spec.motionBound=true;
       spec.cast=function(level){
         if(activeCast?.key===key||pendingCasts.some(c=>c.key===key))return;
-        const target=nearest(P.x,P.y,key==='yujian'?900:620);
+        const target=nearest(P.x,P.y,SpellGrowth.spec(key,level).range);
         if(key==='yujian'&&!target)return;
         pendingCasts.push({key,level,release});
         if(!activeCast&&!G.ultimate)beginQueuedCast();
       };
     }
   }
-  function castTarget(key){
-    const ranges={yujian:900,wulei:460,gudu:620,jiushen:560};
-    return ranges[key]?nearest(P.x,P.y,ranges[key]):null;
+  function castTarget(key,level=P.spells?.[key]||1){
+    return ['yujian','wulei','gudu','jiushen'].includes(key)?nearest(P.x,P.y,SpellGrowth.spec(key,level).range):null;
   }
   function beginQueuedCast(){
     if(!pendingCasts.length||G.ultimate)return;
     activeCast=pendingCasts.shift();activeCast.remaining=activeCast.key==='yujian'?.14:.22;activeCast.released=false;
-    cast(activeCast.key,castTarget(activeCast.key));
+    cast(activeCast.key,castTarget(activeCast.key,activeCast.level));
   }
   function cancelSpells(keys){for(let i=pendingCasts.length-1;i>=0;i--)if(keys.includes(pendingCasts[i].key))pendingCasts.splice(i,1);if(activeCast&&!activeCast.released&&keys.includes(activeCast.key)){activeCast=null;P.attack=0;}}
   function frame(actor,key){
@@ -183,9 +182,9 @@ const Motion = (() => {
       if(!activeCast)beginQueuedCast();
       if(activeCast){
         const c=activeCast;c.remaining-=dt;
-        if(!c.released&&P.attack<=0){cast(c.key,castTarget(c.key));c.remaining=c.key==='yujian'?.14:.22;}
+        if(!c.released&&P.attack<=0){cast(c.key,castTarget(c.key,c.level));c.remaining=c.key==='yujian'?.14:.22;}
         if(c.remaining<=0&&!c.released){
-          const target=castTarget(c.key);
+          const target=castTarget(c.key,c.level);
           if(target){P.attackAngle=Math.atan2(target.y-P.y,target.x-P.x);P.look=target.x>=P.x?1:-1;}
           // The new cast was queued after Motion.step: explicitly synchronize this frame.
           P.attack=Math.min(P.attack,P.attackLength-P.attackRelease);
