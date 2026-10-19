@@ -227,6 +227,7 @@ function reset(){
   document.getElementById('overlay').classList.add('hidden');
   G.state='playing'; G.time=0; G.kills=0; G.shake=0; G.queue=0;
   G.enemies=[]; G.shots=[]; G.eshots=[]; G.orbs=[]; G.parts=[]; G.texts=[];
+  Cultivation.resetAutomation();
   G.chests=[]; G.spellPulses=[];G.pools=[]; G.auras=[]; G.bolts=[]; G.heals=[];
   G.telegraphs=[]; G.ultimate=null; G.ultimateCasts=0;
   G.pickups=[];G.chestReward=null;G.runChoices=0;
@@ -469,6 +470,7 @@ function update(dt){
   updateChests(dt);
   updateFx(dt);
   World.camera(dt);
+  Cultivation.update(dt);
 }
 function settleCombat(){
   if (P.hp <= 0){ die(); return true; }
@@ -1365,7 +1367,7 @@ function syncHUD(){
   document.getElementById('lvl').textContent = P.level;
   document.getElementById('shieldTxt').textContent = '护盾 ' + Math.round(P.shield);
   document.getElementById('cultivationLabel').textContent=Cultivation.label();
-  const recipe=Cultivation.recipe();document.getElementById('cultivationQi').textContent='本境修为 '+Math.floor(P.cultivation.qi)+' / '+Cultivation.need()+' · '+P.cultivation.layer+'/9层';
+  const recipe=Cultivation.recipe();document.getElementById('cultivationQi').textContent='本境修为 '+Math.floor(P.cultivation.qi)+' / '+Cultivation.need()+' · '+P.cultivation.layer+'/9层'+(Cultivation.ready()?' · '+Cultivation.autoStatus():'');
   const saveStatus=document.getElementById('saveStatus');saveStatus.textContent=RunSave.status();saveStatus.setAttribute('data-error',String(RunSave.status().includes('尚未保存')||RunSave.conflicted()));
   document.getElementById('timer').textContent = fmt(G.time);
   document.getElementById('kills').textContent = '斩妖 ' + G.kills;
@@ -1533,11 +1535,13 @@ let last = performance.now();
 function loop(now){
   const dt = Math.max(0, Math.min(.05, (now - last) / 1000));
   last = now;
-  if (G.state === 'playing') update(dt);
+  if (G.state === 'playing') update(dt);else Cultivation.update(dt);
+  RealmVisuals.update(dt);
   Sound.sync(G.state,Journey.run.stage,G.bossSpawned&&!!G.boss&&G.boss.hp>0);
   render();
   CharacterUI.frame(now/1000);
   HeroIdentity.frame(now/1000);
+  RealmVisuals.notice();
   syncHUD();
   drawJoystick();
   requestAnimationFrame(loop);

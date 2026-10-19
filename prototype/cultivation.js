@@ -15,7 +15,7 @@ const Cultivation=(()=>{
     for(const k of [...upper,'cdr'])if(Number.isFinite(c.floors?.[k])&&c.floors[k]>0&&c.floors[k]<1e9)n.floors[k]=c.floors[k];
     n.attempts=Number.isInteger(c.attempts)?Math.max(0,c.attempts):0;
     if(c.spellGift&&SpellGift.valid(c.spellGift,n.realm))n.spellGift=JSON.parse(JSON.stringify(c.spellGift));
-    if(c.result&&typeof c.result.success==='boolean')n.result={success:c.result.success,target:Math.min(13,Math.max(1,Number(c.result.target)||1)),chance:Number(c.result.chance)||0,loss:Number(c.result.loss)||0,attempt:n.attempts};
+    if(c.result&&typeof c.result.success==='boolean')n.result={success:c.result.success,target:Math.min(13,Math.max(1,Number(c.result.target)||1)),chance:Number(c.result.chance)||0,loss:Number(c.result.loss)||0,attempt:n.attempts,automatic:c.result.automatic===true};
     return n;
   }
   const recipe=(realm=P.cultivation.realm)=>realm>=13?null:{target:realm+1,core:'core'+(realm+1),name:cores[realm],coreCount:2*(realm+1),essence:8*(realm+1),qi:320*(realm+1)**2};
@@ -30,7 +30,7 @@ const Cultivation=(()=>{
   function canStat(id){const key={atk:'dmg',spd:'speed',hp:'maxHp',cd:'cdr',crit:'crit',pick:'pickup'}[id],v=caps();return key==='cdr'?P.cdr>v.cdr+.00001:P[key]<v[key]-.00001;}
   function xpNeed(level){let x=10;for(let l=1;l<Math.min(level,15);l++)x=Math.floor(x*1.32+4);return level<=15?x:x+80*(level-15)+8*(level-15)**2;}
   function settle(p=P){const c=p.cultivation,target=Math.min(9,1+Math.floor(c.qi/need(c)*9));while(c.layer<target){const hp=p.maxHp;c.layer++;p.maxHp*=1.02;p.shieldMax*=1.02;p.dmg*=1.01;const limit=caps(p);for(const k of upper)p[k]=Math.min(p[k],limit[k]);p.hp=Math.min(p.maxHp,p.hp+p.maxHp-hp);}return c.layer;}
-  function qi(amount,save=true){const c=P.cultivation;c.qi=Math.min(need(c)*(c.realm===13?1:2),c.qi+amount);c.qiRemainder=c.qi-Math.floor(c.qi);const old=c.layer;settle();if(c.layer>old){notifyPickup('cultivation','修炼精进 · '+label());if(save)RunSave.save('自动升层');RealmVisuals.advance(false);}}
+  function qi(amount,save=true){const c=P.cultivation;c.qi=Math.min(need(c)*(c.realm===13?1:2),c.qi+amount);c.qiRemainder=c.qi-Math.floor(c.qi);const old=c.layer;settle();if(c.layer>old){notifyPickup('cultivation','修炼精进 · '+label());if(save)RunSave.save('自动升层');RealmVisuals.advance(false,{fromLayer:old});}}
   function addMaterial(key,n){P.cultivation.materials[key]=(P.cultivation.materials[key]||0)+n;notifyPickup('material',(key==='essence'?'灵蕴精华':cores[Number(key.slice(4))-1])+' +'+n);}
   function onKill(e){
     if(e.eventObjective||e.bossHelper||e.boss)return false;
@@ -53,19 +53,32 @@ const Cultivation=(()=>{
   }
   function chance(core,essence){const r=recipe();if(!r)return 0;const q=.7*Math.min(1,core/r.coreCount)+.3*Math.min(1,essence/r.essence);return q>=1?100:Number((5+95*q**3).toFixed(1));}
   function safe(){return !!G.boss?.killed||!World.active()&&!G.enemies.some(e=>e.hp>0&&!e.eventObjective&&Math.hypot(e.x-P.x,e.y-P.y)<650);}
-  function attempt(core,essence){
+  let autoDelay=0;
+  const autoStates=['playing','win','story','character'];
+  function ready(){const r=recipe();return !!r&&P.cultivation.layer===9&&P.cultivation.qi>=r.qi&&(P.cultivation.materials[r.core]||0)>=r.coreCount&&(P.cultivation.materials.essence||0)>=r.essence;}
+  function autoStatus(){if(!recipe())return P.cultivation.qi>=need()?'仙王九层道圆':'修为达标自动升层';if(ready())return RunSave.conflicted()?'存档冲突 · 自动突破已暂停':!safe()?'100% · 脱战后自动突破':'100% · 安全时自动突破';return P.cultivation.qi>=need()?'九层圆满 · 材料备齐自动突破':'修为达标自动升层';}
+  function update(dt){
+    if(dt<=0||!autoStates.includes(G.state)||!P||P.hp<=0||RunSave.conflicted())return false;
+    autoDelay=Math.max(0,autoDelay-dt);if(autoDelay>0||!ready()||!safe())return false;
+    autoDelay=1;const r=recipe();if(!attempt(r.coreCount,r.essence,true))return false;
+    notifyPickup('cultivation','自动破境 · '+label()+' · 术法赠礼 +3');
+    if(G.state==='character')CharacterUI.draw();else if(G.state==='win')Journey.showEnd(true);return true;
+  }
+  function attempt(core,essence,automatic=false){
     const r=recipe(),c=P.cultivation;
-    if(G.state!=='character'||!safe()||!r||c.result||c.layer!==9||c.qi<r.qi||RunSave.conflicted())return false;
+    if((automatic?!autoStates.includes(G.state):G.state!=='character')||!safe()||!r||(!automatic&&c.result)||c.layer!==9||c.qi<r.qi||RunSave.conflicted())return false;
     if(!Number.isInteger(core)||!Number.isInteger(essence)||core<0||essence<0||core>Math.min(r.coreCount,c.materials[r.core]||0)||essence>Math.min(r.essence,c.materials.essence||0))return false;
-    const before=JSON.parse(JSON.stringify(c)),stats=Object.fromEntries([...upper,'cdr','hp'].map(k=>[k,P[k]]));
+    if(automatic&&(core!==r.coreCount||essence!==r.essence||!ready()))return false;
+    CombatScaling.observe();
+    const scaling=CombatScaling.exportState(),before=JSON.parse(JSON.stringify(c)),stats=Object.fromEntries([...upper,'cdr','hp'].map(k=>[k,P[k]]));
     const rate=chance(core,essence),success=rate===100||Math.random()*100<rate,loss=success?r.qi:r.qi*.1;
     c.materials[r.core]=(c.materials[r.core]||0)-core;c.materials.essence-=essence;c.qi=Math.max(0,c.qi-loss);c.attempts++;
     if(success){const hp=P.maxHp;c.realm++;c.layer=1;P.maxHp*=1.12;P.shieldMax*=1.12;P.dmg*=1.08;constrain();P.hp=Math.min(P.maxHp,P.hp+P.maxHp-hp);c.qi=Math.min(c.qi,need(c)*(c.realm===13?1:2));settle();}
     c.qiRemainder=c.qi-Math.floor(c.qi);
-    c.result={success,target:r.target,chance:rate,loss,attempt:c.attempts};
-    if(RunSave.active()&&!RunSave.save('突破结果')){P.cultivation=before;Object.assign(P,stats);return false;}
+    c.result={success,target:r.target,chance:rate,loss,attempt:c.attempts,automatic};
+    if(RunSave.active()&&!RunSave.save('突破结果')){P.cultivation=before;Object.assign(P,stats);CombatScaling.importState(scaling);return false;}
     if(success){CombatScaling.observe();RealmVisuals.advance(true);}
     Sound.effects(success?'level':'hit');return true;
   }
-  return {realms,cores,fresh,valid,clean,recipe,need,settle,label,caps,protectLegacy,constrain,canStat,xpNeed,qi,addMaterial,onKill,victory,claimCore,chance,safe,attempt};
+  return {realms,cores,fresh,valid,clean,recipe,need,settle,label,caps,protectLegacy,constrain,canStat,xpNeed,qi,addMaterial,onKill,victory,claimCore,chance,safe,ready,autoStatus,update,attempt,resetAutomation(){autoDelay=0;}};
 })();

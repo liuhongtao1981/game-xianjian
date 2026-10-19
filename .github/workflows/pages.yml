@@ -10,6 +10,7 @@ on:
       - 'tools/check-carryover.js'
       - 'tools/check-saves.js'
       - 'tools/check-cultivation.js'
+      - 'tools/check-auto-cultivation.js'
       - 'tools/check-expansion.js'
       - 'tools/check-infant.js'
       - 'tools/check-spell-growth.js'
@@ -44,6 +45,7 @@ jobs:
           node tools/check-carryover.js
           node tools/check-saves.js
           node tools/check-cultivation.js
+          node tools/check-auto-cultivation.js
           node tools/check-expansion.js
           node tools/check-infant.js
           node tools/check-spell-growth.js

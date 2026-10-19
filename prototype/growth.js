@@ -74,9 +74,43 @@ const SpellGift=(()=>{
 const RealmVisuals=(()=>{
   const colors=['#9adbd1','#e9c66e','#7cddc0','#bb9bea','#729eea','#d8a0d7','#a8e6df','#c6b0ff','#f1dfb3','#72c9cb','#e9bc55','#a6cfba','#c7a0ed','#fff0b0'];
   const motifs=['灵纹','金丹归元','元婴灵影','化神神轮','炼虚裂隙','双相合体','大乘法相','渡劫雷纹','真仙仙绶','玄仙星轨','五气归元','太乙三花','大罗道轮','王印法相'];
-  let transition=null;
+  let transition=null,pendingAdvance=null;
   const get=(c)=>({color:colors[c.realm],motif:motifs[c.realm],rings:c.realm?2+Math.floor(c.realm/4):1,detail:Math.floor((c.layer||1)/3),layer:c.layer||1});
-  function advance(major){transition={start:performance.now()/1000,duration:major?2:1,major};}
+  const ascensions=['灵脉初成','金丹凝轮','灵婴出窍','元神开轮','虚空裂变','双相归一','琉璃莲生','九霄雷冠','仙羽临身','星宿归位','五气归元','三花绽顶','大罗道轮','仙王敕印'];
+  function advance(major,details={}){const next={age:0,duration:major?2.6:1.2,major,realm:P.cultivation.realm,layer:P.cultivation.layer,fromLayer:details.fromLayer??P.cultivation.layer};if(!major&&transition?.realm===next.realm){if(transition.major){pendingAdvance={...next,fromLayer:Math.min(pendingAdvance?.fromLayer??next.fromLayer,next.fromLayer)};return;}transition.layer=next.layer;transition.fromLayer=Math.min(transition.fromLayer,next.fromLayer);return;}transition=next;pendingAdvance=null;}
+  function update(dt){if(transition&&dt>0&&['playing','win','story','character'].includes(G.state)){transition.age+=dt;if(transition.age>=transition.duration){transition=pendingAdvance;pendingAdvance=null;}}}
+  function advancement(p,c,front=false){
+    const t=transition;if(!t||t.realm!==c.realm)return;const progress=t.age/t.duration,alpha=Math.sin(progress*Math.PI),color=t.major?colors[c.realm]:'#b9f3ea';
+    p.save();p.globalCompositeOperation='lighter';p.globalAlpha*=alpha*.9;p.strokeStyle=color;p.fillStyle=color+'30';p.lineWidth=1.7;
+    if(!t.major){
+      if(!front){p.save();p.scale(1,.38);for(let i=0;i<2;i++){p.beginPath();p.arc(0,-10,25+progress*45+i*10,0,Math.PI*2);p.stroke();}p.restore();}
+      else {for(const side of [-1,0,1]){const y=-12-progress*85;path(p,[[side*18,-8],[side*14,y],[0,y-12]]);}p.fillStyle='#fff3bf';p.beginPath();p.arc(0,-65,4+alpha*3,0,Math.PI*2);p.fill();}
+      p.restore();return;
+    }
+    if(front){p.lineWidth=2.2;path(p,[[0,-15],[0,-62],[-18,-76],[-28,-50]]);path(p,[[0,-62],[18,-76],[28,-50]]);p.restore();return;}
+    p.translate(0,-64);const spin=progress*Math.PI*2,r=32+alpha*20;
+    const wheel=(radius,n,rotation)=>{p.save();p.rotate(rotation);p.beginPath();p.arc(0,0,radius,0,Math.PI*2);p.stroke();for(let i=0;i<n;i++){p.rotate(Math.PI*2/n);path(p,[[radius-6,-4],[radius+5,0],[radius-6,4]]);}p.restore();};
+    const spirit=(x,scale)=>{p.save();p.translate(x,0);p.scale(scale,scale);p.beginPath();p.ellipse(0,-33,9,12,0,0,Math.PI*2);p.moveTo(-8,-20);p.lineTo(-28,9);p.lineTo(-13,3);p.lineTo(-18,48);p.quadraticCurveTo(0,61,18,48);p.lineTo(13,3);p.lineTo(28,9);p.lineTo(8,-20);p.closePath();p.fill();p.stroke();p.restore();};
+    switch(c.realm){
+      case 0: wheel(r,6,-spin);break;
+      case 1: for(let i=0;i<3;i++)wheel(r+(1-progress)*20+i*7,8,spin*(i%2?-1:1));p.beginPath();p.arc(0,0,9+alpha*6,0,Math.PI*2);p.fill();break;
+      case 2: spirit(0,.55+progress*.6);wheel(r,9,-spin*.3);break;
+      case 3: wheel(r+12,12,spin*.35);wheel(r,8,-spin*.4);spirit(0,.9);break;
+      case 4: for(let i=0;i<8;i++){const a=i*Math.PI/4+spin*.2;path(p,[[Math.cos(a)*18,Math.sin(a)*18],[Math.cos(a+.18)*38,Math.sin(a+.18)*38],[Math.cos(a)*55,Math.sin(a)*55],[Math.cos(a-.12)*67,Math.sin(a-.12)*67]]);}break;
+      case 5: spirit(-(1-progress)*37,1);spirit((1-progress)*37,1);wheel(r,6,-spin*.25);break;
+      case 6: for(let i=0;i<8;i++)petal(p,0,38,55+alpha*13,i*Math.PI/4+spin*.12,color);spirit(0,1);break;
+      case 7: for(let i=0;i<7;i++){const a=i*Math.PI/4+spin*.1;path(p,[[0,8],[Math.cos(a)*24,Math.sin(a)*24],[Math.cos(a+.2)*43,Math.sin(a+.2)*43],[Math.cos(a)*65,Math.sin(a)*65]]);}wheel(r,7,0);break;
+      case 8: for(const side of [-1,1]){p.save();p.scale(side,1);for(let i=0;i<5;i++)petal(p,8,18,48+i*4,.45+i*.20+alpha*.1,color);p.restore();}break;
+      case 9: {const pts=Array.from({length:12},(_,i)=>[Math.cos(i*2.4+spin*.1)*(30+i%3*10),Math.sin(i*2.4+spin*.1)*(30+i%3*10)]);path(p,[...pts,pts[0]]);for(const [x,y] of pts){p.beginPath();p.arc(x,y,2.3,0,Math.PI*2);p.fill();}break;}
+      case 10: for(let i=0;i<5;i++){p.strokeStyle=['#a9efda','#f1d28a','#f0a8a0','#aebffc','#dcc1f3'][i];p.beginPath();p.ellipse(0,0,r+12,13+alpha*7,i*Math.PI/5+spin*.3,0,Math.PI*2);p.stroke();}break;
+      case 11: for(let i=0;i<3;i++)for(let j=0;j<6;j++)petal(p,(i-1)*27,-24-(i===1?19:0),15+alpha*5,j*Math.PI/3+spin*.2,color);path(p,[[-27,-24],[0,16],[0,-43],[0,16],[27,-24]]);break;
+      case 12: for(let i=0;i<4;i++)wheel(25+i*11,8+i*2,spin*(i%2?-.17:.17));break;
+      case 13: spirit(0,1.2);p.save();p.translate(0,-47);p.rotate(Math.sin(spin)*.06);p.strokeRect(-17,-17,34,34);path(p,[[-11,-8],[11,-8],[0,-8],[0,10],[-11,10],[11,10],[-9,1],[9,1]]);p.restore();wheel(r+10,9,spin*.12);break;
+    }
+    p.restore();
+  }
+  function notice(){const box=document.getElementById('cultivationNotice');if(!box)return;box.hidden=!transition||!['playing','win','story','character'].includes(G.state);if(box.hidden)return;const t=transition;box.classList.toggle('major',t.major);box.classList.toggle('minor',!t.major);box.style.setProperty?.('--ascension-color',t.major?colors[t.realm]:'#b9f3ea');document.getElementById('cultivationNoticeTitle').textContent=t.major?'破境 · '+Cultivation.realms[t.realm]:'修为精进 · '+Cultivation.realms[t.realm]+'第'+t.layer+'层';document.getElementById('cultivationNoticeDetail').textContent=t.major?ascensions[t.realm]+' · 术法赠礼 +3':(t.layer-t.fromLayer>1?'连升 '+(t.layer-t.fromLayer)+' 层 · ':'')+'灵脉贯通 · 生命、护盾与伤害提高';const canvas=document.getElementById('cultivationNoticeArt');if(canvas?.getContext){const pen=canvas.getContext('2d');pen.clearRect(0,0,110,130);pen.save();pen.translate(55,110);pen.scale(.72,.72);advancement(pen,{realm:t.realm},false);advancement(pen,{realm:t.realm},true);pen.restore();}}
+
   function path(p,points){p.beginPath();points.forEach(([x,y],i)=>i?p.lineTo(x,y):p.moveTo(x,y));p.stroke();}
   function petal(p,x,y,r,a,color){p.save();p.translate(x,y);p.rotate(a);const g=p.createLinearGradient(0,0,0,-r);g.addColorStop(0,color+'08');g.addColorStop(.6,color+'55');g.addColorStop(1,'#f5efcfaa');p.fillStyle=g;p.beginPath();p.moveTo(0,0);p.bezierCurveTo(-r*.55,-r*.3,-r*.32,-r*.8,0,-r);p.bezierCurveTo(r*.32,-r*.8,r*.55,-r*.3,0,0);p.fill();p.stroke();p.restore();}
   function danger(){if(typeof G==='undefined'||typeof P==='undefined'||!P)return false;
@@ -85,7 +119,7 @@ const RealmVisuals=(()=>{
   // Feet-relative body anchors follow the same recoil, lunge, facing and frame as the sprite.
   function body(p,c,time,pose,front=false,moving=false,oldPass=false,options={}){
     const v=get(c),r=c.realm,l=v.layer,color=v.color,breath=.84+Math.sin(time*2.1)*.12,arm=pose==='attack'?-12:pose==='ultimate'?-26:0;
-    const mode=presentation(c,!!options.preview),inherited=p.globalAlpha??1,age=transition?(performance.now()/1000-transition.start):10;
+    const mode=presentation(c,!!options.preview),inherited=p.globalAlpha??1,age=transition&&transition.realm===r?transition.age:10;
     if(!front&&!oldPass&&transition?.major&&r>0&&age<.7){p.save();p.globalAlpha=inherited*(1-age/.7)*.55;const shrink=1-age*.65;p.scale(shrink,shrink);body(p,{realm:r-1,layer:9},time,pose,false,moving,true,options);p.restore();}
     p.save();if(!mode.preview){p.beginPath();p.rect(-87,-185.6,174,195.6);p.clip();}p.globalCompositeOperation='lighter';p.lineWidth=1.05;p.shadowColor=color;p.shadowBlur=mode.mobile?3:7;p.strokeStyle=color+'88';
     if(!front){
@@ -128,8 +162,9 @@ const RealmVisuals=(()=>{
       if(l>=7){path(p,[[0,-57],[-4,-41],[-11,-19]]);path(p,[[0,-57],[5,-39],[12,-17]]);}
       if(l>=8){p.strokeStyle=color+'66';path(p,[[-18,-73],[-25,-56],[-18,-38],[-22,-15]]);}
       if(l>=9){p.fillStyle=color+'aa';for(let i=0;i<(mode.mobile?5:9);i++){const a=time*.5+i*Math.PI*2/9;p.beginPath();p.arc(Math.cos(a)*33,-56+Math.sin(a)*37,1.1,0,Math.PI*2);p.fill();}}
-      if(transition){const t=age/transition.duration;if(t>=1)transition=null;else {p.globalAlpha=inherited*Math.sin(t*Math.PI)*.65*mode.decoration;p.lineWidth=1.5;p.beginPath();p.ellipse(0,-52,25+t*(transition.major?70:25),48+t*30,0,0,Math.PI*2);p.stroke();}}
+
     }
+    if(!oldPass)advancement(p,c,front);
     p.restore();
   }
   function draw(c,x,y,time,scale=1){const v=get(c),r=31+c.realm*.8;ctx.save();ctx.translate(x,y);ctx.scale(scale,scale*.46);ctx.strokeStyle=v.color;ctx.globalAlpha=.55*presentation(c).decoration;ctx.lineWidth=1.2;
@@ -137,5 +172,5 @@ const RealmVisuals=(()=>{
     const count=4+v.detail*2+c.realm;for(let i=0;i<count;i++){const a=i*Math.PI*2/count+time*(c.realm%2?-.3:.25);ctx.save();ctx.rotate(a);ctx.beginPath();ctx.moveTo(r-5,-3);ctx.lineTo(r+5,0);ctx.lineTo(r-5,3);ctx.stroke();ctx.restore();}
     if(c.realm){ctx.rotate(-time*.15);ctx.strokeRect(-r*.6,-r*.6,r*1.2,r*1.2);}ctx.restore();
   }
-  return {get,draw,body,advance,danger,presentation,reset(){transition=null;}};
+  return {get,draw,body,advance,advancement,update,notice,ascensions,status:()=>transition?{...transition}:null,danger,presentation,reset(){transition=null;pendingAdvance=null;}};
 })();
