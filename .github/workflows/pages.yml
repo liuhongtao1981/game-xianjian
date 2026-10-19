@@ -11,6 +11,7 @@ on:
       - 'tools/check-saves.js'
       - 'tools/check-cultivation.js'
       - 'tools/check-expansion.js'
+      - 'tools/check-infant.js'
       - 'tools/check-realm-upgrades.js'
       - 'tools/check-world.js'
       - 'tools/check-heroes.js'
@@ -43,6 +44,7 @@ jobs:
           node tools/check-saves.js
           node tools/check-cultivation.js
           node tools/check-expansion.js
+          node tools/check-infant.js
           node tools/check-pickups.js
           node tools/check-combat.js
           node tools/check-world.js

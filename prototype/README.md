@@ -1,6 +1,6 @@
 # 重走西游 · 寻圣
 
-当前开放筑基、金丹六关，规划十四境四十二关，后续章节按境界制作并保持锁定。详细规则、美术来源和验证边界见[九层修仙与六关发布](../docs/九层修仙与六关发布.md)。旧三关文档保留作历史设计记录。
+当前开放筑基、金丹、元婴九关，规划十四境四十二关，后续章节按境界制作并保持锁定。本批内容、美术来源与验证边界见[元婴篇发布记录](../docs/元婴篇-发布记录.json)，成长基础规则见[九层修仙说明](../docs/九层修仙与六关发布.md)。旧三关文档保留作历史设计记录。
 
 ## 运行与操作
 
@@ -8,7 +8,7 @@
 
 ## 探索与首领
 
-筑基地图6400×4600，金丹7200×5200，四连通区域、十八处三波营地、四处精英、三份证词、三份宝箱、三份补给及四座驿站。驿站清理周边后可安全返回。探索巡逻无限，普通怪同时存活上限为故事36、标准48、困难56、极难64，手机24。达到上限只延迟生成。
+筑基地图6400×4600，金丹与元婴7200×5200，四连通区域、十八处三波营地、四处精英、三份证词、三份宝箱、三份补给及四座驿站。驿站清理周边后可安全返回。探索巡逻无限，普通怪同时存活上限为故事36、标准48、困难56、极难64，手机24。达到上限只延迟生成。
 
 祭坛可自由挑战，不要求清空全图。入坛结束探索增援，机关、诱招和收势破绽仍为首领胜利条件；玩家生命归零失败，只有击杀首领且自身存活才通关。关卡需前置通关及对应大境界才能进入。
 
@@ -22,6 +22,6 @@
 
 ## 验证
 
-Node.js运行 `tools/check-syntax.js`、`check-director.js`、`check-carryover.js`、`check-saves.js`、`check-cultivation.js`、`check-expansion.js`、`check-pickups.js`、`check-combat.js`。音频完整检查为 `node tools/check-audio.js`，需要FFmpeg。桌面与手机截图检查为 `node tools/check-ui.js`，需要Playwright及Edge；可用PLAYWRIGHT_NODE_MODULES指定依赖目录。
+Node.js运行 `tools/check-syntax.js`、`check-director.js`、`check-carryover.js`、`check-saves.js`、`check-cultivation.js`、`check-expansion.js`、`check-infant.js`、`check-pickups.js`、`check-combat.js`。音频完整检查为 `node tools/check-audio.js`，需要FFmpeg。桌面与手机截图检查为 `node tools/check-ui.js`，需要Playwright及Edge；可用PLAYWRIGHT_NODE_MODULES指定依赖目录。
 
-一级主路、全图脚本均已连续打通六关，模拟数据在docs目录。代理读取完整预警，不能代表真人通关率或时长。真人目标时长与真实手机性能仍需试玩校准。
+原六关已从一级完成主路与全图脚本验证；本批元婴三关以声明的40级继承构筑完成连续探索与首领验证，数据见`docs/元婴篇-探索验证.json`。代理读取完整预警，不能代表真人通关率或时长。真人目标时长与真实手机性能仍需试玩校准。

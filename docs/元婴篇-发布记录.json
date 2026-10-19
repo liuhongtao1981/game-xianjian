@@ -1,0 +1,156 @@
+{
+  "release": "元婴篇 / 第7至9关",
+  "date": "2026-10-19",
+  "playable": 9,
+  "futureLockedFrom": "化神篇",
+  "saveCompatibility": "沿用 xunsheng-save-v3；旧六关ID、地形版本、人物与领奖记录保持兼容。通关金丹并突破元婴后顺序解锁。",
+  "chapters": [
+    {
+      "map": "焚愿禅院",
+      "boss": "阴愿主使",
+      "story": "追查将香客灾祸转嫁给无名者的转灾账。",
+      "enemies": [
+        "燃愿沙弥",
+        "灰绸火狐",
+        "香灰咒师",
+        "执烛法卫"
+      ],
+      "mechanic": "三盏净愿灯近身净化，再完整避过十字焚线，收炉时破防。",
+      "reward": "养魂神木保底2份，另有精英与劫压额外奖励。"
+    },
+    {
+      "map": "黑风密林",
+      "boss": "披愿黑熊",
+      "story": "袈裟内缝着替山民还债的卖命契；借熊扑撞醒缄声风钟。",
+      "enemies": [
+        "缠根山役",
+        "黑雾獠狼",
+        "竹笛魇师",
+        "空心木卫"
+      ],
+      "mechanic": "风钟免疫剑伤，诱扑撞钟，随后避过三段爪风。护钟期间也穿插爪击。",
+      "reward": "养魂神木保底2份。"
+    },
+    {
+      "map": "愿骨石窟",
+      "boss": "焚愿老衲",
+      "story": "辨认骨愿中仍然活着的神木脉线，寻找大圣留下的半句真话。",
+      "enemies": [
+        "骨面行脚",
+        "愿骨瘦犬",
+        "空腔诵骨",
+        "肋甲护龛"
+      ],
+      "mechanic": "斩金色脉线真碑，空碑触发有预警的追声反噬。三重骨声按外、内、外完成；失败后追加追声反击。",
+      "reward": "养魂神木保底2份；结尾引向未开放的高老庄。"
+    }
+  ],
+  "maps": {
+    "size": [
+      7200,
+      5200
+    ],
+    "regions": 4,
+    "camps": 18,
+    "wavesPerCamp": 3,
+    "normalWaveSizes": [
+      22,
+      24,
+      26
+    ],
+    "eliteChallenges": 4,
+    "desktopCaps": [
+      36,
+      48,
+      56,
+      64
+    ],
+    "mobileCap": 24,
+    "bossAddsCap": 6,
+    "patrol": "无限巡逻，入坛停止探索增援，保持原有安全生成和预警。"
+  },
+  "difficulty": {
+    "chapterDamageMultipliers": [
+      1.6775,
+      1.83,
+      1.9825
+    ],
+    "previousGoldenFinale": 1.525,
+    "bossBaseHp": [
+      19000,
+      23500,
+      28500
+    ],
+    "mobScale": [
+      2.9,
+      3.25,
+      3.65
+    ],
+    "minimumWarningSeconds": 0.65,
+    "note": "同时叠加已有难度、营地阶段与冻结的角色实力快照；不通过增加同时存活上限提高难度。"
+  },
+  "rewards": {
+    "firstTrilogyMinimumCore3": 6,
+    "firstTrilogyEssence": 24,
+    "firstTrilogyQi": 2880,
+    "note": "可选定向材料，界面展示养魂神木及用途。保底与稀有奖励沿用原领取台账，死亡、刷新不重复发放。"
+  },
+  "audio": {
+    "originalMusicTracks": 6,
+    "generatedVoiceLines": 18,
+    "service": "Microsoft Edge TTS",
+    "authorization": "用户明确授权将新增18条原创台词发送并生成配音。",
+    "voices": "原创角色使用通用神经语音及音频后期，不以现实人物音色克隆为目标。",
+    "cues": "docs/audio-cues.json",
+    "provenance": "prototype/assets/audio/voice-v2/manifest.json"
+  },
+  "art": {
+    "tool": "built-in image_gen",
+    "mode": "generate",
+    "postprocess": "仅将原生成PNG编码为lossless WebP，保留原始像素与透明通道。运行时按测量边界和脚底锚点裁切。",
+    "promptSet": [
+      {
+        "asset": "prototype/assets/actors-wish.webp",
+        "prompt": "Production transparent sprite atlas for an original realistic dark Chinese cultivation action game; four columns by five rows. Each row is one consistent full-body character in idle, walking, attack anticipation and forceful attack release poses, facing right, elevated orthographic view, feet baseline aligned, all weapons inside each cell. Crisp hand-painted realistic 3D cloth/fur/metal, true alpha, no background, labels, frames or baked shadow. Burned wish monastery: ash novice with hooked incense chain, ember fox with torn prayer ribbons, incense caster with censer staff, bronze candle-armored sentinel; fifth row faceless censer-chain abbot."
+      },
+      {
+        "asset": "prototype/assets/actors-windwood.webp",
+        "prompt": "Production transparent sprite atlas for an original realistic dark Chinese cultivation action game; four columns by five rows. Each row is one consistent full-body character in idle, walking, attack anticipation and forceful attack release poses, facing right, elevated orthographic view, feet baseline aligned, all weapons inside each cell. Crisp hand-painted realistic 3D cloth/fur/metal, true alpha, no background, labels, frames or baked shadow. Black wind forest: twisted root goblin, black mist wolf with prayer beads, mantis flute shaman in leaf robes, hollow trunk guardian; fifth row enormous black bear wearing ragged golden kasaya and chains."
+      },
+      {
+        "asset": "prototype/assets/actors-bonewish.webp",
+        "prompt": "Production transparent sprite atlas for an original realistic dark Chinese cultivation action game; four columns by five rows. Each row is one consistent full-body character in idle, walking, attack anticipation and forceful attack release poses, facing right, elevated orthographic view, feet baseline aligned, all weapons inside each cell. Crisp hand-painted realistic 3D cloth/fur/metal, true alpha, no background, labels, frames or baked shadow. Wish-bone grotto: skeletal pilgrim in ragged robes, bone hound with violet soul mist, hollow skull bell caster, rib-armored guardian; fifth row emaciated elder fused with sacred soulwood roots and bones."
+      },
+      {
+        "asset": "prototype/assets/infant-terrain.webp",
+        "prompt": "Production high-resolution top-down seamless terrain atlas, exact three columns by two rows, no labels or borders. Columns burned monastery, black wind forest, wish-bone grotto. Upper row soot cracked stone with incense ash; moss root forest soil; ivory fossil limestone with restrained amethyst. Lower row corresponding ash paving, weathered wood planks, pale soul-root cave sediment. Crisp realistic hand-painted 3D, diffuse light, no people or objects, readable game floor."
+      },
+      {
+        "asset": "prototype/assets/infant-worlds.webp",
+        "prompt": "Three equally sized square panoramic story panels side by side for an original dark Chinese cultivation game. Left burned ruined monastery with soot red bronze pagodas and incense smoke, center black wind forest with colossal twisted roots and hanging prayer cloths, right wish-bone limestone grotto with fossil ribs, sacred soulwood and muted violet lanterns. Atmospheric realistic high-detail hand-painted environment, no text no UI no people, distinct silhouettes and palette."
+      },
+      {
+        "asset": "prototype/assets/infant-props.webp",
+        "prompt": "Use case: stylized-concept. Asset type: transparent isometric environment prop atlas for a realistic dark Chinese cultivation action game. Exact grid FOUR columns by THREE equal rows, landscape 4:3 sheet, ideally 2048x1536, true transparent background, no labels, no borders no floor no baked shadow, each prop entirely isolated with generous clear padding. Elevated orthographic three-quarter camera, hand-painted realistic 3D detail, crisp surfaces, unified scale within each type. Columns left to right: 1 elaborate entrance gate arch with two supports and clear passage beneath; 2 tall environmental tree or natural pillar; 3 standing ritual brazier or hanging wind bell on post; 4 small wayside shrine pavilion. Row1 BURNED MONASTERY: charred red-and-bronze ruined temple gate, scorched sacred tree with a few ember leaves, bronze incense brazier on plinth burning subdued orange, ruined vermilion shrine with prayer tablets. Row2 BLACK WIND FOREST: a giant twisted-root arch gate, enormous mossy dark forest tree with a broad jade-dark canopy and hanging prayer knots, bronze wind bell suspended from ancient wood post, woodland root shrine tangled with vines. Row3 WISH-BONE GROTTO: ivory limestone arch with subtle riblike organic forms, tall stalagmite cluster with thin pale soul roots, amethyst soul lantern on carved ivory pedestal, limestone ossuary shrine with pale sacred tree roots. ALL 12 props fit fully inside their own cells, no crossing boundaries, no symbols or text, no people no animals, realistic textures not cartoon, coherent restrained lighting with clear readable silhouettes."
+      }
+    ],
+    "uv": "prototype/infant-uv.js",
+    "note": "以上为本批保存的生产提示词集；材质、物件和妖群图集均为原创生成资源。"
+  },
+  "verification": {
+    "automated": "tools/check-infant.js 覆盖解锁、三种破招、防伪破招、死亡与刷新奖励一致性、首领检查点及冻结强度；完整回归命令见CI。",
+    "browser": "tools/check-infant-ui.js，桌面1440×1000与手机390×844，三关剧情/地图/首领、60姿态与24/48怪群安全地面检查。",
+    "simulation": "tools/simulate-infant.js 与 tools/simulate-infant-exploration.js，均使用游戏实际更新和输入。祭坛模拟初始构筑是声明的元婴40级测试构筑，不能代替一级探索。",
+    "limits": "自动代理读取完整预警，不代表真人通关率或25至35分钟主路目标。桌面无头渲染时间不代表真实手机帧率。",
+    "results": {
+      "newGuardianChecks": 20,
+      "worldChecks": 45,
+      "audioBehaviorChecks": 39,
+      "decodedMediaFiles": 109,
+      "audioProvenanceHashes": 136,
+      "continuousExploration": "声明40级元婴继承构筑连续三关通关，详见元婴篇-探索验证.json",
+      "guardianComparison": "三位大妖知机制策略获胜，直接贴身攻击策略全部失败，详见元婴篇-首领验证.json",
+      "browser": "无运行时异常；桌面与手机布局、60个妖怪姿态、24/48只怪安全地面检查通过；原男女角色252境界层状态和2016动作组合回归通过。"
+    }
+  }
+}

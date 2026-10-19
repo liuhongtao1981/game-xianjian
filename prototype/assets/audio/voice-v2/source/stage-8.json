@@ -1,0 +1,25 @@
+{
+  "id": "stage-8",
+  "text": "石窟深处没有佛像，只有排列成佛形的白骨。焚愿老衲把死者的心愿刻在骨上，拿去抵消活人的罪。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "8ca6090a077d828d04a06d14306b87b3cc451805fba50019531420b80d605d79",
+  "source_sha256": "f49826f94c7895d7ea8f04408eb3f431f7886d2e62660a98b94dc309ce2c1218",
+  "mixed_sha256": "abfa1de1f2a7d885f921f141578454a20fbdff4ee3a5147af0295b394f3ce939",
+  "duration": 10.276,
+  "size": 124460,
+  "file": "assets/audio/voice-v2/stage-8.mp3",
+  "source": "assets/audio/voice-v2/source/stage-8.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "boss-6",
+  "text": "有人替你受难，你的愿才算灵验。",
+  "speaker": "阴愿主使",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-12Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "50e5d216d5c512cf53a73a6273414765f90cbac37c4a7718e101a9d4a40706fa",
+  "source_sha256": "f84db8b191b0c9e401b4f16c66b912bfe80667fd7521c136ded5d2a9c7c3aaae",
+  "mixed_sha256": "ea955a8bf83b14c6b7c0768ff4ee0707b046a2c59487282ada6dffc4356da612",
+  "duration": 3.614,
+  "size": 44396,
+  "file": "assets/audio/voice-v2/boss-6.mp3",
+  "source": "assets/audio/voice-v2/source/boss-6.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=2",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:58:0.065",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

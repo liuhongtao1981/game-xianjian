@@ -1,0 +1,25 @@
+{
+  "id": "omen-8",
+  "text": "一退，二进，三退。别信空愿的回声。",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "79c114c7b6be72b00d5027ca61120b4e15ee2a1b4b80568742e282739dabd48a",
+  "source_sha256": "1b94ed8cb5ee62b5f904c5c0752d950d08ae8301aee4ba687be7f1ae7984d478",
+  "mixed_sha256": "80cf137028308ca6842bf7fe1eede134d1051902343ea71d3eda2d246b444966",
+  "duration": 5.356,
+  "size": 65420,
+  "file": "assets/audio/voice-v2/omen-8.mp3",
+  "source": "assets/audio/voice-v2/source/omen-8.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

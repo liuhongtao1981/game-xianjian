@@ -1,0 +1,26 @@
+{
+  "id": "phase-8",
+  "text": "把你最初的愿，也念给我听！",
+  "speaker": "焚愿老衲",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-13%",
+  "pitch": "-13Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "46f81e8c17711351e9ee84d3edf303cb2601a6fbc61b94374c39d946932b0574",
+  "source_sha256": "ecdadc563b0447e9ffece28de91a3c928db1e378b8f7e82c5824b513a03ed8ea",
+  "mixed_sha256": "0aef25adcab4ba1f7792792026a6b35cfe6327076c01073f5b0f6d0886e8fdde",
+  "duration": 3.287,
+  "size": 40364,
+  "file": "assets/audio/voice-v2/phase-8.mp3",
+  "source": "assets/audio/voice-v2/source/phase-8.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:67:0.085",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

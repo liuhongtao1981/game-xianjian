@@ -4,6 +4,7 @@ const GuardianPilot=(()=>{
   function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
   function danger(t,x,y){
     const dx=x-t.x,dy=y-t.y;
+    if(t.shape==='annulus')return Math.abs(Math.hypot(dx,dy)-t.r)-t.width-P.r;
     if(t.shape==='line')return Math.max(Math.abs(dx*Math.cos(t.angle)+dy*Math.sin(t.angle))-t.length-P.r,Math.abs(-dx*Math.sin(t.angle)+dy*Math.cos(t.angle))-t.r-P.r);
     if(t.shape==='tide'){
       if(x<t.left||x>t.right)return 999;
@@ -16,6 +17,13 @@ const GuardianPilot=(()=>{
     const tide=G.telegraphs.find(t=>t.shape==='tide'&&t.bossSkill==='tide');
     if(tide)return {x:tide.gap,y:tide.y,ritual:true};
     if(boss.action==='exposed')return {x:boss.x,y:boss.y+55};
+    if(Journey.run.stage===7&&helpers.length){
+      const attack=boss.brain.pending;
+      if(attack?.kind==='pounce'){const a=boss.attackAngle,side=Math.sign(Math.cos(a)*(P.y-attack.origin.y)-Math.sin(a)*(P.x-attack.origin.x))||1;return {x:attack.origin.x-Math.sin(a)*side*220,y:attack.origin.y+Math.cos(a)*side*220};}
+      helpers.sort((a,b)=>distance(a,P)-distance(b,P));const h=helpers[0],d=distance(h,boss)||1;return {x:h.x+(h.x-boss.x)/d*85,y:h.y+(h.y-boss.y)/d*85};
+    }
+    if(Journey.run.stage===8){const echo=G.telegraphs.filter(t=>t.bossSkill==='bone-echo').sort((a,b)=>a.life-b.life)[0];if(echo){const a=Math.atan2(P.y-boss.y,P.x-boss.x),r=echo.side==='inside'?85:290;return {x:boss.x+Math.cos(a)*r,y:boss.y+Math.sin(a)*r,ritual:true};}}
+
     if(helpers.length){helpers.sort((a,b)=>distance(a,P)-distance(b,P));const e=helpers[0],d=distance(e,P)||1;return {x:e.x+(P.x-e.x)/d*66,y:e.y+(P.y-e.y)/d*66};}
     const attack=boss.brain.pending;
     if(attack?.kind==='duel'){
@@ -42,7 +50,7 @@ const GuardianPilot=(()=>{
       if(ellipse>.98)cost+=1000+(ellipse-.98)*2000;
       if(!World.isWalkable(x,y,P.r))cost+=2000;
       for(const t of G.telegraphs){
-        const d=danger(t,x,y),weight=t.life<.75?1:.35;
+        const d=danger(t,x,y),weight=t.shape==='annulus'?(t.life<.40?1:0):t.life<.75?1:.35;
         if(d<30)cost+=(30-d)*weight*9;
       }
       for(const s of G.eshots){
@@ -99,5 +107,5 @@ const GuardianPilot=(()=>{
     }
     return {cleared:stages.filter(s=>s.state==='win').length,stages};
   }
-  return {run,steer,chooseCard};
+  return {run,steer,chooseCard,uninformed};
 })();

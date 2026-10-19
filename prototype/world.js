@@ -9,7 +9,7 @@ const World=(()=>{
   }));
   let combat;
   const images=ChapterCatalog.released().map(()=>new Image());
-  function terrain(){const c=ChapterCatalog.get(Journey.run.stage),image=images[c.index];if(!image.src)image.src='assets/world-'+c.id+(c.realm?'.jpg':'-v3.jpg');return image;}
+  function terrain(){const c=ChapterCatalog.get(Journey.run.stage),image=images[c.index];if(!image.src)image.src=c.realm===2?'assets/infant-worlds.webp':'assets/world-'+c.id+(c.realm?'.jpg':'-v3.jpg');return image;}
   const titles=[['入山旧道','焚卷碑林','断钟外庭','封口禅坛'],['陈府后巷','血书偏院','废印长廊','司命刑庭'],['旧渡石径','沉灯浅湾','缚舟栈道','河伯祭台']];
   let sites=[],active=false,mapOpen=false,near=null,visited=0,nav=null;
   const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
@@ -114,7 +114,7 @@ const World=(()=>{
       ['残碑写着：钟声掩住的，是未曾入册的证词。','先破三枚钟心，再避过镇音重锤，收锤才露破绽。','重锤可反噬钟心；护体每次重结，都须重新诱招。'],
       ['密诏没有名字，只有反复加盖的红印。','斩断血诏之后，须诱尽两段问斩。','刀势锁定时向侧面避开；收刀，才是破绽。'],
       ['灯里封着没有名字的人，潮水替他们记账。','灭去河灯，再连渡两重洪潮的青色缺口。','只逃离洪潮，不能引出逆鳞；须迎潮守隙。']
-    ][Journey.run.stage]||Journey.stage().story;
+    ][Journey.run.stage]||Journey.stage().lore||Journey.stage().story;
     sites=data().sites.map((s,id)=>({...s,id,...point(s),text:lore[s.loreIndex],done:false,name:s.kind==='boss'?'挑战 · '+Journey.stage().boss:s.name}));
     for(const s of sites)if(!['boss','station'].includes(s.kind))s.done=RunSave.claimed('site:'+Journey.run.stage+':'+s.id);
     visited=sites.filter(s=>s.done).length;

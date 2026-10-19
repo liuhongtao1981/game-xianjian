@@ -59,6 +59,8 @@ const ExplorationPilot=(()=>{
   }
   function run(options={}){
     Journey.begin();Journey.run.difficulty=options.difficulty||'normal';Journey.run.ultimate=options.ultimate||'heaven';reset();botMode=false;
+    if(options.startStage){Journey.run.stage=options.startStage;Journey.run.checkpoint=null;reset();}
+    if(options.build)Object.assign(P,JSON.parse(JSON.stringify(options.build)));
     const rows=[];
     for(let stage=0;stage<(options.stages||3);stage++){
       G.state='playing';const path=options.patrol?[{kind:'camp',id:0},{kind:'patrol'}]:route(options.full),read=new Set();let index=0,nextInput=0,beforeBoss=null,maxGap=0,gap=0,combatTime=0,damage=0,lastHp=P.hp;

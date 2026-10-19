@@ -1,0 +1,25 @@
+{
+  "id": "victory-8",
+  "text": "最后一重回声散去，神木里露出大圣留下的半句。他们买卖的，从来不是功德。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "6eea68876bcf6dc8a261f7e58079c685996c224fe5df1a595be7d750ab5de3b5",
+  "source_sha256": "ca3b7395681a612715e0dfc3ba5962f7b375beeae14b0b15b9fd89899d557970",
+  "mixed_sha256": "bb3f0982a36be57f549391da25a685abb1d96544307ae38b4dae0d88a6327a56",
+  "duration": 8.236,
+  "size": 99980,
+  "file": "assets/audio/voice-v2/victory-8.mp3",
+  "source": "assets/audio/voice-v2/source/victory-8.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "boss-7",
+  "text": "我披的是他们的愿，压下来的却全是我的罪。",
+  "speaker": "披愿黑熊",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "-6%",
+  "pitch": "-15Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "654c91c74b7b5a17de68992dd19291067f8a1f01a3fe1dad3c0cf28325404e2b",
+  "source_sha256": "7386f7bba1a4bef6465c301be12e270090b241dfd4751cbab829a47c511ec354",
+  "mixed_sha256": "71b8442b086f9030d7c5d684c468d99696db0ccf5e8bdad5e61d6ec8cca4583a",
+  "duration": 5.132,
+  "size": 62540,
+  "file": "assets/audio/voice-v2/boss-7.mp3",
+  "source": "assets/audio/voice-v2/source/boss-7.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=2.2",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:40:0.035",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

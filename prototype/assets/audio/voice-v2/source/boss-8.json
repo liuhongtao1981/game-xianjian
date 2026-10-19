@@ -1,0 +1,26 @@
+{
+  "id": "boss-8",
+  "text": "生前不肯许的愿，死后总会答应。",
+  "speaker": "焚愿老衲",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-13%",
+  "pitch": "-13Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "327d3fb9c8a3502fc03aa16c2d54fa29511715344d2ee97492d7144a6f95837b",
+  "source_sha256": "6774945a897b8e7ebf6ea9a4fbecafaa07ef9e71d44b57eeab5b553350275860",
+  "mixed_sha256": "f45b61406367d2e6542456a3aa3980d07a5cc1f3aa2214e1fba9ad7e4c1c8092",
+  "duration": 3.959,
+  "size": 48428,
+  "file": "assets/audio/voice-v2/boss-8.mp3",
+  "source": "assets/audio/voice-v2/source/boss-8.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:67:0.085",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

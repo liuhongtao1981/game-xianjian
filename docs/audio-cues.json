@@ -38,6 +38,30 @@
       "body": 2,
       "echo": 0.085,
       "delay": 112
+    },
+    "wish": {
+      "voice": "zh-CN-YunyangNeural",
+      "rate": "-10%",
+      "pitch": "-12Hz",
+      "body": 2,
+      "echo": 0.065,
+      "delay": 58
+    },
+    "bear": {
+      "voice": "zh-CN-YunjianNeural",
+      "rate": "-6%",
+      "pitch": "-15Hz",
+      "body": 2.2,
+      "echo": 0.035,
+      "delay": 40
+    },
+    "elder": {
+      "voice": "zh-CN-YunyangNeural",
+      "rate": "-13%",
+      "pitch": "-13Hz",
+      "body": 1.8,
+      "echo": 0.085,
+      "delay": 67
     }
   },
   "cues": [
@@ -340,6 +364,114 @@
       "text": "雷潮退去，斩开锁喉！",
       "role": "hero",
       "speaker": "孙小果"
+    },
+    {
+      "id": "stage-6",
+      "text": "白蛟吐出的袈裟角，把孙小果引进一座永不天明的禅院。每烧掉一条许愿红绸，功德簿上便多一笔收入。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "boss-6",
+      "text": "有人替你受难，你的愿才算灵验。",
+      "role": "wish",
+      "speaker": "阴愿主使"
+    },
+    {
+      "id": "phase-6",
+      "text": "香火不灭，谁敢问价！",
+      "role": "wish",
+      "speaker": "阴愿主使"
+    },
+    {
+      "id": "omen-6",
+      "text": "三盏净灯已明，避过十字焚线。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "weakness-6",
+      "text": "收炉了，断它香火！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "victory-6",
+      "text": "香炉裂开，里面没有神佛，只有一册转灾账。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "stage-7",
+      "text": "黑风林的树都朝同一个方向弯腰。枝头挂着数千件无主袈裟，风一吹，便替人答应下一场劫。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "boss-7",
+      "text": "我披的是他们的愿，压下来的却全是我的罪。",
+      "role": "bear",
+      "speaker": "披愿黑熊"
+    },
+    {
+      "id": "phase-7",
+      "text": "风钟不响，这衣就脱不了！",
+      "role": "bear",
+      "speaker": "披愿黑熊"
+    },
+    {
+      "id": "omen-7",
+      "text": "双钟已响，避尽三爪。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "weakness-7",
+      "text": "爪势已尽，斩开袈裟！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "victory-7",
+      "text": "袈裟落地，黑熊的背上钉满小小的木牌。它守的不是财宝，是没有资格求救的人。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "stage-8",
+      "text": "石窟深处没有佛像，只有排列成佛形的白骨。焚愿老衲把死者的心愿刻在骨上，拿去抵消活人的罪。",
+      "role": "narrator",
+      "speaker": "说书人"
+    },
+    {
+      "id": "boss-8",
+      "text": "生前不肯许的愿，死后总会答应。",
+      "role": "elder",
+      "speaker": "焚愿老衲"
+    },
+    {
+      "id": "phase-8",
+      "text": "把你最初的愿，也念给我听！",
+      "role": "elder",
+      "speaker": "焚愿老衲"
+    },
+    {
+      "id": "omen-8",
+      "text": "一退，二进，三退。别信空愿的回声。",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "weakness-8",
+      "text": "骨声已散，斩它本心！",
+      "role": "hero",
+      "speaker": "孙小果"
+    },
+    {
+      "id": "victory-8",
+      "text": "最后一重回声散去，神木里露出大圣留下的半句。他们买卖的，从来不是功德。",
+      "role": "narrator",
+      "speaker": "说书人"
     }
   ]
 }

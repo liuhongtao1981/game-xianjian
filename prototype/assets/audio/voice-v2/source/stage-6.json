@@ -1,0 +1,25 @@
+{
+  "id": "stage-6",
+  "text": "白蛟吐出的袈裟角，把孙小果引进一座永不天明的禅院。每烧掉一条许愿红绸，功德簿上便多一笔收入。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "1a1398ceb3d09c062cef37626476b3fdc095ecabf0b75e3fd830872654bd4b35",
+  "source_sha256": "5c6178e0418d32c109ae38bcf19b1643cc00f7320de44acda83fdda40d5336f3",
+  "mixed_sha256": "fd9b93137b51c64dbc171548db4383919fcb5a66bc4eaace7b36cb3de9973d36",
+  "duration": 10.876,
+  "size": 131660,
+  "file": "assets/audio/voice-v2/stage-6.mp3",
+  "source": "assets/audio/voice-v2/source/stage-6.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

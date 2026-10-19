@@ -64,7 +64,7 @@ check('moving left turns character',`keys.a=true;updatePlayer(.1);return P.look=
 check('paused game freezes actor animation',`G.state='paused';const anim=P.animTime;update(.5);return P.animTime===anim`);
 check('ultimate has casting pose',`tryUltimate();return Motion.frame(P,'hero').state==='ultimate'`);
 check('restart clears lingering spell visuals',`Motion.emit('fire',10,10);reset();return Motion.status().effects===0`);
-check('canonical ordeals remain ordered and visually distinct',`return Journey.stages.slice(0,3).map(s=>s.title).join(',')==='金蝉遭贬,出胎几杀,满月抛江'&&new Set(Journey.stages.map(s=>s.background)).size===6`);
+check('canonical ordeals remain ordered and visually distinct',`return Journey.stages.slice(0,3).map(s=>s.title).join(',')==='金蝉遭贬,出胎几杀,满月抛江'&&new Set(Journey.stages.map(s=>s.background+'|'+(s.artPosition||'center'))).size===9`);
 check('poison damages destructible helpers',`challenge();const seal=G.enemies.find(e=>e.seal),hp=seal.hp;seal.poison=1;seal.poisonTick=.49;updateEnemies(.02);return seal.hp<hp`);
 check('ultimate respects exposure budget and accounts actual damage',`challenge();openWindow();const h=G.boss.hp,cast={bossDamage:0};hurt(G.boss,1e6,'#ffffff',{ultimate:cast});hurt(G.boss,1e6,'#ffffff',{ultimate:cast});return h-G.boss.hp===Math.ceil(G.boss.maxHp*.24)&&cast.bossDamage===h-G.boss.hp`);
 check('lotus heals shields and creates persistent field',`Journey.run.ultimate='lotus';P.hp=40;tryUltimate();updateUltimate(.7);return P.hp>40&&P.shield===40&&G.pools.some(p=>p.ward)`);

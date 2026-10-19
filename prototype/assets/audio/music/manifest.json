@@ -84,6 +84,48 @@
       "bpm": 106,
       "duration": 36.226,
       "original": true
+    },
+    {
+      "file": "assets/audio/music/wish-field.mp3",
+      "title": "焚愿禅院·净灯·行路",
+      "bpm": 76,
+      "duration": 50.526,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/wish-boss.mp3",
+      "title": "焚愿禅院·净灯·守关",
+      "bpm": 112,
+      "duration": 34.286,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/windwood-field.mp3",
+      "title": "黑风密林·风钟·行路",
+      "bpm": 82,
+      "duration": 46.829,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/windwood-boss.mp3",
+      "title": "黑风密林·风钟·守关",
+      "bpm": 122,
+      "duration": 31.475,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/bonewish-field.mp3",
+      "title": "愿骨石窟·归声·行路",
+      "bpm": 70,
+      "duration": 54.857,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/bonewish-boss.mp3",
+      "title": "愿骨石窟·归声·守关",
+      "bpm": 116,
+      "duration": 33.103,
+      "original": true
     }
   ]
 }

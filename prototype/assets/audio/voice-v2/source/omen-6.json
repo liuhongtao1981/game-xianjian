@@ -1,0 +1,25 @@
+{
+  "id": "omen-6",
+  "text": "三盏净灯已明，避过十字焚线。",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "bceb84329da9733d381632f8f6ff0b7b6569a016e7e9ad2367996c5aa49487bf",
+  "source_sha256": "ff569935481f577acc8d9734534a3c91c70d1c261fcd0930b024f60607f41855",
+  "mixed_sha256": "c44320c56ef6a188208c9a093a228f92a636e1f20baaa352bcd889b612a2e4f9",
+  "duration": 4.132,
+  "size": 50732,
+  "file": "assets/audio/voice-v2/omen-6.mp3",
+  "source": "assets/audio/voice-v2/source/omen-6.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

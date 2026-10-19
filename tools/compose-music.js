@@ -15,8 +15,12 @@ scores.push(
  {id:'mountain',title:'五行断契',bpm:74,root:45,scale:[0,2,5,7,10],motif:[0,null,1,3,2,0,4,null,0,3,2,1,4,2,1,null]},
  {id:'outpost',title:'两界追名',bpm:88,root:47,scale:[0,3,5,7,10],motif:[0,2,3,1,2,4,3,0,1,3,4,2,0,1,3,null]},
  {id:'dragon',title:'鹰涧解喉',bpm:70,root:42,scale:[0,2,5,7,9],motif:[0,3,null,2,1,4,3,null,2,1,0,3,4,null,2,0]});
+scores.push(
+ {id:'wish',title:'焚愿禅院·净灯',bpm:76,battleBpm:112,root:46,scale:[0,3,5,7,10],motif:[0,null,4,2,1,3,0,1,4,null,2,0,3,1,2,null]},
+ {id:'windwood',title:'黑风密林·风钟',bpm:82,battleBpm:122,root:43,scale:[0,2,5,7,10],motif:[0,3,1,null,4,2,3,1,0,4,null,3,2,1,3,0]},
+ {id:'bonewish',title:'愿骨石窟·归声',bpm:70,battleBpm:116,root:41,scale:[0,3,5,7,10],motif:[0,null,1,4,null,3,2,0,4,1,3,null,2,1,0,null]});
 function render(score,battle){
-  const bpm=battle?[100,112,104,108,120,106][scores.indexOf(score)]:score.bpm,beat=60/bpm,duration=64*beat;
+  const bpm=battle?(score.battleBpm||[100,112,104,108,120,106][scores.indexOf(score)]):score.bpm,beat=60/bpm,duration=64*beat;
   const length=Math.ceil(duration*sr),left=new Float32Array(length),right=new Float32Array(length);
   function mix(start,dur,fn,volume,pan=0){
     const from=Math.floor(start*sr),count=Math.floor(dur*sr),gl=Math.sqrt((1-pan)*.5),gr=Math.sqrt((1+pan)*.5);
@@ -55,7 +59,7 @@ function render(score,battle){
     for(let k=0;k<2;k++){
       const degree=score.motif[(melodyIndex+k)%16];if(degree===null)continue;
       const n=score.root+12+p[degree%5]+(bar>=8?12:0),time=start+k*beat*2;
-      if(score.id==='river'||bar%4>=2)flute(time,n,beat*(battle?1.35:1.8),battle?.11:.10,.22);
+      if(score.id==='river'||score.id==='windwood'||bar%4>=2)flute(time,n,beat*(battle?1.35:1.8),battle?.11:.10,.22);
       else pluck(time,n,.16,-.12);
     }
     if(bar%4===0)bell(start,score.root+24,.09);
@@ -82,5 +86,8 @@ function render(score,battle){
   console.log(`${stem}: ${duration.toFixed(1)}s, peak ${peak.toFixed(2)}, RMS ${Math.sqrt(rms/length/2).toFixed(3)}`);
   return {file:'assets/audio/music/'+stem+'.mp3',title:score.title+(battle?'·守关':'·行路'),bpm,duration:Number(duration.toFixed(3)),original:true};
 }
-const tracks=scores.flatMap(s=>[render(s,false),render(s,true)]);
+const only=process.argv.find(x=>x.startsWith('--only='))?.slice(7).split(',');
+const made=scores.filter(s=>!only||only.includes(s.id)).flatMap(s=>[render(s,false),render(s,true)]);
+const previous=fs.existsSync(path.join(output,'manifest.json'))?JSON.parse(fs.readFileSync(path.join(output,'manifest.json'),'utf8')).tracks:[];
+const tracks=[...previous.filter(t=>!made.some(n=>n.file===t.file)),...made];
 fs.writeFileSync(path.join(output,'manifest.json'),JSON.stringify({composer:'Project-authored procedural pentatonic score; Karplus–Strong plucked strings, flute, harmonic drone, bells and drums.',tracks},null,2));

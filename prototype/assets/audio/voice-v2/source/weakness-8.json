@@ -1,0 +1,25 @@
+{
+  "id": "weakness-8",
+  "text": "骨声已散，斩它本心！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "f1e130c1fa3919af0cb6201fb096dac0af588ecab96212323ed361bfa0ad4f73",
+  "source_sha256": "a09984d9eef11f9915fe5d8abc05077b3459608f45c3f0696e51cbde8e7f86db",
+  "mixed_sha256": "97bbb46967c57ef9856e80fdd7019a77fc57938ac44481a345edb374b51fd8e2",
+  "duration": 3.412,
+  "size": 42092,
+  "file": "assets/audio/voice-v2/weakness-8.mp3",
+  "source": "assets/audio/voice-v2/source/weakness-8.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

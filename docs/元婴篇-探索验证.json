@@ -1,0 +1,82 @@
+{
+  "source": "tools/simulate-infant-exploration.js 的真实主路输出，记录于2026-10-19；完整探索策略尚未完成，不据此声称全策略均已验证。",
+  "seed": 20261019,
+  "difficulty": "normal",
+  "policy": "读取预警并用真实移动、闪避、术法、选卡、拾取与交互；不是真人试玩。",
+  "initialBuild": {
+    "level": 40,
+    "realm": 2,
+    "layer": 1,
+    "hp": 420,
+    "shield": 180,
+    "dmg": 4,
+    "cdr": 0.65,
+    "armor": 0.25,
+    "crit": 0.2,
+    "regen": 2,
+    "speed": 290,
+    "spells": {
+      "yujian": 6,
+      "wanjian": 6,
+      "wulei": 5,
+      "sanmei": 4,
+      "bingxin": 4,
+      "guanyin": 4
+    }
+  },
+  "cleared": 3,
+  "rows": [
+    {
+      "stage": 7,
+      "state": "win",
+      "time": 1214,
+      "level": 41,
+      "hp": 526,
+      "damageTaken": 16,
+      "kills": 1547,
+      "combatSeconds": 1112,
+      "maxGapSeconds": 13,
+      "beforeBoss": {
+        "time": 975,
+        "cleared": 17,
+        "eliteCamps": 4
+      },
+      "peakOrdinary": 48
+    },
+    {
+      "stage": 8,
+      "state": "win",
+      "time": 1158,
+      "level": 43,
+      "hp": 526,
+      "damageTaken": 0,
+      "kills": 1614,
+      "combatSeconds": 1067,
+      "maxGapSeconds": 17,
+      "beforeBoss": {
+        "time": 1060,
+        "cleared": 17,
+        "eliteCamps": 4
+      },
+      "peakOrdinary": 48
+    },
+    {
+      "stage": 9,
+      "state": "win",
+      "time": 1344,
+      "level": 45,
+      "hp": 526,
+      "damageTaken": 93,
+      "kills": 1793,
+      "combatSeconds": 1246,
+      "maxGapSeconds": 13,
+      "beforeBoss": {
+        "time": 1277,
+        "cleared": 18,
+        "eliteCamps": 4
+      },
+      "peakOrdinary": 48
+    }
+  ],
+  "note": "主路经过的营地会激活周边营地，代理实际清理17至18营地。20至22分钟是高效代理时长，真人25至35分钟目标仍待试玩校准。该构筑模拟金丹之后接入元婴，不是一级开局模拟。"
+}

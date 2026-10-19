@@ -91,6 +91,7 @@ const Motion = (() => {
   }
   function drawActor(actor,key,size,alpha=1){
     if(key==='hero'){drawHero(ctx,actor,size,actor.animTime||G.time,alpha);return;}
+    if(actor.bossHelper&&actor.family>=6){InfantArt.drawHelper(actor);return;}
     if(actor.bossHelper&&actor.family>=3){
       ctx.save();ctx.translate(actor.x,actor.y);const color=actor.family===3?'#d9bd77':actor.family===4?(actor.phantom?'#9e6c69':'#ffe097'):'#bcece4';
       ctx.fillStyle='#0006';ctx.beginPath();ctx.ellipse(0,4,30,10,0,0,Math.PI*2);ctx.fill();
@@ -121,7 +122,8 @@ const Motion = (() => {
     if(actor.flash>0)ctx.filter='brightness(1.55)';
     else if(key==='hero'&&actor.cultivation?.realm>0){ctx.filter='drop-shadow(0px 0px 2px '+RealmVisuals.get(actor.cultivation).color+')';}
     else if(actor.clerk){ctx.globalAlpha*=.7;ctx.filter='sepia(.6) hue-rotate(320deg)';}
-    if(actor.boss&&Journey.run.stage>=3&&golden.complete&&golden.naturalWidth){const row=Journey.run.stage-3,phase=actor.action||'guard',col=phase==='windup'?2:phase==='strike'?3:actor.moving?Math.floor((actor.walkDistance||0)/36)%2:0;drawBossFrame(golden,goldenUV[row][col],size,350);Encounters.ornament(actor,size);
+    if(actor.boss&&Journey.run.stage>=6){InfantArt.drawActor(actor,4,size);
+    }else if(actor.boss&&Journey.run.stage>=3&&golden.complete&&golden.naturalWidth){const row=Journey.run.stage-3,phase=actor.action||'guard',col=phase==='windup'?2:phase==='strike'?3:actor.moving?Math.floor((actor.walkDistance||0)/36)%2:0;drawBossFrame(golden,goldenUV[row][col],size,350);Encounters.ornament(actor,size);
     }else if(actor.boss&&bossWalk.complete&&bossWalk.naturalWidth&&(!['windup','strike','recover','exposed'].includes(actor.action)||!bossAttacks.complete||!bossAttacks.naturalWidth)){
       const row=actor.family??Journey.stage().bossRow,col=actor.moving?Math.floor((actor.walkDistance||0)/33)%4:0;
       drawBossFrame(bossWalk,bossWalkUV[row][col],size,[285,277,277][row]);

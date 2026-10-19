@@ -1,0 +1,25 @@
+{
+  "id": "stage-7",
+  "text": "黑风林的树都朝同一个方向弯腰。枝头挂着数千件无主袈裟，风一吹，便替人答应下一场劫。",
+  "speaker": "说书人",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-6Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "2c3077e503e8f5f139af47113aa06e1f7c3aab2485419da191d6d54f431f5b90",
+  "source_sha256": "dfba0126d32a3bfef0fbc215c0ceb6bae09c4298d541826ace1ad6fa7cb02429",
+  "mixed_sha256": "3b2035acd3320429a31aa98515834afedd6742f60e54da3b0d4e367e04fb4df0",
+  "duration": 9.916,
+  "size": 120140,
+  "file": "assets/audio/voice-v2/stage-7.mp3",
+  "source": "assets/audio/voice-v2/source/stage-7.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=1.6",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

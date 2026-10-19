@@ -1,0 +1,26 @@
+{
+  "id": "phase-6",
+  "text": "香火不灭，谁敢问价！",
+  "speaker": "阴愿主使",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-10%",
+  "pitch": "-12Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "2726530d461a3701c395b5dffea85bf0a45779887f28bc6abf971c56bd660f39",
+  "source_sha256": "012a728ae3dc9fe3577d3063996dbadfe5f74d8760ca15cb492ec11fecf37b44",
+  "mixed_sha256": "0fa99730f86a322e9f9230d034e559e9e76e0d404945229cc6df7873490add11",
+  "duration": 2.846,
+  "size": 35180,
+  "file": "assets/audio/voice-v2/phase-6.mp3",
+  "source": "assets/audio/voice-v2/source/phase-6.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=2",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:58:0.065",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

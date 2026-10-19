@@ -19,8 +19,9 @@ const Encounters=(()=>{
       {name:'缚舟锚尸',role:'heavy',glyph:'锚',hp:82,speed:44,dmg:11,r:21,xp:13}]}
   ];
   for(let i=3;i<6;i++){const c=GoldenChapters[i-3];families.push({id:c.id,color:c.color,units:families[i%3].units.map((u,j)=>({...u,name:c.mobNames[keys[j]],hp:u.hp*(1+(i-2)*.1),speed:u.speed,glyph:[['石','链','碑','卫'],['役','獒','弩','盾'],['鬼','刃','珠','锚']][i-3][j]}))});}
-  const sheets=families.map(f=>{const img=new Image();img.src='assets/bestiary-'+f.id+(families.indexOf(f)>=3?'.webp':'.png');return img;});
-  const attackSheets=families.map(f=>{const img=new Image();img.src='assets/bestiary-'+f.id+(families.indexOf(f)>=3?'.webp':'-attack.png');return img;});
+  for(let i=0;i<3;i++){const c=InfantChapters[i];families.push({id:c.id,color:c.color,units:families[i].units.map((u,j)=>({...u,name:c.mobNames[keys[j]],hp:u.hp*(1.4+i*.12),speed:u.speed*(1.06+i*.02),glyph:[['燃','狐','香','烛'],['根','狼','笛','木'],['骨','犬','诵','龛']][i][j]}))});}
+  const sheets=families.map(f=>{const img=new Image();img.src=families.indexOf(f)>=6?'assets/actors-'+f.id+'.webp':'assets/bestiary-'+f.id+(families.indexOf(f)>=3?'.webp':'.png');return img;});
+  const attackSheets=families.map(f=>{const img=new Image();img.src=families.indexOf(f)>=6?'assets/actors-'+f.id+'.webp':'assets/bestiary-'+f.id+(families.indexOf(f)>=3?'.webp':'-attack.png');return img;});
   const attackUV=[[[[41,97,215,233,160,327],[358,116,237,211,487,324],[676,119,251,210,790,326],[1013,142,204,183,1131,322]],[[50,393,240,230,176,620],[347,394,276,196,478,587],[663,405,263,231,809,633],[984,422,235,206,1114,625]],[[48,672,233,243,167,912],[353,677,250,235,458,909],[669,679,268,234,784,910],[1002,677,211,252,1098,926]],[[57,933,212,249,168,1179],[362,958,272,227,475,1182],[669,969,281,216,793,1182],[1009,968,208,227,1124,1192]]],[[[80,86,173,192,173,275],[373,97,247,176,476,270],[663,115,247,159,765,271],[997,112,182,160,1098,269]],[[71,373,182,213,164,583],[331,370,274,216,466,583],[640,369,291,217,774,583],[998,373,185,213,1094,583]],[[61,680,204,202,182,879],[337,682,303,199,456,878],[681,679,250,202,789,878],[1000,687,187,195,1107,879]],[[76,949,199,215,186,1161],[372,974,215,184,480,1155],[674,982,213,180,794,1159],[1002,980,186,180,1113,1157]]],[[[84,110,170,185,164,292],[371,125,211,170,460,292],[675,121,244,173,768,291],[1007,136,167,159,1089,292]],[[87,401,173,182,158,580],[367,398,235,182,417,577],[670,408,244,163,773,568],[1012,405,176,176,1102,578]],[[76,674,181,195,166,866],[366,666,219,208,461,871],[659,668,307,209,775,874],[1011,668,177,206,1105,871]],[[78,952,181,195,175,1144],[376,950,224,197,463,1144],[674,981,226,166,782,1144],[1003,984,173,161,1091,1142]]]];
   const attackHeights=[[211,218,239,227],[168,215,201,182],[172,179,207,181]];
   const effects=[];
@@ -52,7 +53,7 @@ const Encounters=(()=>{
     const theme=e.family??Journey.run.stage,kind=e.attackKind,spec=attacks[kind],color=family(theme).color;
     e.strikeHit=false;
     if(kind==='ranged'){
-      const spread=theme===0?[0]:theme===1?[-.15,0,.15]:[-.09,.09];
+      const spread=theme===6?[-.14,0,.14]:theme===7?[-.22,.22]:theme===8?[0]:theme===0?[0]:theme===1?[-.15,0,.15]:[-.09,.09];
       for(const angle of spread)projectile(e,e.attackAngle,theme===0?195:215,angle);
       if(e.trait==='volley')e.followup={delay:.28,angle:e.attackAngle};
       effect('summon',{x:e.x,y:e.y,r:32,theme});return;
@@ -105,6 +106,7 @@ const Encounters=(()=>{
   function impact(t){effect('impact',{...t,theme:t.theme??Journey.run.stage});Sound.effects(['bell-impact','edict-impact','tide-impact'][(t.theme??Journey.run.stage)%3]);}
   function update(dt){for(let i=effects.length-1;i>=0;i--){effects[i].age+=dt;if(effects[i].age>=effects[i].duration)effects.splice(i,1);}}
   function drawActor(e,key,size){
+    if((e.family??Journey.run.stage)>=6)return InfantArt.drawActor(e,keys.indexOf(key),size);
     const theme=e.family??Journey.run.stage,acting=['windup','strike','recover'].includes(e.action),attackSheet=attackSheets[theme];
     const attacking=acting&&attackSheet.complete&&attackSheet.naturalWidth,sheet=attacking?attackSheet:sheets[theme];
     if(!sheet.complete||!sheet.naturalWidth)return false;
@@ -121,6 +123,7 @@ const Encounters=(()=>{
     return true;
   }
   function drawShot(s){
+    if(s.theme>=6){InfantArt.drawShot(s);return;}
     const theme=s.theme??Journey.run.stage,a=Math.atan2(s.vy,s.vx),color=s.color;
     ctx.save();ctx.globalCompositeOperation='lighter';
     const trail=s.trail||[];
@@ -161,7 +164,7 @@ const Encounters=(()=>{
       ctx.restore();
     }
     for(const e of effects){
-      const p=e.age/e.duration,fade=1-p,color=family(e.theme).color;
+      const p=e.age/e.duration,fade=1-p,color=family(e.chapterTheme??e.theme).color;
       if(e.kind==='summon'){Motion.rune(e.x,e.y,30+p*15,fade*.7,color);continue;}
       ctx.save();ctx.globalCompositeOperation='lighter';ctx.strokeStyle=rgba(color,fade*.9);ctx.fillStyle=rgba(color,fade*.18);ctx.lineWidth=2+fade*4;
       if(e.shape==='tide'){
@@ -192,9 +195,14 @@ const Encounters=(()=>{
   function drawOver(){
     for(const e of effects){
       if(e.kind==='summon')continue;
-      const p=e.age/e.duration,fade=1-p,color=family(e.theme).color;
+      const p=e.age/e.duration,fade=1-p,color=family(e.chapterTheme??e.theme).color;
       ctx.save();ctx.globalCompositeOperation='lighter';ctx.strokeStyle=rgba(color,fade*.8);ctx.fillStyle=rgba(color,fade*.25);ctx.lineWidth=2;
-      if(e.theme===0){
+      if(e.chapterTheme>=6){
+        const r=e.r||80,theme=e.chapterTheme-6;
+        if(theme===0){for(let i=0;i<9;i++){const a=i*Math.PI*2/9,x=e.x+Math.cos(a)*r*.65,y=e.y+Math.sin(a)*r*.45;ctx.beginPath();ctx.moveTo(x-7,y);ctx.quadraticCurveTo(x-18,y-75*fade,x+3,y-100*fade);ctx.quadraticCurveTo(x+18,y-40*fade,x+7,y);ctx.fill();}Motion.rune(e.x,e.y,r,fade*.5,color,p*.2);}
+        else if(theme===1){ctx.translate(e.x,e.y);ctx.rotate(e.angle||0);for(let i=-1;i<=1;i++){ctx.lineWidth=5*fade;ctx.beginPath();ctx.moveTo(-r,-25+i*23);ctx.bezierCurveTo(-r*.2,-70*fade+i*23,r*.5,50*fade+i*23,r,10+i*23);ctx.stroke();}}
+        else {ctx.beginPath();ctx.arc(e.x,e.y,r*(.9+p*.2),0,Math.PI*2);ctx.stroke();for(let i=0;i<12;i++){const a=i*Math.PI/6,x=e.x+Math.cos(a)*r,y=e.y+Math.sin(a)*r;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+Math.cos(a)*18,y-45*fade);ctx.lineTo(x+Math.cos(a+.2)*30,y-65*fade);ctx.stroke();}}
+      }else if(e.theme===0){
         const rise=p*55,r=e.r||65;Motion.glow(e.x,e.y-40,r,color,fade*.15);
         ctx.save();ctx.translate(e.x,e.y-rise-20);ctx.scale(1,Math.max(.2,fade));
         ctx.beginPath();ctx.moveTo(-r*.38,0);ctx.bezierCurveTo(-r*.4,-r*.9,r*.4,-r*.9,r*.38,0);ctx.lineTo(r*.5,12);ctx.lineTo(-r*.5,12);ctx.closePath();ctx.fill();ctx.stroke();ctx.beginPath();ctx.arc(0,-r*.7,7,Math.PI,0);ctx.stroke();ctx.restore();

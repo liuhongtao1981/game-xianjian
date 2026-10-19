@@ -617,6 +617,7 @@ function updateTelegraphs(dt){
       const dx=P.x-t.x,dy=P.y-t.y;
       let hit=Math.hypot(dx,dy)<t.r+P.r;
       if(t.shape==='line'){const along=dx*Math.cos(t.angle)+dy*Math.sin(t.angle),across=-dx*Math.sin(t.angle)+dy*Math.cos(t.angle);hit=Math.abs(along)<t.length+P.r&&Math.abs(across)<t.r+P.r;}
+      if(t.shape==='annulus')hit=Math.abs(Math.hypot(dx,dy)-t.r)<t.width+P.r;
       if(t.shape==='tide')hit=P.x>(t.left??0)-P.r&&P.x<(t.right??World.bounds().w)+P.r&&Math.abs(dy)<t.r+P.r&&Math.abs(P.x-t.gap)>Math.max(0,t.safe/2-P.r);
       Encounters.impact(t);
       Bosses.onImpact(t,hit&&P.invuln<=0);
@@ -1330,6 +1331,8 @@ function drawTelegraphs(){
       ctx.fillRect(edgeLeft,t.y-t.r,Math.max(0,left-edgeLeft),t.r*2);ctx.strokeRect(edgeLeft,t.y-t.r,Math.max(0,left-edgeLeft),t.r*2);
       ctx.fillRect(right,t.y-t.r,Math.max(0,edgeRight-right),t.r*2);ctx.strokeRect(right,t.y-t.r,Math.max(0,edgeRight-right),t.r*2);
       ctx.fillStyle='#b9edcc22';ctx.fillRect(left,t.y-t.r,t.safe,t.r*2);ctx.fillStyle='#c5f2d3';ctx.font='12px KaiTi,serif';ctx.textAlign='center';ctx.fillText('留隙 · 安全',t.gap,t.y+4);
+    }else if(t.shape==='annulus'){
+      ctx.translate(t.x,t.y);ctx.beginPath();ctx.arc(0,0,t.r+t.width,0,TAU);ctx.arc(0,0,t.r-t.width,0,TAU,true);ctx.fill('evenodd');ctx.stroke();ctx.strokeStyle='#f7ddb4';ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,0,t.r,-Math.PI/2,-Math.PI/2+TAU*progress);ctx.stroke();ctx.fillStyle='#cce7d8';ctx.font='13px KaiTi';ctx.textAlign='center';ctx.fillText(t.label,0,t.side==='inside'?0:-t.r-45);
     }else if(t.shape==='line'){
       ctx.translate(t.x,t.y);ctx.rotate(t.angle);ctx.fillRect(-t.length,-t.r,t.length*2,t.r*2);ctx.strokeRect(-t.length,-t.r,t.length*2,t.r*2);
       ctx.fillStyle=rgba(color,.35);ctx.fillRect(-t.length,-t.r,t.length*2*progress,t.r*2);

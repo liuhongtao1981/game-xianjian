@@ -1,0 +1,26 @@
+{
+  "id": "phase-7",
+  "text": "风钟不响，这衣就脱不了！",
+  "speaker": "披愿黑熊",
+  "voice": "zh-CN-YunjianNeural",
+  "rate": "-6%",
+  "pitch": "-15Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "bbba3f6979721bfa1696e8ca699fb2d43651e1fd7b6032062a366012d1fd1993",
+  "source_sha256": "6cbc11af949c8f5be79fc08aaee3b31a59f0c2ee997c9384872fa60730a61279",
+  "mixed_sha256": "2b9777694cb1fcd7a2c4dbce2c8398d17a45d05e057f486287f79ad1d8764c9a",
+  "duration": 3.596,
+  "size": 44108,
+  "file": "assets/audio/voice-v2/phase-7.mp3",
+  "source": "assets/audio/voice-v2/source/phase-7.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=2.2",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "aecho=0.85:0.9:40:0.035",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}

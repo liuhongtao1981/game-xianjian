@@ -1,0 +1,25 @@
+{
+  "id": "weakness-6",
+  "text": "收炉了，断它香火！",
+  "speaker": "孙小果",
+  "voice": "zh-CN-YunxiNeural",
+  "rate": "-3%",
+  "pitch": "-5Hz",
+  "engine": "Microsoft Edge neural TTS",
+  "client": "edge-tts 7.3.1",
+  "signature": "658efbf78b0f01bde75c997d61d42b2fd392388ff63e2015fc53234280b03399",
+  "source_sha256": "3234444b7477b2c506fe01d736c1be6a011a542baca4023d13e92f90cb10958e",
+  "mixed_sha256": "88f78e464b8a8444b1ee43d998df3735c6dd791f4733aa6ba0d4b577418c044b",
+  "duration": 3.196,
+  "size": 39500,
+  "file": "assets/audio/voice-v2/weakness-6.mp3",
+  "source": "assets/audio/voice-v2/source/weakness-6.mp3",
+  "filters": [
+    "highpass=f=65",
+    "lowpass=f=10500",
+    "equalizer=f=170:width_type=o:width=1.2:g=0.8",
+    "acompressor=threshold=0.16:ratio=2.1:attack=18:release=150",
+    "loudnorm=I=-17:TP=-2:LRA=8",
+    "apad=pad_dur=0.1"
+  ]
+}
