@@ -8,7 +8,7 @@ const Journey = (() => {
   };
   const ultimates={
     heaven:{name:'破戒 · 天剑归一',short:'破戒',glyph:'天剑',color:'#f4d99b',cd:24,windup:.9,duration:2.15,invuln:1.4,
-      desc:'0.9 秒聚剑，斩击周围760步并清弹，可破机关。无法穿透首领护体；破绽期使用才能伤及本体。',role:'爆发 / 清场',damage:l=>300+l*22},
+      desc:'0.9 秒聚剑，斩击周围760步并清弹，可破机关。任何阶段命中首领均可扣血，破绽期伤害3倍。',role:'爆发 / 清场',damage:l=>300+l*22},
     lotus:{name:'护生 · 莲华剑界',short:'护生',glyph:'莲界',color:'#9cecc3',cd:28,windup:.6,duration:1.6,invuln:.9,
       desc:'近身剑莲爆发，回复 24% 生命、获得 40 护盾，清除周围弹幕并留下 4 秒剑界。适合容错与近身构筑。',role:'续航 / 护身',damage:l=>150+l*16},
     river:{name:'逆命 · 断流十八剑',short:'逆命',glyph:'断流',color:'#97ddff',cd:22,windup:.45,duration:1.8,invuln:.75,
@@ -22,7 +22,7 @@ const Journey = (() => {
       tell:'先破三枚钟心，再避过随后落地的镇音重锤，收锤才露破绽。也可引锤砸钟。',
       reveal:'监院的铁面落地，里面没有舌头。三页证词写着同一个收讫人，却被金漆涂去姓名。',
       clue:{name:'被烧去的名册页',text:'“受难者不得知价，知价者不得成佛。”纸背有一缕未烧尽的金色毫毛，指向江州。'},
-      bossLine:'“你以为受贬的是金蝉？被贬的，是敢问价的人。”',mechanic:'钟心护体：先破三钟，再诱重锤落空；收锤才是破绽。护体重结后，必须重新破钟诱招。',
+      bossLine:'“你以为受贬的是金蝉？被贬的，是敢问价的人。”',mechanic:'钟心破招：本体始终可攻击；破三钟并诱锤落空可获3倍伤害窗口。',
       reward:'破戒之后，仍有人在替沉默收账。'},
     {id:'birth',no:'贰',title:'出胎几杀',subtitle:'血诏陈府',theme:'诏书要杀的，真是襁褓中的孩子吗？',
       place:'江州 · 陈府血诏庭',background:'assets/journey-birth.png',color:'#d78575',bossTime:80,bossHp:3600,mobScale:1.3,boss:'血诏司命',bossGlyph:'诏',bossRow:1,bossSpeed:54,
@@ -44,7 +44,7 @@ const Journey = (() => {
       reward:'前三难已破。五行山的石缝里，正有人替你磨剑。'}
   ];
   stages.push(...GoldenChapters,...InfantChapters);
-  stages.forEach((s,i)=>Object.assign(s,ChapterCatalog.get(i),{title:s.title,name:s.subtitle}));
+  stages.forEach((s,i)=>{Object.assign(s,ChapterCatalog.get(i),{title:s.title,name:s.subtitle});s.bonusTell=s.tell;s.tell='本体始终可受伤；完成以下破招可获得3倍伤害：'+s.tell;s.mechanic='全程可攻击 · 破招后伤害3倍。'+s.mechanic;});
   const backgrounds=stages.map(s=>{const image=new Image();image.src=s.background;return image;});
   const run={stage:0,difficulty:'normal',ultimate:'heaven',heroId:'xiaoguo',completed:[],time:0,checkpoint:null,tier:0};
   let menuStage=0;

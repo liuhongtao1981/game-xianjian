@@ -1,10 +1,10 @@
-/* Guardians use readable commitments and earned damage windows, never passive chip damage. */
+/* Guardians use readable commitments and continuous damage and optional earned vulnerability windows. */
 const Bosses=(()=>{
   const profiles={
-    story:{window:6.4,quota:.30,helper:.82,pace:1.13},
-    normal:{window:5.6,quota:.24,helper:1,pace:1},
-    hard:{window:5,quota:.22,helper:1.12,pace:.93},
-    nightmare:{window:4.6,quota:.20,helper:1.22,pace:.87}
+    story:{window:6.4,helper:.82,pace:1.13},
+    normal:{window:5.6,helper:1,pace:1},
+    hard:{window:5,helper:1.12,pace:.93},
+    nightmare:{window:4.6,helper:1.22,pace:.87}
   };
   const names=[['镇音重锤','八律封口','金刚踏庭'],['断籍横斩','血诏追印','双诏问斩'],['回澜枪','沉灯追魂','逆流夺魂潮']];
   const tells=[
@@ -37,26 +37,25 @@ const Bosses=(()=>{
       G.enemies.push(h);Encounters.effect('summon',{x:h.x,y:h.y,r:40,theme});
     }
     b.helperTotal=Journey.run.stage===4?1:count;b.charged=false;b.helperBroken=0;b.mechanismReady=false;b.duelFailures=0;
-    say(e,b.round===1?['先破钟心 · 诱锤收势','断双诏 · 侧避问斩','灭河灯 · 连渡潮隙','诱重砸 · 断镇山锁柱','辨实印 · 诱尽三段追链','破锁鳞 · 冲岸迎雷潮'][Journey.run.stage]:'护体重结 · 再寻破绽',16);
+    say(e,b.round===1?['先破钟心 · 诱锤收势','断双诏 · 侧避问斩','灭河灯 · 连渡潮隙','诱重砸 · 断镇山锁柱','辨实印 · 诱尽三段追链','破锁鳞 · 冲岸迎雷潮'][Journey.run.stage]:'重整招式 · 可继续攻击',16);
   }
   function init(e){
     if(Journey.run.stage>=6)return InfantGuardians.init(e);
     const theme=Journey.run.stage%3;
-    e.brain={theme,round:1,breaks:0,attackIndex:0,token:0,pending:null,helperTotal:0,helperBroken:0,mechanismReady:false,windowDamage:0,windowRemaining:0,blockedNotice:0,exhausted:false,phaseAnnounced:false};
+    e.brain={theme,round:1,breaks:0,attackIndex:0,token:0,pending:null,helperTotal:0,helperBroken:0,mechanismReady:false,windowDamage:0,phaseAnnounced:false};
     e.phase=1;e.attackAngle=Math.atan2(P.y-e.y,P.x-e.x);e.speed=Journey.stage().bossSpeed*1.65*Journey.difficulty().speed;
     action(e,'guard',1.5);summonHelpers(e);
   }
   function open(e){
     const b=e.brain;if(!alive(e)||e.action==='exposed')return;
-    clearAttacks(e);b.breaks++;b.exhausted=false;b.windowDamage=0;b.windowRemaining=Math.ceil(e.maxHp*config().quota);
+    clearAttacks(e);b.breaks++;b.windowDamage=0;
     action(e,'exposed',config().window);e.attack=0;e.kb=0;
     say(e,['锤势已尽 · 钟身破绽','血诏已断 · 收刀破绽','潮势已尽 · 逆鳞破绽'][b.theme],22);
     Sound.weakness?.(Journey.run.stage);Encounters.effect('phase',{x:e.x,y:e.y,r:125,theme:b.theme});
     G.shake=Math.max(G.shake,7);
   }
   function close(e){
-    const b=e.brain;b.round++;b.exhausted=false;b.windowRemaining=0;b.windowDamage=0;
-    if(e.hp<=e.maxHp*.5&&!b.phaseAnnounced){e.phase=2;b.phaseAnnounced=true;Sound.guardian(Journey.run.stage,true);say(e,Journey.stage().boss+' · 怒相',21);}
+    const b=e.brain;b.round++;b.windowDamage=0;
     action(e,'guard',1.3*config().pace);summonHelpers(e);
   }
   function hazard(e,point,options){
@@ -122,11 +121,11 @@ const Bosses=(()=>{
   function update(e,dt){
     if(Journey.run.stage>=6)return InfantGuardians.update(e,dt);
     if(!e.brain)init(e);if(!alive(e))return;
-    const b=e.brain;b.blockedNotice=Math.max(0,b.blockedNotice-dt);
+    const b=e.brain;if(e.hp<=e.maxHp*.5&&!b.phaseAnnounced){e.phase=2;b.phaseAnnounced=true;Sound.guardian(Journey.run.stage,true);say(e,Journey.stage().boss+' · 怒相',21);}
     e.actionT+=dt;e.attack=e.action==='windup'||e.action==='strike'?Math.max(.05,e.actionDuration-e.actionT):0;
     if(b.pending)b.pending.age+=dt;
     if(e.action==='exposed'){
-      if(e.actionT>=e.actionDuration||b.exhausted)close(e);
+      if(e.actionT>=e.actionDuration)close(e);
       return;
     }
     if(!helpers(e).length&&!b.mechanismReady){b.mechanismReady=true;say(e,['钟心碎 · 诱锤落地，避开后等收锤','血诏断 · 引出双斩再侧移','河灯灭 · 站进两重潮的青色缺口'][b.theme],18);Sound.omen?.(Journey.run.stage);}
@@ -172,32 +171,26 @@ const Bosses=(()=>{
     e.brain.helperBroken++;if(Journey.run.stage===4)for(const ghost of G.enemies.filter(x=>x.phantom)){ghost.hp=0;ghost.killed=true;}
     Encounters.effect('phase',{x:h.x,y:h.y,r:55,theme:e.brain.theme});
   }
-  function damageMultiplier(e){return e.boss?(e.brain&&e.action==='exposed'&&!e.brain.exhausted?3:0):1;}
+  const targetable=e=>e.hp>0&&!e.killed&&(e.boss||!e.locked&&!e.phantom);
+  function damageMultiplier(e){return e.boss&&e.action==='exposed'?3:1;}
   function filterDamage(e,damage){
+    if(e.boss){const actual=Math.max(0,Math.min(Math.round(damage),e.hp));if(e.brain&&e.action==='exposed')e.brain.windowDamage=(e.brain.windowDamage||0)+actual;return actual;}
     if(Journey.run.stage>=6)return InfantGuardians.filterDamage(e,damage);
     if(e.locked)return 0;
     if(e.phantom){if((e.phantomCd||0)<G.time){e.phantomCd=G.time+3;for(let i=0;i<2&&G.enemies.filter(h=>h.hp>0&&!h.boss&&!h.bossHelper).length<6;i++)spawnEnemy('fox',false,World.clipToArena({x:e.x+60*i,y:e.y+40},55),{source:'boss',encounterId:-1,tier:1.3,threat:e.threat,trait:null});addText(e.x,e.y-55,'幻印反噬 · 追猎来袭',Journey.stage().color,15);}return 0;}
-    if(!e.boss)return damage;
-    const b=e.brain;
-    if(!b||e.action!=='exposed'||b.exhausted){
-      if(b&&b.blockedNotice<=0){b.blockedNotice=1.2;addText(e.x,e.y-90,b.mechanismReady?'护体 · 诱招待收势':'护体 · 先破机关',Journey.stage().color,15);}
-      return 0;
-    }
-    const allowed=Math.max(0,Math.min(Math.round(damage),b.windowRemaining,e.hp));
-    b.windowRemaining-=allowed;b.windowDamage+=allowed;
-    if(b.windowRemaining<=0)b.exhausted=true;
-    return allowed;
+    return damage;
   }
   function hud(e){
     if(Journey.run.stage>=6)return InfantGuardians.hud(e);
     if(!e?.brain)return {title:'寻其破绽',hint:tells[Journey.run.stage],progress:0,exposed:false,remaining:0,breaks:0};
-    const b=e.brain,exposed=e.action==='exposed'&&!b.exhausted,remaining=Math.max(0,e.actionDuration-e.actionT);
+    const b=e.brain,exposed=e.action==='exposed',remaining=Math.max(0,e.actionDuration-e.actionT);
     const total=b.helperTotal,left=helpers(e).length;
     let title,hint;
-    if(exposed){title='破绽 '+remaining.toFixed(1)+' 秒';hint='全力攻本体 · 本轮伤害已用 '+Math.round(b.windowDamage/e.maxHp*100)+'%';}
-    else if(left){title=['钟心护体','血诏护体','河灯护体','山契锁柱','真假籍印','锁喉龙鳞'][Journey.run.stage]+' · '+left+'/'+total;hint=Journey.stage().tell||tells[b.theme];}
-    else {title=['钟心已裂 · 诱锤后闪避','诱尽双斩，等它收刀','青色潮隙 · 连渡两重','三柱已断 · 诱终锤收势','实印已破 · 诱尽三段追链','锁鳞已破 · 冲岸后迎雷潮'][Journey.run.stage];hint=Journey.run.stage>=3?Journey.stage().tell:['等金色落点锁定，离开重锤范围；收招才露钟身。','两段刀线均已锁定方向；横向走位或闪避。','站入两重洪潮的青色缺口，逆鳞才会显露。'][b.theme];}
+    if(exposed){title='破绽 · 伤害3倍 · '+remaining.toFixed(1)+'秒';hint='全力攻击 · 破绽期间没有伤害额度限制';}
+    else if(left){title='可攻击 · '+['钟心尚存','血诏尚存','河灯尚存','山契锁柱','真假籍印','锁喉龙鳞'][Journey.run.stage]+' · '+left+'/'+total;hint=Journey.stage().bonusTell||Journey.stage().tell||tells[b.theme];}
+    else {title=['钟心已裂 · 诱锤后闪避','诱尽双斩，等它收刀','青色潮隙 · 连渡两重','三柱已断 · 诱终锤收势','实印已破 · 诱尽三段追链','锁鳞已破 · 冲岸后迎雷潮'][Journey.run.stage];hint=Journey.run.stage>=3?(Journey.stage().bonusTell||Journey.stage().tell):['等金色落点锁定，离开重锤范围；收招才露钟身。','两段刀线均已锁定方向；横向走位或闪避。','站入两重洪潮的青色缺口，逆鳞才会显露。'][b.theme];}
+    hint='命中持续扣血 · 破招后伤害3倍。'+hint;
     return {title,hint,progress:exposed?clamp(remaining/e.actionDuration,0,1):(total-left)/Math.max(1,total),exposed,remaining:exposed?remaining:0,breaks:b.breaks,round:b.round,helpers:left,action:e.action};
   }
-  return {init,update,onImpact,onHelperKilled,damageMultiplier,filterDamage,hud,profiles};
+  return {init,update,onImpact,onHelperKilled,damageMultiplier,filterDamage,targetable,hud,profiles};
 })();

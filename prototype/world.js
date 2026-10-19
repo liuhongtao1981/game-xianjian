@@ -111,7 +111,7 @@ const World=(()=>{
   function reset(){
     width=data().width;height=data().height;terrain();active=false;mapOpen=false;near=null;visited=0;nav=null;combat=arena();document.body.classList.remove('on-map');
     const lore=[
-      ['残碑写着：钟声掩住的，是未曾入册的证词。','先破三枚钟心，再避过镇音重锤，收锤才露破绽。','重锤可反噬钟心；护体每次重结，都须重新诱招。'],
+      ['残碑写着：钟声掩住的，是未曾入册的证词。','先破三枚钟心，再避过镇音重锤，收锤才露破绽。','重锤可反噬钟心；每次收势后，可重新诱招争取增伤。'],
       ['密诏没有名字，只有反复加盖的红印。','斩断血诏之后，须诱尽两段问斩。','刀势锁定时向侧面避开；收刀，才是破绽。'],
       ['灯里封着没有名字的人，潮水替他们记账。','灭去河灯，再连渡两重洪潮的青色缺口。','只逃离洪潮，不能引出逆鳞；须迎潮守隙。']
     ][Journey.run.stage]||Journey.stage().lore||Journey.stage().story;
@@ -273,7 +273,7 @@ const World=(()=>{
   }
   function region(){if(active)return data().regions[3];const anchors=[data().spawn,data().sites[1],data().sites[2],data().sites[4]];let best=0,dist=Infinity;anchors.forEach((p,i)=>{const d=Math.hypot(P.x-p.x*width,P.y-p.y*height);if(d<dist){best=i;dist=d;}});return data().regions[best];}
   function objective(){
-    if(active)return '封界已起 · 识破'+Journey.stage().boss+'的护体机关';
+    if(active)return '攻击持续扣血 · 识破'+Journey.stage().boss+'招式可获3倍伤害';
     const distance=Math.round(Math.hypot(P.x-sites[5].x,P.y-sites[5].y)/10);
     return '自由寻路 · '+distance+'丈外可挑战守关者 · E 交互 / Tab 舆图';
   }

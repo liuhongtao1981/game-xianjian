@@ -5,7 +5,7 @@ const InfantChapters=[
     theme:'人们求来的平安，为何都写成了别人的灾？',
     story:['白蛟吐出的袈裟角，把孙小果引进一座永不天明的禅院。每烧掉一条许愿红绸，功德簿上便多一笔收入。','阴愿主使以香火换平安，却把灾祸转给没有姓名的人。大圣留下的剑痕指向地下：账不在佛前，在灯下。','一株养魂神木从灰烬里长出，树皮记着被抹掉的愿。小果护住新芽：今日先让这些人，把自己的愿认回去。'],
     lore:['香客的愿签被裁成两半：上半写平安，下半写抵命。两半从来不交给同一个人。','净灯台的旧刻记着大圣的话：灯若照不见人，只照得见账，便该熄了。','神木年轮里藏着数百道童声。有人以为它们在诵经，其实是在报自己的姓名。'],
-    tell:'靠近三盏净愿灯持续净化，断开香火护体；随后躲过两道锁向十字焚线，待主使收炉露出破绽。',mechanic:'净灯断香：近身净化三灯，再避过完整十字焚线；清掉预警不算破招。',bossLine:'“有人替你受难，你的愿才算灵验。”',
+    tell:'靠近三盏净愿灯持续净化，扰乱香火阵；随后躲过两道锁向十字焚线，待主使收炉露出破绽。',mechanic:'净灯断香：近身净化三灯，再避过完整十字焚线；清掉预警不算破招。',bossLine:'“有人替你受难，你的愿才算灵验。”',
     reveal:'香炉裂开，里面没有神佛，只有一册被火烫卷的转灾账。大圣在末页画了一只向西的眼睛。',clue:{name:'转灾账与黑风铃',text:'收愿人的印记来自黑风林。披袈裟的熊守着一口不准响的钟。'},reward:'灰烬不再吞名，养魂神木吐出了第一片新叶。',regions:['灰阶山门','净灯藏院','焚愿回廊','主使香火坛'],siteNames:['转灾残签','净灯旧刻','神木年轮','灰烬供匣','未焚药庐','净愿香火坛'],
     layout:{spawn:[.17,.81],hub:[.43,.54],left:[.20,.20],right:[.78,.75],boss:[.76,.20],main:[[.17,.81],[.31,.72],[.29,.61],[.43,.54],[.58,.53],[.62,.35],[.76,.20]],upper:[[.43,.54],[.34,.44],[.36,.29],[.20,.20]],lower:[[.43,.54],[.55,.66],[.68,.60],[.78,.75]]}},
   {id:'windwood',no:'捌',title:'黑风借衣',subtitle:'黑风密林',place:'黑风山 · 借衣密林',color:'#91c9a4',background:'assets/infant-worlds.webp',artPosition:'50%',bossHp:23500,bossSpeed:64,mobScale:3.25,boss:'披愿黑熊',bossGlyph:'熊',bossRow:1,
@@ -62,10 +62,10 @@ const InfantGuardians=(()=>{
     b.helperTotal=stage===8?1:count;b.helperBroken=0;b.mechanismReady=false;
     say(e,stage===6?'靠近净愿灯 · 守心净化':stage===7?'风钟拒剑 · 引扑撞钟':'辨金色木脉 · 斩有声真愿');
   }
-  function init(e){e.brain={theme:Journey.run.stage%3,round:1,breaks:0,attackIndex:0,token:0,pending:null,helperBroken:0,helperTotal:0,mechanismReady:false,windowRemaining:0,windowDamage:0,exhausted:false,duelFailures:0};e.phase=1;e.attackAngle=0;state(e,'guard',1.5);summon(e);}
+  function init(e){e.brain={theme:Journey.run.stage%3,round:1,breaks:0,attackIndex:0,token:0,pending:null,helperBroken:0,helperTotal:0,mechanismReady:false,windowDamage:0,duelFailures:0};e.phase=1;e.attackAngle=0;state(e,'guard',1.5);summon(e);}
   function clear(e){G.telegraphs=G.telegraphs.filter(t=>t.bossOwner!==e.id);G.eshots=G.eshots.filter(t=>t.bossOwner!==e.id);e.brain.pending=null;}
-  function open(e){clear(e);const b=e.brain;b.breaks++;b.exhausted=false;b.windowDamage=0;b.windowRemaining=Math.ceil(e.maxHp*config().quota);state(e,'exposed',config().window);say(e,['香火已断 · 收炉破绽','爪势已尽 · 袈裟破绽','真愿归声 · 法身破绽'][Journey.run.stage-6]);Sound.weakness?.(Journey.run.stage);Motion.emit('blast',e.x,e.y,{r:110,duration:.8,color:Journey.stage().color});}
-  function close(e){const b=e.brain;b.round++;clear(e);b.exhausted=false;b.windowRemaining=0;if(e.hp<e.maxHp*.5&&e.phase===1){e.phase=2;Sound.guardian(Journey.run.stage,true);}state(e,'guard',1.2);summon(e);}
+  function open(e){clear(e);const b=e.brain;b.breaks++;b.windowDamage=0;state(e,'exposed',config().window);say(e,['香火已断 · 收炉破绽','爪势已尽 · 袈裟破绽','真愿归声 · 法身破绽'][Journey.run.stage-6]);Sound.weakness?.(Journey.run.stage);Motion.emit('blast',e.x,e.y,{r:110,duration:.8,color:Journey.stage().color});}
+  function close(e){const b=e.brain;b.round++;clear(e);state(e,'guard',1.2);summon(e);}
   function hazard(e,p,options){const pending=e.brain.pending,life=Math.max(.65,options.life*Journey.difficulty().warning);Journey.hazard(p.x,p.y,{...options,life,total:life,boss:true,bossOwner:e.id,bossToken:pending.token,theme:Journey.run.stage%3,chapterTheme:Journey.run.stage,damageContext:{kind:'boss',scale:e.threat?.damage||1,shieldFactor:1}});pending.expected++;pending.last=Math.max(pending.last,life);}
   function prepare(e,kind,mechanism=false){const b=e.brain,a=Math.atan2(P.y-e.y,P.x-e.x),target=point(P.x,P.y);e.attackAngle=a;e.look=Math.cos(a)<0?-1:1;b.pending={token:++b.token,kind,mechanism,expected:0,impacts:0,passed:true,last:0,origin:{x:e.x,y:e.y},age:0};
     if(kind==='fire'){hazard(e,target,{r:95,dmg:31,life:1.05,label:'焚愿香烬 · 离开金色落点',bossSkill:'wish-fire'});if(e.phase===2)hazard(e,point(target.x+Math.cos(a+1.57)*150,target.y+Math.sin(a+1.57)*150),{r:85,dmg:29,life:1.7,label:'余烬复燃 · 延迟落火',bossSkill:'wish-fire'});}
@@ -77,9 +77,9 @@ const InfantGuardians=(()=>{
     state(e,'windup',Math.min(...G.telegraphs.filter(t=>t.bossOwner===e.id&&t.bossToken===b.pending.token).map(t=>t.life)));say(e,kind==='cross'?'焚愿十字':kind==='pounce'?'黑风锁扑':kind==='claws'?'裂衣三爪':kind==='echo'?'三愿归声':'愿火不灭');
   }
   function finish(e){const b=e.brain,p=b.pending;if(p?.mechanism&&p.impacts===p.expected&&p.passed&&!helpers(e).length){open(e);return;}if(p?.mechanism){b.duelFailures++;b.counterDue=Journey.run.stage===8;say(e,'未成破招 · '+(Journey.run.stage===8?'须一退二进三退':'避尽整轮招式再攻'));}b.pending=null;state(e,'guard',e.phase===2?.8:1.2);}
-  function update(e,dt){if(!e.brain)init(e);if(!alive(e))return;const b=e.brain;e.actionT+=dt;if(b.pending)b.pending.age+=dt;
+  function update(e,dt){if(!e.brain)init(e);if(!alive(e))return;const b=e.brain;if(e.hp<=e.maxHp*.5&&e.phase===1){e.phase=2;Sound.guardian(Journey.run.stage,true);say(e,Journey.stage().boss+' · 怒相');}e.actionT+=dt;if(b.pending)b.pending.age+=dt;
     if(Journey.run.stage===6)for(const h of helpers(e)){if(Math.hypot(P.x-h.x,P.y-h.y)<95){h.purity=Math.min(1.1,h.purity+dt);if(h.purity>=1.1)killEnemy(h);}else h.purity=Math.max(0,h.purity-dt*.35);}
-    if(e.action==='exposed'){if(e.actionT>=e.actionDuration||b.exhausted)close(e);return;}
+    if(e.action==='exposed'){if(e.actionT>=e.actionDuration)close(e);return;}
     if(!helpers(e).length&&!b.mechanismReady){b.mechanismReady=true;Sound.omen?.(Journey.run.stage);}
     if(e.action==='guard'&&e.actionT>=e.actionDuration){const stage=Journey.run.stage;if(b.counterDue){b.counterDue=false;prepare(e,'bone',false);}else {b.attackIndex++;const kind=stage===6?(b.mechanismReady?'cross':'fire'):stage===7?(b.mechanismReady||b.attackIndex%3===0?'claws':'pounce'):(b.mechanismReady?'echo':'bone');prepare(e,kind,b.mechanismReady);}}
     else if(e.action==='windup'&&e.actionT>=e.actionDuration)state(e,'strike',Math.max(.4,b.pending.last-e.actionDuration+.2));
@@ -92,8 +92,8 @@ const InfantGuardians=(()=>{
   }
   function onHelperKilled(h){const e=G.boss;if(!e?.brain||h.bossOwner!==e.id)return;e.brain.helperBroken++;if(Journey.run.stage===8&&!h.phantom)for(const q of G.enemies.filter(q=>q.bossHelper&&q.phantom&&q.bossOwner===e.id)){q.hp=0;q.killed=true;}}
   function filterDamage(e,damage){if(e.bossHelper){if(e.locked)return 0;if(e.phantom){if((e.retortAt||0)<=G.time){e.retortAt=G.time+3;const b=G.boss;if(b)Journey.hazard(P.x,P.y,{r:90,dmg:34,life:Math.max(.65,1.1*Journey.difficulty().warning),total:Math.max(.65,1.1*Journey.difficulty().warning),boss:true,bossOwner:b.id,chapterTheme:8,theme:2,bossSkill:'bone-retort',label:'空愿反噬 · 离开回音',damageContext:{kind:'boss',scale:b.threat?.damage||1,shieldFactor:1}});addText(e.x,e.y-100,'空愿反噬 · 认准金色木脉','#ddaccf',15);}return 0;}return damage;}
-    if(!e.boss)return damage;const b=e.brain;if(e.action!=='exposed'||b.exhausted)return 0;const value=Math.max(0,Math.min(Math.round(damage),b.windowRemaining,e.hp));b.windowRemaining-=value;b.windowDamage+=value;if(b.windowRemaining<=0)b.exhausted=true;return value;
+    return e.boss?Math.max(0,Math.min(Math.round(damage),e.hp)):damage;
   }
-  function hud(e){const b=e?.brain;if(!b)return {title:'寻其破绽',hint:Journey.stage().tell,progress:0};const exposed=e.action==='exposed'&&!b.exhausted,left=helpers(e).length;return {title:exposed?'破绽 '+Math.max(0,e.actionDuration-e.actionT).toFixed(1)+' 秒':left?['净愿灯尚存','风钟尚存','有声真愿尚存'][Journey.run.stage-6]+' · '+left:Journey.run.stage===8?'骨声一退 · 二进 · 三退':'诱尽整轮，等待收势',hint:Journey.stage().tell,progress:exposed?Math.max(0,1-e.actionT/e.actionDuration):(b.helperTotal-left)/b.helperTotal,exposed,remaining:exposed?Math.max(0,e.actionDuration-e.actionT):0,breaks:b.breaks,helpers:left,round:b.round,action:e.action};}
+  function hud(e){const b=e?.brain;if(!b)return {title:'寻其破绽',hint:'命中持续扣血 · 破招后伤害3倍。'+(Journey.stage().bonusTell||Journey.stage().tell),progress:0};const exposed=e.action==='exposed',left=helpers(e).length;return {title:exposed?'破绽 · 伤害3倍 · '+Math.max(0,e.actionDuration-e.actionT).toFixed(1)+' 秒':left?'可攻击 · '+['净愿灯尚存','风钟尚存','有声真愿尚存'][Journey.run.stage-6]+' · '+left:Journey.run.stage===8?'骨声一退 · 二进 · 三退':'诱尽整轮，等待收势',hint:'命中持续扣血 · 破招后伤害3倍。'+(Journey.stage().bonusTell||Journey.stage().tell),progress:exposed?Math.max(0,1-e.actionT/e.actionDuration):(b.helperTotal-left)/b.helperTotal,exposed,remaining:exposed?Math.max(0,e.actionDuration-e.actionT):0,breaks:b.breaks,helpers:left,round:b.round,action:e.action};}
   return {init,update,onImpact,onHelperKilled,filterDamage,hud};
 })();

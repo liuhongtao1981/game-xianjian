@@ -254,8 +254,7 @@ function reset(){
 function nearest(x, y, maxD, exclude){
   let best = null, bd = maxD * maxD;
   for (const e of G.enemies){
-    if (e.hp <= 0) continue;
-    if(e.boss && Bosses.damageMultiplier(e)===0)continue;
+    if (!Bosses.targetable(e)) continue;
     if (exclude && exclude.has(e.id)) continue;
     const d = (e.x - x) ** 2 + (e.y - y) ** 2;
     if (d < bd){ bd = d; best = e; }
@@ -315,10 +314,6 @@ function hurt(e, base, color, options={}){
   const crit = Math.random() < P.crit;
   let d = base * P.dmg * (crit ? 2 : 1) * Journey.damageMultiplier(e);
   d = Math.max(2, Math.round(d));
-  if(options.ultimate&&e.boss){
-    const cast=options.ultimate,remaining=e.maxHp*.25-(cast.bossDamage||0);
-    d=Math.min(d,remaining);if(d<=0)return;
-  }
   d=Bosses.filterDamage(e,d);if(d<=0)return;
   if(options.ultimate&&e.boss)options.ultimate.bossDamage=(options.ultimate.bossDamage||0)+d;
   e.hp -= d;

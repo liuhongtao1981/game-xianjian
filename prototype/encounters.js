@@ -178,7 +178,7 @@ const Encounters=(()=>{
         const r=e.r||80;ctx.beginPath();ctx.arc(e.x,e.y,r*(.6+p*.4),0,Math.PI*2);ctx.stroke();Motion.rune(e.x,e.y,r,fade*.65,color,p*.3);
       }ctx.restore();
     }
-    // Visible chains explain the monitor's actual damage reduction.
+    // Links identify the guardian's optional vulnerability mechanics.
     const boss=G.boss;
     if(boss&&boss.hp>0&&boss.action==='exposed'){
       const pulse=.55+Math.sin(G.time*9)*.15;
