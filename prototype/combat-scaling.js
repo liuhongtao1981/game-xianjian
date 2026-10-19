@@ -15,12 +15,15 @@ const CombatScaling=(()=>{
       else if(id==='guanyin')sustain+=s.heal*f;
       else output+=s.damage*f;
     }
-    const u=reference?{damage:l=>300+l*22,cd:24}:Journey.ultimate(),kind=reference?'heaven':Journey.run.ultimate;
-    // Estimate three aimed salvos with at most three useful hits each, rather than
-    // counting every decorative/sideways sword as a guaranteed single-target hit.
-    const ultimateDamage=u.damage(p.level)*(kind==='river'?9:1)+(kind==='lotus'?100:0);
-    if(kind==='lotus')sustain+=(p.maxHp*.24+40)/u.cd*.35;
-    output=(output+ultimateDamage/u.cd*.35)*p.dmg*(1+Math.min(1,Math.max(0,p.crit)));
+    // Include every carried art; the percentage floor is not single-target DPS.
+    // Recovery of independent sword intent and cooldown both use the same CDR.
+    for(const kind of reference?UltimateArts.keys:UltimateArts.loadout()){
+      const u=Journey.ultimates[kind],rate=Math.min(1/(u.cd*UltimateArts.cooldown(p)),.02/UltimateArts.cooldown(p));
+      const ultimateDamage=UltimateArts.damage(kind,p)*(kind==='river'?9:1)+(kind==='lotus'?100*UltimateArts.realmScale(p):0);
+      if(kind==='lotus')sustain+=(p.maxHp*.24+40)*rate*.35;
+      output+=ultimateDamage*rate*.35;
+    }
+    output*=p.dmg*(1+Math.min(1,Math.max(0,p.crit)));
     return {output:Math.max(.01,output),survival:(p.maxHp+.6*p.shieldMax)/Math.max(.15,1-p.armor),sustain:Math.min(30,Math.max(0,sustain)),realm:r+((p.cultivation.layer||1)-1)/9};
   }
   const reference=()=>scores({maxHp:120,shieldMax:70,armor:.05,regen:0,dmg:1,crit:.05,cdr:1,level:1,spells:{yujian:1},cultivation:{realm:0,layer:1}},true);

@@ -4,7 +4,7 @@
 
 ## 运行与操作
 
-保留完整目录，从仓库根目录运行 `python -m http.server 4173 --directory prototype`，访问 http://localhost:4173/ 。WASD移动、空格闪避、Q大招、E交互、C人物、Tab舆图、F全屏；触屏使用左侧摇杆和右侧按钮。
+保留完整目录，从仓库根目录运行 `python -m http.server 4173 --directory prototype`，访问 http://localhost:4173/ 。WASD移动、空格闪避、Q/R/T三式大招、E交互、C人物、Tab舆图、F全屏；触屏使用左侧摇杆和右侧按钮。
 
 ## 探索与首领
 
@@ -25,3 +25,5 @@
 Node.js运行 `tools/check-syntax.js`、`check-director.js`、`check-carryover.js`、`check-saves.js`、`check-cultivation.js`、`check-expansion.js`、`check-infant.js`、`check-pickups.js`、`check-combat.js`。音频完整检查为 `node tools/check-audio.js`，需要FFmpeg。桌面与手机截图检查为 `node tools/check-ui.js`，需要Playwright及Edge；可用PLAYWRIGHT_NODE_MODULES指定依赖目录。
 
 原六关已从一级完成主路与全图脚本验证；本批元婴三关以声明的40级继承构筑完成连续探索与首领验证，数据见`docs/元婴篇-探索验证.json`。代理读取完整预警，不能代表真人通关率或时长。真人目标时长与真实手机性能仍需试玩校准。
+
+剑阵由内向外最多四圈：5、7、10、14柄，共36柄；在万剑诀6/11/16级且达到金丹/大乘/太乙金仙时依次解锁外圈。每轮同目标命中预算保留。冷却缩减上限统一为80%，含普通术法、大招冷却与独立剑意恢复。可选择携带1至3式大招，分别使用Q/R/T或触屏按钮；每式独立保存冷却和剑意，可依次连用。大招基础伤害随连续境界进度乘1.28的对应次方，再乘面板伤害倍率。每次施放对每个非大妖战斗目标首次命中至少造成40%最大生命伤害；后续剑雨与持续伤害不重复触发保底，机关和大妖按原本伤害规则结算。

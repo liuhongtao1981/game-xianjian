@@ -22,8 +22,8 @@ const Cultivation=(()=>{
   const need=(c=P.cultivation)=>320*(c.realm+1)**2;
   function label(c=P.cultivation){const layer=c.layer||Math.min(9,1+Math.floor(c.qi/need(c)*9));return realms[c.realm]+'·'+['一','二','三','四','五','六','七','八','九'][layer-1]+'层'+(c.qi>=need(c)?c.realm===13?'·道圆':'·圆满':'');}
   function caps(p=P){const r=p.cultivation.realm+((p.cultivation.layer||1)-1)/9,f=p.cultivation.floors;
-    const v={maxHp:Math.floor(600*1.28**r),shieldMax:Math.floor(250*1.25**r),dmg:8*1.22**r,speed:Math.min(520,380+10*r),crit:.6+.01*r,armor:.6+.008*r,cdr:Math.max(.35,.55-.015*r),pickup:Math.min(650,360+20*r),regen:6+r,xpMul:3};
-    for(const k of upper)v[k]=Math.max(v[k],f[k]||0);v.cdr=Math.min(v.cdr,f.cdr??1);return v;
+    const v={maxHp:Math.floor(600*1.28**r),shieldMax:Math.floor(250*1.25**r),dmg:8*1.22**r,speed:Math.min(520,380+10*r),crit:.6+.01*r,armor:.6+.008*r,cdr:.2,pickup:Math.min(650,360+20*r),regen:6+r,xpMul:3};
+    for(const k of upper)v[k]=Math.max(v[k],f[k]||0);return v;
   }
   function protectLegacy(p){p.cultivation=clean(p.cultivation);for(const k of [...upper,'cdr'])p.cultivation.floors[k]=p[k];}
   function constrain(p=P){const v=caps(p);for(const k of upper)p[k]=Math.min(p[k],v[k]);p.cdr=Math.max(v.cdr,p.cdr);p.hp=Math.min(p.hp,p.maxHp);p.shield=Math.min(p.shield,p.shieldMax);}

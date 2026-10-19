@@ -167,7 +167,7 @@ const World=(()=>{
       ov.innerHTML=`<div class="panel chronicle-panel world-lore"><span class="overline">${Journey.stage().place} · 劫痕证词</span><h2>${s.name}</h2><p class="end-narrative">${s.text}</p><p class="hintline">参悟灵蕴 +35 · 恢复 12% 生命</p><button class="btn" id="closeWorldLore">收 下 证 词 · 继 续 探 路</button></div>`;
       const close=document.getElementById('closeWorldLore');close.onclick=()=>{if(G.state!=='journal'||G.pendingLore===null)return;G.pendingLore=null;clearInput();ov.classList.add('hidden');G.state='playing';last=performance.now();if(RunSave.claim('site:'+Journey.run.stage+':'+s.id)){gainXP(35);heal(P.maxHp*.12);notifyPickup('lore','证词已收录 · 灵蕴 +'+Number((35*P.xpMul).toFixed(1)));Sound.effects('chest');}RunSave.save('收录证词');};close.focus?.();
     }else if(s.kind==='rest'){
-      const hp=P.hp,energy=P.energy;heal(P.maxHp*.45);P.energy=Math.min(100,P.energy+35);
+      const hp=P.hp,energy=P.energy;heal(P.maxHp*.45);UltimateArts.charge(35);
       notifyPickup('rest','补给已领取 · '+(P.hp>hp?'生命 +'+Math.round(P.hp-hp):'生命已满')+' · '+(P.energy>energy?'剑意 +'+Math.round(P.energy-energy):'剑意已满'));Sound.effects('guanyin');
     }
     else {openChest();}

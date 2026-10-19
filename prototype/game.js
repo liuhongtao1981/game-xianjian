@@ -160,7 +160,7 @@ const STATS = [
   { id:'atk', name:'剑意', glyph:'锋', color:'#e0a0a0', tag:'强化', desc:'所有伤害 +15%。', apply(){ P.dmg *= 1.15; } },
   { id:'spd', name:'疾行', glyph:'行', color:'#9fd8ef', tag:'强化', desc:'移动速度 +8%。', apply(){ P.speed *= 1.08; } },
   { id:'hp',  name:'铁骨', glyph:'骨', color:'#d9b877', tag:'强化', desc:'最大生命 +20，并回复 20。', apply(){ P.maxHp += 20; heal(20); } },
-  { id:'cd',  name:'凝神', glyph:'凝', color:'#b8a0e0', tag:'强化', desc:'术法冷却 -8%。', apply(){ P.cdr = Math.max(Cultivation.caps().cdr, P.cdr * 0.92); } },
+  { id:'cd',  name:'凝神', glyph:'凝', color:'#b8a0e0', tag:'强化', desc:'术法与大招冷却 -8%，最高缩减80%。', apply(){ P.cdr = Math.max(Cultivation.caps().cdr, P.cdr * 0.92); } },
   { id:'crit',name:'会心', glyph:'心', color:'#f2dda8', tag:'强化', desc:'暴击率 +6%。', apply(){ P.crit = Math.min(Cultivation.caps().crit, P.crit + 0.06); } },
   { id:'pick',name:'聚灵', glyph:'灵', color:'#7fbfa8', tag:'强化', desc:'拾取范围 +30%。', apply(){ P.pickup *= 1.3; } }
 ];
@@ -239,6 +239,7 @@ function reset(){
   G.P = newPlayer();
   P = G.P;
   Journey.restore(P);
+  P.cdr=Math.max(.2,P.cdr);UltimateArts.ensure();
   SpellGift.ensure();SpellGift.sync();
   G.runChoices=P.growthChoices;
   World.reset();
@@ -314,10 +315,11 @@ function hurt(e, base, color, options={}){
   const crit = Math.random() < P.crit;
   let d = base * P.dmg * (crit ? 2 : 1) * Journey.damageMultiplier(e);
   d = Math.max(2, Math.round(d));
+  d=UltimateArts.floor(e,d,options.ultimate);
   d=Bosses.filterDamage(e,d);if(d<=0)return;
   if(options.ultimate&&e.boss)options.ultimate.bossDamage=(options.ultimate.bossDamage||0)+d;
   e.hp -= d;
-  if (!G.ultimate&&!options.ultimate) P.energy = Math.min(100, P.energy + .2);
+  if (!G.ultimate&&!options.ultimate) UltimateArts.charge(.2);
   e.flash = .12;
   Sound.effects('hit',Math.max(-1,Math.min(1,World.screen(e.x,e.y).x/Math.max(1,W)*2-1)));
   Motion.emit('hit',e.x,e.y-e.r,{duration:.24,color:color&&color.length===7?color:'#b9eeff'});
@@ -342,7 +344,7 @@ function killEnemy(e, fromUltimate=false){
   if(e.bossHelper){burst(e.x,e.y,e.color,12,100);return;}
   const essence=P.cultivation.materials.essence,layer=P.cultivation.layer,qiBefore=P.cultivation.qi;const rare=Cultivation.onKill(e);
   G.kills++;
-  if (!G.ultimate&&!fromUltimate) P.energy = Math.min(100, P.energy + (e.elite ? 8 : 2));
+  if (!G.ultimate&&!fromUltimate) UltimateArts.charge(e.elite ? 8 : 2);
   P.orbitHit.delete(e.id);
   burst(e.x, e.y, e.color, e.boss ? 60 : (e.elite ? 28 : 12), e.boss ? 280 : 160);
   if(!e.boss)addText(e.x,e.y-40,'灵蕴 +'+Number((e.xp*P.xpMul).toFixed(1))+' · 修为 +'+Number((P.cultivation.qi-qiBefore).toFixed(1)), '#c4dfb3',11);
@@ -535,8 +537,7 @@ function updatePlayer(dt){
   P.dashCd = Math.max(0, P.dashCd - dt);
   P.invuln = Math.max(0, P.invuln - dt);
   P.flash = Math.max(0, P.flash - dt);
-  P.energy = Math.min(100, P.energy + dt * 2 * Journey.difficulty().charge);
-  P.ultCd = Math.max(0, P.ultCd - dt);
+  UltimateArts.tick(dt);
 
   if (P.dash > 0){
     P.vx=P.facing.x*980;P.vy=P.facing.y*980;
@@ -563,13 +564,14 @@ function tryDash(){
   }
 }
 
-function tryUltimate(){
-  if (G.state !== 'playing' || !P || P.hp <= 0 || P.energy < 100 || P.ultCd > 0 || G.ultimate) return false;
-  const spec=Journey.ultimate(),target=nearest(P.x,P.y,1800);
-  P.energy=0; P.ultCd=spec.cd; P.invuln=Math.max(P.invuln,spec.invuln);
-  G.ultimate={x:P.x,y:P.y,age:0,struck:false,kind:Journey.run.ultimate,bossDamage:0,pulses:0,angle:target?Math.atan2(target.y-P.y,target.x-P.x):Math.atan2(P.facing.y,P.facing.x)};
+function tryUltimate(id=Journey.run.ultimate){
+  if (G.state !== 'playing' || !P || P.hp <= 0 || G.ultimate || !UltimateArts.spend(id)) return false;
+  const spec=Journey.ultimates[id],target=nearest(P.x,P.y,1800);
+  P.invuln=Math.max(P.invuln,spec.invuln);
+  G.ultimate={x:P.x,y:P.y,age:0,struck:false,kind:id,damage:UltimateArts.damage(id),bossDamage:0,pulses:0,angle:target?Math.atan2(target.y-P.y,target.x-P.x):Math.atan2(P.facing.y,P.facing.x)};
   G.ultimateCasts++;
-  Sound.ultimate(Journey.run.ultimate);
+  Sound.ultimate(id);
+  RunSave.save('施放大招');
   return true;
 }
 function updateUltimate(dt){
@@ -581,7 +583,7 @@ function updateUltimate(dt){
     while(u.pulses<3&&u.age>=spec.windup+u.pulses*.28){
       for(let i=0;i<6;i++){
         const a=u.angle+(i-2.5)*.065;
-        G.shots.push({x:P.x,y:P.y-15,vx:Math.cos(a)*760,vy:Math.sin(a)*760,r:8,dmg:spec.damage(P.level),life:1.2,color:spec.color,hit:new Set(),pierce:2,trail:[],ultimate:u});
+        G.shots.push({x:P.x,y:P.y-15,vx:Math.cos(a)*760,vy:Math.sin(a)*760,r:8,dmg:u.damage??UltimateArts.damage(u.kind),life:1.2,color:spec.color,hit:new Set(),pierce:2,trail:[],ultimate:u});
       }
       G.eshots=G.eshots.filter(s=>{const a=Math.atan2(s.y-P.y,s.x-P.x)-u.angle;return Math.cos(a)<.82||Math.hypot(s.x-P.x,s.y-P.y)>600;});
       Motion.emit('slash',P.x,P.y-18,{angle:u.angle,duration:.3,r:75,color:spec.color});u.pulses++;
@@ -594,10 +596,10 @@ function updateUltimate(dt){
     G.eshots=G.eshots.filter(s=>Math.hypot(s.x-u.x,s.y-u.y)>range);
     G.telegraphs=G.telegraphs.filter(s=>Math.hypot(s.x-u.x,s.y-u.y)>range);
     const targets=G.enemies.filter(e=>e.hp>0 && Math.hypot(e.x-u.x,e.y-u.y)<=range+e.r);
-    for(const e of targets){Motion.emit('blast',e.x,e.y,{r:e.boss?80:40,duration:.65,color:spec.color});hurt(e,spec.damage(P.level),spec.color,{ultimate:u});}
+    for(const e of targets){Motion.emit('blast',e.x,e.y,{r:e.boss?80:40,duration:.65,color:spec.color});hurt(e,u.damage??UltimateArts.damage(u.kind),spec.color,{ultimate:u});}
     if(u.kind==='lotus'){
       heal(P.maxHp*.24);P.shield=Math.min(P.shieldMax,P.shield+40);
-      G.pools.push({x:u.x,y:u.y,r:150,life:4,dps:25,tick:.5,color:spec.color,ultimate:u,ward:true});
+      G.pools.push({x:u.x,y:u.y,r:150,life:4,dps:25*UltimateArts.realmScale(P),tick:.5,color:spec.color,ultimate:u,ward:true});
       Motion.emit('heal',u.x,u.y,{r:130,duration:1.3,color:spec.color});
     }
     burst(u.x,u.y,spec.color,45,320);
@@ -636,7 +638,7 @@ function updateSpells(dt){
     P.t[key] = (P.t[key] || 0) - dt;
     if (P.t[key] <= 0){
       SPELLS[key].cast(lvl);
-      P.t[key] = SPELLS[key].cd * P.cdr;
+      P.t[key] = SPELLS[key].cd * Math.max(.2,P.cdr);
     }
   }
   SpellCombat.update(dt);
@@ -1366,14 +1368,7 @@ function syncHUD(){
   const saveStatus=document.getElementById('saveStatus');saveStatus.textContent=RunSave.status();saveStatus.setAttribute('data-error',String(RunSave.status().includes('尚未保存')||RunSave.conflicted()));
   document.getElementById('timer').textContent = fmt(G.time);
   document.getElementById('kills').textContent = '斩妖 ' + G.kills;
-  const ready=G.state==='playing' && P.energy>=100 && P.ultCd<=0 && !G.ultimate;
-  const ult=document.getElementById('ultimateBtn');
-  ult.disabled=!ready;ult.classList.toggle('ready',ready);
-  document.getElementById('ultFill').style.height=P.energy+'%';
-  const ultSpec=Journey.ultimate();
-  document.getElementById('ultStatus').textContent=P.ultCd>0?'冷却 '+Math.ceil(P.ultCd)+'s':(P.energy>=100?'Q · '+ultSpec.short:'剑意 '+Math.floor(P.energy)+'%');
-  ult.querySelector('span').textContent=ultSpec.glyph;
-  ult.setAttribute('aria-label','释放大招：'+ultSpec.name);
+  UltimateArts.hud();
   document.getElementById('dashBtn').disabled=G.state!=='playing'||P.dashCd>0;
   document.getElementById('dashStatus').textContent=P.dashCd>0?P.dashCd.toFixed(1)+'s':'空格 · 闪避';
   const stage=Journey.stage(),profile=Journey.difficulty();
@@ -1421,13 +1416,13 @@ window.addEventListener('keydown', e => {
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code)) e.preventDefault();
   keys[k] = true;
   if(k==='f'&&!e.repeat){e.preventDefault();toggleFullscreen();return;}
-  if(e.repeat && ['Escape','KeyQ','Space','Enter'].includes(e.code)) return;
+  if(e.repeat && ['Escape','KeyQ','KeyR','KeyT','Space','Enter'].includes(e.code)) return;
   if(k==='tab'){e.preventDefault();if(!e.repeat)World.toggleMap();return;}
   if(k==='c'&&!e.repeat){e.preventDefault();CharacterUI.toggle();return;}
   if(G.state==='character'&&e.key==='Escape'){e.preventDefault();CharacterUI.close();return;}
   if(k==='e'&&!e.repeat){e.preventDefault();World.interact();return;}
   if(G.state==='map'&&e.key==='Escape'){e.preventDefault();World.toggleMap();return;}
-  if(k==='q'){ e.preventDefault();tryUltimate(); }
+  if(['q','r','t'].includes(k)&&G.state==='playing'){e.preventDefault();const id=UltimateArts.loadout()[['q','r','t'].indexOf(k)];if(id)tryUltimate(id);}
   if (e.key === 'Escape'){ e.preventDefault(); togglePause(); return; }
   if (e.code === 'Space'){
     e.preventDefault();
@@ -1445,7 +1440,7 @@ function clearInput(){
 }
 window.addEventListener('blur',()=>{ clearInput(); if(G.state==='playing')togglePause(); });
 document.addEventListener('visibilitychange',()=>{ if(document.hidden){ clearInput();if(G.state==='playing')togglePause(); } });
-document.getElementById('ultimateBtn').onclick=tryUltimate;
+for(let i=0;i<3;i++)document.getElementById('ultimateBtn'+(i||'')).onclick=()=>{const id=UltimateArts.loadout()[i];if(id)tryUltimate(id);};
 document.getElementById('dashBtn').onclick=tryDash;
 document.getElementById('journalBtn').onclick=Journey.journal;
 document.getElementById('mapBtn').onclick=World.toggleMap;
@@ -1589,7 +1584,7 @@ reset();
 CharacterUI.init();
 G.state = 'start';
 if ('ontouchstart' in window){
-  document.querySelector('.hint').innerHTML = '<kbd>左侧拖动</kbd> 移动 <kbd>右侧点击</kbd> 闪避 <kbd>天剑按钮</kbd> 大招';
+  document.querySelector('.hint').innerHTML = '<kbd>左侧拖动</kbd> 移动 <kbd>右侧点击</kbd> 闪避 <kbd>三式按钮</kbd> 大招';
 }
 if (QS.has('bench')){
   bench(Math.max(1, Math.min(12, Number(QS.get('bench')) || 6)), 200);

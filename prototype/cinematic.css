@@ -88,3 +88,7 @@ kbd { font:10px Georgia,serif;color:#eddbad;margin:0 4px; }
 @media(max-width:600px){.window-controls{top:auto;bottom:96px;right:10px}.window-controls a{display:none}.window-controls button{padding:8px 10px;font-size:10px}.right{margin-top:0}#screenNotice{top:auto;bottom:40px;background:#081719e8;padding:8px}.window-controls kbd{display:none}}
 @media(max-height:600px){.title-panel h1{font-size:58px;margin:12px 0}.title-panel .subtitle{margin-bottom:14px}.title-panel .intro{line-height:1.6}.title-panel .rule{margin:12px 0}.overlay{overflow:auto}.panel{max-height:94vh;overflow:auto}}
 @media(max-width:600px){.boss-weakness{font-size:10px;letter-spacing:0;line-height:1.4}.interact-btn{bottom:180px;padding:10px 14px;font-size:13px}.window-controls{gap:4px}.window-controls button{padding:7px 8px;font-size:9px}#journalBtn{display:none}.objective{max-width:180px}#objectiveDetail{max-width:165px}.right{top:184px;width:170px}.boss-health{font-size:9px;letter-spacing:0}.boss-weakness{margin-top:6px}}
+.ultimate-bar{display:flex;gap:10px;pointer-events:auto}
+.ultimate-bar .action.ultimate{width:82px;height:78px;border-color:var(--art-color,#d3bc80);color:var(--art-color,#efdbac)}
+.ultimate-bar [hidden]{display:none!important}
+@media(max-width:600px){.actions{gap:6px}.ultimate-bar{gap:5px}.ultimate-bar .action.ultimate{width:59px;height:62px}.ultimate-bar .action.ultimate span{font-size:20px}.ultimate-bar .action.ultimate small{font-size:8px}.bottom-hud>.hint{display:none}.actions #dashBtn{width:49px;height:52px}}

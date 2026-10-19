@@ -21,6 +21,7 @@ on:
       - 'tools/check-actor-motion.js'
       - 'tools/check-bosses.js'
       - 'tools/check-continuous-boss.js'
+      - 'tools/check-ultimate-arts.js'
       - 'tools/check-encounters.js'
       - 'tools/game-harness.js'
       - 'tools/build-pages.js'
@@ -59,6 +60,7 @@ jobs:
           node tools/check-actor-motion.js
           node tools/check-bosses.js
           node tools/check-continuous-boss.js
+          node tools/check-ultimate-arts.js
           node tools/check-encounters.js
       - name: Package playable game
         run: node tools/build-pages.js

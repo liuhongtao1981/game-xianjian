@@ -9,6 +9,7 @@ const RunSave=(()=>{
     for(const e of Object.values(d.progress.entries||{}))if(!JourneyProgress.validBuild(e?.build)||!['story','normal','hard','nightmare'].includes(e.difficulty))return false;
     const s=d.run,b=s?.player;
     if(!s||!b||!JourneyProgress.validBuild({...b,hp:Math.max(1,b.hp)})||!Cultivation.valid(b.cultivation)||!Number.isFinite(b.hp)||b.hp<0||!Number.isInteger(s.stage)||s.stage<0||s.stage>=ChapterCatalog.playable||!['story','normal','hard','nightmare'].includes(s.difficulty)||!['heaven','lotus','river'].includes(s.ultimate))return false;
+    if(s.equippedUltimates!==undefined&&(!UltimateArts.validLoadout(s.equippedUltimates)||!s.equippedUltimates.includes(s.ultimate)))return false;
     if(!Number.isInteger(s.tier)||s.tier<0||s.tier>13||!Number.isInteger(s.cycle)||s.cycle<0||!Number.isInteger(s.queue)||s.queue<0||s.queue>10000||!Array.isArray(s.choices)||s.choices.length>3)return false;
     if(!Number.isFinite(s.x)||!Number.isFinite(s.y)||s.x<0||s.x>ChapterCatalog.get(s.stage).width||s.y<0||s.y>ChapterCatalog.get(s.stage).height||!s.world||!Array.isArray(s.world.done)||s.world.done.length!==WorldNavData[s.stage].sites.length||!s.world.done.every(v=>typeof v==='boolean'))return false;
     if(!s.director||!Array.isArray(s.director.camps)||s.director.camps.length!==WorldNavData[s.stage].camps.length||!s.ledger||typeof s.ledger!=='object'||!Array.isArray(s.chests)||s.chests.length>30||!Array.isArray(s.completed)||!s.completed.every(v=>Number.isInteger(v)&&v>=0&&v<ChapterCatalog.playable))return false;
@@ -45,7 +46,7 @@ const RunSave=(()=>{
   function capture(){
     CombatScaling.observe();
     return {version:3,revision:revision+1,writer,savedAt:Date.now(),progress:JourneyProgress.snapshot(),run:{cycle,tier:Journey.run.tier||0,ledger:clone(ledger),
-      chapterId:ChapterCatalog.get(Journey.run.stage).id,stage:Journey.run.stage,difficulty:Journey.run.difficulty,ultimate:Journey.run.ultimate,completed:[...Journey.run.completed],campaignTime:Journey.run.time,
+      chapterId:ChapterCatalog.get(Journey.run.stage).id,stage:Journey.run.stage,difficulty:Journey.run.difficulty,ultimate:Journey.run.ultimate,equippedUltimates:UltimateArts.loadout(),completed:[...Journey.run.completed],campaignTime:Journey.run.time,
       player:JourneyProgress.capture(P),checkpoint:clone(Journey.run.checkpoint),x:P.x,y:P.y,time:G.time,kills:G.kills,state:G.state,
       queue:G.queue,choices:clone(choicesCache),chestReward:clone(G.chestReward),pendingLore:G.pendingLore,coreReward:clone(G.coreReward),
       chests:G.chests.map(c=>({x:c.x,y:c.y,t:c.t||0,kind:c.kind,rewardId:c.rewardId||null})),world:World.exportState(),director:EncounterDirector.exportState(),bossSpawned:G.bossSpawned,bossEntry:clone(bossEntry)}};
@@ -77,7 +78,7 @@ const RunSave=(()=>{
     const latest=read(key);if(latest&&latest.revision>data.revision)data=latest;
     const s=clone(data.run);conflict=false;suppress=true;enabled=true;revision=data.revision;cycle=s.cycle;ledger=s.ledger;bossEntry=s.bossEntry;
     const priorHero=HeroIdentity.clean(s.player.heroId);if(requested){s.player.heroId=requested;if(s.checkpoint)s.checkpoint.heroId=requested;}
-    JourneyProgress.restore(data.progress);Object.assign(Journey.run,{heroId:HeroIdentity.clean(s.player.heroId),stage:s.stage,difficulty:s.difficulty,ultimate:s.ultimate,tier:s.tier,completed:s.completed,time:s.campaignTime,checkpoint:s.player});reset();Journey.run.checkpoint=s.checkpoint;
+    JourneyProgress.restore(data.progress);Object.assign(Journey.run,{heroId:HeroIdentity.clean(s.player.heroId),stage:s.stage,difficulty:s.difficulty,ultimate:s.ultimate,equippedUltimates:s.equippedUltimates||[s.ultimate,...UltimateArts.keys.filter(k=>k!==s.ultimate)],tier:s.tier,completed:s.completed,time:s.campaignTime,checkpoint:s.player});reset();Journey.run.checkpoint=s.checkpoint;
     const postVictory=s.bossSpawned&&s.completed.includes(s.stage)&&s.state!=='dead';
     const frame=s.bossSpawned&&!postVictory&&s.state!=='win'&&s.state!=='dead'?s.bossEntry:s;
     World.importState(frame.world);EncounterDirector.importState(frame.director);P.x=frame.x;P.y=frame.y;World.resolve(P,true);World.camera(0,true);G.time=s.time;G.kills=s.kills;G.queue=s.queue;choicesCache=s.choices;G.chests=frame.chests||[];
