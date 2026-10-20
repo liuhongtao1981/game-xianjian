@@ -148,6 +148,10 @@ const Sound = (() => {
   }
   function ultimate(id){speak('ult-'+id,100,8);effects('ult-charge');}
   function stageIntro(index){stage=index;currentTrack='';stopVoice();speak('stage-'+index,80,0);}
+  function pauseNarration(paused){
+    if(!voice?.id.startsWith('stage-'))return;
+    if(paused)voice.audio.pause();else Promise.resolve(voice.audio.play()).catch(stopVoice);
+  }
   function guardian(index,phase=false){speak((phase?'phase-':'boss-')+index,115,0);effects(phase?'phase':'boss');}
   function weakness(index){effects('weakness');speak('weakness-'+index,120,18);}
   function omen(index){speak('omen-'+index,75,32);}
@@ -201,5 +205,5 @@ const Sound = (() => {
   install();
   // New prose can ship with captions and original local music without requesting remote TTS.
   function registerCaption(id,speaker,text){voiceCues[id]=[speaker,text];captionOnly.add(id);}
-  return {activate,sync,spell,ultimate,stageIntro,guardian,weakness,omen,result,effects,speak,reset,set,status,registerCaption};
+  return {activate,sync,spell,ultimate,stageIntro,pauseNarration,stopNarration:stopVoice,guardian,weakness,omen,result,effects,speak,reset,set,status,registerCaption};
 })();

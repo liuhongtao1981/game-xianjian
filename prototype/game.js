@@ -423,9 +423,9 @@ function spawnChest(x, y,metadata={}){
 function spawnBoss(){
   if (G.bossSpawned) return;
   G.bossSpawned = true;
-  const threat=CombatScaling.bossProfile(),s=Journey.stage(),hp=Math.round(s.bossHp*Journey.difficulty().bossHp*threat.hp);
+  const threat=CombatScaling.bossProfile(),s=Journey.stage(),hp=Math.round(s.bossHp*Journey.difficulty().bossHp*threat.hp)*(Journey.run.extramural?2:1);
   const b = {
-    id:G.uid++, type:'boss', name:s.boss, glyph:s.bossGlyph, color:s.color,
+    id:G.uid++, type:'boss', name:(Journey.run.extramural?'域外 · ':'')+s.boss, glyph:s.bossGlyph, color:s.color,
     ...World.bossPoint(),r:48, hp, maxHp:hp, speed:s.bossSpeed, dmg:24, xp:60*threat.rewards.xp,threat,
     elite:false, boss:true, atkCd:2.5, hitCd:0, flash:0, poison:0, summonCd:6, slamCd:4, phase:1
   };

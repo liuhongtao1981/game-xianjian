@@ -36,15 +36,24 @@ const Cultivation=(()=>{
     if(e.eventObjective||e.bossHelper||e.boss)return false;
     const risk=CombatRewards.forEnemy(e);qi((e.elite?30:2)*risk.qi,false);
     const rare=!e.elite||RunSave.claim('elite:'+Journey.run.stage+':'+e.encounterId);
-    if(e.elite&&rare){const reward=ChapterCatalog.reward(Journey.run.stage);addMaterial(reward.core,1+CombatRewards.coreBonus(e));}
     if(e.elite&&rare)addMaterial('essence',Math.ceil(4*risk.qi));else if(!e.elite&&Math.random()<risk.essence)addMaterial('essence',1);
     return rare;
   }
   function victory(){
-    const reward=ChapterCatalog.reward(Journey.run.stage),firstClear=!RunSave.claimed('first:boss:'+Journey.run.stage);
+    if(Journey.run.extramural){
+      if(RunSave.claim('outer:boss:'+Journey.run.stage)){
+        const r=recipe(ChapterCatalog.get(Journey.run.stage).realm);
+        addMaterial(r.core,r.coreCount/2);addMaterial('essence',r.essence/2);
+        qi(150,false);
+      }
+      return;
+    }
+    const reward=ChapterCatalog.reward(Journey.run.stage);
     const risk=CombatRewards.forEnemy(G.boss),first=RunSave.claim('boss:'+Journey.run.stage);
-    if(first){if(G.boss?.xp)gainXP(G.boss.xp,false);const initial=RunSave.claim('first:boss:'+Journey.run.stage);qi((initial?reward.qi:150)*risk.qi,false);addMaterial('essence',Math.ceil((initial?reward.essence:8)*risk.qi));}
-    if(!G.coreReward&&!RunSave.claimed('core:'+Journey.run.stage))G.coreReward={max:Math.min(13,ChapterCatalog.get(Journey.run.stage).realm+1),count:(firstClear?reward.count:1)+(first?CombatRewards.coreBonus(G.boss):0)};
+    if(first){if(G.boss?.xp)gainXP(G.boss.xp,false);const initial=RunSave.claim('first:boss:'+Journey.run.stage);qi((initial?reward.qi:150)*risk.qi,false);addMaterial('essence',Math.ceil((initial?reward.essence:8)*risk.qi));
+      // The boss claim records both successful and failed rolls, so reload cannot reroll loot.
+      if(Math.random()<.3){addMaterial(reward.core,Math.max(1,reward.count));RunSave.claim('drop:'+Journey.run.stage+':realm');}
+    }
   }
   function claimCore(target){
     if(G.state!=='win'||!G.coreReward||!Number.isInteger(target)||target<1||target>G.coreReward.max)return false;

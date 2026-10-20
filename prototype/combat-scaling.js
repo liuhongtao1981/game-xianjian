@@ -52,6 +52,7 @@ const CombatScaling=(()=>{
     const c=source?context(source):{kind:'environment',scale:1,shieldFactor:1};
     let damage=Math.max(0,Math.round(amount*(c.scale||1)*Math.max(0,1-P.armor)*Journey.difficulty().damage));
     const index=['ordinary','elite','boss'].indexOf(c.kind);if(index>=0)damage=Math.min(damage,P.maxHp*(limits[Journey.run.difficulty]||limits.normal)[index]);
+    if(Journey.run.extramural&&c.kind==='boss')damage*=2;
     return {damage,shieldFactor:c.shieldFactor||1,kind:c.kind};
   }
   function regenState(p=P){const wait=Math.max(0,p.shieldDelay||0),engaged=G.enemies.some(e=>e.hp>0&&!e.eventObjective&&!e.bossHelper&&Math.hypot(e.x-p.x,e.y-p.y)<650);return {wait,engaged,normal:p.regen,combat:p.regen*.25,rate:wait?0:p.regen*(engaged?.25:1)};}
@@ -74,8 +75,8 @@ const CombatRewards=(()=>{
     if(upgrades.length){const key=pick(upgrades);return {kind:'spell-up',key,name:SPELLS[key].name+' · 精进一级',glyph:SPELLS[key].glyph,color:SPELLS[key].color,desc:SPELLS[key].desc(P.spells[key]+1)};}
     const learn=Object.keys(SPELLS).filter(k=>!P.spells[k]);
     if(Object.keys(P.spells).length<6&&learn.length){const key=pick(learn);return {kind:'spell',key,name:SPELLS[key].name,glyph:SPELLS[key].glyph,color:SPELLS[key].color,desc:SPELLS[key].desc(1)};}
-    const r=ChapterCatalog.reward(Journey.run.stage),materials={essence:8,[r.core]:1},name='灵蕴精华 ×8 · '+Cultivation.cores[Number(r.core.slice(4))-1]+' ×1';
-    return {kind:'material',materials,name,glyph:'晶',color:'#c7dba0',desc:'术法与法宝已满，封印匣化作本章突破材料。'};
+    const materials={essence:8},name='灵蕴精华 ×8';
+    return {kind:'material',materials,name,glyph:'晶',color:'#c7dba0',desc:'术法与法宝已满，封印匣化作灵蕴；破境核心须挑战对应关卡大妖或域外超级大妖。'};
   }
   return {forEnemy,coreBonus,enhancedChest};
 })();
