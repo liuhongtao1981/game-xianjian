@@ -10,7 +10,7 @@ const JourneyProgress=(()=>{
     ...(b.ultimateArts?{ultimateArts:UltimateArts.snapshot(b,b.ultimatePrimary||'heaven'),ultimatePrimary:b.ultimatePrimary}:{}),heroId:HeroIdentity.clean(b.heroId),growthChoices:b.growthChoices??Math.max(0,Math.floor(b.level)-1),t:{...b.t},
     poison:b.poison===true,spells:{...b.spells},equips:[...b.equips],cultivation:Cultivation.clean(b.cultivation)};}
   function validBuild(b){
-    return b&&fields.every(k=>Number.isFinite(b[k])&&Math.abs(b[k])<1e7)&&b.maxHp>0&&b.hp>0&&b.hp<=b.maxHp&&b.speed>0&&b.dmg>0&&b.cdr>0&&b.level>=1&&b.spells&&Object.entries(b.spells).every(([k,v])=>spellKeys.includes(k)&&Number.isInteger(v)&&v>=1&&v<=18)&&Array.isArray(b.equips)&&b.equips.length<=8&&b.equips.every(v=>['mujian','jifeng','jiuhu','wudu','nvwa','tiangang','juling','huxin'].includes(v))
+    return b&&fields.every(k=>Number.isFinite(b[k])&&Math.abs(b[k])<1e7)&&b.maxHp>0&&b.hp>0&&b.hp<=b.maxHp&&b.speed>0&&b.dmg>0&&b.cdr>0&&b.level>=1&&b.spells&&Object.entries(b.spells).every(([k,v])=>spellKeys.includes(k)&&SpellGrowth.validLevel(v,b.cultivation?.realm||0))&&Array.isArray(b.equips)&&b.equips.length<=8&&b.equips.every(v=>['mujian','jifeng','jiuhu','wudu','nvwa','tiangang','juling','huxin'].includes(v))
       &&(b.ultimateArts===undefined||UltimateArts.validState(b.ultimateArts))&&(b.ultimatePrimary===undefined||UltimateArts.keys.includes(b.ultimatePrimary))
       &&(b.heroId===undefined||HeroIdentity.valid(b.heroId))
       &&Object.keys(resources).every(k=>b[k]===undefined||Number.isFinite(b[k])&&b[k]>=0&&b[k]<1e7)

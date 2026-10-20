@@ -12,13 +12,13 @@ const server=http.createServer((q,r)=>{const file=path.resolve(root,'.'+decodeUR
  if(await page.locator('[data-ultimate][aria-pressed="true"]').count()!==3)throw Error('Three arts not selected');
  await page.locator('[data-ultimate="lotus"]').click();if(await page.locator('[data-ultimate][aria-pressed="true"]').count()!==2)throw Error('Cannot change loadout');
  await page.locator('[data-ultimate="lotus"]').click();await page.locator('#startBtn').click();await page.locator('#enterStageBtn').click();
- await page.evaluate(()=>{G.enemies=[];P.spells={};P.cultivation.realm=13;P.spells.wanjian=18;P.cdr=.2;P.xp=0;P.xpNext=1000000;World.camera(0,true);syncHUD();});
+ await page.evaluate(()=>{G.enemies=[];P.spells={};P.cultivation.realm=13;P.spells.wanjian=16;P.cdr=.2;P.xp=0;P.xpNext=1000000;World.camera(0,true);syncHUD();});
  for(const [i,key] of ['q','r','t'].entries()){await page.keyboard.press(key);await page.waitForFunction(i=>G.ultimate?.kind===UltimateArts.loadout()[i],i);await page.waitForFunction(()=>!G.ultimate);}
  const combat=await page.evaluate(()=>({casts:G.ultimateCasts,arts:UltimateArts.snapshot(),rings:[0,1,2,3].map(l=>SpellCombat.orbit(P).filter(s=>s.layer===l).length)}));
  if(combat.casts!==3||combat.rings.join(',')!=='5,7,10,14'||Object.values(combat.arts).some(s=>s.energy>=100))throw Error('Three art rotation failed '+JSON.stringify(combat));
- await page.evaluate(()=>{G.enemies=[];P.spells={wanjian:18};delete P.cultivation.spellGift;RunSave.save('UI restore');G.state='paused';});
+ await page.evaluate(()=>{G.enemies=[];P.spells={wanjian:16};delete P.cultivation.spellGift;RunSave.save('UI restore');G.state='paused';});
  await page.reload();await page.locator('#continueRunBtn').click();if(await page.evaluate(()=>UltimateArts.loadout().length)!==3)throw Error('Loadout lost on refresh');
- await page.locator('#resumeBtn').click();await page.evaluate(()=>{G.enemies=[];P.xp=0;P.xpNext=1000000;P.spells={wanjian:18};UltimateArts.charge(100);for(const s of Object.values(P.ultimateArts))s.cd=0;UltimateArts.sync();syncHUD();});
+ await page.locator('#resumeBtn').click();await page.evaluate(()=>{G.enemies=[];P.xp=0;P.xpNext=1000000;P.spells={wanjian:16};UltimateArts.charge(100);for(const s of Object.values(P.ultimateArts))s.cd=0;UltimateArts.sync();syncHUD();});
  await page.screenshot({path:path.join(output,'ultimate-arts-desktop.png')});
  await page.locator('#characterBtn').click();if(!await page.locator('.character-content').innerText().then(s=>s.includes('冷却缩减 · 含大招')&&s.includes('80%')&&s.includes('携行大招')))throw Error('Character stats incomplete');
  await page.screenshot({path:path.join(output,'ultimate-arts-character.png')});await page.locator('#closeCharacterBtn').click();

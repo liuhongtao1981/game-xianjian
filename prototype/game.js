@@ -1216,7 +1216,13 @@ function drawPlayer(){
   shadow.addColorStop(0,'#0009');shadow.addColorStop(1,'#0000');ctx.fillStyle=shadow;
   ctx.beginPath();ctx.ellipse(p.x,p.y+5,34,11,0,0,TAU);ctx.fill();ctx.restore();
   RealmVisuals.draw(p.cultivation,p.x,p.y,G.time);
-  if(p.spells.wanjian)for(const sword of SpellCombat.orbit(p))Motion.sword(sword.x,sword.y,sword.a+Math.PI/2,40,RealmVisuals.get(p.cultivation).color);
+  if(p.spells.wanjian){
+    const swords=SpellCombat.orbit(p),crowded=swords.length>36,color=RealmVisuals.get(p.cultivation).color;
+    for(const sword of swords){
+      const at=World.screen(sword.x,sword.y);if(at.x< -40||at.y< -40||at.x>W+40||at.y>H+40)continue;
+      Motion.sword(sword.x,sword.y,sword.a+Math.PI/2,crowded?(W<650?25:32):40,color,crowded&&sword.layer>1?.58:1);
+    }
+  }
   Motion.drawActor(p,'hero',116);
   Motion.drawShield(p);
 }

@@ -13,14 +13,21 @@ const HeroIdentity=(()=>{
 /* One source for spell caps, bounded multi-hit budgets and cultivation visuals. */
 const SpellGrowth=(()=>{
   const realm=()=>typeof P!=='undefined'&&P?(P.cultivation?.realm||0):0;
-  const cap=(r=realm())=>5+r;
+  const cap=(r=realm())=>5+3*r;
+  // Old saves accepted permanent levels through 18, even above their realm cap.
+  // Keep those investments; new upgrades still obey the current realm's cap.
+  const validLevel=(l,r=realm())=>Number.isSafeInteger(l)&&l>=1&&l<=Math.max(18,cap(r));
   function spec(id,level,r=realm()){
-    const l=Math.max(1,Math.min(18,level)),base=Math.min(5,l),growth=1+.12*Math.max(0,l-5);
-    const form=r>=11&&l>=16?3:r>=6&&l>=11?2:r>=1&&l>=6?1:0;
+    const l=Number.isSafeInteger(level)&&level>0?level:1,base=Math.min(5,l),growth=1+.12*Math.max(0,l-5);
+    const form=Math.floor((l-1)/5);
     const damage={yujian:18+8*base,wulei:20+10*base,sanmei:22+11*base,wanjian:10+6*base,gudu:9+5*base,jiushen:38+18*base};
-    const rings=[5,7,10,14].slice(0,1+form);
-    return {level:l,cap:cap(r),form,damage:(damage[id]||0)*growth,layers:id==='wanjian'?rings.length:id==='gudu'?Math.min(3,1+form):1,ringCounts:id==='wanjian'?rings:[],
-      count:id==='yujian'?Math.min(10,l+Math.floor(r/4)):id==='wanjian'?rings.reduce((a,b)=>a+b,0):id==='wulei'?l:1,
+    // Larger circles carry more blades: 5/7/10/14/19/... at each new form.
+    // Between circle unlocks, each level adds a blade to the outermost circle.
+    const rings=id==='wanjian'?Array.from({length:1+form},(_,i)=>5+i*(i+3)/2):[];
+    if(rings.length)rings[rings.length-1]+=(l-1)%5;
+    const radius=62+base*3,ringRadii=rings.map((_,i)=>radius+36*i+4*i*(i-1));
+    return {level:l,cap:cap(r),form,damage:(damage[id]||0)*growth,layers:id==='wanjian'?rings.length:id==='gudu'?Math.min(3,1+form):1,ringCounts:rings,ringRadii,
+      count:id==='yujian'||id==='wulei'?l:id==='wanjian'?rings.reduce((a,b)=>a+b,0):1,
       radius:id==='wanjian'?62+base*3:id==='sanmei'?95+l*8+form*35:id==='gudu'?74+(l-1)*8+form*18:id==='bingxin'?50+(l-1)*10+form*12:id==='guanyin'?58+(l-1)*12+form*25:110+(l-1)*10+form*25,
       range:(['gudu','jiushen'].includes(id)?620:900)+(['gudu','jiushen'].includes(id)?(l-1)*26:0),
       pulses:id==='guanyin'?3:1+Math.min(2,form),shield:(18+12*base)*growth,heal:(8+6*base)*growth};
@@ -35,13 +42,13 @@ const SpellGrowth=(()=>{
     if(from===to){if(to>=cap())return label+' '+value(b)+unit+' · 已达本境等级上限';const next=spec(id,to+1);return '下一级：'+label+' '+value(b)+' → '+value(next)+unit+(quantity&&value(next)===value(b)?'（数量封顶）':'');}
     return '本次：'+label+' '+(a?value(a):0)+' → '+value(b)+unit+(id==='wanjian'?' · '+b.layers+'圈（'+b.ringCounts.join('/')+'柄） · 剑轮伤害 '+Math.round(a?.damage||0)+' → '+Math.round(b.damage):!quantity&&['gudu','jiushen'].includes(id)?' · 施法距离 '+(a?a.range:0)+' → '+b.range:'');
   }
-  return {cap,spec,describe,focus,change};
+  return {cap,validLevel,spec,describe,focus,change};
 })();
 /* Gift levels have a separate provenance; P.spells remains the combat-facing view. */
 const SpellGift=(()=>{
   const keys=['yujian','wanjian','wulei','sanmei','bingxin','gudu','jiushen','guanyin'];
   const copy=o=>JSON.parse(JSON.stringify(o));
-  function valid(g,realm){return !!g&&g.version===1&&[g.base,g.levels].every(o=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.entries(o).every(([k,v])=>keys.includes(k)&&Number.isInteger(v)&&v>=1&&v<=18))&&Object.values(g.levels).reduce((a,b)=>a+b,0)<=3*realm&&new Set([...Object.keys(g.base),...Object.keys(g.levels)]).size<=6&&keys.every(k=>(g.base[k]||0)+(g.levels[k]||0)<=Math.max(5+realm,g.base[k]||0));}
+  function valid(g,realm){return !!g&&g.version===1&&[g.base,g.levels].every(o=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.entries(o).every(([k,v])=>keys.includes(k)&&SpellGrowth.validLevel(v,realm)))&&Object.values(g.levels).reduce((a,b)=>a+b,0)<=3*realm&&new Set([...Object.keys(g.base),...Object.keys(g.levels)]).size<=6&&keys.every(k=>(g.base[k]||0)+(g.levels[k]||0)<=Math.max(SpellGrowth.cap(realm),g.base[k]||0));}
   function ensure(p=P){
     const c=p.cultivation||(p.cultivation=Cultivation.fresh());
     if(!c.spellGift)c.spellGift={version:1,base:{...p.spells},levels:{}};
