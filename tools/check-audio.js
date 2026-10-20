@@ -78,7 +78,7 @@ for(const [index,id] of [[6,'wish'],[7,'windwood'],[8,'bonewish']]){run(`Sound.r
 const manifest=JSON.parse(fs.readFileSync(path.join(__dirname,'../docs/audio-cues.json'),'utf8'));
 const musicManifest=JSON.parse(fs.readFileSync(path.join(__dirname,'../prototype/assets/audio/music/manifest.json'),'utf8'));
 const neuralManifest=JSON.parse(fs.readFileSync(path.join(__dirname,'../prototype/assets/audio/voice-v2/manifest.json'),'utf8'));
-assert.equal(manifest.cues.length,68);assert.equal(musicManifest.tracks.length,18);assert.equal(neuralManifest.clips.length,manifest.cues.length);
+assert.equal(manifest.cues.length,68);assert.equal(musicManifest.tracks.length,24);assert.equal(neuralManifest.clips.length,manifest.cues.length);
 for(const cue of manifest.cues){
   const clip=neuralManifest.clips.find(c=>c.id===cue.id);assert.ok(clip,cue.id);assert.equal(clip.text,cue.text);assert.equal(clip.voice,manifest.profiles[cue.role].voice);
   for(const [file,key] of [[clip.file,'mixed_sha256'],[clip.source,'source_sha256']])assert.equal(createHash('sha256').update(fs.readFileSync(path.join(__dirname,'../prototype',file))).digest('hex'),clip[key],file);
@@ -90,7 +90,7 @@ for(const file of files){
   const result=spawnSync('ffprobe',['-v','error','-show_entries','format=duration','-of','json',full],{encoding:'utf8'});assert.equal(result.status,0,file);assert.ok(Number(JSON.parse(result.stdout).format.duration)>.2,file);
   const decoded=spawnSync('ffmpeg',['-hide_banner','-loglevel','error','-i',full,'-f','null','-'],{encoding:'utf8'});assert.equal(decoded.status,0,file+' decodes');
 }
-console.log(`PASS 68 neural clips, ${legacy.length} retained legacy clips and 18 music tracks decode successfully`);
+console.log(`PASS 68 neural clips, ${legacy.length} retained legacy clips and 24 music tracks decode successfully`);
 console.log(`${count} audio behavior checks plus ${files.length} media file checks and 136 provenance hashes passed`);
 
 }

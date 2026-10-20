@@ -1,0 +1,44 @@
+{
+  "production": false,
+  "errors": [],
+  "perf": [
+    {
+      "stage": 9,
+      "count": 24,
+      "ms": 2.37,
+      "valid": true
+    },
+    {
+      "stage": 9,
+      "count": 48,
+      "ms": 3.34,
+      "valid": true
+    },
+    {
+      "stage": 10,
+      "count": 24,
+      "ms": 2.07,
+      "valid": true
+    },
+    {
+      "stage": 10,
+      "count": 48,
+      "ms": 3.5,
+      "valid": true
+    },
+    {
+      "stage": 11,
+      "count": 24,
+      "ms": 1.98,
+      "valid": true
+    },
+    {
+      "stage": 11,
+      "count": 48,
+      "ms": 3.33,
+      "valid": true
+    }
+  ],
+  "source": "local working tree before release",
+  "baseRevision": "f605f6796d9623c80fc80234013dbef8e89b0412"
+}

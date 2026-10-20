@@ -19,6 +19,10 @@ scores.push(
  {id:'wish',title:'焚愿禅院·净灯',bpm:76,battleBpm:112,root:46,scale:[0,3,5,7,10],motif:[0,null,4,2,1,3,0,1,4,null,2,0,3,1,2,null]},
  {id:'windwood',title:'黑风密林·风钟',bpm:82,battleBpm:122,root:43,scale:[0,2,5,7,10],motif:[0,3,1,null,4,2,3,1,0,4,null,3,2,1,3,0]},
  {id:'bonewish',title:'愿骨石窟·归声',bpm:70,battleBpm:116,root:41,scale:[0,3,5,7,10],motif:[0,null,1,4,null,3,2,0,4,1,3,null,2,1,0,null]});
+scores.push(
+ {id:'contract',title:'血契高庄·秤影',bpm:80,battleBpm:118,root:44,scale:[0,3,5,7,10],motif:[0,1,null,3,2,4,1,null,3,0,4,2,1,3,null,0]},
+ {id:'wedding',title:'福陵喜堂·散席',bpm:78,battleBpm:124,root:49,scale:[0,2,5,7,9],motif:[0,4,3,null,2,1,0,3,4,2,null,1,3,2,1,0]},
+ {id:'yellowwind',title:'黄风沙海·窃神',bpm:84,battleBpm:128,root:40,scale:[0,2,3,7,10],motif:[0,null,2,4,1,3,2,null,4,3,1,0,2,1,3,0]});
 function render(score,battle){
   const bpm=battle?(score.battleBpm||[100,112,104,108,120,106][scores.indexOf(score)]):score.bpm,beat=60/bpm,duration=64*beat;
   const length=Math.ceil(duration*sr),left=new Float32Array(length),right=new Float32Array(length);

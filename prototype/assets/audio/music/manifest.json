@@ -126,6 +126,48 @@
       "bpm": 116,
       "duration": 33.103,
       "original": true
+    },
+    {
+      "file": "assets/audio/music/contract-field.mp3",
+      "title": "血契高庄·秤影·行路",
+      "bpm": 80,
+      "duration": 48,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/contract-boss.mp3",
+      "title": "血契高庄·秤影·守关",
+      "bpm": 118,
+      "duration": 32.542,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/wedding-field.mp3",
+      "title": "福陵喜堂·散席·行路",
+      "bpm": 78,
+      "duration": 49.231,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/wedding-boss.mp3",
+      "title": "福陵喜堂·散席·守关",
+      "bpm": 124,
+      "duration": 30.968,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/yellowwind-field.mp3",
+      "title": "黄风沙海·窃神·行路",
+      "bpm": 84,
+      "duration": 45.714,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/yellowwind-boss.mp3",
+      "title": "黄风沙海·窃神·守关",
+      "bpm": 128,
+      "duration": 30,
+      "original": true
     }
   ]
 }

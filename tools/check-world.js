@@ -1,5 +1,6 @@
 const assert=require('node:assert/strict');const {createHarness}=require('./game-harness');let passed=0;
-for(let stage=0;stage<9;stage++){
+const chapters=createHarness().evaluate('ChapterCatalog.playable');
+for(let stage=0;stage<chapters;stage++){
  const h=createHarness();h.evaluate(`Journey.run.stage=${stage};reset();`);
  const check=(name,code)=>{assert.equal(h.evaluate(`(()=>{${code}})()`),true,`chapter ${stage+1}: ${name}`);passed++;console.log('PASS chapter '+(stage+1)+' '+name);};
  check('dimensions are chapter-owned and entrance is walkable',`const b=World.bounds(),s=World.spawn(),c=ChapterCatalog.get(Journey.run.stage);return b.w===c.width&&b.h===c.height&&P.x===s.x&&P.y===s.y&&World.isWalkable(P.x,P.y,20);`);

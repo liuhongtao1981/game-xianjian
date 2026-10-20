@@ -40,6 +40,7 @@ const Bosses=(()=>{
     say(e,b.round===1?['先破钟心 · 诱锤收势','断双诏 · 侧避问斩','灭河灯 · 连渡潮隙','诱重砸 · 断镇山锁柱','辨实印 · 诱尽三段追链','破锁鳞 · 冲岸迎雷潮'][Journey.run.stage]:'重整招式 · 可继续攻击',16);
   }
   function init(e){
+    if(Journey.run.stage>=9)return HuashenGuardians.init(e);
     if(Journey.run.stage>=6)return InfantGuardians.init(e);
     const theme=Journey.run.stage%3;
     e.brain={theme,round:1,breaks:0,attackIndex:0,token:0,pending:null,helperTotal:0,helperBroken:0,mechanismReady:false,windowDamage:0,phaseAnnounced:false};
@@ -119,6 +120,7 @@ const Bosses=(()=>{
     b.pending=null;action(e,'guard',(e.phase===2?.7:1.15)*config().pace);
   }
   function update(e,dt){
+    if(Journey.run.stage>=9)return HuashenGuardians.update(e,dt);
     if(Journey.run.stage>=6)return InfantGuardians.update(e,dt);
     if(!e.brain)init(e);if(!alive(e))return;
     const b=e.brain;if(e.hp<=e.maxHp*.5&&!b.phaseAnnounced){e.phase=2;b.phaseAnnounced=true;Sound.guardian(Journey.run.stage,true);say(e,Journey.stage().boss+' · 怒相',21);}
@@ -150,6 +152,7 @@ const Bosses=(()=>{
     }else if(e.action==='recover'&&e.actionT>=e.actionDuration)finishAttack(e);
   }
   function onImpact(t,hitPlayer=false){
+    if(Journey.run.stage>=9)return HuashenGuardians.onImpact(t,hitPlayer);
     if(Journey.run.stage>=6)return InfantGuardians.onImpact(t,hitPlayer);
     const e=G.boss;if(!alive(e)||!e.brain||t.bossOwner!==e.id)return;
     const b=e.brain,p=b.pending;if(!p||p.token!==t.bossToken)return;
@@ -165,6 +168,7 @@ const Bosses=(()=>{
     }
   }
   function onHelperKilled(h){
+    if(Journey.run.stage>=9)return HuashenGuardians.onHelperKilled(h);
     if(Journey.run.stage>=6)return InfantGuardians.onHelperKilled(h);
     if(!h.bossHelper)return;
     const e=G.boss;if(!alive(e)||!e.brain||h.bossOwner!==e.id)return;
@@ -175,12 +179,14 @@ const Bosses=(()=>{
   function damageMultiplier(e){return e.boss&&e.action==='exposed'?3:1;}
   function filterDamage(e,damage){
     if(e.boss){const actual=Math.max(0,Math.min(Math.round(damage),e.hp));if(e.brain&&e.action==='exposed')e.brain.windowDamage=(e.brain.windowDamage||0)+actual;return actual;}
+    if(Journey.run.stage>=9)return HuashenGuardians.filterDamage(e,damage);
     if(Journey.run.stage>=6)return InfantGuardians.filterDamage(e,damage);
     if(e.locked)return 0;
     if(e.phantom){if((e.phantomCd||0)<G.time){e.phantomCd=G.time+3;for(let i=0;i<2&&G.enemies.filter(h=>h.hp>0&&!h.boss&&!h.bossHelper).length<6;i++)spawnEnemy('fox',false,World.clipToArena({x:e.x+60*i,y:e.y+40},55),{source:'boss',encounterId:-1,tier:1.3,threat:e.threat,trait:null});addText(e.x,e.y-55,'幻印反噬 · 追猎来袭',Journey.stage().color,15);}return 0;}
     return damage;
   }
   function hud(e){
+    if(Journey.run.stage>=9)return HuashenGuardians.hud(e);
     if(Journey.run.stage>=6)return InfantGuardians.hud(e);
     if(!e?.brain)return {title:'寻其破绽',hint:tells[Journey.run.stage],progress:0,exposed:false,remaining:0,breaks:0};
     const b=e.brain,exposed=e.action==='exposed',remaining=Math.max(0,e.actionDuration-e.actionT);

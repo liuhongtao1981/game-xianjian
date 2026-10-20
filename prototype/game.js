@@ -611,12 +611,13 @@ function updateTelegraphs(dt){
     t.life-=dt;
     if(t.life<=0 && !t.struck){
       t.struck=true;
-      G.auras.push({x:t.x,y:t.y,r:0,max:t.r,life:.45,color:'#df956c'});
+      G.auras.push({x:t.x,y:t.y,r:0,max:t.shape==='sandstorm'?170:t.r,life:.45,color:'#df956c'});
       burst(t.x,t.y,'#df956c',18,160);
       const dx=P.x-t.x,dy=P.y-t.y;
       let hit=Math.hypot(dx,dy)<t.r+P.r;
       if(t.shape==='line'){const along=dx*Math.cos(t.angle)+dy*Math.sin(t.angle),across=-dx*Math.sin(t.angle)+dy*Math.cos(t.angle);hit=Math.abs(along)<t.length+P.r&&Math.abs(across)<t.r+P.r;}
       if(t.shape==='annulus')hit=Math.abs(Math.hypot(dx,dy)-t.r)<t.width+P.r;
+      if(t.shape==='sandstorm')hit=HuashenGuardians.stormHit(t,P);
       if(t.shape==='tide')hit=P.x>(t.left??0)-P.r&&P.x<(t.right??World.bounds().w)+P.r&&Math.abs(dy)<t.r+P.r&&Math.abs(P.x-t.gap)>Math.max(0,t.safe/2-P.r);
       Encounters.impact(t);
       Bosses.onImpact(t,hit&&P.invuln<=0);
@@ -1324,6 +1325,7 @@ function drawAtmosphere(){
 }
 function drawTelegraphs(){
   for(const t of G.telegraphs){
+    if(t.shape==='sandstorm'){HuashenArt.drawStorm(t);continue;}
     const progress=1-t.life/t.total,color=t.color||'#e69a75';
     ctx.save();ctx.fillStyle=rgba(color,.14+progress*.16);ctx.strokeStyle=rgba(color,.8);ctx.lineWidth=2;
     if(t.shape==='tide'){
@@ -1377,7 +1379,7 @@ function syncHUD(){
   document.getElementById('heroGlyph').textContent=HeroIdentity.get(P.heroId).glyph;
   document.getElementById('identitySub').textContent='无籍剑仙 · '+profile.name;
   document.getElementById('locationTitle').textContent=stage.place+' · '+World.region();
-  document.getElementById('locationSubtitle').textContent=stage.subtitle+' · 轮回劫阶 '+(Journey.run.tier||0)+' · 累积劫压 '+Journey.run.stage+' · 寻圣线索 '+JourneyProgress.cleared()+'/3';
+  document.getElementById('locationSubtitle').textContent=stage.subtitle+' · 轮回劫阶 '+(Journey.run.tier||0)+' · 累积劫压 '+Journey.run.stage+' · 寻圣线索 '+JourneyProgress.cleared()+'/42';
   document.getElementById('objectiveText').textContent=G.state==='win'?stage.title+' · 已破':(G.bossSpawned?'击杀守关 · '+stage.boss:'自由探路 · 寻找守关祭坛');
   const helpers=G.enemies.filter(e=>(e.seal||e.clerk||e.lantern)&&e.hp>0).length;
   document.getElementById('objectiveDetail').textContent=G.boss&&G.boss.hp>0?Bosses.hud(G.boss).hint:World.objective();

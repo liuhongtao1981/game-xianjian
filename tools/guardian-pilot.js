@@ -4,6 +4,7 @@ const GuardianPilot=(()=>{
   function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
   function danger(t,x,y){
     const dx=x-t.x,dy=y-t.y;
+    if(t.shape==='sandstorm')return HuashenArt.shade(t,{x,y,r:P.r})?80:-80;
     if(t.shape==='annulus')return Math.abs(Math.hypot(dx,dy)-t.r)-t.width-P.r;
     if(t.shape==='line')return Math.max(Math.abs(dx*Math.cos(t.angle)+dy*Math.sin(t.angle))-t.length-P.r,Math.abs(-dx*Math.sin(t.angle)+dy*Math.cos(t.angle))-t.r-P.r);
     if(t.shape==='tide'){
@@ -17,6 +18,9 @@ const GuardianPilot=(()=>{
     const tide=G.telegraphs.find(t=>t.shape==='tide'&&t.bossSkill==='tide');
     if(tide)return {x:tide.gap,y:tide.y,ritual:true};
     if(boss.action==='exposed')return {x:boss.x,y:boss.y+55};
+    if(Journey.run.stage===11){const t=G.telegraphs.filter(t=>t.shape==='sandstorm').sort((a,b)=>a.life-b.life)[0];if(t){const choices=t.shelters.map(h=>({x:h.x+Math.cos(t.windAngle)*135,y:h.y+Math.sin(t.windAngle)*135,ritual:true}));choices.sort((a,b)=>distance(a,P)-distance(b,P));return choices[0];}return {x:boss.x,y:boss.y+160};}
+    if(Journey.run.stage===9&&helpers.length){const t=G.telegraphs.find(t=>t.bossSkill==='contract-stamp');if(t){const a=Math.atan2(P.y-t.y,P.x-t.x);return {x:t.x+Math.cos(a)*210,y:t.y+Math.sin(a)*210};}}
+    if(Journey.run.stage===10&&helpers.length){const attack=boss.brain.pending;if(attack?.kind==='rake'){const a=boss.attackAngle,side=Math.sign(Math.cos(a)*(P.y-attack.origin.y)-Math.sin(a)*(P.x-attack.origin.x))||1;return {x:attack.origin.x-Math.sin(a)*side*260,y:attack.origin.y+Math.cos(a)*side*260};}helpers.sort((a,b)=>distance(a,P)-distance(b,P));const h=helpers[0],d=distance(h,boss)||1;return {x:h.x+(h.x-boss.x)/d*85,y:h.y+(h.y-boss.y)/d*85};}
     if(Journey.run.stage===7&&helpers.length){
       const attack=boss.brain.pending;
       if(attack?.kind==='pounce'){const a=boss.attackAngle,side=Math.sign(Math.cos(a)*(P.y-attack.origin.y)-Math.sin(a)*(P.x-attack.origin.x))||1;return {x:attack.origin.x-Math.sin(a)*side*220,y:attack.origin.y+Math.cos(a)*side*220};}
@@ -50,6 +54,7 @@ const GuardianPilot=(()=>{
       if(ellipse>.98)cost+=1000+(ellipse-.98)*2000;
       if(!World.isWalkable(x,y,P.r))cost+=2000;
       for(const t of G.telegraphs){
+        if(t.shape==='sandstorm'&&G.telegraphs.some(q=>q.shape==='sandstorm'&&q.life<t.life))continue;
         const d=danger(t,x,y),weight=t.shape==='annulus'?(t.life<.40?1:0):t.life<.75?1:.35;
         if(d<30)cost+=(30-d)*weight*9;
       }
@@ -68,8 +73,8 @@ const GuardianPilot=(()=>{
     const imminent=G.telegraphs.some(t=>t.life<.23&&danger(t,P.x,P.y)<5)||G.eshots.some(s=>Math.hypot(P.x-(s.x+s.vx*.15),P.y-(s.y+s.vy*.15))<P.r+s.r+5);
     // Never dash out of the green tide gap; the ritual requires being physically inside it.
     if(imminent&&!goal.ritual&&Math.hypot(best.x,best.y)>0&&P.dashCd<=0){P.facing.x=best.x;P.facing.y=best.y;tryDash();}
-    if(G.boss.action==='exposed'&&G.boss.actionDuration-G.boss.actionT>1.3&&distance(P,G.boss)<420&&P.energy>=100&&P.ultCd<=0){
-      const d=distance(P,G.boss)||1;P.facing.x=(G.boss.x-P.x)/d;P.facing.y=(G.boss.y-P.y)/d;tryUltimate();
+    if(G.boss.action==='exposed'&&G.boss.actionDuration-G.boss.actionT>1.3&&distance(P,G.boss)<420&&!G.ultimate&&UltimateArts.loadout().some(id=>UltimateArts.ready(id))){
+      const d=distance(P,G.boss)||1;P.facing.x=(G.boss.x-P.x)/d;P.facing.y=(G.boss.y-P.y)/d;const id=UltimateArts.loadout().find(id=>UltimateArts.ready(id));if(id)tryUltimate(id);
     }
   }
   function uninformed(){
@@ -77,7 +82,7 @@ const GuardianPilot=(()=>{
     // never read warning geometry or deliberately solve a guardian's ritual.
     const dx=G.boss.x-P.x,dy=G.boss.y+55-P.y,d=Math.hypot(dx,dy);
     joy.active=true;joy.dx=d>25?dx/d:0;joy.dy=d>25?dy/d:0;
-    if(P.energy>=100&&P.ultCd<=0)tryUltimate();
+    const id=UltimateArts.loadout().find(id=>UltimateArts.ready(id));if(id)tryUltimate(id);
   }
   function run(options){
     Journey.begin();Journey.run.difficulty=options.difficulty;Journey.run.ultimate=options.ultimate;botMode=false;reset();

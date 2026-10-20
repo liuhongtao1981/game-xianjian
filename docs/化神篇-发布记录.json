@@ -1,0 +1,152 @@
+{
+  "date": "2026-10-20",
+  "released": {
+    "total": 12,
+    "realm": "化神",
+    "chapters": [
+      {
+        "id": "contract",
+        "name": "血契高庄",
+        "boss": "人券庄主",
+        "mechanic": "反盖朱印销契，双线后收印增伤"
+      },
+      {
+        "id": "wedding",
+        "name": "福陵喜堂",
+        "boss": "吞愿耙魇",
+        "mechanic": "锁向耙沟断红绸，交错双斩与震地后收耙增伤"
+      },
+      {
+        "id": "yellowwind",
+        "name": "黄风沙海",
+        "boss": "黄风听骨王",
+        "mechanic": "三阵换向黄风，真实背风石阴影中藏神"
+      }
+    ]
+  },
+  "world": {
+    "size": [
+      7200,
+      5200
+    ],
+    "regionsPerChapter": 4,
+    "camps": 18,
+    "waves": 3,
+    "normalWaveSizes": [
+      28,
+      30,
+      32
+    ],
+    "elites": 4,
+    "desktopCaps": [
+      36,
+      48,
+      56,
+      64
+    ],
+    "mobileCap": 24,
+    "patrols": "unlimited, paused on boss entry"
+  },
+  "progression": {
+    "realmRequired": 3,
+    "requiresPriorChapterClear": true,
+    "core": "虚空晶髓",
+    "coreKey": "core4",
+    "trilogyGuaranteedBossChoiceTotal": 8,
+    "essence": 32,
+    "qi": 5120,
+    "eliteCoreDrop": true,
+    "claimLedgerPreservedOnDeathAndRefresh": true,
+    "allBossesTakeContinuousDamage": true,
+    "optionalExposureMultiplier": 3,
+    "saveVersion": 3,
+    "formerInfantFinaleContinuationTest": true
+  },
+  "art": {
+    "tool": "built-in image_gen.imagegen",
+    "promptAndPaths": "huashen-art-generation.json",
+    "atlases": 3,
+    "actorPoses": 60,
+    "terrainTiles": 6,
+    "props": 12,
+    "storyPanels": 3
+  },
+  "audio": {
+    "newOriginalMusicTracks": 6,
+    "localGeneration": "node tools/compose-music.js --only=contract,wedding,yellowwind",
+    "newDialogue": "18 original text captions; no external TTS request or borrowed dialogue recording",
+    "retainedNeuralVoiceClips": 68
+  },
+  "checks": {
+    "huashen": 33,
+    "worldGeometry": 60,
+    "campDirector": 14,
+    "expandedCamps": 216,
+    "continuousBossDamage": 15,
+    "audioBehavior": 39,
+    "mediaDecodeFiles": 115,
+    "provenanceHashes": 136,
+    "browser": "化神篇-浏览器验证.json",
+    "guardianSimulation": "化神篇-首领验证.json",
+    "fullExploration": "化神篇-全图验证.json"
+  },
+  "mainExplorationConsoleSummary": {
+    "command": "node tools/simulate-huashen-exploration.js --main-only",
+    "seed": 20261020,
+    "cleared": 3,
+    "startingBuild": {
+      "combatLevel": 40,
+      "realm": 3,
+      "layer": 1,
+      "maxHp": 500,
+      "shieldMax": 220,
+      "damageMultiplier": 4.5,
+      "cdr": 0.65,
+      "armor": 0.25,
+      "crit": 0.2,
+      "regen": 2,
+      "speed": 290,
+      "spells": {
+        "yujian": 6,
+        "wanjian": 6,
+        "wulei": 5,
+        "sanmei": 4,
+        "bingxin": 4,
+        "guanyin": 4
+      }
+    },
+    "chapters": [
+      {
+        "chapter": 10,
+        "seconds": 790,
+        "kills": 1605,
+        "maxCombatGapSeconds": 20,
+        "populationPeak": 48
+      },
+      {
+        "chapter": 11,
+        "seconds": 974,
+        "kills": 1956,
+        "maxCombatGapSeconds": 15,
+        "populationPeak": 48
+      },
+      {
+        "chapter": 12,
+        "seconds": 863,
+        "kills": 1901,
+        "maxCombatGapSeconds": 14,
+        "populationPeak": 48
+      }
+    ]
+  },
+  "boundaries": [
+    "Automated agents read full telegraph geometry and do not represent human completion times or win rates.",
+    "Browser performance is measured on this Windows desktop; a 390px viewport and 24-enemy simulation do not prove physical-phone performance.",
+    "No new cloud voice generation was requested; new chapter dialogue is subtitled.",
+    "Lianxu and later realms remain unplayable until independently authored."
+  ],
+  "publish": {
+    "url": "https://liuhongtao1981.github.io/game-xianjian/",
+    "resourceVersioning": "Git commit hash appended to runtime JS/CSS URLs and version.json"
+  }
+}

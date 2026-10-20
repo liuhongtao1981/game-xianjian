@@ -88,8 +88,8 @@ for(let i=3;i<6;i++){
  sites:[{x:.36,y:.58,kind:'lore',name:'旧契残碑',loreIndex:0},{x:.20,y:.20,kind:'lore',name:'隐名证词',loreIndex:1},{x:.79,y:.76,kind:'lore',name:'劫痕遗刻',loreIndex:2},{x:.23,y:.75,kind:'chest',name:'寻圣行囊'},{x:.55,y:.43,kind:'rest',name:'山泉药庐'},{x:.65,y:.39,kind:'boss',name:'守关祭坛'}],
  camps:[[.25,.76],[.33,.65],[.43,.52],[.20,.21],[.57,.38],[.57,.58],[.68,.66],[.79,.76],[.65,.39]]});
 }
-// 元婴三关 use independent routes; existing six chapter IDs and geometry stay unchanged.
-for(const c of InfantChapters){const l=c.layout,along=(route,t)=>{const f=t*(route.length-1),j=Math.min(route.length-2,Math.floor(f)),k=f-j;return [route[j][0]+(route[j+1][0]-route[j][0])*k,route[j][1]+(route[j+1][1]-route[j][1])*k];};
+// Later trilogies own independent routes; existing chapter IDs and geometry stay stable.
+for(const c of LaterChapters){const l=c.layout,along=(route,t)=>{const f=t*(route.length-1),j=Math.min(route.length-2,Math.floor(f)),k=f-j;return [route[j][0]+(route[j+1][0]-route[j][0])*k,route[j][1]+(route[j+1][1]-route[j][1])*k];};
  const pos=[l.hub,l.left,l.right,[l.spawn[0]+.035,l.spawn[1]-.025],along(l.main,.61),along(l.main,.82)];
  WorldNavData.push({id:c.id,spawn:{x:l.spawn[0],y:l.spawn[1]},boss:{x:l.boss[0],y:l.boss[1]},bossArena:{x:l.boss[0],y:l.boss[1],rx:.15,ry:.16},polygons:[],sites:pos.map((p,i)=>({x:p[0],y:p[1],kind:['lore','lore','lore','chest','rest','boss'][i],name:c.siteNames[i],...(i<3?{loreIndex:i}:{})})),camps:[along(l.main,.03),along(l.main,.17),along(l.main,.34),l.left,along(l.upper,.5),along(l.main,.5),along(l.lower,.6),l.right,along(l.main,.76)]});
 }
@@ -130,14 +130,14 @@ OpeningLayouts.forEach((l,i)=>{
  const extras=[l.left,l.left,l.right,l.right,l.spawn,l.left,l.right,mid];for(let j=6;j<14;j++){const p=extras[j-6];Object.assign(d.sites[j],{x:p[0]+(j%2?.025:-.025),y:p[1]+.025});}
 });
 
-InfantChapters.forEach((c,i)=>{const d=WorldNavData[i+6],l=c.layout,along=(route,t)=>{const f=t*(route.length-1),j=Math.min(route.length-2,Math.floor(f)),k=f-j;return [route[j][0]+(route[j+1][0]-route[j][0])*k,route[j][1]+(route[j+1][1]-route[j][1])*k];};d.regions=c.regions;
+LaterChapters.forEach((c,i)=>{const d=WorldNavData[i+6],l=c.layout,along=(route,t)=>{const f=t*(route.length-1),j=Math.min(route.length-2,Math.floor(f)),k=f-j;return [route[j][0]+(route[j+1][0]-route[j][0])*k,route[j][1]+(route[j+1][1]-route[j][1])*k];};d.regions=c.regions;
  const extra=[l.spawn,along(l.main,.26),along(l.main,.42),along(l.upper,.72),along(l.main,.60),along(l.lower,.32),along(l.lower,.86),[l.right[0]+.03,l.right[1]],along(l.main,.88)];d.camps.splice(9,9,...extra);
- const spots=[l.left,l.left,l.right,l.right,l.spawn,l.left,l.right,along(l.main,.61)];for(let j=6;j<14;j++)Object.assign(d.sites[j],{x:spots[j-6][0]+(j%2?.02:-.02),y:spots[j-6][1]+.02,name:j>=10?c.regions[j-10]+'驿站':j%2?'养魂药囊':'神木遗藏'});
+ const spots=[l.left,l.left,l.right,l.right,l.spawn,l.left,l.right,along(l.main,.61)];for(let j=6;j<14;j++)Object.assign(d.sites[j],{x:spots[j-6][0]+(j%2?.02:-.02),y:spots[j-6][1]+.02,name:j>=10?c.regions[j-10]+'驿站':j%2?(c.realm===3?'化神药囊':'养魂药囊'):(c.realm===3?'晶髓遗藏':'神木遗藏')});
 });
 
 /* A single scene owns the ground, curved deck edges, rails and collision geometry. */
 const TerrainScene=(()=>{
-  const version=2,tile=256,atlas=new Image(),infantAtlas=new Image(),props=new Image();infantAtlas.src='assets/infant-terrain.webp';atlas.src='assets/terrain-materials-v1.webp';props.src='assets/terrain-props-v1.webp';
+  const version=2,tile=256,atlas=new Image(),infantAtlas=new Image(),huashenAtlas=new Image(),props=new Image();huashenAtlas.src='assets/huashen-terrain.webp';infantAtlas.src='assets/infant-terrain.webp';atlas.src='assets/terrain-materials-v1.webp';props.src='assets/terrain-props-v1.webp';
   const scenes=[],paths=new Map();
   const ellipse=(x,y,rx,ry)=>Array.from({length:64},(_,i)=>[x+Math.cos(i*Math.PI/32)*rx,y+Math.sin(i*Math.PI/32)*ry]);
   function inside(poly,x,y){let hit=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++)if((poly[i][1]>y)!==(poly[j][1]>y)&&x<(poly[j][0]-poly[i][0])*(y-poly[i][1])/(poly[j][1]-poly[i][1])+poly[i][0])hit=!hit;return hit;}
@@ -150,7 +150,7 @@ const TerrainScene=(()=>{
   }
   for(let stage=0;stage<ChapterCatalog.playable;stage++){
     const d=WorldNavData[stage],w=d.width,h=d.height;
-    const l=stage>=6?InfantChapters[stage-6].layout:stage<3?OpeningLayouts[stage]:{spawn:[.20,.80],hub:[.46,.45],left:[.19,.17],right:[.79,.75],boss:[.78,.23],main:[[.20,.80],[.28,.66],[.40,.57],[.46,.45],[.59,.38],[.67,.29],[.78,.23]],upper:[[.46,.45],[.38,.34],[.30,.28],[.19,.17]],lower:[[.46,.45],[.59,.49],[.65,.64],[.79,.75]]};
+    const l=stage>=6?LaterChapters[stage-6].layout:stage<3?OpeningLayouts[stage]:{spawn:[.20,.80],hub:[.46,.45],left:[.19,.17],right:[.79,.75],boss:[.78,.23],main:[[.20,.80],[.28,.66],[.40,.57],[.46,.45],[.59,.38],[.67,.29],[.78,.23]],upper:[[.46,.45],[.38,.34],[.30,.28],[.19,.17]],lower:[[.46,.45],[.59,.49],[.65,.64],[.79,.75]]};
     const lines=[l.main,l.upper,stage===2?[[.46,.30],[.60,.34],[.71,.43],[.74,.56],[.76,.66],[.85,.71]]:l.lower];
     const plazas=[l.spawn,l.hub,l.left,l.right,l.boss].map((p,i)=>({x:p[0]*w,y:p[1]*h,rx:w*(i===4?(stage<3?.145:.18):i===1?.09:.105),ry:h*(i===4?(stage<3?.135:.20):i===1?.095:.10)}));
     const polygons=plazas.map(p=>ellipse(p.x,p.y,p.rx,p.ry));
@@ -183,16 +183,16 @@ const TerrainScene=(()=>{
   function strokeLine(pen,pts){pen.beginPath();pts.forEach(([x,y],i)=>i?pen.lineTo(x,y):pen.moveTo(x,y));pen.stroke();}
   function draw(pen,stage,view,time){
     const s=scenes[stage],b=WorldNavData[stage],water=stage===2||stage===5;
-    const bg=pen.createLinearGradient(0,view.y,0,view.y+view.h);bg.addColorStop(0,water?'#102b30':'#121b1a');bg.addColorStop(1,water?'#071c25':'#080e13');pen.fillStyle=bg;pen.fillRect(view.x,view.y,view.w,view.h);
+    const bg=pen.createLinearGradient(0,view.y,0,view.y+view.h);bg.addColorStop(0,stage>=9?['#2b2020','#241e2b','#675039'][stage-9]:water?'#102b30':'#121b1a');bg.addColorStop(1,stage>=9?['#171415','#15131d','#302a24'][stage-9]:water?'#071c25':'#080e13');pen.fillStyle=bg;pen.fillRect(view.x,view.y,view.w,view.h);
     if(water){pen.strokeStyle='#709f9b18';pen.lineWidth=1;for(let y=Math.floor(view.y/70)*70;y<view.y+view.h;y+=70){pen.beginPath();for(let x=view.x-30;x<view.x+view.w+40;x+=25){const yy=y+Math.sin(x*.012+time*.35)*8; x===view.x-30?pen.moveTo(x,yy):pen.lineTo(x,yy);}pen.stroke();}}
     const path=landPath(stage);pen.save();pen.shadowColor='#000c';pen.shadowBlur=24;pen.shadowOffsetY=18;pen.fillStyle='#3d4845';pen.fill(path);pen.restore();
     pen.strokeStyle=water?'#54746c':'#4e5146';pen.lineWidth=12;pen.stroke(path);
     pen.save();pen.clip(path);
     for(let y=Math.floor(view.y/tile);y<=Math.floor((view.y+view.h)/tile);y++)for(let x=Math.floor(view.x/tile);x<=Math.floor((view.x+view.w)/tile);x++){
-      const material=stage>=6?infantAtlas:atlas;
-      if(material.complete&&material.naturalWidth){pen.save();pen.translate(x*tile+tile/2,y*tile+tile/2);const seed=Math.abs((x*73856093)^(y*19349663));pen.rotate((seed%4)*Math.PI/2);const column=stage>=6?stage-6:stage%3,row=stage>=6?(s.plazas.some(p=>Math.hypot((x*tile-p.x)/p.rx,(y*tile-p.y)/p.ry)<1)?0:1):Math.floor(stage/3);pen.drawImage(material,column*512,row*512,512,512,-tile/2,-tile/2,tile+.5,tile+.5);pen.fillStyle='#031317'+['12','08','18','0b'][seed%4];pen.fillRect(-tile/2,-tile/2,tile+1,tile+1);pen.restore();}else {pen.fillStyle=['#3b4744','#423b36','#294448','#66543b','#3b4141','#244143','#44352e','#233b32','#403c4c'][stage];pen.fillRect(x*tile,y*tile,tile,tile);}
+      const material=stage>=9?huashenAtlas:stage>=6?infantAtlas:atlas;
+      if(material.complete&&material.naturalWidth){pen.save();pen.translate(x*tile+tile/2,y*tile+tile/2);const seed=Math.abs((x*73856093)^(y*19349663));pen.rotate((seed%4)*Math.PI/2);const column=stage>=6?(stage-6)%3:stage%3,row=stage>=6?(s.plazas.some(p=>Math.hypot((x*tile-p.x)/p.rx,(y*tile-p.y)/p.ry)<1)?0:1):Math.floor(stage/3);pen.drawImage(material,column*512,row*512,512,512,-tile/2,-tile/2,tile+.5,tile+.5);pen.fillStyle='#031317'+['12','08','18','0b'][seed%4];pen.fillRect(-tile/2,-tile/2,tile+1,tile+1);pen.restore();}else {pen.fillStyle=['#3b4744','#423b36','#294448','#66543b','#3b4141','#244143','#44352e','#233b32','#403c4c','#56423b','#4a3d50','#b19158'][stage];pen.fillRect(x*tile,y*tile,tile,tile);}
     }
-    if(stage>=6){pen.fillStyle=['#22180d28','#071e1938','#14102045'][stage-6];pen.fillRect(view.x,view.y,view.w,view.h);}
+    if(stage>=6){pen.fillStyle=['#22180d28','#071e1938','#14102045','#37141418','#25152520','#ab72200a'][stage-6];pen.fillRect(view.x,view.y,view.w,view.h);}
     // Foundation wear and fine joints are drawn in world units, independent of bitmap scale.
     pen.strokeStyle='#0000001c';pen.lineWidth=1;for(let y=Math.floor(view.y/64)*64;y<view.y+view.h;y+=64){pen.beginPath();pen.moveTo(view.x,y);pen.lineTo(view.x+view.w,y);pen.stroke();}
     for(const p of s.plazas){if(p.x+p.rx<view.x||p.x-p.rx>view.x+view.w||p.y+p.ry<view.y||p.y-p.ry>view.y+view.h)continue;pen.save();pen.translate(p.x,p.y);pen.scale(1,p.ry/p.rx);pen.strokeStyle='#b3b19337';pen.lineWidth=3;for(const f of [.80,.84,.95]){pen.beginPath();pen.arc(0,0,p.rx*f,0,Math.PI*2);pen.stroke();}pen.lineWidth=1;for(let i=0;i<36;i++){const a=i*Math.PI/18;strokeLine(pen,[[Math.cos(a)*p.rx*.8,Math.sin(a)*p.rx*.8],[Math.cos(a)*p.rx*.84,Math.sin(a)*p.rx*.84]]);}pen.restore();}
@@ -212,7 +212,8 @@ const TerrainScene=(()=>{
   function drawProps(pen,stage,view,time){
     for(const o of scenes[stage].props){if(o.x<view.x-220||o.x>view.x+view.w+220||o.y<view.y-100||o.y>view.y+view.h+220)continue;
       pen.save();pen.translate(o.x,o.y);pen.fillStyle='#0007';pen.beginPath();pen.ellipse(4,9,o.kind==='gate'?125:32,12,0,0,Math.PI*2);pen.fill();
-      if(stage>=6&&InfantArt.drawProp(pen,o,stage,time)){pen.restore();continue;}
+      if(stage>=9&&HuashenArt.drawProp(pen,o,stage,time)){pen.restore();continue;}
+      if(stage>=6&&stage<9&&InfantArt.drawProp(pen,o,stage,time)){pen.restore();continue;}
       if(props.complete&&props.naturalWidth){const i={gate:0,lantern:1,rock:2,pillar:3,tree:4,shrine:5}[o.kind],size={gate:310,lantern:105,rock:145+(o.seed%3)*17,pillar:130,tree:330,shrine:220}[o.kind];pen.drawImage(props,i%3*512,Math.floor(i/3)*512,512,512,-size/2,-size*.96,size,size);pen.restore();continue;}
       if(o.kind==='gate'){
         pen.fillStyle='#4a3b30';pen.strokeStyle='#94816a';pen.lineWidth=2;for(const x of [-98,88]){pen.fillRect(x,-122,12,126);pen.strokeRect(x,-122,12,126);pen.fillStyle='#59605a';pen.fillRect(x-6,-8,24,12);pen.fillStyle='#4a3b30';}
@@ -225,5 +226,5 @@ const TerrainScene=(()=>{
   }
   function drawMap(pen,stage,x,y,w,h){const d=WorldNavData[stage];pen.save();pen.translate(x,y);pen.scale(w/d.width,h/d.height);pen.fillStyle='#5a7165';pen.fill(landPath(stage));pen.restore();}
   function drawCollision(pen,stage){pen.save();pen.strokeStyle='#61ffb0';pen.lineWidth=1;for(const route of scenes[stage].routes){strokeLine(pen,route.left);strokeLine(pen,route.right);}pen.strokeStyle='#ff765c';for(const o of scenes[stage].obstacles){pen.beginPath();pen.arc(o.x,o.y,o.r,0,Math.PI*2);pen.stroke();}pen.restore();}
-  return {version,tile,geometry,blocked,draw,drawProps,drawMap,drawCollision,loaded:()=>!!(atlas.complete&&atlas.naturalWidth&&props.complete&&props.naturalWidth&&infantAtlas.complete&&infantAtlas.naturalWidth)};
+  return {version,tile,geometry,blocked,draw,drawProps,drawMap,drawCollision,loaded:()=>!!(atlas.complete&&atlas.naturalWidth&&props.complete&&props.naturalWidth&&infantAtlas.complete&&infantAtlas.naturalWidth&&huashenAtlas.complete&&huashenAtlas.naturalWidth)};
 })();

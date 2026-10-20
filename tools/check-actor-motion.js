@@ -5,13 +5,13 @@ const path=require('node:path');
 const vm=require('node:vm');
 const context={console,Math,Image:class{complete=false;naturalWidth=0;},
   Journey:{run:{stage:0},difficulty:()=>({warning:1,projectile:1}),stage:()=>({bossRow:0})},
-  Sound:{spell(){},effects(){}},
+  Sound:{spell(){},effects(){},registerCaption(){}},
   P:{x:50,y:0,r:12,hp:100,facing:{x:1,y:0}},
   G:{state:'playing',time:0,enemies:[],eshots:[],telegraphs:[],ultimate:null},
   hurtPlayer(damage){context.P.hp-=damage;context.hits++;},hits:0,
   nearest:()=>({x:150,y:0}),W:1000,H:800};
 vm.createContext(context);
-for(const file of ['chapters.js','chapters-content.js','infant.js','infant-uv.js','growth.js','golden-uv.js','encounters.js','motion.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../prototype',file),'utf8'),context);
+for(const file of ['chapters.js','chapters-content.js','infant.js','infant-uv.js','huashen.js','huashen-uv.js','growth.js','golden-uv.js','encounters.js','motion.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../prototype',file),'utf8'),context);
 const run=code=>vm.runInContext(code,context);
 let passed=0;
 function check(name,code){assert.equal(run(code),true,name);passed++;console.log('PASS',name);}

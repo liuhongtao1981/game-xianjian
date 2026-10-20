@@ -1,0 +1,312 @@
+[
+  {
+    "policy": "informed",
+    "stage": 10,
+    "state": "win",
+    "seconds": 76,
+    "hp": 541,
+    "damage": 0,
+    "bossHp": 0,
+    "openings": 1,
+    "failures": 0,
+    "helpers": [],
+    "start": {
+      "maxHp": 500,
+      "dmg": 4.5,
+      "spells": {
+        "yujian": 6,
+        "wanjian": 6,
+        "wulei": 5,
+        "sanmei": 4,
+        "bingxin": 4,
+        "guanyin": 4
+      },
+      "bossHp": 232936,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 1849.3481431442583,
+        "hp": 6.8510681835739655,
+        "helper": 5.651743724743889,
+        "damage": 5.273881012146596,
+        "risk": 6.010966511824234,
+        "rewards": {
+          "xp": 2.8113178877978227,
+          "qi": 1.9056589438989113,
+          "essence": 0.11468992456420796,
+          "medicine": 0.0479379849128416,
+          "chest": 0.009762790947704953,
+          "core": 0.38813954738524764
+        }
+      }
+    }
+  },
+  {
+    "policy": "informed",
+    "stage": 11,
+    "state": "win",
+    "seconds": 74,
+    "hp": 563,
+    "damage": 0,
+    "bossHp": 0,
+    "openings": 2,
+    "failures": 0,
+    "helpers": [],
+    "start": {
+      "maxHp": 500,
+      "dmg": 4.5,
+      "spells": {
+        "yujian": 6,
+        "wanjian": 6,
+        "wulei": 5,
+        "sanmei": 4,
+        "bingxin": 4,
+        "guanyin": 4
+      },
+      "bossHp": 275413,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 1849.3481431442583,
+        "hp": 6.8510681835739655,
+        "helper": 5.651743724743889,
+        "damage": 5.273881012146596,
+        "risk": 6.010966511824234,
+        "rewards": {
+          "xp": 2.8113178877978227,
+          "qi": 1.9056589438989113,
+          "essence": 0.11468992456420796,
+          "medicine": 0.0479379849128416,
+          "chest": 0.009762790947704953,
+          "core": 0.38813954738524764
+        }
+      }
+    }
+  },
+  {
+    "policy": "informed",
+    "stage": 12,
+    "state": "win",
+    "seconds": 59,
+    "hp": 563,
+    "damage": 0,
+    "bossHp": 0,
+    "openings": 3,
+    "failures": 0,
+    "helpers": [
+      {
+        "x": 5832,
+        "y": 956
+      },
+      {
+        "x": 6091.807621135332,
+        "y": 1316
+      },
+      {
+        "x": 5572.192378864668,
+        "y": 1316
+      }
+    ],
+    "start": {
+      "maxHp": 500,
+      "dmg": 4.5,
+      "spells": {
+        "yujian": 6,
+        "wanjian": 6,
+        "wulei": 5,
+        "sanmei": 4,
+        "bingxin": 4,
+        "guanyin": 4
+      },
+      "bossHp": 324741,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 1849.3481431442583,
+        "hp": 6.8510681835739655,
+        "helper": 5.651743724743889,
+        "damage": 5.273881012146596,
+        "risk": 6.010966511824234,
+        "rewards": {
+          "xp": 2.8113178877978227,
+          "qi": 1.9056589438989113,
+          "essence": 0.11468992456420796,
+          "medicine": 0.0479379849128416,
+          "chest": 0.009762790947704953,
+          "core": 0.38813954738524764
+        }
+      }
+    }
+  },
+  {
+    "policy": "uninformed",
+    "stage": 10,
+    "state": "dead",
+    "seconds": 36,
+    "hp": 0,
+    "damage": 817,
+    "bossHp": 86920,
+    "openings": 0,
+    "failures": 0,
+    "helpers": [
+      {
+        "x": 5688,
+        "y": 852
+      },
+      {
+        "x": 5947.807621135332,
+        "y": 1212
+      },
+      {
+        "x": 5428.192378864668,
+        "y": 1212
+      }
+    ],
+    "start": {
+      "maxHp": 500,
+      "dmg": 4.5,
+      "spells": {
+        "yujian": 6,
+        "wanjian": 6,
+        "wulei": 5,
+        "sanmei": 4,
+        "bingxin": 4,
+        "guanyin": 4
+      },
+      "bossHp": 232936,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 1849.3481431442583,
+        "hp": 6.8510681835739655,
+        "helper": 5.651743724743889,
+        "damage": 5.273881012146596,
+        "risk": 6.010966511824234,
+        "rewards": {
+          "xp": 2.8113178877978227,
+          "qi": 1.9056589438989113,
+          "essence": 0.11468992456420796,
+          "medicine": 0.0479379849128416,
+          "chest": 0.009762790947704953,
+          "core": 0.38813954738524764
+        }
+      }
+    }
+  },
+  {
+    "policy": "uninformed",
+    "stage": 11,
+    "state": "dead",
+    "seconds": 59,
+    "hp": 0,
+    "damage": 1129,
+    "bossHp": 70291,
+    "openings": 0,
+    "failures": 0,
+    "helpers": [
+      {
+        "x": 5472,
+        "y": 904
+      },
+      {
+        "x": 5731.807621135332,
+        "y": 1264
+      },
+      {
+        "x": 5212.192378864668,
+        "y": 1264
+      }
+    ],
+    "start": {
+      "maxHp": 500,
+      "dmg": 4.5,
+      "spells": {
+        "yujian": 6,
+        "wanjian": 6,
+        "wulei": 5,
+        "sanmei": 4,
+        "bingxin": 4,
+        "guanyin": 4
+      },
+      "bossHp": 275413,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 1849.3481431442583,
+        "hp": 6.8510681835739655,
+        "helper": 5.651743724743889,
+        "damage": 5.273881012146596,
+        "risk": 6.010966511824234,
+        "rewards": {
+          "xp": 2.8113178877978227,
+          "qi": 1.9056589438989113,
+          "essence": 0.11468992456420796,
+          "medicine": 0.0479379849128416,
+          "chest": 0.009762790947704953,
+          "core": 0.38813954738524764
+        }
+      }
+    }
+  },
+  {
+    "policy": "uninformed",
+    "stage": 12,
+    "state": "dead",
+    "seconds": 17,
+    "hp": 0,
+    "damage": 558,
+    "bossHp": 245501,
+    "openings": 0,
+    "failures": 1,
+    "helpers": [
+      {
+        "x": 5832,
+        "y": 956
+      },
+      {
+        "x": 6091.807621135332,
+        "y": 1316
+      },
+      {
+        "x": 5572.192378864668,
+        "y": 1316
+      }
+    ],
+    "start": {
+      "maxHp": 500,
+      "dmg": 4.5,
+      "spells": {
+        "yujian": 6,
+        "wanjian": 6,
+        "wulei": 5,
+        "sanmei": 4,
+        "bingxin": 4,
+        "guanyin": 4
+      },
+      "bossHp": 324741,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 1849.3481431442583,
+        "hp": 6.8510681835739655,
+        "helper": 5.651743724743889,
+        "damage": 5.273881012146596,
+        "risk": 6.010966511824234,
+        "rewards": {
+          "xp": 2.8113178877978227,
+          "qi": 1.9056589438989113,
+          "essence": 0.11468992456420796,
+          "medicine": 0.0479379849128416,
+          "chest": 0.009762790947704953,
+          "core": 0.38813954738524764
+        }
+      }
+    }
+  }
+]

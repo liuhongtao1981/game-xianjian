@@ -6,7 +6,7 @@ const Sound = (() => {
   const defaults={music:.42,effects:.65,voice:.85,muted:false};
   let settings={...defaults};
   try{const saved=JSON.parse(localStorage.getItem('xunsheng-audio')||'null');if(saved)for(const k of ['music','effects','voice']){if(Number.isFinite(saved[k]))settings[k]=Math.max(0,Math.min(1,saved[k]));}if(saved)settings.muted=!!saved.muted;}catch(_){}
-  const musicNames=['exile','birth','river','mountain','outpost','dragon','wish','windwood','bonewish'],music=new Map(),cooldowns=new Map(),voices=new Map();
+  const musicNames=['exile','birth','river','mountain','outpost','dragon','wish','windwood','bonewish','contract','wedding','yellowwind'],music=new Map(),cooldowns=new Map(),voices=new Map(),captionOnly=new Set();
   let context=null,effectBus=null,compressor=null,reverb=null,activated=false,scene='start',stage=0,boss=false;
   let currentTrack='',voice=null,lastVoice=-Infinity,lastSync=0,lastStatus='',hidden=false,serial=0,noiseSeed=0x81ac;
   let subtitle=null,ordinaryCalls=0;
@@ -79,6 +79,7 @@ const Sound = (() => {
     if(voice&&priority<=voice.priority)return false;
     if(priority<70&&now-lastVoice<4.5)return false;
     stopVoice();
+    if(captionOnly.has(id)){const token=++serial;caption(id);cooldowns.set('voice:'+id,now);setTimeout(()=>{if(serial===token)caption(null);},Math.max(3000,(voiceCues[id]?.[1].length||20)*170));return true;}
     let audio=voices.get(id);if(!audio){audio=new Audio('assets/audio/voice-v2/'+id+'.mp3');audio.preload='auto';voices.set(id,audio);}
     if(audio._legacyVoice){audio.src='assets/audio/voice-v2/'+id+'.mp3';audio._legacyVoice=false;}
     const token=++serial;audio.currentTime=0;audio.volume=settings.voice;voice={audio,id,priority,token,audition,fallback:false};lastVoice=now;cooldowns.set('voice:'+id,now);caption(id);
@@ -198,5 +199,7 @@ const Sound = (() => {
   }
   function status(){return {activated,settings:{...settings},scene,stage,boss,track:currentTrack,voice:voice?.id||null,voicePack:'neural-v2',voiceSource:voice?.audio.src||null,subtitle:voice&&!voice.fallback?voiceCues[voice.id]?.[1]||null:null,ordinaryCalls,playingVoice:!!voice&&!voice.audio.paused,music:Array.from(music,([id,e])=>({id,playing:!e.audio.paused,volume:e.audio.volume,failed:e.failed,time:e.audio.currentTime,duration:e.audio.duration||0})),nodes:nodes.size,hidden};}
   install();
-  return {activate,sync,spell,ultimate,stageIntro,guardian,weakness,omen,result,effects,speak,reset,set,status};
+  // New prose can ship with captions and original local music without requesting remote TTS.
+  function registerCaption(id,speaker,text){voiceCues[id]=[speaker,text];captionOnly.add(id);}
+  return {activate,sync,spell,ultimate,stageIntro,guardian,weakness,omen,result,effects,speak,reset,set,status,registerCaption};
 })();
