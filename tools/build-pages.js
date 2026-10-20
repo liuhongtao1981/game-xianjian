@@ -10,7 +10,7 @@ for(const name of fs.readdirSync(source)){
 function copyTree(from,to){fs.mkdirSync(to,{recursive:true});for(const item of fs.readdirSync(from,{withFileTypes:true})){const a=path.join(from,item.name),b=path.join(to,item.name);if(item.isDirectory())copyTree(a,b);else fs.copyFileSync(a,b);}}
 copyTree(path.join(source,'assets'),path.join(output,'assets'));
 const entry=path.join(output,'index.html');
-const html=fs.readFileSync(entry,'utf8').replace(/(src|href)="([^"?]+\.(?:js|css))"/g,(_,attribute,file)=>`${attribute}="${file}?v=${version}"`);
+const html=fs.readFileSync(entry,'utf8').replace(/(src|href)="([^"?]+\.(?:js|css))(?:\?[^"\s]*)?"/g,(_,attribute,file)=>`${attribute}="${file}?v=${version}"`);
 fs.writeFileSync(entry,html);
 fs.writeFileSync(path.join(output,'.nojekyll'),'');
 fs.writeFileSync(path.join(output,'version.json'),JSON.stringify({revision:process.env.GITHUB_SHA||'local'}));

@@ -4,6 +4,7 @@ const GuardianPilot=(()=>{
   function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
   function danger(t,x,y){
     const dx=x-t.x,dy=y-t.y;
+    if(t.shape==='lianxu'){const q=t.safe||t,d=Math.hypot(x-q.x,y-q.y);return t.safeMode==='outside'?d-t.safeRadius-P.r:t.safeRadius-P.r-d;}
     if(t.shape==='sandstorm')return HuashenArt.shade(t,{x,y,r:P.r})?80:-80;
     if(t.shape==='annulus')return Math.abs(Math.hypot(dx,dy)-t.r)-t.width-P.r;
     if(t.shape==='line')return Math.max(Math.abs(dx*Math.cos(t.angle)+dy*Math.sin(t.angle))-t.length-P.r,Math.abs(-dx*Math.sin(t.angle)+dy*Math.cos(t.angle))-t.r-P.r);
@@ -18,6 +19,7 @@ const GuardianPilot=(()=>{
     const tide=G.telegraphs.find(t=>t.shape==='tide'&&t.bossSkill==='tide');
     if(tide)return {x:tide.gap,y:tide.y,ritual:true};
     if(boss.action==='exposed')return {x:boss.x,y:boss.y+55};
+    if(Journey.run.stage>=12){const t=G.telegraphs.filter(t=>t.shape==='lianxu').sort((a,b)=>a.life-b.life)[0];if(t){const s=t.safe||t,a=Math.atan2(P.y-s.y,P.x-s.x),r=t.safeMode==='outside'?t.safeRadius+75:0;return {x:s.x+Math.cos(a)*r,y:s.y+Math.sin(a)*r,ritual:true};}return {x:boss.x,y:boss.y+160};}
     if(Journey.run.stage===11){const t=G.telegraphs.filter(t=>t.shape==='sandstorm').sort((a,b)=>a.life-b.life)[0];if(t){const choices=t.shelters.map(h=>({x:h.x+Math.cos(t.windAngle)*135,y:h.y+Math.sin(t.windAngle)*135,ritual:true}));choices.sort((a,b)=>distance(a,P)-distance(b,P));return choices[0];}return {x:boss.x,y:boss.y+160};}
     if(Journey.run.stage===9&&helpers.length){const t=G.telegraphs.find(t=>t.bossSkill==='contract-stamp');if(t){const a=Math.atan2(P.y-t.y,P.x-t.x);return {x:t.x+Math.cos(a)*210,y:t.y+Math.sin(a)*210};}}
     if(Journey.run.stage===10&&helpers.length){const attack=boss.brain.pending;if(attack?.kind==='rake'){const a=boss.attackAngle,side=Math.sign(Math.cos(a)*(P.y-attack.origin.y)-Math.sin(a)*(P.x-attack.origin.x))||1;return {x:attack.origin.x-Math.sin(a)*side*260,y:attack.origin.y+Math.cos(a)*side*260};}helpers.sort((a,b)=>distance(a,P)-distance(b,P));const h=helpers[0],d=distance(h,boss)||1;return {x:h.x+(h.x-boss.x)/d*85,y:h.y+(h.y-boss.y)/d*85};}
@@ -54,6 +56,7 @@ const GuardianPilot=(()=>{
       if(ellipse>.98)cost+=1000+(ellipse-.98)*2000;
       if(!World.isWalkable(x,y,P.r))cost+=2000;
       for(const t of G.telegraphs){
+        if(t.shape==='lianxu'&&G.telegraphs.some(q=>q.shape==='lianxu'&&q.life<t.life))continue;
         if(t.shape==='sandstorm'&&G.telegraphs.some(q=>q.shape==='sandstorm'&&q.life<t.life))continue;
         const d=danger(t,x,y),weight=t.shape==='annulus'?(t.life<.40?1:0):t.life<.75?1:.35;
         if(d<30)cost+=(30-d)*weight*9;

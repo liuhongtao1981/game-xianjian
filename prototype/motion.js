@@ -122,7 +122,8 @@ const Motion = (() => {
     if(actor.flash>0)ctx.filter='brightness(1.55)';
     else if(key==='hero'&&actor.cultivation?.realm>0){ctx.filter='drop-shadow(0px 0px 2px '+RealmVisuals.get(actor.cultivation).color+')';}
     else if(actor.clerk){ctx.globalAlpha*=.7;ctx.filter='sepia(.6) hue-rotate(320deg)';}
-    if(actor.boss&&Journey.run.stage>=9){HuashenArt.drawActor(actor,4,size);
+    if(actor.boss&&Journey.run.stage>=12){LianxuArt.drawActor(actor,4,size);
+    }else if(actor.boss&&Journey.run.stage>=9){HuashenArt.drawActor(actor,4,size);
     }else if(actor.boss&&Journey.run.stage>=6){InfantArt.drawActor(actor,4,size);
     }else if(actor.boss&&Journey.run.stage>=3&&golden.complete&&golden.naturalWidth){const row=Journey.run.stage-3,phase=actor.action||'guard',col=phase==='windup'?2:phase==='strike'?3:actor.moving?Math.floor((actor.walkDistance||0)/36)%2:0;drawBossFrame(golden,goldenUV[row][col],size,350);Encounters.ornament(actor,size);
     }else if(actor.boss&&bossWalk.complete&&bossWalk.naturalWidth&&(!['windup','strike','recover','exposed'].includes(actor.action)||!bossAttacks.complete||!bossAttacks.naturalWidth)){

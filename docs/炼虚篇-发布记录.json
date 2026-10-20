@@ -1,0 +1,516 @@
+{
+  "date": "2026-10-21",
+  "released": {
+    "total": 15,
+    "realm": "炼虚",
+    "chapters": [
+      {
+        "id": "sunken",
+        "name": "流沙沉名渡",
+        "boss": "吞籍沙将",
+        "mechanic": "三次退潮按进、退、进走位归名"
+      },
+      {
+        "id": "whitebone",
+        "name": "白骨荒冢",
+        "boss": "三相骨娘",
+        "mechanic": "识别金色心核，连续三次跟随真正的心灯"
+      },
+      {
+        "id": "shadowcity",
+        "name": "宝象失影城",
+        "boss": "夺影黄袍使",
+        "mechanic": "离开脚下封影，再回到旧影"
+      }
+    ]
+  },
+  "story": "姓名被抹去，身体被租借，影子被交易。黄风空名牌、白骨收身单、宝象影籍镜与平顶双炉归名石串起连续黑暗故事。",
+  "world": {
+    "size": [
+      7200,
+      5200
+    ],
+    "regionsPerChapter": 4,
+    "camps": 18,
+    "waves": 3,
+    "normalWaveSizes": [
+      34,
+      36,
+      38
+    ],
+    "elites": 4,
+    "desktopCaps": [
+      36,
+      48,
+      56,
+      64
+    ],
+    "mobileCap": 24,
+    "patrols": "unlimited; stops on boss entry",
+    "ground": "512px material tiles at 256 world units; continuous paths and independently clipped plazas"
+  },
+  "progression": {
+    "realmRequired": 4,
+    "requiresPriorChapterClear": true,
+    "core": "阴阳并蒂莲",
+    "coreKey": "core5",
+    "normalBossDropProbability": 0.3,
+    "normalBossDropCounts": [
+      4,
+      3,
+      3
+    ],
+    "outsideGuaranteedCore": 5,
+    "outsideGuaranteedEssence": 20,
+    "outsideBossHpAndDamageMultiplier": 2,
+    "trilogyFirstClearEssence": 40,
+    "trilogyFirstClearQi": 8000,
+    "claimLedgerPreservedOnDeathAndRefresh": true,
+    "allBossesTakeContinuousDamage": true,
+    "optionalExposureMultiplier": 3,
+    "saveVersion": 3,
+    "formerHuashenFinaleContinuationTest": true
+  },
+  "interface": [
+    "境界筛选与铺满章节卡片",
+    "舆图巡营、精英、补给、大妖目标指引",
+    "常驻暂停及可折叠战况",
+    "桌面与手机横竖屏战斗布局",
+    "统一地图几何导航，不自动移动或穿越障碍"
+  ],
+  "art": {
+    "promptAndPaths": "lianxu-art-generation.json",
+    "actorPoses": 60,
+    "terrainTiles": 6,
+    "props": 12,
+    "storyPanels": 3
+  },
+  "audio": {
+    "newOriginalMusicTracks": 6,
+    "localGeneration": "node tools/compose-music.js --only=sunken,whitebone,shadowcity",
+    "dialogue": "18 original text captions; no new external TTS request"
+  },
+  "checks": {
+    "workflowSuites": 23,
+    "lianxu": 19,
+    "worldGeometry": 75,
+    "expandedCamps": 270,
+    "lootBoundaryAndReplay": 11,
+    "browser": {
+      "production": false,
+      "revision": "918307d1de1d425f054d5ce82be48266f84ab832",
+      "errors": [],
+      "scenes": [
+        {
+          "stage": 12,
+          "boss": "吞籍沙将",
+          "ritual": "tides",
+          "geometry": 3
+        },
+        {
+          "stage": 13,
+          "boss": "三相骨娘",
+          "ritual": "faces",
+          "geometry": 3
+        },
+        {
+          "stage": 14,
+          "boss": "夺影黄袍使",
+          "ritual": "shadow",
+          "geometry": 3
+        }
+      ],
+      "perf": [
+        {
+          "stage": 12,
+          "count": 24,
+          "ms": 2.32,
+          "valid": true
+        },
+        {
+          "stage": 12,
+          "count": 48,
+          "ms": 3.58,
+          "valid": true
+        },
+        {
+          "stage": 12,
+          "count": 64,
+          "ms": 4.95,
+          "valid": true
+        },
+        {
+          "stage": 13,
+          "count": 24,
+          "ms": 1.82,
+          "valid": true
+        },
+        {
+          "stage": 13,
+          "count": 48,
+          "ms": 3.41,
+          "valid": true
+        },
+        {
+          "stage": 13,
+          "count": 64,
+          "ms": 4.8,
+          "valid": true
+        },
+        {
+          "stage": 14,
+          "count": 24,
+          "ms": 1.88,
+          "valid": true
+        },
+        {
+          "stage": 14,
+          "count": 48,
+          "ms": 3.42,
+          "valid": true
+        },
+        {
+          "stage": 14,
+          "count": 64,
+          "ms": 4.89,
+          "valid": true
+        }
+      ]
+    },
+    "guardianSimulation": {
+      "command": "node tools/simulate-lianxu.js",
+      "startingBuild": {
+        "maxHp": 650,
+        "dmg": 5.5,
+        "spells": {
+          "yujian": 9,
+          "wanjian": 9,
+          "wulei": 8,
+          "sanmei": 6,
+          "bingxin": 5,
+          "guanyin": 5
+        },
+        "bossHp": 490024,
+        "threat": {
+          "version": 1,
+          "id": 1,
+          "kind": "boss",
+          "output": 3071.5062779588457,
+          "hp": 8.829267109666855,
+          "helper": 7.101207287039274,
+          "damage": 6.901512351244507,
+          "risk": 7.806106328369008,
+          "rewards": {
+            "xp": 3.075222179882333,
+            "qi": 2.0376110899411666,
+            "essence": 0.12411507785294047,
+            "medicine": 0.049823015570588096,
+            "chest": 0.010893809342352857,
+            "core": 0.4446904671176428
+          }
+        }
+      },
+      "results": [
+        {
+          "policy": "informed",
+          "stage": 13,
+          "state": "win",
+          "seconds": 66,
+          "hp": 704,
+          "damage": 0,
+          "bossHp": 0,
+          "openings": 3,
+          "failures": 0
+        },
+        {
+          "policy": "informed",
+          "stage": 14,
+          "state": "win",
+          "seconds": 67,
+          "hp": 732,
+          "damage": 0,
+          "bossHp": 0,
+          "openings": 3,
+          "failures": 0
+        },
+        {
+          "policy": "informed",
+          "stage": 15,
+          "state": "win",
+          "seconds": 60,
+          "hp": 747,
+          "damage": 0,
+          "bossHp": 0,
+          "openings": 3,
+          "failures": 0
+        },
+        {
+          "policy": "uninformed",
+          "stage": 13,
+          "state": "dead",
+          "seconds": 43,
+          "hp": 0,
+          "damage": 1135,
+          "bossHp": 235118,
+          "openings": 0,
+          "failures": 2
+        },
+        {
+          "policy": "uninformed",
+          "stage": 14,
+          "state": "dead",
+          "seconds": 17,
+          "hp": 0,
+          "damage": 764,
+          "bossHp": 457452,
+          "openings": 0,
+          "failures": 0
+        },
+        {
+          "policy": "uninformed",
+          "stage": 15,
+          "state": "dead",
+          "seconds": 36,
+          "hp": 0,
+          "damage": 1021,
+          "bossHp": 379492,
+          "openings": 0,
+          "failures": 2
+        }
+      ]
+    },
+    "explorationSimulation": {
+      "command": "node tools/simulate-lianxu-exploration.js",
+      "startingBuild": {
+        "combatLevel": 48,
+        "realm": 4,
+        "maxHp": 650,
+        "shieldMax": 300,
+        "damageMultiplier": 5.5,
+        "cdr": 0.65,
+        "armor": 0.25,
+        "crit": 0.2,
+        "regen": 2,
+        "speed": 290,
+        "spells": {
+          "yujian": 9,
+          "wanjian": 9,
+          "wulei": 8,
+          "sanmei": 6,
+          "bingxin": 5,
+          "guanyin": 5
+        }
+      },
+      "results": [
+        {
+          "strategy": "main",
+          "cleared": 3,
+          "chapters": [
+            {
+              "stage": 13,
+              "state": "win",
+              "time": 1076,
+              "level": 49,
+              "hp": 796,
+              "damageTaken": 0,
+              "kills": 2121,
+              "combatSeconds": 964,
+              "maxGapSeconds": 13,
+              "routeIndex": 12,
+              "routeLength": 12,
+              "beforeBoss": {
+                "time": 1031,
+                "level": 49,
+                "hp": 796,
+                "spawned": 2193,
+                "killed": 2118,
+                "peak": 48,
+                "patrols": 92,
+                "cleared": 17,
+                "eliteCamps": 4
+              },
+              "director": {
+                "spawned": 2195,
+                "killed": 2120,
+                "peak": 48,
+                "patrols": 92
+              },
+              "clearedCamps": 17
+            },
+            {
+              "stage": 14,
+              "state": "win",
+              "time": 960,
+              "level": 51,
+              "hp": 796,
+              "damageTaken": 506,
+              "kills": 2204,
+              "combatSeconds": 871,
+              "maxGapSeconds": 15,
+              "routeIndex": 12,
+              "routeLength": 12,
+              "beforeBoss": {
+                "time": 919,
+                "level": 51,
+                "hp": 796,
+                "spawned": 2268,
+                "killed": 2201,
+                "peak": 48,
+                "patrols": 72,
+                "cleared": 17,
+                "eliteCamps": 4
+              },
+              "director": {
+                "spawned": 2270,
+                "killed": 2203,
+                "peak": 48,
+                "patrols": 72
+              },
+              "clearedCamps": 17
+            },
+            {
+              "stage": 15,
+              "state": "win",
+              "time": 1058,
+              "level": 53,
+              "hp": 796,
+              "damageTaken": 160,
+              "kills": 2376,
+              "combatSeconds": 949,
+              "maxGapSeconds": 20,
+              "routeIndex": 12,
+              "routeLength": 12,
+              "beforeBoss": {
+                "time": 1019,
+                "level": 53,
+                "hp": 796,
+                "spawned": 2426,
+                "killed": 2373,
+                "peak": 48,
+                "patrols": 76,
+                "cleared": 18,
+                "eliteCamps": 4
+              },
+              "director": {
+                "spawned": 2428,
+                "killed": 2375,
+                "peak": 48,
+                "patrols": 76
+              },
+              "clearedCamps": 18
+            }
+          ]
+        },
+        {
+          "strategy": "full",
+          "cleared": 3,
+          "chapters": [
+            {
+              "stage": 13,
+              "state": "win",
+              "time": 1140,
+              "level": 49,
+              "hp": 797,
+              "damageTaken": 1763,
+              "kills": 2245,
+              "combatSeconds": 987,
+              "maxGapSeconds": 18,
+              "routeIndex": 24,
+              "routeLength": 24,
+              "beforeBoss": {
+                "time": 1117,
+                "level": 49,
+                "hp": 797,
+                "spawned": 2310,
+                "killed": 2244,
+                "peak": 48,
+                "patrols": 95,
+                "cleared": 18,
+                "eliteCamps": 4
+              },
+              "director": {
+                "spawned": 2310,
+                "killed": 2244,
+                "peak": 48,
+                "patrols": 95
+              },
+              "clearedCamps": 18
+            },
+            {
+              "stage": 14,
+              "state": "win",
+              "time": 1139,
+              "level": 51,
+              "hp": 797,
+              "damageTaken": 496,
+              "kills": 2291,
+              "combatSeconds": 1009,
+              "maxGapSeconds": 19,
+              "routeIndex": 24,
+              "routeLength": 24,
+              "beforeBoss": {
+                "time": 1096,
+                "level": 51,
+                "hp": 797,
+                "spawned": 2364,
+                "killed": 2288,
+                "peak": 48,
+                "patrols": 84,
+                "cleared": 18,
+                "eliteCamps": 4
+              },
+              "director": {
+                "spawned": 2366,
+                "killed": 2290,
+                "peak": 48,
+                "patrols": 84
+              },
+              "clearedCamps": 18
+            },
+            {
+              "stage": 15,
+              "state": "win",
+              "time": 1046,
+              "level": 53,
+              "hp": 797,
+              "damageTaken": 97,
+              "kills": 2378,
+              "combatSeconds": 903,
+              "maxGapSeconds": 22,
+              "routeIndex": 24,
+              "routeLength": 24,
+              "beforeBoss": {
+                "time": 1008,
+                "level": 53,
+                "hp": 797,
+                "spawned": 2444,
+                "killed": 2375,
+                "peak": 48,
+                "patrols": 79,
+                "cleared": 18,
+                "eliteCamps": 4
+              },
+              "director": {
+                "spawned": 2446,
+                "killed": 2377,
+                "peak": 48,
+                "patrols": 79
+              },
+              "clearedCamps": 18
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "boundaries": [
+    "Automated pilots read telegraph geometry; their 16–18 minute main routes are not human completion-time or win-rate claims. Side camps may activate while following the main route.",
+    "Headless desktop timing measures script update plus draw calls; mobile viewport checks do not establish physical-phone frame rates.",
+    "New dialogue is captioned and accompanied by six local music tracks. It has not been externally voice-generated.",
+    "合体及其后27关仍锁定，未以重复地图占位。"
+  ],
+  "publish": {
+    "url": "https://liuhongtao1981.github.io/game-xianjian/",
+    "resourceVersioning": "Git revision appended to runtime JS/CSS URLs; version.json matches deployed commit"
+  }
+}

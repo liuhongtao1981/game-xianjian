@@ -11,7 +11,7 @@ if (!scripts.length) {
 }
 try {
   for (const [,src,inline] of scripts){
-    const source = src ? fs.readFileSync(path.resolve(path.dirname(file),src),'utf8') : inline;
+    const source = src ? fs.readFileSync(path.resolve(path.dirname(file),src.split('?')[0]),'utf8') : inline;
     new Function(source);
     console.log('语法 OK · ' + (src || 'inline') + ' · ' + source.length + ' chars');
   }

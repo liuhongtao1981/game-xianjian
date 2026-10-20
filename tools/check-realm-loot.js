@@ -3,8 +3,8 @@ const {createHarness}=require('./game-harness');
 let passed=0;
 function check(name,source){const h=createHarness();assert.equal(h.evaluate(`(()=>{${source}})()`),true,name);console.log('PASS '+name);passed++;}
 check('all released bosses roll at the exact 30 percent boundary for their own realm',`
-  RunSave.start(0);JourneyProgress.restore({version:1,cleared:12,entries:{}});P.cultivation.realm=3;RunSave.save();const random=Math.random;
-  for(let stage=0;stage<12;stage++)for(const roll of [.299999,.3,.999]){
+  RunSave.start(0);JourneyProgress.restore({version:1,cleared:ChapterCatalog.playable,entries:{}});P.cultivation.realm=4;RunSave.save();const random=Math.random;
+  for(let stage=0;stage<ChapterCatalog.playable;stage++)for(const roll of [.299999,.3,.999]){
     RunSave.start(stage,false,true);G.state='win';G.boss={xp:0};
     const r=ChapterCatalog.reward(stage),before=P.cultivation.materials[r.core]||0;
     Math.random=()=>roll;Cultivation.victory();Math.random=random;
@@ -29,8 +29,8 @@ check('two outside victories provide exactly one full material recipe without un
     if(!RunSave.continueRun()||!Journey.run.extramural||G.state!=='win'||P.cultivation.materials.core1!==n)return false;
   }return true;`);
 check('each released realm receives half its own recipe even when the hero is stronger',`
-  RunSave.start(0);JourneyProgress.restore({version:1,cleared:12,entries:{}});P.cultivation.realm=4;RunSave.save();
-  for(let stage=0;stage<12;stage++){
+  RunSave.start(0);JourneyProgress.restore({version:1,cleared:ChapterCatalog.playable,entries:{}});P.cultivation.realm=4;RunSave.save();
+  for(let stage=0;stage<ChapterCatalog.playable;stage++){
     if(!RunSave.start(stage,false,false,true))return false;
     const r=Cultivation.recipe(ChapterCatalog.get(stage).realm),a=P.cultivation.materials[r.core]||0,b=P.cultivation.materials.essence;
     G.state='win';Cultivation.victory();RunSave.save();
@@ -62,7 +62,7 @@ check('elite and full-build chests cannot bypass boss core acquisition',`
   const r=CombatRewards.enhancedChest();return !(P.cultivation.materials.core1||0)&&r.kind==='material'&&JSON.stringify(r.materials)==='{"essence":8}';`);
 check('click preview plays linked scenes while preserving the active saved run',`
   RunSave.start(0);RunSave.save();Journey.menu();const saved=JSON.stringify(RunSave.snapshot());
-  for(let stage=0;stage<12;stage++){
+  for(let stage=0;stage<ChapterCatalog.playable;stage++){
     Journey.playStory(stage,true);const ov=document.getElementById('overlay');
     if(stage&&!ov.innerHTML.includes(Journey.stages[stage-1].clue.name))return false;
     document.getElementById('storyPauseBtn').onclick();document.getElementById('storyNextBtn').onclick();

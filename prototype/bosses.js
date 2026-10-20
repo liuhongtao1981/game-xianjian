@@ -40,6 +40,7 @@ const Bosses=(()=>{
     say(e,b.round===1?['先破钟心 · 诱锤收势','断双诏 · 侧避问斩','灭河灯 · 连渡潮隙','诱重砸 · 断镇山锁柱','辨实印 · 诱尽三段追链','破锁鳞 · 冲岸迎雷潮'][Journey.run.stage]:'重整招式 · 可继续攻击',16);
   }
   function init(e){
+    if(Journey.run.stage>=12)return LianxuGuardians.init(e);
     if(Journey.run.stage>=9)return HuashenGuardians.init(e);
     if(Journey.run.stage>=6)return InfantGuardians.init(e);
     const theme=Journey.run.stage%3;
@@ -120,6 +121,7 @@ const Bosses=(()=>{
     b.pending=null;action(e,'guard',(e.phase===2?.7:1.15)*config().pace);
   }
   function update(e,dt){
+    if(Journey.run.stage>=12)return LianxuGuardians.update(e,dt);
     if(Journey.run.stage>=9)return HuashenGuardians.update(e,dt);
     if(Journey.run.stage>=6)return InfantGuardians.update(e,dt);
     if(!e.brain)init(e);if(!alive(e))return;
@@ -152,6 +154,7 @@ const Bosses=(()=>{
     }else if(e.action==='recover'&&e.actionT>=e.actionDuration)finishAttack(e);
   }
   function onImpact(t,hitPlayer=false){
+    if(Journey.run.stage>=12)return LianxuGuardians.onImpact(t,hitPlayer);
     if(Journey.run.stage>=9)return HuashenGuardians.onImpact(t,hitPlayer);
     if(Journey.run.stage>=6)return InfantGuardians.onImpact(t,hitPlayer);
     const e=G.boss;if(!alive(e)||!e.brain||t.bossOwner!==e.id)return;
@@ -168,6 +171,7 @@ const Bosses=(()=>{
     }
   }
   function onHelperKilled(h){
+    if(Journey.run.stage>=12)return LianxuGuardians.onHelperKilled(h);
     if(Journey.run.stage>=9)return HuashenGuardians.onHelperKilled(h);
     if(Journey.run.stage>=6)return InfantGuardians.onHelperKilled(h);
     if(!h.bossHelper)return;
@@ -179,6 +183,7 @@ const Bosses=(()=>{
   function damageMultiplier(e){return e.boss&&e.action==='exposed'?3:1;}
   function filterDamage(e,damage){
     if(e.boss){const actual=Math.max(0,Math.min(Math.round(damage),e.hp));if(e.brain&&e.action==='exposed')e.brain.windowDamage=(e.brain.windowDamage||0)+actual;return actual;}
+    if(Journey.run.stage>=12)return LianxuGuardians.filterDamage(e,damage);
     if(Journey.run.stage>=9)return HuashenGuardians.filterDamage(e,damage);
     if(Journey.run.stage>=6)return InfantGuardians.filterDamage(e,damage);
     if(e.locked)return 0;
@@ -186,6 +191,7 @@ const Bosses=(()=>{
     return damage;
   }
   function hud(e){
+    if(Journey.run.stage>=12)return LianxuGuardians.hud(e);
     if(Journey.run.stage>=9)return HuashenGuardians.hud(e);
     if(Journey.run.stage>=6)return InfantGuardians.hud(e);
     if(!e?.brain)return {title:'寻其破绽',hint:tells[Journey.run.stage],progress:0,exposed:false,remaining:0,breaks:0};

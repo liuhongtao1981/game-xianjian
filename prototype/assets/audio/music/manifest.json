@@ -168,6 +168,48 @@
       "bpm": 128,
       "duration": 30,
       "original": true
+    },
+    {
+      "file": "assets/audio/music/sunken-field.mp3",
+      "title": "流沙沉名·逆舟·行路",
+      "bpm": 66,
+      "duration": 58.182,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/sunken-boss.mp3",
+      "title": "流沙沉名·逆舟·守关",
+      "bpm": 114,
+      "duration": 33.684,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/whitebone-field.mp3",
+      "title": "白骨换身·心灯·行路",
+      "bpm": 74,
+      "duration": 51.892,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/whitebone-boss.mp3",
+      "title": "白骨换身·心灯·守关",
+      "bpm": 120,
+      "duration": 32,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/shadowcity-field.mp3",
+      "title": "宝象夺影·归名·行路",
+      "bpm": 82,
+      "duration": 46.829,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/shadowcity-boss.mp3",
+      "title": "宝象夺影·归名·守关",
+      "bpm": 126,
+      "duration": 30.476,
+      "original": true
     }
   ]
 }
