@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-21",
+  "feature": "独立大境界突破演出与原上下文恢复",
+  "durationSeconds": 5.2,
+  "reducedMotionSeconds": 1.5,
+  "targets": [
+    "金丹",
+    "元婴",
+    "化神",
+    "炼虚",
+    "合体",
+    "大乘",
+    "渡劫",
+    "真仙",
+    "玄仙",
+    "金仙",
+    "太乙金仙",
+    "大罗金仙",
+    "仙王"
+  ],
+  "visuals": [
+    "旧境收束",
+    "专属法相展开",
+    "人物灵纹与粒子流光",
+    "突破前后生命、护盾与伤害倍率对照",
+    "境界赠礼提示",
+    "演出完成自动返回，可在1.1秒后跳过"
+  ],
+  "contexts": [
+    "原地探索与大妖战",
+    "升级原选项及待选次数",
+    "已应用宝箱奖励及前后值",
+    "人物原页签、术法赠礼草稿及滚动位置",
+    "原剧情段落与播放状态",
+    "通关结算与未选行粮",
+    "舆图、证词与驿站"
+  ],
+  "consistency": {
+    "underlyingState": "Keep the underlying state and overlay DOM alive; a separate modal owns presentation only.",
+    "combat": "Pause game update, spawn director, projectiles, telegraphs, healing, resources, cooldowns, timers and combat rendering during the ceremony.",
+    "storage": "Growth commits before presentation. Saves retain the original run state; refresh restores earned growth and pending content without replaying the ceremony.",
+    "failure": "No presentation or cost remains after a failed growth save. A foreign-writer conflict cancels the ceremony without overwriting its conflict screen.",
+    "automatic": "A full recipe may ascend during living combat and pending reward screens; title, pause, death and save-conflict remain excluded.",
+    "minorLayers": "Minor layer effects remain short and never take over the full screen.",
+    "manual": "Existing manual missing-material risk rules remain in the published build."
+  },
+  "validation": {
+    "sceneChecks": 15,
+    "workflowSuites": 25,
+    "browser": {
+      "production": false,
+      "revision": "3119a09a143fb89a58bba9509058f7fdad1c628f",
+      "errors": [],
+      "contexts": [
+        "blur and hidden preserve scene",
+        "boss 0",
+        "boss 1",
+        "boss 6",
+        "exact upgrade cards",
+        "applied chest",
+        "character tab and gift draft",
+        "same story page and playback",
+        "victory and ration",
+        "refresh without replay",
+        "reduced motion auto return",
+        "thirteen realm silhouettes and both heroes"
+      ]
+    },
+    "bounds": "Mobile verification uses 390px portrait and 844px landscape viewports on desktop Edge; no physical-device frame-rate claim."
+  },
+  "publish": {
+    "url": "https://liuhongtao1981.github.io/game-xianjian/",
+    "cache": "Deployed commit SHA applied to runtime scripts and stylesheets."
+  }
+}

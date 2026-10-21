@@ -441,7 +441,7 @@ function spawnBoss(){
 /* ---------------- 更新 ---------------- */
 
 function update(dt){
-  if (G.state !== 'playing' || dt <= 0) return;
+  if (AscensionScene.active() || G.state !== 'playing' || dt <= 0) return;
   G.time += dt;
   RunSave.tick(dt);
   if(G.queue>0){showLevelUp(choicesCache.length?choicesCache:null);return;}
@@ -836,9 +836,8 @@ function gainXP(v,save=true){
   if(save&&G.queue>0)RunSave.save('经验成长');
 }
 
-function showLevelUp(restoredChoices=null){
-  Sound.effects('level');
-  Sound.speak('level',25,30);
+function showLevelUp(restoredChoices=null,quiet=false){
+  if(!quiet){Sound.effects('level');Sound.speak('level',25,30);}
   choicesCache = restoredChoices||buildChoices();
   G.state = 'levelup';
   const ov = document.getElementById('overlay');
@@ -913,7 +912,7 @@ function shuffle(a){
 }
 
 function pickCard(i){
-  if (G.state !== 'levelup') return;
+  if (AscensionScene.active() || G.state !== 'levelup') return;
   const c = choicesCache[i];
   if (!c) return;
   Sound.effects('ui');
@@ -1015,7 +1014,7 @@ function applyReward(r){
 }
 
 function closeChest(){
-  if(G.state!=='chest')return false;
+  if(AscensionScene.active()||G.state!=='chest')return false;
   if(G.chestReward){notifyPickup('chest','已获得：'+G.chestReward.name);G.chestReward=null;}
   document.getElementById('overlay').classList.add('hidden');
   if (G.queue > 0){ showLevelUp(); return; }
@@ -1415,6 +1414,7 @@ function renderEquips(){
 /* ---------------- 输入 ---------------- */
 
 window.addEventListener('keydown', e => {
+  if(AscensionScene.handleKey(e))return;
   // Let native card and sheet controls keep their focus and activation keys.
   if(['levelup','character','chest','win'].includes(G.state)&&e.code==='Tab')return;
   if(['levelup','character'].includes(G.state)&&['Space','Enter'].includes(e.code)&&e.target.closest?.('button,select,input')){if(e.repeat)e.preventDefault();return;}
@@ -1444,8 +1444,8 @@ function clearInput(){
   for(const k in keys) delete keys[k];
   joy.active=false;joy.id=null;joy.dx=0;joy.dy=0;
 }
-window.addEventListener('blur',()=>{ clearInput(); if(G.state==='playing')togglePause(); });
-document.addEventListener('visibilitychange',()=>{ if(document.hidden){ clearInput();if(G.state==='playing')togglePause(); } });
+window.addEventListener('blur',()=>{ clearInput(); if(G.state==='playing'&&!AscensionScene.active())togglePause(); });
+document.addEventListener('visibilitychange',()=>{ if(document.hidden){ clearInput();if(G.state==='playing'&&!AscensionScene.active())togglePause(); } });
 for(let i=0;i<3;i++)document.getElementById('ultimateBtn'+(i||'')).onclick=()=>{const id=UltimateArts.loadout()[i];if(id)tryUltimate(id);};
 document.getElementById('dashBtn').onclick=tryDash;
 document.getElementById('journalBtn').onclick=Journey.journal;
@@ -1497,6 +1497,7 @@ canvas.addEventListener('pointercancel', endJoy);
 function startGame(){ RunSave.start(Journey.selected()); }
 
 function togglePause(){
+  if(AscensionScene.active())return;
   if (G.state === 'playing'){
     clearInput();
     G.state = 'paused';
@@ -1531,15 +1532,18 @@ let last = performance.now();
 function loop(now){
   const dt = Math.max(0, Math.min(.05, (now - last) / 1000));
   last = now;
-  if (G.state === 'playing') update(dt);else Cultivation.update(dt);
-  RealmVisuals.update(dt);
-  Sound.sync(G.state,Journey.run.stage,G.bossSpawned&&!!G.boss&&G.boss.hp>0);
+  if(AscensionScene.active())AscensionScene.update(dt);
+  else {if (G.state === 'playing') update(dt);else Cultivation.update(dt);if(!AscensionScene.active())RealmVisuals.update(dt);}
+  Sound.sync(AscensionScene.active()?'ascension':G.state,Journey.run.stage,G.bossSpawned&&!!G.boss&&G.boss.hp>0);
+  if(!AscensionScene.active()){
   render();
   CharacterUI.frame(now/1000);
   HeroIdentity.frame(now/1000);
   RealmVisuals.notice();
   syncHUD();
   drawJoystick();
+  }
+  AscensionScene.frame();
   requestAnimationFrame(loop);
 }
 

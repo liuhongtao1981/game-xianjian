@@ -63,19 +63,19 @@ const Cultivation=(()=>{
   function chance(core,essence){const r=recipe();if(!r)return 0;const q=.7*Math.min(1,core/r.coreCount)+.3*Math.min(1,essence/r.essence);return q>=1?100:Number((5+95*q**3).toFixed(1));}
   function safe(){return !!G.boss?.killed||!World.active()&&!G.enemies.some(e=>e.hp>0&&!e.eventObjective&&Math.hypot(e.x-P.x,e.y-P.y)<650);}
   let autoDelay=0;
-  const autoStates=['playing','win','story','character'];
+  const autoStates=['playing','win','story','character','levelup','chest','journal','map','station'];
   function ready(){const r=recipe();return !!r&&P.cultivation.layer===9&&P.cultivation.qi>=r.qi&&(P.cultivation.materials[r.core]||0)>=r.coreCount&&(P.cultivation.materials.essence||0)>=r.essence;}
-  function autoStatus(){if(!recipe())return P.cultivation.qi>=need()?'仙王九层道圆':'修为达标自动升层';if(ready())return RunSave.conflicted()?'存档冲突 · 自动突破已暂停':!safe()?'100% · 脱战后自动突破':'100% · 安全时自动突破';return P.cultivation.qi>=need()?'九层圆满 · 材料备齐自动突破':'修为达标自动升层';}
+  function autoStatus(){if(AscensionScene.active())return '破境演出中 · 完成后返回原内容';if(!recipe())return P.cultivation.layer===9&&P.cultivation.qi>=need()?'仙王九层道圆':'修为达标自动升层';if(ready())return RunSave.conflicted()?'存档冲突 · 自动突破已暂停':autoStates.includes(G.state)?'条件已齐 · 即将播放破境演出':'条件已齐 · 继续历程后自动破境';return P.cultivation.qi>=need()?'修为已满 · 材料备齐自动破境':'修为达标自动升层';}
   function update(dt){
-    if(dt<=0||!autoStates.includes(G.state)||!P||P.hp<=0||RunSave.conflicted())return false;
-    autoDelay=Math.max(0,autoDelay-dt);if(autoDelay>0||!ready()||!safe())return false;
+    if(dt<=0||!autoStates.includes(G.state)||AscensionScene.active()||!P||P.hp<=0||RunSave.conflicted())return false;
+    autoDelay=Math.max(0,autoDelay-dt);if(autoDelay>0||!ready()||AscensionScene.active())return false;
     autoDelay=1;const r=recipe();if(!attempt(r.coreCount,r.essence,true))return false;
     notifyPickup('cultivation','自动破境 · '+label()+' · 术法赠礼 +3');
-    if(G.state==='character')CharacterUI.draw();else if(G.state==='win')Journey.showEnd(true);return true;
+    if(!AscensionScene.active()){if(G.state==='character')CharacterUI.draw();else if(G.state==='win')Journey.showEnd(true);}return true;
   }
   function attempt(core,essence,automatic=false){
     const r=recipe(),c=P.cultivation;
-    if((automatic?!autoStates.includes(G.state):G.state!=='character')||!safe()||!r||(!automatic&&c.result)||c.layer!==9||c.qi<r.qi||RunSave.conflicted())return false;
+    if((automatic?!autoStates.includes(G.state):G.state!=='character')||AscensionScene.active()||P.hp<=0||(!automatic&&!safe())||!r||(!automatic&&c.result)||c.layer!==9||c.qi<r.qi||RunSave.conflicted())return false;
     if(!Number.isInteger(core)||!Number.isInteger(essence)||core<0||essence<0||core>Math.min(r.coreCount,c.materials[r.core]||0)||essence>Math.min(r.essence,c.materials.essence||0))return false;
     if(automatic&&(core!==r.coreCount||essence!==r.essence||!ready()))return false;
     CombatScaling.observe();
@@ -86,8 +86,8 @@ const Cultivation=(()=>{
     c.qiRemainder=c.qi-Math.floor(c.qi);
     c.result={success,target:r.target,chance:rate,loss,attempt:c.attempts,automatic};
     if(RunSave.active()&&!RunSave.save('突破结果')){P.cultivation=before;Object.assign(P,stats);CombatScaling.importState(scaling);return false;}
-    if(success){CombatScaling.observe();RealmVisuals.advance(true);}
-    Sound.effects(success?'level':'hit');return true;
+    if(success){CombatScaling.observe();RealmVisuals.advance(true);AscensionScene.begin({fromRealm:before.realm,stats});}
+    if(!success)Sound.effects('hit');return true;
   }
   return {realms,cores,fresh,valid,clean,recipe,need,settle,label,caps,protectLegacy,constrain,canStat,xpNeed,qi,addMaterial,onKill,victory,claimCore,chance,safe,ready,autoStatus,update,attempt,resetAutomation(){autoDelay=0;}};
 })();

@@ -86,8 +86,8 @@ const RealmVisuals=(()=>{
   let transition=null,pendingAdvance=null;
   const get=(c)=>({color:colors[c.realm],motif:motifs[c.realm],rings:c.realm?2+Math.floor(c.realm/4):1,detail:Math.floor((c.layer||1)/3),layer:c.layer||1});
   const ascensions=['灵脉初成','金丹凝轮','灵婴出窍','元神开轮','虚空裂变','双相归一','琉璃莲生','九霄雷冠','仙羽临身','星宿归位','五气归元','三花绽顶','大罗道轮','仙王敕印'];
-  function advance(major,details={}){const next={age:0,duration:major?2.6:1.2,major,realm:P.cultivation.realm,layer:P.cultivation.layer,fromLayer:details.fromLayer??P.cultivation.layer};if(!major&&transition?.realm===next.realm){if(transition.major){pendingAdvance={...next,fromLayer:Math.min(pendingAdvance?.fromLayer??next.fromLayer,next.fromLayer)};return;}transition.layer=next.layer;transition.fromLayer=Math.min(transition.fromLayer,next.fromLayer);return;}transition=next;pendingAdvance=null;}
-  function update(dt){if(transition&&dt>0&&['playing','win','story','character'].includes(G.state)){transition.age+=dt;if(transition.age>=transition.duration){transition=pendingAdvance;pendingAdvance=null;}}}
+  function advance(major,details={}){const next={age:0,duration:major?5.2:1.2,major,realm:P.cultivation.realm,layer:P.cultivation.layer,fromLayer:details.fromLayer??P.cultivation.layer};if(!major&&transition?.realm===next.realm){if(transition.major){pendingAdvance={...next,fromLayer:Math.min(pendingAdvance?.fromLayer??next.fromLayer,next.fromLayer)};return;}transition.layer=next.layer;transition.fromLayer=Math.min(transition.fromLayer,next.fromLayer);return;}transition=next;pendingAdvance=null;}
+  function update(dt){if(transition&&dt>0&&(typeof AscensionScene!=='undefined'&&AscensionScene.active()||['playing','win','story','character','levelup','chest','journal','map','station'].includes(G.state))){transition.age+=dt;if(transition.age>=transition.duration){transition=pendingAdvance;pendingAdvance=null;}}}
   function advancement(p,c,front=false){
     const t=transition;if(!t||t.realm!==c.realm)return;const progress=t.age/t.duration,alpha=Math.sin(progress*Math.PI),color=t.major?colors[c.realm]:'#b9f3ea';
     p.save();p.globalCompositeOperation='lighter';p.globalAlpha*=alpha*.9;p.strokeStyle=color;p.fillStyle=color+'30';p.lineWidth=1.7;
@@ -173,7 +173,7 @@ const RealmVisuals=(()=>{
       if(l>=9){p.fillStyle=color+'aa';for(let i=0;i<(mode.mobile?5:9);i++){const a=time*.5+i*Math.PI*2/9;p.beginPath();p.arc(Math.cos(a)*33,-56+Math.sin(a)*37,1.1,0,Math.PI*2);p.fill();}}
 
     }
-    if(!oldPass)advancement(p,c,front);
+    if(!oldPass&&!options.noAdvancement)advancement(p,c,front);
     p.restore();
   }
   function draw(c,x,y,time,scale=1){const v=get(c),r=31+c.realm*.8;ctx.save();ctx.translate(x,y);ctx.scale(scale,scale*.46);ctx.strokeStyle=v.color;ctx.globalAlpha=.55*presentation(c).decoration;ctx.lineWidth=1.2;
@@ -181,5 +181,5 @@ const RealmVisuals=(()=>{
     const count=4+v.detail*2+c.realm;for(let i=0;i<count;i++){const a=i*Math.PI*2/count+time*(c.realm%2?-.3:.25);ctx.save();ctx.rotate(a);ctx.beginPath();ctx.moveTo(r-5,-3);ctx.lineTo(r+5,0);ctx.lineTo(r-5,3);ctx.stroke();ctx.restore();}
     if(c.realm){ctx.rotate(-time*.15);ctx.strokeRect(-r*.6,-r*.6,r*1.2,r*1.2);}ctx.restore();
   }
-  return {get,draw,body,advance,advancement,update,notice,ascensions,status:()=>transition?{...transition}:null,danger,presentation,reset(){transition=null;pendingAdvance=null;}};
+  return {get,draw,body,advance,advancement,update,notice,ascensions,status:()=>transition?{...transition}:null,danger,presentation,reset(){if(typeof AscensionScene!=='undefined')AscensionScene.cancel();transition=null;pendingAdvance=null;}};
 })();

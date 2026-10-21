@@ -135,6 +135,7 @@ const Sound = (() => {
     else if(id==='bell-impact'){[147,301,438,711].forEach((f,i)=>tone(f,.85,.075/(1+i*.4),'sine',f*.97,i*.016));noise(.16,.09,550,pan);}
     else if(id==='edict-impact'){noise(.25,.18,2200,pan);tone(420,.22,.07,'sawtooth',90,0,pan);}
     else if(id==='tide-impact'){noise(.7,.21,650,pan);tone(75,.6,.11,'sine',38,0,pan);}
+    else if(id==='ascension'){tone(55,2.8,.15,'sine',82);noise(1.8,.11,280);[110,165,220,330,440,660].forEach((f,i)=>tone(f,2.4,.055,'sine',f*1.01,i*.14));}
     else if(id==='victory'||id==='level'||id==='chest'){
       [0,7,12,16,19].forEach((n,i)=>tone(330*2**(n/12),.8,.065,'triangle',null,i*.09));
     }else if(id==='defeat'){[220,174.6,146.8,110].forEach((f,i)=>tone(f,1.2,.07,'sine',null,i*.18));}

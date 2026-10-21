@@ -162,7 +162,7 @@ const Motion = (() => {
     const f=forcedFrame||frame(actor,'hero'),c=actor.cultivation||{realm:0,layer:1};
     const female=HeroIdentity.clean(actor.heroId)==='tinglan',sheet=female?heroine:hero;
     const anchor=female?[[[5,5],[5,5],[5,5],[5,5]],[[-16,20],[-8,12],[1,20],[2,20]],[[-3,-10],[-1,-10],[-3,7],[3,7]]][f.row][f.col]:[0,0];
-    const manifestation=front=>{pen.save();pen.translate(anchor[0],anchor[1]);RealmVisuals.body(pen,c,time,f.state,front,actor.moving,false,{preview:!!actor.preview});pen.restore();};
+    const manifestation=front=>{pen.save();pen.translate(anchor[0],anchor[1]);RealmVisuals.body(pen,c,time,f.state,front,actor.moving,false,{preview:!!actor.preview,noAdvancement:!!actor.noAdvancement});pen.restore();};
     const progress=actor.attackLength?1-(actor.attack||0)/actor.attackLength:0;
     const lunge=actor.attack>0?Math.sin(Math.min(1,progress)*Math.PI)*5:0;
     pen.save();pen.translate(actor.x+(actor.flash>0?Math.sin(actor.flash*35)*2:0)+Math.cos(actor.attackAngle||0)*lunge,actor.y+Math.sin(actor.attackAngle||0)*lunge);
