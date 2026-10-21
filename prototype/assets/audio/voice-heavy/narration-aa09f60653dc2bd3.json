@@ -1,0 +1,15 @@
+{
+  "id": "narration-aa09f60653dc2bd3",
+  "text": "听澜抵达乌鸡王宫，新王能叫出每个百姓的名字，也记得每户人家的苦。可每到深夜，井里就有一个声音替他念完白日未说的话。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "4790bd1b2dc33a53bb651224ea7d153ee41a94046583fb9aa9c468c17dc5e86c",
+  "source_sha256": "0cc59394d73c98afdb3ae22ad36c34ca8becdd1aad8633e61054135c528d6e97",
+  "sha256": "f393c6deb64157031ca463b6fdf01d4e75260a0a70784bd0110f1f565c0f0196",
+  "duration": 12.462,
+  "file": "assets/audio/voice-heavy/narration-aa09f60653dc2bd3.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

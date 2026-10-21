@@ -210,6 +210,48 @@
       "bpm": 126,
       "duration": 30.476,
       "original": true
+    },
+    {
+      "file": "assets/audio/music/twinforge-field.mp3",
+      "title": "双炉炼名·熄火·行路",
+      "bpm": 78,
+      "duration": 49.231,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/twinforge-boss.mp3",
+      "title": "双炉炼名·熄火·守关",
+      "bpm": 128,
+      "duration": 30,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/lotusname-field.mp3",
+      "title": "莲洞倒名·壶外·行路",
+      "bpm": 72,
+      "duration": 53.333,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/lotusname-boss.mp3",
+      "title": "莲洞倒名·壶外·守关",
+      "bpm": 122,
+      "duration": 31.475,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/mirrorwell-field.mp3",
+      "title": "镜井辨王·对证·行路",
+      "bpm": 80,
+      "duration": 48,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/mirrorwell-boss.mp3",
+      "title": "镜井辨王·对证·守关",
+      "bpm": 130,
+      "duration": 29.538,
+      "original": true
     }
   ]
 }

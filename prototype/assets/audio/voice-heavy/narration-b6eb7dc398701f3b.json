@@ -1,0 +1,15 @@
+{
+  "id": "narration-b6eb7dc398701f3b",
+  "text": "大圣曾用金箍棒撑住炉门，放走一群不肯换名的人。童子却拿他们留下的空籍补了火。听澜拾起炉门下的金毫：今天要烧的，是这张买卖人的账。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c6be45314797be7bbd4fe95234a2d30f8e0b7b2e31489ef10d8aec9ba8893331",
+  "source_sha256": "edea888b13b003c56a3cf1048cf75a20b5bc348a02ddbf0877e2f30d8f7b7e7e",
+  "sha256": "b724ecc5a3397662cb4a8d6b6b015a513ca38178cb2cf4d77e9cf4cbed84500a",
+  "duration": 14.55,
+  "file": "assets/audio/voice-heavy/narration-b6eb7dc398701f3b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

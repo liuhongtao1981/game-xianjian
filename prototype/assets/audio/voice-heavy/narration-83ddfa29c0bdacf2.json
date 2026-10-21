@@ -1,0 +1,15 @@
+{
+  "id": "narration-83ddfa29c0bdacf2",
+  "text": "金符童子说，身与魂合一才算完整。可炉边缝在一起的，是一个人的身体、另一个人的记忆，和买主从未受过苦的一生。七彩补天芝长在炉缝，替这些破碎的人保住最后一点自己。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "861ce047c3072d9fff484345ab4e9fa444b57326afaab0db9ea5f037b4553f24",
+  "source_sha256": "e5e73a2d428aa043d59b6362f5cf1ee240e5537df8888dd77143ff4b6002b528",
+  "sha256": "cdb88cabcdde501ab528ab27e5915b4313be9b08e9f014e0430788517109c63a",
+  "duration": 17.718,
+  "file": "assets/audio/voice-heavy/narration-83ddfa29c0bdacf2.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

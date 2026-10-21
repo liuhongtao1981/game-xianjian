@@ -1,0 +1,15 @@
+{
+  "id": "narration-f8a1dcc55b017f53",
+  "text": "一只裂葫芦里留着大圣的笑声：不必答他们替你取的名。听澜听见井水撞上石壁，许多被收走的记忆正往乌鸡国流去；先破倒名诏，才能把回家的路还给他们。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "9ebe1523a5bea310134dd4614290e26ba3fe06b73dcc469085ed3753155353e5",
+  "source_sha256": "f2f9f80ee905f37367f852f63fd4e78014459b3dd8e173196d716f9b1e93f252",
+  "sha256": "13eb7ddd29ea681a4248daca6cfb76708ddaf33c4f49ca400393da1db72421ca",
+  "duration": 15.894,
+  "file": "assets/audio/voice-heavy/narration-f8a1dcc55b017f53.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-fb3877499d3404b2",
+  "text": "上一难 · 双炉炼名。你带着「莲花倒写封签」来到莲花洞 · 倒名司。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c0395e595fe01203076de79803f6b20581c23661ace46751321a4df291d89d4d",
+  "source_sha256": "d3f11732b86144b6604e1a1d37804fbb6293cf71716dbece5452d4eda6652dbd",
+  "sha256": "566f8893bb61c554fd4dac1396684af5bc25ad89c0465347ffd2f6506120bef9",
+  "duration": 11.022,
+  "file": "assets/audio/voice-heavy/narration-fb3877499d3404b2.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

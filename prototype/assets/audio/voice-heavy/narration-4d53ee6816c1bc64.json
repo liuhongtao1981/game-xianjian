@@ -1,0 +1,15 @@
+{
+  "id": "narration-4d53ee6816c1bc64",
+  "text": "你循着号山焚誓残书旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成井底伪王的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "875da6aba1e6a1522d1938fba237f39f380e88e156f81d129202464af6c1ea3d",
+  "source_sha256": "ce61756d724ac6929eeb668f7e092b4e89027d4a2aaf96b8d58c36b2403ee39a",
+  "sha256": "bfa5e821a54a8ef86660b33f9603b64a30ad52f5085d484fbafc56fbb54cf180",
+  "duration": 10.518,
+  "file": "assets/audio/voice-heavy/narration-4d53ee6816c1bc64.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

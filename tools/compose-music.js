@@ -27,6 +27,10 @@ scores.push(
  {id:'sunken',title:'流沙沉名·逆舟',bpm:66,battleBpm:114,root:38,scale:[0,2,5,7,10],motif:[0,null,3,1,4,null,2,0,1,null,4,3,2,0,null,1]},
  {id:'whitebone',title:'白骨换身·心灯',bpm:74,battleBpm:120,root:45,scale:[0,1,5,7,10],motif:[0,1,null,4,3,1,0,null,2,4,3,null,1,0,4,null]},
  {id:'shadowcity',title:'宝象夺影·归名',bpm:82,battleBpm:126,root:42,scale:[0,3,5,8,10],motif:[0,3,4,1,null,2,4,3,0,2,1,4,3,null,2,0]});
+scores.push(
+ {id:'twinforge',title:'双炉炼名·熄火',bpm:78,battleBpm:128,root:39,scale:[0,3,5,7,10],motif:[0,2,1,null,4,3,0,2,1,4,null,3,2,0,1,null]},
+ {id:'lotusname',title:'莲洞倒名·壶外',bpm:72,battleBpm:122,root:44,scale:[0,1,5,7,10],motif:[4,3,1,0,null,2,4,1,3,null,0,2,1,4,0,null]},
+ {id:'mirrorwell',title:'镜井辨王·对证',bpm:80,battleBpm:130,root:41,scale:[0,2,5,8,10],motif:[0,3,null,1,4,2,0,null,3,1,4,2,null,1,3,0]});
 function render(score,battle){
   const bpm=battle?(score.battleBpm||[100,112,104,108,120,106][scores.indexOf(score)]):score.bpm,beat=60/bpm,duration=64*beat;
   const length=Math.ceil(duration*sr),left=new Float32Array(length),right=new Float32Array(length);

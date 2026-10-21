@@ -1,0 +1,15 @@
+{
+  "id": "narration-97e4958846a52865",
+  "text": "小果抵达乌鸡王宫，新王能叫出每个百姓的名字，也记得每户人家的苦。可每到深夜，井里就有一个声音替他念完白日未说的话。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "6bd7eccc6e2221d399c2d293ff6cb57e7f86a2391838a343b717da283371f296",
+  "source_sha256": "8dc77321efea9312991a97fa4c2e33b3c2612ea07f55e0cd4a6ade98e7f2ee8e",
+  "sha256": "a7fb7c8dddb1a6fcc92ccae6a62d07af9a900256231427c5ea1389d72b11a807",
+  "duration": 12.486,
+  "file": "assets/audio/voice-heavy/narration-97e4958846a52865.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

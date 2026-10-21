@@ -1,0 +1,15 @@
+{
+  "id": "narration-888f9e55c27351b9",
+  "text": "上一难 · 莲洞倒名。你带着「井底借忆王诏」来到乌鸡国 · 镜井宫。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "112ed8b161b6b6ead4679e5eb52b26a47b61479c192e69bb5f24c7234e58016b",
+  "source_sha256": "bc0dbbb735b5658a7746385bcea0386f9ef4de2231f73196492efcd230678809",
+  "sha256": "1dc7a8c99ac3cf3a9b4e1e3f33466ede09c81c23c0eeb49d80e53bfbcee36a03",
+  "duration": 10.974,
+  "file": "assets/audio/voice-heavy/narration-888f9e55c27351b9.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

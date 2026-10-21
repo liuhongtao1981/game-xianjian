@@ -1,0 +1,15 @@
+{
+  "id": "narration-16b05ed681acb34b",
+  "text": "你循着莲花倒写封签旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成金符童子的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "e6c4299b2106924fdbcce3eebbda9500fefc64a2b87c3b92d000aa821333d30c",
+  "source_sha256": "9ebdcc3fbfee28ce6f4646d6420c85a6ed500a3ad4fd498e22b1583b745428c7",
+  "sha256": "473405e1f01a95a739af1713c310de1938392958d81072ac6809f7e9f66f7692",
+  "duration": 10.662,
+  "file": "assets/audio/voice-heavy/narration-16b05ed681acb34b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

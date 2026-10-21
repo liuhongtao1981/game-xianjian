@@ -1,0 +1,15 @@
+{
+  "id": "narration-2f5a2ece698d77bc",
+  "text": "旧王被沉在镜井，记忆每日被抽走一遍；伪王借这些记忆行善，把百姓的感激抵成了夺位的功德。双炉炼身，倒名锁魂，镜井合一，原来整条取经路都在制造无需悔过的善人。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "f5d6233e5760950033dea7fe760abed4e6ef5ad1300726604a376ed7326f745b",
+  "source_sha256": "abf008f7ef62326c708cc2afc24548275a4f58e032652a4aaafd779913f44037",
+  "sha256": "ccdbbe79294c4e79269983f6fd748add941d6f59b88709b288b913fd3b73c403",
+  "duration": 18.174,
+  "file": "assets/audio/voice-heavy/narration-2f5a2ece698d77bc.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

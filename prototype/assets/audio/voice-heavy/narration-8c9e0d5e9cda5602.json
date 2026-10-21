@@ -1,0 +1,15 @@
+{
+  "id": "narration-8c9e0d5e9cda5602",
+  "text": "宝象城归还的影子仍在颤抖。沈听澜带着双炉归名石来到平顶山，谷中不炼仙丹，只把活人的姓名投入金炉，再从银炉取出一张无罪仙籍。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "00140a4fbb053d766fbf2e2b3f8b48432413376fdee3f86cb35940a0b65fc5df",
+  "source_sha256": "099633f8a2708bd296426dd6f3fdfd7cb8b281ced88a05499a6e881c86f281ef",
+  "sha256": "683c118322ce3f68de86fff1dacccf2d46dddfbf1f5c26c3e840dfe1a895ac96",
+  "duration": 14.982,
+  "file": "assets/audio/voice-heavy/narration-8c9e0d5e9cda5602.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

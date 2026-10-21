@@ -1,0 +1,15 @@
+{
+  "id": "narration-5940e27e3f612a68",
+  "text": "井沿刻着大圣留下的问句：记得一个人的苦，就能占有他的一生吗？听澜将补天芝放在水面，井底的旧王终于看清岸上那张自己的脸。真与假，都该当着活人的面说清。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "bf984067ba5dfd05fea3375e664a5b68a40ed639c818d41b75f19b8fc1627e37",
+  "source_sha256": "cbf39b1e45366dee0d19a0f692b39250c5288190c9318510ca379e0c2fb04ba1",
+  "sha256": "740c34aa035c0d6ffd859adf54dcc008466b57f71fda0171bd71062e56c2d0c4",
+  "duration": 16.902,
+  "file": "assets/audio/voice-heavy/narration-5940e27e3f612a68.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

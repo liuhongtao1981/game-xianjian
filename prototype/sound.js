@@ -6,7 +6,7 @@ const Sound = (() => {
   const defaults={music:.42,effects:.65,voice:.85,muted:false};
   let settings={...defaults};
   try{const saved=JSON.parse(localStorage.getItem('xunsheng-audio')||'null');if(saved)for(const k of ['music','effects','voice']){if(Number.isFinite(saved[k]))settings[k]=Math.max(0,Math.min(1,saved[k]));}if(saved)settings.muted=!!saved.muted;}catch(_){}
-  const musicNames=['exile','birth','river','mountain','outpost','dragon','wish','windwood','bonewish','contract','wedding','yellowwind','sunken','whitebone','shadowcity'],music=new Map(),cooldowns=new Map(),voices=new Map(),captionOnly=new Set();
+  const musicNames=['exile','birth','river','mountain','outpost','dragon','wish','windwood','bonewish','contract','wedding','yellowwind','sunken','whitebone','shadowcity','twinforge','lotusname','mirrorwell'],music=new Map(),cooldowns=new Map(),voices=new Map(),captionOnly=new Set();
   let context=null,effectBus=null,compressor=null,reverb=null,activated=false,scene='start',stage=0,boss=false;
   let currentTrack='',voice=null,lastVoice=-Infinity,lastSync=0,lastStatus='',hidden=false,serial=0,noiseSeed=0x81ac;
   let subtitle=null,ordinaryCalls=0,storyVoice=null;

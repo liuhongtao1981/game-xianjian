@@ -10,7 +10,7 @@ check('each realm requires all three main-story clears before its outside challe
     const before=JSON.stringify(RunSave.snapshot()),started=RunSave.start(realm*3,false,false,true);
     if(started!==(count===3)||count<3&&JSON.stringify(RunSave.snapshot())!==before)return false;
   }
-  return [-1,15,42,1.5,NaN].every(i=>!JourneyProgress.outsideUnlocked(i));`);
+  return [-1,ChapterCatalog.playable,42,1.5,NaN].every(i=>!JourneyProgress.outsideUnlocked(i));`);
 check('menu and result entries appear only after the actual third guardian victory',`
   RunSave.start(0);Journey.menu();const ov=document.getElementById('overlay');if(ov.innerHTML.includes('outerChallengeBtn'))return false;
   RunSave.start(0);
@@ -26,7 +26,7 @@ check('older unqualified outside saves return to the main story without losing m
   if(!RunSave.continueRun())return false;
   return !Journey.run.extramural&&!G.bossSpawned&&G.state==='story'&&P.cultivation.materials.core1===1&&P.cultivation.materials.essence===4&&JourneyProgress.cleared()===0&&!RunSave.snapshot().run.extramural;`);
 check('all released bosses roll at the exact 30 percent boundary for their own realm',`
-  RunSave.start(0);JourneyProgress.restore({version:1,cleared:ChapterCatalog.playable,entries:{}});P.cultivation.realm=4;RunSave.save();const random=Math.random;
+  RunSave.start(0);JourneyProgress.restore({version:1,cleared:ChapterCatalog.playable,entries:{}});P.cultivation.realm=Math.floor((ChapterCatalog.playable-1)/3);RunSave.save();const random=Math.random;
   for(let stage=0;stage<ChapterCatalog.playable;stage++)for(const roll of [.299999,.3,.999]){
     RunSave.start(stage,false,true);G.state='win';G.boss={xp:0};
     const r=ChapterCatalog.reward(stage),before=P.cultivation.materials[r.core]||0;
@@ -53,7 +53,7 @@ check('two outside victories provide exactly one full material recipe without ad
     if(!RunSave.continueRun()||!Journey.run.extramural||G.state!=='win'||P.cultivation.materials.core1!==n)return false;
   }return true;`);
 check('each released realm receives half its own recipe even when the hero is stronger',`
-  RunSave.start(0);JourneyProgress.restore({version:1,cleared:ChapterCatalog.playable,entries:{}});P.cultivation.realm=4;RunSave.save();
+  RunSave.start(0);JourneyProgress.restore({version:1,cleared:ChapterCatalog.playable,entries:{}});P.cultivation.realm=Math.floor((ChapterCatalog.playable-1)/3);RunSave.save();
   for(let stage=0;stage<ChapterCatalog.playable;stage++){
     if(!RunSave.start(stage,false,false,true))return false;
     const r=Cultivation.recipe(ChapterCatalog.get(stage).realm),a=P.cultivation.materials[r.core]||0,b=P.cultivation.materials.essence;

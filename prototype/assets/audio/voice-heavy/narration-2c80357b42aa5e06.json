@@ -1,0 +1,15 @@
+{
+  "id": "narration-2c80357b42aa5e06",
+  "text": "倒写封签引听澜进入莲花洞。洞顶悬着无数名字，越尊贵的仙号挂得越高；地上的孩子一被叫到乳名，葫芦里就传出另一个人的应答。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "cf788acd0d638d3cf372231de451b30f3952b4133e699c4155cb29380f0813c3",
+  "source_sha256": "53568721ad9e0c2fcc48aaf7b00cbdfd8a4168298b5d5bae16adafa60b4cdad5",
+  "sha256": "9f49ec876b0fddc5b6470b90541e1143b2de1e38e9cd3f9ac98b511d4df810cb",
+  "duration": 13.614,
+  "file": "assets/audio/voice-heavy/narration-2c80357b42aa5e06.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

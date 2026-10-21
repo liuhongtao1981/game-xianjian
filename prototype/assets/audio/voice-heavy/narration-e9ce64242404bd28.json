@@ -1,0 +1,15 @@
+{
+  "id": "narration-e9ce64242404bd28",
+  "text": "银诏炉主替双炉验收成品。他倒念原主的姓名，把记忆锁进葫芦，再让买主正着应一声。仙籍便只认应声的人，连亲人的呼唤也成了夺命的凭据。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "f499400ec4a1eb80c1c063729908db0024e7d0766e137d14557d58bca3990bb5",
+  "source_sha256": "a5506e405c9d5ee411e796555b194cf6a40235602e276bfc3ba8cc22f1293a5c",
+  "sha256": "239b531f2c54e3fb7154eafaa02f9c2f776ee016f42e5a98e62b9045832c924c",
+  "duration": 15.582,
+  "file": "assets/audio/voice-heavy/narration-e9ce64242404bd28.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

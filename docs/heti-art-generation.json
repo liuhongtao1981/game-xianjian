@@ -1,0 +1,152 @@
+{
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "name": "heti-worlds",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production assets for a dark Chinese Journey to the West action RPG. Painterly realistic 3D game art, intricate ancient Chinese materials, dramatic restrained lighting, no text, no letters, no captions, no UI, no grid lines, no watermark. Landscape 1536x1024 triptych with exactly THREE EQUAL vertical panels, no border, each showing one complete scene. Left: Pingding Twin Furnace Valley, black basalt terraces, two enormous bronze alchemical furnaces with gold and copper fire, charred name tablets, mountain fog. Center: Lotus Cave of Reversed Names, silver lilac lotus-shaped stalactites and inverted hanging bronze tablets above violet water, long crooked stair. Right: Wuji Mirror Well Palace, ruined jade green royal courtyard, deep central mirror well, broken coronation dais, wet jade tiles reflecting a false crown. All high oblique isometric view from above, no characters, walkable foreground courtyards occupy lower half, rich highly detailed environments, coherent sinister visual style.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-545d6cf4-19cc-480e-829b-fa970c2520b7.png",
+      "output": "E:\\dev\\仙剑2\\prototype\\assets\\heti-worlds.webp"
+    },
+    {
+      "name": "actors-twinforge",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production assets for a dark Chinese Journey to the West action RPG. Painterly realistic 3D game art, intricate ancient Chinese materials, dramatic restrained lighting, no text, no letters, no captions, no UI, no grid lines, no watermark. Transparent background sprite atlas, portrait 1024x1536. EXACT 4 columns by 5 equal-height rows, 20 isolated full-body sprites, large clear transparent gutters, no sprite touches another cell. Each row one consistent character in four distinct poses from left to right: idle, walking, weapon raised windup, attacking right. All face southeast in 3/4 isometric view; feet near same row baseline. Row1: gold-masked furnace sword goblin with burnt parchment ribbons. Row2: black ember hound with bronze ribs. Row3: red-robed talisman bell sorcerer carrying burning bronze seal. Row4: heavy twin-pot armored furnace guard with hammer. Row5: BOSS golden-horned alchemist youth demon, majestic black gold layered robes, huge brass gourd and broad ritual sword. Boss slightly larger, all entire weapons and feet visible within cells. Preserve genuine transparent alpha, no floor, no shadows or background.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-86ccbc78-12f0-4474-b867-74fe986ed2c4.png",
+      "output": "E:\\dev\\仙剑2\\prototype\\assets\\actors-twinforge.webp"
+    },
+    {
+      "name": "actors-lotusname",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production assets for a dark Chinese Journey to the West action RPG. Painterly realistic 3D game art, intricate ancient Chinese materials, dramatic restrained lighting, no text, no letters, no captions, no UI, no grid lines, no watermark. Transparent background sprite atlas, portrait 1024x1536. EXACT 4 columns by 5 equal-height rows, 20 isolated full-body sprites with generous gutters. One consistent character per row, four distinct poses left to right idle, walking, weapon raised windup, attack right. Face southeast in 3/4 isometric view, full bodies and weapons, feet aligned per row. Row1: silver paper-masked name-cutting goblin with hooked knife. Row2: lilac crystal lotus fox with twin tails. Row3: blind silver-robed decree monk wielding a floating name tablet and crooked staff. Row4: hulking inverted-bell armor warden with chained bronze mallet. Row5: BOSS silver-horned furnace master, magnificent silver violet layered robes, large purple-gold gourd, crescent scepter and lotus crown. Keep all cells isolated, no clipping, genuine alpha background, no floor, no shadows.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b346d2e1-de36-4411-8c91-4193306118fc.png",
+      "output": "E:\\dev\\仙剑2\\prototype\\assets\\actors-lotusname.webp"
+    },
+    {
+      "name": "actors-mirrorwell",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production assets for a dark Chinese Journey to the West action RPG. Painterly realistic 3D game art, intricate ancient Chinese materials, dramatic restrained lighting, no text, no letters, no captions, no UI, no grid lines, no watermark. Transparent background sprite atlas, portrait 1024x1536. EXACT 4 columns by 5 equal-height rows with generous gutters, 20 isolated full-body sprites. One consistent character per row, four distinct poses left to right idle, walking, weapon raised windup, attack right. Southeast 3/4 isometric view, feet aligned within each row. Row1: jade-black royal mirror guard, sword and faceless polished mask. Row2: spectral jade lion cub with cracked mirror mane. Row3: drowned royal astrologer in torn turquoise robes, water-filled bronze disk. Row4: heavy funerary palace guard with jade coffin shield and axe. Row5: BOSS false king with antler-like golden crown, drenched emerald black dragon robe, circular mirror halo, regal long sword, face an empty reflective mask. Full weapons, full feet, no clipping or overlapping cells. Genuine transparent alpha, no floor, no shadows.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-fcaa77bd-7783-473d-9543-cb061076169d.png",
+      "output": "E:\\dev\\仙剑2\\prototype\\assets\\actors-mirrorwell.webp"
+    },
+    {
+      "name": "heti-props",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production assets for a dark Chinese Journey to the West action RPG. Painterly realistic 3D game art, intricate ancient Chinese materials, dramatic restrained lighting, no text, no letters, no captions, no UI, no grid lines, no watermark. Landscape 1536x1024 transparent prop atlas, EXACT 4 columns by 3 rows, 12 separated isometric game props, each centered in its equal cell with generous transparent gutters, entirely visible. Columns: ceremonial gate, tree or rock formation, standing lantern, ritual shrine. Row1 Twin Furnace Valley: black bronze furnace gate / charred twisted tree with gold chains / ember bronze furnace lantern / paired alchemical furnace shrine. Row2 Lotus Cave: silver lotus stone gate / lotus-shaped purple stalagmites / hanging-name tablet lantern / open purple gourd altar. Row3 Mirror Well Palace: ruined jade palace gate / wet willow tree / jade mirror lantern / royal deep circular stone well with broken crown. No ground tiles, no background, no cast shadows. Preserve real transparency.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-7aa42afd-13e7-4460-9bde-fd5f1555d7a9.png",
+      "output": "E:\\dev\\仙剑2\\prototype\\assets\\heti-props.webp"
+    },
+    {
+      "name": "heti-terrain",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production assets for a dark Chinese Journey to the West action RPG. Painterly realistic 3D game art, intricate ancient Chinese materials, dramatic restrained lighting, no text, no letters, no captions, no UI, no grid lines, no watermark. Landscape 1536x1024 texture atlas, exactly THREE columns x TWO rows, six square 512x512 orthographic top-down seamless ground material tiles filling their cells edge-to-edge, no gap or dividers, NO objects or perspective. Columns themes: 1 black basalt furnace valley with subtle gold ash; 2 silver lilac lotus cave stone; 3 wet dark jade palace tiles with muted teal reflections. Top row plaza surfaces: large worn ritual stone slabs with fine cracks, subtle restrained color, no strong center emblem. Bottom row path surfaces: corresponding small weathered cobbles and rough rock. Natural continuous PBR game ground, no lighting gradient, no highlights obscuring enemies.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-95ac5c63-9fbf-4a8e-bd83-bf44c5704e4c.png",
+      "output": "E:\\dev\\仙剑2\\prototype\\assets\\heti-terrain.webp"
+    }
+  ],
+  "rowCuts": {
+    "twinforge": [
+      [
+        0,
+        318,
+        593,
+        872,
+        1163,
+        1536
+      ],
+      [
+        0,
+        321,
+        593,
+        869,
+        1168,
+        1536
+      ],
+      [
+        0,
+        315,
+        576,
+        868,
+        1165,
+        1536
+      ],
+      [
+        0,
+        319,
+        605,
+        882,
+        1178,
+        1536
+      ]
+    ],
+    "lotusname": [
+      [
+        0,
+        319,
+        612,
+        910,
+        1180,
+        1536
+      ],
+      [
+        0,
+        320,
+        615,
+        917,
+        1185,
+        1536
+      ],
+      [
+        0,
+        316,
+        614,
+        903,
+        1182,
+        1536
+      ],
+      [
+        0,
+        322,
+        624,
+        922,
+        1192,
+        1536
+      ]
+    ],
+    "mirrorwell": [
+      [
+        0,
+        331,
+        607,
+        905,
+        1179,
+        1536
+      ],
+      [
+        0,
+        333,
+        606,
+        903,
+        1177,
+        1536
+      ],
+      [
+        0,
+        331,
+        596,
+        904,
+        1188,
+        1536
+      ],
+      [
+        0,
+        331,
+        613,
+        906,
+        1186,
+        1536
+      ]
+    ]
+  },
+  "repackingManifest": "heti-art-repacking.json"
+}

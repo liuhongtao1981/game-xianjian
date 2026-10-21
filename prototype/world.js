@@ -9,7 +9,7 @@ const World=(()=>{
   }));
   let combat;
   const images=ChapterCatalog.released().map(()=>new Image());
-  function terrain(){const c=ChapterCatalog.get(Journey.run.stage),image=images[c.index];if(!image.src)image.src=c.realm===4?'assets/lianxu-worlds.webp':c.realm===3?'assets/huashen-worlds.webp':c.realm===2?'assets/infant-worlds.webp':'assets/world-'+c.id+(c.realm?'.jpg':'-v3.jpg');return image;}
+  function terrain(){const c=ChapterCatalog.get(Journey.run.stage),image=images[c.index];if(!image.src)image.src=c.realm===5?'assets/heti-worlds.webp':c.realm===4?'assets/lianxu-worlds.webp':c.realm===3?'assets/huashen-worlds.webp':c.realm===2?'assets/infant-worlds.webp':'assets/world-'+c.id+(c.realm?'.jpg':'-v3.jpg');return image;}
   const titles=[['入山旧道','焚卷碑林','断钟外庭','封口禅坛'],['陈府后巷','血书偏院','废印长廊','司命刑庭'],['旧渡石径','沉灯浅湾','缚舟栈道','河伯祭台']];
   let sites=[],active=false,mapOpen=false,near=null,visited=0,nav=null;
   let guide='camp',guideTarget=null,guideHeading=null,guideUntil=0;

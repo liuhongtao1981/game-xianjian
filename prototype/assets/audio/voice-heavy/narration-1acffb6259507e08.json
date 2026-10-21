@@ -1,0 +1,15 @@
+{
+  "id": "narration-1acffb6259507e08",
+  "text": "你循着井底借忆王诏旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成银诏炉主的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "6bd826cd31035b5538722114d67e9bea1a4ad05cec9b83f703089c6c32d5ff06",
+  "source_sha256": "e2275c9df70928a8438d41699aeaa5952ab02a52c4cc358227f6325219ed4d96",
+  "sha256": "62b279ff2e128f025d1d54a24b7732753b256fbab9c1a54166c3a9dbfdf6316b",
+  "duration": 10.446,
+  "file": "assets/audio/voice-heavy/narration-1acffb6259507e08.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

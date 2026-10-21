@@ -1,0 +1,15 @@
+{
+  "id": "narration-ca432f27ef427641",
+  "text": "宝象城归还的影子仍在颤抖。孙小果带着双炉归名石来到平顶山，谷中不炼仙丹，只把活人的姓名投入金炉，再从银炉取出一张无罪仙籍。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "46a651f0d68e3e486acfbf6494c467c7dc3efa491c5828c9ac9ff84ba836ab6c",
+  "source_sha256": "9f00da224f931bbcb05ca4cd88f25986ccde4fbb54cf07b16d5ebad229c423dd",
+  "sha256": "86d23f00651fce12b9ee8305d332c09f8579f81df74e8982a91a4080c6bdcf69",
+  "duration": 14.79,
+  "file": "assets/audio/voice-heavy/narration-ca432f27ef427641.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -621,6 +621,7 @@ function updateTelegraphs(dt){
       if(t.shape==='line'){const along=dx*Math.cos(t.angle)+dy*Math.sin(t.angle),across=-dx*Math.sin(t.angle)+dy*Math.cos(t.angle);hit=Math.abs(along)<t.length+P.r&&Math.abs(across)<t.r+P.r;}
       if(t.shape==='annulus')hit=Math.abs(Math.hypot(dx,dy)-t.r)<t.width+P.r;
       if(t.shape==='sandstorm')hit=HuashenGuardians.stormHit(t,P);
+      if(t.shape==='heti')hit=HetiGuardians.wardHit(t,P);
       if(t.shape==='lianxu')hit=LianxuGuardians.wardHit(t,P);
       if(t.shape==='tide')hit=P.x>(t.left??0)-P.r&&P.x<(t.right??World.bounds().w)+P.r&&Math.abs(dy)<t.r+P.r&&Math.abs(P.x-t.gap)>Math.max(0,t.safe/2-P.r);
       Encounters.impact(t);
@@ -1331,6 +1332,7 @@ function drawAtmosphere(){
 }
 function drawTelegraphs(){
   for(const t of G.telegraphs){
+    if(t.shape==='heti'){HetiArt.drawWard(t);continue;}
     if(t.shape==='lianxu'){LianxuArt.drawWard(t);continue;}
     if(t.shape==='sandstorm'){HuashenArt.drawStorm(t);continue;}
     const progress=1-t.life/t.total,color=t.color||'#e69a75';

@@ -1,0 +1,15 @@
+{
+  "id": "narration-e4215b65a35e22b8",
+  "text": "上一难 · 宝象夺影。你带着「平顶双炉的归名石」来到平顶山 · 双炉谷。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "7dc7d1f150411ddac83169cc89822f7e61016b9b5d5f0e2df90054cacb652272",
+  "source_sha256": "880c0a839eb820303f653ec2a6371e7cc8db1b5bb6cf6d064fd9848664de5d3f",
+  "sha256": "728ea13c346f21d7a38ebdc2aadbe1aa93a284f51f34b6542105370305cea773",
+  "duration": 11.502,
+  "file": "assets/audio/voice-heavy/narration-e4215b65a35e22b8.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

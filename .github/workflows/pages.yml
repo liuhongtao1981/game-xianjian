@@ -17,6 +17,7 @@ on:
       - 'tools/check-infant.js'
       - 'tools/check-huashen.js'
       - 'tools/check-lianxu.js'
+      - 'tools/check-heti.js'
       - 'tools/check-reward-cards.js'
       - 'tools/check-ascension-scene.js'
       - 'tools/check-spell-growth.js'
@@ -68,6 +69,7 @@ jobs:
           node tools/check-infant.js
           node tools/check-huashen.js
           node tools/check-lianxu.js
+          node tools/check-heti.js
           node tools/check-spell-growth.js
           node tools/check-spell-priority.js
           node tools/check-thunder.js

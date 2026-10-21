@@ -1,0 +1,24 @@
+{
+  "mode": "built-in image_gen edit",
+  "assets": [
+    {
+      "name": "actors-lotusname",
+      "prompt": "Create a production sprite sheet using the five character designs in reference. This is a VERY SPACIOUS atlas, not a poster. 1024x1536 transparent canvas. Exact 4 columns x 5 rows of sprites. Each of the 20 sprites MUST be SMALL: body and all weapons maximum 180 pixels high, maximum 195 pixels wide, centered in its 256 by 307 cell. There must be VERY LARGE transparent gutters of 50 pixels or more above and below every sprite. Do not fill the canvas with big characters. Rows in order: silver masked knife goblin, purple lotus fox woman, blind white-haired tablet monk, bronze bell armored guard, silver-horn purple gourd boss. Within each row: idle, walk, windup, strike. Southeast 3/4 view, full-body complete feet and weapons, no clipping. Keep the designs, but shrink them dramatically for atlas packing. No background, floor or shadows; genuine alpha. No text or dividing lines.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-93c2d8e2-988c-43e4-b4dc-af7929afe570.png",
+      "previousEdit": {
+        "prompt": "Use case: precise-object-edit. Correct ONLY sprite atlas spacing for production game. Keep these exact 5 character identities, their colors, materials and their 4 poses. Recompose on a transparent 1024x1536 canvas as exact FOUR columns and FIVE EQUAL rows: each cell 256px wide and 307px high, each FULL BODY including ALL weapons, crowns and feet entirely contained in its own cell. Shrink sprites uniformly enough to leave at least 18px of completely empty transparent padding on ALL FOUR SIDES of EVERY cell. No part overlaps another cell or row. All 20 figures isolated. Boss same cell size as other rows. Transparent alpha, no ground, no shadows, no text, no borders. This is an atlas packing correction: preserve all design detail but prioritize visible empty gutters and unclipped feet.",
+        "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-e85b9332-295c-4f61-852e-52f79110263e.png"
+      }
+    },
+    {
+      "name": "actors-mirrorwell",
+      "prompt": "Use case: precise-object-edit. Correct ONLY sprite atlas spacing for production game. Keep these exact 5 character identities, their colors, materials and their 4 poses. Recompose on a transparent 1024x1536 canvas as exact FOUR columns and FIVE EQUAL rows: each cell 256px wide and 307px high, each FULL BODY including ALL weapons, crowns and feet entirely contained in its own cell. Shrink sprites uniformly enough to leave at least 18px of completely empty transparent padding on ALL FOUR SIDES of EVERY cell. No part overlaps another cell or row. All 20 figures isolated. Boss same cell size as other rows. Transparent alpha, no ground, no shadows, no text, no borders. This is an atlas packing correction: preserve all design detail but prioritize visible empty gutters and unclipped feet.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-38552853-989d-46fd-a6f0-ce64a49a98c6.png"
+    },
+    {
+      "name": "actors-twinforge",
+      "prompt": "Create a VERY SPACIOUS production sprite atlas using the five dark furnace character designs in reference. Transparent 1024x1536 canvas, EXACT 4 columns x 5 rows, 20 small full-body sprites. Each character including entire weapons, flame and ribbons must be MAXIMUM 180px tall and 195px wide centered inside its own 256x307 cell. More than 50px transparent space above and below each sprite. Make characters SMALL, do not fill the canvas. Absolutely no overlapping cells, absolutely no figures or fragments across column boundaries. Rows: gold masked sword goblin; bronze rib ember hound; red robed bell monk; heavy double furnace guard; golden horned black gold gourd alchemist boss. Four poses per row: idle, walk, windup, strike southeast. Preserve designs and visual quality while shrinking them for safe atlas packing. Entire feet and weapons. No background, floor, shadows, text or lines; real transparent alpha.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-30e5aa22-a166-4e09-9b86-abb8c16a6b09.png"
+    }
+  ]
+}
