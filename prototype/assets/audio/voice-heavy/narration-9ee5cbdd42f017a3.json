@@ -1,0 +1,15 @@
+{
+  "id": "narration-9ee5cbdd42f017a3",
+  "text": "小果在炉壁摸到大圣留下的掌印，旁边刻着一盏两芯灯：借来的光，总该照见两个人。监炉使掀开炉盖，要把追债人的记忆也炼成利息；先护住两盏本命灯，再让它们照向同一处。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "0d016b008cd5a83d583225d132ac3abe46ff4a1e13f8b0539f6763e592f82ed4",
+  "source_sha256": "5f56b498fb596c7a84f217176993e1501b3ae71f89530c7aa08e4d74a979f9e6",
+  "sha256": "8ffd84fa71426fa93290eea1f8ef733405a8ce6eaf93a8d9e8f0396fb2def6f4",
+  "duration": 18.174,
+  "file": "assets/audio/voice-heavy/narration-9ee5cbdd42f017a3.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

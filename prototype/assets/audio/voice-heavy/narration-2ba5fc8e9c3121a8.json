@@ -1,0 +1,15 @@
+{
+  "id": "narration-2ba5fc8e9c3121a8",
+  "text": "黑契鼍王掌着逆契府。他不否认火云欠了寿命，只说追回旧债也要借船、借路、借一枚官印；活人讨回的一年，最后又抵给尚未出生的人。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "a01e103896bc66870e668a74bb6c67dd18a55432a4bbf72200f521472d3d0245",
+  "source_sha256": "e00254b183adbd177c909bf876f70f200a50ab44e07745f10f96110f786ac2de",
+  "sha256": "4d94a21ece52005253179362862bc5054a89d29c2ae45e7b591ad713916f8369",
+  "duration": 15.534,
+  "file": "assets/audio/voice-heavy/narration-2ba5fc8e9c3121a8.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

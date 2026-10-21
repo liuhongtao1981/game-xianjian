@@ -1,0 +1,15 @@
+{
+  "id": "narration-5aecdc59dd18ab2b",
+  "text": "上一难 · 号山焚誓。你带着「火云寿灯调拨令」来到火云洞 · 借命炉。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "fbf4a11ccc87d8c07597ab0aa97f4a044091bd1030032a8aa36e78e0f258797c",
+  "source_sha256": "d2e9892e2b112dad314b9b267cb8adece7c0291d780b3d1a8b30e2b3e4ee0333",
+  "sha256": "309f9d5ccb68d7b4af0bde2ee15be4b9b9e2ff44ed3544b24d14f8fec99d0d39",
+  "duration": 10.998,
+  "file": "assets/audio/voice-heavy/narration-5aecdc59dd18ab2b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

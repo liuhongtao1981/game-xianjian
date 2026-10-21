@@ -1,0 +1,103 @@
+{
+  "generator": "image_gen.imagegen",
+  "mode": "builtin",
+  "created": "2026-10-22",
+  "assets": [
+    {
+      "name": "dacheng-worlds",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Landscape 1536x1024 triptych, exactly THREE EQUAL vertical panels, no borders. Each complete scene has a broad walkable courtyard in lower half, high oblique isometric view. Left: Haoshan forest of burnt vows, enormous charred red trees bound in prayer ropes, dark stone forest paths over glowing ember fissures, abandoned oath shrines. Center: Fire Cloud borrowed-life furnace, cavernous triple bronze alchemy furnace, hundreds of small green life lamps, copper bridges, dark crimson fire, ruined ritual terrace. Right: Black Water contract palace, black-green flooded river terraces, crocodile throne shrine, wet stone curved causeways, chained contract tablets, drowned gate. No characters, coherent ominous richly detailed Chinese environment.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-fde12169-b80b-4ca7-85c7-9ebe6b156888.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-fde12169-b80b-4ca7-85c7-9ebe6b156888.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\dacheng-worlds.webp"
+    },
+    {
+      "name": "dujie-worlds",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Landscape 1536x1024 triptych, exactly THREE EQUAL vertical panels, no borders. High oblique isometric view, complete environment per panel, broad walkable ritual foreground occupies lower half. Left: Chechi thunder sacrifice court, ochre Daoist temple terraces, bronze thunder drums and lightning rods under a black storm sky, scorched rune slabs. Center: Tongtian icebound ferry, dark frozen river with ancient stone ferry terraces and blue ice bridges, ice lanterns and half submerged ferry gate, far snowy temple. Right: Jindou weapon seizure cave, indigo black mountain cavern with colossal golden ring arch, broken weapon offering racks and bronze cauldron walls, a broad gold-inlaid ancient stone dais. No people, dramatic realistic dark fantasy.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-ee1bf8d4-d05e-4046-aefb-8bcec6de8fd5.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-ee1bf8d4-d05e-4046-aefb-8bcec6de8fd5.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\dujie-worlds.webp"
+    },
+    {
+      "name": "actors-oathwood",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Transparent 1024x1536 sprite atlas, exactly 4 columns by 5 rows, 20 SMALL isolated full-body figures. Each full sprite including all weapons, flames, tails and ribbons must be less than 185 pixels tall and 190 pixels wide, centered in its own 256x307 cell, with at least 45 pixels of completely empty transparent space above and below. This is a spacious game sprite sheet, not a tightly packed poster. No fragments crossing column or row boundaries, no clipping. Same character per row in FOUR poses left to right: idle, walk, weapon raised windup, attack southeast. 3/4 isometric view, full visible feet. Genuine transparent alpha, no floor, no cast shadows, no background, no borders.Row1 red-bark oath sword goblin with charred wooden mask. Row2 ember root wolf, charcoal bark and orange eyes. Row3 bound-oath shaman in burnt red robes holding a knotted cord staff. Row4 huge charred tree armored axeman with bronze shackles. Row5 BOSS fire oath child king, young adult demon with blazing red horned crown, black red robes and fire-tipped spear, several burnt prayer cords.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-24a217c4-5038-4b8a-9a79-2e32648ed0ac.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-cf3f73a1-01c2-4523-8e45-a2e06116b63b.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\actors-oathwood.webp"
+    },
+    {
+      "name": "actors-borrowflame",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Transparent 1024x1536 sprite atlas, exactly 4 columns by 5 rows, 20 SMALL isolated full-body figures. Each full sprite including all weapons, flames, tails and ribbons must be less than 185 pixels tall and 190 pixels wide, centered in its own 256x307 cell, with at least 45 pixels of completely empty transparent space above and below. This is a spacious game sprite sheet, not a tightly packed poster. No fragments crossing column or row boundaries, no clipping. Same character per row in FOUR poses left to right: idle, walk, weapon raised windup, attack southeast. 3/4 isometric view, full visible feet. Genuine transparent alpha, no floor, no cast shadows, no background, no borders.Row1 bronze furnace masked saber apprentice. Row2 three-flame copper lion hound. Row3 crimson life-loan lamp sorceress with bronze lantern. Row4 massive bellows armored hammer guard. Row5 BOSS three-fire furnace inquisitor, terrifying elderly demon in bronze and scarlet ritual armor with three small fire halos, giant metal incense burner and staff.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-361d7c15-7617-498d-b100-73c51e9393e3.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b9d24192-7281-41a3-b347-c71af4b0172f.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\actors-borrowflame.webp"
+    },
+    {
+      "name": "actors-blackwater",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Transparent 1024x1536 sprite atlas, exactly 4 columns by 5 rows, 20 SMALL isolated full-body figures. Each full sprite including all weapons, flames, tails and ribbons must be less than 185 pixels tall and 190 pixels wide, centered in its own 256x307 cell, with at least 45 pixels of completely empty transparent space above and below. This is a spacious game sprite sheet, not a tightly packed poster. No fragments crossing column or row boundaries, no clipping. Same character per row in FOUR poses left to right: idle, walk, weapon raised windup, attack southeast. 3/4 isometric view, full visible feet. Genuine transparent alpha, no floor, no cast shadows, no background, no borders.Row1 drowned black contract blade guard in dark green reed armor. Row2 blue-black crocodile beast with jade eyes. Row3 river debt monk in torn deep teal robes with chained contract scroll and water staff. Row4 huge turtle-shell shield executioner with anchor axe. Row5 BOSS black-water crocodile king, humanoid crocodile head, imperial black turquoise scaled armor, massive crescent halberd and dragon seal.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-7a12ea59-7b96-4942-85bc-30a15a544244.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-a10979a0-88de-49f9-8075-00665d715bef.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\actors-blackwater.webp"
+    },
+    {
+      "name": "actors-thundercourt",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Transparent 1024x1536 sprite atlas, exactly 4 columns by 5 rows, 20 SMALL isolated full-body figures. Each full sprite including all weapons, flames, tails and ribbons must be less than 185 pixels tall and 190 pixels wide, centered in its own 256x307 cell, with at least 45 pixels of completely empty transparent space above and below. This is a spacious game sprite sheet, not a tightly packed poster. No fragments crossing column or row boundaries, no clipping. Same character per row in FOUR poses left to right: idle, walk, weapon raised windup, attack southeast. 3/4 isometric view, full visible feet. Genuine transparent alpha, no floor, no cast shadows, no background, no borders.Row1 tiger masked thunder talisman swordsman in ochre robes. Row2 storm striped electric tiger cub beast. Row3 yellow robed rain tax astrologer with floating bronze thunder tablets. Row4 bronze drum armored temple warrior with thunder mallet. Row5 BOSS tiger thunder edict master, humanoid tiger head, yellow black layered Daoist robes, tall ritual crown, lightning whisk and lightning seal.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-7861fd6a-dcb5-4b26-9779-4b8ab708f011.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-0301247a-414f-481d-a286-18f008083c99.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\actors-thundercourt.webp"
+    },
+    {
+      "name": "actors-icepass",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Transparent 1024x1536 sprite atlas, exactly 4 columns by 5 rows, 20 SMALL isolated full-body figures. Each full sprite including all weapons, flames, tails and ribbons must be less than 185 pixels tall and 190 pixels wide, centered in its own 256x307 cell, with at least 45 pixels of completely empty transparent space above and below. This is a spacious game sprite sheet, not a tightly packed poster. No fragments crossing column or row boundaries, no clipping. Same character per row in FOUR poses left to right: idle, walk, weapon raised windup, attack southeast. 3/4 isometric view, full visible feet. Genuine transparent alpha, no floor, no cast shadows, no background, no borders.Row1 frozen ferry scythe goblin with pale blue reed mask. Row2 hoarfrost scaled otter wolf. Row3 blue white child-debt frost priest carrying ice lantern and staff, adult appearance. Row4 giant ice-shell barge guard with icy anchor. Row5 BOSS frozen-vow carp king, imposing humanoid silver blue fish demon in ice jade lamellar armor, crown of icicles, heavy nine-ring ice spear.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-366b3eac-bcce-4099-be90-50878081c481.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-e582e480-a5bb-432f-a393-c3d8a2f6921e.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\actors-icepass.webp"
+    },
+    {
+      "name": "actors-goldring",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Transparent 1024x1536 sprite atlas, exactly 4 columns by 5 rows, 20 SMALL isolated full-body figures. Each full sprite including all weapons, flames, tails and ribbons must be less than 185 pixels tall and 190 pixels wide, centered in its own 256x307 cell, with at least 45 pixels of completely empty transparent space above and below. This is a spacious game sprite sheet, not a tightly packed poster. No fragments crossing column or row boundaries, no clipping. Same character per row in FOUR poses left to right: idle, walk, weapon raised windup, attack southeast. 3/4 isometric view, full visible feet. Genuine transparent alpha, no floor, no cast shadows, no background, no borders.Row1 blue bronze weapon-tax saber goblin in broken armor. Row2 gold ring horned blue hound. Row3 purple black armory chain mage with empty sword scabbards. Row4 hulking gold cauldron armored jailer with large mace. Row5 BOSS blue ox weapon-seizing lord, massive humanoid blue ox demon with tall curved horns, black indigo and tarnished gold ritual armor, huge golden metal ring held clearly and long spear.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-25fde384-7764-4d2a-9f32-ad04bf55f77a.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-4c0fcc58-8791-492b-886f-c430f44bc445.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\actors-goldring.webp"
+    },
+    {
+      "name": "dacheng-props",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Landscape1536x1024 transparent prop sheet, EXACT four columns by three rows, 12 SMALL complete isolated props centered in equal384x341 cells with generous transparent gutters. High oblique isometric view. Columns: gate, tree/rock formation, lantern, shrine. Row1 burnt-vow forest: scorched rope gate; charred twisted red tree with prayer knots; ember oath lantern; broken spear oath altar. Row2 FireCloud: bronze triple-furnace gate; dark copper ore stone; green life-lamp stand; triple fire alchemy furnace. Row3 BlackWater: black jade flood gate; drowned reed willow rock; chain water lantern; crocodile contract throne. Entire silhouette per cell, no clipping or overlapping, real transparent alpha, no floor, no background, no text.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-ce1c746a-546c-4a9f-b574-6d04cb66d3c9.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c3d686ee-264e-4e6f-9cc3-6f411d353008.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\dacheng-props.webp"
+    },
+    {
+      "name": "dujie-props",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Landscape1536x1024 transparent prop sheet, EXACT four columns by three rows, 12 SMALL complete isolated props centered in equal384x341 cells with generous transparent gutters. High oblique isometric view. Columns: gate, tree/rock, lantern, shrine. Row1 thunder court: ochre temple thunder gate; lightning-split pine stone; bronze lightning lantern; huge thunder drum altar. Row2 ice ferry: frozen ferry stone gate; blue ice reed formation; frosted ferry lantern; ice carp vow altar. Row3 weapon cave: giant gold ring gate; indigo mountain crystal; golden weapon-soul lantern; bronze weapon confiscation cauldron with spears. Entire silhouette visible in each cell, no clipping or overlapping, genuine transparent alpha, no floor or shadows, no background, no text.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-799fb74a-30a0-4a34-aa4b-825565c3cfaa.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-6a02ee77-99ab-427c-8d75-e4be083eda4d.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\dujie-props.webp"
+    },
+    {
+      "name": "dacheng-terrain",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Landscape1536x1024 ground texture atlas, exactly3 columns by2 rows, six512px square seamless top-down flat orthographic material tiles, fill each cell edge to edge with no dividers. Columns: charcoal forest stone with faint ember red cracks; aged bronze red-black furnace courtyard slabs; wet dark green river palace stones. Top row large worn plaza slabs, bottom row matching smaller path cobbles. Fine detail, muted colors, no objects, no perspective, no center emblems, no lighting gradients.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c053d0ec-7ddb-4652-9df6-c4545f22e65d.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c053d0ec-7ddb-4652-9df6-c4545f22e65d.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\dacheng-terrain.webp"
+    },
+    {
+      "name": "dujie-terrain",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Production art for a dark Chinese Journey to the West isometric action RPG, elaborate ancient Chinese materials, realistic painterly 3D game art, restrained sinister atmosphere, no text, no watermark, no UI. Landscape1536x1024 ground texture atlas, exactly3 columns by2 rows, six512px square seamless top-down flat orthographic material tiles, fill each cell edge to edge with no dividers. Columns: weathered ochre gray thunder court slabs; dark frost blue ferry stone and fine ice cracks; indigo charcoal cave slabs with restrained tarnished gold seams. Top row large worn plaza slabs, bottom row matching smaller path cobbles. Muted colors, no objects or perspective, no big center emblems or lighting gradients.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-ca505bfe-b8aa-479e-90a6-596f3cee199c.png",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-ca505bfe-b8aa-479e-90a6-596f3cee199c.png",
+      "savedPath": "E:\\dev\\仙剑2\\prototype\\assets\\dujie-terrain.webp"
+    }
+  ]
+}

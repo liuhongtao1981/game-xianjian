@@ -1,0 +1,15 @@
+{
+  "id": "narration-e7baeba6d00d1eb2",
+  "text": "大圣曾把一口冰钟敲到开裂，钟里传出的不是神谕，是孩子们想回家的声音。小果听见铃声从两条细长冰脊下穿过：先走过翻转的冰路，再让冰心见到真正的春天。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "3a6bda0c25c2e8b9baa1ad8d098c73992244a7c289aff5cc027a56c388a33d64",
+  "source_sha256": "849e99ef95daf9a929e5e44225d774fe606d4470f0e58a14481a6d299d5f232a",
+  "sha256": "cdc0f0ccdba88f315db4064668195cfde7738c953bf57a9ddc92d8eb93de69b1",
+  "duration": 16.038,
+  "file": "assets/audio/voice-heavy/narration-e7baeba6d00d1eb2.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

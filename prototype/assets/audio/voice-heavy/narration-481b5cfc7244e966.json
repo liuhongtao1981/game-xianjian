@@ -1,0 +1,15 @@
+{
+  "id": "narration-481b5cfc7244e966",
+  "text": "上一难 · 火云借命。你带着「黑水余命回购契」来到黑水河 · 逆契府。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "3bdef83ad4020837273736280abe6b696132788fbf24ee10aa824259b70a0621",
+  "source_sha256": "5510c360e204538a2a84a2cf4274326bfaa1ef8a9acbf6de9f4c12dff5b17686",
+  "sha256": "24674bb296ec1b3a1a5227c4d8f6df3f0dc5f8e0207d1c05fe8068ebe3335e40",
+  "duration": 11.55,
+  "file": "assets/audio/voice-heavy/narration-481b5cfc7244e966.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

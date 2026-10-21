@@ -1,0 +1,15 @@
+{
+  "id": "narration-cee46ea14d1f651f",
+  "text": "你循着车迟追债雷诏旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成黑契鼍王的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "eac0ea89d69cbe2843cdd25560c33709924c513146e2ce8a82c2ff155220ae6d",
+  "source_sha256": "879e6a18be535569d7755a4e4e4cdae4c921da032a6d6a7fa570f1bce084708c",
+  "sha256": "dca7fd95de19cd811d88155ed9b57c57d7d93aa959349bea2fb85af75ff76061",
+  "duration": 10.542,
+  "file": "assets/audio/voice-heavy/narration-cee46ea14d1f651f.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

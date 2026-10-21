@@ -1,0 +1,15 @@
+{
+  "id": "narration-6722e4232fd9db75",
+  "text": "上一难 · 通天冻愿。你带着「金兜空鞘押票」来到金兜山 · 夺器洞。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "47490ab6722f0379d57d7952583c22582742a39cd6438a093f2a08d8d016d317",
+  "source_sha256": "d7589aaee1754f3ca7c7276ea0eec4655c19197e3657ec47bf834a5c783c87c2",
+  "sha256": "9091045d925330fda796304366a86710e5faefcf9da0cda6a718c9e8f80a8c3f",
+  "duration": 10.95,
+  "file": "assets/audio/voice-heavy/narration-6722e4232fd9db75.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

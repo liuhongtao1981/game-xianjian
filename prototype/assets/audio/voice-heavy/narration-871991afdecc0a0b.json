@@ -1,0 +1,15 @@
+{
+  "id": "narration-871991afdecc0a0b",
+  "text": "你循着金兜空鞘押票旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成冻愿灵感王的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "574a0428af02813a0d93c998cddd4fad3142841a61d8a984702c9d0c1f85bf67",
+  "source_sha256": "48ffe7ad737d5a2ba13d7b4b6ddac7d8a09db8ffc6b65d5d4c062fe7b5abca75",
+  "sha256": "d1837fa62d953b1a74c28e4cd12341d995a4a7d663ff48734a4ee7f2e2f2b1d5",
+  "duration": 10.566,
+  "file": "assets/audio/voice-heavy/narration-871991afdecc0a0b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

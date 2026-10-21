@@ -252,6 +252,90 @@
       "bpm": 130,
       "duration": 29.538,
       "original": true
+    },
+    {
+      "file": "assets/audio/music/oathwood-field.mp3",
+      "title": "号山焚誓·断根·行路",
+      "bpm": 76,
+      "duration": 50.526,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/oathwood-boss.mp3",
+      "title": "号山焚誓·断根·守关",
+      "bpm": 124,
+      "duration": 30.968,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/borrowflame-field.mp3",
+      "title": "火云借命·双灯·行路",
+      "bpm": 82,
+      "duration": 46.829,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/borrowflame-boss.mp3",
+      "title": "火云借命·双灯·守关",
+      "bpm": 132,
+      "duration": 29.091,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/blackwater-field.mp3",
+      "title": "黑水逆契·归流·行路",
+      "bpm": 68,
+      "duration": 56.471,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/blackwater-boss.mp3",
+      "title": "黑水逆契·归流·守关",
+      "bpm": 118,
+      "duration": 32.542,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/thundercourt-field.mp3",
+      "title": "车迟审雷·三问·行路",
+      "bpm": 86,
+      "duration": 44.651,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/thundercourt-boss.mp3",
+      "title": "车迟审雷·三问·守关",
+      "bpm": 136,
+      "duration": 28.235,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/icepass-field.mp3",
+      "title": "通天冻愿·明春·行路",
+      "bpm": 66,
+      "duration": 58.182,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/icepass-boss.mp3",
+      "title": "通天冻愿·明春·守关",
+      "bpm": 120,
+      "duration": 32,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/goldring-field.mp3",
+      "title": "金兜还器·归锋·行路",
+      "bpm": 80,
+      "duration": 48,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/goldring-boss.mp3",
+      "title": "金兜还器·归锋·守关",
+      "bpm": 134,
+      "duration": 28.657,
+      "original": true
     }
   ]
 }

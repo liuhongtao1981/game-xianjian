@@ -1,0 +1,15 @@
+{
+  "id": "narration-e874a676920c55e6",
+  "text": "雷诏虎师宣称渡劫是验明真身。他却把号山被迫许下的誓、火云未还的寿与黑水滚起的债，合成一道不可申辩的罪名。羽化仙露凝在避雷玉上，却只分给有印的人。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "907308f5f1272b2407f0d25fe8bda4d8ca73e784753eb38b50305d71e66e1e98",
+  "source_sha256": "2499bb38ec0ff6386a1fa465f37137ccbecc3b51cb69ca13bb6876da75e0e0fc",
+  "sha256": "be5efcd887fa47df194ffafd2c895569b6b248e01ebbb866d44e0994cd3a9901",
+  "duration": 17.286,
+  "file": "assets/audio/voice-heavy/narration-e874a676920c55e6.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

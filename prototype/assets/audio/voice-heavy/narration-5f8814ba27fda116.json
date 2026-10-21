@@ -1,0 +1,15 @@
+{
+  "id": "narration-5f8814ba27fda116",
+  "text": "乌鸡井沿的残书一遇号山的风，便燃起不伤纸的火。沈听澜循火入林，看见树上系着灾民求生时许下的誓：愿以余生，换家人一碗饭。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "11adb3514b7ba0e98930af6bcb45615e1e29527401a88e4e7745ea26c463cf10",
+  "source_sha256": "5c7da94b504792290b8b7c189e94dec95ec99f6c95367d755fd0996010fd72b5",
+  "sha256": "4df7b06bd2130d6b3e104e3d96cf6b3c0fb7a00541818a63b8b2e1748f17332b",
+  "duration": 13.926,
+  "file": "assets/audio/voice-heavy/narration-5f8814ba27fda116.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

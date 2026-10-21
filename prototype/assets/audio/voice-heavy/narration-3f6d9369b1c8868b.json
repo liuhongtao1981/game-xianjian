@@ -1,0 +1,15 @@
+{
+  "id": "narration-3f6d9369b1c8868b",
+  "text": "童税簿带小果来到冰封的通天河。岸上每户都挂着一只小铃，父母说铃响时，去年抵押给河神的孩子便能回家。可河面越平，铃声越轻。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "441d9d83cfc4ec6bf6348c53cc012868c9ca9c9a06a8647a821dc46f48c1833c",
+  "source_sha256": "e40e57a1f7d61579317253645fd5f677dcbfc502e90a93b3d342fdbc1d3a7270",
+  "sha256": "c7c573b0f98a4d293b25574e6b7cd902307f42b3c3e7ea1998d85c995c5b3b69",
+  "duration": 14.478,
+  "file": "assets/audio/voice-heavy/narration-3f6d9369b1c8868b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

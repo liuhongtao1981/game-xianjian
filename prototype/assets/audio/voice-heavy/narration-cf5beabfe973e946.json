@@ -1,0 +1,15 @@
+{
+  "id": "narration-cf5beabfe973e946",
+  "text": "车迟追债雷诏在听澜掌心自行展开。祭雷坛的雨只落在富户田里，雷只追着没钱盖印的人；每一道天罚，都能在账册上查到缴清后的免罪价。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "697748abadd7df969aa685589f3b949ad6d7e6ce481ecb1b5ff075f25e7ea6dd",
+  "source_sha256": "e781ee520b57ec8c479afd64702a034c9eb82e1608a351785d96f6a9d8dac73d",
+  "sha256": "d445cde24a32d39f1f9a7a79e10e9eda2dfe38221d6953b1087a861e4f37bde3",
+  "duration": 15.222,
+  "file": "assets/audio/voice-heavy/narration-cf5beabfe973e946.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

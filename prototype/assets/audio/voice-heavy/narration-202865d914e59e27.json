@@ -1,0 +1,15 @@
+{
+  "id": "narration-202865d914e59e27",
+  "text": "上一难 · 黑水逆契。你带着「车迟追债雷诏」来到车迟国 · 祭雷坛。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "1078fe92b491aa301b5c2dc8bebbd5a5b82d7d200b4ae1ba57f52532f88ef2f5",
+  "source_sha256": "5cda31fee77b95d9f36be1f70bedd6bee59ac23f60f585b9f5e66136eccf95e0",
+  "sha256": "b0021b0c31c15e93fb7f03954e2234f33136d312eac4be7b6adccd7f1782e319",
+  "duration": 11.07,
+  "file": "assets/audio/voice-heavy/narration-202865d914e59e27.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

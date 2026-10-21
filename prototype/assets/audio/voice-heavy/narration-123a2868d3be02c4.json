@@ -1,0 +1,15 @@
+{
+  "id": "narration-123a2868d3be02c4",
+  "text": "上一难 · 镜井辨王。你带着「号山焚誓残书」来到号山 · 焚誓林。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "bb6881147c60393f120ff7bcb68b87c9a15d2d819039babf91fcf27c4a4746d6",
+  "source_sha256": "149ee8d5e298978a6bb924ce4c56739bfcf61aa6d0f05880093dac32a8c6d0c8",
+  "sha256": "f7e7bcd1e5a3c940bdd61e4fe3a97deb6ef8c50690b45d6a993d05189fab6f30",
+  "duration": 11.142,
+  "file": "assets/audio/voice-heavy/narration-123a2868d3be02c4.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

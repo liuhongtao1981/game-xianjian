@@ -1,0 +1,15 @@
+{
+  "id": "narration-bb98fa4a8fe8cf7d",
+  "text": "小果在最深处看见一根没有被收走的金毫。大圣曾把棍留在环内，自己走了进去，给别人留下开锁的空隙。小果循三枚还器印拔剑：能被夺走的是铁，不能连同握剑的意愿一起作价。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "9efe98aecc7fd07b855f2a0af9f5bc45c1fc8f576e92321d0392b44d631a388a",
+  "source_sha256": "d470a099aa34285ab5401a44e3d50a9fa3b34182cba1af5f3110d264debb4e9a",
+  "sha256": "9b65c840439a8353cf7accd08d24161360269fda442c9ac5e0b8239f8f090e7f",
+  "duration": 17.862,
+  "file": "assets/audio/voice-heavy/narration-bb98fa4a8fe8cf7d.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

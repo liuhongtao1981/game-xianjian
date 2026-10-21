@@ -1,0 +1,15 @@
+{
+  "id": "narration-e51357e732b2d8ad",
+  "text": "焚誓童君替天上看守誓林。每解开一根绳，远处就有一盏寿灯熄灭；账房把迫于饥寒的答应写成自愿，又把不肯续誓的人称作背信。九霄雷液凝在绳结里，替这桩买卖作保。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "10676e3777a97fca90156b64e34211b4f93405535c29b012db5263b3f9f109db",
+  "source_sha256": "97aab5d4b658f3f3d7907b005bf21fc86a6ecb5478bf852bcc7a1c396066f36e",
+  "sha256": "911db15f1343b968abf15ca1372c6458e37cd443fdd235454a553d965a2455e0",
+  "duration": 18.438,
+  "file": "assets/audio/voice-heavy/narration-e51357e732b2d8ad.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

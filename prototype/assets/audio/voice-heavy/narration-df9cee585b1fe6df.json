@@ -1,0 +1,15 @@
+{
+  "id": "narration-df9cee585b1fe6df",
+  "text": "你循着通天河冻愿税簿旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成雷诏虎师的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "be244f1f1868a328f651ea6926d17eee98f328e9e4d72596ccfa4efad14f0b25",
+  "source_sha256": "3ebc3cada1d2bdda67135a0775c8f59d5d9c3513020e3f6bdfdc6bd039122c4b",
+  "sha256": "029b7adb57907482738c75fbe0fc22ef8d0f70931cb704980102175395920140",
+  "duration": 10.686,
+  "file": "assets/audio/voice-heavy/narration-df9cee585b1fe6df.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

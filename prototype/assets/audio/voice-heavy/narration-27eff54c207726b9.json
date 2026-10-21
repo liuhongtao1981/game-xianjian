@@ -1,0 +1,15 @@
+{
+  "id": "narration-27eff54c207726b9",
+  "text": "听澜在最深处看见一根没有被收走的金毫。大圣曾把棍留在环内，自己走了进去，给别人留下开锁的空隙。听澜循三枚还器印拔剑：能被夺走的是铁，不能连同握剑的意愿一起作价。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "ef930a14f529871f2828ab05ab121f263c455d990d8f90d3a4d2622c302f9dca",
+  "source_sha256": "101ee6dc0e1ad8673fe2fbfb294bb4b6b8d2f5a7cc618a7f02bfdc995f1bf80e",
+  "sha256": "a2dd7085016086d64534dde5e5513d9304fd9ec22261d576efb7f3f99a28d504",
+  "duration": 17.862,
+  "file": "assets/audio/voice-heavy/narration-27eff54c207726b9.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -11,7 +11,7 @@ const server=http.createServer((q,r)=>{const file=path.resolve(root,'.'+decodeUR
  await page.evaluate(()=>{window.__realUpdate=update;update=()=>{};});
  if(production){const v=await page.evaluate(async rev=>(await fetch('version.json?v='+rev,{cache:'no-store'})).json(),revision);assert.equal(v.revision,revision);}
  await page.evaluate(()=>{RunSave.start(0);P.cultivation.realm=5;for(let s=0;s<18;s++)JourneyProgress.clear(s);RunSave.save();Journey.menu();});
- assert.equal(await page.locator('.chapter-card').count(),18);
+ assert.equal(await page.locator('.chapter-card').count(),24);
  await page.locator('[data-realm="5"]').click();assert.equal(await page.locator('.chapter-card:visible').count(),3);await page.locator('.realm-filter').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(output,'heti-chapter-shelf.png')});
  await page.locator('[data-stage="15"]').click();assert.ok(await page.locator('.story-panel').isVisible());assert.ok((await page.locator('.story-scene').innerText()).includes('平顶'));
  const scenes=[];

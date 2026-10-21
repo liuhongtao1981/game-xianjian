@@ -124,7 +124,8 @@ const Motion = (() => {
     if(actor.flash>0)ctx.filter='brightness(1.55)';
     else if(key==='hero'&&actor.cultivation?.realm>0){ctx.filter='drop-shadow(0px 0px 2px '+RealmVisuals.get(actor.cultivation).color+')';}
     else if(actor.clerk){ctx.globalAlpha*=.7;ctx.filter='sepia(.6) hue-rotate(320deg)';}
-    if(actor.boss&&Journey.run.stage>=15){HetiArt.drawActor(actor,4,size);
+    if(actor.boss&&Journey.run.stage>=18){BeyondArt.drawActor(actor,4,size);
+    }else if(actor.boss&&Journey.run.stage>=15){HetiArt.drawActor(actor,4,size);
     }else if(actor.boss&&Journey.run.stage>=12){LianxuArt.drawActor(actor,4,size);
     }else if(actor.boss&&Journey.run.stage>=9){HuashenArt.drawActor(actor,4,size);
     }else if(actor.boss&&Journey.run.stage>=6){InfantArt.drawActor(actor,4,size);

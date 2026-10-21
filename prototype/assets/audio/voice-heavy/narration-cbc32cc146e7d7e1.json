@@ -1,0 +1,15 @@
+{
+  "id": "narration-cbc32cc146e7d7e1",
+  "text": "黑水河的水总往源头流，回购契却顺流而下。听澜看见岸边的人排队销债，每走出一人，河上就多一份以他后代为保的新契。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "46b2872f7025bf48bf9bcc8f2a88af32e15c6633aa2b62e981ca09ed74536450",
+  "source_sha256": "470c3131e91fb278659cd0c4eb97d5a9bccd15816086a6a1dbc72c705f401630",
+  "sha256": "c53bb6ba39780308ec8e5774d8f4744017346c4ba3759b3e507be63c1b6fcb2b",
+  "duration": 13.062,
+  "file": "assets/audio/voice-heavy/narration-cbc32cc146e7d7e1.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

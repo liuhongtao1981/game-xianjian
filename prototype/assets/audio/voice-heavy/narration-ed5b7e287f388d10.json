@@ -1,0 +1,15 @@
+{
+  "id": "narration-ed5b7e287f388d10",
+  "text": "冻愿灵感王把未长大的人生封在冰里，替车迟雷坛储存来年的雨。他答应春天放人，却每年都用新的抵押换一次解冻；旧名字被挤到更深处，连盼望也开始结霜。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "ede537f8316e824e6ce15df18ae2a8d7c0c57f400a1e1000b6c098dedcdcc9e4",
+  "source_sha256": "fcad606accaead3ab242dca18f928d5bcdf11050b40101bd134a0e66562fc48f",
+  "sha256": "ceea65c95f5bef052d1f4552c12329da61211e2ed8f0492ec889633e780feee7",
+  "duration": 17.022,
+  "file": "assets/audio/voice-heavy/narration-ed5b7e287f388d10.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

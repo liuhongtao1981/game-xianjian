@@ -1,0 +1,15 @@
+{
+  "id": "narration-7d0ae5afa17b9b8d",
+  "text": "你循着火云寿灯调拨令旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成焚誓童君的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "a319c34e841b6a49185f7593854b6e5bb1d9856eab1dd5ee38dc5198587eb63d",
+  "source_sha256": "5bd6cd66e7c704d2e528d949833e13c977542db82d37bfd0ef35dd318bdeb9ee",
+  "sha256": "dbad84605e24f155fc0dc246e2cf69f5fd51a19a486a9ed511b995c102bf01b6",
+  "duration": 10.542,
+  "file": "assets/audio/voice-heavy/narration-7d0ae5afa17b9b8d.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

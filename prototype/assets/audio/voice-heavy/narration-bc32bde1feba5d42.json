@@ -1,0 +1,15 @@
+{
+  "id": "narration-bc32bde1feba5d42",
+  "text": "空鞘押票在金兜洞门被一只金环吸住。洞里堆着人间求生的刀、渡河护身的枪，也堆着大圣曾替无名者借来的兵器；每一件都被盖上债未清、不得持有的印。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c72a5694fd33badfdca13c28384c8fb14601abcd267d8a0e67c3c3c41ac2d28a",
+  "source_sha256": "9df35b3e3a97ed0820d369f327f7cd446691b5558f652649d6bd1f8b3846eb66",
+  "sha256": "d5ee760fd8f0f05d5c6318b88b8a565ceedb6533f21d57756204e64844df15a9",
+  "duration": 16.47,
+  "file": "assets/audio/voice-heavy/narration-bc32bde1feba5d42.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

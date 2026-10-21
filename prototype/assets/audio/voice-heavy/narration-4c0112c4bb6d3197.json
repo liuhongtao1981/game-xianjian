@@ -1,0 +1,15 @@
+{
+  "id": "narration-4c0112c4bb6d3197",
+  "text": "你循着照命河半幅河图旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成缚兵青兕君的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "67d040af4d63fe2584451ff9c878ddf8295664c0d60c76c22d758f8831d4b224",
+  "source_sha256": "f3166398e31d773e94946be03b2c0ed3239d1e66f8a9696f2cd298429cb7b944",
+  "sha256": "60389c43fac046a4d8e7a34914aeb32517b8f437fb8a20e9088a5c0a68b4ac75",
+  "duration": 10.95,
+  "file": "assets/audio/voice-heavy/narration-4c0112c4bb6d3197.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

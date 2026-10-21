@@ -1,0 +1,15 @@
+{
+  "id": "narration-59ddfc6bb22d8f9a",
+  "text": "大圣曾在河心划开一条不收费的路，府吏却在两岸补刻了通行税。小果循棍痕认出没有印泥的旧水道：这一次，既不替他们签新契，也不让旧债随死人一起消失。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "98f125c36ad89573800ebdb7b0156ebe2dea3f0a48e28b797597d453223399be",
+  "source_sha256": "b5a6efcf5765af032dcd7612f18fdb005512aea008f9856e15b0df0341964fbb",
+  "sha256": "1e1453385c8033163fcd8964d81c3878f2c0e3b0d4f9a2376502c92c44c8656a",
+  "duration": 15.702,
+  "file": "assets/audio/voice-heavy/narration-59ddfc6bb22d8f9a.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

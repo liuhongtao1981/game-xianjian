@@ -31,6 +31,13 @@ scores.push(
  {id:'twinforge',title:'双炉炼名·熄火',bpm:78,battleBpm:128,root:39,scale:[0,3,5,7,10],motif:[0,2,1,null,4,3,0,2,1,4,null,3,2,0,1,null]},
  {id:'lotusname',title:'莲洞倒名·壶外',bpm:72,battleBpm:122,root:44,scale:[0,1,5,7,10],motif:[4,3,1,0,null,2,4,1,3,null,0,2,1,4,0,null]},
  {id:'mirrorwell',title:'镜井辨王·对证',bpm:80,battleBpm:130,root:41,scale:[0,2,5,8,10],motif:[0,3,null,1,4,2,0,null,3,1,4,2,null,1,3,0]});
+scores.push(
+ {id:'oathwood',title:'号山焚誓·断根',bpm:76,battleBpm:124,root:40,scale:[0,3,5,7,10],motif:[0,4,null,1,3,0,2,null,4,1,3,2,0,null,1,0]},
+ {id:'borrowflame',title:'火云借命·双灯',bpm:82,battleBpm:132,root:43,scale:[0,1,5,7,10],motif:[1,0,3,null,4,2,1,0,3,1,null,4,2,0,3,null]},
+ {id:'blackwater',title:'黑水逆契·归流',bpm:68,battleBpm:118,root:38,scale:[0,2,5,8,10],motif:[0,null,2,1,4,3,null,0,2,4,1,null,3,2,0,null]},
+ {id:'thundercourt',title:'车迟审雷·三问',bpm:86,battleBpm:136,root:41,scale:[0,2,3,7,10],motif:[0,3,1,4,2,null,0,3,4,1,2,0,null,3,1,0]},
+ {id:'icepass',title:'通天冻愿·明春',bpm:66,battleBpm:120,root:46,scale:[0,1,5,7,10],motif:[4,null,1,0,3,null,2,4,1,3,null,0,2,1,0,null]},
+ {id:'goldring',title:'金兜还器·归锋',bpm:80,battleBpm:134,root:39,scale:[0,3,5,8,10],motif:[0,2,4,null,3,1,0,4,2,null,1,3,4,0,2,0]});
 function render(score,battle){
   const bpm=battle?(score.battleBpm||[100,112,104,108,120,106][scores.indexOf(score)]):score.bpm,beat=60/bpm,duration=64*beat;
   const length=Math.ceil(duration*sr),left=new Float32Array(length),right=new Float32Array(length);

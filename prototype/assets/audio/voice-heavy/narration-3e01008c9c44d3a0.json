@@ -1,0 +1,15 @@
+{
+  "id": "narration-3e01008c9c44d3a0",
+  "text": "你循着黑水余命回购契旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成三火监炉使的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "0b7aa2b6fe851fea416af0ee8c3433f9dc6557a23a83c667f3be57db7d770d2a",
+  "source_sha256": "0587ae1db5cf4b0900f74aeb24034952a998d9f331fa5042de90d34560854045",
+  "sha256": "9c11b42828d8dbe54d8fd6b8865b5fae30f74afba39f2c9fa88f6de3c0f4f7af",
+  "duration": 11.262,
+  "file": "assets/audio/voice-heavy/narration-3e01008c9c44d3a0.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

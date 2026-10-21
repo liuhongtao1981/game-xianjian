@@ -1,0 +1,15 @@
+{
+  "id": "narration-fecd728b2ff5e4a9",
+  "text": "寿灯调拨令把小果带到火云洞。三口铜炉不分昼夜：第一口烧去来年的记忆，第二口炼出剩余寿数，第三口将别人的明日装进贵人的灯。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "fc365734c035673c8eed8758710f5560576781c7b81bfc827bcd07d84bf8f1fe",
+  "source_sha256": "008e2fe372e9d98f68a013e5762733b319b9ed7408ac3e4b121d18acaa74c190",
+  "sha256": "217634a5b482f242ef5f864e3f822c858a7454701071c6e261845bbd4419b9cb",
+  "duration": 13.686,
+  "file": "assets/audio/voice-heavy/narration-fecd728b2ff5e4a9.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

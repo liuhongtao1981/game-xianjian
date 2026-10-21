@@ -1,0 +1,15 @@
+{
+  "id": "narration-504f1c09b43310ca",
+  "text": "上一难 · 车迟审雷。你带着「通天河冻愿税簿」来到通天河 · 冰封渡。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "ec168058b87a7eb1c5e14a150dedd9124a502dabdfe8bae5606fc2723708a367",
+  "source_sha256": "961f2ca897ada4dd863da124c3c249d2b9315638e41a3c033a94052c35fa3dcb",
+  "sha256": "7a77489c8ad3dc76b2675e733b6ff329e5a80c9cf2f8857dda10c03e0afa124a",
+  "duration": 10.95,
+  "file": "assets/audio/voice-heavy/narration-504f1c09b43310ca.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

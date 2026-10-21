@@ -1,0 +1,15 @@
+{
+  "id": "narration-3512c775d9a010bd",
+  "text": "大圣曾站在最高的雷杆上，任凭雷诏读到最后一个字。天没有回答，坛下的铜鼓却先响了。小果沿鼓声找到操雷的符线：先拆掉印与天意之间的那座假坛。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "3c8e4b10eb0ac85b3f490b3093c0b73d029f77449eb4a379adbab1f52659c3a9",
+  "source_sha256": "b8f83d54ff73ba72963352ab1031e8788c854dd7ab9bab960e6e3094a81529bb",
+  "sha256": "ef826dce8fd38d62d240c6136ba16489817dee2be3d7c291662b8e1809f969ca",
+  "duration": 16.158,
+  "file": "assets/audio/voice-heavy/narration-3512c775d9a010bd.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

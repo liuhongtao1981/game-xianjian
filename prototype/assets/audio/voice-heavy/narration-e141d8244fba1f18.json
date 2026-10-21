@@ -1,0 +1,15 @@
+{
+  "id": "narration-e141d8244fba1f18",
+  "text": "乌鸡井沿的残书一遇号山的风，便燃起不伤纸的火。孙小果循火入林，看见树上系着灾民求生时许下的誓：愿以余生，换家人一碗饭。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "bde69e8460a1814be231c07a214953b4ffaedf574b7ec036c3f11f41c6488614",
+  "source_sha256": "6c58a8f89bc00a7b9a68fb718c07403f209b68bf6c119c7b0666fad363182dca",
+  "sha256": "94ccc9efdf9a86c76cc36d9abf8989a9bf5b7fc4a5ca40f2d34e1de299a11c3a",
+  "duration": 13.878,
+  "file": "assets/audio/voice-heavy/narration-e141d8244fba1f18.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

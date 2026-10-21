@@ -1,0 +1,15 @@
+{
+  "id": "narration-a36b05429d6c80af",
+  "text": "大圣曾将一片誓林连根拔起，根下却压着被续卖的名单：人逃出去了，誓言仍替别人续命。小果横剑截住四道根火，要让还活着的人，亲口决定一句承诺到哪里为止。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "25ae057a47baccaf647ec8ab058209c2b3ca410ac6477ec85cc1b656551f420b",
+  "source_sha256": "19ed4d6784a30d77e52fd7ad34dd63c6422ecd8d1fa9fb6682be800d4e25dbbb",
+  "sha256": "bca173a7916c7c6d67567e512fd8d524bb7ad28ebae9ba66dc4fb8cb4ee73391",
+  "duration": 16.686,
+  "file": "assets/audio/voice-heavy/narration-a36b05429d6c80af.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

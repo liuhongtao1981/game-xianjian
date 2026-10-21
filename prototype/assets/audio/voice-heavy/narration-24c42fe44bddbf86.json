@@ -1,0 +1,15 @@
+{
+  "id": "narration-24c42fe44bddbf86",
+  "text": "缚兵青兕君只守一条规矩：凡有旧债，所持之器皆可抵押。雷诏、冻愿与押票在这里合成最后一道锁，让被剥夺的人连反抗也成了违约。兵魂仍藏在器上，等原主再伸一次手。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "4881e17761e220c234adcffb22449210c369360adf34e11f7d72eac8f5eb528a",
+  "source_sha256": "3db92be55df7ddd675a78ae6be55a0727096a677b1df39a2bd97905e09d5af16",
+  "sha256": "67630db8b81bbe8a552d6de373a51241f9e36c49705578e0284e147c06883efd",
+  "duration": 18.87,
+  "file": "assets/audio/voice-heavy/narration-24c42fe44bddbf86.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

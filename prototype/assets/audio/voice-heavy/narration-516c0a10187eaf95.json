@@ -1,0 +1,15 @@
+{
+  "id": "narration-516c0a10187eaf95",
+  "text": "三火监炉使自称只做借贷。他的账上每笔都有归期，可归期总被写在借命者死后的第二天。那些失去将来的人，连自己为何会来讨债也渐渐忘了。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "f9f1d1072f5ccf3c5f038565ded189e5a92c07f091110bf77e9a0a6573bb1fe9",
+  "source_sha256": "dd872983ea696a8ab7affe7fe52c938bdc74d95a7bd0e5c73c670fea32059137",
+  "sha256": "b0d9ebe1bdb4647221f7f4fc72d33718cd047b0f883365e62eb829b338aeec4b",
+  "duration": 16.038,
+  "file": "assets/audio/voice-heavy/narration-516c0a10187eaf95.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}
