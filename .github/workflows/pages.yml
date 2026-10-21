@@ -23,6 +23,7 @@ on:
       - 'tools/check-spell-priority.js'
       - 'tools/check-thunder.js'
       - 'tools/check-realm-upgrades.js'
+      - 'tools/check-gift-overflow.js'
       - 'tools/check-realm-loot.js'
       - 'tools/check-story-audio.js'
       - 'tools/check-heavy-voices.js'
@@ -75,6 +76,7 @@ jobs:
           node tools/check-combat.js
           node tools/check-world.js
           node tools/check-realm-upgrades.js
+          node tools/check-gift-overflow.js
           node tools/check-realm-loot.js
           node tools/check-story-audio.js
           node tools/check-heavy-voices.js

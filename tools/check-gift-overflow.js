@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),{createHarness}=require('./game-harness');
+const h=createHarness();
+h.evaluate(`RunSave.start(0);G.state='playing';G.enemies=[];P.spells={yujian:1,wanjian:1,wulei:1,sanmei:1,jiushen:1,guanyin:1};P.cultivation=Cultivation.fresh();P.cultivation.realm=4;SpellGift.ensure();G.state='character';SpellGift.apply({yujian:6});`);
+console.log('Screenshot reproduction: '+JSON.stringify(h.evaluate(`({learned:Object.keys(P.spells).length,remaining:SpellGift.remaining(),safe:SpellGift.safe(),canLearnIce:!!SpellGift.canAdd(SpellGift.ensure().levels,'bingxin'),canLearnPoison:!!SpellGift.canAdd(SpellGift.ensure().levels,'gudu')})`)));
+assert.equal(h.evaluate(`SpellGift.canAdd(SpellGift.ensure().levels,'bingxin')`),true,'six learned spells must not disable gift learning of an unlearned spell');
+assert.equal(h.evaluate(`SpellGift.apply({yujian:6,bingxin:1})&&P.spells.bingxin===1&&SpellGift.remaining()===5&&Object.keys(P.spells).length===7`),true);
+assert.equal(h.evaluate(`SpellGift.canAdd(SpellGift.ensure().levels,'gudu')&&SpellGift.apply({yujian:6,bingxin:1,gudu:1})&&P.spells.gudu===1&&SpellGift.remaining()===4&&Object.keys(P.spells).length===8`),true);
+const again=createHarness({storage:h.storage});assert.equal(again.evaluate(`RunSave.continueRun()&&Object.keys(P.spells).length===8&&P.spells.bingxin===1&&P.spells.gudu===1&&SpellGift.remaining()===4`),true);
+assert.equal(again.evaluate(`(()=>{G.state='character';G.enemies=[];const before=JSON.stringify(JourneyProgress.capture(P));return !SpellGift.apply({...SpellGift.ensure().levels,unknown:1})&&before===JSON.stringify(JourneyProgress.capture(P));})()`),true);
+console.log('PASS six learned spells can learn both remaining spells for one point each; all eight persist and unknown spells remain invalid');

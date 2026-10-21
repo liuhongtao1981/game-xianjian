@@ -48,7 +48,7 @@ const SpellGrowth=(()=>{
 const SpellGift=(()=>{
   const keys=['yujian','wanjian','wulei','sanmei','bingxin','gudu','jiushen','guanyin'];
   const copy=o=>JSON.parse(JSON.stringify(o));
-  function valid(g,realm){return !!g&&g.version===1&&[g.base,g.levels].every(o=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.entries(o).every(([k,v])=>keys.includes(k)&&SpellGrowth.validLevel(v,realm)))&&Object.values(g.levels).reduce((a,b)=>a+b,0)<=3*realm&&new Set([...Object.keys(g.base),...Object.keys(g.levels)]).size<=6&&keys.every(k=>(g.base[k]||0)+(g.levels[k]||0)<=Math.max(SpellGrowth.cap(realm),g.base[k]||0));}
+  function valid(g,realm){return !!g&&g.version===1&&[g.base,g.levels].every(o=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.entries(o).every(([k,v])=>keys.includes(k)&&SpellGrowth.validLevel(v,realm)))&&Object.values(g.levels).reduce((a,b)=>a+b,0)<=3*realm&&new Set([...Object.keys(g.base),...Object.keys(g.levels)]).size<=keys.length&&keys.every(k=>(g.base[k]||0)+(g.levels[k]||0)<=Math.max(SpellGrowth.cap(realm),g.base[k]||0));}
   function ensure(p=P){
     const c=p.cultivation||(p.cultivation=Cultivation.fresh());
     if(!c.spellGift)c.spellGift={version:1,base:{...p.spells},levels:{}};
@@ -57,7 +57,9 @@ const SpellGift=(()=>{
   const base=(p=P)=>ensure(p).base;
   function effective(levels=ensure().levels,p=P){const out={};for(const k of keys){const l=(base(p)[k]||0)+(levels[k]||0);if(l)out[k]=l;}return out;}
   function remaining(levels=ensure().levels,p=P){return 3*p.cultivation.realm-Object.values(levels).reduce((a,b)=>a+b,0);}
-  function canAdd(levels,key){return keys.includes(key)&&remaining(levels)>0&&(effective(levels)[key]||0)<SpellGrowth.cap()&&(effective(levels)[key]||Object.keys(effective(levels)).length<6);}
+  // Gifts can teach any authored spell, including the seventh and eighth;
+  // ordinary card/chest acquisition keeps its own six-spell limit.
+  function canAdd(levels,key){return keys.includes(key)&&remaining(levels)>0&&(effective(levels)[key]||0)<SpellGrowth.cap();}
   function sync(p=P){p.spells=effective(ensure(p).levels,p);}
   function reconcile(p){
     const g=ensure(p);for(const key of keys){const actual=p.spells[key]||0;if(actual!==((g.base[key]||0)+(g.levels[key]||0))){const gift=Math.min(actual,g.levels[key]||0),permanent=actual-gift;if(gift)g.levels[key]=gift;else delete g.levels[key];if(permanent)g.base[key]=permanent;else delete g.base[key];}}

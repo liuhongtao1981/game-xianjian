@@ -17,8 +17,8 @@ const server=http.createServer((q,r)=>{const file=path.resolve(root,'.'+decodeUR
  }
  await page.setViewportSize({width:390,height:844});await prepare({yujian:1,wanjian:1,wulei:1,sanmei:1,bingxin:1});
  await page.locator('[data-gift-plus="gudu"]').click();await page.locator('#applyGiftBtn').click();
- if(!await page.locator('[data-gift-plus="jiushen"]').isDisabled()||!await page.locator('[data-gift-plus="guanyin"]').isDisabled())throw Error('Learning a sixth spell allowed a seventh');
+ for(const key of ['jiushen','guanyin']){if(!await page.locator('[data-gift-plus="'+key+'"]').isEnabled())throw Error('Gift learning blocked after six spells');await page.locator('[data-gift-plus="'+key+'"]').click();await page.locator('#applyGiftBtn').click();}if(!await page.evaluate(()=>Object.keys(P.spells).length===8&&SpellGift.remaining()===0))throw Error('Gift learning did not reach all eight spells');
  if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('Learning controls overflow mobile');
- await page.locator('[data-gift-plus="jiushen"]').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(output,'gift-learn-six-limit-mobile.png')});
- if(errors.length)throw Error(errors.join('\n'));console.log('PASS all seven unlearned spells: one-point learning, learned state, one-point upgrades, full initial cooldown, reload persistence and six-spell cap');
+ await page.locator('[data-gift-plus="jiushen"]').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(output,'gift-learn-eight-spells-mobile.png')});
+ if(errors.length)throw Error(errors.join('\n'));console.log('PASS all seven unlearned spells: one-point learning, learned state, one-point upgrades, full initial cooldown, reload persistence and eight-spell gift learning');
 }finally{await browser.close();server.close();}})().catch(e=>{console.error(e);server.close();process.exitCode=1;});
