@@ -87,7 +87,41 @@ const RealmVisuals=(()=>{
   const get=(c)=>({color:colors[c.realm],motif:motifs[c.realm],rings:c.realm?2+Math.floor(c.realm/4):1,detail:Math.floor((c.layer||1)/3),layer:c.layer||1});
   const ascensions=['灵脉初成','金丹凝轮','灵婴出窍','元神开轮','虚空裂变','双相归一','琉璃莲生','九霄雷冠','仙羽临身','星宿归位','五气归元','三花绽顶','大罗道轮','仙王敕印'];
   function advance(major,details={}){const next={age:0,duration:major?5.2:1.2,major,realm:P.cultivation.realm,layer:P.cultivation.layer,fromLayer:details.fromLayer??P.cultivation.layer};if(!major&&transition?.realm===next.realm){if(transition.major){pendingAdvance={...next,fromLayer:Math.min(pendingAdvance?.fromLayer??next.fromLayer,next.fromLayer)};return;}transition.layer=next.layer;transition.fromLayer=Math.min(transition.fromLayer,next.fromLayer);return;}transition=next;pendingAdvance=null;}
-  function update(dt){if(transition&&dt>0&&(typeof AscensionScene!=='undefined'&&AscensionScene.active()||['playing','win','story','character','levelup','chest','journal','map','station'].includes(G.state))){transition.age+=dt;if(transition.age>=transition.duration){transition=pendingAdvance;pendingAdvance=null;}}}
+  function update(dt){if(transition&&dt>0&&(typeof AscensionScene!=='undefined'&&AscensionScene.active()||G.state==='playing')){transition.age+=dt;if(transition.age>=transition.duration){transition=pendingAdvance;pendingAdvance=null;}}}
+  // Large transient geometry is separate from the bounded, permanent body aura.
+  function ceremony(){const t=transition;if(!t?.major||G.state!=='playing')return null;const progress=t.age/t.duration;return {t,progress,alpha:Math.sin(progress*Math.PI),color:colors[t.realm],motion:REDUCED_MOTION?0:t.age};}
+  function drawAscensionGround(){
+    const f=ceremony();if(!f)return;const {t,progress,alpha,color,motion}=f,pen=ctx;
+    const reach=250+Math.min(t.realm,13)*10,expansion=REDUCED_MOTION?1:.45+.55*Math.min(1,progress*3);
+    pen.save();pen.translate(P.x,P.y);pen.scale(expansion,expansion*.48);pen.globalCompositeOperation='lighter';pen.globalAlpha=alpha*(danger()?.27:.62);
+    const glow=pen.createRadialGradient(0,0,30,0,0,reach*1.3);glow.addColorStop(0,color+'00');glow.addColorStop(.65,color+'20');glow.addColorStop(1,color+'00');pen.fillStyle=glow;pen.fillRect(-reach*1.3,-reach*1.3,reach*2.6,reach*2.6);
+    pen.strokeStyle=color;pen.lineWidth=2;
+    const rings=3+Math.floor(t.realm/4);
+    for(let k=0;k<rings;k++){const radius=reach*(.65+k*.11);pen.save();pen.rotate(motion*(k%2?-.09:.07));pen.beginPath();pen.arc(0,0,radius,0,Math.PI*2);pen.stroke();
+      const count=8+t.realm*2;for(let i=0;i<count;i++){pen.save();pen.rotate(i*Math.PI*2/count);path(pen,[[radius-12,-7],[radius+5,0],[radius-12,7]]);pen.restore();}pen.restore();}
+    const points=Array.from({length:6+t.realm%7},(_,i)=>{const a=i*Math.PI*2/(6+t.realm%7)+motion*.06;return [Math.cos(a)*reach*.8,Math.sin(a)*reach*.8];});
+    for(let i=0;i<points.length;i++)path(pen,[points[i],points[(i+2+t.realm%3)%points.length]]);
+    // Each realm's established emblem expands across the entire ritual circle.
+    pen.save();pen.scale(2.7,2.7);pen.translate(0,64);advancement(pen,{realm:t.realm},false);pen.restore();
+    pen.restore();
+  }
+  function drawAscensionSky(){
+    const f=ceremony();if(!f)return;const {t,progress,alpha,color,motion}=f,pen=ctx,anchor=World.screen(P.x,P.y),phone=W<650;
+    const height=Math.min(H*.72,650),scale=Math.min(phone?2.2:4.2,height/130),top=anchor.y-height;
+    pen.save();pen.globalCompositeOperation='lighter';pen.globalAlpha=alpha*(danger()?.3:.68);
+    const beam=pen.createLinearGradient(anchor.x,anchor.y,anchor.x,top);beam.addColorStop(0,color+'60');beam.addColorStop(.45,color+'18');beam.addColorStop(1,color+'00');pen.fillStyle=beam;
+    pen.beginPath();pen.moveTo(anchor.x-26,anchor.y);pen.lineTo(anchor.x-height*.32,top);pen.lineTo(anchor.x+height*.32,top);pen.lineTo(anchor.x+26,anchor.y);pen.closePath();pen.fill();
+    // The thirteen ascensions retain different silhouettes: core, infant, deity,
+    // rift, twins, lotus, thunder, feathers, stars, five qi, flowers, wheel, seal.
+    pen.save();pen.translate(anchor.x,anchor.y-height*.22);pen.scale(scale,scale);advancement(pen,{realm:t.realm},false);pen.restore();
+    pen.strokeStyle=color;pen.fillStyle='#fff1cd';pen.lineWidth=1.3;
+    const particles=phone?24:48;
+    for(let i=0;i<particles;i++){const phase=(i/particles+motion*.13)%1,a=i*2.399963+t.realm,radius=(phone?105:220)*(1-phase*.55),x=anchor.x+Math.cos(a)*radius,y=anchor.y-phase*height;
+      pen.globalAlpha=alpha*Math.sin(phase*Math.PI)*.7;path(pen,[[x,y+8],[x,y-5]]);pen.beginPath();pen.arc(x,y,1.4+(i%3)*.5,0,Math.PI*2);pen.fill();}
+    if(t.realm===7){pen.globalAlpha=alpha*.65;for(let i=0;i<5;i++){const x=anchor.x+(i-2)*height*.22;path(pen,[[x,top],[x+22,top+height*.25],[x-17,top+height*.43],[x+12,anchor.y-height*.2]]);}}
+    if(t.realm===13){pen.save();pen.globalAlpha=alpha*.6;pen.translate(anchor.x,top+height*.18);pen.strokeStyle='#fff0b0';pen.lineWidth=3;pen.strokeRect(-48,-48,96,96);pen.font='48px KaiTi,serif';pen.textAlign='center';pen.fillText('敕',0,17);pen.restore();}
+    pen.restore();
+  }
   function advancement(p,c,front=false){
     const t=transition;if(!t||t.realm!==c.realm)return;const progress=t.age/t.duration,alpha=Math.sin(progress*Math.PI),color=t.major?colors[c.realm]:'#b9f3ea';
     p.save();p.globalCompositeOperation='lighter';p.globalAlpha*=alpha*.9;p.strokeStyle=color;p.fillStyle=color+'30';p.lineWidth=1.7;
@@ -118,7 +152,7 @@ const RealmVisuals=(()=>{
     }
     p.restore();
   }
-  function notice(){const box=document.getElementById('cultivationNotice');if(!box)return;box.hidden=!transition||!['playing','win','story','character'].includes(G.state);if(box.hidden)return;const t=transition;box.classList.toggle('major',t.major);box.classList.toggle('minor',!t.major);box.style.setProperty?.('--ascension-color',t.major?colors[t.realm]:'#b9f3ea');document.getElementById('cultivationNoticeTitle').textContent=t.major?'破境 · '+Cultivation.realms[t.realm]:'修为精进 · '+Cultivation.realms[t.realm]+'第'+t.layer+'层';document.getElementById('cultivationNoticeDetail').textContent=t.major?ascensions[t.realm]+' · 术法赠礼 +3':(t.layer-t.fromLayer>1?'连升 '+(t.layer-t.fromLayer)+' 层 · ':'')+'灵脉贯通 · 生命、护盾与伤害提高';const canvas=document.getElementById('cultivationNoticeArt');if(canvas?.getContext){const pen=canvas.getContext('2d');pen.clearRect(0,0,110,130);pen.save();pen.translate(55,110);pen.scale(.72,.72);advancement(pen,{realm:t.realm},false);advancement(pen,{realm:t.realm},true);pen.restore();}}
+  function notice(){const box=document.getElementById('cultivationNotice');if(!box)return;box.hidden=!transition||G.state!=='playing';if(box.hidden)return;const t=transition;box.classList.toggle('major',t.major);box.classList.toggle('minor',!t.major);box.style.setProperty?.('--ascension-color',t.major?colors[t.realm]:'#b9f3ea');box.style.opacity=String(Math.min(1,t.age*3,(t.duration-t.age)*2));document.getElementById('cultivationNoticeTitle').textContent=t.major?'破境 · '+Cultivation.realms[t.realm]:'修为精进 · '+Cultivation.realms[t.realm]+'第'+t.layer+'层';document.getElementById('cultivationNoticeDetail').textContent=t.major?ascensions[t.realm]+' · 术法赠礼 +3':(t.layer-t.fromLayer>1?'连升 '+(t.layer-t.fromLayer)+' 层 · ':'')+'灵脉贯通 · 生命、护盾与伤害提高';const canvas=document.getElementById('cultivationNoticeArt');if(canvas?.getContext){const pen=canvas.getContext('2d');pen.clearRect(0,0,110,130);pen.save();pen.translate(55,110);pen.scale(.72,.72);advancement(pen,{realm:t.realm},false);advancement(pen,{realm:t.realm},true);pen.restore();}}
 
   function path(p,points){p.beginPath();points.forEach(([x,y],i)=>i?p.lineTo(x,y):p.moveTo(x,y));p.stroke();}
   function petal(p,x,y,r,a,color){p.save();p.translate(x,y);p.rotate(a);const g=p.createLinearGradient(0,0,0,-r);g.addColorStop(0,color+'08');g.addColorStop(.6,color+'55');g.addColorStop(1,'#f5efcfaa');p.fillStyle=g;p.beginPath();p.moveTo(0,0);p.bezierCurveTo(-r*.55,-r*.3,-r*.32,-r*.8,0,-r);p.bezierCurveTo(r*.32,-r*.8,r*.55,-r*.3,0,0);p.fill();p.stroke();p.restore();}
@@ -181,5 +215,5 @@ const RealmVisuals=(()=>{
     const count=4+v.detail*2+c.realm;for(let i=0;i<count;i++){const a=i*Math.PI*2/count+time*(c.realm%2?-.3:.25);ctx.save();ctx.rotate(a);ctx.beginPath();ctx.moveTo(r-5,-3);ctx.lineTo(r+5,0);ctx.lineTo(r-5,3);ctx.stroke();ctx.restore();}
     if(c.realm){ctx.rotate(-time*.15);ctx.strokeRect(-r*.6,-r*.6,r*1.2,r*1.2);}ctx.restore();
   }
-  return {get,draw,body,advance,advancement,update,notice,ascensions,status:()=>transition?{...transition}:null,danger,presentation,reset(){if(typeof AscensionScene!=='undefined')AscensionScene.cancel();transition=null;pendingAdvance=null;}};
+  return {get,draw,body,advance,advancement,drawAscensionGround,drawAscensionSky,update,notice,ascensions,status:()=>transition?{...transition}:null,danger,presentation,reset(){if(typeof AscensionScene!=='undefined')AscensionScene.cancel();transition=null;pendingAdvance=null;}};
 })();

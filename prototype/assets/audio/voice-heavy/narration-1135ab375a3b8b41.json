@@ -1,0 +1,15 @@
+{
+  "id": "narration-1135ab375a3b8b41",
+  "text": "上一难 · 愿骨归声。你带着「高庄的人券」来到高老庄 · 封券血庄。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "bb1285130cec4ef1a5ff6e75c1116123304e06d606f82c348c0ab6196086003d",
+  "source_sha256": "3bb98978a3074382778fd7b6dc0aff5b798714082ea37db7c1b02b1c49a53de3",
+  "sha256": "19a1a439609f9d806ad30e8bca24bea1d8a3a371ac170430d031889495f69b0a",
+  "duration": 11.19,
+  "file": "assets/audio/voice-heavy/narration-1135ab375a3b8b41.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

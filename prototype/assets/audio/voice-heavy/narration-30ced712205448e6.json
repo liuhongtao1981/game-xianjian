@@ -1,0 +1,15 @@
+{
+  "id": "narration-30ced712205448e6",
+  "text": "黑风林的树都朝同一个方向弯腰。枝头挂着数千件无主袈裟，风一吹，便替人答应下一场劫。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "f7dd3774b8f008c7644e1a73d563973a67f269b3fe38744d307a87b8014f4bed",
+  "source_sha256": "59cd091728be41fcb645c65585938095cdc01eaecc14d772d22fce1774867f31",
+  "sha256": "040437815b74b1b03961d05b0385879f8a3928e3a9e56239b6b6d8d818396a65",
+  "duration": 10.206,
+  "file": "assets/audio/voice-heavy/narration-30ced712205448e6.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

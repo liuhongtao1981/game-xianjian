@@ -1,0 +1,15 @@
+{
+  "id": "narration-85245710026bd530",
+  "text": "金色毫毛将沈听澜引到陈府。门内每夜都传出婴儿的哭声，每到黎明，族谱便少一个名字。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "0b66ecb33b636741bf329228572b956936c530128186fd257ec91060d63ccda3",
+  "source_sha256": "2d530a8e59e9d0030e5da857c17ec2011dccc377735b278aeffcdfb0665b308d",
+  "sha256": "94ede31e653fcdf7114c73a98e43b8104c9092005f6dcbd6dd4d1e8b3dc32723",
+  "duration": 10.47,
+  "file": "assets/audio/voice-heavy/narration-85245710026bd530.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

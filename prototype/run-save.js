@@ -9,6 +9,7 @@ const RunSave=(()=>{
     for(const e of Object.values(d.progress.entries||{}))if(!JourneyProgress.validBuild(e?.build)||!['story','normal','hard','nightmare'].includes(e.difficulty))return false;
     const s=d.run,b=s?.player;
     if(s?.extramural!==undefined&&typeof s.extramural!=='boolean')return false;
+    if(s?.passage!==undefined&&s.passage!==null){const p=s.passage;if(!Number.isInteger(p.stage)||p.stage<0||p.stage>=ChapterCatalog.playable-1||d.progress.cleared<=p.stage||!['power','body','focus'].includes(p.reward)||!Number.isInteger(s.stage)||s.stage<0||s.stage>=ChapterCatalog.playable||ChapterCatalog.get(p.stage).realm!==ChapterCatalog.get(s.stage).realm||!s.extramural&&p.stage!==s.stage)return false;}
     if(!s||!b||!JourneyProgress.validBuild({...b,hp:Math.max(1,b.hp)})||!Cultivation.valid(b.cultivation)||!Number.isFinite(b.hp)||b.hp<0||!Number.isInteger(s.stage)||s.stage<0||s.stage>=ChapterCatalog.playable||!['story','normal','hard','nightmare'].includes(s.difficulty)||!['heaven','lotus','river'].includes(s.ultimate))return false;
     if(s.equippedUltimates!==undefined&&(!UltimateArts.validLoadout(s.equippedUltimates)||!s.equippedUltimates.includes(s.ultimate)))return false;
     if(!Number.isInteger(s.tier)||s.tier<0||s.tier>13||!Number.isInteger(s.cycle)||s.cycle<0||!Number.isInteger(s.queue)||s.queue<0||s.queue>10000||!Array.isArray(s.choices)||s.choices.length>3)return false;
@@ -47,13 +48,13 @@ const RunSave=(()=>{
   function capture(){
     CombatScaling.observe();
     return {version:3,revision:revision+1,writer,savedAt:Date.now(),progress:JourneyProgress.snapshot(),run:{cycle,tier:Journey.run.tier||0,ledger:clone(ledger),
-      chapterId:ChapterCatalog.get(Journey.run.stage).id,stage:Journey.run.stage,extramural:Journey.run.extramural===true,difficulty:Journey.run.difficulty,ultimate:Journey.run.ultimate,equippedUltimates:UltimateArts.loadout(),completed:[...Journey.run.completed],campaignTime:Journey.run.time,
+      chapterId:ChapterCatalog.get(Journey.run.stage).id,stage:Journey.run.stage,extramural:Journey.run.extramural===true,passage:clone(Journey.run.passage),difficulty:Journey.run.difficulty,ultimate:Journey.run.ultimate,equippedUltimates:UltimateArts.loadout(),completed:[...Journey.run.completed],campaignTime:Journey.run.time,
       player:JourneyProgress.capture(P),checkpoint:clone(Journey.run.checkpoint),x:P.x,y:P.y,time:G.time,kills:G.kills,state:G.state,
       queue:G.queue,choices:clone(choicesCache),chestReward:clone(G.chestReward),pendingLore:G.pendingLore,coreReward:clone(G.coreReward),
       chests:G.chests.map(c=>({x:c.x,y:c.y,t:c.t||0,kind:c.kind,rewardId:c.rewardId||null})),world:World.exportState(),director:EncounterDirector.exportState(),bossSpawned:G.bossSpawned,bossEntry:clone(bossEntry)}};
   }
   function save(reason='自动保存'){
-    if(suppress||!enabled||!P)return true;if(conflict)return false;if(G.state==='start')return true;
+    if(suppress||!enabled||!P)return true;if(conflict)return false;if(['start','character-preview'].includes(G.state))return true;
     const newer=read(key);if(newer&&newer.writer!==writer&&newer.revision>revision){receive(newer);return false;}
     try{const next=capture();if(!valid(next))throw new Error('Invalid runtime snapshot');const previous=read(key);if(previous)try{localStorage.setItem(backup,JSON.stringify(previous));}catch{}
       localStorage.setItem(key,JSON.stringify(next));revision=next.revision;data=next;elapsed=0;message='已保存 '+new Date(next.savedAt).toLocaleTimeString('zh-CN',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});return true;
@@ -61,7 +62,7 @@ const RunSave=(()=>{
   }
   function tick(dt){if(enabled&&G.state==='playing'&&!conflict){elapsed+=dt;if(elapsed>=5)save();}}
   function start(stage=0,newCycle=false,newReplay=false,extramural=false,skipIntro=false){
-    if(conflict||!JourneyProgress.canSelect(stage))return false;
+    if(conflict||!JourneyProgress.canSelect(stage)||extramural&&!JourneyProgress.outsideUnlocked(stage))return false;
     const old=data?.run,legacy=JourneyProgress.replay(stage,Journey.run.difficulty,Journey.difficulties);
     if(old&&!newCycle&&(old.queue>0||old.chestReward||old.pendingLore!==null&&old.pendingLore!==undefined||old.coreReward))return false;
     let build=old?clone(old.player):legacy?migrateBuild(legacy):null;
@@ -71,7 +72,8 @@ const RunSave=(()=>{
     else if(old){cycle=old.cycle;ledger=clone(old.ledger);}
     if(extramural)delete ledger['outer:boss:'+stage];
     if(!extramural&&(newReplay||old?.state==='win'&&stage<JourneyProgress.cleared())){for(const k of Object.keys(ledger))if(!k.startsWith('first:')&&new RegExp('^(boss|core|site|elite|drop):'+stage+'(?::|$)').test(k))delete ledger[k];}
-    suppress=true;Journey.begin(stage);enabled=true;Journey.run.stage=stage;Journey.run.extramural=extramural===true;Journey.run.tier=0;Journey.run.checkpoint=build;reset();bossEntry=null;suppress=false;Journey.intro(skipIntro);save('开始历程');return true;
+    const passage=old?.passage&&(extramural||stage===old.passage.stage)&&ChapterCatalog.get(stage).realm===ChapterCatalog.get(old.passage.stage).realm?clone(old.passage):null;
+    suppress=true;Journey.begin(stage);enabled=true;Journey.run.stage=stage;Journey.run.extramural=extramural===true;Journey.run.passage=passage;Journey.run.tier=0;Journey.run.checkpoint=build;reset();bossEntry=null;suppress=false;Journey.intro(skipIntro);save('开始历程');return true;
   }
   function continueRun(heroId=null){
     const requested=HeroIdentity.valid(heroId)?heroId:null;
@@ -80,19 +82,26 @@ const RunSave=(()=>{
     const latest=read(key);if(latest&&latest.revision>data.revision)data=latest;
     const s=clone(data.run);conflict=false;suppress=true;enabled=true;revision=data.revision;cycle=s.cycle;ledger=s.ledger;bossEntry=s.bossEntry;
     const priorHero=HeroIdentity.clean(s.player.heroId);if(requested){s.player.heroId=requested;if(s.checkpoint)s.checkpoint.heroId=requested;}
-    JourneyProgress.restore(data.progress);Object.assign(Journey.run,{heroId:HeroIdentity.clean(s.player.heroId),stage:s.stage,extramural:s.extramural===true,difficulty:s.difficulty,ultimate:s.ultimate,equippedUltimates:s.equippedUltimates||[s.ultimate,...UltimateArts.keys.filter(k=>k!==s.ultimate)],tier:s.tier,completed:s.completed,time:s.campaignTime,checkpoint:s.player});reset();Journey.run.checkpoint=s.checkpoint;
+    JourneyProgress.restore(data.progress);
+    const lockedOutside=s.extramural&&!JourneyProgress.outsideUnlocked(s.stage);
+    if(lockedOutside){
+      // Older challenge saves keep character growth and rewards, then return to the main story.
+      if(s.bossEntry)Object.assign(s,{x:s.bossEntry.x,y:s.bossEntry.y,world:s.bossEntry.world,director:s.bossEntry.director,chests:s.bossEntry.chests||[]});
+      s.extramural=false;s.completed=[];s.bossSpawned=false;s.bossEntry=null;bossEntry=null;s.state=s.state==='dead'?'dead':'story';
+    }
+    Object.assign(Journey.run,{heroId:HeroIdentity.clean(s.player.heroId),stage:s.stage,extramural:s.extramural===true,passage:s.passage||null,difficulty:s.difficulty,ultimate:s.ultimate,equippedUltimates:s.equippedUltimates||[s.ultimate,...UltimateArts.keys.filter(k=>k!==s.ultimate)],tier:s.tier,completed:s.completed,time:s.campaignTime,checkpoint:s.player});reset();Journey.run.checkpoint=s.checkpoint;
     const postVictory=s.bossSpawned&&s.completed.includes(s.stage)&&s.state!=='dead';
     const frame=s.bossSpawned&&!postVictory&&s.state!=='win'&&s.state!=='dead'?s.bossEntry:s;
     World.importState(frame.world);EncounterDirector.importState(frame.director);P.x=frame.x;P.y=frame.y;World.resolve(P,true);World.camera(0,true);G.time=s.time;G.kills=s.kills;G.queue=s.queue;choicesCache=s.choices;G.chests=frame.chests||[];
     G.chestReward=s.chestReward;G.pendingLore=s.pendingLore??null;G.coreReward=s.coreReward;
-    if(s.state==='win'||postVictory){G.bossSpawned=true;G.boss={hp:0,killed:true};G.state='win';if(s.state==='levelup'&&G.queue>0)showLevelUp(s.choices.length?s.choices:null);else Journey.showEnd(true);}
+    if(s.state==='win'||postVictory){G.bossSpawned=true;G.boss={hp:0,killed:true};G.state='win';if(s.state==='levelup'&&G.queue>0)showLevelUp(s.choices.length?s.choices:null);else{Journey.showEnd(true);if(s.passage&&!s.extramural&&!G.queue&&!G.coreReward)Journey.resumePassage();}}
     else if(s.state==='dead'){G.state='dead';Journey.showEnd(false);}
     else if(s.chestReward){G.state='playing';openChest(s.chestReward,true);}
     else if(G.pendingLore!==null)World.resumeLore(G.pendingLore);
     else if(G.queue>0)showLevelUp(s.choices.length?s.choices:null);
     else if(s.state==='story'||s.extramural)Journey.intro();
     else {G.state='playing';togglePause();}
-    suppress=false;if(requested&&requested!==priorHero&&!save('切换剑仙')){P.heroId=priorHero;Journey.run.heroId=priorHero;if(Journey.run.checkpoint)Journey.run.checkpoint.heroId=priorHero;if(G.state==='story')Journey.intro();}renderSpells();renderEquips();syncHUD();return true;
+    suppress=false;if(lockedOutside)save('域外解锁条件更新');if(requested&&requested!==priorHero&&!save('切换剑仙')){P.heroId=priorHero;Journey.run.heroId=priorHero;if(Journey.run.checkpoint)Journey.run.checkpoint.heroId=priorHero;if(G.state==='story')Journey.intro();}renderSpells();renderEquips();syncHUD();return true;
   }
   function retry(){
     if(!['dead','paused'].includes(G.state))return false;const build=JourneyProgress.capture(P);build.hp=build.maxHp;build.shield=0;

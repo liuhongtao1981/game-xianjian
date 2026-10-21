@@ -1,0 +1,15 @@
+{
+  "id": "narration-66d2c8102e18453b",
+  "text": "三块背风石里压着大圣的掌痕。沈听澜不再仰头问天，转身读风：灾若有价，就一定有人在操纵风向。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "02f8345d71a7b5656983fcbb7933a2d3ab0e95d5773143bd41cca32aa9e4ce5f",
+  "source_sha256": "b1207851f8ed3fdef98fdb06a38493bef9dd0f8269714a63b1b7140aeddf9feb",
+  "sha256": "96c0f9a63ba8e990ff5ef7ea625601bef3fc5f2d4803e9b2e428d1003fb5dad7",
+  "duration": 11.142,
+  "file": "assets/audio/voice-heavy/narration-66d2c8102e18453b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-2fc59ec8daa5d558",
+  "text": "血诏说：为免江州遭劫，须除掉这个孩子。可每张诏令的落款，竟与第一难的收讫人出自同一只手。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "6377110f31801e23b41b0ff4eb4486978f79cce260737d541d7f74482cfa2ebf",
+  "source_sha256": "8df73e45f410a2cf2d85a53ea69343322bf3eea2e00ffbe08c43f7c3e6daa8d1",
+  "sha256": "57226f24bd61d48b0725bb4527f34b5c91e0f54f11d247a003efb892d90ed67e",
+  "duration": 10.278,
+  "file": "assets/audio/voice-heavy/narration-2fc59ec8daa5d558.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-840f1b643fb4b75d",
+  "text": "上一难 · 五行断契。你带着「伪造的镇山契」来到两界山 · 残籍驿道。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "8a5810d2fb5e11eca26e0f33f304007780985ebdd16772823797f68ebfcea4dc",
+  "source_sha256": "b3672eec54bfb02a7034853e40fe2d32b0a08af85de58379743decf7db220475",
+  "sha256": "8dd778c8e48189ce83cc07f87d7c6215b0a783b471e37abb9690f3d3db385d54",
+  "duration": 11.238,
+  "file": "assets/audio/voice-heavy/narration-840f1b643fb4b75d.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

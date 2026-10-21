@@ -1,0 +1,15 @@
+{
+  "id": "narration-d5938e012bc9c39f",
+  "text": "小果绕过碎石驿，找到一段被铁链勒断的毫毛。那不是认罪，是有人借大圣的名字收债。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "bc4912cc930f23ce110df67de322d92dea1faacfa3af49f906cf84480652e31e",
+  "source_sha256": "1a215c0c7ee1b11d69d5daadc642e3ce59a328c78bde9a7c740d04e8c6f37e78",
+  "sha256": "c52cdd1c6df9094d96da733e626b2d98e2dfcd4b55b66a900941654e83fc78a7",
+  "duration": 9.246,
+  "file": "assets/audio/voice-heavy/narration-d5938e012bc9c39f.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

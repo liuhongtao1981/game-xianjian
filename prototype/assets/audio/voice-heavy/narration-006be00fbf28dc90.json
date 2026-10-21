@@ -1,0 +1,15 @@
+{
+  "id": "narration-006be00fbf28dc90",
+  "text": "吞愿耙魇本是替人担债的山灵，被喜契锁成了永远迎亲的新郎。它每挥一次九齿耙，红绸便替它扣下一段别人的寿数。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "5ebbd847561c064b39359c5e2fd2f6d3ef69f72f9fd9ffaed78cf9881bb667ee",
+  "source_sha256": "8462eeda3cf56560fff71d7b1ac92977c88c56913e9139ccc2f923341abd5114",
+  "sha256": "09bfad5379059f30c26e0de630bb376cfbae21c38d800edd892b45acb96f0272",
+  "duration": 12.198,
+  "file": "assets/audio/voice-heavy/narration-006be00fbf28dc90.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-89463c7d9af77e27",
+  "text": "收身单把听澜带入白骨荒冢。白幡下，一位母亲、一名商贩与一位老僧，都说自己曾是同一个人；他们连临终前的悔恨也一字不差。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "049d43a5023867e548e63aefe03109e977c69ba3f7daa2e53c917a2e31d448a1",
+  "source_sha256": "2bc0818721560a9be0c7490d48e20048bababca46cf16cf0aa9c517e9a6edc7c",
+  "sha256": "6919702eedb9250715cd4b6f27b56e64626f409a2f19531516928913fd59a7cc",
+  "duration": 14.238,
+  "file": "assets/audio/voice-heavy/narration-89463c7d9af77e27.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

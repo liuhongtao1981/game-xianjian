@@ -1,0 +1,15 @@
+{
+  "id": "narration-219ef650aef69f15",
+  "text": "大圣失踪后，八十一难的名册开始自行改写。无籍剑仙孙小果循一截焦黑毫毛，踏入金蝉受贬的劫痕。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "40ecbf045d5af4fba9b2ad915188b515cb20d8569bb6e8e90a964ab6df6561fe",
+  "source_sha256": "8ba66255ecebf269b7308a129d6a1576b63f1f51429e6e8da4c8130d1a64ef54",
+  "sha256": "f22e1cadb0f445dc0ce9d8d152fb59b1777562ba5d33c7b0ea3b634966b2820f",
+  "duration": 10.998,
+  "file": "assets/audio/voice-heavy/narration-219ef650aef69f15.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

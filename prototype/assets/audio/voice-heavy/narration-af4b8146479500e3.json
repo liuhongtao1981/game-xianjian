@@ -1,0 +1,15 @@
+{
+  "id": "narration-af4b8146479500e3",
+  "text": "福陵喜堂的灯从不熄灭。每到子夜，席上的客人便年轻一天，席下的村民却老去一年。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "ca514a3d06ea847df4a8f3115d39bd45a33a286f42d2d5574d273ebebce4be40",
+  "source_sha256": "7f829283ec4af9f1ba6e43fd1d0be76df34a22abf55a8a251656e6c184f44ab1",
+  "sha256": "3eb684c3ef07ef46f4c658a634d395fcaf006a70ced2a002e2cd9531275bb5ad",
+  "duration": 9.894,
+  "file": "assets/audio/voice-heavy/narration-af4b8146479500e3.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

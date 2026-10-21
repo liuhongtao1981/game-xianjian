@@ -1,0 +1,15 @@
+{
+  "id": "narration-91afea168ba89f2b",
+  "text": "你循着黄风劫税单旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成吞愿耙魇的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "4a968abf0a261be128010ee9243f676fa4b65b4b8bae7c9d867255e55fb5fadb",
+  "source_sha256": "96a369bf9d89ee00fc3bdd69024fee3081ccd6045b8be7aee713966ae8b56232",
+  "sha256": "f63113f2e8b09a65d10b17bc46bbc8939a86b16e163b8c9dd3a4ca722b6456ee",
+  "duration": 10.374,
+  "file": "assets/audio/voice-heavy/narration-91afea168ba89f2b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

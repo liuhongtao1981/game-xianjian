@@ -1,0 +1,15 @@
+{
+  "id": "narration-4e7c86830672d16c",
+  "text": "监院愿给你大圣的下落，条件是将最后三页证词投入戒火。听澜拔剑：先把你的嘴打开。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "e945ad77352b4fb53bb0e46496381c4e5e76bed4695c141ab2f60de1c01e09ae",
+  "source_sha256": "fce7e2ed930a2792807bf82e4c07329fd31fb069f5c730d4febc1459b5a442b5",
+  "sha256": "30fdd8db5602d67343c12763d51567f1271db658d56414156fb0331834534efd",
+  "duration": 9.654,
+  "file": "assets/audio/voice-heavy/narration-4e7c86830672d16c.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

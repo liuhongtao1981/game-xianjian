@@ -1,0 +1,15 @@
+{
+  "id": "narration-048905d096f249f1",
+  "text": "你循着流沙沉名渡的空牌旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成黄风听骨王的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "171085bc2d4a03cdecdb5688ee714c516306f44866abfbd671f2fed53aa6e5ba",
+  "source_sha256": "142a09c488276e917fdb05ba635fa0243fb5c0fcef358fd31f0af1f14976b6c5",
+  "sha256": "23b7b8865a247515b31f7767b430156cd00ddc2f2697f56ad517756d147ae479",
+  "duration": 10.95,
+  "file": "assets/audio/voice-heavy/narration-048905d096f249f1.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

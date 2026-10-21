@@ -7,10 +7,12 @@ on:
       - 'prototype/**'
       - 'tools/check-syntax.js'
       - 'tools/check-director.js'
+      - 'tools/check-boss-summons.js'
       - 'tools/check-carryover.js'
       - 'tools/check-saves.js'
       - 'tools/check-cultivation.js'
       - 'tools/check-auto-cultivation.js'
+      - 'tools/check-realm-passage.js'
       - 'tools/check-expansion.js'
       - 'tools/check-infant.js'
       - 'tools/check-huashen.js'
@@ -18,9 +20,13 @@ on:
       - 'tools/check-reward-cards.js'
       - 'tools/check-ascension-scene.js'
       - 'tools/check-spell-growth.js'
+      - 'tools/check-spell-priority.js'
       - 'tools/check-thunder.js'
       - 'tools/check-realm-upgrades.js'
       - 'tools/check-realm-loot.js'
+      - 'tools/check-story-audio.js'
+      - 'tools/check-heavy-voices.js'
+      - 'tools/check-runtime-cache-ui.js'
       - 'tools/check-world.js'
       - 'tools/check-heroes.js'
       - 'tools/check-pressure.js'
@@ -50,15 +56,18 @@ jobs:
         run: |
           node tools/check-syntax.js
           node tools/check-director.js
+          node tools/check-boss-summons.js
           node tools/check-carryover.js
           node tools/check-saves.js
           node tools/check-cultivation.js
           node tools/check-auto-cultivation.js
+          node tools/check-realm-passage.js
           node tools/check-expansion.js
           node tools/check-infant.js
           node tools/check-huashen.js
           node tools/check-lianxu.js
           node tools/check-spell-growth.js
+          node tools/check-spell-priority.js
           node tools/check-thunder.js
           node tools/check-pickups.js
           node tools/check-reward-cards.js
@@ -67,6 +76,8 @@ jobs:
           node tools/check-world.js
           node tools/check-realm-upgrades.js
           node tools/check-realm-loot.js
+          node tools/check-story-audio.js
+          node tools/check-heavy-voices.js
           node tools/check-heroes.js
           node tools/check-pressure.js
           node tools/check-actor-motion.js

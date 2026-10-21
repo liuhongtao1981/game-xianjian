@@ -1,0 +1,15 @@
+{
+  "id": "narration-17078ee13a775fb1",
+  "text": "大圣曾拒绝在这里按印，庄主便把石猴的手印刻成章。听澜展开元神，看见每张契纸背后，都有一道通向虚空的裂缝。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "743f103e58744ebcbed451eb7288f0c9e31d12a5c76d88ca258c539192065d60",
+  "source_sha256": "83877061011945ff3036a7eb05c0b19b7645d235ebca3368c2b15171970df898",
+  "sha256": "4fb61cd65177ec1787a9d3329b42de52026bffe1886252e4fd088573363731ed",
+  "duration": 12.294,
+  "file": "assets/audio/voice-heavy/narration-17078ee13a775fb1.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

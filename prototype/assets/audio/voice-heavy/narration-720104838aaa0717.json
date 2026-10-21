@@ -1,0 +1,15 @@
+{
+  "id": "narration-720104838aaa0717",
+  "text": "你循着被烧去的名册页旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成缄口监院的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "3da96ed9d9ef7dd18dad29b74a5ac34cdd41dfde8ad065073ff58f6d15988dfd",
+  "source_sha256": "2e13cb8683bc53b3eb9bf5280b1a54ff7350ae41bbb6661f5372d36d27045653",
+  "sha256": "d29f01d9c44ca96e479445c9d4f44903811fb436b4ef37b105f91d1e118b2373",
+  "duration": 10.614,
+  "file": "assets/audio/voice-heavy/narration-720104838aaa0717.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

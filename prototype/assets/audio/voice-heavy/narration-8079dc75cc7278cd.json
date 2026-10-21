@@ -1,0 +1,15 @@
+{
+  "id": "narration-8079dc75cc7278cd",
+  "text": "一位驿卒告诉小果：追猎将没有自己的名字，只能靠夺走别人的名字续命。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "ee5908a2d827d4cccedc222951f8cecaae6446982bed9db6f17c14283ea1265b",
+  "source_sha256": "8b1456183b4eb23baccdefcae962427fcf64a18e3e066d6946290c51e0352a98",
+  "sha256": "90f15124c9cb962d7e1a23c31cf2ef5f7cdb088ee75d0145f54d1a8c2ac30b81",
+  "duration": 7.182,
+  "file": "assets/audio/voice-heavy/narration-8079dc75cc7278cd.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

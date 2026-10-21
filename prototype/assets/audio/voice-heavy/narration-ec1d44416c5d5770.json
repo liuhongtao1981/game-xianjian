@@ -1,0 +1,15 @@
+{
+  "id": "narration-ec1d44416c5d5770",
+  "text": "你循着愿骨洞的回声图旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成披愿黑熊的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "306e1bc18b26efce70096c2cf4a94d54b4c6099dbb1ef80276d24aaa7171855d",
+  "source_sha256": "809e8f48618cbe72b9fbbdd5201500d20412c3e0afa6306552b76961a9c8fe1b",
+  "sha256": "8d2b723e565643024091aad76ee4cf2d7834517db75f0589f3d444705bae1cac",
+  "duration": 10.542,
+  "file": "assets/audio/voice-heavy/narration-ec1d44416c5d5770.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

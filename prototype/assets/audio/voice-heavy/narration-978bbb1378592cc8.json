@@ -1,0 +1,15 @@
+{
+  "id": "narration-978bbb1378592cc8",
+  "text": "听骨王把众生的惊惧吹进空喉，借一枚伪造的天劫印发号施令。它听得见骨头，却听不见被风卷走的姓名。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "81c237d53a91c61de5aa00ffddb2494c1765ae2e843b6f10812f6013e40622cf",
+  "source_sha256": "136f2ec4d977587664dfbd854efa8ba076f59816a3c053a6b9444b026cea5742",
+  "sha256": "982b79bbe204414cf0e399764fffb06c07a30d9352b428b8b9f05552e223bc52",
+  "duration": 11.238,
+  "file": "assets/audio/voice-heavy/narration-978bbb1378592cc8.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-01a8d2cb52413860",
+  "text": "一株养魂神木从灰烬里长出，树皮记着被抹掉的愿。听澜护住新芽：今日先让这些人，把自己的愿认回去。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "02df7bbf94472cce43bc7ceb9508b129d41eb5a7236238370063775330f27f97",
+  "source_sha256": "9a209449b968860a506a535309d5f9704714f087cbea569513d3e9d6db43f7be",
+  "sha256": "74f53ade2d0eaae9009224412dcd7535ca1399755e690fbde20778cf1190657f",
+  "duration": 11.07,
+  "file": "assets/audio/voice-heavy/narration-01a8d2cb52413860.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

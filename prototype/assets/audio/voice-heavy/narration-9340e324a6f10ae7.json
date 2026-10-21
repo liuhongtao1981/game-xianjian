@@ -1,0 +1,15 @@
+{
+  "id": "narration-9340e324a6f10ae7",
+  "text": "裂隙没有新的证词，只有夺回宝物的一战。此妖生命与伤害均为本关大妖的两倍；胜利必得本境破境材料的一半。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "ed3888807fba67126d8f7e5678f2b9fdf5585129280675d8d957a63ed63080b9",
+  "source_sha256": "00687a44a97f9383d80e6d981beb1b7ef3900074e463f2e14b0b5d3929a0db45",
+  "sha256": "125c4e416ef732579b120b8874ebccdd849f11ce0c4906fb7b07037177e1894a",
+  "duration": 11.382,
+  "file": "assets/audio/voice-heavy/narration-9340e324a6f10ae7.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

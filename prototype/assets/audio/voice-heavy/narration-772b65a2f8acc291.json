@@ -1,0 +1,15 @@
+{
+  "id": "narration-772b65a2f8acc291",
+  "text": "上一难 · 福陵借寿。你带着「黄风劫税单」来到黄风岭 · 窃神沙关。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c2a6ede1e3ad376df077449173bce1affdbdf7d7aa0e052ae5ed51040bae0164",
+  "source_sha256": "a8739b7e8ce56de209977db7274075e9d30e6891a3fa2ececbb31ecd804edc49",
+  "sha256": "22a78f1543a7a07492b3769158f5aec69c9c7a33c9840b55cf247b12f5175570",
+  "duration": 11.214,
+  "file": "assets/audio/voice-heavy/narration-772b65a2f8acc291.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

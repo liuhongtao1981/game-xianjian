@@ -1,0 +1,15 @@
+{
+  "id": "narration-78b7e1733df53a7e",
+  "text": "愿骨洞的木简把孙小果引到高庄。门口不收银钱，只量人的影子；影长一寸，便能抵一年的粮。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "19cc37dc3b6b7271bbcf99f7053081179e45315b1503ccf4a149835f5a208710",
+  "source_sha256": "5c10118addf6da08ef043c8add64dcf237311d35cc72e461d6e33d6dbda5689f",
+  "sha256": "900eec2a8095626bc0173ee078202ebdf5c692b5bad27d46021f6af3a40e4c54",
+  "duration": 10.686,
+  "file": "assets/audio/voice-heavy/narration-78b7e1733df53a7e.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

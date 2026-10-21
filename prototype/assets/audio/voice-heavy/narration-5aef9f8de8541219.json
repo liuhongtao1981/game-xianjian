@@ -1,0 +1,15 @@
+{
+  "id": "narration-5aef9f8de8541219",
+  "text": "白蛟吐出的袈裟角，把沈听澜引进一座永不天明的禅院。每烧掉一条许愿红绸，功德簿上便多一笔收入。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "24fcf57794187fc9b6defc8ccafd29a39868024303cca6c315317f0c09bbf6fc",
+  "source_sha256": "f5b374bb61fa90062c9e5eda5d38f49fa79d16f7ce27d07d0eef74a045cfbb05",
+  "sha256": "c5a286db28fce6d1223ea7f659f9a14bf4ccc96f05a18b441c942afe452b5768",
+  "duration": 11.07,
+  "file": "assets/audio/voice-heavy/narration-5aef9f8de8541219.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

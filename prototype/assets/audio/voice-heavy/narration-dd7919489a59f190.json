@@ -1,0 +1,15 @@
+{
+  "id": "narration-dd7919489a59f190",
+  "text": "金色毫毛将孙小果引到陈府。门内每夜都传出婴儿的哭声，每到黎明，族谱便少一个名字。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "82d308113d06cab87e8d01912a585ae5a975cf1349da96f92c74109d342d6685",
+  "source_sha256": "7f04609856d0d3207457ba4f12d33e79690e2f9e0a3c35181c5c3e30c57b77e5",
+  "sha256": "ce630cc285a39d615078372d51d169802b5ae24f148545d0103eae86c3bf90c4",
+  "duration": 10.518,
+  "file": "assets/audio/voice-heavy/narration-dd7919489a59f190.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-09564e0ef2a6b0d7",
+  "text": "上一难 · 黑风借衣。你带着「愿骨洞的回声图」来到黑风山腹 · 愿骨石窟。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "a14e745156cf2686be2e48c385d6ac08606b68c399470a85bce0be43460cb8ed",
+  "source_sha256": "9f8825ad1d4695d65aa28be0130c530521a5a87e09a40d7bea512588f276eb49",
+  "sha256": "6a008a7db62d93fabc034d35320037bfb1b36a87a3befbd2e0a4e74be378f96d",
+  "duration": 11.838,
+  "file": "assets/audio/voice-heavy/narration-09564e0ef2a6b0d7.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

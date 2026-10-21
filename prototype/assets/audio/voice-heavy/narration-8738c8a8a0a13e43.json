@@ -1,0 +1,15 @@
+{
+  "id": "narration-8738c8a8a0a13e43",
+  "text": "它答应放出大圣的消息，条件是留下小果的名字。小果将剑横在水面：名字可以不留，账不能不算。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "e4b1ac2614822abd9981f81cf0a1c06f10e3aeb0ed27375d7a067afaf5df5c5c",
+  "source_sha256": "f749836df51b73894285d6c921bfa6bd16c991d1a7f3b1a836ea1534231729a9",
+  "sha256": "48475f960971a0335c621c0adfa40f7278625d2d3fef64edcd90794dd51dc144",
+  "duration": 10.374,
+  "file": "assets/audio/voice-heavy/narration-8738c8a8a0a13e43.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

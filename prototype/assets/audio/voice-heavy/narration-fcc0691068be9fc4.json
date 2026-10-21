@@ -1,0 +1,15 @@
+{
+  "id": "narration-fcc0691068be9fc4",
+  "text": "金毫落在五行山的断碑上。沈听澜没有找到大圣，只看见六百道新凿的契痕。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "aa0bcea67c7c6a16a8758461449ce048bc42ecae28f2c2d7e5cf412a3daf7ba6",
+  "source_sha256": "5f38f83917eedd6a8a6b20a6d6a57daf02813d22c90f3ffd2f78db2f83c1f46d",
+  "sha256": "1825956fd5e2b92e9b64e3430c7581df0f45e63634b12fb5bba29ba179d0463f",
+  "duration": 8.166,
+  "file": "assets/audio/voice-heavy/narration-fcc0691068be9fc4.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

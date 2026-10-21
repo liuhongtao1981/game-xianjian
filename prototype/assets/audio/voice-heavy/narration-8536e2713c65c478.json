@@ -1,0 +1,15 @@
+{
+  "id": "narration-8536e2713c65c478",
+  "text": "三相骨娘把失名者的身体租给需要清白履历的人。买家换一张脸便能脱罪，原主的魂魄只能被封进心灯，替新主人继续受罚。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "3275d40b8d16f5b0df6451aa4f96b29e67c6fa65d5f0ea23bb67de57fe672232",
+  "source_sha256": "e8439813205a3489f841d74a2b1eb00a9809303a4a6179f7d8b03f259031bcbd",
+  "sha256": "bffcf5b5e05f04d53883ad3c7eaa6377ca8df7691ba573d695989773effc3429",
+  "duration": 13.398,
+  "file": "assets/audio/voice-heavy/narration-8536e2713c65c478.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

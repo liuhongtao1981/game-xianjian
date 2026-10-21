@@ -27,6 +27,7 @@
 .story-progress i {height:2px;background:#a3afa43d;flex:1;}
 .story-progress i.read {background:var(--story);}
 .story-controls {display:flex;gap:8px;margin-bottom:22px;}
+.story-voice-status {min-height:1.6em;font-size:11px!important;line-height:1.6!important;color:#a9c5ba!important;}
 .story-controls button {flex:1;border:1px solid #b7a47750;background:#12242a;color:#cfc4ac;padding:9px 4px;cursor:pointer;font-size:11px;}
 .story-controls button:disabled {opacity:.35;cursor:default;}
 .story-player .linkbtn {display:block;margin:16px 0 0;}
@@ -92,3 +93,4 @@ body:has(#overlay:not(.hidden) .story-player) #voiceCaption,body:has(#overlay:no
 /* Preserve the full-width chapter shelf at every breakpoint. */
 @media(max-width:1050px){.journey-heading{grid-template-columns:minmax(0,1fr) 280px;gap:16px}.journey-menu{display:flex}.journey-chapters{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.outer-challenge{padding:18px}}
 @media(max-width:700px){.journey-heading{display:block}.journey-heading .hero-picker{margin-top:20px}.journey-heading .hero-choice canvas{max-height:145px}.journey-chapters{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.journey-chapter-heading h2{font-size:22px}.journey-chapter-heading p{font-size:9px}.chapter-card{min-height:240px;padding:14px 10px}.chapter-card strong{font-size:21px}.chapter-card .chapter-loot{font-size:9px}.outer-challenge{flex-direction:column;align-items:stretch;gap:14px}.outer-challenge h3{font-size:21px}.outer-challenge p{font-size:11px}.outer-challenge .btn{font-size:14px}.story-scene{min-height:150px;font-size:14px!important}.story-art>span{bottom:18px;font-size:13px}.story-player .linkbtn{margin:16px auto 0}}
+.hero-choice{touch-action:manipulation}

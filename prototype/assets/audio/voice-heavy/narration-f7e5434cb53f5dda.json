@@ -1,0 +1,15 @@
+{
+  "id": "narration-f7e5434cb53f5dda",
+  "text": "驿墙上的三枚籍印同时亮起。小果看见其中一枚倒映着金毫，其余两枚只有空影。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "9e63dfa6f30d9b2e9bf650c467e043a2390a33d43652df6b8115c562949fb378",
+  "source_sha256": "0868aa6bd4072810bb0c56f0dd289d4abc3c4ac657138e7c49e9a76dd7f2bb06",
+  "sha256": "6b18667b8a7912768c4ea70c611fb479fa708fc72c7f1e064958fc5d49610870",
+  "duration": 9.03,
+  "file": "assets/audio/voice-heavy/narration-f7e5434cb53f5dda.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

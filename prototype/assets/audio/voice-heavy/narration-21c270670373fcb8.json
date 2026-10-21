@@ -1,0 +1,15 @@
+{
+  "id": "narration-21c270670373fcb8",
+  "text": "禅庭说，金蝉是因轻慢教法而遭贬。可被烧掉的卷宗里，留着一句：每一难，都须有人付命。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "a0d12ee4f7c79614ec34a8c133a1c85fa2b639bb418c2c8c60a20fd2f3466d1e",
+  "source_sha256": "dc7ceaed146ba710cbe3d3e40d1327613a019c8fd065d7a277c25f2db7ee9436",
+  "sha256": "fc359cbc6eae93049433a566144bcad80bc50e4d39f8801febd439ff3d55c308",
+  "duration": 10.182,
+  "file": "assets/audio/voice-heavy/narration-21c270670373fcb8.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

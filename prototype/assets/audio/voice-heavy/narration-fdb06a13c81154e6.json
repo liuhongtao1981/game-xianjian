@@ -1,0 +1,15 @@
+{
+  "id": "narration-fdb06a13c81154e6",
+  "text": "大圣曾在这里砸碎千面镜，却留下了一盏没有灭的灯：脸能买，骨能换，自己的疼却不能借。小果循着灯芯的金光，等待三相交替。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "b92169a4ab16ceda37330aa05d0328abef1bdeacf04056df857fe764d27df448",
+  "source_sha256": "8644d0eeaab4fdec1b2013ab787c0cf8ecf0e678e8ccf49950082dde805e3e17",
+  "sha256": "41d79ae0ba1a565965202dac3ecbfc0458d065dc897b5287369fd1171646506f",
+  "duration": 13.614,
+  "file": "assets/audio/voice-heavy/narration-fdb06a13c81154e6.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

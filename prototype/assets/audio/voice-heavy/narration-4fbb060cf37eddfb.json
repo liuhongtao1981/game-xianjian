@@ -1,0 +1,15 @@
+{
+  "id": "narration-4fbb060cf37eddfb",
+  "text": "石魁说：大圣早已认罪，山锁不过替他守诺。碑背却刻着另一句：签名之日，群山皆空。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "0a82dff0e32be5eabb0053bbab31a3a790d66f948fd6ccd6c4bdcb272e604dfc",
+  "source_sha256": "f96aac703fcdd2f860750c7a45ac4e42749af72be7f1aef24612ca360f61f7a8",
+  "sha256": "49ad4e0035c1af14092ca20726b90094909cf6565edbbd590ec4d1634a1c52bd",
+  "duration": 9.654,
+  "file": "assets/audio/voice-heavy/narration-4fbb060cf37eddfb.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

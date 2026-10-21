@@ -1,0 +1,15 @@
+{
+  "id": "narration-cd32814ce644f265",
+  "text": "三块背风石里压着大圣的掌痕。孙小果不再仰头问天，转身读风：灾若有价，就一定有人在操纵风向。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c12d86502df267c29fb8c3775cd4bebe0abd2d52c08f2a816c7aae8d21a8d2b8",
+  "source_sha256": "e69bfa930b86152d4d8b2011909cf9b3dd2aed43dfbd984b81212a431235c38d",
+  "sha256": "cd3b95b654eb03bc25b482e1d9c3a15f8a3dc0ffc0b39be16d65e00c9b61f78f",
+  "duration": 11.142,
+  "file": "assets/audio/voice-heavy/narration-cd32814ce644f265.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

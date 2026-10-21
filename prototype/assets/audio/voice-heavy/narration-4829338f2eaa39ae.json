@@ -1,0 +1,15 @@
+{
+  "id": "narration-4829338f2eaa39ae",
+  "text": "孙小果踏上浅滩：你若不能开口，就让这锁喉的东西先碎。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "278295526f4adf515238da374d65e678a6865bcd1674bc0091a5f9db032e938f",
+  "source_sha256": "e11dbbcb60b600d433a3f4ce948d7f1dea58a25f715240efba1a047448c9831b",
+  "sha256": "63672f3eeefeaf5cd8bc5fd6d867ed78eab60b4b4f64e822d176f299dde988a3",
+  "duration": 5.958,
+  "file": "assets/audio/voice-heavy/narration-4829338f2eaa39ae.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

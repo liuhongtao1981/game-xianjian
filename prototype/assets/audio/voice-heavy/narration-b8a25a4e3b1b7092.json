@@ -1,0 +1,15 @@
+{
+  "id": "narration-b8a25a4e3b1b7092",
+  "text": "宝象城的灯照着每一个人，却没有一个人留下影子。影籍镜映出城墙后的长廊：贵人的清白，正由贫民的影子跪着代偿。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "18ab740eede65318c1834556ce2e290f604654f5783ed22b721e4a3078d6bbca",
+  "source_sha256": "3ddc8b8cdae16c032dd0cef91b4d455f3b1fe81a9d3c79ecae77d30e40b15357",
+  "sha256": "cc441db0ff3870532abceba0f2d68cc20967690c824773e8ed037c09af188a6d",
+  "duration": 12.006,
+  "file": "assets/audio/voice-heavy/narration-b8a25a4e3b1b7092.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

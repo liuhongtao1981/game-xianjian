@@ -1,0 +1,15 @@
+{
+  "id": "narration-ee058678e4e5b9af",
+  "text": "沈听澜顺洪江寻到一只永不腐烂的木板。血书上的字，每逢满月便会变成另一个人的笔迹。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "dab9ccb9860fff89a2f0265280a21b1907366c68e2e96fb89989cde0aecef4c6",
+  "source_sha256": "4992ad7c1c29bc3f04a0caf5669abb22482dbd1e54da3b59986e2999209fce4f",
+  "sha256": "d06c4952e891730975a98e16c56859fb9f0ce54f3a618f781d17606d7b12e9e6",
+  "duration": 9.582,
+  "file": "assets/audio/voice-heavy/narration-ee058678e4e5b9af.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

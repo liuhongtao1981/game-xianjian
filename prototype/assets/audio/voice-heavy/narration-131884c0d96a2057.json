@@ -1,0 +1,15 @@
+{
+  "id": "narration-131884c0d96a2057",
+  "text": "你循着无主血诏旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成血诏司命的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "8c380a10543f173eb75ac1193108590d6f1f1b5645504bb08860b9c6b4974f0c",
+  "source_sha256": "06dbae2725d4f1d14559f1340065ee054ef9bea1eb9a705b5cb66005c80c7049",
+  "sha256": "67cd6855d12bf9db18e07dc56f7a4886b699b133d6290e90f5e46fc3e324f135",
+  "duration": 10.134,
+  "file": "assets/audio/voice-heavy/narration-131884c0d96a2057.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

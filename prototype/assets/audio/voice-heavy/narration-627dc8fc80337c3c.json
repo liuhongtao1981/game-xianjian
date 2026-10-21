@@ -1,0 +1,15 @@
+{
+  "id": "narration-627dc8fc80337c3c",
+  "text": "上一难 · 白骨换身。你带着「宝象影籍镜」来到宝象国 · 失影王城。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "36d1ccdac7e15e417d34977add0d92a0a514f368aaaca6b3fd3f7cc0669718df",
+  "source_sha256": "aa4a809debaf331610fc5448f1a166692356c2631a78081deb65a6446b9a2a50",
+  "sha256": "89b48734a61bb01b3188daf59a7581734b6b9476caa3be4599b2f9490d1fc64c",
+  "duration": 10.902,
+  "file": "assets/audio/voice-heavy/narration-627dc8fc80337c3c.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

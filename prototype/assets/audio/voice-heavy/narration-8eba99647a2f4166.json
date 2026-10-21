@@ -1,0 +1,15 @@
+{
+  "id": "narration-8eba99647a2f4166",
+  "text": "听澜绕过碎石驿，找到一段被铁链勒断的毫毛。那不是认罪，是有人借大圣的名字收债。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c8878cf844f77b79463b8f98e8288eb3559ceef368b9e3689ec07a27a96497d1",
+  "source_sha256": "abfcdf74671f96586a4525da454b33562b72f9163b002250b91fff9dd8116a20",
+  "sha256": "a8ef5badb531c03d500eecdd8903c2895a33e609d98e4a07a512d86550f9bbcd",
+  "duration": 9.15,
+  "file": "assets/audio/voice-heavy/narration-8eba99647a2f4166.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

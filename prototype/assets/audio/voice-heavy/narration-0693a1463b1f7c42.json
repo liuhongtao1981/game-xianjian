@@ -1,0 +1,15 @@
+{
+  "id": "narration-0693a1463b1f7c42",
+  "text": "石窟深处没有佛像，只有排列成佛形的白骨。焚愿老衲把死者的心愿刻在骨上，拿去抵消活人的罪。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c676ea0eb5dd0e701e40a10e9e7ee7b78330325bbd3b1338ef807977983d6dcc",
+  "source_sha256": "4c569391799ee0d830dcf8bfa02c0184ad0e406297b66a4088f7761ed02c82f2",
+  "sha256": "c2ed4f9097184ad1b983194c4ceb182d4d24fb256246df51803f43544009a486",
+  "duration": 10.542,
+  "file": "assets/audio/voice-heavy/narration-0693a1463b1f7c42.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

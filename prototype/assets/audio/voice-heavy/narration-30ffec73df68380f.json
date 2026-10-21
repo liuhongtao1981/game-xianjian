@@ -1,0 +1,15 @@
+{
+  "id": "narration-30ffec73df68380f",
+  "text": "你循着沉鳞水契旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成无籍追猎将的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "f8198150cddc0ec6c96824a2deea1c42fe21518973fe59e7ea74ca1c9f102c7e",
+  "source_sha256": "6259347bae08b45652dd5e5254f88aa1bb7d8ac2987e2580ee494b5261ef5a44",
+  "sha256": "501292cf27077681a1f0e7f5d5397433192dfa7a0ed86d8549bf02cbbd7217f9",
+  "duration": 10.614,
+  "file": "assets/audio/voice-heavy/narration-30ffec73df68380f.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

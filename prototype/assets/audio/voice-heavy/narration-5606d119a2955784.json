@@ -1,0 +1,15 @@
+{
+  "id": "narration-5606d119a2955784",
+  "text": "阴愿主使以香火换平安，却把灾祸转给没有姓名的人。大圣留下的剑痕指向地下：账不在佛前，在灯下。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "78089f1b4cf4f62381d0bdf659f03eafbf19472af0e4cc47cbb5375aaccc5c0f",
+  "source_sha256": "df0c4a10c29ea52094fb806c2040b0858894b1bceec24c42e93277cc79c68759",
+  "sha256": "05b72f741f98c1a0cc5760e4769f37b5220c532fb918ac7c6bc9ef8d72010082",
+  "duration": 10.974,
+  "file": "assets/audio/voice-heavy/narration-5606d119a2955784.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

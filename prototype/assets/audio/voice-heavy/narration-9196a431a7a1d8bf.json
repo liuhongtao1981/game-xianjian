@@ -1,0 +1,15 @@
+{
+  "id": "narration-9196a431a7a1d8bf",
+  "text": "驿墙上的三枚籍印同时亮起。听澜看见其中一枚倒映着金毫，其余两枚只有空影。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "55d79b6944af27013dedaf42ee8b533a433ff61a9e00e0b56cc4eed9b46672a2",
+  "source_sha256": "33fc381c3567d2183fe4677a21be934368acc5b35586c0243f647905015d7d92",
+  "sha256": "1b6e78a6557b5617ad96232bb217791273d4c068099c19a991bad5dd418c4290",
+  "duration": 9.054,
+  "file": "assets/audio/voice-heavy/narration-9196a431a7a1d8bf.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

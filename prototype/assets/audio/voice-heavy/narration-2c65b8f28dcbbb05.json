@@ -1,0 +1,15 @@
+{
+  "id": "narration-2c65b8f28dcbbb05",
+  "text": "上一难 · 鹰涧解喉。你带着「焚愿袈裟角」来到观音禅院 · 焚愿禅院。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "ceec9adb3b2f11561e8aedbaed16492f283e745596a9b35c093bbe3cd3d1ed7a",
+  "source_sha256": "13fae6922bdc103302b2d568afabb3b7666c07590daa0ff3e40e9967819281fd",
+  "sha256": "3ef0e15d5d186eb2cffc28d58b8b4a9e02ad032cec95531766e74d7e1ca3f218",
+  "duration": 10.998,
+  "file": "assets/audio/voice-heavy/narration-2c65b8f28dcbbb05.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

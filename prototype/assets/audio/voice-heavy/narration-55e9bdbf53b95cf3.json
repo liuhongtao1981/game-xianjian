@@ -1,0 +1,15 @@
+{
+  "id": "narration-55e9bdbf53b95cf3",
+  "text": "你循着伪造的镇山契旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成压山石魁的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "f63a422514f87875a11d07ab6b0ea95bf1c07ca54a55b9a3389e4539d5310ecd",
+  "source_sha256": "98ff5fbc3564d927542d1759c159456c3a70ac6eebb144afed0fe59d4e896c5d",
+  "sha256": "13f67a6259463c78adfc89219a9ccf4b2bf3a65281d58fb3d180ea0100085434",
+  "duration": 10.518,
+  "file": "assets/audio/voice-heavy/narration-55e9bdbf53b95cf3.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

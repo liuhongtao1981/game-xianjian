@@ -1,0 +1,15 @@
+{
+  "id": "narration-48c33c9603c0a69a",
+  "text": "愿骨洞的木简把沈听澜引到高庄。门口不收银钱，只量人的影子；影长一寸，便能抵一年的粮。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "44101789f3ece90d3d87cec0bbba064c0360b7b9fe8742e1e1f0ade837f4f9c7",
+  "source_sha256": "4d3e94660a797aa8b9dc351997f810da56d12cc85c83491c9e97f3c2ee280714",
+  "sha256": "f8b9ff5c43a7e2c2f8794953835e73afc1e5775bf2a4566b4bc716ffaca7b871",
+  "duration": 10.758,
+  "file": "assets/audio/voice-heavy/narration-48c33c9603c0a69a.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

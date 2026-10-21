@@ -1,0 +1,15 @@
+{
+  "id": "narration-9236ea56d08976ff",
+  "text": "黄风劫印的碎片指向流沙河底。沈听澜追上那艘逆行的船，发现每块空白名牌都连着一个还在呼吸的人。名字沉下去，活人便不再计入劫税。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "49e92e63eb44312744f64897a8992fdef0d851868adb6afbbf13c0ab05f0b9b2",
+  "source_sha256": "b858e092b74ce523948cd500c29069971af09f2626ec067c7d1d2ca5b96c7e4e",
+  "sha256": "4e20a37b1c4adb817413c54856ee72faf76c70f7d4a1199b31ad7566d87ada0a",
+  "duration": 15.174,
+  "file": "assets/audio/voice-heavy/narration-9236ea56d08976ff.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

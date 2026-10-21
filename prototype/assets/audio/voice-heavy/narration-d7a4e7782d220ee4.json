@@ -1,0 +1,15 @@
+{
+  "id": "narration-d7a4e7782d220ee4",
+  "text": "收身单把小果带入白骨荒冢。白幡下，一位母亲、一名商贩与一位老僧，都说自己曾是同一个人；他们连临终前的悔恨也一字不差。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "10331812e12b2a46e8cc76652f2f3636ae700780f379124026d84a5354cc7996",
+  "source_sha256": "ddd4cbbd1e267f6b5ec64667cdb1f170f68a8360d8cf823f95513fb0830e8a27",
+  "sha256": "2a962e7f5f4510491cf6869a81100d9b17759537eb0519ad2f758f483c7ef5d1",
+  "duration": 14.382,
+  "file": "assets/audio/voice-heavy/narration-d7a4e7782d220ee4.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

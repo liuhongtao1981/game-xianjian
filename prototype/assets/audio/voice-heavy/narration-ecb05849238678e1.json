@@ -1,0 +1,15 @@
+{
+  "id": "narration-ecb05849238678e1",
+  "text": "金毫落在五行山的断碑上。孙小果没有找到大圣，只看见六百道新凿的契痕。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "eb4ce5712886ff96e9983e276742b0a134ea57ebc1e78093288e5e567217f241",
+  "source_sha256": "47494f5eb072fe33f80f982c46b1083fca8824bdd28ba60f051ced9860da2535",
+  "sha256": "a51eef7451008132e61533286963f1b28160fb96cd73a9b51a59e5d03249a7e9",
+  "duration": 8.118,
+  "file": "assets/audio/voice-heavy/narration-ecb05849238678e1.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

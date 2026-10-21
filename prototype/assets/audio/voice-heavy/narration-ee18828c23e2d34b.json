@@ -1,0 +1,15 @@
+{
+  "id": "narration-ee18828c23e2d34b",
+  "text": "你循着平顶双炉的归名石旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成夺影黄袍使的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "01b14d733e83a63a16a508ad4d0cc8f1be3ac2ce8805bb3c22da7f7b07cdaee2",
+  "source_sha256": "5c7af4c70f1db9cfe98ba802c604fa82175de5215eb956ad572f7c82b4b7293d",
+  "sha256": "2c046bc14fd1d40518042505a6d6e04f62db8f821f81b4c888bd510d7029fa4b",
+  "duration": 11.166,
+  "file": "assets/audio/voice-heavy/narration-ee18828c23e2d34b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

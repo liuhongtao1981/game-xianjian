@@ -1,0 +1,15 @@
+{
+  "id": "narration-746c02cbccd1bde7",
+  "text": "小果在旧船板上认出大圣的棍痕：他们抹掉名字，是为了让债永远无人认领。沙将举起月牙铲，潮水把数千张空牌送向渡头。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "ecb4e555bb0e780767b9d337c98d1bb1e3a460c10882b0d9d9ac4eda4afa1b33",
+  "source_sha256": "21eb9cc570ca00fe26be269fcbcec39b099f5f9fb448a61e6dffc1a5bbbbabce",
+  "sha256": "03f03a6bd1fba231acafae284204ac52d9c002d78d9328a2d9c7a37c1641d63d",
+  "duration": 13.758,
+  "file": "assets/audio/voice-heavy/narration-746c02cbccd1bde7.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-0d049a924e9b1c80",
+  "text": "上一难 · 满月抛江。你带着「逆流金毫」来到五行山 · 断契碑谷。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "519baafd801b0fa331b8b03a9161bfc22400eabc5ab5cfb4395937b40f7075b8",
+  "source_sha256": "7e44fc0af98a3da1392925ca5e8b9d9a3e53598322612334e8ed6008af21a540",
+  "sha256": "e932f721ac777f2d6d2cc3eae07713580a1048dce7d1b9164c8019c3730fc2fc",
+  "duration": 11.07,
+  "file": "assets/audio/voice-heavy/narration-0d049a924e9b1c80.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

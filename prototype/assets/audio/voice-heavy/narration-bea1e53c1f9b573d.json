@@ -1,0 +1,15 @@
+{
+  "id": "narration-bea1e53c1f9b573d",
+  "text": "夺影黄袍使以星官之名贩卖仙籍。他让借来的身体披上无罪的影，让真正的受难者在账册里永远作恶；流沙与白骨，原来都是他的货栈。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "2d4046b198294d7b00d8ae3fae02896e1fda1f3ab048ac581edff2ac5552dd42",
+  "source_sha256": "2b85d4c591428edc3d41592895211c0e1494ee66acb560455cf23e127083e4f2",
+  "sha256": "5aec3c725bc5c0ac1e318d3ee7ae41812ee8994c3563f14fa0a3294f16323b67",
+  "duration": 14.79,
+  "file": "assets/audio/voice-heavy/narration-bea1e53c1f9b573d.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

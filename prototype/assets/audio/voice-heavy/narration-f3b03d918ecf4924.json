@@ -1,0 +1,15 @@
+{
+  "id": "narration-f3b03d918ecf4924",
+  "text": "上一难 · 高庄卖命。你带着「被抵押的婚帖」来到福陵山 · 借寿喜堂。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "b385de8c516a93f0c45073416eeb899cfd4a9cc4250396c144af0a3d06235a5f",
+  "source_sha256": "15e5f2c84bacc25044f9948d1c5aabf3374036df123cd1613e045aff9e772e0a",
+  "sha256": "93a388df48cab369fdae8e61f27aed8e5b23d5282f588a06b3f4ee8b2b76ac4c",
+  "duration": 11.094,
+  "file": "assets/audio/voice-heavy/narration-f3b03d918ecf4924.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

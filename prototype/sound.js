@@ -9,7 +9,7 @@ const Sound = (() => {
   const musicNames=['exile','birth','river','mountain','outpost','dragon','wish','windwood','bonewish','contract','wedding','yellowwind','sunken','whitebone','shadowcity'],music=new Map(),cooldowns=new Map(),voices=new Map(),captionOnly=new Set();
   let context=null,effectBus=null,compressor=null,reverb=null,activated=false,scene='start',stage=0,boss=false;
   let currentTrack='',voice=null,lastVoice=-Infinity,lastSync=0,lastStatus='',hidden=false,serial=0,noiseSeed=0x81ac;
-  let subtitle=null,ordinaryCalls=0;
+  let subtitle=null,ordinaryCalls=0,storyVoice=null;
   const spokenSpells=new Set();
   const nodes=new Set();
   const clock=()=>performance.now()/1000;
@@ -149,7 +149,41 @@ const Sound = (() => {
   }
   function ultimate(id){speak('ult-'+id,100,8);effects('ult-charge');}
   function stageIntro(index){stage=index;currentTrack='';stopVoice();speak('stage-'+index,80,0);}
+  // Story progression is driven by completion, never by an estimated audio duration.
+  function narrateStory(text,index,onState,onEnd){
+    stopNarration();stopVoice();
+    const pack=typeof StoryVoicePack!=='undefined'?StoryVoicePack:null;
+    const control={audio:null,text,voice:pack?.profile.voice||null,profile:'heavy',state:'loading',userPaused:false,cancelled:false,completed:false,started:false,silent:false};
+    storyVoice=control;
+    const active=()=>storyVoice===control&&!control.cancelled;
+    const report=state=>{if(active()){control.state=state;onState(state);}};
+    const waiting=()=>control.userPaused||hidden;
+    const finish=()=>{if(!active())return;control.completed=true;if(waiting()){report('paused');return;}report('ended');onEnd();};
+    control.cancel=()=>{control.cancelled=true;if(control.audio){control.audio.onended=control.audio.onerror=control.audio.onplaying=null;control.audio.pause();}};
+    control.pause=()=>{control.audio?.pause();report('paused');};
+    control.resume=()=>{
+      if(!active()||waiting())return;
+      if(control.silent){report('silent');return;}
+      if(control.completed){finish();return;}
+      if(control.audio){report('loading');Promise.resolve(control.audio.play()).catch(()=>report('blocked'));}
+    };
+    control.restart=()=>{const paused=control.userPaused,next=narrateStory(text,index,onState,onEnd);if(paused){next.userPaused=true;next.pause();}};
+    control.silence=()=>{control.silent=true;control.audio?.pause();report('silent');};
+    report('loading');
+    if(settings.muted||settings.voice===0){control.silent=true;report('silent');return control;}
+    if(!activated){report('blocked');return control;}
+    const file=pack?.clips[text];
+    if(typeof Audio==='undefined'||!file){report('unavailable');return control;}
+    const audio=new Audio(file);control.audio=audio;audio.preload='auto';audio.volume=settings.voice;
+    audio.onplaying=()=>{if(active()){control.started=true;if(waiting())control.pause();else report('playing');}};
+    audio.onended=finish;audio.onerror=()=>report('unavailable');
+    Promise.resolve(audio.play()).catch(error=>{if(active())report(error?.name==='NotAllowedError'?'blocked':'unavailable');});
+    setTimeout(()=>{if(active()&&control.state==='loading'&&!control.started&&!waiting()&&!control.silent)report('blocked');},15000);
+    return control;
+  }
+  function stopNarration(){if(storyVoice){storyVoice.cancel();storyVoice=null;}if(voice?.id.startsWith('stage-'))stopVoice();}
   function pauseNarration(paused){
+    if(storyVoice){storyVoice.userPaused=paused;if(paused)storyVoice.pause();else storyVoice.resume();return;}
     if(!voice?.id.startsWith('stage-'))return;
     if(paused)voice.audio.pause();else Promise.resolve(voice.audio.play()).catch(stopVoice);
   }
@@ -157,13 +191,13 @@ const Sound = (() => {
   function weakness(index){effects('weakness');speak('weakness-'+index,120,18);}
   function omen(index){speak('omen-'+index,75,32);}
   function result(victory){stopVoice();effects(victory?'victory':'defeat');speak(victory?'victory-'+stage:'defeat',125,0);}
-  function reset(){stopVoice();cooldowns.clear();spokenSpells.clear();ordinaryCalls=0;lastVoice=-Infinity;for(const node of nodes){try{node.stop();}catch(_){}}nodes.clear();}
+  function reset(){stopNarration();stopVoice();cooldowns.clear();spokenSpells.clear();ordinaryCalls=0;lastVoice=-Infinity;for(const node of nodes){try{node.stop();}catch(_){}}nodes.clear();}
   function sync(state=scene,index=stage,isBoss=boss,force=false){
     const now=clock(),dt=Math.min(.2,Math.max(.005,now-lastSync));lastSync=now;
     if((state==='playing'&&scene==='story'&&voice?.id.startsWith('stage-'))||(state==='playing'&&['win','dead'].includes(scene)))stopVoice();
     scene=state;stage=index;boss=isBoss;
     if(!activated)return;
-    const playing=permitted(),duck=(voice&&!voice.audio.paused) ? .38 : 1;
+    const playing=permitted(),duck=(voice&&!voice.audio.paused||storyVoice?.state==='playing') ? .38 : 1;
     if(effectBus&&context)effectBus.gain.setTargetAtTime(settings.muted||hidden||(!playing&&!voice?.audition)?0:settings.effects*((voice&&!voice.audio.paused) ? .72 : 1),context.currentTime,.04);
     if(voice)voice.audio.volume=settings.muted||hidden?0:settings.voice;
     if(!playing&&!voice?.audition)stopVoice();
@@ -187,8 +221,9 @@ const Sound = (() => {
     else if(['music','effects','voice'].includes(key)&&Number.isFinite(Number(value)))settings[key]=Math.max(0,Math.min(1,Number(value)));
     else return;
     if(settings.muted||settings.voice===0)stopVoice();persist();sync(scene,stage,boss,true);
+    if(storyVoice){if(settings.muted||settings.voice===0)storyVoice.silence();else if(storyVoice.silent)storyVoice.restart();else if(storyVoice.audio)storyVoice.audio.volume=settings.voice;}
   }
-  function setHidden(value){hidden=!!value;if(hidden){stopVoice();for(const e of music.values())e.audio.pause();for(const n of nodes){try{n.stop();}catch(_){}}nodes.clear();context?.suspend().catch(()=>{});}else if(activated){context?.resume().catch(()=>{});}sync(scene,stage,boss,true);}
+  function setHidden(value){hidden=!!value;if(hidden){storyVoice?.pause();stopVoice();for(const e of music.values())e.audio.pause();for(const n of nodes){try{n.stop();}catch(_){}}nodes.clear();context?.suspend().catch(()=>{});}else if(activated){context?.resume().catch(()=>{});storyVoice?.resume();}sync(scene,stage,boss,true);}
   function install(){
     document.addEventListener('pointerdown',activate,{capture:true});
     document.addEventListener('keydown',e=>{if(e.repeat)return;activate();if(e.key.toLowerCase()==='m'&&!['INPUT','TEXTAREA'].includes(e.target?.tagName)){e.preventDefault();set('muted',!settings.muted);}},{capture:true});
@@ -199,12 +234,20 @@ const Sound = (() => {
     const close=document.getElementById('closeAudioBtn');if(close)close.onclick=()=>{panel.hidden=true;button.setAttribute('aria-expanded','false');};
     for(const [key,id] of [['music','musicVolume'],['effects','effectsVolume'],['voice','voiceVolume']]){const slider=document.getElementById(id);if(slider)slider.oninput=()=>set(key,Number(slider.value)/100);}
     const mute=document.getElementById('muteAudioBtn');if(mute)mute.onclick=()=>set('muted',!settings.muted);
-    const preview=document.getElementById('previewVoiceBtn');if(preview){preview.textContent='试听场景旁白';preview.onclick=()=>{activate();const previous=scene;scene='start';stopVoice();speak('stage-'+stage,130,0,true);scene=previous;};}
+    const preview=document.getElementById('previewVoiceBtn');if(preview){preview.textContent='试听厚重旁白';preview.onclick=()=>{
+      activate();
+      if(storyVoice){
+        if(storyVoice.userPaused){const resume=document.getElementById('storyPauseBtn');if(resume?.onclick)resume.onclick();else {storyVoice.userPaused=false;storyVoice.resume();}}
+        else storyVoice.restart();
+        return;
+      }
+      if(typeof Journey!=='undefined'){const text=Journey.storyPages(stage,Journey.run.heroId)[0];narrateStory(text,stage,()=>{},()=>stopNarration());}
+    };}
     updateControls();statusLabel('点击入劫后启用声音 · M 静音');
   }
-  function status(){return {activated,settings:{...settings},scene,stage,boss,track:currentTrack,voice:voice?.id||null,voicePack:'neural-v2',voiceSource:voice?.audio.src||null,subtitle:voice&&!voice.fallback?voiceCues[voice.id]?.[1]||null:null,ordinaryCalls,playingVoice:!!voice&&!voice.audio.paused,music:Array.from(music,([id,e])=>({id,playing:!e.audio.paused,volume:e.audio.volume,failed:e.failed,time:e.audio.currentTime,duration:e.audio.duration||0})),nodes:nodes.size,hidden};}
+  function status(){return {activated,settings:{...settings},scene,stage,boss,track:currentTrack,voice:voice?.id||null,narration:storyVoice?{state:storyVoice.state,text:storyVoice.text,source:storyVoice.audio?'recording':'unavailable',profile:storyVoice.profile,time:storyVoice.audio?.currentTime??null,duration:storyVoice.audio?.duration??null,voice:storyVoice.voice}:null,voicePack:'neural-v2',voiceSource:voice?.audio.src||null,subtitle:voice&&!voice.fallback?voiceCues[voice.id]?.[1]||null:null,ordinaryCalls,playingVoice:!!voice&&!voice.audio.paused,music:Array.from(music,([id,e])=>({id,playing:!e.audio.paused,volume:e.audio.volume,failed:e.failed,time:e.audio.currentTime,duration:e.audio.duration||0})),nodes:nodes.size,hidden};}
   install();
   // New prose can ship with captions and original local music without requesting remote TTS.
   function registerCaption(id,speaker,text){voiceCues[id]=[speaker,text];captionOnly.add(id);}
-  return {activate,sync,spell,ultimate,stageIntro,pauseNarration,stopNarration:stopVoice,guardian,weakness,omen,result,effects,speak,reset,set,status,registerCaption};
+  return {activate,sync,spell,ultimate,stageIntro,narrateStory,pauseNarration,stopNarration,guardian,weakness,omen,result,effects,speak,reset,set,status,registerCaption};
 })();

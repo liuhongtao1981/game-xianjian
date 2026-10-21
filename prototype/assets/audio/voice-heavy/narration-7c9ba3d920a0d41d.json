@@ -1,0 +1,15 @@
+{
+  "id": "narration-7c9ba3d920a0d41d",
+  "text": "你循着高庄的人券旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成焚愿老衲的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "5c68c759719fe7db5c8d1b0b0ad1128e8150b1cc0d15b2076db331027f86ed6d",
+  "source_sha256": "ab4b9d355fc4265188a1bcc73c13a056047e43bbda9227817142547e35192998",
+  "sha256": "bd17bf59af6741e53152e8e9c8829cddd6b8650229179c16a33515eed4b699ea",
+  "duration": 10.23,
+  "file": "assets/audio/voice-heavy/narration-7c9ba3d920a0d41d.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

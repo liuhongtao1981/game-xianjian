@@ -1,0 +1,15 @@
+{
+  "id": "narration-561211c5dece8ba1",
+  "text": "上一难 · 金蝉遭贬。你带着「被烧去的名册页」来到江州 · 陈府血诏庭。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "a2a42d50834d8e403203ac0b3142f6c2597ef8ef39fbf446fd6e94dd3e534a30",
+  "source_sha256": "a7a9e80eff971f122b7414c824b0919985de3e1ff9f580f54088b10ffbdd261b",
+  "sha256": "2576bd1c68f0ef27cdc021b7e39a02f2d44b3f39e06cee2b97d96196003c65bf",
+  "duration": 11.646,
+  "file": "assets/audio/voice-heavy/narration-561211c5dece8ba1.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

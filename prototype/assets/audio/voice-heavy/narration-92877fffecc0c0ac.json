@@ -1,0 +1,15 @@
+{
+  "id": "narration-92877fffecc0c0ac",
+  "text": "上一难 · 流沙沉名。你带着「白骨收身单」来到白骨岭 · 三相荒冢。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "22779a87e3715d4c4f8f20c0821a75a68caf452e5d9cbbb95bd45750b63dcfcd",
+  "source_sha256": "d7796d62f1e418ec216f9bebb60696d23868fd8356bb2363e46c01543516f128",
+  "sha256": "e7159b932101f3f0932bc7bb2dd55f8f592ced590a12cf531435fa5dd02f07d9",
+  "duration": 11.19,
+  "file": "assets/audio/voice-heavy/narration-92877fffecc0c0ac.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

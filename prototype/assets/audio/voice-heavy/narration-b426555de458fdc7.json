@@ -1,0 +1,15 @@
+{
+  "id": "narration-b426555de458fdc7",
+  "text": "三座愿碑同时呼唤孙小果的名字，只有一座的金色木脉仍在跳动。那不是经声，是尚未死去的元神。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "f9ccdeb58cd13dae3de68c9ff64fd45c5006f7a8d18723410b047964edab445b",
+  "source_sha256": "a0b5cec3d163027b2cb507203b372b934256608643b3c1291ab5d65d1728651b",
+  "sha256": "51fcf18440002bb0552329909787b4c432fd5b015b07058d9f005d9359648825",
+  "duration": 10.302,
+  "file": "assets/audio/voice-heavy/narration-b426555de458fdc7.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

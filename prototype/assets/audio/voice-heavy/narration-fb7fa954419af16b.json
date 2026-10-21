@@ -1,0 +1,15 @@
+{
+  "id": "narration-fb7fa954419af16b",
+  "text": "沈听澜看见大圣用酒划在桌上的字：让被借走的明日，自己回来。听澜绕到红绸之后，等那柄不肯停下的耙。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "aeb7b1eeb9ea5bd746437061fa9da13b03eacd6438331f63d41aca33cb9aafa9",
+  "source_sha256": "e471cbc9c4345377f9441ade2b0e18e79354390e56ddb9d6f954649981e68918",
+  "sha256": "dc2d54a03dbe9b57619f7dd1a1d7e4264a2ebe5318d86ba4f95cf79f69bdee55",
+  "duration": 10.83,
+  "file": "assets/audio/voice-heavy/narration-fb7fa954419af16b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

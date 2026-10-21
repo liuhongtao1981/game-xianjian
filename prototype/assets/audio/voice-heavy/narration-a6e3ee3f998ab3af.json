@@ -1,0 +1,15 @@
+{
+  "id": "narration-a6e3ee3f998ab3af",
+  "text": "吞籍沙将曾替亡者刻名，后来奉命刮去姓名，替天上的账房制造无主之身。河底的阴阳并蒂莲，一瓣记住生者，一瓣记住被抹去的死者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "2b32cf86b3f71c28e011bd8ca323033932c5961b8d4090d1c5cb5da936a6c686",
+  "source_sha256": "614c958086c1077f32cf848c9945ee0037fb15d63f9d362c4f37bbfc2de2a8b1",
+  "sha256": "7338f68b93ba0c81a3223a9fc6e0c4182426357abe5d494bc4d31bcafd37dca5",
+  "duration": 14.55,
+  "file": "assets/audio/voice-heavy/narration-a6e3ee3f998ab3af.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

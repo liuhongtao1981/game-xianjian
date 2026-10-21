@@ -7,6 +7,7 @@ const server=http.createServer((q,r)=>{const file=path.resolve(root,'.'+decodeUR
 (async()=>{await new Promise(ok=>server.listen(0,'127.0.0.1',ok));const browser=await chromium.launch({headless:true,channel:'msedge'});try{
 const page=await browser.newPage({viewport:{width:1837,height:1040}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.goto('http://127.0.0.1:'+server.address().port+'/');await page.waitForFunction(()=>Motion.status().heroine);
+if(await page.locator('#outerChallengeBtn').count())throw Error('Outside entry shown before clearing a realm');
 await page.locator('.journey-chapters').scrollIntoViewIfNeeded();
 const desktop=await page.evaluate(()=>{const shelf=document.querySelector('.journey-chapters'),cards=[...shelf.children],b=shelf.getBoundingClientRect();return {width:b.width,viewport:innerWidth,columns:cards.filter(c=>Math.abs(c.getBoundingClientRect().top-cards[0].getBoundingClientRect().top)<2).length,lastRight:cards[cards.length-1].getBoundingClientRect().right,right:b.right};});
 if(desktop.columns<=3||desktop.width<desktop.viewport*.85)throw Error('Desktop chapter grid does not fill available space: '+JSON.stringify(desktop));
@@ -15,17 +16,21 @@ await page.locator('[data-stage="0"]').click();await page.getByRole('button',{na
 if(!await page.locator('.story-scene').textContent().then(t=>t.includes('每一难')))throw Error('Story next scene failed');
 await page.getByRole('button',{name:'上一幕',exact:true}).click();await page.locator('.story-scene').evaluate(el=>Promise.all(el.getAnimations().map(a=>a.finished)));await page.screenshot({path:path.join(output,'chapter-story-desktop.png')});
 if(!await page.evaluate(()=>G.state==='start'&&RunSave.snapshot()===null))throw Error('Story preview changed run');
-await page.getByRole('button',{name:'返回全部关卡',exact:true}).click();await page.locator('#outerChallengeBtn').click();await page.locator('#enterStageBtn').click();
+await page.getByRole('button',{name:'返回全部关卡',exact:true}).click();
+for(const cleared of [1,2]){await page.evaluate(c=>{JourneyProgress.restore({version:1,cleared:c,entries:{}});Journey.menu();},cleared);if(await page.locator('#outerChallengeBtn').count())throw Error('Outside entry shown after only '+cleared+' clears');}
+await page.evaluate(()=>{JourneyProgress.clear(2);Journey.menu();});if(!await page.locator('#outerChallengeBtn').count())throw Error('Outside entry missing after third clear');
+await page.locator('#outerChallengeBtn').click();await page.locator('#enterStageBtn').click();
 if(!await page.evaluate(()=>Journey.run.extramural&&World.active()&&G.boss.name.startsWith('域外')))throw Error('Outside CTA did not enter arena');
 if(!await page.locator('#characterBtn').isVisible())throw Error('Leaving story kept character button hidden');
 await page.locator('#characterBtn').click();await page.getByRole('button',{name:'关闭人物面板',exact:true}).click();
 await page.evaluate(()=>{G.boss.hp=0;G.boss.killed=true;win();});
-if(!await page.evaluate(()=>P.cultivation.materials.core1===1&&P.cultivation.materials.essence===4&&JourneyProgress.cleared()===0))throw Error('Outside rewards/progression mismatch');
+if(!await page.evaluate(()=>P.cultivation.materials.core1===1&&P.cultivation.materials.essence===4&&JourneyProgress.cleared()===3))throw Error('Outside rewards/progression mismatch');
 await page.screenshot({path:path.join(output,'outside-victory-desktop.png')});
 await page.reload();await page.locator('#continueRunBtn').click();if(!await page.evaluate(()=>G.state==='win'&&Journey.run.extramural&&P.cultivation.materials.core1===1))throw Error('Outside result did not survive browser refresh');
 await page.locator('#againBtn').click();await page.locator('#enterStageBtn').click();await page.evaluate(()=>{G.boss.hp=0;G.boss.killed=true;win();});
 if(!await page.evaluate(()=>P.cultivation.materials.core1===2&&P.cultivation.materials.essence===8))throw Error('Repeated outside rewards failed');
 await page.locator('#menuBtn').click();
+await page.evaluate(()=>{P.cultivation.realm=1;G.state='playing';RunSave.save();RunSave.start(3);Journey.menu();});await page.locator('[data-stage="3"]').click();await page.getByRole('button',{name:'返回全部关卡',exact:true}).click();if(await page.locator('#outerChallengeBtn').count())throw Error('First realm clears unlocked the second realm outside entry');
 await page.evaluate(()=>{JourneyProgress.restore({version:1,cleared:12,entries:{}});P.cultivation.realm=3;G.state='playing';RunSave.save();Journey.menu();});
 await page.locator('[data-stage="6"]').click();if(!await page.locator('.story-scene').textContent().then(t=>t.includes('焚愿袈裟角')))throw Error('Chapter 7 misses prior chapter clue');
 await page.locator('.story-scene').evaluate(el=>Promise.all(el.getAnimations().map(a=>a.finished)));await page.screenshot({path:path.join(output,'chapter-linked-story-desktop.png')});await page.getByRole('button',{name:'返回全部关卡',exact:true}).click();

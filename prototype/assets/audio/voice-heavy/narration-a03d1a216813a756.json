@@ -1,0 +1,15 @@
+{
+  "id": "narration-a03d1a216813a756",
+  "text": "残籍驿每到黄昏便有一支空马队进山。它们载走证人，留下同样的空白名帖。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "8869da4762e0b42431ac2c36ee8a1d68f2e97fb6871562ab41adf83a585c8043",
+  "source_sha256": "faeee8baf4b81969c9905663661a1635374bf402e08ff7dc0400f956860bb49e",
+  "sha256": "c0ac65ed4b64a3a274209428789fc6188a15c93b66d2ae5aa7a188a33daeef64",
+  "duration": 8.574,
+  "file": "assets/audio/voice-heavy/narration-a03d1a216813a756.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-a4a1ef6debb6818b",
+  "text": "大圣曾在两口风钟里封住真话。熊不能自己撞钟，只能一遍遍扑向来人。小果收剑侧身：借你一扑，把这哑钟撞醒。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "3aa65398798d40d47e4dd09a9fb72d95fe1df562bf149cfba07feb02eb8b2d3f",
+  "source_sha256": "e8655daeab3aad37f754f38e3701bb78e3b215a9596fb5fa9224e4f97b6be6d1",
+  "sha256": "3af9678f6c60a45155ee72a08652f90cb76277716af9c1345f8345dafa3c946c",
+  "duration": 13.062,
+  "file": "assets/audio/voice-heavy/narration-a4a1ef6debb6818b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-14350bde42fe125c",
+  "text": "你循着宝象影籍镜旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成三相骨娘的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "f237023f54a28dbb5dfe33a1de7adcd4e00b142f53e59bb084c75fe7319a8e73",
+  "source_sha256": "109303feca074d16489e0ed9388071c290aca8da43c893169254f388d360bd01",
+  "sha256": "670cae379a7800bf7c17844a6870afd0b67b017929d2b9cf428c0269b2ca1162",
+  "duration": 10.326,
+  "file": "assets/audio/voice-heavy/narration-14350bde42fe125c.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

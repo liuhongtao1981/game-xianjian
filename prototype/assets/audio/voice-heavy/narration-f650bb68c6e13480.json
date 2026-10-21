@@ -1,0 +1,15 @@
+{
+  "id": "narration-f650bb68c6e13480",
+  "text": "小果在御阶上找到大圣拒签的归名石。石上只有一句：若成佛要借别人的清白，这佛不成也罢。黄袍展开镜轮，试图把小果的剑与影分开。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "70281baf6f30fa04393932138cce723b4b2427c06371e80126a59f5f0bebc2e8",
+  "source_sha256": "71175d5c3e444fc4986f60b662b2525597ec205089c33ebf6664e218d1ae968a",
+  "sha256": "e2ad17e58a68176ecdf7c16c61be3872c1b54a72deb7c5ead6a23ad2ec9c4ce0",
+  "duration": 14.91,
+  "file": "assets/audio/voice-heavy/narration-f650bb68c6e13480.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

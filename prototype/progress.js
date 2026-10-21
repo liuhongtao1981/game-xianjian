@@ -38,6 +38,11 @@ const JourneyProgress=(()=>{
   function entry(stage,build,difficulty){if(stage<1||stage>=ChapterCatalog.playable||!validBuild(build))return;data.entries[stage]={difficulty,build:cleanBuild(build)};persist();}
   function clear(stage){if(stage===data.cleared){data.cleared=Math.min(42,data.cleared+1);persist();}}
   function canSelect(stage){const realm=typeof RunSave!=='undefined'&&RunSave.active()&&typeof P!=='undefined'&&P?P.cultivation.realm:typeof RunSave!=='undefined'?RunSave.snapshot()?.run.player.cultivation.realm||0:0;return Number.isInteger(stage)&&stage>=0&&stage<ChapterCatalog.playable&&stage<=data.cleared&&ChapterCatalog.get(stage).realm<=realm;}
+  function outsideUnlocked(stage){
+    if(!Number.isInteger(stage)||stage<0||stage>=ChapterCatalog.playable)return false;
+    const realm=ChapterCatalog.get(stage).realm,chapters=ChapterCatalog.all.filter(c=>c.realm===realm);
+    return chapters.length>0&&chapters.every(c=>c.released&&c.index<data.cleared);
+  }
 
   function replay(stage,difficulty,profiles){
     if(!canSelect(stage)||stage===0||!data.entries[stage])return null;
@@ -45,5 +50,5 @@ const JourneyProgress=(()=>{
     build.maxHp=Math.max(1,build.maxHp+profiles[difficulty].hp-profiles[entry.difficulty].hp);
     build.hp=Math.min(build.maxHp,Math.max(build.maxHp*.7,build.maxHp*fraction));return build;
   }
-  return {key,capture:cleanBuild,validBuild,restore,entry,clear,canSelect,replay,cleared:()=>data.cleared,snapshot:()=>copy(data)};
+  return {key,capture:cleanBuild,validBuild,restore,entry,clear,canSelect,outsideUnlocked,replay,cleared:()=>data.cleared,snapshot:()=>copy(data)};
 })();

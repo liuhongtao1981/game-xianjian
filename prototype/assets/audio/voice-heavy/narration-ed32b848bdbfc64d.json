@@ -1,0 +1,15 @@
+{
+  "id": "narration-ed32b848bdbfc64d",
+  "text": "孙小果顺洪江寻到一只永不腐烂的木板。血书上的字，每逢满月便会变成另一个人的笔迹。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "73821036406869f1171ed7cc089746853bba1a18bcaae8a40c0ce0ea97d748e9",
+  "source_sha256": "10f981089fb6192c2b45c6567d0d4044919d1ab1cae1140a21b0726557369f5e",
+  "sha256": "2335a18a7247d3f7ec08da7099dc3284521e8335430b8a832100d43788667b1f",
+  "duration": 9.63,
+  "file": "assets/audio/voice-heavy/narration-ed32b848bdbfc64d.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

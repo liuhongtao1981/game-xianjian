@@ -1,0 +1,15 @@
+{
+  "id": "narration-a7005d7452969c6a",
+  "text": "大圣失踪后，八十一难的名册开始自行改写。无籍剑仙沈听澜循一截焦黑毫毛，踏入金蝉受贬的劫痕。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "6264834c58d17dbc0006451a72b72d4602e857085d51370c8dddc030622d981e",
+  "source_sha256": "486f589323811da278cb29d97ec126370528f3c1bf72044e77ed327e276bbf4c",
+  "sha256": "f5843ed253471289a6d4903678bbbc1cce175cbe207dbde4d617e31bc6b4d026",
+  "duration": 10.998,
+  "file": "assets/audio/voice-heavy/narration-a7005d7452969c6a.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

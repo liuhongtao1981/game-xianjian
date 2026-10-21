@@ -1,0 +1,15 @@
+{
+  "id": "narration-b56277ebbbd2276d",
+  "text": "上一难 · 出胎几杀。你带着「无主血诏」来到洪江 · 无名夜渡。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "b653622e6524ea88ce7198b99ee05f31adaf21963da77ce48a292baaa7da3447",
+  "source_sha256": "c44018843f587e9a52b6436a34c9cc0b66846278ffbb17bfabe484a5c52f9ade",
+  "sha256": "65e0c120c4d7514b30ca79df8dcebf660aae5c70a2861d68ef61250e7f56196b",
+  "duration": 10.398,
+  "file": "assets/audio/voice-heavy/narration-b56277ebbbd2276d.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

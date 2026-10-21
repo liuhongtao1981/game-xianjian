@@ -1,0 +1,15 @@
+{
+  "id": "narration-2bb1d1c84c84eaf2",
+  "text": "上一难 · 两界追名。你带着「沉鳞水契」来到鹰愁涧 · 沉鳞龙渊。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "8d55ebae21e31316c30a48f63f90293662c6f4bf386d378f391e42d857d4ac35",
+  "source_sha256": "19e0a4b9efbfb833838472ae8aa11360036d81d5ccf0cdbb010de4f84dca18fc",
+  "sha256": "054de25baf379eafeedd6f09203b618b4258b44340d080a048b285532096de74",
+  "duration": 11.07,
+  "file": "assets/audio/voice-heavy/narration-2bb1d1c84c84eaf2.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

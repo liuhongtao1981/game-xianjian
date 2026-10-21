@@ -468,6 +468,7 @@ function update(dt){
   updateFx(dt);
   World.camera(dt);
   Cultivation.update(dt);
+  Journey.updatePassage();
 }
 function settleCombat(){
   if (P.hp <= 0){ die(); return true; }
@@ -878,14 +879,13 @@ function buildChoices(){
     if(!Cultivation.canStat(s.id))continue;
     pool.push({ kind:'stat', id:s.id, name:s.name, glyph:s.glyph, color:s.color, tag:s.tag, desc:s.desc, lvl:'' });
   }
-  shuffle(pool);
-  const out = [], used = new Set();
-  for (const c of pool){
-    const key = c.kind + ':' + (c.key || c.id);
-    if (used.has(key)) continue;
-    used.add(key);
-    out.push(c);
-    if (out.length === 3) break;
+  // Draw without replacement; each unlearned spell is four times as likely
+  // as one existing-spell upgrade or attribute option at each draw.
+  const out = [], remaining=pool.slice(),weight=c=>c.kind==='new'?4:1;
+  while(out.length<3&&remaining.length){
+    let roll=Math.random()*remaining.reduce((sum,c)=>sum+weight(c),0),index=remaining.length-1;
+    for(let i=0;i<remaining.length;i++){roll-=weight(remaining[i]);if(roll<0){index=i;break;}}
+    out.push(remaining.splice(index,1)[0]);
   }
   while (out.length < 3){
     const available=STATS.filter(s=>Cultivation.canStat(s.id));
@@ -897,8 +897,11 @@ function buildChoices(){
     const spell=pool.find(c=>c.kind==='new'||c.kind==='up');if(spell)out[0]=spell;
   }
   if(G.runChoices===1){
-    const area=pool.find(c=>['wanjian','sanmei'].includes(c.key));
-    if(area&&!out.some(c=>c.key===area.key))out[0]=area;
+    const areas=pool.filter(c=>['wanjian','sanmei'].includes(c.key)),unlearnedAreas=areas.filter(c=>c.kind==='new');
+    const area=pick(unlearnedAreas.length?unlearnedAreas:areas);
+    if(area&&!out.some(c=>c.key===area.key)){
+      const slot=out.findIndex(c=>c.kind!=='new');if(slot>=0||area.kind==='new')out[slot>=0?slot:0]=area;
+    }
   }
   return out;
 }
@@ -983,7 +986,7 @@ function rollChestReward(){
   const spellKeys = Object.keys(SPELLS).filter(k => !P.spells[k]);
   const canSpell = Object.keys(P.spells).length < 6 && spellKeys.length > 0;
 
-  if (canSpell && Math.random() < .35){
+  if (canSpell && Math.random() < .60){
     const key = pick(spellKeys);
     return { kind:'spell', key, name:SPELLS[key].name, glyph:SPELLS[key].glyph,
       color:SPELLS[key].color, desc:'习得新术法：' + SPELLS[key].desc(1) };
@@ -1035,6 +1038,7 @@ function die(){
 function win(){
   if (G.state !== 'playing' || P.hp<=0 || !G.bossSpawned || !G.boss || !G.boss.killed || G.boss.hp>0) return;
   G.state = 'win';
+  EncounterDirector.endBoss();
   burst(P.x, P.y, '#f2dda8', 60, 300);
   showEnd(true);
 }
@@ -1055,6 +1059,7 @@ function render(){
   World.apply();
   World.drawBackground();
   World.drawGround();
+  RealmVisuals.drawAscensionGround();
   EncounterDirector.drawGround();
   drawPools();
   SpellCombat.drawGround();
@@ -1076,6 +1081,7 @@ function render(){
   ctx.restore();
   drawAtmosphere();
   drawVignette();
+  RealmVisuals.drawAscensionSky();
   Motion.drawScreen?.();
   World.drawScreen();
 }
@@ -1354,7 +1360,7 @@ function syncHUD(){
   ExpeditionUI.sync();
   if (!P) return;
   document.body.classList.toggle('in-dialog',!['playing','map'].includes(G.state));
-  document.body.classList.toggle('character-open',G.state==='character');
+  document.body.classList.toggle('character-open',['character','character-preview'].includes(G.state));
   const notice=document.getElementById('pickupNotice'),item=G.pickups[0];
   notice.hidden=G.state!=='playing'||!item;
   if(item)notice.textContent=item.kind==='xp'?'灵蕴 +'+Number(item.amount.toFixed(1)):item.text;
@@ -1380,9 +1386,9 @@ function syncHUD(){
   document.getElementById('identitySub').textContent='无籍剑仙 · '+profile.name;
   document.getElementById('locationTitle').textContent=stage.place+' · '+World.region();
   document.getElementById('locationSubtitle').textContent=stage.subtitle+' · 轮回劫阶 '+(Journey.run.tier||0)+' · 累积劫压 '+Journey.run.stage+' · 寻圣线索 '+JourneyProgress.cleared()+'/42';
-  document.getElementById('objectiveText').textContent=G.state==='win'?stage.title+' · 已破':(G.bossSpawned?'击杀守关 · '+stage.boss:'自由探路 · 寻找守关祭坛');
+  document.getElementById('objectiveText').textContent=Journey.run.passage?'跨境历练 · 达标后自动前往下一难':G.state==='win'?stage.title+' · 已破':(G.bossSpawned?'击杀守关 · '+stage.boss:'自由探路 · 寻找守关祭坛');
   const helpers=G.enemies.filter(e=>(e.seal||e.clerk||e.lantern)&&e.hp>0).length;
-  document.getElementById('objectiveDetail').textContent=G.boss&&G.boss.hp>0?Bosses.hud(G.boss).hint:World.objective();
+  document.getElementById('objectiveDetail').textContent=Journey.passageStatus()||(G.boss&&G.boss.hp>0?Bosses.hud(G.boss).hint:World.objective());
   const weakness=document.getElementById('bossWeakness');if(weakness){weakness.hidden=!G.boss||G.boss.hp<=0;if(G.boss){const status=Bosses.hud(G.boss);weakness.textContent=status.title;weakness.className=status.exposed?'boss-weakness exposed':'boss-weakness';}}
   const interact=document.getElementById('interactBtn');if(interact&&G.state!=='playing')interact.hidden=true;
 
@@ -1416,8 +1422,8 @@ function renderEquips(){
 window.addEventListener('keydown', e => {
   if(AscensionScene.handleKey(e))return;
   // Let native card and sheet controls keep their focus and activation keys.
-  if(['levelup','character','chest','win'].includes(G.state)&&e.code==='Tab')return;
-  if(['levelup','character'].includes(G.state)&&['Space','Enter'].includes(e.code)&&e.target.closest?.('button,select,input')){if(e.repeat)e.preventDefault();return;}
+  if(['levelup','character','character-preview','chest','win'].includes(G.state)&&e.code==='Tab')return;
+  if(['levelup','character','character-preview'].includes(G.state)&&['Space','Enter'].includes(e.code)&&e.target.closest?.('button,select,input')){if(e.repeat)e.preventDefault();return;}
   const k = e.key.toLowerCase();
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code)) e.preventDefault();
   keys[k] = true;
@@ -1425,7 +1431,7 @@ window.addEventListener('keydown', e => {
   if(e.repeat && ['Escape','KeyQ','KeyR','KeyT','Space','Enter'].includes(e.code)) return;
   if(k==='tab'){e.preventDefault();if(!e.repeat)World.toggleMap();return;}
   if(k==='c'&&!e.repeat){e.preventDefault();CharacterUI.toggle();return;}
-  if(G.state==='character'&&e.key==='Escape'){e.preventDefault();CharacterUI.close();return;}
+  if(['character','character-preview'].includes(G.state)&&e.key==='Escape'){e.preventDefault();CharacterUI.close();return;}
   if(k==='e'&&!e.repeat){e.preventDefault();World.interact();return;}
   if(G.state==='map'&&e.key==='Escape'){e.preventDefault();World.toggleMap();return;}
   if(['q','r','t'].includes(k)&&G.state==='playing'){e.preventDefault();const id=UltimateArts.loadout()[['q','r','t'].indexOf(k)];if(id)tryUltimate(id);}

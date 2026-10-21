@@ -1,0 +1,15 @@
+{
+  "id": "narration-3d5535bf33ae8d05",
+  "text": "孙小果看见大圣用酒划在桌上的字：让被借走的明日，自己回来。小果绕到红绸之后，等那柄不肯停下的耙。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "9c1b50d3e6b1d745caab338f873d3029a17cc85624b83ca1b490f22cbf001a0d",
+  "source_sha256": "4164c00c451ed0752c7d4a224281e40aa0365cd7b5255acca0503b232706799a",
+  "sha256": "4887f7bc3b5cd67db09a4c4a8f1371edc1b8d3928d427e4b20a55082fd6132d1",
+  "duration": 10.902,
+  "file": "assets/audio/voice-heavy/narration-3d5535bf33ae8d05.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

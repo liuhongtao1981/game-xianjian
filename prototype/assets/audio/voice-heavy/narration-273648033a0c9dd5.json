@@ -1,0 +1,15 @@
+{
+  "id": "narration-273648033a0c9dd5",
+  "text": "你循着白骨收身单旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成吞籍沙将的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "a723c60fb41ad147e33ea4a96abf8bb33a7f1dd8f86d1e29332e31a462c199cb",
+  "source_sha256": "cf4359c33fcc226fbb660051e31c3acfa24e0140ea766625a8d7fd3369846ab9",
+  "sha256": "e6e0177150becbcb7563407925703d023d35b5408596b2d2dfbeefae0f807fc9",
+  "duration": 10.398,
+  "file": "assets/audio/voice-heavy/narration-273648033a0c9dd5.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-40c7c5411f7f59d9",
+  "text": "一名侍女把空襁褓交给小果：别信写在金纸上的慈悲。要找大圣，先问谁在替天杀人。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "07abbf2021139dc9ddbb594d287e32819d3fe1f64d2ebdee68c912f40f3fc6fe",
+  "source_sha256": "9c5105c53a1f67c6a37295c1f18b1742f1573a6c6696a5d574c500e98dcffdd6",
+  "sha256": "cf45cdd39b87174988a7f10cc6627612fcda879503a1d263da055820773417b0",
+  "duration": 9.606,
+  "file": "assets/audio/voice-heavy/narration-40c7c5411f7f59d9.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-0ea20b186216ab00",
+  "text": "你循着转灾账与黑风铃旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成阴愿主使的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c817d908b1fa80ca603e377d9c2ea3577510cae818e286d71b473d02768438b7",
+  "source_sha256": "58d62ce6d19c074f61222103e0192ebc58ab7ab86fcfbd8c0d4186d11660f684",
+  "sha256": "76321cc9646f0dac73636b17a5b691b8415a0687bbf28307590d7892054f539c",
+  "duration": 10.83,
+  "file": "assets/audio/voice-heavy/narration-0ea20b186216ab00.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

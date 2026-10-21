@@ -1,0 +1,15 @@
+{
+  "id": "narration-ba6926ebaac390dd",
+  "text": "黄风岭没有日历，只有一张张劫税单。沙暴按收税人的钟点升起，交不出元神的人，便被写成逆天者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "2decc6679c4548b8e787c02eb418396b64cd1b02177e00cb854e31ba6fed9931",
+  "source_sha256": "d8382a6728f26d7cb1a880d872e93ccebc52e934fda35116afc39af0ed044e04",
+  "sha256": "657cd66748c1b1abcd18889e94eb1a424f73bd9f196b09c817782216b859a6e3",
+  "duration": 10.422,
+  "file": "assets/audio/voice-heavy/narration-ba6926ebaac390dd.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-203097dd90ba4e01",
+  "text": "大圣的声音从最深处传来：别替他们把这段经念完。听澜以元婴守住识海，循着真愿，拔剑斩向借骨说法的人。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "d657718e6a17b5c924806e2ddd3c8c4bf2a222349fc4034070497f3031c91c35",
+  "source_sha256": "b62de85ec28b9d4f52bf885562aabe517233ca8560568eac15961c2c63f36c4b",
+  "sha256": "b2b22f3ac701e482f48708a1f617f238f5d13cf9ffae28ed684678b4e1e33462",
+  "duration": 11.478,
+  "file": "assets/audio/voice-heavy/narration-203097dd90ba4e01.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

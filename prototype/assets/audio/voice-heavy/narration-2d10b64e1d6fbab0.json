@@ -1,0 +1,15 @@
+{
+  "id": "narration-2d10b64e1d6fbab0",
+  "text": "河伯声称自己守护江流儿的旧事，可江底每一盏灯，都封着一个没能被写进灾难簿的人。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "118cbf8dd60b5cbcaa4123124159527949f3399a10e827e8cbaf5af6b1bfa0c6",
+  "source_sha256": "67015779c96949c9188a6f295042f69109fb33009b32a0a9ec4013a0183682e9",
+  "sha256": "7fce5b40ebb4f9fcf1e7d9ddd3a1afc42af7bc0c599d926e6360ed49fee01d47",
+  "duration": 8.958,
+  "file": "assets/audio/voice-heavy/narration-2d10b64e1d6fbab0.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

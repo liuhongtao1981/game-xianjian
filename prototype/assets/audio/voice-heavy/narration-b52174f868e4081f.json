@@ -1,0 +1,15 @@
+{
+  "id": "narration-b52174f868e4081f",
+  "text": "人券庄主许诺替百姓免去天灾，条件是交出尚未活过的年岁。仓里没有粮，只有一卷卷会心跳的人券。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "cbf01ffc25e6f185b48d1d28dd8c6d2dd6d52997b4ee292dd5f11ba1b0d405ba",
+  "source_sha256": "f7a73a001ba7a467e45ff0909d1caeb629419d589d3f5455a9ea0721c18a70bd",
+  "sha256": "e99690992c6a2f45c0bd8e1bf9144d661664f77fece992cd3d1946650535aef5",
+  "duration": 11.262,
+  "file": "assets/audio/voice-heavy/narration-b52174f868e4081f.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

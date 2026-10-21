@@ -1,0 +1,15 @@
+{
+  "id": "narration-f1b8b56909b0d195",
+  "text": "白蛟不能说出契主的名字。每当它开口，水中便降下一道雷，把证词烧成白烟。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "21b23217ef5086270320273ee6b96818bda00c71068c38911703e8fb33b36a6a",
+  "source_sha256": "5c44ce8a4be35e4a120ba47f474db688e2c212d08eca23f40e1f7d9b3fe9866d",
+  "sha256": "92a4feeea02e166bbf0c352812a5860205277b873950af15e05add70828adfaa",
+  "duration": 8.886,
+  "file": "assets/audio/voice-heavy/narration-f1b8b56909b0d195.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

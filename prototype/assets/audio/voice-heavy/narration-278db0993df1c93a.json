@@ -1,0 +1,15 @@
+{
+  "id": "narration-278db0993df1c93a",
+  "text": "它答应放出大圣的消息，条件是留下听澜的名字。听澜将剑横在水面：名字可以不留，账不能不算。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "7b015d6f28b67b01d4902bc4bd94aa2d8520a1b52bdf99813265621d5ddf9973",
+  "source_sha256": "1146c40d67309f71ed1963c7b2d8c61772e85c1a757e98da79b3ce679284260d",
+  "sha256": "6dad374e5b2cf6c21c42a19d9c4b4d304c0ba51e0f28301b7ae55c8add7c4892",
+  "duration": 10.278,
+  "file": "assets/audio/voice-heavy/narration-278db0993df1c93a.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

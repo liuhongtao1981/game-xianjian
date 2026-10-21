@@ -1,0 +1,15 @@
+{
+  "id": "narration-5d2336229d9f15f6",
+  "text": "三座愿碑同时呼唤沈听澜的名字，只有一座的金色木脉仍在跳动。那不是经声，是尚未死去的元神。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "37c5dad1018bdce67f13c9ad18fb1dfacee22dd6a09f7ebec1b7fb6c1b60a75b",
+  "source_sha256": "1939acf64db0c1817943180d8366d544a4d9f878cff311e079116e4a5cb76be3",
+  "sha256": "8d1243355e491447d8e46dc26d915455451875293fefeaf7c6b2afbf28789953",
+  "duration": 10.494,
+  "file": "assets/audio/voice-heavy/narration-5d2336229d9f15f6.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

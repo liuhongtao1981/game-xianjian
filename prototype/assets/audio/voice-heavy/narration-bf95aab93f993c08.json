@@ -1,0 +1,15 @@
+{
+  "id": "narration-bf95aab93f993c08",
+  "text": "披愿黑熊说它盗的不是袈裟，是一条能让山民活命的路。可每一次替人挡灾，它的身上便多缠一张卖命契。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "6d02d2025a3777eb6a56a0bdae6ad053bb43343d742f64a2966d99e9b31ee5de",
+  "source_sha256": "744bf7aa1f4ad123b999400424a0fca7b00d8742c458afaaa55a8928b7cf4fe1",
+  "sha256": "111f793c326e34de2b41288deb0827662000316764f087fd39b325b36b9092bc",
+  "duration": 11.046,
+  "file": "assets/audio/voice-heavy/narration-bf95aab93f993c08.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}
