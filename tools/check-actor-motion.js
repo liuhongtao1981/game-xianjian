@@ -4,6 +4,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const vm=require('node:vm');
 const context={console,Math,Image:class{complete=false;naturalWidth=0;},
+  ExperienceUI:{settings:()=>({effects:'standard'})},CampTactics:{cooldown:()=>1,speed:()=>1},Targeting:{spellTarget:(...args)=>context.nearest(...args),current:()=>null},
   Journey:{run:{stage:0},difficulty:()=>({warning:1,projectile:1}),stage:()=>({bossRow:0})},
   Sound:{spell(){},effects(){},registerCaption(){}},
   P:{x:50,y:0,r:12,hp:100,facing:{x:1,y:0}},

@@ -22,6 +22,7 @@ on:
       - 'tools/check-spell-growth.js'
       - 'tools/check-spell-priority.js'
       - 'tools/check-thunder.js'
+      - 'tools/check-experience.js'
       - 'tools/check-realm-upgrades.js'
       - 'tools/check-gift-overflow.js'
       - 'tools/check-realm-loot.js'
@@ -70,6 +71,7 @@ jobs:
           node tools/check-spell-growth.js
           node tools/check-spell-priority.js
           node tools/check-thunder.js
+          node tools/check-experience.js
           node tools/check-pickups.js
           node tools/check-reward-cards.js
           node tools/check-ascension-scene.js

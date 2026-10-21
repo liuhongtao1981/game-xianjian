@@ -7,16 +7,16 @@ const SpellCombat=(()=>{
     for(const [id,spell] of Object.entries(spells)){
       Object.defineProperty(spell,'max',{get:()=>SpellGrowth.cap()});spell.desc=l=>SpellGrowth.describe(id,l);
       spell.cast=l=>{
-        const s=SpellGrowth.spec(id,l),target=nearest(P.x,P.y,s.range);
+        const s=SpellGrowth.spec(id,l),target=Targeting.spellTarget(s.range);
         if(id==='wanjian')return;if(id==='yujian'&&!target)return;Motion.cast(id,target);
         if(id==='yujian'){
-          const a=Math.atan2(target.y-P.y,target.x-P.x),volleyHits=new Set(),targets=G.enemies.filter(e=>Bosses.targetable(e)&&Math.hypot(e.x-P.x,e.y-P.y)<s.range).sort((a,b)=>Math.hypot(a.x-P.x,a.y-P.y)-Math.hypot(b.x-P.x,b.y-P.y));
+          const a=Math.atan2(target.y-P.y,target.x-P.x),volleyHits=new Set(),targets=G.enemies.filter(e=>Bosses.targetable(e)&&Math.hypot(e.x-P.x,e.y-P.y)<s.range).sort(Targeting.compare);
           for(let i=0;i<s.count;i++){const t=targets[i%targets.length]||target,offset=(i-(s.count-1)/2)*7,x=P.x-Math.sin(a)*offset,y=P.y+Math.cos(a)*offset,angle=Math.atan2(t.y-y,t.x-x);G.shots.push({x,y,vx:Math.cos(angle)*660,vy:Math.sin(angle)*660,r:6,dmg:s.damage,life:1.35,color:spell.color,hit:new Set(),volleyHits,pierce:s.form?1:0,trail:[]});}
         }else if(id==='wulei'){
           // Lock visible, in-range targets at release. Cover each once before
           // sharing spare strikes evenly; deaths never consume a later strike.
           const targets=G.enemies.filter(e=>Bosses.targetable(e)&&World.visible(e,0)&&Math.hypot(e.x-P.x,e.y-P.y)<=s.range)
-            .sort((a,b)=>Math.hypot(a.x-P.x,a.y-P.y)-Math.hypot(b.x-P.x,b.y-P.y))
+            .sort(Targeting.compare)
             .map(enemy=>({enemy,hits:0}));
           let from=P;
           for(let i=0;i<s.count;i++){

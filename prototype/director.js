@@ -22,6 +22,7 @@ const EncounterDirector=(()=>{
     camps=WorldNavData[Journey.run.stage].camps.map(([x,y],id)=>({id,x:x*World.bounds().w,y:y*World.bounds().h,state:'unseen',wave:0,timer:null,
       kind:[3,11].includes(id)?'ritual':[7,15].includes(id)?'bounty':'camp',runesCreated:false,sleeping:[],sleepingPending:[],kills:0}));
     for(const c of camps){const p={x:c.x,y:c.y,r:45};World.resolve(p);c.x=p.x;c.y=p.y;}
+    CampTactics.reset(camps);
     pending=[];mode='explore';idle=0;patrols=0;bossTimer=12;serial=0;stats={spawned:0,killed:0,peak:0,patrols:0};
   }
   function campPoint(c,index,radius=160,body=24){
@@ -48,6 +49,10 @@ const EncounterDirector=(()=>{
     const count=waveSize();
     for(let i=0;i<count;i++)pending.push({encounterId:c.id,source:'camp',type:templates[(i+c.wave-1)%templates.length],
       elite:c.wave===3&&c.kind!=='camp'&&i===count-1,tier:tier(c.id),index:i,time:null,threat:c.threat,trait:CombatScaling.trait(templates[(i+c.wave-1)%templates.length],c.threat,c.wave===3&&c.kind!=='camp'&&i===count-1),rewardKey:'camp:'+c.id+':'+c.wave+':'+i});
+    if(c.id>=2&&P.level>=3&&c.tactics.type!=='legacy'){
+      const wave=pending.filter(p=>p.encounterId===c.id&&p.source==='camp');
+      for(let i=0;i<3;i++)Object.assign(wave[i],{type:['imp','snake','fox'][i],trait:['breaker','volley','flank'][i]});
+    }
     if(c.kind==='ritual'&&!c.runesCreated){
       c.runesCreated=true;
       for(let i=0;i<3;i++)pending.push({encounterId:c.id,source:'rune',type:'imp',index:i,time:null});
@@ -56,10 +61,11 @@ const EncounterDirector=(()=>{
   function activate(c){
     c.state='active';
     if(c.sleeping.length||c.sleepingPending.length){
-      for(const e of c.sleeping)pending.push({encounterId:c.id,source:e.eventObjective?'rune':'camp',snapshot:e,type:e.type,elite:e.elite,index:e.directorIndex||0,time:null});
+      for(const e of c.sleeping.filter(e=>!e.campBanner))pending.push({encounterId:c.id,source:e.eventObjective?'rune':'camp',snapshot:e,type:e.type,elite:e.elite,index:e.directorIndex||0,time:null});
       pending.push(...c.sleepingPending.map(p=>({...p,time:null,point:null})));
       c.sleeping=[];c.sleepingPending=[];
     }else if(!c.wave)schedule(c);
+    CampTactics.activate(c);
   }
   function suspend(c){
     const units=owned(c);
@@ -76,7 +82,7 @@ const EncounterDirector=(()=>{
       const elite=p.elite,kind=elite?(camps[p.encounterId]?.kind==='ritual'?'zombie':'fox'):p.type;
       e=spawnEnemy(kind,elite,p.point,{encounterId:p.encounterId,source:p.source,tier:p.tier||1.15,threat:p.threat,trait:p.trait,rewardKey:p.rewardKey});
       if(p.source==='rune')Object.assign(e,{name:'妖巢阵眼',eventObjective:true,seal:true,glyph:'阵',hp:Math.round((45+Journey.run.stage*15)*Journey.difficulty().mobHp),maxHp:Math.round((45+Journey.run.stage*15)*Journey.difficulty().mobHp),r:20,speed:0,dmg:0,xp:0});
-      else stats.spawned++;
+      else {stats.spawned++;if(elite){notifyPickup('camp','精英出阵 · '+e.name+' · 第三波');Motion.emit('cast',e.x,e.y,{r:60,duration:1,color:Journey.stage().color});}}
     }
     e.directorIndex=p.index;e.spawnTier=p.tier||tier(p.encounterId);World.resolve(e);return e;
   }
@@ -122,7 +128,8 @@ const EncounterDirector=(()=>{
     pending=pending.filter(p=>!p.finished);stats.peak=Math.max(stats.peak,alive);
   }
   function update(dt){
-    if(G.state!=='playing'||dt<0)return;
+    if(G.state!=='playing'||dt<=0)return;
+    CampTactics.update(dt);
     if(mode==='boss'){
       if(!G.boss?.hp||G.boss.killed){pending=[];return;}
       bossTimer-=dt;
@@ -134,9 +141,9 @@ const EncounterDirector=(()=>{
     const candidates=camps.filter(c=>['unseen','dormant'].includes(c.state)&&distance(c,P)<400).sort((a,b)=>distance(a,P)-distance(b,P));
     for(const c of candidates){if(camps.filter(isActive).length>=maxActive)break;activate(c);}
     for(const c of camps.filter(isActive)){
-      const units=owned(c),fighters=units.filter(e=>!e.eventObjective);
+      const units=owned(c).filter(e=>!e.campBanner),fighters=units.filter(e=>!e.eventObjective);
       if(c.wave===3&&!units.length&&!queued(c)){
-        c.state='cleared';notifyPickup('camp','营地已清理 · '+(c.kind==='ritual'?'妖巢已破':c.kind==='bounty'?'悬赏完成':'道路暂安'));continue;
+        c.state='cleared';CampTactics.complete(c);notifyPickup('camp','营地已清理 · '+(c.kind==='ritual'?'妖巢已破':c.kind==='bounty'?'悬赏完成':'道路暂安'));RunSave.save('营地清理');continue;
       }
       if(c.wave>=3||fighters.length>2||queued(c))continue;
       if(c.wave===2&&c.kind==='ritual'&&units.some(e=>e.eventObjective))continue;
@@ -163,20 +170,21 @@ const EncounterDirector=(()=>{
     G.enemies=G.enemies.filter(e=>e.source!=='patrol'||distance(e,P)<1300);
     pump(dt);
   }
-  function onEnemyKilled(e){if(!e.eventObjective&&e.source)stats.killed++;const c=camps[e.encounterId];if(c)c.kills++;}
-  function beginBoss(){mode='boss';pending=[];idle=0;bossTimer=3;G.enemies=[];}
+  function onEnemyKilled(e){if(!e.eventObjective&&e.source)stats.killed++;const c=camps[e.encounterId];if(c&&!e.eventObjective)c.kills++;CampTactics.killed(e);}
+  function beginBoss(){Targeting.reset();mode='boss';pending=[];idle=0;bossTimer=3;G.enemies=[];}
   function endBoss(){pending=[];bossTimer=0;G.enemies=G.enemies.filter(e=>e.source!=='boss');}
   function hud(){
     if(mode==='boss')return '大妖召众 '+G.enemies.filter(ordinary).length+'/'+cap()+' · 每轮'+summons().wave+'只 · '+(!bossAllowed()?'破招期间暂停召唤':pending.length?'召唤预警中':'下轮 '+Math.max(0,Math.ceil(bossTimer))+'秒');
     const active=camps.filter(isActive).sort((a,b)=>distance(a,P)-distance(b,P))[0];
     const cleared=camps.filter(c=>c.state==='cleared').length,elites=camps.filter(c=>c.kind!=='camp'&&c.state==='cleared').length;
     if(!active)return '营地 '+cleared+'/'+camps.length+' · 精英 '+elites+'/4 · 妖潮不断 '+G.enemies.filter(ordinary).length+'/'+cap();
-    const units=owned(active),runes=units.filter(e=>e.eventObjective).length;
-    const title=active.kind==='ritual'?'破阵妖巢':active.kind==='bounty'?'精英悬赏':'妖众营地';
+    const units=owned(active),runes=units.filter(e=>e.eventObjective&&!e.campBanner).length;
+    const title=active.kind==='ritual'?'破阵妖巢':active.kind==='bounty'?'精英悬赏':CampTactics.title(active);
     return title+' · 第'+active.wave+'/3波 · 妖众 '+units.filter(e=>!e.eventObjective).length+(runes?' · 阵眼 '+runes:active.timer!==null?' · 增援 '+Math.max(0,Math.ceil(active.timer))+'秒':'')+' · 已清 '+cleared+'/'+camps.length+' · 精英 '+elites+'/4';
   }
   function drawGround(){
     if(G.state==='start'||mode==='boss'&&!bossAllowed())return;
+    CampTactics.draw();
     for(const p of pending){if(p.time===null||!p.point||!World.visible(p.point,60))continue;
       const color=Journey.stage().color,progress=1-p.time/1.2;
       ctx.save();ctx.translate(p.point.x,p.point.y);ctx.scale(1,.62);ctx.strokeStyle=rgba(color,.6);ctx.fillStyle=rgba(color,.08);ctx.lineWidth=2;
@@ -194,13 +202,13 @@ const EncounterDirector=(()=>{
   }
   function status(){return {mode,cap:cap(),waveSize:waveSize(),summons:mode==='boss'?{...summons(),timer:bossTimer}:null,alive:G.enemies.filter(ordinary).length,pending:pending.length,warnings:pending.filter(p=>p.time!==null).map(p=>({x:p.point.x,y:p.point.y,time:p.time,source:p.source})),
     discovered:camps.filter(c=>c.state!=='unseen').length,cleared:camps.filter(c=>c.state==='cleared').length,patrols,stats:{...stats},
-    camps:camps.map(c=>({id:c.id,x:c.x,y:c.y,state:c.state,kind:c.kind,wave:c.wave,remaining:owned(c).filter(e=>!e.eventObjective).length,runes:owned(c).filter(e=>e.eventObjective).length,sleeping:c.sleeping.length,pending:pending.filter(p=>p.encounterId===c.id).length,timer:c.timer}))};}
+    camps:camps.map(c=>({id:c.id,x:c.x,y:c.y,state:c.state,kind:c.kind,title:CampTactics.title(c),detail:CampTactics.detail(c),tactics:CampTactics.snapshot(c),wave:c.wave,remaining:owned(c).filter(e=>!e.eventObjective).length,runes:owned(c).filter(e=>e.eventObjective&&!e.campBanner).length,sleeping:c.sleeping.length,pending:pending.filter(p=>p.encounterId===c.id).length,timer:c.timer}))};}
   function exportState(){
     const plan=p=>({type:p.type,source:p.source,elite:!!p.elite,index:p.index||0,tier:p.tier||1.15,threat:p.threat||null,trait:p.trait||null,rewardKey:p.rewardKey||null});
     const unit=e=>plan({type:e.type,source:e.eventObjective?'rune':'camp',elite:e.elite,index:e.directorIndex,tier:e.spawnTier,threat:e.threat,trait:e.trait,rewardKey:e.combatId});
     const patrolSlots=[...G.enemies.filter(e=>living(e)&&e.source==='patrol').map(e=>({...unit(e),source:'patrol',anchor:{x:e.x,y:e.y},encounterId:e.encounterId})),...pending.filter(p=>p.source==='patrol').map(p=>({...plan(p),anchor:p.anchor,encounterId:p.encounterId}))];
-    return {idle,patrols,serial,patrolSlots,scaling:CombatScaling.exportState(),stats:{...stats},camps:camps.map(c=>({id:c.id,state:c.state,wave:c.wave,timer:c.timer,runesCreated:c.runesCreated,kills:c.kills,threat:c.threat||null,
-      slots:[...owned(c).map(unit),...c.sleeping.map(unit),...pending.filter(p=>p.encounterId===c.id).map(p=>p.snapshot?unit(p.snapshot):plan(p)),...c.sleepingPending.map(p=>p.snapshot?unit(p.snapshot):plan(p))]}))};
+    return {idle,patrols,serial,patrolSlots,scaling:CombatScaling.exportState(),stats:{...stats},camps:camps.map(c=>({id:c.id,state:c.state,wave:c.wave,timer:c.timer,runesCreated:c.runesCreated,kills:c.kills,threat:c.threat||null,tactics:CampTactics.snapshot(c),
+      slots:[...owned(c).filter(e=>!e.campBanner).map(unit),...c.sleeping.filter(e=>!e.campBanner).map(unit),...pending.filter(p=>p.encounterId===c.id&&!p.snapshot?.campBanner).map(p=>p.snapshot?unit(p.snapshot):plan(p)),...c.sleepingPending.filter(p=>!p.snapshot?.campBanner).map(p=>p.snapshot?unit(p.snapshot):plan(p))]}))};
   }
   function importState(s){
     if(!s||!Array.isArray(s.camps)||s.camps.length!==camps.length)throw new Error('Invalid encounters');
@@ -209,6 +217,7 @@ const EncounterDirector=(()=>{
     for(const value of s.camps){const c=camps[value.id];if(!c||!['unseen','active','dormant','cleared'].includes(value.state)||!Number.isInteger(value.wave)||value.wave<0||value.wave>3||!Array.isArray(value.slots)||value.slots.length>60)throw new Error('Invalid camp');
       if(value.threat&&!CombatScaling.validSnapshot(value.threat))throw Error('Invalid camp threat');
       Object.assign(c,{wave:value.wave,timer:value.timer,runesCreated:!!value.runesCreated,kills:value.kills||0,state:value.state==='active'?'dormant':value.state,threat:value.threat||null});
+      CampTactics.restore(c,value.tactics);
       let legacy=null;
       c.sleepingPending=value.slots.map(p=>{if(!['imp','fox','snake','zombie'].includes(p.type)||!['camp','rune'].includes(p.source)||!Number.isFinite(p.tier)||p.threat&&!CombatScaling.validSnapshot(p.threat)||p.trait&&!['breaker','volley','flank'].includes(p.trait))throw new Error('Invalid spawn');if(p.source!=='rune'&&!p.threat)legacy=legacy||c.threat||CombatScaling.snapshot('camp',tier(c.id));const threat=p.threat||legacy;return {...p,threat,trait:p.source==='rune'?null:p.trait===undefined?CombatScaling.trait(p.type,threat,p.elite):p.trait,rewardKey:p.rewardKey||'camp:'+c.id+':'+c.wave+':'+p.index,encounterId:c.id,time:null};});
     }

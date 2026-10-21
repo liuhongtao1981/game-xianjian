@@ -34,7 +34,7 @@ const UltimateArts=(()=>{
       const spec=Journey.ultimates[id],s=states[id],can=G.state==='playing'&&P.hp>0&&ready(id)&&!G.ultimate;
       button.disabled=!can;button.classList.toggle('ready',can);button.style.setProperty?.('--art-color',spec.color);
       document.getElementById('ultFill'+suffix).style.height=s.energy+'%';
-      document.getElementById('ultStatus'+suffix).textContent=s.cd>0?'冷却 '+s.cd.toFixed(1)+'s':s.energy>=100?hotkeys[i]+' · '+spec.short:'剑意 '+Math.floor(s.energy)+'%';
+      document.getElementById('ultStatus'+suffix).textContent=hotkeys[i]+' · '+(s.cd>0?s.cd.toFixed(1)+'秒':G.ultimate?'施法中':s.energy<100?'剑意 '+Math.floor(s.energy)+'%':G.state!=='playing'?'已暂停':'就绪');
       button.querySelector('span').textContent=spec.glyph;button.setAttribute('aria-label','释放大招：'+spec.name);button.title=spec.name+' · 本境基础伤害 '+Math.round(damage(id))+' · 冷却 '+(spec.cd*cooldown(P)).toFixed(1)+'秒 · 非大妖首击至少40%最大生命';
     }
   }

@@ -227,7 +227,7 @@ function reset(){
   document.getElementById('overlay').classList.add('hidden');
   G.state='playing'; G.time=0; G.kills=0; G.shake=0; G.queue=0;
   G.enemies=[]; G.shots=[]; G.eshots=[]; G.orbs=[]; G.parts=[]; G.texts=[];
-  Cultivation.resetAutomation();
+  Cultivation.resetAutomation();ExperienceUI.reset();
   G.chests=[]; G.spellPulses=[];G.pools=[]; G.auras=[]; G.bolts=[]; G.heals=[];
   G.telegraphs=[]; G.ultimate=null; G.ultimateCasts=0;
   G.pickups=[];G.chestReward=null;G.runChoices=0;
@@ -280,7 +280,7 @@ function updatePickupNotices(dt){
 }
 
 function burst(x, y, color, n, sp){
-  n=Math.max(0,Math.min(n,(W<650?180:420)-G.parts.length));
+  n=Math.max(0,Math.min(n,(ExperienceUI.settings().effects==='simple'?100:W<650?180:420)-G.parts.length));
   for (let i = 0; i < n; i++){
     const a = rand(0, TAU), v = rand(sp * .3, sp);
     G.parts.push({ x, y, vx:Math.cos(a)*v, vy:Math.sin(a)*v, life:rand(.25,.6), color, size:rand(1.5,3.5) });
@@ -323,7 +323,7 @@ function hurt(e, base, color, options={}){
   e.flash = .12;
   Sound.effects('hit',Math.max(-1,Math.min(1,World.screen(e.x,e.y).x/Math.max(1,W)*2-1)));
   Motion.emit('hit',e.x,e.y-e.r,{duration:.24,color:color&&color.length===7?color:'#b9eeff'});
-  addText(e.x + rand(-8,8), e.y - e.r - 6, (crit ? '暴 ' : '') + d, crit ? '#f2dda8' : (color || '#fff'), crit ? 17 : 13);
+  ExperienceUI.damageText(e,d,crit,color||'#fff');
   if (Math.random() < .65) burst(e.x, e.y - e.r * .4, color || '#ffffff', 2, 90);
   if (crit) G.auras.push({ x:e.x, y:e.y, r:0, max:36, life:.26, color: color || '#f2dda8' });
   if (!e.boss){
@@ -343,6 +343,7 @@ function killEnemy(e, fromUltimate=false){
   Bosses.onHelperKilled(e);
   if(e.bossHelper){burst(e.x,e.y,e.color,12,100);return;}
   const essence=P.cultivation.materials.essence,layer=P.cultivation.layer,qiBefore=P.cultivation.qi;const rare=Cultivation.onKill(e);
+  CampTactics.reward(e.encounterId,'qi',P.cultivation.qi-qiBefore);CampTactics.reward(e.encounterId,'essence',P.cultivation.materials.essence-essence);
   G.kills++;
   if (!G.ultimate&&!fromUltimate) UltimateArts.charge(e.elite ? 8 : 2);
   P.orbitHit.delete(e.id);
@@ -351,7 +352,7 @@ function killEnemy(e, fromUltimate=false){
   const n = e.boss ? 0 : (e.elite ? 5 : 1);
   for (let i = 0; i < n; i++){
     G.orbs.push({ x:e.x + rand(-14,14), y:e.y + rand(-14,14), vx:rand(-60,60), vy:rand(-60,60),
-      value: Math.max(0, e.xp / n), life: 20 });
+      encounterId:e.encounterId,value: Math.max(0, e.xp / n), life: 20 });
   }
   if (e.elite&&rare) spawnChest(e.x, e.y);
   if(!e.boss&&!e.elite&&Math.random()<CombatRewards.forEnemy(e).chest&&RunSave.claim('drop:'+Journey.run.stage+':'+e.combatId)){spawnChest(e.x,e.y,{kind:'enhanced',rewardId:e.combatId});}
@@ -445,6 +446,7 @@ function update(dt){
   G.time += dt;
   RunSave.tick(dt);
   if(G.queue>0){showLevelUp(choicesCache.length?choicesCache:null);return;}
+  ExperienceUI.tick();Targeting.current();
   updatePickupNotices(dt);
   G.shake = Math.max(0, G.shake - dt * 26);
 
@@ -569,7 +571,7 @@ function tryUltimate(id=Journey.run.ultimate){
   if (G.state !== 'playing' || !P || P.hp <= 0 || G.ultimate || !UltimateArts.spend(id)) return false;
   const spec=Journey.ultimates[id],target=nearest(P.x,P.y,1800);
   P.invuln=Math.max(P.invuln,spec.invuln);
-  G.ultimate={x:P.x,y:P.y,age:0,struck:false,kind:id,damage:UltimateArts.damage(id),bossDamage:0,pulses:0,angle:target?Math.atan2(target.y-P.y,target.x-P.x):Math.atan2(P.facing.y,P.facing.x)};
+  G.ultimate={x:P.x,y:P.y,age:0,struck:false,kind:id,damage:UltimateArts.damage(id),bossDamage:0,pulses:0,angle:id==='river'?Targeting.direction():target?Math.atan2(target.y-P.y,target.x-P.x):Math.atan2(P.facing.y,P.facing.x)};
   G.ultimateCasts++;
   Sound.ultimate(id);
   RunSave.save('施放大招');
@@ -762,6 +764,7 @@ function updateOrbs(dt){
     }
     if (d < 24){
       o.life = 0;
+      CampTactics.reward(o.encounterId,'xp',o.value*P.xpMul);
       notifyPickup('xp','',o.value*P.xpMul);
       gainXP(o.value);
     }
@@ -1055,14 +1058,14 @@ function fmt(t){
 function render(){
   ctx.clearRect(0, 0, W, H);
   ctx.save();
-  if (G.shake > 0 && !REDUCED_MOTION) ctx.translate(rand(-G.shake, G.shake) * .5, rand(-G.shake, G.shake) * .5);
+  if (G.shake > 0 && ExperienceUI.settings().shake && !REDUCED_MOTION) ctx.translate(rand(-G.shake, G.shake) * .5, rand(-G.shake, G.shake) * .5);
   World.apply();
   World.drawBackground();
   World.drawGround();
   RealmVisuals.drawAscensionGround();
   EncounterDirector.drawGround();
   drawPools();
-  SpellCombat.drawGround();
+  ExperienceUI.friendly(()=>SpellCombat.drawGround());
   drawTelegraphs();
   Motion.drawGround();
   drawChests();
@@ -1071,11 +1074,10 @@ function render(){
   World.drawProps();
   drawEnemies();
   drawShots();
-  drawAuras();
-  drawBolts();
-  drawParticles();
+  ExperienceUI.friendly(()=>{drawAuras();drawBolts();drawParticles();});
   Motion.drawOver();
-  drawUltimate();
+  ExperienceUI.friendly(()=>drawUltimate());
+  Targeting.draw();
   drawTexts();
   World.drawLabels();
   ctx.restore();
@@ -1378,7 +1380,7 @@ function syncHUD(){
   document.getElementById('kills').textContent = '斩妖 ' + G.kills;
   UltimateArts.hud();
   document.getElementById('dashBtn').disabled=G.state!=='playing'||P.dashCd>0;
-  document.getElementById('dashStatus').textContent=P.dashCd>0?P.dashCd.toFixed(1)+'s':'空格 · 闪避';
+  document.getElementById('dashStatus').textContent=P.dashCd>0?P.dashCd.toFixed(1)+'秒':matchMedia('(pointer: coarse)').matches?'闪避':'空格';
   const stage=Journey.stage(),profile=Journey.difficulty();
   document.getElementById('chapterTitle').textContent=stage.no+' · '+stage.title;
   document.getElementById('heroName').textContent=HeroIdentity.get(P.heroId).name;
@@ -1401,12 +1403,13 @@ function syncHUD(){
     bw.classList.add('hidden');
     document.getElementById('bossHealth').textContent='';
   }
+  ExperienceUI.sync();
 }
 
 function renderSpells(){
   document.getElementById('spells').innerHTML = Object.keys(P.spells).map(k => {
     const s = SPELLS[k];
-    return `<div class="ic" style="--c:${s.color}" title="${s.name} Lv.${P.spells[k]}"><span>${s.glyph}</span><em>${P.spells[k]}</em></div>`;
+    return `<div class="ic" tabindex="0" data-spell="${k}" style="--c:${s.color}" title="${s.name} Lv.${P.spells[k]} · ${SpellGrowth.describe(k,P.spells[k])}"><span>${s.glyph}</span><em>${P.spells[k]}</em></div>`;
   }).join('');
 }
 
@@ -1420,7 +1423,7 @@ function renderEquips(){
 /* ---------------- 输入 ---------------- */
 
 window.addEventListener('keydown', e => {
-  if(AscensionScene.handleKey(e))return;
+  if(AscensionScene.handleKey(e)||ExperienceUI.handleKey(e))return;
   // Let native card and sheet controls keep their focus and activation keys.
   if(['levelup','character','character-preview','chest','win'].includes(G.state)&&e.code==='Tab')return;
   if(['levelup','character','character-preview'].includes(G.state)&&['Space','Enter'].includes(e.code)&&e.target.closest?.('button,select,input')){if(e.repeat)e.preventDefault();return;}
@@ -1448,7 +1451,7 @@ window.addEventListener('keydown', e => {
 window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
 function clearInput(){
   for(const k in keys) delete keys[k];
-  joy.active=false;joy.id=null;joy.dx=0;joy.dy=0;
+  joy.active=false;joy.id=null;joy.dx=0;joy.dy=0;Targeting.clearPointer();touchAim=null;
 }
 window.addEventListener('blur',()=>{ clearInput(); if(G.state==='playing'&&!AscensionScene.active())togglePause(); });
 document.addEventListener('visibilitychange',()=>{ if(document.hidden){ clearInput();if(G.state==='playing'&&!AscensionScene.active())togglePause(); } });
@@ -1472,18 +1475,25 @@ document.addEventListener('fullscreenchange',()=>{
   resize();
 });
 
+let touchAim=null;
+canvas.addEventListener('contextmenu',e=>{if(G.state==='playing')e.preventDefault();});
+canvas.addEventListener('pointerleave',()=>Targeting.clearPointer());
 canvas.addEventListener('pointerdown', e => {
+  if(G.state==='map'){World.selectMap(e.clientX,e.clientY);return;}
+  if(e.pointerType==='mouse'){if(G.state==='playing'&&e.button===2){e.preventDefault();Targeting.pick(e.clientX,e.clientY);}return;}
   if (G.state !== 'playing') return;
-  if (e.clientX < W * .45){
+  if (e.clientX < W * .45&&!joy.active){
     joy.active = true; joy.id = e.pointerId;
     joy.ox = e.clientX; joy.oy = e.clientY;
     joy.dx = 0; joy.dy = 0;
     try { canvas.setPointerCapture(e.pointerId); } catch(_) {}
   } else {
-    tryDash();
+    if(!touchAim){touchAim={id:e.pointerId,x:e.clientX,y:e.clientY,moved:false};try{canvas.setPointerCapture(e.pointerId);}catch(_){}}
   }
 });
 canvas.addEventListener('pointermove', e => {
+  if(e.pointerType==='mouse'){if(G.state==='playing')Targeting.move(e.clientX,e.clientY);return;}
+  if(touchAim?.id===e.pointerId&&Math.hypot(e.clientX-touchAim.x,e.clientY-touchAim.y)>12)touchAim.moved=true;
   if (!joy.active || e.pointerId !== joy.id) return;
   let dx = e.clientX - joy.ox, dy = e.clientY - joy.oy;
   const d = Math.hypot(dx, dy);
@@ -1492,6 +1502,7 @@ canvas.addEventListener('pointermove', e => {
   joy.dx = dx / max; joy.dy = dy / max;
 });
 function endJoy(e){
+  if(touchAim?.id===e.pointerId){if(e.type==='pointerup'&&!touchAim.moved)Targeting.pick(e.clientX,e.clientY);touchAim=null;}
   if (e.pointerId !== joy.id) return;
   joy.active = false; joy.dx = 0; joy.dy = 0;
 }
@@ -1517,8 +1528,9 @@ function togglePause(){
         <button class="btn" id="resumeBtn">继 续</button>
         <button class="linkbtn" id="restartBtn" style="margin-left:10px">重入本关 · 保留成长</button>
         <button class="linkbtn" id="pauseMenuBtn">返回卷首 · 重新出征</button>
-        <p class="hintline">Esc 返回战斗</p>
+        <div class="pause-tools"><button class="linkbtn" id="preferencesBtn">画面与操作</button><button class="linkbtn" id="controlsHelpBtn">战斗与探路手册</button></div><p class="hintline">Esc 返回战斗</p>
       </div>`;
+    document.getElementById('preferencesBtn').onclick=()=>ExperienceUI.open('settings');document.getElementById('controlsHelpBtn').onclick=()=>ExperienceUI.open('help');
     document.getElementById('resumeBtn').onclick = togglePause;
     document.getElementById('pauseMenuBtn').onclick=Journey.menu;
     document.getElementById('restartBtn').onclick = () => {
@@ -1526,6 +1538,7 @@ function togglePause(){
       RunSave.retry();
     };
   } else if (G.state === 'paused'){
+    clearInput();
     document.getElementById('overlay').classList.add('hidden');
     G.state = 'playing';
     last = performance.now();
@@ -1598,10 +1611,10 @@ function bench(n, sec){
 RunSave.init();
 reset();
 CharacterUI.init();
-ExpeditionUI.init();
+ExpeditionUI.init();ExperienceUI.init();
 G.state = 'start';
 if ('ontouchstart' in window){
-  document.querySelector('.hint').innerHTML = '<kbd>左侧拖动</kbd> 移动 <kbd>右侧点击</kbd> 闪避 <kbd>三式按钮</kbd> 大招';
+  document.querySelector('.hint').innerHTML = '<kbd>左侧拖动</kbd> 移动 <kbd>轻点妖怪</kbd> 集火 <kbd>独立按钮</kbd> 闪避与大招';
 }
 if (QS.has('bench')){
   bench(Math.max(1, Math.min(12, Number(QS.get('bench')) || 6)), 200);

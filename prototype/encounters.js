@@ -67,7 +67,7 @@ const Encounters=(()=>{
     if(hit)hurtPlayer(e.dmg*(kind==='heavy'?1.65:1.2),e);
   }
   function rushStep(e,dt){
-    const oldX=e.x,oldY=e.y,speed=e.attackDistance/attacks.rush.strike;
+    const oldX=e.x,oldY=e.y,speed=e.attackDistance/attacks.rush.strike*CampTactics.speed(e);
     e.x+=Math.cos(e.attackAngle)*speed*dt;e.y+=Math.sin(e.attackAngle)*speed*dt;
     if(!e.strikeHit){
       const vx=e.x-oldX,vy=e.y-oldY,t=Math.max(0,Math.min(1,((P.x-oldX)*vx+(P.y-oldY)*vy)/(vx*vx+vy*vy||1)));
@@ -88,7 +88,7 @@ const Encounters=(()=>{
       if(e.actionT>=e.actionDuration){
         if(e.action==='windup'){setAction(e,'strike',spec.strike);strike(e);}
         else if(e.action==='strike')setAction(e,'recover',spec.recover);
-        else{e.action='idle';e.attack=0;e.castLock=0;e.atkCd=spec.cooldown;if(e.attackKind==='rush')e.skillCd=spec.cooldown;}
+        else{e.action='idle';e.attack=0;e.castLock=0;const phases=Math.max(.65,spec.windup*Journey.difficulty().warning)+spec.strike+spec.recover;e.atkCd=Math.max(0,(spec.cooldown+phases)*CampTactics.cooldown(e)-phases);if(e.attackKind==='rush')e.skillCd=spec.cooldown;}
       }
       return;
     }
@@ -102,7 +102,7 @@ const Encounters=(()=>{
     // Ranged foes plant their feet in casting distance; melee slows naturally before contact.
     const desired=role==='ranged'?(d<205?-.55:d>330?1:0):(d>e.r+P.r+14?1:0);
     const direction=desired>0&&typeof World!=='undefined'&&World.steer?World.steer(e,P.x+(e.trait==='flank'&&d>140?-dy/d*120*(e.id%2?1:-1):0),P.y+(e.trait==='flank'&&d>140?dx/d*120*(e.id%2?1:-1):0)):{x:dx/d,y:dy/d};
-    const speed=e.speed*desired;e.x+=direction.x*speed*dt;e.y+=direction.y*speed*dt;
+    const speed=e.speed*desired*CampTactics.speed(e);e.x+=direction.x*speed*dt;e.y+=direction.y*speed*dt;
   }
   function effect(kind,data){effects.push({kind,age:0,duration:kind==='phase'?1.25:.72,...data});if(effects.length>64)effects.shift();}
   function impact(t){effect('impact',{...t,r:t.shape==='sandstorm'?170:t.r,theme:t.theme??Journey.run.stage});Sound.effects(['bell-impact','edict-impact','tide-impact'][(t.theme??Journey.run.stage)%3]);}
@@ -155,8 +155,8 @@ const Encounters=(()=>{
     for(const e of G.enemies){
       if(e.hp<=0||e.boss||e.action!=='windup')continue;
       const spec=attacks[e.attackKind];if(!spec)continue;
-      const color=family(e.family??Journey.run.stage).color,p=Math.min(1,e.actionT/e.actionDuration);
-      ctx.save();ctx.translate(e.x,e.y);ctx.rotate(e.attackAngle);ctx.strokeStyle=rgba(color,.6+p*.3);ctx.fillStyle=rgba(color,.06+p*.1);ctx.lineWidth=1.5;
+      const color='#ff9f79',p=Math.min(1,e.actionT/e.actionDuration);
+      ctx.save();ctx.translate(e.x,e.y);ctx.rotate(e.attackAngle);ctx.strokeStyle=rgba(color,.85);ctx.fillStyle=rgba(color,.06+p*.1);ctx.lineWidth=2.5;ctx.shadowColor='#140806';ctx.shadowBlur=3;
       if(e.attackKind==='rush'){
         ctx.fillRect(0,-e.r-7,e.attackDistance,(e.r+7)*2);ctx.strokeRect(0,-e.r-7,e.attackDistance,(e.r+7)*2);
         ctx.fillStyle=rgba(color,.25);ctx.fillRect(0,-e.r-7,e.attackDistance*p,(e.r+7)*2);

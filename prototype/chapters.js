@@ -6,5 +6,9 @@ const ChapterCatalog=(()=>{
   const all=names.flatMap((row,realm)=>row.map((name,local)=>({id:ids[realm*3+local]||'realm-'+realm+'-'+local,index:realm*3+local,realm,local,name,boss:guardians[realm][local],released:realm<5,width:realm?7200:6400,height:realm?5200:4600,wave:[12,14,16,16,18,20,22,24,26,28,30,32,34,36,38][realm*3+local]||20,art:ids[realm*3+local],strategy:['bell','edict','tide','stone','hunt','dragon','purify','pounce','echo','counterstamp','rake','shelter','tidesteps','trueheart','returnshadow'][realm*3+local]})));
   const get=index=>all[index],released=()=>all.filter(c=>c.released),indexOf=id=>all.findIndex(c=>c.id===id);
   function reward(index){const c=get(index),t=c.realm+1,n=Math.max(3,2*t),part=(total)=>Math.floor(total/3)+(c.local<total%3?1:0);return {core:'core'+Math.min(13,t),count:part(n),essence:part(8*t),qi:Math.round(320*t*t*[.25,.35,.4][c.local])};}
-  return {all,get,released,indexOf,reward,count:42,playable:15};
+  function camp(stage,id){
+    const themes=[['镇妖灯','灯','缄口妖幡'],['断诏印','诏','血契妖幡'],['引潮灯','潮','沉灯妖幡'],['镇山石','山','压山妖幡'],['验籍印','籍','追籍妖幡'],['引雷石','雷','封鳞妖幡'],['净愿火','愿','焚愿妖幡'],['缚影灯','影','借愿妖幡'],['镇魂磬','魂','愿骨妖幡'],['解契印','契','人券妖幡'],['破喜灯','喜','吞愿妖幡'],['息风石','风','听骨妖幡'],['流沙禁纹','沙','吞籍妖幡'],['照骨镜','骨','三相妖幡'],['归影灯','影','夺影妖幡']];
+    const [trap,glyph,banner]=themes[stage];return {type:[3,7,11,15].includes(id)?'elite':[4,6,13,16].includes(id)?'banner':[5,8,14,17].includes(id)?'trap':'siege',trap,glyph,banner};
+  }
+  return {all,get,released,indexOf,reward,camp,count:42,playable:15};
 })();

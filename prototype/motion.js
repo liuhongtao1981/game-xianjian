@@ -43,7 +43,7 @@ const Motion = (() => {
   const tau = Math.PI*2;
   function emit(type,x,y,options={}){
     const e={type,x,y,age:0,duration:.5,seed:Math.random()*100,...options};
-    effects.push(e);if(effects.length>150)effects.shift();return e;
+    effects.push(e);if(effects.length>(ExperienceUI.settings().effects==='simple'?65:150))effects.shift();return e;
   }
   function cast(key,target){
     if(releasingCast){if(target){P.attackAngle=Math.atan2(target.y-P.y,target.x-P.x);P.look=target.x>=P.x?1:-1;}return;}
@@ -62,7 +62,7 @@ const Motion = (() => {
       const release=spec.cast;spec.motionBound=true;
       spec.cast=function(level){
         if(activeCast?.key===key||pendingCasts.some(c=>c.key===key))return;
-        const target=nearest(P.x,P.y,SpellGrowth.spec(key,level).range);
+        const target=Targeting.spellTarget(SpellGrowth.spec(key,level).range);
         if(key==='yujian'&&!target)return;
         pendingCasts.push({key,level,release});
         if(!activeCast&&!G.ultimate)beginQueuedCast();
@@ -70,7 +70,7 @@ const Motion = (() => {
     }
   }
   function castTarget(key,level=P.spells?.[key]||1){
-    return ['yujian','wulei','gudu','jiushen'].includes(key)?nearest(P.x,P.y,SpellGrowth.spec(key,level).range):null;
+    return ['yujian','wulei','gudu','jiushen'].includes(key)?Targeting.spellTarget(SpellGrowth.spec(key,level).range):null;
   }
   function beginQueuedCast(){
     if(!pendingCasts.length||G.ultimate)return;
@@ -89,6 +89,7 @@ const Motion = (() => {
     return {row:rows[key],col:actor.moving?Math.floor((actor.walkDistance||0)/24)%4:0,state:actor.moving?'move':'idle'};
   }
   function drawActor(actor,key,size,alpha=1){
+    if(actor.campBanner){CampTactics.drawBanner(actor);return;}
     if(key==='hero'){drawHero(ctx,actor,size,actor.animTime||G.time,alpha);return;}
     if(actor.bossHelper&&actor.family>=9){HuashenArt.drawHelper(actor);return;}
     if(actor.bossHelper&&actor.family>=6){InfantArt.drawHelper(actor);return;}
@@ -119,6 +120,7 @@ const Motion = (() => {
     const attackProgress=actor.attackLength?1-(actor.attack||0)/actor.attackLength:0;
     const lunge=key==='hero'&&actor.attack>0?Math.sin(Math.min(1,attackProgress)*Math.PI)*5:0;
     ctx.save();ctx.translate(actor.x+recoil+Math.cos(actor.attackAngle||0)*lunge,actor.y+Math.sin(actor.attackAngle||0)*lunge);ctx.scale(flip,1);ctx.globalAlpha=alpha;
+    if(actor===Targeting.current()){ctx.shadowColor='#fff0a4';ctx.shadowBlur=5;}
     if(actor.flash>0)ctx.filter='brightness(1.55)';
     else if(key==='hero'&&actor.cultivation?.realm>0){ctx.filter='drop-shadow(0px 0px 2px '+RealmVisuals.get(actor.cultivation).color+')';}
     else if(actor.clerk){ctx.globalAlpha*=.7;ctx.filter='sepia(.6) hue-rotate(320deg)';}
@@ -201,7 +203,7 @@ const Motion = (() => {
     for(let i=effects.length-1;i>=0;i--){effects[i].age+=dt;if(effects[i].age>effects[i].duration)effects.splice(i,1);}
     for(let i=echoes.length-1;i>=0;i--){echoes[i].age+=dt;if(echoes[i].age>.3)echoes.splice(i,1);}
   }
-  function echo(actor){echoes.push({actor:{...actor},age:0});if(echoes.length>12)echoes.shift();}
+  function echo(actor){echoes.push({actor:{...actor},age:0});if(echoes.length>(ExperienceUI.settings().effects==='simple'?3:12))echoes.shift();}
   function glow(x,y,r,color,alpha){
     if(r<=0 || alpha<=0)return;
     const g=ctx.createRadialGradient(x,y,0,x,y,r);
@@ -209,7 +211,7 @@ const Motion = (() => {
     ctx.fillStyle=g;ctx.fillRect(x-r,y-r,r*2,r*2);
   }
   function rune(x,y,r,alpha,color,rotation=0){
-    ctx.save();ctx.translate(x,y);ctx.scale(1,.62);ctx.rotate(rotation);ctx.globalAlpha=alpha;
+    ctx.save();ctx.translate(x,y);ctx.scale(1,.62);ctx.rotate(rotation);ctx.globalAlpha*=alpha;
     ctx.strokeStyle=color;ctx.lineWidth=1.5;
     for(const radius of [r*.78,r,r*1.07]){ctx.beginPath();ctx.arc(0,0,radius,0,tau);ctx.stroke();}
     for(let i=0;i<12;i++){
@@ -228,6 +230,7 @@ const Motion = (() => {
   }
   function drawGround(){
     Encounters.drawGround();
+    ctx.save();if(RealmVisuals.danger())ctx.globalAlpha*=.4;
     for(const e of effects){
       const p=e.age/e.duration,a=Math.sin(Math.PI*p);
       if(['cast','heal','ice','fire','blast'].includes(e.type)){
@@ -237,7 +240,7 @@ const Motion = (() => {
         else {ctx.save();ctx.translate(e.x,e.y);ctx.scale(1,.65);ctx.strokeStyle=rgba(color,(1-p)*.9);ctx.lineWidth=(1-p)*9+1;ctx.beginPath();ctx.arc(0,0,Math.max(1,e.r*p),0,tau);ctx.stroke();ctx.restore();}
       }
     }
-    for(const e of echoes)drawActor(e.actor,'hero',116,(1-e.age/.3)*.23);
+    for(const e of echoes)drawActor(e.actor,'hero',116,(1-e.age/.3)*.23);ctx.restore();
   }
   function drawOver(){
     Encounters.drawOver();
