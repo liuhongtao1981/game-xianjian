@@ -32,7 +32,7 @@ const SpellGrowth=(()=>{
       range:(['gudu','jiushen'].includes(id)?620:900)+(['gudu','jiushen'].includes(id)?(l-1)*26:0),
       pulses:id==='guanyin'?3:1+Math.min(2,form),shield:(18+12*base)*growth,heal:(8+6*base)*growth};
   }
-  function describe(id,l){const s=spec(id,l),d=Math.round(s.damage);return ({yujian:`${s.count}柄飞剑 · 同目标剑轮伤害 ${d}`,wanjian:`${s.layers}圈剑阵 · 由内向外${s.ringCounts.join(' / ')}柄 · 共${s.count}柄 · 每轮伤害 ${d}`,wulei:`${s.count}道落雷 · 至多${s.count}个不同目标 · 每目标雷伤 ${d}`,sanmei:`${s.pulses}段真火 · 半径${s.radius} · 总伤害 ${d}`,bingxin:`护域半径${s.radius} · 驱散域内飞弹 · 护盾 +${Math.round(s.shield)}`,gudu:`施法距离${s.range} · 毒域半径${s.radius} · ${s.layers}层 · 每秒总伤害 ${d}`,jiushen:`施法距离${s.range} · ${s.pulses}段余震 · 半径${s.radius} · 总伤害 ${d}`,guanyin:`回春半径${s.radius} · 域内${s.pulses}段回复 · 共${Math.round(s.heal)}生命`})[id];}
+  function describe(id,l){const s=spec(id,l),d=Math.round(s.damage);return ({yujian:`${s.count}柄飞剑 · 同目标剑轮伤害 ${d}`,wanjian:`${s.layers}圈剑阵 · 由内向外${s.ringCounts.join(' / ')}柄 · 共${s.count}柄 · 每轮伤害 ${d}`,wulei:`${s.count}道落雷 · 每道雷伤 ${d} · 优先覆盖画面内${s.range}距离内目标，余雷均分集中；单体可承受全部${s.count}道`,sanmei:`${s.pulses}段真火 · 半径${s.radius} · 总伤害 ${d}`,bingxin:`护域半径${s.radius} · 驱散域内飞弹 · 护盾 +${Math.round(s.shield)}`,gudu:`施法距离${s.range} · 毒域半径${s.radius} · ${s.layers}层 · 每秒总伤害 ${d}`,jiushen:`施法距离${s.range} · ${s.pulses}段余震 · 半径${s.radius} · 总伤害 ${d}`,guanyin:`回春半径${s.radius} · 域内${s.pulses}段回复 · 共${Math.round(s.heal)}生命`})[id];}
   function focus(id){return ['yujian','wanjian'].includes(id)?'强化方向：飞剑数量':id==='wulei'?'强化方向：落雷数量':'强化方向：作用距离 / 范围';}
   function change(id,from,to){
     if(!to)return from?'撤回后移除术法':'投入一次赠礼即可习得';

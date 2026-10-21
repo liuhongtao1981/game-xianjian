@@ -1,4 +1,4 @@
-/* Forms spend one cast budget per target, not one full budget per visual sword. */
+/* Sword forms share a target budget; spare lightning strikes concentrate on survivors. */
 const SpellCombat=(()=>{
   function pulse(id,x,y,s){
     G.spellPulses.push({id,x,y,s,left:s.pulses,timer:0});
@@ -13,8 +13,22 @@ const SpellCombat=(()=>{
           const a=Math.atan2(target.y-P.y,target.x-P.x),volleyHits=new Set(),targets=G.enemies.filter(e=>Bosses.targetable(e)&&Math.hypot(e.x-P.x,e.y-P.y)<s.range).sort((a,b)=>Math.hypot(a.x-P.x,a.y-P.y)-Math.hypot(b.x-P.x,b.y-P.y));
           for(let i=0;i<s.count;i++){const t=targets[i%targets.length]||target,offset=(i-(s.count-1)/2)*7,x=P.x-Math.sin(a)*offset,y=P.y+Math.cos(a)*offset,angle=Math.atan2(t.y-y,t.x-x);G.shots.push({x,y,vx:Math.cos(angle)*660,vy:Math.sin(angle)*660,r:6,dmg:s.damage,life:1.35,color:spell.color,hit:new Set(),volleyHits,pierce:s.form?1:0,trail:[]});}
         }else if(id==='wulei'){
-          let from=P;const chosen=new Set();
-          for(let i=0;i<s.count;i++){const candidates=G.enemies.filter(e=>Bosses.targetable(e)&&!chosen.has(e.id)&&Math.hypot(e.x-P.x,e.y-P.y)<=900&&Math.hypot(e.x-from.x,e.y-from.y)<=460);candidates.sort((a,b)=>Math.hypot(a.x-from.x,a.y-from.y)-Math.hypot(b.x-from.x,b.y-from.y));const t=candidates[0];if(!t)break;chosen.add(t.id);bolt(from.x,from.y,t.x,t.y,spell.color);Motion.emit('thunder',t.x,t.y,{duration:.42,color:spell.color});hurt(t,s.damage,spell.color);from=t;}
+          // Lock visible, in-range targets at release. Cover each once before
+          // sharing spare strikes evenly; deaths never consume a later strike.
+          const targets=G.enemies.filter(e=>Bosses.targetable(e)&&World.visible(e,0)&&Math.hypot(e.x-P.x,e.y-P.y)<=s.range)
+            .sort((a,b)=>Math.hypot(a.x-P.x,a.y-P.y)-Math.hypot(b.x-P.x,b.y-P.y))
+            .map(enemy=>({enemy,hits:0}));
+          let from=P;
+          for(let i=0;i<s.count;i++){
+            const next=targets.reduce((best,t)=>Bosses.targetable(t.enemy)&&(!best||t.hits<best.hits)?t:best,null);
+            if(!next)break;
+            const t=next.enemy;
+            // Repeated strikes descend from above instead of drawing a zero-length chain.
+            const origin=next.hits?{x:t.x+rand(-36,36),y:t.y-160}:from;
+            bolt(origin.x,origin.y,t.x,t.y,spell.color);
+            Motion.emit('thunder',t.x,t.y,{duration:.42,color:spell.color});
+            next.hits++;hurt(t,s.damage,spell.color);from=t;
+          }
         }else if(id==='gudu'){
           const x=target?.x??P.x,y=target?.y??P.y;
           for(let i=0;i<s.layers;i++)G.pools.push({x:x+Math.cos(i*2.1)*i*24,y:y+Math.sin(i*2.1)*i*24,r:s.radius,life:4,dps:s.damage,tick:0,color:spell.color,poisonPool:true});

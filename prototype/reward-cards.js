@@ -16,12 +16,13 @@ const RewardCards=(()=>{
     if(['sanmei','jiushen','guanyin'].includes(key))r.push(row(key==='guanyin'?'回复段数':'攻击段数',get(a,'pulses'),get(b,'pulses'),'段'));
     if(key==='bingxin')r.push(row('单次护盾',Math.round(get(a,'shield')),Math.round(get(b,'shield'))));
     else if(key==='guanyin')r.push(row('单次总回复',Math.round(get(a,'heal')),Math.round(get(b,'heal'))));
-    else r.push(row(key==='wanjian'?'剑轮基础伤害':key==='gudu'?'每秒基础伤害':'基础伤害',Math.round(get(a,'damage')),Math.round(get(b,'damage'))));
+    else r.push(row(key==='wanjian'?'剑轮基础伤害':key==='gudu'?'每秒基础伤害':key==='wulei'?'每道基础雷伤':'基础伤害',Math.round(get(a,'damage')),Math.round(get(b,'damage'))));
+    if(key==='wulei')r.push(row('单体全中基础总伤',Math.round(get(a,'damage'))*get(a,'count'),Math.round(get(b,'damage'))*get(b,'count')));
     return r;
   }
   function projected(effect,p=P){const after=copy(p);effect(after);Cultivation.constrain(after);return after;}
   function previewChoice(c){
-    if(c.kind==='new'||c.kind==='up')return {rows:spellRows(c.key,P.spells[c.key]||0,(P.spells[c.key]||0)+1),note:'按当前术法参数计算 · 基础伤害未计角色倍率与暴击'};
+    if(c.kind==='new'||c.kind==='up')return {rows:spellRows(c.key,P.spells[c.key]||0,(P.spells[c.key]||0)+1),note:(c.key==='wulei'?'优先覆盖画面内目标，余雷均分集中 · ':'按当前术法参数计算 · ')+'基础伤害未计角色倍率与暴击'};
     if(c.kind==='recover')return {rows:[row('当前生命',P.hp,Math.min(P.maxHp,P.hp+20),'',P.maxHp)],note:'强化均已达上限 · 调息恢复生命'};
     const stat=STATS.find(s=>s.id===c.id);if(!stat)return {rows:[],note:''};
     const after=projected(p=>stat.apply(p)),keys={atk:['dmg'],spd:['speed'],hp:['maxHp','hp'],cd:['cdr'],crit:['crit'],pick:['pickup']}[c.id];

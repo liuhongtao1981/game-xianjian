@@ -18,6 +18,7 @@ on:
       - 'tools/check-reward-cards.js'
       - 'tools/check-ascension-scene.js'
       - 'tools/check-spell-growth.js'
+      - 'tools/check-thunder.js'
       - 'tools/check-realm-upgrades.js'
       - 'tools/check-realm-loot.js'
       - 'tools/check-world.js'
@@ -58,6 +59,7 @@ jobs:
           node tools/check-huashen.js
           node tools/check-lianxu.js
           node tools/check-spell-growth.js
+          node tools/check-thunder.js
           node tools/check-pickups.js
           node tools/check-reward-cards.js
           node tools/check-ascension-scene.js

@@ -13,6 +13,8 @@ const CombatScaling=(()=>{
       else if(id==='gudu')output+=s.damage*Math.min(1,4*f);
       else if(id==='bingxin')sustain+=s.shield*f;
       else if(id==='guanyin')sustain+=s.heal*f;
+      // Unlike visual sword counts, every spare lightning strike can hit one foe.
+      else if(id==='wulei')output+=s.damage*s.count*f;
       else output+=s.damage*f;
     }
     // Include every carried art; the percentage floor is not single-target DPS.
