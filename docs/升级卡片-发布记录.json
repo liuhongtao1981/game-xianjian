@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-21",
+  "scope": [
+    "升级三选一卡牌",
+    "法宝、术法、材料与丹药宝箱",
+    "境界赠送术法分配",
+    "通关行粮三选一",
+    "旧档定向材料奖励"
+  ],
+  "presentation": "玄青玉色与金线边框，独立术法图纹，属性前后对照，桌面三列与手机纵向长卡",
+  "rules": {
+    "statProjection": "Stat and equipment apply functions accept an explicit player copy. Preview constrains the copy using current cultivation caps without mutating combat or saves.",
+    "spellProjection": "Counts, circle distributions, ranges, pulses, shields, healing and base damage use SpellGrowth.spec directly.",
+    "chestPersistence": "The first receipt stores comparison rows in the existing chest reward envelope before applying the reward. Reload shows the saved comparison without granting it again.",
+    "legacy": "Already-applied older chest rewards retain their existing effects; unavailable prior values are never invented.",
+    "ration": "Projected ration effects share the same applyCamp implementation as actual travel.",
+    "damageDisplay": "Spell base damage excludes character damage multipliers and critical strikes, as labelled on cards."
+  },
+  "examples": [
+    {
+      "attribute": "伤害倍率",
+      "before": "2.21×",
+      "after": "2.54×"
+    },
+    {
+      "attribute": "三昧真火作用半径 Lv.12 → 13",
+      "before": 261,
+      "after": 269
+    },
+    {
+      "attribute": "万剑诀 Lv.5 → 6",
+      "before": "1圈 / 9柄",
+      "after": "2圈 / 5+7=12柄"
+    }
+  ],
+  "interaction": [
+    "保留1/2/3快捷键",
+    "Tab切换与空格、回车确认",
+    "选卡期间战斗暂停",
+    "长卡可纵向滚动，末项可点击",
+    "收起遮挡卡面的战斗按钮和短字幕",
+    "减少动态效果的系统偏好生效"
+  ],
+  "validation": {
+    "projectionAndSaveCases": 11,
+    "existingSuites": [
+      "语法检查",
+      "自动存档24项",
+      "跨关继承8项",
+      "拾取与奖励34项",
+      "术法赠礼与桥面31项"
+    ],
+    "browser": {
+      "production": false,
+      "revision": "aef317ea4457c5e015c9c28d06cb182c2e0889d6",
+      "errors": [],
+      "checked": [
+        "stats",
+        "all spell types",
+        "circle transition",
+        "gift draft",
+        "legacy core selection",
+        "equipment",
+        "materials",
+        "reward reload",
+        "rations",
+        "keyboard number",
+        "keyboard tab and space",
+        "390px portrait",
+        "844px landscape",
+        "last mobile option reachable"
+      ]
+    },
+    "limits": "Mobile checks use desktop browser viewport sizes; no physical-device performance claim."
+  },
+  "publish": {
+    "url": "https://liuhongtao1981.github.io/game-xianjian/",
+    "cache": "Build uses the deployed Git revision in script and stylesheet URLs."
+  }
+}

@@ -157,25 +157,25 @@ Motion.bindSpells?.(SPELLS);
 /* ---------------- 强化卡 ---------------- */
 
 const STATS = [
-  { id:'atk', name:'剑意', glyph:'锋', color:'#e0a0a0', tag:'强化', desc:'所有伤害 +15%。', apply(){ P.dmg *= 1.15; } },
-  { id:'spd', name:'疾行', glyph:'行', color:'#9fd8ef', tag:'强化', desc:'移动速度 +8%。', apply(){ P.speed *= 1.08; } },
-  { id:'hp',  name:'铁骨', glyph:'骨', color:'#d9b877', tag:'强化', desc:'最大生命 +20，并回复 20。', apply(){ P.maxHp += 20; heal(20); } },
-  { id:'cd',  name:'凝神', glyph:'凝', color:'#b8a0e0', tag:'强化', desc:'术法与大招冷却 -8%，最高缩减80%。', apply(){ P.cdr = Math.max(Cultivation.caps().cdr, P.cdr * 0.92); } },
-  { id:'crit',name:'会心', glyph:'心', color:'#f2dda8', tag:'强化', desc:'暴击率 +6%。', apply(){ P.crit = Math.min(Cultivation.caps().crit, P.crit + 0.06); } },
-  { id:'pick',name:'聚灵', glyph:'灵', color:'#7fbfa8', tag:'强化', desc:'拾取范围 +30%。', apply(){ P.pickup *= 1.3; } }
+  { id:'atk', name:'剑意', glyph:'锋', color:'#e0a0a0', tag:'强化', desc:'所有伤害 +15%。', apply(p=P){ p.dmg *= 1.15; } },
+  { id:'spd', name:'疾行', glyph:'行', color:'#9fd8ef', tag:'强化', desc:'移动速度 +8%。', apply(p=P){ p.speed *= 1.08; } },
+  { id:'hp',  name:'铁骨', glyph:'骨', color:'#d9b877', tag:'强化', desc:'最大生命 +20，并回复 20。', apply(p=P){ p.maxHp += 20; if(p===P)heal(20);else p.hp=Math.min(p.maxHp,p.hp+20); } },
+  { id:'cd',  name:'凝神', glyph:'凝', color:'#b8a0e0', tag:'强化', desc:'术法与大招冷却 -8%，最高缩减80%。', apply(p=P){ p.cdr = Math.max(Cultivation.caps(p).cdr, p.cdr * 0.92); } },
+  { id:'crit',name:'会心', glyph:'心', color:'#f2dda8', tag:'强化', desc:'暴击率 +6%。', apply(p=P){ p.crit = Math.min(Cultivation.caps(p).crit, p.crit + 0.06); } },
+  { id:'pick',name:'聚灵', glyph:'灵', color:'#7fbfa8', tag:'强化', desc:'拾取范围 +30%。', apply(p=P){ p.pickup *= 1.3; } }
 ];
 
 /* ---------------- 装备 ---------------- */
 
 const EQUIPS = [
-  { id:'mujian', name:'木剑', glyph:'剑', color:'#d9b877', desc:'伤害 +20%。', apply(){ P.dmg *= 1.2; } },
-  { id:'jifeng', name:'疾风靴', glyph:'风', color:'#9fd8ef', desc:'移动速度 +10%。', apply(){ P.speed *= 1.1; } },
-  { id:'jiuhu', name:'酒葫芦', glyph:'酒', color:'#e8a04a', desc:'最大生命 +30，并回复 30。', apply(){ P.maxHp += 30; heal(30); } },
-  { id:'wudu', name:'五毒珠', glyph:'毒', color:'#7fbfa8', desc:'攻击附带持续毒伤。', apply(){ P.poison = true; } },
-  { id:'nvwa', name:'女娲血玉', glyph:'血', color:'#e0704f', desc:'每秒回复 3 点护盾。', apply(){ P.regen = 3; } },
-  { id:'tiangang', name:'天罡战气', glyph:'罡', color:'#f2dda8', desc:'暴击率 +10%，伤害 +10%。', apply(){ P.crit += .1; P.dmg *= 1.1; } },
-  { id:'juling', name:'聚灵珠', glyph:'珠', color:'#7fbfa8', desc:'拾取范围 +40%，灵气收益 +15%。', apply(){ P.pickup *= 1.4; P.xpMul *= 1.15; } },
-  { id:'huxin', name:'护心镜', glyph:'护', color:'#b8a0e0', desc:'受到伤害 -15%。', apply(){ P.armor = Math.min(Cultivation.caps().armor, P.armor + 0.15); } }
+  { id:'mujian', name:'木剑', glyph:'剑', color:'#d9b877', desc:'伤害 +20%。', apply(p=P){ p.dmg *= 1.2; } },
+  { id:'jifeng', name:'疾风靴', glyph:'风', color:'#9fd8ef', desc:'移动速度 +10%。', apply(p=P){ p.speed *= 1.1; } },
+  { id:'jiuhu', name:'酒葫芦', glyph:'酒', color:'#e8a04a', desc:'最大生命 +30，并回复 30。', apply(p=P){ p.maxHp += 30; if(p===P)heal(30);else p.hp=Math.min(p.maxHp,p.hp+30); } },
+  { id:'wudu', name:'五毒珠', glyph:'毒', color:'#7fbfa8', desc:'攻击附带持续毒伤。', apply(p=P){ p.poison = true; } },
+  { id:'nvwa', name:'女娲血玉', glyph:'血', color:'#e0704f', desc:'每秒回复 3 点护盾。', apply(p=P){ p.regen = 3; } },
+  { id:'tiangang', name:'天罡战气', glyph:'罡', color:'#f2dda8', desc:'暴击率 +10%，伤害 +10%。', apply(p=P){ p.crit += .1; p.dmg *= 1.1; } },
+  { id:'juling', name:'聚灵珠', glyph:'珠', color:'#7fbfa8', desc:'拾取范围 +40%，灵气收益 +15%。', apply(p=P){ p.pickup *= 1.4; p.xpMul *= 1.15; } },
+  { id:'huxin', name:'护心镜', glyph:'护', color:'#b8a0e0', desc:'受到伤害 -15%。', apply(p=P){ p.armor = Math.min(Cultivation.caps(p).armor, p.armor + 0.15); } }
 ];
 
 /* ---------------- 敌人 ---------------- */
@@ -844,9 +844,9 @@ function showLevelUp(restoredChoices=null){
   const ov = document.getElementById('overlay');
   ov.classList.remove('hidden');
   ov.innerHTML = `
-    <div class="panel">
-      <h2>等 级 提 升</h2>
-      <p class="sub">三 选 一</p>
+    <div class="panel reward-panel upgrade-panel">
+      <div class="reward-heading"><span class="overline">修行有得 · 战斗等级 Lv.${P.level}</span><h2>择一道，铸剑心</h2></div>
+      <p class="sub">三选一 · 每次选择，即刻生效${G.queue>1?" · 尚余 "+G.queue+" 次":""}</p>
       <div class="choices">
         ${choicesCache.map((c, i) => cardHTML(c, i)).join('')}
       </div>
@@ -859,16 +859,7 @@ function showLevelUp(restoredChoices=null){
   RunSave.save('待选升级');
 }
 
-function cardHTML(c, i){
-  const color = c.color || '#d9b877';
-  return `<div class="upcard" data-i="${i}" style="--c:${color}">
-    <div class="tag">${c.tag}</div>
-    <div class="glyph">${c.glyph}</div>
-    <div class="uname">${c.name}</div>
-    <div class="udesc">${c.desc}</div>
-    <div class="ulvl">${c.lvl || ''}</div>
-  </div>`;
-}
+function cardHTML(c, i){ return RewardCards.choiceHTML(c,i); }
 
 function buildChoices(){
   const pool = [];
@@ -964,22 +955,23 @@ function openChest(restoredReward=null,alreadyApplied=false,enhanced=false){
   G.state = 'chest';
   const reward = restoredReward||(enhanced?CombatRewards.enhancedChest():rollChestReward());
   G.chestReward=reward;
-  if(!alreadyApplied)applyReward(reward);
+  if(!alreadyApplied){reward.preview=RewardCards.previewReward(reward);applyReward(reward);}
   const ov = document.getElementById('overlay');
   ov.classList.remove('hidden');
   ov.innerHTML = `
-    <div class="panel treasure-panel">
-      <div class="reward-casket">${ItemCatalog.icon('elite-chest','宝箱已开启')}</div>
+    <div class="panel reward-panel treasure-panel">
+      <span class="overline">劫途中拾得 · 奖励已入档</span><div class="reward-casket">${ItemCatalog.icon('elite-chest','宝箱已开启')}</div>
       <h2>宝 箱 · 已开启</h2>
       <p class="sub">${reward.kind === 'equip' ? '法 宝' : (['spell','spell-up'].includes(reward.kind) ? '术 法' : reward.kind==='material'?'材 料':'丹 药')}</p>
       <div class="reward" style="--c:${reward.color}">
-        <div class="cicon">${reward.kind==='equip'?ItemCatalog.icon(reward.id,reward.name):reward.kind==='heal'?ItemCatalog.icon('potion',reward.name):reward.glyph}</div>
+        <div class="cicon">${reward.kind==='equip'?ItemCatalog.icon(reward.id,reward.name):reward.kind==='heal'?ItemCatalog.icon('potion',reward.name):reward.kind==='material'?ItemCatalog.icon(Object.keys(reward.materials)[0],reward.name):RewardCards.emblem(reward.key,reward.glyph)}</div>
         <div>
           <div class="cname">${reward.name}</div>
           <div class="cdesc">${reward.desc}</div>
         </div>
       </div>
-      <button class="btn" id="takeBtn">收 下</button>
+      ${RewardCards.rewardHTML(reward)}
+      <button class="btn" id="takeBtn">收下，继续寻圣 →</button>
       <p class="hintline">按 空格 / 回车 继续</p>
     </div>`;
   document.getElementById('takeBtn').onclick = closeChest;
@@ -1423,6 +1415,9 @@ function renderEquips(){
 /* ---------------- 输入 ---------------- */
 
 window.addEventListener('keydown', e => {
+  // Let native card and sheet controls keep their focus and activation keys.
+  if(['levelup','character','chest','win'].includes(G.state)&&e.code==='Tab')return;
+  if(['levelup','character'].includes(G.state)&&['Space','Enter'].includes(e.code)&&e.target.closest?.('button,select,input')){if(e.repeat)e.preventDefault();return;}
   const k = e.key.toLowerCase();
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code)) e.preventDefault();
   keys[k] = true;
