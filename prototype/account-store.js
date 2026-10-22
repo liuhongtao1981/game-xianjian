@@ -16,7 +16,7 @@ globalThis.AccountStore=(()=>{
         if(!response.ok)throw Object.assign(Error(result.error||'账号服务暂不可用'),{status:response.status});return result;
       }catch(error){if(error.status)throw error;throw Object.assign(Error('暂时无法连接账号服务，请检查网络后重试'),{network:true});}finally{clearTimeout(timeout);}
     }
-    function remember(user){session.setItem(sessionKey,JSON.stringify({token,user}));}
+    function remember(user){session.setItem(sessionKey,JSON.stringify({token,user}));const marker=parse(storage.getItem(migrationKey));if(marker?.user?.id===user.id){marker.user=user;storage.setItem(migrationKey,JSON.stringify(marker));}}
     function forget(){token=null;session.removeItem(sessionKey);}
     async function register(account,password,name){account=AccountModel.normalizeAccount(account);const error=AccountModel.accountError(account)||AccountModel.passwordError(password)||(name&&AccountModel.nameError(name));if(error)throw Error(error);return (await request('register',{method:'POST',data:{account,password,name},auth:null})).user;}
     async function login(account,password){const result=await request('login',{method:'POST',data:{account:AccountModel.normalizeAccount(account),password},auth:null});token=result.token;remember(result.user);return result;}

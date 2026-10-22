@@ -1,8 +1,8 @@
 {
   "project_id": "appgprj_6ada7f4b3d208191b592eb7467761dc2",
   "api_url": "https://xunsheng-xianjian-accounts-1981.tender-mint-0697.chatgpt.site",
-  "source_commit": "e36ada08eb9747bbbf6ae6fa1222598127750e02",
-  "version_id": "appgprj_6ada7f4b3d208191b592eb7467761dc2~appgver_dcdaac7150b0819184686daaf2fc3697",
+  "source_commit": "8fac1866b3eab3158a6f08aebc306ffb8ee5fff2",
+  "version_id": "appgprj_6ada7f4b3d208191b592eb7467761dc2~appgver_b83d7d9afed08191a8262cd34b1a1a94",
   "database_binding": "DB",
   "access": "public"
 }

@@ -32,7 +32,7 @@ const AccountSession=(()=>{
       vault=AccountStore.create();
       legacy=await vault.migrateLegacy({validSave:RunSave.valid,convertLegacy:RunSave.convertLegacy,validProgress:p=>p.version===1&&Number.isInteger(p.cleared)&&p.cleared>=0&&p.cleared<=42&&Object.values(p.entries||{}).every(e=>JourneyProgress.validBuild(e.build))});
       ready=true;const saved=await vault.restore();if(saved){activate(saved);return;}
-      suggestion=legacy?.account||'';render();
+      suggestion='';render();
     }catch(error){notice=error.message||'账号服务暂不可用，原有存档已保留';current=null;ready=true;render();}
   }
   function open(kind='profile'){
@@ -63,7 +63,7 @@ const AccountSession=(()=>{
   async function logout(){
     if(busy||!current)return false;if(!RunSave.save('退出账号')){status('当前历程尚未保存，请稍后再退出',true);return false;}
     busy=true;status('正在保存并退出…');let syncFailed=false;try{await flush();}catch{syncFailed=true;}if(cloudConflict||!current){busy=false;render();return false;}
-    suggestion=current.account;try{await vault.logout();}catch{}clearTimeout(syncTimer);queued=null;inFlight=null;current=null;busy=false;RunSave.reloadAccount();previous=null;document.body.classList.add('account-required');notice=syncFailed?'已退出。本机进度已保留，下次登录时继续同步':'已保存并退出，请登录后继续';G.state='start';open('login');sync();return true;
+    suggestion='';try{await vault.logout();}catch{}clearTimeout(syncTimer);queued=null;inFlight=null;current=null;busy=false;RunSave.reloadAccount();previous=null;document.body.classList.add('account-required');notice=syncFailed?'已退出。本机进度已保留，下次登录时继续同步':'已保存并退出，请登录后继续';G.state='start';open('login');sync();return true;
   }
   function onSaved(snapshot){
     if(!current||!vault||cloudConflict)return;
@@ -105,7 +105,7 @@ const AccountSession=(()=>{
     try{if(conflict.local)localStorage.setItem(vault.storageKey(conflict.result.user.id,'cloud-conflict-backup'),JSON.stringify(conflict.local));activate(conflict.result,{force:true,useLocal});}catch(error){status(error.message,true);}
   }
   function formHTML(){
-    const registering=screen==='register';return `<form id="accountForm" class="account-form"><label>账号<div class="account-field-row"><input id="accountInput" name="account" autocomplete="username" minlength="3" maxlength="24" required value="${esc(suggestion)}" placeholder="至少3位"><button type="button" id="randomAccountBtn">随机生成</button></div><small>3至24位，可使用中文、字母、数字、下划线</small></label>${registering?'<label>修仙名称<input name="name" maxlength="20" placeholder="不填则使用账号名" autocomplete="nickname"></label>':''}<label>密码<input id="accountPassword" name="password" type="password" minlength="3" maxlength="128" autocomplete="${registering?'new-password':'current-password'}" required placeholder="至少3位"></label><button class="btn" type="submit" ${ready?'':'disabled'}>${registering?'注 册 账 号':'登 录 · 续 修 仙 途'}</button></form>${legacy&&!registering?`<section class="legacy-account"><strong>已保留你的原有历程</strong><p>迁移账号：<b>${esc(legacy.account)}</b><br>默认密码：<b>aaa</b>。登录后可修改道号与密码。</p><button id="useLegacyAccount" type="button">使用原有账号</button></section>`:''}`;
+    const registering=screen==='register';return `<form id="accountForm" class="account-form"><label>账号<div class="account-field-row"><input id="accountInput" name="account" autocomplete="username" minlength="3" maxlength="24" required value="${esc(suggestion)}" placeholder="至少3位"><button type="button" id="randomAccountBtn">随机生成</button></div><small>3至24位，可使用中文、字母、数字、下划线</small></label>${registering?'<label>修仙名称<input name="name" maxlength="20" placeholder="不填则使用账号名" autocomplete="nickname"></label>':''}<label>密码<input id="accountPassword" name="password" type="password" minlength="3" maxlength="128" autocomplete="${registering?'new-password':'current-password'}" required placeholder="至少3位"></label><button class="btn" type="submit" ${ready?'':'disabled'}>${registering?'注 册 账 号':'登 录 · 续 修 仙 途'}</button></form>`;
   }
   function profileHTML(){
     const save=RunSave.snapshot(),summary=AccountModel.summary(save?.run.player);return `<div class="account-summary"><span>${esc(current.account)}</span><strong>${esc(current.name)}</strong><p>${save?AccountModel.realmLabel(summary)+' · 战力 '+summary.power.toLocaleString('zh-CN'):'尚未启程 · 登录后可开始修行'}</p></div><form id="accountForm" class="account-form"><label>修仙名称<input name="name" value="${esc(current.name)}" maxlength="20" required autocomplete="nickname"></label><details class="password-settings"><summary>修改密码</summary><label>当前密码<input name="currentPassword" type="password" autocomplete="current-password"></label><label>新密码<input name="newPassword" type="password" minlength="3" maxlength="128" autocomplete="new-password" placeholder="至少3位，不修改请留空"></label></details><button class="btn" type="submit">保存名称与设置</button></form><button id="logoutAccountBtn" class="account-secondary">保存并退出登录</button>`;
@@ -117,12 +117,11 @@ const AccountSession=(()=>{
 
   function render(){
     if(!panel||previous===null)return;const ranking=screen==='ranking';
-    panel.innerHTML=`<section class="account-sheet ${ranking?'account-ranking':''}"><header class="account-header"><div><span class="overline">重 走 西 游 · 剑 仙 仙 籍</span><h1>${ranking?'仙 道 天 榜':screen==='profile'?'剑 仙 仙 籍':'执 籍 入 仙 途'}</h1><p>${current?'欢迎，道友 '+esc(current.name):'先注册，再登录 · 每位剑仙拥有独立历程'}</p></div>${canPlay()?'<button id="accountClose" aria-label="关闭账号面板">×</button>':''}</header><nav class="account-tabs">${(cloudConflict?[]:current?[['profile','我的账号'],['ranking','修仙排行榜']]:[['login','登录'],['register','注册'],['ranking','修仙排行榜']]).map(([kind,name])=>`<button data-account-screen="${kind}" aria-pressed="${screen===kind}">${name}</button>`).join('')}</nav><div class="account-content">${screen==='conflict'&&cloudConflict?conflictHTML():ranking?rankingHTML():screen==='profile'&&current?profileHTML():formHTML()}</div><footer class="account-footer"><p id="accountMessage" role="status" aria-live="polite">${esc(notice||(!ready?'正在检查账号与原有历程…':current?'修行进度随当前账号保存':'联网账号 · 云端保存历程 · 全服共享排行榜'))}</p><small>云端账号 · 各自独立历程 · 原有账号初始密码 aaa</small></footer></section>`;
+    panel.innerHTML=`<section class="account-sheet ${ranking?'account-ranking':''}"><header class="account-header"><div><span class="overline">重 走 西 游 · 剑 仙 仙 籍</span><h1>${ranking?'仙 道 天 榜':screen==='profile'?'剑 仙 仙 籍':'执 籍 入 仙 途'}</h1><p>${current?'欢迎，道友 '+esc(current.name):'先注册，再登录 · 每位剑仙拥有独立历程'}</p></div>${canPlay()?'<button id="accountClose" aria-label="关闭账号面板">×</button>':''}</header><nav class="account-tabs">${(cloudConflict?[]:current?[['profile','我的账号'],['ranking','修仙排行榜']]:[['login','登录'],['register','注册'],['ranking','修仙排行榜']]).map(([kind,name])=>`<button data-account-screen="${kind}" aria-pressed="${screen===kind}">${name}</button>`).join('')}</nav><div class="account-content">${screen==='conflict'&&cloudConflict?conflictHTML():ranking?rankingHTML():screen==='profile'&&current?profileHTML():formHTML()}</div><footer class="account-footer"><p id="accountMessage" role="status" aria-live="polite">${esc(notice||(!ready?'正在检查账号与原有历程…':current?'修行进度随当前账号保存':'联网账号 · 云端保存历程 · 全服共享排行榜'))}</p><small>云端账号 · 各自独立历程</small></footer></section>`;
     panel.querySelectorAll('[data-account-screen]').forEach(button=>button.onclick=()=>{if(busy)return;screen=button.dataset.accountScreen;notice='';render();if(screen==='ranking')loadRanking();});
     panel.querySelectorAll('[data-rank]').forEach(button=>button.onclick=()=>{rankMode=button.dataset.rank;loadRanking();});
     const form=panel.querySelector('#accountForm');if(form)form.onsubmit=event=>{event.preventDefault();submit(form);};
     const random=panel.querySelector('#randomAccountBtn');if(random)random.onclick=()=>{if(!vault)return;fillAccount(vault.randomAccount());};
-    const useLegacy=panel.querySelector('#useLegacyAccount');if(useLegacy)useLegacy.onclick=()=>fillAccount(legacy.account);
     const logoutButton=panel.querySelector('#logoutAccountBtn');if(logoutButton)logoutButton.onclick=logout;
     const closeButton=panel.querySelector('#accountClose');if(closeButton)closeButton.onclick=close;
     const refresh=panel.querySelector('#refreshRankingBtn');if(refresh)refresh.onclick=loadRanking;
@@ -131,7 +130,7 @@ const AccountSession=(()=>{
   }
   function decorateMenu(){
     if(!current)return;const root=document.querySelector('.journey-menu');if(!root)return;const card=document.createElement('section');card.className='account-menu-card';const summary=AccountModel.summary(RunSave.snapshot()?.run.player);
-    card.innerHTML=`<div><span class="overline">已登录 · ${esc(current.account)}</span><strong>${esc(current.name)}</strong><small>${RunSave.snapshot()?AccountModel.realmLabel(summary)+' · 战力 '+summary.power.toLocaleString('zh-CN'):'以此账号开启独立修仙历程'}</small></div><div><button id="menuProfileBtn">名称与账号</button><button id="menuRankingBtn">查看修仙榜 →</button></div>`;root.prepend(card);card.querySelector('#menuProfileBtn').onclick=()=>open('profile');card.querySelector('#menuRankingBtn').onclick=()=>open('ranking');
+    card.innerHTML=`<div><span class="overline">已登录</span><strong>${esc(current.name)}</strong><small>${RunSave.snapshot()?AccountModel.realmLabel(summary)+' · 战力 '+summary.power.toLocaleString('zh-CN'):'以此账号开启独立修仙历程'}</small></div><div><button id="menuProfileBtn">名称与账号</button><button id="menuRankingBtn">查看修仙榜 →</button></div>`;root.prepend(card);card.querySelector('#menuProfileBtn').onclick=()=>open('profile');card.querySelector('#menuRankingBtn').onclick=()=>open('ranking');
   }
   function sync(){const button=document.getElementById('accountBtn'),name=current?current.name:'登录';if(button&&button.textContent!==name)button.textContent=name;}
   function handleKey(event){

@@ -64,10 +64,10 @@ async function route(request,env){
   if(path==='/api/me'&&method==='GET')return {user:userView(user),...savedView(user)};
   if(path==='/api/logout'&&method==='POST'){await env.DB.prepare('DELETE FROM sessions WHERE token_hash=?').bind(tokenHash).run();return {ok:true};}
   if(path==='/api/profile'&&method==='POST'){
-    const input=await body(request),name=String(input.name??user.display_name).trim();if(model.nameError(name))throw fail(model.nameError(name));let salt=user.password_salt,encoded=user.password_hash;
+    const input=await body(request),account=input.account===undefined?user.account:model.normalizeAccount(input.account),name=String(input.name??user.display_name).trim(),error=model.accountError(account)||model.nameError(name);if(error)throw fail(error);let salt=user.password_salt,encoded=user.password_hash;
     if(input.password){if(model.passwordError(input.password))throw fail(model.passwordError(input.password));await rate(env,request,'password',user.id,15);await verify(user,input.currentPassword);salt=random();encoded=await passwordHash(String(input.password),salt);}
-    const nextVersion=user.credential_version+(input.password?1:0),statements=[env.DB.prepare('UPDATE users SET display_name=?,password_salt=?,password_hash=?,credential_version=?,updated_at=? WHERE id=? AND credential_version=?').bind(name,salt,encoded,nextVersion,Date.now(),user.id,user.credential_version)];
-    if(input.password)statements.push(env.DB.prepare('DELETE FROM sessions WHERE user_id=? AND token_hash<>?').bind(user.id,tokenHash));const result=await env.DB.batch(statements);if(!result[0].meta.changes)throw fail('账号刚刚在另一处更新，请重试',409);return {user:{...userView(user),name,credentialVersion:nextVersion}};
+    const nextVersion=user.credential_version+(input.password||account!==user.account?1:0),statements=[env.DB.prepare('UPDATE users SET account=?,display_name=?,password_salt=?,password_hash=?,credential_version=?,updated_at=? WHERE id=? AND credential_version=?').bind(account,name,salt,encoded,nextVersion,Date.now(),user.id,user.credential_version)];
+    if(input.password)statements.push(env.DB.prepare('DELETE FROM sessions WHERE user_id=? AND token_hash<>?').bind(user.id,tokenHash));let result;try{result=await env.DB.batch(statements);}catch(error){if(String(error).includes('UNIQUE'))throw fail('该登录名已被使用，请更换',409);throw error;}if(!result[0].meta.changes)throw fail('账号刚刚在另一处更新，请重试',409);return {user:{...userView(user),account,name,credentialVersion:nextVersion}};
   }
   if(path==='/api/save'&&method==='PUT'){
     const input=await body(request);if(!Number.isSafeInteger(input.baseRevision)||input.baseRevision<0||!validSave(input.save))throw fail('存档校验未通过，本地进度已保留');
