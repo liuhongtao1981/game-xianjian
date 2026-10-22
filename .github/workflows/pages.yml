@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - 'prototype/**'
+      - 'server/accounts/**'
+      - 'tools/check-account-model.js'
+      - 'tools/check-account-service.js'
       - 'tools/check-syntax.js'
       - 'tools/check-director.js'
       - 'tools/check-boss-summons.js'
@@ -69,6 +72,8 @@ jobs:
           node tools/check-boss-summons.js
           node tools/check-carryover.js
           node tools/check-saves.js
+          node tools/check-account-model.js
+          node tools/check-account-service.js
           node tools/check-cultivation.js
           node tools/check-auto-cultivation.js
           node tools/check-realm-passage.js

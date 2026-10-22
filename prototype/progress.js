@@ -22,8 +22,8 @@ const JourneyProgress=(()=>{
       &&(!b.cultivation?.spellGift||SpellGift.valid(b.cultivation.spellGift,b.cultivation.realm)&&SpellGift.keys.every(k=>(b.spells[k]||0)===(b.cultivation.spellGift.base[k]||0)+(b.cultivation.spellGift.levels[k]||0)))
       &&(b.t===undefined||b.t&&typeof b.t==='object'&&!Array.isArray(b.t)&&Object.entries(b.t).every(([k,v])=>spellKeys.includes(k)&&Number.isFinite(v)&&v>=0&&v<1e7));
   }
-  try{
-    const saved=JSON.parse(localStorage.getItem(key));
+  function load(){data={version:1,cleared:0,entries:{}};try{
+    const saved=JSON.parse(localStorage.getItem(AccountSession.storageKey(key)));
     if(saved?.version===1&&Number.isInteger(saved.cleared)&&saved.cleared>=0&&saved.cleared<=42){
       data.cleared=saved.cleared;
       for(const i of Array.from({length:41},(_,j)=>j+1)){const e=saved.entries?.[i];if(e&&['story','normal','hard','nightmare'].includes(e.difficulty)&&validBuild(e.build))data.entries[i]={difficulty:e.difficulty,build:cleanBuild(e.build)};}
@@ -31,8 +31,8 @@ const JourneyProgress=(()=>{
       if(data.cleared>1&&!data.entries[1])data.cleared=1;
       if(data.cleared>2&&!data.entries[2])data.cleared=2;
     }
-  }catch{}
-  function persist(){if(typeof RunSave!=='undefined'&&RunSave.active())return;try{localStorage.setItem(key,JSON.stringify(data));}catch{/* Session progression remains available. */}}
+  }catch{}}load();
+  function persist(){if(!AccountSession.canPlay()||typeof RunSave!=='undefined'&&RunSave.active())return;try{localStorage.setItem(AccountSession.storageKey(key),JSON.stringify(data));}catch{/* Session progression remains available. */}}
   function restore(saved){
     if(!saved||saved.version!==1||!Number.isInteger(saved.cleared)||saved.cleared<0||saved.cleared>42)throw new Error('Invalid chapter progress');
     const entries={};for(const i of Array.from({length:41},(_,j)=>j+1))if(saved.entries?.[i]){const e=saved.entries[i];if(!validBuild(e.build)||!['story','normal','hard','nightmare'].includes(e.difficulty))throw new Error('Invalid entry');entries[i]={difficulty:e.difficulty,build:cleanBuild(e.build)};}
@@ -53,5 +53,5 @@ const JourneyProgress=(()=>{
     build.maxHp=Math.max(1,build.maxHp+profiles[difficulty].hp-profiles[entry.difficulty].hp);
     build.hp=Math.min(build.maxHp,Math.max(build.maxHp*.7,build.maxHp*fraction));return build;
   }
-  return {key,capture:cleanBuild,validBuild,restore,entry,clear,canSelect,outsideUnlocked,replay,cleared:()=>data.cleared,snapshot:()=>copy(data)};
+  return {key,load,capture:cleanBuild,validBuild,restore,entry,clear,canSelect,outsideUnlocked,replay,cleared:()=>data.cleared,snapshot:()=>copy(data)};
 })();

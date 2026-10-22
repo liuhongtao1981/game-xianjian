@@ -78,9 +78,10 @@ const Journey = (() => {
     ov.querySelectorAll('[data-ultimate]').forEach(n=>n.onclick=()=>{const id=n.dataset.ultimate,a=UltimateArts.loadout();if(a.includes(id)){if(a.length===1)return;run.equippedUltimates=a.filter(k=>k!==id);}else run.equippedUltimates=[...a,id].slice(0,3);run.ultimate=run.equippedUltimates[0];menu();});
     const selectHero=id=>{if(!HeroIdentity.valid(id))return;run.heroId=id;ov.querySelectorAll('[data-hero]').forEach(card=>{const selected=card.dataset.hero===id;card.classList.toggle('selected',selected);card.setAttribute('aria-pressed',String(selected));});ov.querySelector('.journey-heading .subtitle').innerHTML='剑仙'+HeroIdentity.get(id).name+' · 第一卷<br>被删去的姓名';};
     ov.querySelectorAll('[data-hero]').forEach(card=>{card.title='单击选择 · 双击查看人物状态';card.onclick=()=>selectHero(card.dataset.hero);card.ondblclick=()=>{selectHero(card.dataset.hero);CharacterUI.openFromMenu(card.dataset.hero);};});
-    const ending=document.getElementById('menuEndingBtn');if(ending)ending.onclick=EndingScene.open;document.getElementById('startBtn').onclick=startGame;CharacterUI.decorateMenu();ExpeditionUI.decorateMenu();ExperienceUI.menu();const outer=document.getElementById('outerChallengeBtn');if(outer){outer.disabled=document.getElementById('startBtn').disabled;outer.onclick=()=>RunSave.start(menuStage,false,false,true);}
+    const ending=document.getElementById('menuEndingBtn');if(ending)ending.onclick=EndingScene.open;document.getElementById('startBtn').onclick=startGame;CharacterUI.decorateMenu();ExpeditionUI.decorateMenu();ExperienceUI.menu();AccountSession.decorateMenu();const outer=document.getElementById('outerChallengeBtn');if(outer){outer.disabled=document.getElementById('startBtn').disabled;outer.onclick=()=>RunSave.start(menuStage,false,false,true);}
   }
   function enterStage(){
+    if(!AccountSession.canPlay()){AccountSession.open('login');return;}
     storyToken++;Sound.stopNarration();document.getElementById('overlay').classList.add('hidden');document.body.classList.remove('on-title');clearInput();G.state='playing';last=performance.now();
     if(run.extramural&&!G.bossSpawned)World.enterBoss();
   }

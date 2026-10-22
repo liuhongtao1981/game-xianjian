@@ -1,6 +1,6 @@
 /* One atomic envelope owns the character, chapter progress and reward ledger. */
 const RunSave=(()=>{
-  const key='xunsheng-save-v3',backup=key+'-backup',legacyKey='xunsheng-save-v2';
+  let key=AccountSession.storageKey('xunsheng-save-v3'),backup=key+'-backup',legacyKey=AccountSession.storageKey('xunsheng-save-v2');
   const writer=Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);
   let data=null,enabled=false,suppress=false,conflict=false,elapsed=0,message='自动存档待启用',bossEntry=null,ledger={},cycle=0,revision=0;
   const clone=v=>JSON.parse(JSON.stringify(v));
@@ -35,10 +35,15 @@ const RunSave=(()=>{
     return d;
   }
   function migrateBuild(b){const p=clone(b),fraction=p.xp/Math.max(1,p.xpNext);p.xpNext=Cultivation.xpNeed(p.level);p.xp=Math.min(p.xpNext-.00001,fraction*p.xpNext);Cultivation.protectLegacy(p);return p;}
-  function init(){
+  function reloadAccount(){
+    key=AccountSession.storageKey('xunsheng-save-v3');backup=key+'-backup';legacyKey=AccountSession.storageKey('xunsheng-save-v2');
+    data=null;enabled=false;suppress=false;conflict=false;elapsed=0;bossEntry=null;ledger={};cycle=0;revision=0;message='自动存档待启用';JourneyProgress.load();
     const primary=read(key),fallback=primary?null:read(backup),old=primary||fallback?null:read(legacyKey)||read(legacyKey+'-backup');data=primary||fallback||old;
     if(data){revision=data.revision;try{JourneyProgress.restore(data.progress);}catch{data=null;}message=fallback?'已恢复备份存档':old?'旧档已安全迁移 · 九层历程':'已有自动存档';}
     Journey.run.heroId=HeroIdentity.clean(data?.run.player.heroId);
+  }
+  function init(){
+    reloadAccount();
     window.addEventListener('storage',event=>{if(event.key!==key||!event.newValue)return;try{receive(JSON.parse(event.newValue));}catch{}});
     window.addEventListener('pagehide',()=>save('离开网页'));window.addEventListener('beforeunload',()=>save('退出网页'));
     window.addEventListener('blur',()=>save('窗口失焦'));document.addEventListener('visibilitychange',()=>{if(document.hidden)save('切换网页');});
@@ -54,14 +59,16 @@ const RunSave=(()=>{
       chests:G.chests.map(c=>({x:c.x,y:c.y,t:c.t||0,kind:c.kind,rewardId:c.rewardId||null})),world:World.exportState(),director:EncounterDirector.exportState(),bossSpawned:G.bossSpawned,bossEntry:clone(bossEntry)}};
   }
   function save(reason='自动保存'){
+    if(!AccountSession.canPlay())return !enabled;
     if(suppress||!enabled||!P||ExperienceUI.saveState()==='start')return true;if(conflict)return false;if(['start','character-preview'].includes(G.state))return true;
     const newer=read(key);if(newer&&newer.writer!==writer&&newer.revision>revision){receive(newer);return false;}
     try{const next=capture();if(!valid(next))throw new Error('Invalid runtime snapshot');const previous=read(key);if(previous)try{localStorage.setItem(backup,JSON.stringify(previous));}catch{}
-      localStorage.setItem(key,JSON.stringify(next));revision=next.revision;data=next;elapsed=0;message='已保存 '+new Date(next.savedAt).toLocaleTimeString('zh-CN',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});return true;
+      localStorage.setItem(key,JSON.stringify(next));revision=next.revision;data=next;elapsed=0;message='已保存 '+new Date(next.savedAt).toLocaleTimeString('zh-CN',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});AccountSession.onSaved(next);return true;
     }catch{message='尚未保存 · 浏览器存储不可用';return false;}
   }
   function tick(dt){if(enabled&&G.state==='playing'&&!conflict){elapsed+=dt;if(elapsed>=5)save();}}
   function start(stage=0,newCycle=false,newReplay=false,extramural=false,skipIntro=false){
+    if(!AccountSession.canPlay()){AccountSession.open('login');return false;}
     if(conflict||!JourneyProgress.canSelect(stage)||extramural&&!JourneyProgress.outsideUnlocked(stage))return false;
     const old=data?.run,legacy=JourneyProgress.replay(stage,Journey.run.difficulty,Journey.difficulties);
     if(old&&!newCycle&&(old.queue>0||old.chestReward||old.pendingLore!==null&&old.pendingLore!==undefined||old.coreReward))return false;
@@ -76,6 +83,7 @@ const RunSave=(()=>{
     suppress=true;Journey.begin(stage);enabled=true;Journey.run.stage=stage;Journey.run.extramural=extramural===true;Journey.run.passage=passage;Journey.run.tier=0;Journey.run.checkpoint=build;reset();bossEntry=null;suppress=false;Journey.intro(skipIntro);save('开始历程');return true;
   }
   function continueRun(heroId=null){
+    if(!AccountSession.canPlay()){AccountSession.open('login');return false;}
     const requested=HeroIdentity.valid(heroId)?heroId:null;
     if(requested)Journey.run.heroId=requested;
     if(!data){const s=summary();return s?start(s.stage):false;}
@@ -104,6 +112,7 @@ const RunSave=(()=>{
     suppress=false;if(lockedOutside)save('域外解锁条件更新');if(requested&&requested!==priorHero&&!save('切换剑仙')){P.heroId=priorHero;Journey.run.heroId=priorHero;if(Journey.run.checkpoint)Journey.run.checkpoint.heroId=priorHero;if(G.state==='story')Journey.intro();}renderSpells();renderEquips();syncHUD();return true;
   }
   function retry(){
+    if(!AccountSession.canPlay()){AccountSession.open('login');return false;}
     if(!['dead','paused'].includes(G.state))return false;const build=JourneyProgress.capture(P);build.hp=build.maxHp;build.shield=0;
     const queue=G.queue,offers=clone(choicesCache);Journey.run.checkpoint=build;reset();G.queue=queue;choicesCache=offers;bossEntry=null;Journey.intro();save('死亡重试');return true;
   }
@@ -111,6 +120,6 @@ const RunSave=(()=>{
   function beginChapter(stage){if(stage<JourneyProgress.cleared())for(const k of Object.keys(ledger))if(!k.startsWith('first:')&&new RegExp('^(boss|core|site|elite|drop):'+stage+'(?::|$)').test(k))delete ledger[k];}
   function stageChanged(){bossEntry=null;save('进入下一难');}
   function claim(id){if(!enabled)return true;if(ledger[id])return false;ledger[id]=true;return true;}
-  return {key,backup,init,save,tick,start,continueRun,retry,prepareBoss,beginChapter,stageChanged,summary,receive,valid,
-    active:()=>enabled,conflicted:()=>conflict,status:()=>message,claim,claimed:id=>enabled&&!!ledger[id],snapshot:()=>data?clone(data):null};
+  return {get key(){return key;},get backup(){return backup;},init,reloadAccount,convertLegacy:migrateV2,save,tick,start,continueRun,retry,prepareBoss,beginChapter,stageChanged,summary,receive,valid,
+    active:()=>enabled,conflicted:()=>conflict,status:()=>message+(AccountSession.syncStatus()?' · '+AccountSession.syncStatus():''),claim,claimed:id=>enabled&&!!ledger[id],snapshot:()=>data?clone(data):null};
 })();

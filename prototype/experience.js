@@ -13,7 +13,7 @@ const ExperienceUI=(()=>{
     const info=document.createElement('aside');info.id='mapDetail';info.hidden=true;document.body.appendChild(info);
   }
   function open(kind='settings'){
-    if(AscensionScene.active()||Alchemy.active()||previous!==null)return;previous=G.state;focus=document.activeElement;G.state=kind;clearInput();
+    if(AscensionScene.active()||AccountSession.overlayActive()||Alchemy.active()||previous!==null)return;previous=G.state;focus=document.activeElement;G.state=kind;clearInput();
     panel.hidden=false;panel.innerHTML=`<section class="experience-sheet"><header><div><span class="overline">寻圣 · 行旅手册</span><h2>${kind==='help'?'战 斗 与 探 路':'画 面 与 操 作'}</h2></div><button id="experienceClose" aria-label="关闭，返回之前内容">×</button></header>${kind==='help'?helpHTML():settingsHTML()}<footer><span id="preferenceStatus" role="status">设置保存在此浏览器 · 战斗已暂停</span><button class="btn" id="experienceDone">返回之前内容 <kbd>Esc</kbd></button></footer></section>`;
     document.getElementById('experienceClose').onclick=close;document.getElementById('experienceDone').onclick=close;
     panel.querySelectorAll('[data-preference]').forEach(n=>n.onchange=()=>{const name=n.dataset.preference,value=n.type==='checkbox'?n.checked:name==='scale'?Number(n.value):n.value;document.getElementById('preferenceStatus').textContent=set(name,value)?'设置已保存':'尚未保存 · 本次设置仍可使用';});
@@ -56,5 +56,5 @@ const ExperienceUI=(()=>{
   function danger(){return G.telegraphs.some(t=>Math.hypot(t.x-P.x,t.y-P.y)<(t.r||150)+200)||G.enemies.some(e=>e.action==='windup'&&Math.hypot(e.x-P.x,e.y-P.y)<450);}
   function friendly(fn){ctx.save();if(danger())ctx.globalAlpha*=.4;fn();ctx.restore();}
   function reset(){summary=null;tip=null;mapSelection=null;Targeting.reset();}
-  return {init,settings,set,open,close,handleKey,teach,tick,sync,campCleared,mapDetail,resultHTML,menu,damageText,friendly,reset,saveState:()=>Alchemy.active()?Alchemy.priorState():EndingScene.active()?EndingScene.priorState():previous||G.state};
+  return {init,settings,set,open,close,handleKey,teach,tick,sync,campCleared,mapDetail,resultHTML,menu,damageText,friendly,reset,saveState:()=>AccountSession.overlayActive()?AccountSession.priorState():Alchemy.active()?Alchemy.priorState():EndingScene.active()?EndingScene.priorState():previous||G.state};
 })();

@@ -1,0 +1,10 @@
+const fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'..'),target=path.resolve(process.argv[2]||path.join(root,'output/account-service-site'));
+if(!fs.existsSync(path.join(target,'.openai/hosting.json')))throw Error('Initialize the Sites Worker project first');
+const manifest=JSON.parse(fs.readFileSync(path.join(target,'.openai/hosting.json'),'utf8'));manifest.d1='DB';manifest.r2=null;fs.writeFileSync(path.join(target,'.openai/hosting.json'),JSON.stringify(manifest,null,2)+'\n');
+const worker=fs.readFileSync(path.join(root,'prototype/account-model.js'),'utf8')+'\n'+fs.readFileSync(path.join(root,'server/accounts/worker.mjs'),'utf8');
+for(const folder of ['worker','dist/server','dist/.openai','drizzle/meta'])fs.mkdirSync(path.join(target,folder),{recursive:true});
+fs.writeFileSync(path.join(target,'worker/index.js'),worker);fs.writeFileSync(path.join(target,'dist/server/index.js'),worker);fs.copyFileSync(path.join(target,'.openai/hosting.json'),path.join(target,'dist/.openai/hosting.json'));
+fs.copyFileSync(path.join(root,'server/accounts/migrations/0000_accounts.sql'),path.join(target,'drizzle/0000_accounts.sql'));
+fs.writeFileSync(path.join(target,'drizzle/meta/_journal.json'),JSON.stringify({version:'7',dialect:'sqlite',entries:[{idx:0,version:'6',when:1792702800000,tag:'0000_accounts',breakpoints:true}]},null,2));
+console.log('Built shared account model, Worker API and D1 migrations at '+target);

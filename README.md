@@ -4,6 +4,16 @@
 
 本次补齐真仙、玄仙、金仙、太乙金仙、大罗金仙、仙王六境十八关。从照命河的价镜追查到天外归名石庭，每关各有独立地图、妖众、破招、厚重旁白和配乐，最终归还众生改写契约的权利。详见[后十八关发布记录](docs/后十八关-发布记录.md)。
 
+## 账号与全服修仙榜
+
+进入游戏需先注册再登录。账号至少3位，可随机生成；密码至少3位；注册后需单独登录。可在账号面板设置20位以内的修仙名称及修改密码。原有浏览器历程会迁移成唯一的 `legacy_…` 账号，初始密码 `aaa`，登录页显示完整账号；原始存档保留备份。改过密码后使用新密码。
+
+账号服务与数据库部署在 Sites，GitHub Pages 继续托管游戏。登录后从云端载入该账号的历程，本机也保留缓存；本地保存后异步上传，上传失败显示待同步。多个设备同时修行导致版本冲突时，暂停并让玩家选择云端或本机进度，两份数据先保留备份。退出账号会保存进度。密码仅在服务端加盐散列，客户端不保存密码。
+
+修仙榜对所有玩家共享。境界榜按大境界、层数、战力排序，战力榜按战力、大境界、层数排序；同分按账号排序。展示前100位及本人全服名次。战力由服务端依据常驻属性和术法等级统一计算，受伤不影响战力。它根据单机客户端提交的校验后存档计算，不属于服务器裁决战斗或防作弊竞技榜。
+
+服务源码位于 `server/accounts/`，共享战力规则位于 `prototype/account-model.js`；部署身份记录在 `server/accounts/deployment.json`，不包含凭据。D1迁移应用于独立的云数据库，生产数据不进入Git。
+
 ## 运行
 
 Windows 安装 Python 3 后，双击项目根目录的 `run.bat`，即可启动本地服务器并自动打开游戏。游玩时保持命令窗口开启，按 Ctrl+C 停止服务器。
@@ -14,7 +24,7 @@ Windows 安装 Python 3 后，双击项目根目录的 `run.bat`，即可启动�
 python -m http.server 4173 --directory prototype
 ```
 
-然后访问 <http://localhost:4173/>。也可直接打开 `prototype/index.html` 离线体验。
+然后访问 <http://localhost:4173/>。账号与全服榜需要联网，请使用上述本地HTTP地址或线上HTTPS游戏地址。
 
 破境核心改为对应关卡大妖30%概率掉落；对应境界全部三关通关后，卷首与通关页才显示域外挑战入口，超级大妖生命和实际伤害均为同关、同难度普通大妖的2倍。域外胜利100%获得本篇下一境突破所需核心材料和灵蕴精华各50%，连续胜利两次可备齐一份材料；修为仍须另行积累。域外不解锁主线，支持重战、死亡重试与刷新恢复；概率落空也会保存，刷新不能重抽。精英与满构筑宝箱只补灵蕴，旧档待领取的定向材料继续兼容。
 
@@ -50,13 +60,15 @@ node tools/check-expansion.js
 node tools/check-infant.js
 node tools/check-saves.js
 node tools/check-cultivation.js
+node tools/check-account-model.js
+node tools/check-account-service.js
 node tools/check-idle-casting.js
 node tools/check-immortal-movement.js
 node tools/check-alchemy.js
 node tools/build-navigation-cache.js --check
 ```
 
-地图几何变更后先运行 `node tools/build-navigation-cache.js`，再运行 `node tools/build-navigation-cache.js --verify` 核对42图全部节点与通路。浏览器交互检查：`node tools/check-alchemy-movement-ui.js`；真实帧耗时检查：`node tools/check-performance-ui.js --label=current`。浏览器检查使用隔离存档，需要 Playwright 与 Edge。
+地图几何变更后先运行 `node tools/build-navigation-cache.js`，再运行 `node tools/build-navigation-cache.js --verify` 核对42图全部节点与通路。浏览器交互检查：`node tools/check-alchemy-movement-ui.js`；真实帧耗时检查：`node tools/check-performance-ui.js --label=current`。浏览器检查使用隔离存档，需要 Playwright 与 Edge。账号完整浏览器验证为 `node tools/check-accounts-ui.js`（SQLite测试服务，无生产数据），线上服务验证为 `node tools/check-accounts-cloud-ui.js`（自动删除自建验收账号）。
 
 脚本模拟通过不等于真人通关率；大型地图的真人主路25至35分钟、完整探索45至60分钟目标仍需试玩校准。
 

@@ -443,6 +443,7 @@ function spawnBoss(){
 /* ---------------- 更新 ---------------- */
 
 function update(dt){
+  if(!AccountSession.canPlay())return;
   if (AscensionScene.active() || G.state !== 'playing' || dt <= 0) return;
   G.time += dt;
   RunSave.tick(dt);
@@ -1392,7 +1393,7 @@ function syncHUD(){
   ImmortalMovement.sync();Alchemy.sync();
   const stage=Journey.stage(),profile=Journey.difficulty();
   document.getElementById('chapterTitle').textContent=stage.no+' · '+stage.title;
-  document.getElementById('heroName').textContent=HeroIdentity.get(P.heroId).name;
+  document.getElementById('heroName').textContent=AccountSession.current()?.name||HeroIdentity.get(P.heroId).name;
   document.getElementById('heroGlyph').textContent=HeroIdentity.get(P.heroId).glyph;
   document.getElementById('identitySub').textContent='无籍剑仙 · '+profile.name;
   document.getElementById('locationTitle').textContent=stage.place+' · '+World.region();
@@ -1412,7 +1413,7 @@ function syncHUD(){
     bw.classList.add('hidden');
     document.getElementById('bossHealth').textContent='';
   }
-  ExperienceUI.sync();
+  ExperienceUI.sync();AccountSession.sync();
 }
 
 function renderSpells(){
@@ -1432,7 +1433,7 @@ function renderEquips(){
 /* ---------------- 输入 ---------------- */
 
 window.addEventListener('keydown', e => {
-  if(EndingScene.handleKey(e)||AscensionScene.handleKey(e)||ExperienceUI.handleKey(e)||Alchemy.handleKey(e))return;
+  if(AccountSession.handleKey(e)||EndingScene.handleKey(e)||AscensionScene.handleKey(e)||ExperienceUI.handleKey(e)||Alchemy.handleKey(e))return;
   // Let native card and sheet controls keep their focus and activation keys.
   if(['levelup','character','character-preview','chest','win'].includes(G.state)&&e.code==='Tab')return;
   if(['levelup','character','character-preview'].includes(G.state)&&['Space','Enter'].includes(e.code)&&e.target.closest?.('button,select,input')){if(e.repeat)e.preventDefault();return;}
@@ -1626,7 +1627,9 @@ G.state = 'start';
 if ('ontouchstart' in window){
   document.querySelector('.hint').innerHTML = '<kbd>左侧拖动</kbd> 移动 <kbd>轻点妖怪</kbd> 集火 <kbd>按住闪</kbd> 耗仙力疾行 <kbd>丹炉</kbd> 合炼';
 }
-if (QS.has('bench')){
+if(!AccountSession.canPlay()){
+  startScreen();AccountSession.init();
+}else if (QS.has('bench')){
   bench(Math.max(1, Math.min(12, Number(QS.get('bench')) || 6)), 200);
 } else if (QS.has('auto')){
   startGame();

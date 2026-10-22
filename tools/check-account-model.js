@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),model=require('../prototype/account-model');
+assert.ok(model.accountError('ab'));assert.equal(model.accountError('abc'),'');assert.equal(model.accountError('剑仙甲'),'');assert.ok(model.accountError('a b'));assert.equal(model.normalizeAccount(' ＡＢＣ '),'abc');
+assert.ok(model.passwordError('aa'));assert.equal(model.passwordError('aaa'),'');assert.ok(model.nameError(' '));assert.equal(model.nameError('剑仙·归来'),'');
+const player={maxHp:120,hp:120,shieldMax:70,shield:70,dmg:1,cdr:1,crit:0,speed:238,armor:0,regen:0,spells:{yujian:1},cultivation:{realm:0,layer:1},level:1};
+const base=model.power(player);assert.ok(base>0);assert.equal(model.power({...player,hp:1,shield:0}),base,'wounds do not change permanent battle power');
+assert.ok(model.power({...player,dmg:2})>base);assert.ok(model.power({...player,spells:{yujian:2}})>base);assert.ok(model.power({...player,cultivation:{realm:1,layer:1}})>base);
+const rows=[{account:'aaa',realm:0,layer:9,power:900},{account:'bbb',realm:1,layer:1,power:200},{account:'ccc',realm:1,layer:1,power:300}];
+assert.deepEqual(model.ranking(rows).map(r=>r.account),['ccc','bbb','aaa']);assert.deepEqual(model.ranking(rows,'power').map(r=>r.account),['aaa','ccc','bbb']);assert.equal(rows[0].rank,undefined);
+assert.equal(model.realmLabel(rows[1]),'金丹·一层');assert.equal(model.escape('<img onerror="x">'),'&lt;img onerror=&quot;x&quot;&gt;');
+console.log('PASS: account/password/name validation, normalization, wound-independent power and two stable rankings');
