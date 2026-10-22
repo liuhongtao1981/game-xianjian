@@ -1,0 +1,15 @@
+{
+  "id": "narration-d8502d880548557e",
+  "text": "大圣曾把珠从神龛取下，让它在寻常人的手里冷了一夜。小果沿三处还珠印换位，塔僧驱使香火反扑：他怕的不是珠碎，而是有人发现它本来不必吃人。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "35cb285584489f80022e6ffdf8cacf200fa4e885d2368504351e150881b8474a",
+  "source_sha256": "09936b5c54a7eb93265b0efe85c587b1fd135c6decab3a2dad67c59a6bdb0690",
+  "sha256": "2e935de11d669c7d605d154fa820303bfa190d35e4dceeaac20f178d1fb49dd8",
+  "duration": 15.078,
+  "file": "assets/audio/voice-heavy/narration-d8502d880548557e.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

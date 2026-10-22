@@ -1,0 +1,15 @@
+{
+  "id": "narration-0e5d3da7cd6b1e8b",
+  "text": "无首断冠王把每一个异议者都叫作旧冠余孽。城中的人若不够谦卑，便被判作仍藏野心；哪怕只想看看天，也要先证明自己没有想站到别人头上。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "bf859ebd0fd54c8387325a451a14cc10a44ca6de1623df1d2e5aa38e0c511353",
+  "source_sha256": "61a7a42ecc6a12220e78a220735403a6a3a6aff2000e07bfe56f4d1b5c4f06ea",
+  "sha256": "7d14b4001b1389ed2b3524771472984a3d138ab5ce7b252450b848e377120077",
+  "duration": 15.27,
+  "file": "assets/audio/voice-heavy/narration-0e5d3da7cd6b1e8b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

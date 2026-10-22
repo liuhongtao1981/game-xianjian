@@ -1,0 +1,15 @@
+{
+  "id": "narration-35f039c6db079b97",
+  "text": "孙小果没有把所有账烧掉。姓名、经手与后果都留在册中，让受过伤的人仍有地方追问；那些不许改口、不许退出、不许解释的条款，被一页页划去。信任没有随终契一同消失，它终于需要活人彼此回答。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "38a91dea4e25ba1bbb618d2b968ca05438957945375a6134100d50d31fb0d204",
+  "source_sha256": "b58a2ca64f21f573ae6b819372ae835c7e399bcefe5b007b5be33e881709e902",
+  "sha256": "b639a05095a0216d110fdfab2922b0ca0b29d527a9f50a8c262c6753b3fdd2f4",
+  "duration": 22.062,
+  "file": "assets/audio/voice-heavy/narration-35f039c6db079b97.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

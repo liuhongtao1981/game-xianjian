@@ -1,0 +1,15 @@
+{
+  "id": "narration-4b7944d7231597be",
+  "text": "裂隙没有新的证词。此妖生命与伤害均为本关大妖的两倍；仙王已无后续境界，胜利必得灵蕴精华五十六份与本境修为的一半，继续修至九层道圆。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c2d7591e294d0ea5c7d3f2af201c7574f3bc12dfe049724138059e0bad482b53",
+  "source_sha256": "57394cda79bf8858490d87b4f50865275ac2910540a6903872fad8d15110a9ce",
+  "sha256": "a889e225c2ed6a1d1e3aff1647835c8fdf1edfe3f0767066f225482390961e66",
+  "duration": 15.222,
+  "file": "assets/audio/voice-heavy/narration-4b7944d7231597be.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

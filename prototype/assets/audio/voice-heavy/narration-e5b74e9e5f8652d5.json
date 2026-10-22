@@ -1,0 +1,15 @@
+{
+  "id": "narration-e5b74e9e5f8652d5",
+  "text": "你循着烬界焚愿调令旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成借阳真君的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "4cdc20f083626c76ce88002cea16eaad52fd6626a1b30b2cdaeedb1c5b8046ad",
+  "source_sha256": "525b082f0a2bd30a81bc81d6301c1bbc49f9abc80d715c4836520a595a6f2b4e",
+  "sha256": "83493ce5fcaf71e7e73c9fa2eb34ece9963f8a2fcc686f87657b6b718c189196",
+  "duration": 10.542,
+  "file": "assets/audio/voice-heavy/narration-e5b74e9e5f8652d5.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

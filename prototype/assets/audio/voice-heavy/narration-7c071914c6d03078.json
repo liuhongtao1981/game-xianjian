@@ -1,0 +1,15 @@
+{
+  "id": "narration-7c071914c6d03078",
+  "text": "大圣曾从覆钵下走出去，没有带走一尊像，只给后来者留下了出口的方向。听澜跟随两道开口不同的青色慈环绕行，要让愿意相信与愿意离开，都不必先求赦免。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "086ea99ed5e28119a9755b4c09088ecdd765c857bbca89911abe993630d3a4e7",
+  "source_sha256": "977cb7f6c05f2c38b42de30d8cb019136c1a45840e3a8e1d6c832d78e9872061",
+  "sha256": "cd595d5dc3537d662538270e43467a6ecfa08f6085a8a88b8dbe4e41e4cedfc4",
+  "duration": 16.398,
+  "file": "assets/audio/voice-heavy/narration-7c071914c6d03078.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

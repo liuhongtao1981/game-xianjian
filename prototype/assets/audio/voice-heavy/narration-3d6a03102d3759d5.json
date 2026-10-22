@@ -1,0 +1,15 @@
+{
+  "id": "narration-3d6a03102d3759d5",
+  "text": "你循着灵山无主功德副册旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成九灵归账祖的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "9ef7f1ba71ff1fdb075ecde2d5e1ae3e69fd478026fb52375dfdc242da7de32d",
+  "source_sha256": "ab04ad98ee75e99fd1a76c5c6576df2c33c4943c9d2a46956e7711f066e86bfb",
+  "sha256": "d3e5096b9c670b2933e264690a01aa0e9e56233d3d2eb1ad29f07878a310a487",
+  "duration": 10.974,
+  "file": "assets/audio/voice-heavy/narration-3d6a03102d3759d5.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

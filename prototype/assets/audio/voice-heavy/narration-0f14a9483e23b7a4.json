@@ -1,0 +1,15 @@
+{
+  "id": "narration-0f14a9483e23b7a4",
+  "text": "大圣曾用两只空碗接泉，却没有替任何人喝下。小果将玉闸打开，让两边的水彼此看见。真君召出左右泉台和中央合流印，想证明不受安排的水只会泛滥。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "5d7ef1e94147183933f9a3d8d8f997938b33c175cfc4b9c627dfb8bb2a3e1f8a",
+  "source_sha256": "e962414488b49b75cbe9dd189481fd03459c6c48c5fc8ab13b3f76a27a13dfd9",
+  "sha256": "7acbeb73400b3ee0d7543b8947a8164b57e0362d01d3019d1dbc4ba9f85c206c",
+  "duration": 16.47,
+  "file": "assets/audio/voice-heavy/narration-0f14a9483e23b7a4.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

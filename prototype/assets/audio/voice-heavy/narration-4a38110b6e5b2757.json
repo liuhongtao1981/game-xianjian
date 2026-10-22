@@ -1,0 +1,15 @@
+{
+  "id": "narration-4a38110b6e5b2757",
+  "text": "凤仙的井底结着细盐，雨却被封在郡门后的大瓮里。玉衡使说此地曾有人犯错，待那人真心悔改，满郡百姓自然能等到甘霖。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "58b0686a5b0307d39789e47d64c5f606a6eba980520de72191d5d391ce5f7994",
+  "source_sha256": "610f3db931a5ebd44a9bee59cc74ff12a1b5eb4709eefa57d6869aecc36db58d",
+  "sha256": "76ee77acc2a6a2f01333027524c0333f8d68919d087996e67b6fac6bf073aaa0",
+  "duration": 13.182,
+  "file": "assets/audio/voice-heavy/narration-4a38110b6e5b2757.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-cbc7dc33908b16d9",
+  "text": "大圣留下的芭蕉旧骨插在灰里，没有风，却指着同一条通路。听澜不替所有人决定去留，只要关门的人也站到火里来回答。三条冷灰走廊开始依次显露。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "dfa6525c6eab3a2bb2605ea3dd769001706f32a4d3b6db43a6ed28fdfa56d3dc",
+  "source_sha256": "9acbb081ae1fddedde66f921a5b3caf1b66964bafe84225cead717fedb845f6d",
+  "sha256": "2aff667c3f6539d1fcf171a9eaa90ec065e3c0d710b102ec003e7de70400b8da",
+  "duration": 16.446,
+  "file": "assets/audio/voice-heavy/narration-cbc7dc33908b16d9.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

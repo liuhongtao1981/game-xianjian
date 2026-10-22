@@ -1,0 +1,15 @@
+{
+  "id": "narration-09bd7925979c7384",
+  "text": "大圣曾在河面留下一道没有倒影的脚印。他没有砸碎所有镜子，只把写着价目的那面翻了过来。小果循着两岸真正的人影换位，要让水只照人，不再替账房定价。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "0d0ec4a3ee4b6a3f6fe05307283c47c233e289488c816164db56948254db5c6a",
+  "source_sha256": "253cab48a91abdf6c681d864b252fb10e6e039ccd2ece7396be478c65059635e",
+  "sha256": "2dcd3437d33839ecf03cef977fb12aae50e84796158551a0739a387f1106486b",
+  "duration": 16.062,
+  "file": "assets/audio/voice-heavy/narration-09bd7925979c7384.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-35c6c1458da101b9",
+  "text": "九道接货印把听澜引入碧波宫。宫里的账册有九本，每本都说货从别处来，又已转往下一处；血珠绕了九圈，便被登记成没有来历的天赐。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "a69518fbd148232a274c0b83f40cd24946982e090c794a2b1c87abc8ae738bb5",
+  "source_sha256": "b50d3e6dd0c700308dd29c79ce1ff39fbf3ca62bb3b3f32d7bf55a50231f7f1e",
+  "sha256": "c743625d71d6fbcb33253015878746488afbc2ce89672b3455afb6ff31ebaf37",
+  "duration": 14.382,
+  "file": "assets/audio/voice-heavy/narration-35c6c1458da101b9.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

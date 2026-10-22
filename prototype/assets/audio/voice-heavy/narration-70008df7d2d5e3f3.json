@@ -1,0 +1,15 @@
+{
+  "id": "narration-70008df7d2d5e3f3",
+  "text": "上一难 · 毒敌还言。你带着「双生泉药引签」来到解阳山 · 双生泉。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "3dc8b467d1e0d0002baa9d0d1569df9876851409a219d1b601588463b559ecde",
+  "source_sha256": "a1c49bfb0f5bc259c748359a73d9bf1144da25f98f8b06e4be1b8cc36100ecf9",
+  "sha256": "0ee2f8405220e272214b8bdbe1686e62d3f33be047ee526e7f8d81238251703c",
+  "duration": 11.142,
+  "file": "assets/audio/voice-heavy/narration-70008df7d2d5e3f3.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

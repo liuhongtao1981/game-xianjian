@@ -1,0 +1,15 @@
+{
+  "id": "narration-630683ef8d8d2d72",
+  "text": "大圣留在算盘里的金毫拨乱过一次寿数，白鹿便把算盘换成了玉秤。小果先守横向还年印，再走纵向还年印，最后站回两端同重的中央寿台。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "0c053b5bedc6852c401dc87087c64086be0ff2e8c20513c1161fa850a1017906",
+  "source_sha256": "1f556b5660024195f8535a0b6280a57a53dc4db7cbea3c917d1f09c91848f51a",
+  "sha256": "56211fe13efa3e1ae615507daf8f029388547ff6f40f89e22156711844725d69",
+  "duration": 14.862,
+  "file": "assets/audio/voice-heavy/narration-630683ef8d8d2d72.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

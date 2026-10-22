@@ -1,0 +1,15 @@
+{
+  "id": "narration-3c87d6b341689cb0",
+  "text": "大圣留在兵库的手印没有握拳，而是托着一把交还原主的锤。听澜沿两道归兵折线穿行，最后站稳六角兵印，不是要人人称雄，只是不许自卫也由强者独占。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "19c45305635292fd0ba562248eea633d09012cbb0554ae2904b5acc4ba510dc3",
+  "source_sha256": "4fe71129ca8e0d6b5aa400a6cba5e923704ac556176f243081706f47595a894d",
+  "sha256": "924e1295eadaa3684e71374a0cc4f6b3c912698223f65dc3ea00fe1ef36c66cc",
+  "duration": 16.23,
+  "file": "assets/audio/voice-heavy/narration-3c87d6b341689cb0.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -621,6 +621,7 @@ function updateTelegraphs(dt){
       if(t.shape==='line'){const along=dx*Math.cos(t.angle)+dy*Math.sin(t.angle),across=-dx*Math.sin(t.angle)+dy*Math.cos(t.angle);hit=Math.abs(along)<t.length+P.r&&Math.abs(across)<t.r+P.r;}
       if(t.shape==='annulus')hit=Math.abs(Math.hypot(dx,dy)-t.r)<t.width+P.r;
       if(t.shape==='sandstorm')hit=HuashenGuardians.stormHit(t,P);
+      if(t.shape==='finale')hit=FinaleGuardians.wardHit(t,P);
       if(t.shape==='beyond')hit=BeyondGuardians.wardHit(t,P);
       if(t.shape==='heti')hit=HetiGuardians.wardHit(t,P);
       if(t.shape==='lianxu')hit=LianxuGuardians.wardHit(t,P);
@@ -1333,6 +1334,7 @@ function drawAtmosphere(){
 }
 function drawTelegraphs(){
   for(const t of G.telegraphs){
+    if(t.shape==='finale'){FinaleArt.drawWard(t);continue;}
     if(t.shape==='beyond'){BeyondArt.drawWard(t);continue;}
     if(t.shape==='heti'){HetiArt.drawWard(t);continue;}
     if(t.shape==='lianxu'){LianxuArt.drawWard(t);continue;}
@@ -1427,7 +1429,7 @@ function renderEquips(){
 /* ---------------- 输入 ---------------- */
 
 window.addEventListener('keydown', e => {
-  if(AscensionScene.handleKey(e)||ExperienceUI.handleKey(e))return;
+  if(EndingScene.handleKey(e)||AscensionScene.handleKey(e)||ExperienceUI.handleKey(e))return;
   // Let native card and sheet controls keep their focus and activation keys.
   if(['levelup','character','character-preview','chest','win'].includes(G.state)&&e.code==='Tab')return;
   if(['levelup','character','character-preview'].includes(G.state)&&['Space','Enter'].includes(e.code)&&e.target.closest?.('button,select,input')){if(e.repeat)e.preventDefault();return;}

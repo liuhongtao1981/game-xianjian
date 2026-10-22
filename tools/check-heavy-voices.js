@@ -5,7 +5,7 @@ const manifest=JSON.parse(fs.readFileSync(path.join(root,'assets/audio/voice-hea
 const h=createHarness();
 assert.equal(manifest.profile.voice,'zh-CN-YunyangNeural');
 assert.equal(manifest.profile.rate,'-12%');assert.equal(manifest.profile.pitch,'-10Hz');
-const actual=h.evaluate(`Journey.stages.flatMap((_,i)=>['xiaoguo','tinglan'].flatMap(hero=>[false,true].flatMap(outer=>Journey.storyPages(i,hero,outer))))`);
+const actual=h.evaluate(`Journey.stages.flatMap((_,i)=>['xiaoguo','tinglan'].flatMap(hero=>[false,true].flatMap(outer=>Journey.storyPages(i,hero,outer)))).concat(['xiaoguo','tinglan'].flatMap(hero=>EndingScene.pages.map(text=>HeroIdentity.text(text,hero))))`);
 for(const text of actual){
   const clip=manifest.clips.find(c=>c.text===text);assert.ok(clip,'Missing heavy narration: '+text);
   assert.equal(clip.voice,manifest.profile.voice);assert.equal(clip.rate,manifest.profile.rate);assert.equal(clip.pitch,manifest.profile.pitch);

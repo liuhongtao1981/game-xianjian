@@ -1,0 +1,15 @@
+{
+  "id": "narration-e958a603ad5f32b1",
+  "text": "小果没有在终契上写下新的主人。他先断去把人逼到无路可退的条款，再让决定的人亲自回应后果。天衡的三重契相依次显露：照面、断衡、归名。最后这一剑，要给今后仍会争执的活人，留下一条重新商量的路。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "1dfb5a8d76fdbb94a4ae2a9caae289b992339ebc4829b668e9b7030e81cdde3a",
+  "source_sha256": "14ee3b3787099cae10657b4153064ed3416f813e746b339e6b5684dd1f61197f",
+  "sha256": "d8cfd484ce345116dc8a8189e4620741d1be8fe776d6a873d217361ec0b4d25f",
+  "duration": 22.422,
+  "file": "assets/audio/voice-heavy/narration-e958a603ad5f32b1.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

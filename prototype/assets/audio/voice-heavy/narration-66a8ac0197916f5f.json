@@ -1,0 +1,15 @@
+{
+  "id": "narration-66a8ac0197916f5f",
+  "text": "收兵天印把小果引上玉华原，万千兵器像折断的树，向同一座天门弯下腰。九灵归账祖说凡兵器皆会生乱，收尽众人的锋，天下便能太平。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "6446147eaecb0670456b4dfb4beed8257935a1ab41fb560e51e09fdd3c5ccaf6",
+  "source_sha256": "5c23cbae97fb52a844df04c6f0042d035322041d18e0cd000d249134c9ff1751",
+  "sha256": "9e6876fb68c615070421f75ec34ee7d4620e87af485e5d9289ce5d4b7f6aadfc",
+  "duration": 15.39,
+  "file": "assets/audio/voice-heavy/narration-66a8ac0197916f5f.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-bf16b09eb32cdf14",
+  "text": "大圣曾在瓮壁划开一道细缝，留下第一滴无人代受的雨。听澜沿三枚水滴印走向雨门，不再向大瓮证明谁够谦卑，只要让与罪无关的人先喝上水。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "acb7b1ad38bc6e8779f5ff2901b61285ae191dc75df6ac67a09039b1e1ad472f",
+  "source_sha256": "9bb97dd9f46f1eee68fac7bbf525590632750a836ed8dcd5abb6a508791d7e9e",
+  "sha256": "c140479ddfdb7ac206b3e94607da2044084a0ac8d48ed5452ee37be08491d57d",
+  "duration": 15.27,
+  "file": "assets/audio/voice-heavy/narration-bf16b09eb32cdf14.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -11,7 +11,7 @@ const server=http.createServer((q,r)=>{const file=path.resolve(root,'.'+decodeUR
  await page.evaluate(()=>{window.__realUpdate=update;update=()=>{};});
  if(production){const v=await page.evaluate(async rev=>(await fetch('version.json?v='+rev,{cache:'no-store'})).json(),revision);assert.equal(v.revision,revision);}
  await page.evaluate(()=>{RunSave.start(0);P.cultivation.realm=7;for(let s=0;s<24;s++)JourneyProgress.clear(s);RunSave.save();Journey.menu();});
- assert.equal(await page.locator('.chapter-card').count(),24);
+ assert.equal(await page.locator('.chapter-card').count(),42);
  await page.locator('[data-realm="6"]').click();assert.equal(await page.locator('.chapter-card:visible').count(),3);await page.locator('.realm-filter').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(output,'beyond-chapter-shelf.png')});
  await page.locator('[data-stage="18"]').click();assert.ok(await page.locator('.story-panel').isVisible());assert.ok((await page.locator('.story-scene').innerText()).includes('号山'));
  const scenes=[];

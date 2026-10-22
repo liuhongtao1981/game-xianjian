@@ -1,0 +1,15 @@
+{
+  "id": "narration-5edb45071b6777c8",
+  "text": "无主功德相没有脸，谁开口，它便用谁相信的声音回答：这是秩序，这是大局，这是大家都同意的事。小果从未见过如此完满的托词，连追问该问谁都成了问题。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "d52a85b91bcc45c62aae15a4d680c998032f1c0b33e6017c75e632219ddd15fb",
+  "source_sha256": "d69ac7b0a1d8cbcd4861fff0e4ed3bacb8f99e6e427106a4af16615d09bd891f",
+  "sha256": "f98aab9c5fd72d0b7e69a5a9b6a95a95cd7f27a7f75f767b9de8f05ad6c5ea64",
+  "duration": 16.23,
+  "file": "assets/audio/voice-heavy/narration-5edb45071b6777c8.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

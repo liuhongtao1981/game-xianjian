@@ -1,0 +1,15 @@
+{
+  "id": "narration-388dc4267b140dc0",
+  "text": "吞城青狮自夸让荒地变成繁华，凡问白石来路的人，便被说成不肯顾全城中安稳。住在墙里的受难者，连讨回姓名都被算作扰民。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "886d61e007437e6cdc96cecd22bc18871c11d154a288f1b261465ef516d3ba1a",
+  "source_sha256": "a513e5d7df0a4c4e1a291befc4630df724037ed7271e36f003c1e2c25984bbc0",
+  "sha256": "52e2137814547da1c3277a03c30d346a3a323562beee2a0dd7ad924ebbedef25",
+  "duration": 13.974,
+  "file": "assets/audio/voice-heavy/narration-388dc4267b140dc0.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

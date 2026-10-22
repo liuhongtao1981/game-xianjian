@@ -1,0 +1,15 @@
+{
+  "id": "narration-6c62bb29a7fc921e",
+  "text": "犯错的人早已不在，出生于旱年的孩子却仍在替他认罪。玉衡使每日验悔，验得越久，封雨的瓮便越满；他不缺能降的水，只缺一个愿意结束惩罚的理由。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "b2db1345901cb1b92cca1777c9240f42a213417043c828d9a2936e53b4a7dbac",
+  "source_sha256": "4110c9e979624f02c0908b2d6239ed3688eb567c7456b6bf078727b07153e7d6",
+  "sha256": "c719b1db918af9f2857273831008e3b1bdc9936a3106d25e54862104e555837c",
+  "duration": 15.822,
+  "file": "assets/audio/voice-heavy/narration-6c62bb29a7fc921e.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

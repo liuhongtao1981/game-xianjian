@@ -1,0 +1,77 @@
+{
+  "generator": "image_gen.imagegen",
+  "mode": "builtin-edit",
+  "created": "2026-10-23",
+  "assets": [
+    {
+      "name": "actors-ashfront",
+      "prompt": "EDIT TARGET is the supplied exact 20-pose Chinese fantasy sprite atlas. Change ONLY spacing and scale: shrink each entire separate pose to HALF (50%) its current size around its own cell center. Keep all 5 row identities and exact 4 pose columns idle, walk, windup, strike. Output1024x1536,4cols5rows. Each COMPLETE pose including weapon, horns, tail, cloth, smoke and particles MUST fit within110px WIDTH and145px HEIGHT. Most of the sheet must be EMPTY true transparent alpha. Leave minimum65px empty space on BOTH sides and75px above/below EVERY pose. Continuous empty transparent corridors across entire image between EVERY row and EVERY column. NO silhouette, weapon tip, halo or particle crossing into neighbor cells. Do not enlarge to fill space. Preserve original designs, colors, all 20 poses and ancient Chinese dark fantasy painting style. No text, no grid or background.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-0aa449a2-32fb-49d6-a060-d8ee0075942d.png",
+      "referenced_source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-61fc1b18-1f0c-45af-a3b5-d2be152fe121.png",
+      "mode": "builtin-edit"
+    },
+    {
+      "name": "actors-thornscript",
+      "prompt": "EDIT TARGET is the supplied exact 20-pose Chinese fantasy sprite atlas. Change ONLY spacing and scale: shrink each entire separate pose to HALF (50%) its current size around its own cell center. Keep all 5 row identities and exact 4 pose columns idle, walk, windup, strike. Output1024x1536,4cols5rows. Each COMPLETE pose including weapon, horns, tail, cloth, smoke and particles MUST fit within110px WIDTH and145px HEIGHT. Most of the sheet must be EMPTY true transparent alpha. Leave minimum65px empty space on BOTH sides and75px above/below EVERY pose. Continuous empty transparent corridors across entire image between EVERY row and EVERY column. NO silhouette, weapon tip, halo or particle crossing into neighbor cells. Do not enlarge to fill space. Preserve original designs, colors, all 20 poses and ancient Chinese dark fantasy painting style. No text, no grid or background.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-48e1c795-44b7-4554-a644-de7e352182fe.png",
+      "referenced_source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-e5997aa0-82bb-4acc-afc7-f221b5f8fd1f.png",
+      "mode": "builtin-edit"
+    },
+    {
+      "name": "actors-bonecitadel",
+      "prompt": "EDIT TARGET is the supplied exact 20-pose Chinese fantasy sprite atlas. Change ONLY spacing and scale: shrink each entire separate pose to HALF (50%) its current size around its own cell center. Keep all 5 row identities and exact 4 pose columns idle, walk, windup, strike. Output1024x1536,4cols5rows. Each COMPLETE pose including weapon, horns, tail, cloth, smoke and particles MUST fit within110px WIDTH and145px HEIGHT. Most of the sheet must be EMPTY true transparent alpha. Leave minimum65px empty space on BOTH sides and75px above/below EVERY pose. Continuous empty transparent corridors across entire image between EVERY row and EVERY column. NO silhouette, weapon tip, halo or particle crossing into neighbor cells. Do not enlarge to fill space. Preserve original designs, colors, all 20 poses and ancient Chinese dark fantasy painting style. No text, no grid or background.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c9887140-e1ae-4a25-a5f4-d411a566d916.png",
+      "referenced_source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c8e1ac08-3daf-49ae-a0e0-61bb41b95c5d.png",
+      "mode": "builtin-edit"
+    },
+    {
+      "name": "actors-sixivory",
+      "prompt": "EDIT TARGET is the supplied exact 20-pose Chinese fantasy sprite atlas. Change ONLY spacing and scale: shrink each entire separate pose to HALF (50%) its current size around its own cell center. Keep all 5 row identities and exact 4 pose columns idle, walk, windup, strike. Output1024x1536,4cols5rows. Each COMPLETE pose including weapon, horns, tail, cloth, smoke and particles MUST fit within110px WIDTH and145px HEIGHT. Most of the sheet must be EMPTY true transparent alpha. Leave minimum65px empty space on BOTH sides and75px above/below EVERY pose. Continuous empty transparent corridors across entire image between EVERY row and EVERY column. NO silhouette, weapon tip, halo or particle crossing into neighbor cells. Do not enlarge to fill space. Preserve original designs, colors, all 20 poses and ancient Chinese dark fantasy painting style. No text, no grid or background.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-fb1dd82a-55ac-47ee-a53c-f87d50bea580.png",
+      "referenced_source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-648d5e5e-56f5-4d07-acfd-aa66e3659e03.png",
+      "mode": "builtin-edit"
+    },
+    {
+      "name": "actors-lifedeer",
+      "prompt": "EDIT TARGET is the supplied exact 20-pose Chinese fantasy sprite atlas. Change ONLY spacing and scale: shrink each entire separate pose to HALF (50%) its current size around its own cell center. Keep all 5 row identities and exact 4 pose columns idle, walk, windup, strike. Output1024x1536,4cols5rows. Each COMPLETE pose including weapon, horns, tail, cloth, smoke and particles MUST fit within110px WIDTH and145px HEIGHT. Most of the sheet must be EMPTY true transparent alpha. Leave minimum65px empty space on BOTH sides and75px above/below EVERY pose. Continuous empty transparent corridors across entire image between EVERY row and EVERY column. NO silhouette, weapon tip, halo or particle crossing into neighbor cells. Do not enlarge to fill space. Preserve original designs, colors, all 20 poses and ancient Chinese dark fantasy painting style. No text, no grid or background.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-231c710e-ec7e-4871-bfba-47f4347a85b0.png",
+      "referenced_source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-2f1a6109-a62a-4167-9890-0728f04eaf60.png",
+      "mode": "builtin-edit"
+    },
+    {
+      "name": "actors-crownless",
+      "prompt": "EDIT TARGET is the supplied exact 20-pose Chinese fantasy sprite atlas. Change ONLY spacing and scale: shrink each entire separate pose to HALF (50%) its current size around its own cell center. Keep all 5 row identities and exact 4 pose columns idle, walk, windup, strike. Output1024x1536,4cols5rows. Each COMPLETE pose including weapon, horns, tail, cloth, smoke and particles MUST fit within110px WIDTH and145px HEIGHT. Most of the sheet must be EMPTY true transparent alpha. Leave minimum65px empty space on BOTH sides and75px above/below EVERY pose. Continuous empty transparent corridors across entire image between EVERY row and EVERY column. NO silhouette, weapon tip, halo or particle crossing into neighbor cells. Do not enlarge to fill space. Preserve original designs, colors, all 20 poses and ancient Chinese dark fantasy painting style. No text, no grid or background.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b14317ae-58c0-4f95-ab8c-839cf6146287.png",
+      "referenced_source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-28073a76-268f-43de-a6ac-ca60fc3f523c.png",
+      "mode": "builtin-edit"
+    },
+    {
+      "name": "actors-foldedarms",
+      "prompt": "EDIT TARGET is the supplied exact 20-pose Chinese fantasy sprite atlas. Change ONLY spacing and scale: shrink each entire separate pose to HALF (50%) its current size around its own cell center. Keep all 5 row identities and exact 4 pose columns idle, walk, windup, strike. Output1024x1536,4cols5rows. Each COMPLETE pose including weapon, horns, tail, cloth, smoke and particles MUST fit within110px WIDTH and145px HEIGHT. Most of the sheet must be EMPTY true transparent alpha. Leave minimum65px empty space on BOTH sides and75px above/below EVERY pose. Continuous empty transparent corridors across entire image between EVERY row and EVERY column. NO silhouette, weapon tip, halo or particle crossing into neighbor cells. Do not enlarge to fill space. Preserve original designs, colors, all 20 poses and ancient Chinese dark fantasy painting style. No text, no grid or background.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-941484c9-d604-44d5-af2c-9124ebf73541.png",
+      "referenced_source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-127cb880-5bfc-44ae-b1e5-083f061ef5cd.png",
+      "mode": "builtin-edit"
+    },
+    {
+      "name": "actors-ownerless",
+      "prompt": "EDIT TARGET is the supplied exact 20-pose Chinese fantasy sprite atlas. Change ONLY spacing and scale: shrink each entire separate pose to HALF (50%) its current size around its own cell center. Keep all 5 row identities and exact 4 pose columns idle, walk, windup, strike. Output1024x1536,4cols5rows. Each COMPLETE pose including weapon, horns, tail, cloth, smoke and particles MUST fit within110px WIDTH and145px HEIGHT. Most of the sheet must be EMPTY true transparent alpha. Leave minimum65px empty space on BOTH sides and75px above/below EVERY pose. Continuous empty transparent corridors across entire image between EVERY row and EVERY column. NO silhouette, weapon tip, halo or particle crossing into neighbor cells. Do not enlarge to fill space. Preserve original designs, colors, all 20 poses and ancient Chinese dark fantasy painting style. No text, no grid or background.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-e69b0d12-7ce4-46e4-9fd7-1f9ead77f155.png",
+      "referenced_source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-7024e5ed-db6d-47b4-83b5-ef6390a5290c.png",
+      "mode": "builtin-edit"
+    },
+    {
+      "name": "actors-returnstone",
+      "prompt": "EDIT TARGET is the supplied exact 20-pose Chinese fantasy sprite atlas. Change ONLY spacing and scale: shrink each entire separate pose to HALF (50%) its current size around its own cell center. Keep all 5 row identities and exact 4 pose columns idle, walk, windup, strike. Output1024x1536,4cols5rows. Each COMPLETE pose including weapon, horns, tail, cloth, smoke and particles MUST fit within110px WIDTH and145px HEIGHT. Most of the sheet must be EMPTY true transparent alpha. Leave minimum65px empty space on BOTH sides and75px above/below EVERY pose. Continuous empty transparent corridors across entire image between EVERY row and EVERY column. NO silhouette, weapon tip, halo or particle crossing into neighbor cells. Do not enlarge to fill space. Preserve original designs, colors, all 20 poses and ancient Chinese dark fantasy painting style. No text, no grid or background.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-940ca730-206d-412f-8d12-7caef1b65070.png",
+      "referenced_source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-43c632eb-c97d-49bd-b78e-3f4592f7ec4b.png",
+      "mode": "builtin-edit"
+    },
+    {
+      "name": "daluo-props",
+      "prompt": "EDIT the supplied twelve-object dark Chinese fantasy prop atlas. Only change layout spacing: shrink EVERY complete object to60% current size centered in its own384x341cell, strict4columns3rows on1536x1024 transparent image. Keep all12objects and exact row/column order, all branches, roofs, chains and all stone bases. Leave80px entirely transparent gutters between rows and columns. Nothing may cross into another cell, especially the shrines in last column. Most of sheet should be empty transparent space. No shared haze or background, no grid or text.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-2faacfe7-15f9-472f-8d58-2c2f79fd6494.png",
+      "referenced_source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-6e1dfb60-f761-4b57-ad59-ccbb7501e86c.png",
+      "mode": "builtin-edit"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-25beb93b60fef935",
+  "text": "上一难 · 雷音辨慈。你带着「盘丝慈结线轴」来到盘丝洞 · 缠愿坊。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "88e3b8849320a6aee8ee33c6b304a5a08ffb4fe54594563b2369815c9848faed",
+  "source_sha256": "943a4a77ca0cc6d3275bd473e7618362af1e1bcc790d3c7a0c6f4943444babf3",
+  "sha256": "52ecef8f0c80f6808e552c078f1c395ed19c3d34d9e3e1cf937f8e824bab04ad",
+  "duration": 11.118,
+  "file": "assets/audio/voice-heavy/narration-25beb93b60fef935.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

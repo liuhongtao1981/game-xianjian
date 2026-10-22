@@ -1,0 +1,15 @@
+{
+  "id": "narration-56fae312d459c2e0",
+  "text": "比丘城的老人年年庆寿，城外的孩子却年年被叫去验账。寿契白鹿君不再直接取命，只把尚未发生的岁月算成温和的捐献，连拒绝的人都被夸作尚未觉悟。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c46d0c88a411a3315959a956f02baa7af58c989d4c19795739998bde7f63b083",
+  "source_sha256": "80df3fbb7c5d1a8885b59288991903cf1826b6f4b253a7f592284189e9f3281f",
+  "sha256": "59358ae27a1b09b0fc454828881dddc3e96444a4817e3981cbd68e6c26646097",
+  "duration": 15.774,
+  "file": "assets/audio/voice-heavy/narration-56fae312d459c2e0.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

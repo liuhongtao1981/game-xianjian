@@ -1,0 +1,15 @@
+{
+  "id": "narration-a59b822dc1617a86",
+  "text": "慈结线轴牵来七张织机，机上没有布，只有人答应陪伴、照料、成全时留下的声音。有人已经走到生命尽头，仍被网说成欠一次最后的回头。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "7861731f4b20ec983e460999e93bdc6a677997e5dcbd115d7431c8e641afcc55",
+  "source_sha256": "f6cff0b0f80948fd2f4b1c6c26ff968e19d6c33c2229ac955c9193c9f9999a30",
+  "sha256": "9472c6d69290e1c876833b49467aeba31cc83e8308383ab0ccde4190dac3bf2e",
+  "duration": 14.406,
+  "file": "assets/audio/voice-heavy/narration-a59b822dc1617a86.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

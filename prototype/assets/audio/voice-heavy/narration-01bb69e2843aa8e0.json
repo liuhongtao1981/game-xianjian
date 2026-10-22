@@ -1,0 +1,15 @@
+{
+  "id": "narration-01bb69e2843aa8e0",
+  "text": "四十一道线索在殿中接成一张有去有回的路。大圣没有坐上金座，他把自己的那一页也摊在桌上。小果依次站入三道互证功德印的交心，要让受益、决定与责任重新指向同一个地方。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "63a7e0b45514813e8ccd84840a9ab91c7d7b1f4c27638c2ef0ed32857ada7d85",
+  "source_sha256": "64f7cd9c2a2aa1ed4372df066a19c8acdfc6394f3f014add92969f387b3d3ccc",
+  "sha256": "5b3fa258109dc9bc8dd54bf47a57038405537be15d54c049c511b6595ec0d0b5",
+  "duration": 18.75,
+  "file": "assets/audio/voice-heavy/narration-01bb69e2843aa8e0.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

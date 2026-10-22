@@ -47,7 +47,7 @@ const ExperienceUI=(()=>{
     const gain=Object.entries(materials).filter(([k,n])=>n>(before?.cultivation?.materials?.[k]||0)).map(([k,n])=>(k==='essence'?'灵蕴精华':Cultivation.cores[Number(k.slice(4))-1])+' +'+(n-(before?.cultivation?.materials?.[k]||0))).join(' · ');
     return '<section class="result-growth"><span class="overline">本次历程 · 当前结存变化</span><div class="result-values"><b>等级 '+(before?.level||P.level)+' → '+P.level+'</b><b>伤害 '+Number(before?.dmg||P.dmg).toFixed(2)+'× → '+P.dmg.toFixed(2)+'×</b><b>生命上限 '+Math.round(before?.maxHp||P.maxHp)+' → '+Math.round(P.maxHp)+'</b></div><p>'+(gain||'当前材料结存未增加（突破消耗已计入）')+'</p>'+text+'</section>';
   }
-  function menu(){const shelf=document.querySelector('.journey-chapters');if(!shelf)return;shelf.querySelectorAll('[data-stage]').forEach(n=>{const c=ChapterCatalog.get(Number(n.dataset.stage));if(n.querySelector('.chapter-material'))return;const line=document.createElement('small');line.className='chapter-material';line.textContent='◇ '+Cultivation.cores[c.realm]+' · 守关30%掉落';n.appendChild(line);});}
+  function menu(){const shelf=document.querySelector('.journey-chapters');if(!shelf)return;shelf.querySelectorAll('[data-stage]').forEach(n=>{const c=ChapterCatalog.get(Number(n.dataset.stage));if(n.querySelector('.chapter-material'))return;const line=document.createElement('small');line.className='chapter-material';line.textContent='◇ '+Cultivation.lootLabel(c.realm);n.appendChild(line);});}
   function damageText(e,damage,crit,color){
     const prior=G.texts.find(t=>t.target===e.id&&t.crit===crit&&G.time-t.stamp<.14&&t.life>0);
     if(prior){prior.total+=damage;prior.txt=(crit?'暴 ':'')+prior.total+(e.hp<=0?' · 斩':'');prior.life=Math.max(prior.life,.65);return;}
@@ -56,5 +56,5 @@ const ExperienceUI=(()=>{
   function danger(){return G.telegraphs.some(t=>Math.hypot(t.x-P.x,t.y-P.y)<(t.r||150)+200)||G.enemies.some(e=>e.action==='windup'&&Math.hypot(e.x-P.x,e.y-P.y)<450);}
   function friendly(fn){ctx.save();if(danger())ctx.globalAlpha*=.4;fn();ctx.restore();}
   function reset(){summary=null;tip=null;mapSelection=null;Targeting.reset();}
-  return {init,settings,set,open,close,handleKey,teach,tick,sync,campCleared,mapDetail,resultHTML,menu,damageText,friendly,reset,saveState:()=>previous||G.state};
+  return {init,settings,set,open,close,handleKey,teach,tick,sync,campCleared,mapDetail,resultHTML,menu,damageText,friendly,reset,saveState:()=>EndingScene.active()?EndingScene.priorState():previous||G.state};
 })();

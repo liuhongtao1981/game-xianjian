@@ -1,0 +1,15 @@
+{
+  "id": "narration-308a32ee444d7f81",
+  "text": "上一难 · 玉华归兵。你带着「灵山无主功德副册」来到灵山 · 无主账殿。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "7590d0daf3fae95b301472c3df07f42bd7543deda268ee0b910973b659a5bea8",
+  "source_sha256": "e07ea9f12ffdc88fa2f79dfbaba10ace3d37a6381589a68186bfc74255b848fb",
+  "sha256": "683a3285abf00fb7c9d6ea23c304a4acdb74b1c075fd918ddefa07529201f40d",
+  "duration": 11.454,
+  "file": "assets/audio/voice-heavy/narration-308a32ee444d7f81.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

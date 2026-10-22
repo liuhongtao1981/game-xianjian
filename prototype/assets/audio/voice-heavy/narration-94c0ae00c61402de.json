@@ -1,0 +1,15 @@
+{
+  "id": "narration-94c0ae00c61402de",
+  "text": "金兜带出的半幅河图，在晨光里显出另一条河。孙小果踏进照命渡，看见岸上人人低头：河中倒影先替他们报出身价，活人才被允许开口。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "b5e9a216addc1f956d84cda8c151fcdaa16a90d4cea5dff4fa3f5208a29ecf8b",
+  "source_sha256": "9299e5c944764cb091e164eab8ef9aee1f72bfffca47bb632f6369cfad9c9a63",
+  "sha256": "cebf71aae9373d30f196f033b87378d8bbe55b305f4988b0c79f77a45dad02cc",
+  "duration": 14.718,
+  "file": "assets/audio/voice-heavy/narration-94c0ae00c61402de.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

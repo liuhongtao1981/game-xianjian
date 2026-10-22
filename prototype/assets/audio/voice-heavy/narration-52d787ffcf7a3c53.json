@@ -1,0 +1,15 @@
+{
+  "id": "narration-52d787ffcf7a3c53",
+  "text": "焚界牛君说墙外更危险，只有服从才能换来庇护。他向山外卖熄火符，却向山内收续燃税；每有一个人试图越界，火墙便被说成必须更高。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "6f5e14e3ab5e85f84789c8e96a3729886e5d4ffd64e4e0355192bcc378024249",
+  "source_sha256": "c0b584118e49e4bc162adeda281cd04d019cca7219358bb9457796a7713bb4ce",
+  "sha256": "3a50ebcda8acc69a420015eec89874aeb37cdf442233ddd501c2a0372c71db91",
+  "duration": 14.838,
+  "file": "assets/audio/voice-heavy/narration-52d787ffcf7a3c53.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

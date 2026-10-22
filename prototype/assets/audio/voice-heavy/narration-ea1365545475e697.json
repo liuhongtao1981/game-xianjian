@@ -1,0 +1,15 @@
+{
+  "id": "narration-ea1365545475e697",
+  "text": "天亮时，大圣把金毫放回人群，自己也沿那条细路走下石庭。新册最后空着一行，留给后来的人。寻圣四十二难，到此完结。愿你握住自己的剑，也记得把别人手中的笔，交还给他自己。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "e4f0385f33627198d20def57c8eacfcbfa0cd06772de4b32e509e384d6e6898e",
+  "source_sha256": "8faea57d863d5603c863422d5e2a2bd5b9af4c7f6868743a8b4a064980852d41",
+  "sha256": "56d98d49c843937be0c3cc9ea2a1d8d7e1b58258f75cc8d9d4c5a7c2cd2a7e48",
+  "duration": 19.686,
+  "file": "assets/audio/voice-heavy/narration-ea1365545475e697.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-e696978d4b82b90c",
+  "text": "你循着凤仙押雨断罚契旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成无首断冠王的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "2c0c2e41054cb70f65c3062b78e3c50e8c2c8d2bcef5052f7d1a60b140092ab6",
+  "source_sha256": "fdd33829ce14a474d925cc074939f8e374c9fb3679a5e0c315fb16e9fe0f7407",
+  "sha256": "8554d80aa94b2139063816b5068b7e06d23cc8c35d024968209669c5a6231efd",
+  "duration": 11.046,
+  "file": "assets/audio/voice-heavy/narration-e696978d4b82b90c.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

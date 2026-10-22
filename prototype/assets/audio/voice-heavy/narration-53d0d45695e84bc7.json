@@ -1,0 +1,15 @@
+{
+  "id": "narration-53d0d45695e84bc7",
+  "text": "上一难 · 荆棘解字。你带着「小雷音释疑禁页」来到小雷音 · 倒佛堂。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "44886e48a9d0548c7a4c2543c7044a3be7ba8aa753249d3873d468a7c80bfd38",
+  "source_sha256": "fada92acbccabc26fa13157d822575f884987480d57300a3e6f36d7943b269e2",
+  "sha256": "e4f89e68d11da8fc7c6d91b8f52187f8c5d6424f7f42eee6ee4ae327eb2dd84e",
+  "duration": 11.07,
+  "file": "assets/audio/voice-heavy/narration-53d0d45695e84bc7.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

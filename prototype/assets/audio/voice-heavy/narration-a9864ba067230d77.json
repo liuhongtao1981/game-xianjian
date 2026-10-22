@@ -1,0 +1,15 @@
+{
+  "id": "narration-a9864ba067230d77",
+  "text": "照命河的人翻过价镜，凤仙的百姓打开雨瓮，狮驼的家属找回门牌。有人留下，有人离开，有人决定重新履约，也有人要求把旧话的前后文补全。没有一张新的天条替他们预先决定。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "688c542e2a31e32345781ac155c1296a46193a3933059899acc27699c53c6004",
+  "source_sha256": "fa90c40d491e654fe6f765e10051460f6ae4c677acb59856e25e783611912f96",
+  "sha256": "0efc4feddfda784dbdae0e93190c527eb9a93abc5584566da0c5a407ef04b707",
+  "duration": 18.102,
+  "file": "assets/audio/voice-heavy/narration-a9864ba067230d77.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

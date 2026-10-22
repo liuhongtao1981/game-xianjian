@@ -1,0 +1,15 @@
+{
+  "id": "narration-7573b534a55d36ef",
+  "text": "听澜沿大圣折断的笔锋找回上下句，把散字连成能走人的路。木仙驱动荆棘封住直线，他便顺着折转的青色字脉前进：守信之前，总该先把话读完。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "942e304d650a096aa8f0bb461cb2c828aaf551bd7c3ff0f222c2b5c36ee16fa4",
+  "source_sha256": "c3795ee665a6c84106f05c16262cb21bc68869aaddcbf241093898e0dbdd51fb",
+  "sha256": "d6f4a5f13d896e4b59cc3861f0ebf079a5b120afcdf710e0f1080927dc0b590b",
+  "duration": 15.798,
+  "file": "assets/audio/voice-heavy/narration-7573b534a55d36ef.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

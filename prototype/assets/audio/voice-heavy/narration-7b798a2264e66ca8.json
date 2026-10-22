@@ -1,0 +1,15 @@
+{
+  "id": "narration-7b798a2264e66ca8",
+  "text": "上一难 · 双生自择。你带着「烬界焚愿调令」来到火焰山 · 烬界关。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "0c575851aee9e81f9e9c90ffbdeb0c591353727a25013949356e8724ae68a79a",
+  "source_sha256": "9d7bc00e91b769c47356008ffbe8d38149dd2e1c8c3fd7f32f3746b004f61197",
+  "sha256": "52fc515f2696d18de42cede1c4f06974b1381d4c3c188c61a07488c5ca4e083f",
+  "duration": 11.022,
+  "file": "assets/audio/voice-heavy/narration-7b798a2264e66ca8.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

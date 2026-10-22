@@ -1,0 +1,15 @@
+{
+  "id": "narration-2fdfb9f83a195e60",
+  "text": "听澜在茧里找到大圣剪开的旧结，结上留着另一端原主的名字。不是把所有牵挂烧尽，而是让两端都能亲手松开。蛛母将丝轨翻转，要拿最深的愧疚缠住握剑的手。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "0420f2a57e33f65a06fe0f5aab35abbe5138438b0d2754f51e4e52c3be03a9b5",
+  "source_sha256": "e3bad3b4f286bd6df0c2902c61f13558b073b9090e07d4d32934e85542d3d4c9",
+  "sha256": "cb09fee210d34021bd49c412541a6ef80b896df981a16f5135dafbc14a7ae24a",
+  "duration": 17.094,
+  "file": "assets/audio/voice-heavy/narration-2fdfb9f83a195e60.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

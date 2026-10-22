@@ -1,0 +1,15 @@
+{
+  "id": "narration-b26c35070f53badc",
+  "text": "大圣曾从狮口撬下一枚牙，牙里嵌着一张寻屋图。小果循图在两组骨印之间换位，要把城墙下的人从建材重新认作邻人。狮王不怕城塌，只怕城里的人开始问。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "bd9d150dac5cf934ac1d99b835e68f7463b4a6896b3603a2556ec09ba29459ca",
+  "source_sha256": "65ecfb41474c456091bcc3fd686f5a73422ca04a8311b1ea40bad0eff5ff27bc",
+  "sha256": "da13f3a4036dbcbce7802e48536020816120a6f584080d6425ff9dc95b980518",
+  "duration": 17.118,
+  "file": "assets/audio/voice-heavy/narration-b26c35070f53badc.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

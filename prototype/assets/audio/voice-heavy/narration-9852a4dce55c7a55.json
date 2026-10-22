@@ -1,0 +1,15 @@
+{
+  "id": "narration-9852a4dce55c7a55",
+  "text": "上一难 · 灵山问主。你带着「天外归名终契」来到天外 · 归名石庭。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "527324b3aa3aa4a2cd0bee0e59b76a9c6fceb542d1e6c7ddf15c513c71a862fb",
+  "source_sha256": "08d13e28a687580161f6b23ab2fa6b497a1e68dc6a8f784dd93afef7f73e9523",
+  "sha256": "0728ce43599e3892898976437eb9f555f2f40c3726f3155caf9c929613bb348b",
+  "duration": 10.95,
+  "file": "assets/audio/voice-heavy/narration-9852a4dce55c7a55.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

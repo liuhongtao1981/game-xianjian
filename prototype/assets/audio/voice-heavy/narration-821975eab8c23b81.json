@@ -1,0 +1,15 @@
+{
+  "id": "narration-821975eab8c23b81",
+  "text": "上一难 · 照命非价。你带着「毒敌山诊籍」来到毒敌山 · 回声穴。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "309b40921ac571b95735c6cb84cd9143eafdf5787fffa70d3b329016ff2cb33c",
+  "source_sha256": "df1b51013a47e9321ff833d1c05961afc844b3a4f9d2af227c8456b28d32a143",
+  "sha256": "133f94f8b4faf0b437672b59712ebb60ffa08b817836eb7b1007b2fcd96623c0",
+  "duration": 10.902,
+  "file": "assets/audio/voice-heavy/narration-821975eab8c23b81.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

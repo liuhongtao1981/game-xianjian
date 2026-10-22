@@ -1,0 +1,15 @@
+{
+  "id": "narration-cdac4d8475b191b4",
+  "text": "你循着众生可改的新册旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成执契天衡的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "97b9212037923ebb6e8b765b2fb7c40428b808974a662800e89580a860e00da6",
+  "source_sha256": "9743e526a377d2153f373a8a540552f9a0c7eb2796c7e92f5b89d6277146ac40",
+  "sha256": "77ba83f994ed71c34791572ffcff18b3670653d2681a28c4f75a148f085d278b",
+  "duration": 10.758,
+  "file": "assets/audio/voice-heavy/narration-cdac4d8475b191b4.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

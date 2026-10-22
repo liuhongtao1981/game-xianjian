@@ -1,0 +1,15 @@
+{
+  "id": "narration-8461e16e28ec8ebb",
+  "text": "天衡倒下之后，石庭没有升起另一张王座。孙小果把终契放在地上，先念出那些曾被写成数字的人名。风从裂缝里穿过，四十二道劫痕第一次不再指向一笔新的欠账。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "072efd087d7f60cf2be2f3bd09c45ea8baaf4ae1e93c8e4c159fe27f9ea54c1c",
+  "source_sha256": "1aa872060c7be3b14817d4b5d6db0156864991b40214394c5d031f317bd624d4",
+  "sha256": "6f9559b80ccc56a4a245a33a4ae8250b0bfe319b0052338127ef0972cb9dbb86",
+  "duration": 16.806,
+  "file": "assets/audio/voice-heavy/narration-8461e16e28ec8ebb.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

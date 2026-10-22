@@ -1,0 +1,306 @@
+{
+  "generator": "image_gen.imagegen",
+  "mode": "builtin",
+  "created": "2026-10-22",
+  "assets": [
+    {
+      "name": "zhenxian-worlds",
+      "transparent": false,
+      "prompt": "Create an original dark Chinese mythological journey game environment atlas, 1536x1024 landscape, three equal vertical panels of 512x1024 each, no borders or text. The three panels show: a moonlit river of living reflections, ruined ferry pavilion and bronze mirror altar; a purple poisonous scorpion cavern, echoing stone arches and antidote basin; twin spring pools, half warm gold and half cold turquoise, around a broken baptism altar. Hand-painted cinematic dark fantasy with realistic worn materials, coherent high oblique isometric viewpoint, ancient Chinese architecture, monumental scale, tragic supernatural mood, practical broad EMPTY foreground ritual courtyard in every panel, detailed atmosphere at upper background. No people, no UI, no logos. Match a premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-1295cf48-08e1-4406-8a78-fe56850f337f.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/zhenxian-worlds.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-1295cf48-08e1-4406-8a78-fe56850f337f.png"
+    },
+    {
+      "name": "zhenxian-props",
+      "transparent": true,
+      "prompt": "Original dark Chinese mythological game PROP ATLAS, true transparent background. 1536x1024 landscape, strict FOUR equal columns by THREE equal rows. Twelve SMALL isolated objects with LARGE empty transparent gutters, max object 260px wide by220px tall in each384x341cell. Row1: river mirror ferry gate, hollow willow rock, reflection lantern, bronze mirror altar. Row2: scorpion cave arch, purple venom crystals, antidote lantern, tail-sting altar. Row3: twin dragon spring arch, white jade spring rock, two-wick lantern, twin water shrine. Each row lists objects in exact column order gate, tree/rock, lantern, shrine. Isometric high oblique hand-painted realistic aged stone bronze jade, premium dark Chinese fantasy. Entire silhouettes including branches roofs smoke and lights fit inside each cell. Leave 60+px fully empty transparent corridors between ALL rows and columns, NO shared background or glow. No text, no grid marks, no labels.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-95ea33a7-0645-43b1-90ec-c3646b19a0f8.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/zhenxian-props.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-95ea33a7-0645-43b1-90ec-c3646b19a0f8.png"
+    },
+    {
+      "name": "zhenxian-terrain",
+      "transparent": false,
+      "prompt": "Create a 1536x1024 landscape material atlas, strict THREE columns and TWO rows of six512x512 SQUARE tiles, no gutters, no text, no objects. Top row is flat TOP DOWN plaza paving, bottom row matching rough path material, for these three original dark Chinese fantasy environments in column order: blue wet river slate and mirror inlays; purple cave basalt and faint antidote veins; white jade spring tiles with gold and cyan seams. Seamless edges, continuous quiet stone texture, readable hand painted realistic worn stone, moderate low contrast, muted colors, NO perspective, no circles, no altars, no characters, no large cracks that look like holes. Each column clearly distinct but matches premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-aaf34ae2-0cc8-4448-ad08-d443c598ae3c.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/zhenxian-terrain.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-aaf34ae2-0cc8-4448-ad08-d443c598ae3c.png"
+    },
+    {
+      "name": "xuanxian-worlds",
+      "transparent": false,
+      "prompt": "Create an original dark Chinese mythological journey game environment atlas, 1536x1024 landscape, three equal vertical panels of 512x1024 each, no borders or text. The three panels show: an immense volcanic gate through a black ash mountain, chains and an extinguished flame altar; a blood-stained false relic pagoda, empty prayer platforms and a fractured pearl altar; a nine-headed river palace flooded with ink, jade ledger bridges and a dragon debt altar. Hand-painted cinematic dark fantasy with realistic worn materials, coherent high oblique isometric viewpoint, ancient Chinese architecture, monumental scale, tragic supernatural mood, practical broad EMPTY foreground ritual courtyard in every panel, detailed atmosphere at upper background. No people, no UI, no logos. Match a premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-77662f4a-1a25-45f5-b794-49800bf336a9.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/xuanxian-worlds.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-77662f4a-1a25-45f5-b794-49800bf336a9.png"
+    },
+    {
+      "name": "xuanxian-props",
+      "transparent": true,
+      "prompt": "Original dark Chinese mythological game PROP ATLAS, true transparent background. 1536x1024 landscape, strict FOUR equal columns by THREE equal rows. Twelve SMALL isolated objects with LARGE empty transparent gutters, max object 260px wide by220px tall in each384x341cell. Row1: charred iron mountain gate, glowing volcanic rock, ember lantern, extinguished flame altar. Row2: cracked pagoda entrance, relic stone, red pearl lantern, false relic shrine. Row3: nine dragon river gate, drowned ledger rock, blue ink lantern, nine necked altar. Each row lists objects in exact column order gate, tree/rock, lantern, shrine. Isometric high oblique hand-painted realistic aged stone bronze jade, premium dark Chinese fantasy. Entire silhouettes including branches roofs smoke and lights fit inside each cell. Leave 60+px fully empty transparent corridors between ALL rows and columns, NO shared background or glow. No text, no grid marks, no labels.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c12a5968-97d0-4029-8bc9-534daf4b5f97.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/xuanxian-props.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c12a5968-97d0-4029-8bc9-534daf4b5f97.png"
+    },
+    {
+      "name": "xuanxian-terrain",
+      "transparent": false,
+      "prompt": "Create a 1536x1024 landscape material atlas, strict THREE columns and TWO rows of six512x512 SQUARE tiles, no gutters, no text, no objects. Top row is flat TOP DOWN plaza paving, bottom row matching rough path material, for these three original dark Chinese fantasy environments in column order: dark volcanic paving with cooled red cracks; aged red temple tiles and gold relic inlay; black blue submerged palace stone and jade ledger patterns. Seamless edges, continuous quiet stone texture, readable hand painted realistic worn stone, moderate low contrast, muted colors, NO perspective, no circles, no altars, no characters, no large cracks that look like holes. Each column clearly distinct but matches premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-af193b76-9a13-479b-b0e1-bb72cce61282.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/xuanxian-terrain.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-af193b76-9a13-479b-b0e1-bb72cce61282.png"
+    },
+    {
+      "name": "jinxian-worlds",
+      "transparent": false,
+      "prompt": "Create an original dark Chinese mythological journey game environment atlas, 1536x1024 landscape, three equal vertical panels of 512x1024 each, no borders or text. The three panels show: a forest of thorn-wrapped written vows, collapsed script steles and a root calligraphy altar; an uncanny counterfeit Buddhist hall of inverted bells, empty thrones and a false mercy altar; a suspended silk weaving palace, red cocoon bridges and a cut-thread oath altar. Hand-painted cinematic dark fantasy with realistic worn materials, coherent high oblique isometric viewpoint, ancient Chinese architecture, monumental scale, tragic supernatural mood, practical broad EMPTY foreground ritual courtyard in every panel, detailed atmosphere at upper background. No people, no UI, no logos. Match a premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-56c45010-aaf6-46f2-a6fa-7310c0447f8a.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/jinxian-worlds.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-56c45010-aaf6-46f2-a6fa-7310c0447f8a.png"
+    },
+    {
+      "name": "jinxian-props",
+      "transparent": true,
+      "prompt": "Original dark Chinese mythological game PROP ATLAS, true transparent background. 1536x1024 landscape, strict FOUR equal columns by THREE equal rows. Twelve SMALL isolated objects with LARGE empty transparent gutters, max object 260px wide by220px tall in each384x341cell. Row1: thorn script gate, twisted word tree, green seal lantern, root inscription altar. Row2: crooked Buddhist hall gate, inverted bell stone, yellow lamp, false mercy throne. Row3: silk loom arch, cocoon crystal rock, silk lantern, seven spindle web altar. Each row lists objects in exact column order gate, tree/rock, lantern, shrine. Isometric high oblique hand-painted realistic aged stone bronze jade, premium dark Chinese fantasy. Entire silhouettes including branches roofs smoke and lights fit inside each cell. Leave 60+px fully empty transparent corridors between ALL rows and columns, NO shared background or glow. No text, no grid marks, no labels.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-addf5ee3-566c-477e-a278-5fb2301726d9.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/jinxian-props.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-addf5ee3-566c-477e-a278-5fb2301726d9.png"
+    },
+    {
+      "name": "jinxian-terrain",
+      "transparent": false,
+      "prompt": "Create a 1536x1024 landscape material atlas, strict THREE columns and TWO rows of six512x512 SQUARE tiles, no gutters, no text, no objects. Top row is flat TOP DOWN plaza paving, bottom row matching rough path material, for these three original dark Chinese fantasy environments in column order: moss stone with dark thorn fissures; old ochre temple stone and purple bell grooves; dark crimson woven stone and silver silk inlay. Seamless edges, continuous quiet stone texture, readable hand painted realistic worn stone, moderate low contrast, muted colors, NO perspective, no circles, no altars, no characters, no large cracks that look like holes. Each column clearly distinct but matches premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-31a9bb14-132a-4332-a2d2-50a8d7ef1ae6.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/jinxian-terrain.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-31a9bb14-132a-4332-a2d2-50a8d7ef1ae6.png"
+    },
+    {
+      "name": "taiyi-worlds",
+      "transparent": false,
+      "prompt": "Create an original dark Chinese mythological journey game environment atlas, 1536x1024 landscape, three equal vertical panels of 512x1024 each, no borders or text. The three panels show: a vast bone-built city gate, empty homes beneath lion statues and a broken skull altar; a six ivory elephant treasury, suspended tusk bridges and a thunder ivory altar; a deer ruled lifespan accounting palace, red wax abacus terraces and an extinguished child life lamp altar. Hand-painted cinematic dark fantasy with realistic worn materials, coherent high oblique isometric viewpoint, ancient Chinese architecture, monumental scale, tragic supernatural mood, practical broad EMPTY foreground ritual courtyard in every panel, detailed atmosphere at upper background. No people, no UI, no logos. Match a premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-d2300201-eb26-4d42-a178-a9a2a5373a86.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/taiyi-worlds.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-d2300201-eb26-4d42-a178-a9a2a5373a86.png"
+    },
+    {
+      "name": "taiyi-props",
+      "transparent": true,
+      "prompt": "Original dark Chinese mythological game PROP ATLAS, true transparent background. 1536x1024 landscape, strict FOUR equal columns by THREE equal rows. Twelve SMALL isolated objects with LARGE empty transparent gutters, max object 260px wide by220px tall in each384x341cell. Row1: bone city gate, skull cairn rock, pale bone lantern, lion skull altar. Row2: six tusk vault arch, ivory crystal rock, elephant lantern, six ivory shrine. Row3: lifespan book gate, red abacus stone, deer antler lamp, life tally altar. Each row lists objects in exact column order gate, tree/rock, lantern, shrine. Isometric high oblique hand-painted realistic aged stone bronze jade, premium dark Chinese fantasy. Entire silhouettes including branches roofs smoke and lights fit inside each cell. Leave 60+px fully empty transparent corridors between ALL rows and columns, NO shared background or glow. No text, no grid marks, no labels.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b5fdc153-4060-4f74-a964-781b9e136467.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/taiyi-props.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b5fdc153-4060-4f74-a964-781b9e136467.png"
+    },
+    {
+      "name": "taiyi-terrain",
+      "transparent": false,
+      "prompt": "Create a 1536x1024 landscape material atlas, strict THREE columns and TWO rows of six512x512 SQUARE tiles, no gutters, no text, no objects. Top row is flat TOP DOWN plaza paving, bottom row matching rough path material, for these three original dark Chinese fantasy environments in column order: pale bone-inlaid ash paving; cream ivory and dark bronze tiles; red wax stained lifespan ledger palace tiles. Seamless edges, continuous quiet stone texture, readable hand painted realistic worn stone, moderate low contrast, muted colors, NO perspective, no circles, no altars, no characters, no large cracks that look like holes. Each column clearly distinct but matches premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-ab2f7456-d486-4ab1-b67b-96e27460461e.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/taiyi-terrain.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-ab2f7456-d486-4ab1-b67b-96e27460461e.png"
+    },
+    {
+      "name": "daluo-worlds",
+      "transparent": false,
+      "prompt": "Create an original dark Chinese mythological journey game environment atlas, 1536x1024 landscape, three equal vertical panels of 512x1024 each, no borders or text. The three panels show: a bottomless void monastery, hanging name plaques, shattered bridges and a gravity well altar; a city where every crown was severed, headless magistrate statues and a broken law altar; a famine-stricken rain gate, dry river terraces, hoarded rain jars and a cracked water altar. Hand-painted cinematic dark fantasy with realistic worn materials, coherent high oblique isometric viewpoint, ancient Chinese architecture, monumental scale, tragic supernatural mood, practical broad EMPTY foreground ritual courtyard in every panel, detailed atmosphere at upper background. No people, no UI, no logos. Match a premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-ab2d2c39-fa1a-469c-a0b7-29b687900012.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/daluo-worlds.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-ab2d2c39-fa1a-469c-a0b7-29b687900012.png"
+    },
+    {
+      "name": "daluo-props",
+      "transparent": true,
+      "prompt": "Original dark Chinese mythological game PROP ATLAS, true transparent background. 1536x1024 landscape, strict FOUR equal columns by THREE equal rows. Twelve SMALL isolated objects with LARGE empty transparent gutters, max object 260px wide by220px tall in each384x341cell. Row1: hanging void gate, levitating dark name rock, abyss lantern, gravity well shrine. Row2: broken crown city arch, headless law stele, severed crown lamp, unruled tribunal altar. Row3: dry rain gate, cracked rain jar rock, rain drop lamp, first rain altar. Each row lists objects in exact column order gate, tree/rock, lantern, shrine. Isometric high oblique hand-painted realistic aged stone bronze jade, premium dark Chinese fantasy. Entire silhouettes including branches roofs smoke and lights fit inside each cell. Leave 60+px fully empty transparent corridors between ALL rows and columns, NO shared background or glow. No text, no grid marks, no labels.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-6e1dfb60-f761-4b57-ad59-ccbb7501e86c.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/daluo-props.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-2faacfe7-15f9-472f-8d58-2c2f79fd6494.png",
+      "revisionRecord": "docs/finale-art-repacking.json"
+    },
+    {
+      "name": "daluo-terrain",
+      "transparent": false,
+      "prompt": "Create a 1536x1024 landscape material atlas, strict THREE columns and TWO rows of six512x512 SQUARE tiles, no gutters, no text, no objects. Top row is flat TOP DOWN plaza paving, bottom row matching rough path material, for these three original dark Chinese fantasy environments in column order: violet black void slate and silver name markings; grey city stone with broken crown gold seams; dry cracked ochre stone with faint water channels. Seamless edges, continuous quiet stone texture, readable hand painted realistic worn stone, moderate low contrast, muted colors, NO perspective, no circles, no altars, no characters, no large cracks that look like holes. Each column clearly distinct but matches premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-6eae3455-3d7d-4c33-a995-c4985042fae9.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/daluo-terrain.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-6eae3455-3d7d-4c33-a995-c4985042fae9.png"
+    },
+    {
+      "name": "xianwang-worlds",
+      "transparent": false,
+      "prompt": "Create an original dark Chinese mythological journey game environment atlas, 1536x1024 landscape, three equal vertical panels of 512x1024 each, no borders or text. The three panels show: an immense war arsenal plain, folded spectral weapons, nine beast towers and a disarmed martial altar; the abandoned celestial merits hall, countless empty account books, ownerless golden thrones and three converging seal altars; a monumental celestial stone courtyard beyond all heavens, broken cosmic ledgers floating over deep stars, a great golden fissure opening toward a quiet dawn and a central return-name altar. Hand-painted cinematic dark fantasy with realistic worn materials, coherent high oblique isometric viewpoint, ancient Chinese architecture, monumental scale, tragic supernatural mood, practical broad EMPTY foreground ritual courtyard in every panel, detailed atmosphere at upper background. No people, no UI, no logos. Match a premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-7f9babfe-1137-474b-a509-e5ddb72d5635.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/xianwang-worlds.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-7f9babfe-1137-474b-a509-e5ddb72d5635.png"
+    },
+    {
+      "name": "xianwang-props",
+      "transparent": true,
+      "prompt": "Original dark Chinese mythological game PROP ATLAS, true transparent background. 1536x1024 landscape, strict FOUR equal columns by THREE equal rows. Twelve SMALL isolated objects with LARGE empty transparent gutters, max object 260px wide by220px tall in each384x341cell. Row1: folded weapons gate, spectral weapon stone, martial blue lamp, nine spirit arsenal altar. Row2: ownerless golden gate, floating blank ledger rock, three seal lantern, empty celestial merit throne. Row3: broken cosmic stone gate, star fissure rock, dawn name lantern, great return-name stone altar. Each row lists objects in exact column order gate, tree/rock, lantern, shrine. Isometric high oblique hand-painted realistic aged stone bronze jade, premium dark Chinese fantasy. Entire silhouettes including branches roofs smoke and lights fit inside each cell. Leave 60+px fully empty transparent corridors between ALL rows and columns, NO shared background or glow. No text, no grid marks, no labels.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-83b995c0-debb-41e1-b12a-5405fd063a61.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/xianwang-props.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-83b995c0-debb-41e1-b12a-5405fd063a61.png"
+    },
+    {
+      "name": "xianwang-terrain",
+      "transparent": false,
+      "prompt": "Create a 1536x1024 landscape material atlas, strict THREE columns and TWO rows of six512x512 SQUARE tiles, no gutters, no text, no objects. Top row is flat TOP DOWN plaza paving, bottom row matching rough path material, for these three original dark Chinese fantasy environments in column order: blue bronze arsenal paving and silver weapon marks; aged celestial gold jade tile and empty book grooves; deep blue star stone, fractured gold seams and subtle dawn white veins. Seamless edges, continuous quiet stone texture, readable hand painted realistic worn stone, moderate low contrast, muted colors, NO perspective, no circles, no altars, no characters, no large cracks that look like holes. Each column clearly distinct but matches premium dark Journey to the West action RPG.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b1398d42-eb42-49b7-854d-0913b0b80246.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/xianwang-terrain.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b1398d42-eb42-49b7-854d-0913b0b80246.png"
+    },
+    {
+      "name": "actors-lifemirror",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: river mirror reed soldier with crescent saber; silver otter mirror hound; veiled reflection priestess with bronze mirror staff; drowned bronze mirror shield giant; final boss the adult river reflection queen with mirrored robe and crescent halberd. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c0040eee-e24b-40f3-9178-dedad642862c.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-lifemirror.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c0040eee-e24b-40f3-9178-dedad642862c.png"
+    },
+    {
+      "name": "actors-scorpionecho",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: purple venom cave guard with hooked spear; armored scorpion wolf; antidote echo alchemist with a bell; black scorpion carapace hammer giant; final boss the adult scorpion queen with two curved hooks and a long ornate scorpion tail. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b1eeab01-216a-4872-8b73-7c2403881104.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-scorpionecho.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b1eeab01-216a-4872-8b73-7c2403881104.png"
+    },
+    {
+      "name": "actors-twinspring",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: twin spring jade sentinel with double ended spear; white gold and turquoise water qilin hound; two basin spring monk; jade water shield giant; final boss the twin spring immortal lord with intertwined gold and cyan water ribbons and jade staff. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-1070a9e7-3cf9-4030-b96f-86c466040fcc.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-twinspring.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-1070a9e7-3cf9-4030-b96f-86c466040fcc.png"
+    },
+    {
+      "name": "actors-ashfront",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: charred flame gate guard with fire axe; soot horn bull hound; ash fan fire priest; molten chain hammer giant; final boss the imposing adult ash boundary bull king with huge curved horns and black volcanic polearm. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-61fc1b18-1f0c-45af-a3b5-d2be152fe121.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-ashfront.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-0aa449a2-32fb-49d6-a060-d8ee0075942d.png",
+      "revisionRecord": "docs/finale-art-repacking.json"
+    },
+    {
+      "name": "actors-bloodrelic",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: false relic red temple guard with crescent staff; gilded pearl lion hound; empty relic bowl monk; stone pagoda shield giant; final boss the sinister false relic pagoda monk carrying a fractured red pearl ring and a chained pagoda staff. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b8aee26b-57ec-4155-8fb8-a96e16382e90.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-bloodrelic.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b8aee26b-57ec-4155-8fb8-a96e16382e90.png"
+    },
+    {
+      "name": "actors-nineledger",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: drowned jade account guard with forked spear; serpent backed ink river beast; nine scroll debt priest; turtle ledger shield giant; final boss a humanoid nine headed account dragon king, one main face and eight smaller serpentine heads as a controlled halo, ink jade halberd. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-83eeab32-0df7-4533-ab06-01cf8bcfb51b.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-nineledger.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-83eeab32-0df7-4533-ab06-01cf8bcfb51b.png"
+    },
+    {
+      "name": "actors-thornscript",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: thorn bound word guard with hooked sword; root and thorn wolf; brush staff script mage; word carved wooden hammer giant; final boss ancient calligraphy tree immortal with tangled letter branches and a brush spear. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-e5997aa0-82bb-4acc-afc7-f221b5f8fd1f.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-thornscript.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-48e1c795-44b7-4554-a644-de7e352182fe.png",
+      "revisionRecord": "docs/finale-art-repacking.json"
+    },
+    {
+      "name": "actors-falsebuddha",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: ochre counterfeit temple guard with vajra saber; yellow eyebrow temple tiger hound; bell carrying false mercy monk; inverted bronze bell heavy; final boss the yellow brow contract master in dark yellow robes carrying a great broken alms bowl and short staff. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-8a91575e-ebe5-477b-8904-c0c11e60ff55.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-falsebuddha.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-8a91575e-ebe5-477b-8904-c0c11e60ff55.png"
+    },
+    {
+      "name": "actors-silkpledge",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: red silk masked loom guard with needle blade; cocoon spider wolf with four main legs; adult silk promise weaver with thread spindle; web armored loom hammer heavy; final boss the adult seven thread spider mother, ornate dark crimson robe, seven silver thread spokes and paired spindle blades. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-9bedd8aa-a359-47bc-ad30-5924723285b8.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-silkpledge.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-9bedd8aa-a359-47bc-ad30-5924723285b8.png"
+    },
+    {
+      "name": "actors-bonecitadel",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: bone city gate soldier with bone glaive; pale skeletal lion hound; empty home skull priest; large bone wall shield giant; final boss the swallowing city blue lion king, blue black mane, skull armor and broad bone execution saber. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c8e1ac08-3daf-49ae-a0e0-61bb41b95c5d.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-bonecitadel.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-c9887140-e1ae-4a25-a5f4-d411a566d916.png",
+      "revisionRecord": "docs/finale-art-repacking.json"
+    },
+    {
+      "name": "actors-sixivory",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: ivory treasury sentinel with ivory spear; six tusk elephant hound; copper ivory seal monk; heavy elephant shield guard; final boss the six ivory account elephant lord, imposing humanoid white elephant, six distinct tusks arranged elegantly, bronze chain mace. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-648d5e5e-56f5-4d07-acfd-aa66e3659e03.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-sixivory.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-fb1dd82a-55ac-47ee-a53c-f87d50bea580.png",
+      "revisionRecord": "docs/finale-art-repacking.json"
+    },
+    {
+      "name": "actors-lifedeer",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: red wax account guard with abacus blade; antlered lifespan deer hound; life lamp tally priest; giant abacus shield heavy; final boss the pale lifespan contract deer lord, long antlers wrapped with red wax seals and a gold life tally staff. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-2f1a6109-a62a-4167-9890-0728f04eaf60.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-lifedeer.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-231c710e-ec7e-4871-bfba-47f4347a85b0.png",
+      "revisionRecord": "docs/finale-art-repacking.json"
+    },
+    {
+      "name": "actors-namelesspit",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: hanging name plaque abyss guard with chained blade; long eared void rat hound; adult stolen name void priestess; black gravity bell heavy; final boss the adult earth abyss stolen name queen, purple black robes with floating name plaques, long crescent spear. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-5faa0030-3e20-4cb1-8bb3-bec77e8d46cc.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-namelesspit.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-5faa0030-3e20-4cb1-8bb3-bec77e8d46cc.png"
+    },
+    {
+      "name": "actors-crownless",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: headless crown city guard with broad saber; broken crown grey wolf; unruled law tablet mage; crownless stone wall heavy; final boss the headless severed crown magistrate king, empty neck shadow, floating broken crown held above the body, ceremonial law sword. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-28073a76-268f-43de-a6ac-ca60fc3f523c.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-crownless.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-b14317ae-58c0-4f95-ab8c-839cf6146287.png",
+      "revisionRecord": "docs/finale-art-repacking.json"
+    },
+    {
+      "name": "actors-droughtgate",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: dry rain tax guard with jar spear; dust rainless deer hound; sealed rain jar astrologer; cracked water vessel shield heavy; final boss the sealed rain jade balance envoy, dark blue jade armor with dry cloud patterns and a suspended rain jar spear. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-29f5429a-1b54-43bf-bc98-12d6893243f9.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-droughtgate.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-29f5429a-1b54-43bf-bc98-12d6893243f9.png"
+    },
+    {
+      "name": "actors-foldedarms",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: folded weapon arsenal guard with jointed spear; nine spirit mane iron lion hound; disarmament seal priest; massive folded weapon shield heavy; final boss the nine spirit returning account ancestor, aged lion immortal with nine subtle spectral lion faces and a great folded bronze polearm. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-127cb880-5bfc-44ae-b1e5-083f061ef5cd.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-foldedarms.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-941484c9-d604-44d5-af2c-9124ebf73541.png",
+      "revisionRecord": "docs/finale-art-repacking.json"
+    },
+    {
+      "name": "actors-ownerless",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: empty ledger celestial guard with jade glaive; blank book celestial qilin hound; ownerless merit seal priest; floating gold ledger shield heavy; final boss an imposing ownerless merit avatar, face an empty dark mirror surrounded by three broken gold seals, open blank scrolls and a jade staff. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-7024e5ed-db6d-47b4-83b5-ef6390a5290c.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-ownerless.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-e69b0d12-7ce4-46e4-9fd7-1f9ead77f155.png",
+      "revisionRecord": "docs/finale-art-repacking.json"
+    },
+    {
+      "name": "actors-returnstone",
+      "transparent": true,
+      "prompt": "Create a functional dark Chinese fantasy RPG SPRITE ATLAS on TRUE TRANSPARENT BACKGROUND, 1024x1536 portrait. Strict FOUR columns FIVE rows, TWENTY tiny isolated full body miniatures. IMPORTANT: each COMPLETE silhouette including every weapon tip, particle, cape and tail must be only100-120px wide and130-155px tall, centered within its256x307cell. Most of image is EMPTY TRANSPARENT SPACE. Leave at least65px empty transparent gutter left/right and75px top/bottom around EACH pose. Continuous empty vertical and horizontal corridors across the WHOLE sheet. Do NOT enlarge figures to fill space. No piece can cross into another cell. Five rows in this EXACT order: broken cosmic contract guard with star blade; starlit grey name guardian hound; golden measure celestial contract mage; huge fractured return-name stone shield heavy; final boss the celestial contract balance sovereign, original adult celestial judge with an austere human face, broken cosmic abacus halo, dark blue jade robes and a long split gold sword. Four columns in each row: idle, walking, preparing attack with raised weapon, delivering attack to lower right. Same identity, clothing and scale across all four poses of each row. High oblique isometric game perspective facing southeast, full body AND feet, strong clean silhouettes, polished hand painted realistic dark Chinese mythological style with ancient bronze jade cloth details. Each pose independent, no shadows shared between cells, no background haze. No text, no grid, no labels, no gore. Keep all characters adult.",
+      "source": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-43c632eb-c97d-49bd-b78e-3f4592f7ec4b.png",
+      "savedPath": "E:/dev/仙剑2/prototype/assets/actors-returnstone.webp",
+      "selectedSource": "C:\\Users\\Administrator\\.codex\\generated_images\\01a15909-5658-71a2-8742-8198bb3ab94b\\exec-940ca730-206d-412f-8d12-7caef1b65070.png",
+      "revisionRecord": "docs/finale-art-repacking.json"
+    }
+  ],
+  "packaging": "Only WebP conversion, measured UV bounds and foot pivots; source pixels and transparency retained."
+}

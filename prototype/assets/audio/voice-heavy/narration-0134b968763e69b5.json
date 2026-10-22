@@ -1,0 +1,15 @@
+{
+  "id": "narration-0134b968763e69b5",
+  "text": "泉水从不问当事人愿不愿意。家族替他选，官府替他选，连尚未存在的未来也被拿来催他签字；签得越快，账上的慈悲便越多。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "aa28ff1747b9a6d1fe5554bdca7080bb5b1463d3007fd3adf091d115672b6f9c",
+  "source_sha256": "2a510ebef1b5506e46171548d34b32dcb5050a1ca1c4d275fd0d2b06dec96cc8",
+  "sha256": "454d18474f02c80e5e5ef61dde9d931bc000b1d32fe47d5b9241292e8e06b527",
+  "duration": 13.638,
+  "file": "assets/audio/voice-heavy/narration-0134b968763e69b5.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-674cac3867958208",
+  "text": "你循着六牙骨仓总票旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成吞城青狮的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "4cded3f685f6b6522f7f271018c3a679d25876b392b240d57243e1aed61826aa",
+  "source_sha256": "7e5d84dee8a4900119a91241da0e951c721b6a206b4fdb9874d6fffb308be201",
+  "sha256": "67060122970fd791c6eb138727dddf51a094989234fa283cf69e5b281f71b471",
+  "duration": 10.542,
+  "file": "assets/audio/voice-heavy/narration-674cac3867958208.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

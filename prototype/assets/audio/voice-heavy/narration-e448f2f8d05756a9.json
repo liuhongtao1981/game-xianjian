@@ -1,0 +1,15 @@
+{
+  "id": "narration-e448f2f8d05756a9",
+  "text": "摄名地涌姬说遗忘最是慈悲，不记得便不再受苦。可忘掉的是世人，不是受伤的人；消失的是追问的资格，不是伤口本身。鸿蒙仙髓正在那些仍不肯消散的刻痕里发光。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "f9e65b6212c140cd4fc6af11088d022f70cd953e7e4938a4c8a144697f4e8dd6",
+  "source_sha256": "8c9238f049b3bbe812c3bad1a1a0b573638eb2eb84ca5e3206decb5576d45c86",
+  "sha256": "05fb1daa0a7dfbf8c9975efab695ed6102689bb6fd1320a2111ee15189f8420c",
+  "duration": 18.174,
+  "file": "assets/audio/voice-heavy/narration-e448f2f8d05756a9.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

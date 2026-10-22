@@ -1,0 +1,15 @@
+{
+  "id": "narration-dcabf89477eeab30",
+  "text": "你循着天外归名终契旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成无主功德相的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "2b69bb880c84eaabd31e49c737c08cac9d1812f1fa4affb4bda51586eedd9d2f",
+  "source_sha256": "e6a8cb1c32e32ecb2ec6cac16a9153971e8f180938bcaf53cd7880711cae5311",
+  "sha256": "30d67553ba33422dcfc9ba5678d7a85af87dd46494ed6d570eec33a7cf832d91",
+  "duration": 10.686,
+  "file": "assets/audio/voice-heavy/narration-dcabf89477eeab30.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-bc0702b8e756e0aa",
+  "text": "小果沿大圣折断的笔锋找回上下句，把散字连成能走人的路。木仙驱动荆棘封住直线，他便顺着折转的青色字脉前进：守信之前，总该先把话读完。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "95c4ee0d23dd91e19b58be219b6acdbb52f3962e1a46d15073adf51a1f3bab8c",
+  "source_sha256": "f9c5a799ca993a1fa0956df838870bbbe7febc4f3a0a27bc43c5fbf0bbb5ca14",
+  "sha256": "94cb07d64e8882bdeae99e7a215861a3d87eeb5dcc6d4c975cbed223424bd958",
+  "duration": 16.014,
+  "file": "assets/audio/voice-heavy/narration-bc0702b8e756e0aa.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-6d36fd12f391eeb4",
+  "text": "你循着小雷音释疑禁页旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成字狱木仙的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "bc81e1f504a4a0389dbaa6a10b5b5fa6aec0d5c85593ebadf5884fa93fef2fa5",
+  "source_sha256": "1f0895a4986cf89e9d4507c64317cb69a857163540aeec9d1f81e41bfadaf84f",
+  "sha256": "e0a3903295b5fab63fdc244ce5087c563ac9ce5d4660bef16d45b207654caeb2",
+  "duration": 10.758,
+  "file": "assets/audio/voice-heavy/narration-6d36fd12f391eeb4.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

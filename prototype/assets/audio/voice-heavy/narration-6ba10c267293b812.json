@@ -1,0 +1,15 @@
+{
+  "id": "narration-6ba10c267293b812",
+  "text": "原上被收去的，不只是刀枪。匠人的工具、证人的笔、求生者开门的一把凿，也都被归作可能伤人的锋；唯独收兵者自己的牙，从未入过库。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "1ae64186bfed18b94783e41cbb8e606e2578f97aa5ed50f226849fa50b411a58",
+  "source_sha256": "4fe4daf6670ae5358d0b3ce3fded8d0deb3b3fe6832fd71cbb87381f9cf13ba0",
+  "sha256": "c9993208cffa10dd38337278f8f4efaf13d9f868c515dfe927f1cda21a9c16a1",
+  "duration": 14.19,
+  "file": "assets/audio/voice-heavy/narration-6ba10c267293b812.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-556d33bd9dda8e09",
+  "text": "堂里没有牢门，只有一圈圈劝人留下的慈悲。想离开的人被说成执迷，想核对经页的人被说成心不净；越是挣扎，劝告便越像刑具。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "d14fee8fae8e1975d31caa3d65da1cd37d6ab6c413be1ef8c0251b732f5bb55e",
+  "source_sha256": "7c918159c365e42af57672112992e492aa967e2b7502d04e272ec158df68d25c",
+  "sha256": "b33ac1e545dca625feee9a29627bc9c1751c9401cd0ea538d5196e0d38ce919c",
+  "duration": 14.646,
+  "file": "assets/audio/voice-heavy/narration-556d33bd9dda8e09.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

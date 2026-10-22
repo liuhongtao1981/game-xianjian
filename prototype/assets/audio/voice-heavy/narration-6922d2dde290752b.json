@@ -1,0 +1,15 @@
+{
+  "id": "narration-6922d2dde290752b",
+  "text": "血珠高悬塔顶，城中人每抬一次头，便被告知自己又蒙了一次恩。听澜走过供养簿，发现珠光最盛的日子，恰是城外失踪人数最多的日子。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "44add2b41e446087c18cdd17adc0601dcc5648d1db81f566eb1e771b0c5f2375",
+  "source_sha256": "6a8a2ba4083774b30492df05e0da6daccc3fa5bc1847ee65cb7e05c2e8a6bcc3",
+  "sha256": "573ccb5eb9e45358287163e63eb655258996069f322af46822976efd46a34137",
+  "duration": 13.926,
+  "file": "assets/audio/voice-heavy/narration-6922d2dde290752b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

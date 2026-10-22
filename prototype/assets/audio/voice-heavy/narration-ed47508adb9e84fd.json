@@ -1,0 +1,15 @@
+{
+  "id": "narration-ed47508adb9e84fd",
+  "text": "封签落入无底洞，竟没有回声。洞壁挂满被拔去名字的木牌，每一块牌后都连着一段被判作查无此人的经历。听澜伸手扶住一块，掌心便多了一道无人认领的旧伤。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "64b9bb2fc19cc8d4aa2aefd134371f299b5397133e2256b1d1073c145d16b60a",
+  "source_sha256": "4a5255bc3e54ae781d35024175660de96b89d44d82f09a9940b7c6c317808dc3",
+  "sha256": "e33c15e499d6451b9ee98825b934d5951a81352c705781b3a9779b5d5e12fc24",
+  "duration": 16.47,
+  "file": "assets/audio/voice-heavy/narration-ed47508adb9e84fd.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

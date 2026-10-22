@@ -1,0 +1,15 @@
+{
+  "id": "narration-11da3bbc9a25010f",
+  "text": "六根象牙贯穿镇账大殿，一根押地，一根押粮，余下四根押着姓名、明日、退路与沉默。殿中的人不是没有还清，只是每一份还清都要等别人先还。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "d53f323b82fed7ba04e35bd61866e5a840d735523d0944191e5821051da8f37a",
+  "source_sha256": "b6430f6f0844335adb6dc3b14381f5754aeedaa951a7c2ea2aa57e520a778544",
+  "sha256": "f3e6219246226fe32e8c6f286841ff6a3fd6fa419d8003b625e0bef7ad5d09c0",
+  "duration": 15.174,
+  "file": "assets/audio/voice-heavy/narration-11da3bbc9a25010f.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

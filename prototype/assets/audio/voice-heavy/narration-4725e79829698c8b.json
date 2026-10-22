@@ -1,0 +1,15 @@
+{
+  "id": "narration-4725e79829698c8b",
+  "text": "七弦蛛母把每段关系都说成无价，于是没有人能算清自己究竟还欠多少。她从不强拉，只在离开的人耳边替所有人哭，一根丝便又勒紧一寸。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "795c0af35d8d7c6d83a3b11016894c26cfdc770dd89d5621a296b15b74ef36f9",
+  "source_sha256": "b986bc100b757b4f26250a0457e5f8ae42c0ff7bd761c1ee9286ce7bf893b080",
+  "sha256": "fe624e1bddb1bf144fd49d4cb98eaf24cf1ad21040538793af68fb685b4f296c",
+  "duration": 15.03,
+  "file": "assets/audio/voice-heavy/narration-4725e79829698c8b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

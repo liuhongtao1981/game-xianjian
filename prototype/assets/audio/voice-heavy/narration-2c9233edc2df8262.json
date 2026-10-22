@@ -1,0 +1,15 @@
+{
+  "id": "narration-2c9233edc2df8262",
+  "text": "照命女相声称镜水从不说谎。可病者的倒影总比旁人黯淡，穷人的脸总被涂去一角；所谓天生贵贱，是有人先把秤放在了水底。太玄玉髓正压着那枚秤砣。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "b81011afd8aed8adba26cec1c31b85546ac86ec3e608001626330ca1f20eb56f",
+  "source_sha256": "ac5be77b573bee27bf8d51e979ff42c9acacbb1410efc44e6f540f6a4fb493d3",
+  "sha256": "28da5b5c6bdea1eab80b11f2f11c98318ba11a12e066bd1b972552d74e6ef3c3",
+  "duration": 17.022,
+  "file": "assets/audio/voice-heavy/narration-2c9233edc2df8262.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

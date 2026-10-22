@@ -1,0 +1,15 @@
+{
+  "id": "narration-a8b06df4a8e41e52",
+  "text": "上一难 · 金兜还器。你带着「照命河半幅河图」来到照命河 · 返照渡。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "7149c4025dad349d384f4ea298628be983c3182fcabd0ecdac110abaa99aebd2",
+  "source_sha256": "2402f94652dcd5eab3cdc00762a9ef07e054f1e0fc91cd1366ccdab66c2051f7",
+  "sha256": "398d5a5a71340a87a3003fd4094c8a033748050cfe380e9b4cd554763f8d0dfd",
+  "duration": 11.31,
+  "file": "assets/audio/voice-heavy/narration-a8b06df4a8e41e52.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

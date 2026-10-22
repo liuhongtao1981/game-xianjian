@@ -1,0 +1,15 @@
+{
+  "id": "narration-9cfc165275309cb4",
+  "text": "听澜将九本账摊成一张方盘，不再追逐嘴上的推诿。大圣留下的逆水刻痕指向盘心：认清每一笔经手，就能让分散的责任重新连在一起。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "df3be9c32848a4291710cf33d0600935716556a58190fea4b0de55b431cabbf1",
+  "source_sha256": "e92c217bf39f1ee5ee8d36c5d9943223d258764c40b97fc2d0540a263c721b09",
+  "sha256": "9d354c34714fa14222d81f414db561e9193452dac34030e53b26b2fc1351b472",
+  "duration": 14.022,
+  "file": "assets/audio/voice-heavy/narration-9cfc165275309cb4.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

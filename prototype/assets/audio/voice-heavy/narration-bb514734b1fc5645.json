@@ -1,0 +1,15 @@
+{
+  "id": "narration-bb514734b1fc5645",
+  "text": "小果在茧里找到大圣剪开的旧结，结上留着另一端原主的名字。不是把所有牵挂烧尽，而是让两端都能亲手松开。蛛母将丝轨翻转，要拿最深的愧疚缠住握剑的手。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "05a7c27bb8f80231fb178729f6c15ce3ef20b328dd994b7d8f145a2611af2368",
+  "source_sha256": "4a7fb36c530234176dc27e4691e0f5d69d6537b7a2e9e06d583383583c6bcae9",
+  "sha256": "a7652e9a6dcfd1b2d35a582d0574f0e2fb4dafb26593ddde7d0cc426c72ed10b",
+  "duration": 16.998,
+  "file": "assets/audio/voice-heavy/narration-bb514734b1fc5645.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

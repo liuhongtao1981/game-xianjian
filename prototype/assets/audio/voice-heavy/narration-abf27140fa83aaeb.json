@@ -1,0 +1,15 @@
+{
+  "id": "narration-abf27140fa83aaeb",
+  "text": "上一难 · 盘丝解愿。你带着「狮驼骨税运单」来到狮驼岭 · 万骨关。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "a18ffcfdd16faa55b49f86756a85c800d067f2d3dd2a2686e1fd41289a51491a",
+  "source_sha256": "387e65693b234eec1acf956f5810847f2004757dd049a62ff8c7166468483c9b",
+  "sha256": "0e0d1370337301358b12ce3e2de439548452857303cd2987454f1c899c91b512",
+  "duration": 11.406,
+  "file": "assets/audio/voice-heavy/narration-abf27140fa83aaeb.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

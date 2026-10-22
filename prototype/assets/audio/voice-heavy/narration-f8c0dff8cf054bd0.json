@@ -1,0 +1,15 @@
+{
+  "id": "narration-f8c0dff8cf054bd0",
+  "text": "九首账蛟每一颗头都讲得通情达理：这一头只管运输，那一头只管验印，最后一头专管劝家属不要为难办事的人。它们合起来，却能吞掉完整的一条命。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "b85ed4f96dc3a1f418d83970d384570801decce369e8570564afa240d40a4739",
+  "source_sha256": "bf7890d59dbf013227553780cb32b5581e5d3d990406c2a8043a14c67aff4f00",
+  "sha256": "031e2df669ab820e3166b333db36ba5bf8681722b41bcad476be3054bf2486f7",
+  "duration": 15.006,
+  "file": "assets/audio/voice-heavy/narration-f8c0dff8cf054bd0.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

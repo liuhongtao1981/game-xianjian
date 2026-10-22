@@ -1,0 +1,15 @@
+{
+  "id": "narration-4bcaeb06f0e17156",
+  "text": "你循着比丘余生受让页旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成六牙镇账象的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "171ad7e9c1d624c85d68cbe9b0eae4cfe36591608a41e9e850e27a3ae69d2912",
+  "source_sha256": "6a99263376e3f21fafa1f9291281a90a33678b7c07413477ae8cd1d980761682",
+  "sha256": "d775794009aa613c2eaf8712036b18e4e17c6b45272215939fa72605aed6875d",
+  "duration": 10.758,
+  "file": "assets/audio/voice-heavy/narration-4bcaeb06f0e17156.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

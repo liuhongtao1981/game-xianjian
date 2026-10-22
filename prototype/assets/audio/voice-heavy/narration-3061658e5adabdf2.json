@@ -1,0 +1,15 @@
+{
+  "id": "narration-3061658e5adabdf2",
+  "text": "骨税运单把小果带到一座过分整洁的城。街上没有哭声，城墙却会在夜里低低作响：每一块白石，都曾是城外一个没有被记录的家。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "7a7f5f755956465e4a7a5bcb9c7c9c77eabe920ed4c64a9a6f18844394a692f2",
+  "source_sha256": "0f63bc9efa707f15cbaa7343b74184095a84dc3b5e765bb508d58c8ae28c41d8",
+  "sha256": "7764eba7fa4927530552ff3e9f9c985eb89abb5a2b1926b55e0a9cf910f31734",
+  "duration": 13.062,
+  "file": "assets/audio/voice-heavy/narration-3061658e5adabdf2.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

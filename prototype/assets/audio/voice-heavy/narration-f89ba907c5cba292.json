@@ -1,0 +1,15 @@
+{
+  "id": "narration-f89ba907c5cba292",
+  "text": "小果在牙根找到大圣打断又被接回的旧痕。今次不再只砸最外面的锁，先沿六道象牙空隙换位，斩掉把无关者绑在一起的总押结。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "33d9a8f73e7698153654f61ffbdd1d9c1dc8cea322c3887502e8b97e23fc4ed7",
+  "source_sha256": "7336c38defc0125da8c61211eb7c7afecd8e4a72ef575892fe4c695d6ac3d3c1",
+  "sha256": "6d1524e213006dd794401280da82555892222934158a62fd93c16a676f5e0cf0",
+  "duration": 13.206,
+  "file": "assets/audio/voice-heavy/narration-f89ba907c5cba292.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

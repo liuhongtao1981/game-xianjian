@@ -19,6 +19,8 @@ on:
       - 'tools/check-lianxu.js'
       - 'tools/check-heti.js'
       - 'tools/check-beyond.js'
+      - 'tools/check-finale.js'
+      - 'tools/check-ending.js'
       - 'tools/check-reward-cards.js'
       - 'tools/check-ascension-scene.js'
       - 'tools/check-spell-growth.js'
@@ -72,6 +74,8 @@ jobs:
           node tools/check-lianxu.js
           node tools/check-heti.js
           node tools/check-beyond.js
+          node tools/check-finale.js
+          node tools/check-ending.js
           node tools/check-spell-growth.js
           node tools/check-spell-priority.js
           node tools/check-thunder.js

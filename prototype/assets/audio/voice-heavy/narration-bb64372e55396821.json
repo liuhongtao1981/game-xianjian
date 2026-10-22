@@ -1,0 +1,15 @@
+{
+  "id": "narration-bb64372e55396821",
+  "text": "字契一入荆棘林，便长出细小的刺。林中每块碑都只写半句话：有人年轻时答应的一次帮忙，被截成终生服役；有人失声时的沉默，被拓成永不反悔。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "e7542a537f84ff31d7e0bd72e9ed134948ef1e5c92cba63400ee583b16656ac9",
+  "source_sha256": "7235c2f2fb1847d4ae6c7358db3f3308199ae14b0b22f4ead9250fabbac6efbf",
+  "sha256": "0e55b539d1df49159429d4be7d88ad18f99696ff948da6920f3579fe20fda13e",
+  "duration": 15.486,
+  "file": "assets/audio/voice-heavy/narration-bb64372e55396821.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

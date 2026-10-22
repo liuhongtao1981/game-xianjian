@@ -1,0 +1,15 @@
+{
+  "id": "narration-2cdede6115dc7ba8",
+  "text": "上一难 · 无底留名。你带着「灭法收名断冠令」来到灭法国 · 断冠城。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "48a3426b0a30e61e0bcbd6b0a0f53cc91c5b47b7801b266cffe0e83431eff447",
+  "source_sha256": "39f888de973ebe669f2710d7550f59f1dd7ecc2b10035097104a8777fe0b2530",
+  "sha256": "936f2974ef359cfa7d44c7eee07e6958298fcfaa7f9a73002c6af4382299d572",
+  "duration": 11.166,
+  "file": "assets/audio/voice-heavy/narration-2cdede6115dc7ba8.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

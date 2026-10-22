@@ -1,0 +1,15 @@
+{
+  "id": "narration-b3ae535982135d59",
+  "text": "上一难 · 祭赛还珠。你带着「九首接珠水单」来到碧波潭 · 九首渊。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "503f659940bbc91278c4062e22b75a5844d2d653e35e2af3c232f482dd9081dd",
+  "source_sha256": "71ab4e27eb9ad14ca23d4f7bd0482ac4b531d54ca8c46a559819ac2045ab1a12",
+  "sha256": "f292694d6c7db391d8b4563356c746fc008fae4dd5ed3e615849e8b30b250492",
+  "duration": 11.046,
+  "file": "assets/audio/voice-heavy/narration-b3ae535982135d59.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

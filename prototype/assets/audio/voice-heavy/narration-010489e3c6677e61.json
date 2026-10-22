@@ -1,0 +1,15 @@
+{
+  "id": "narration-010489e3c6677e61",
+  "text": "你循着双生泉药引签旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成钩魂蝎后的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "ddbdbb925372ae6a1eaa16b2d753f2107091b29d639ffe3a7d51371becc98e3c",
+  "source_sha256": "c96ea7a8a78800b2c1e3a3c76f7be745967a18472b7bb7fb55757dc89e98de15",
+  "sha256": "03c18528684317cfbc3459a448bdf9674a8c5df687a3a249a4e1a95f88862f25",
+  "duration": 10.566,
+  "file": "assets/audio/voice-heavy/narration-010489e3c6677e61.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

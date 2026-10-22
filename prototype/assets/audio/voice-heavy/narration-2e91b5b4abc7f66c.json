@@ -1,0 +1,15 @@
+{
+  "id": "narration-2e91b5b4abc7f66c",
+  "text": "听澜在城根找到大圣留下的一面无冕石镜。镜里没有王，只有一张张能直视彼此的脸。他踏过先宽后窄的断冠台，又沿反向台返回，要证明站直不等于称王。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "496851a657e358f67d70e4632f3e6845e88727088d267c8623aeb743061e1003",
+  "source_sha256": "7657b55e3aa7ca92c95567a42b0cb41d08c0f4f7c14fd095ff5c62addbfd936c",
+  "sha256": "122f58b43fbed8115e4b2928edb3a3d79a4b4232ca423df265aa618485128081",
+  "duration": 16.878,
+  "file": "assets/audio/voice-heavy/narration-2e91b5b4abc7f66c.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

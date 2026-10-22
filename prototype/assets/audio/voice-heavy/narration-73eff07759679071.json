@@ -1,0 +1,15 @@
+{
+  "id": "narration-73eff07759679071",
+  "text": "大圣的金毫横在洞底，像一根不许名字继续坠落的细梁。听澜循三座移位的留名环前进，先让人站得住，再让他有机会把自己的事重新说完。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "d6a83c61af55f08df215bf8427834a6ab1ae39a981a1b1ecd5a1ceb322287bb9",
+  "source_sha256": "24acf9c618b91b71c9c97d9d8c56653641a0c65958b1dff53e88657bc924553a",
+  "sha256": "e6a1ef888d2700f3c658ab52c7b44d4b717472b08d1c29d17885a9c2b58766b2",
+  "duration": 14.166,
+  "file": "assets/audio/voice-heavy/narration-73eff07759679071.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

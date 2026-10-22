@@ -1,0 +1,15 @@
+{
+  "id": "narration-74769a02da77c770",
+  "text": "你循着玉华收兵天印旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成封雨玉衡使的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "d3b8b3aac754646179f2b3d9bcd66b6185270eb5bfc641d86859472e050e857b",
+  "source_sha256": "e4fc1255d578ba90edee7d203f6af9f862436a65a71da07ce0d15e9c95a0fc4b",
+  "sha256": "ab1ae7dd83ab15a6ae689cbffbc48f68e1ae6d5e12f0bd5b507d898022a7bd44",
+  "duration": 11.142,
+  "file": "assets/audio/voice-heavy/narration-74769a02da77c770.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "narration-6dc4a55aa9fe23d0",
+  "text": "上一难 · 火焰止界。你带着「祭赛续燃功德票」来到祭赛国 · 血珠塔。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "30ab849d8a13a936af12bb49f131c7c1c6221918d0868403585ec6d49f924bb4",
+  "source_sha256": "a7c47488813af62b83b351f5a8791815760d033f9f76c6b72d493eca8f77b3c6",
+  "sha256": "2234913a5efb47d584e397dd3ba9f2efde8a6d4109c6dd938e4034d752626e0d",
+  "duration": 11.526,
+  "file": "assets/audio/voice-heavy/narration-6dc4a55aa9fe23d0.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

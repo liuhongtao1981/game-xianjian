@@ -1,0 +1,15 @@
+{
+  "id": "narration-8cc034f7f3f3faae",
+  "text": "大圣站在新册旁，没有让众人跪下。他说自己也曾误信、迟到，也有没能救下的人；若寻到一个圣，只是为了让他替所有人永远作主，这一路便还没有真正走完。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "9e77f80b4b98f67ec9fc6bd13559a8421a5004c0bc16704fdbd3d4b406717164",
+  "source_sha256": "b230729396e6fe8dc985977aaee7456b68f7219dde4c924d2f149c328443f8f9",
+  "sha256": "dd98346795f132cff6c7690bf11f0861bba44f87a2a5118833c2984c978775e3",
+  "duration": 16.614,
+  "file": "assets/audio/voice-heavy/narration-8cc034f7f3f3faae.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

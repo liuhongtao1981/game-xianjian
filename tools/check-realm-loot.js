@@ -25,13 +25,13 @@ check('older unqualified outside saves return to the main story without losing m
   G.state='playing';World.enterBoss();RunSave.save();
   if(!RunSave.continueRun())return false;
   return !Journey.run.extramural&&!G.bossSpawned&&G.state==='story'&&P.cultivation.materials.core1===1&&P.cultivation.materials.essence===4&&JourneyProgress.cleared()===0&&!RunSave.snapshot().run.extramural;`);
-check('all released bosses roll at the exact 30 percent boundary for their own realm',`
+check('all advancement bosses roll at 30 percent while immortal kings award no fictitious core',`
   RunSave.start(0);JourneyProgress.restore({version:1,cleared:ChapterCatalog.playable,entries:{}});P.cultivation.realm=Math.floor((ChapterCatalog.playable-1)/3);RunSave.save();const random=Math.random;
   for(let stage=0;stage<ChapterCatalog.playable;stage++)for(const roll of [.299999,.3,.999]){
     RunSave.start(stage,false,true);G.state='win';G.boss={xp:0};
     const r=ChapterCatalog.reward(stage),before=P.cultivation.materials[r.core]||0;
     Math.random=()=>roll;Cultivation.victory();Math.random=random;
-    if((P.cultivation.materials[r.core]||0)-before!==(roll<.3?Math.max(1,r.count):0)||G.coreReward)return false;
+    if((P.cultivation.materials[r.core]||0)-before!==(r.core&&roll<.3?Math.max(1,r.count):0)||G.coreReward)return false;
     const amount=P.cultivation.materials[r.core]||0;Cultivation.victory();
     if((P.cultivation.materials[r.core]||0)!==amount)return false;
   }return true;`);
@@ -56,9 +56,9 @@ check('each released realm receives half its own recipe even when the hero is st
   RunSave.start(0);JourneyProgress.restore({version:1,cleared:ChapterCatalog.playable,entries:{}});P.cultivation.realm=Math.floor((ChapterCatalog.playable-1)/3);RunSave.save();
   for(let stage=0;stage<ChapterCatalog.playable;stage++){
     if(!RunSave.start(stage,false,false,true))return false;
-    const r=Cultivation.recipe(ChapterCatalog.get(stage).realm),a=P.cultivation.materials[r.core]||0,b=P.cultivation.materials.essence;
+    const r=Cultivation.outsideReward(ChapterCatalog.get(stage).realm),a=P.cultivation.materials[r.core]||0,b=P.cultivation.materials.essence;
     G.state='win';Cultivation.victory();RunSave.save();
-    if((P.cultivation.materials[r.core]||0)-a!==r.coreCount/2||P.cultivation.materials.essence-b!==r.essence/2)return false;
+    if(r.core&&(P.cultivation.materials[r.core]||0)-a!==r.coreCount||P.cultivation.materials.essence-b!==r.essence)return false;
   }return true;`);
 check('outside boss health and actual damage are twice normal across all difficulties',`
   for(const difficulty of Object.keys(Journey.difficulties)){

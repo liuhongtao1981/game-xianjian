@@ -1,0 +1,15 @@
+{
+  "id": "narration-1b7460af51d35499",
+  "text": "上一难 · 狮驼还城。你带着「六牙骨仓总票」来到六牙山 · 镇账殿。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "1c541f99d7d43830c972ecd9c12368e0554ad41ad4ef49696ee1e813a8215ee8",
+  "source_sha256": "54dba4ac9f638451a183d0568b81d51a6222672d5c2a0c580897569bca87933b",
+  "sha256": "5eea05b7be6b302628428e649359b999d62b92e8c5c7c3517ad47aad2c79c6a9",
+  "duration": 11.046,
+  "file": "assets/audio/voice-heavy/narration-1b7460af51d35499.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

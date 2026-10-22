@@ -1,0 +1,15 @@
+{
+  "id": "narration-ad22820277b62d55",
+  "text": "你循着狮驼骨税运单旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成七弦蛛母的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "6ac9db68ef17e65625b8bdcf5ae733936a30a9e2261acb7c0f8dea99c1b23537",
+  "source_sha256": "cd9a72801bf188a87e0d87f79414c798d0101bf9c54491e8374970ce9908c5dd",
+  "sha256": "a0a6f157350d4eb83d9ead32eb8d582db789b4384c52c79c2d709bd5df0ff719",
+  "duration": 10.542,
+  "file": "assets/audio/voice-heavy/narration-ad22820277b62d55.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

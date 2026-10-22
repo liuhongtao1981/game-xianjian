@@ -1,0 +1,15 @@
+{
+  "id": "narration-e406d8fe0e69277d",
+  "text": "听澜没有在终契上写下新的主人。他先断去把人逼到无路可退的条款，再让决定的人亲自回应后果。天衡的三重契相依次显露：照面、断衡、归名。最后这一剑，要给今后仍会争执的活人，留下一条重新商量的路。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "b8f11a8163d7f1fe18a5542cc6fa6ecf374d884350d85fdabd3f10c29c83e9ab",
+  "source_sha256": "e748f9d03e0a5d07d17ab125fc83030be053a0f54596765896faea9a6dcbb968",
+  "sha256": "43faac5d022d009339323f646c92a873b427d86747cb40ac3ee6356ca7f1f13b",
+  "duration": 22.47,
+  "file": "assets/audio/voice-heavy/narration-e406d8fe0e69277d.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

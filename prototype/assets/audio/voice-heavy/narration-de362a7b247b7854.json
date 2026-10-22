@@ -1,0 +1,15 @@
+{
+  "id": "narration-de362a7b247b7854",
+  "text": "你循着九首接珠水单旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成假愿塔僧的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "6d092d15f236cdcfff4be3bd89a5945891f477f89ef5696af00c62a85f45f9a2",
+  "source_sha256": "c159e9350d3fce757bea4ad85687d00a8771091198f974b9b5204387acbbdfe8",
+  "sha256": "b0a500cf41e1b2a75b987b1b4b44909642bd6d790db9816ba9e816a08102ac51",
+  "duration": 10.59,
+  "file": "assets/audio/voice-heavy/narration-de362a7b247b7854.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

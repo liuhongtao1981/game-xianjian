@@ -19,6 +19,9 @@ const Cultivation=(()=>{
     return n;
   }
   const recipe=(realm=P.cultivation.realm)=>realm>=13?null:{target:realm+1,core:'core'+(realm+1),name:cores[realm],coreCount:2*(realm+1),essence:8*(realm+1),qi:320*(realm+1)**2};
+  const lootLabel=realm=>realm>=13?'仙王道圆 · 修为与灵蕴':cores[realm]+' · 30%掉落';
+  const outsideReward=realm=>realm>=13?{core:null,coreCount:0,essence:56,qi:31360}:{core:'core'+(realm+1),coreCount:realm+1,essence:4*(realm+1),qi:150};
+  const outsideText=realm=>realm>=13?'灵蕴精华 ×56、修为31,360；仙王已无后续境界，可继续修至九层道圆。':cores[realm]+' ×'+(realm+1)+'、灵蕴精华 ×'+(4*(realm+1))+'，各为突破'+realms[realm+1]+'所需的50%。修为仍须自行积累。';
   const need=(c=P.cultivation)=>320*(c.realm+1)**2;
   function label(c=P.cultivation){const layer=c.layer||Math.min(9,1+Math.floor(c.qi/need(c)*9));return realms[c.realm]+'·'+['一','二','三','四','五','六','七','八','九'][layer-1]+'层'+(c.qi>=need(c)?c.realm===13?'·道圆':'·圆满':'');}
   function caps(p=P){const r=p.cultivation.realm+((p.cultivation.layer||1)-1)/9,f=p.cultivation.floors;
@@ -43,9 +46,9 @@ const Cultivation=(()=>{
   function victory(){
     if(Journey.run.extramural){
       if(RunSave.claim('outer:boss:'+Journey.run.stage)){
-        const r=recipe(ChapterCatalog.get(Journey.run.stage).realm);
-        addMaterial(r.core,r.coreCount/2);addMaterial('essence',r.essence/2);
-        qi(150,false);
+        const r=outsideReward(ChapterCatalog.get(Journey.run.stage).realm);
+        if(r.core)addMaterial(r.core,r.coreCount);addMaterial('essence',r.essence);
+        qi(r.qi,false);
       }
       return;
     }
@@ -53,7 +56,7 @@ const Cultivation=(()=>{
     const risk=CombatRewards.forEnemy(G.boss),first=RunSave.claim('boss:'+Journey.run.stage);
     if(first){if(G.boss?.xp)gainXP(G.boss.xp,false);const initial=RunSave.claim('first:boss:'+Journey.run.stage);qi((initial?reward.qi:150)*risk.qi,false);addMaterial('essence',Math.ceil((initial?reward.essence:8)*risk.qi));
       // The boss claim records both successful and failed rolls, so reload cannot reroll loot.
-      if(Math.random()<.3){addMaterial(reward.core,Math.max(1,reward.count));RunSave.claim('drop:'+Journey.run.stage+':realm');}
+      if(reward.core&&Math.random()<.3){addMaterial(reward.core,Math.max(1,reward.count));RunSave.claim('drop:'+Journey.run.stage+':realm');}
     }
   }
   function claimCore(target){
@@ -91,5 +94,5 @@ const Cultivation=(()=>{
     if(success){CombatScaling.observe();RealmVisuals.advance(true);AscensionScene.begin({fromRealm:before.realm,stats});}
     return true;
   }
-  return {realms,cores,fresh,valid,clean,recipe,need,settle,label,caps,protectLegacy,constrain,canStat,xpNeed,qi,addMaterial,onKill,victory,claimCore,chance,safe,ready,autoStatus,update,attempt,resetAutomation(){autoDelay=0;}};
+  return {realms,cores,fresh,valid,clean,recipe,lootLabel,outsideReward,outsideText,need,settle,label,caps,protectLegacy,constrain,canStat,xpNeed,qi,addMaterial,onKill,victory,claimCore,chance,safe,ready,autoStatus,update,attempt,resetAutomation(){autoDelay=0;}};
 })();

@@ -1,0 +1,15 @@
+{
+  "id": "narration-ef123fba24f8309b",
+  "text": "小果将九本账摊成一张方盘，不再追逐嘴上的推诿。大圣留下的逆水刻痕指向盘心：认清每一笔经手，就能让分散的责任重新连在一起。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "a9484746859dd1d0f9358f8e4003cc9f28cff066da536a4feeaa3fc8dc19ee1f",
+  "source_sha256": "7d09f20a34b3d99198e4c11589389b4fbbfdc2abcbffdbc3e64b2d32991edbd8",
+  "sha256": "d3b40ced69eea0708cf1decf4e2ccbe78412582df2dda0ed0c94d55e091aa17e",
+  "duration": 14.07,
+  "file": "assets/audio/voice-heavy/narration-ef123fba24f8309b.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

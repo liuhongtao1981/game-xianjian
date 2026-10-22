@@ -1,0 +1,15 @@
+{
+  "id": "narration-e83bc6d73cf400b8",
+  "text": "上一难 · 凤仙开雨。你带着「玉华收兵天印」来到玉华州 · 折兵原。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "61ac9017812f540b5afa2f9a00817f3880935eae555f3174667cce9454e1d7f0",
+  "source_sha256": "47e5ccaa07a6da6f0ced70d9665bc22237fb7418dcd27d2b651b3d230cc711b7",
+  "sha256": "846024473db22b65216615b55bee1a6410f5aa11acf45578826b3b72c407fd83",
+  "duration": 10.998,
+  "file": "assets/audio/voice-heavy/narration-e83bc6d73cf400b8.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

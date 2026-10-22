@@ -1,0 +1,15 @@
+{
+  "id": "narration-b7589569f45c3542",
+  "text": "天外没有更高的殿，只有一座横在星河上的石庭。四十一道线索同时发亮，执契天衡立在裂缝前，说每一桩买卖、每一道命令都有签字，若今日容你推翻，明日便再无人肯信任何一句话。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "b964e5188fb1e795e6173c53cdf66e2dab6533706bf5ebadd128e8a6c7e6922f",
+  "source_sha256": "04ceb533b0ccd5a5160ecc971b91228204320fef5ffba9427e726052a1c6cb27",
+  "sha256": "2fa18261c37e3895a61afca7ee0dead330bbc28786df820c68a27a885645f395",
+  "duration": 19.038,
+  "file": "assets/audio/voice-heavy/narration-b7589569f45c3542.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

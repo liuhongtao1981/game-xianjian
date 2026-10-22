@@ -1,0 +1,15 @@
+{
+  "id": "narration-bc0d3031074df98e",
+  "text": "断冠城没有高低贵贱的称谓，却处处立着不许抬头的碑。王说除去头冠便人人平等，随后又把能解释何为平等的嘴，只留给了自己。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "ec57c5a7f1002efed279637a87b1fd1b59017d553a7321119067b2dc9aa22a6b",
+  "source_sha256": "0c58707e1c378f5c2cb9d06b3cd9eb854f3cc8b1f89346efba2f084f154341b4",
+  "sha256": "89b4892276d604089cfa000d097c59ea379bd8ea4494f17f7744007db3f25c82",
+  "duration": 13.782,
+  "file": "assets/audio/voice-heavy/narration-bc0d3031074df98e.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

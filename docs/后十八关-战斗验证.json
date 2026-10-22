@@ -1,0 +1,993 @@
+[
+  {
+    "stage": 25,
+    "difficulty": "normal",
+    "boss": "照命女相",
+    "state": "win",
+    "seconds": 85,
+    "hp": 1568,
+    "damage": 2500,
+    "bossHp": 0,
+    "openings": 2,
+    "failures": 0,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 8,
+      "layer": 4,
+      "level": 88,
+      "maxHp": 2200,
+      "shield": 800,
+      "dmg": 14,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 6,
+      "speed": 320,
+      "spells": {
+        "yujian": 16,
+        "wanjian": 16,
+        "wulei": 15,
+        "sanmei": 13,
+        "bingxin": 12,
+        "guanyin": 12
+      },
+      "bossHp": 8578234,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 42237.21953963041,
+        "hp": 32.741352267858026,
+        "helper": 23.098668770651166,
+        "damage": 24.297705417596443,
+        "risk": 28.205313903202132,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.17044737719982456,
+          "medicine": 0.059089475439964914,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 26,
+    "difficulty": "normal",
+    "boss": "钩魂蝎后",
+    "state": "win",
+    "seconds": 119,
+    "hp": 1783,
+    "damage": 4663,
+    "bossHp": 0,
+    "openings": 4,
+    "failures": 0,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 8,
+      "layer": 4,
+      "level": 88,
+      "maxHp": 2200,
+      "shield": 800,
+      "dmg": 14,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 6,
+      "speed": 320,
+      "spells": {
+        "yujian": 16,
+        "wanjian": 16,
+        "wulei": 15,
+        "sanmei": 13,
+        "bingxin": 12,
+        "guanyin": 12
+      },
+      "bossHp": 9560475,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 42237.21953963041,
+        "hp": 32.741352267858026,
+        "helper": 23.098668770651166,
+        "damage": 24.297705417596443,
+        "risk": 28.205313903202132,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.17044737719982456,
+          "medicine": 0.059089475439964914,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 27,
+    "difficulty": "normal",
+    "boss": "借阳真君",
+    "state": "win",
+    "seconds": 144,
+    "hp": 1791,
+    "damage": 4165,
+    "bossHp": 0,
+    "openings": 4,
+    "failures": 1,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 8,
+      "layer": 4,
+      "level": 88,
+      "maxHp": 2200,
+      "shield": 800,
+      "dmg": 14,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 6,
+      "speed": 320,
+      "spells": {
+        "yujian": 16,
+        "wanjian": 16,
+        "wulei": 15,
+        "sanmei": 13,
+        "bingxin": 12,
+        "guanyin": 12
+      },
+      "bossHp": 10673681,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 42237.21953963041,
+        "hp": 32.741352267858026,
+        "helper": 23.098668770651166,
+        "damage": 24.297705417596443,
+        "risk": 28.205313903202132,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.17044737719982456,
+          "medicine": 0.059089475439964914,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 28,
+    "difficulty": "normal",
+    "boss": "焚界牛君",
+    "state": "win",
+    "seconds": 91,
+    "hp": 2381,
+    "damage": 1735,
+    "bossHp": 0,
+    "openings": 3,
+    "failures": 0,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 9,
+      "layer": 4,
+      "level": 98,
+      "maxHp": 2650,
+      "shield": 950,
+      "dmg": 18,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 6.8,
+      "speed": 320,
+      "spells": {
+        "yujian": 18,
+        "wanjian": 18,
+        "wulei": 17,
+        "sanmei": 15,
+        "bingxin": 14,
+        "guanyin": 14
+      },
+      "bossHp": 15280201,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 69051.71800208306,
+        "hp": 41.8635637514607,
+        "helper": 28.8172528065449,
+        "damage": 28.690970937841712,
+        "risk": 34.656980407237484,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.1778768513938409,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 29,
+    "difficulty": "normal",
+    "boss": "假愿塔僧",
+    "state": "win",
+    "seconds": 89,
+    "hp": 2959,
+    "damage": 1851,
+    "bossHp": 0,
+    "openings": 3,
+    "failures": 0,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 9,
+      "layer": 4,
+      "level": 98,
+      "maxHp": 2650,
+      "shield": 950,
+      "dmg": 18,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 6.8,
+      "speed": 320,
+      "spells": {
+        "yujian": 18,
+        "wanjian": 18,
+        "wulei": 17,
+        "sanmei": 15,
+        "bingxin": 14,
+        "guanyin": 14
+      },
+      "bossHp": 17080334,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 69051.71800208306,
+        "hp": 41.8635637514607,
+        "helper": 28.8172528065449,
+        "damage": 28.690970937841712,
+        "risk": 34.656980407237484,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.1778768513938409,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 30,
+    "difficulty": "normal",
+    "boss": "九首账蛟",
+    "state": "win",
+    "seconds": 159,
+    "hp": 2621,
+    "damage": 7065,
+    "bossHp": 0,
+    "openings": 3,
+    "failures": 2,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 9,
+      "layer": 4,
+      "level": 98,
+      "maxHp": 2650,
+      "shield": 950,
+      "dmg": 18,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 6.8,
+      "speed": 320,
+      "spells": {
+        "yujian": 18,
+        "wanjian": 18,
+        "wulei": 17,
+        "sanmei": 15,
+        "bingxin": 14,
+        "guanyin": 14
+      },
+      "bossHp": 19089785,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 69051.71800208306,
+        "hp": 41.8635637514607,
+        "helper": 28.8172528065449,
+        "damage": 28.690970937841712,
+        "risk": 34.656980407237484,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.1778768513938409,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 31,
+    "difficulty": "normal",
+    "boss": "字狱木仙",
+    "state": "win",
+    "seconds": 111,
+    "hp": 3225,
+    "damage": 3872,
+    "bossHp": 0,
+    "openings": 2,
+    "failures": 2,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 10,
+      "layer": 4,
+      "level": 108,
+      "maxHp": 3100,
+      "shield": 1100,
+      "dmg": 22,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 7.6,
+      "speed": 320,
+      "spells": {
+        "yujian": 20,
+        "wanjian": 20,
+        "wulei": 19,
+        "sanmei": 17,
+        "bingxin": 16,
+        "guanyin": 16
+      },
+      "bossHp": 26503634,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 106407.58973320838,
+        "hp": 51.967910461089225,
+        "helper": 35.00755094190039,
+        "damage": 33.18641193324511,
+        "risk": 41.52864654514646,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.18440087371812766,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 32,
+    "difficulty": "normal",
+    "boss": "黄眉司契",
+    "state": "win",
+    "seconds": 111,
+    "hp": 3423,
+    "damage": 4218,
+    "bossHp": 0,
+    "openings": 2,
+    "failures": 2,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 10,
+      "layer": 4,
+      "level": 108,
+      "maxHp": 3100,
+      "shield": 1100,
+      "dmg": 22,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 7.6,
+      "speed": 320,
+      "spells": {
+        "yujian": 20,
+        "wanjian": 20,
+        "wulei": 19,
+        "sanmei": 17,
+        "bingxin": 16,
+        "guanyin": 16
+      },
+      "bossHp": 29621709,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 106407.58973320838,
+        "hp": 51.967910461089225,
+        "helper": 35.00755094190039,
+        "damage": 33.18641193324511,
+        "risk": 41.52864654514646,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.18440087371812766,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 33,
+    "difficulty": "normal",
+    "boss": "七弦蛛母",
+    "state": "win",
+    "seconds": 119,
+    "hp": 2917,
+    "damage": 2832,
+    "bossHp": 0,
+    "openings": 4,
+    "failures": 0,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 10,
+      "layer": 4,
+      "level": 108,
+      "maxHp": 3100,
+      "shield": 1100,
+      "dmg": 22,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 7.6,
+      "speed": 320,
+      "spells": {
+        "yujian": 20,
+        "wanjian": 20,
+        "wulei": 19,
+        "sanmei": 17,
+        "bingxin": 16,
+        "guanyin": 16
+      },
+      "bossHp": 33103559,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 106407.58973320838,
+        "hp": 51.967910461089225,
+        "helper": 35.00755094190039,
+        "damage": 33.18641193324511,
+        "risk": 41.52864654514646,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.18440087371812766,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 34,
+    "difficulty": "normal",
+    "boss": "吞城青狮",
+    "state": "win",
+    "seconds": 135,
+    "hp": 3061,
+    "damage": 8567,
+    "bossHp": 0,
+    "openings": 2,
+    "failures": 3,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 11,
+      "layer": 4,
+      "level": 118,
+      "maxHp": 3550,
+      "shield": 1250,
+      "dmg": 26,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 8.4,
+      "speed": 320,
+      "spells": {
+        "yujian": 22,
+        "wanjian": 22,
+        "wulei": 21,
+        "sanmei": 19,
+        "bingxin": 18,
+        "guanyin": 18
+      },
+      "bossHp": 45049284,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 157731.30750492966,
+        "hp": 63.271466943622215,
+        "helper": 41.79141858767643,
+        "damage": 37.797072778361965,
+        "risk": 48.90272222342855,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.19029607178737268,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 35,
+    "difficulty": "normal",
+    "boss": "六牙镇账象",
+    "state": "win",
+    "seconds": 133,
+    "hp": 3120,
+    "damage": 8713,
+    "bossHp": 0,
+    "openings": 2,
+    "failures": 2,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 11,
+      "layer": 4,
+      "level": 118,
+      "maxHp": 3550,
+      "shield": 1250,
+      "dmg": 26,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 8.4,
+      "speed": 320,
+      "spells": {
+        "yujian": 22,
+        "wanjian": 22,
+        "wulei": 21,
+        "sanmei": 19,
+        "bingxin": 18,
+        "guanyin": 18
+      },
+      "bossHp": 50364088,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 157731.30750492966,
+        "hp": 63.271466943622215,
+        "helper": 41.79141858767643,
+        "damage": 37.797072778361965,
+        "risk": 48.90272222342855,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.19029607178737268,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 36,
+    "difficulty": "normal",
+    "boss": "寿契白鹿君",
+    "state": "win",
+    "seconds": 207,
+    "hp": 3654,
+    "damage": 12316,
+    "bossHp": 0,
+    "openings": 2,
+    "failures": 6,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 11,
+      "layer": 4,
+      "level": 118,
+      "maxHp": 3550,
+      "shield": 1250,
+      "dmg": 26,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 8.4,
+      "speed": 320,
+      "spells": {
+        "yujian": 22,
+        "wanjian": 22,
+        "wulei": 21,
+        "sanmei": 19,
+        "bingxin": 18,
+        "guanyin": 18
+      },
+      "bossHp": 56311606,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 157731.30750492966,
+        "hp": 63.271466943622215,
+        "helper": 41.79141858767643,
+        "damage": 37.797072778361965,
+        "risk": 48.90272222342855,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.19029607178737268,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 37,
+    "difficulty": "normal",
+    "boss": "摄名地涌姬",
+    "state": "win",
+    "seconds": 115,
+    "hp": 4162,
+    "damage": 1734,
+    "bossHp": 0,
+    "openings": 3,
+    "failures": 1,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 12,
+      "layer": 4,
+      "level": 128,
+      "maxHp": 4000,
+      "shield": 1400,
+      "dmg": 30,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 9.2,
+      "speed": 320,
+      "spells": {
+        "yujian": 24,
+        "wanjian": 24,
+        "wulei": 23,
+        "sanmei": 21,
+        "bingxin": 20,
+        "guanyin": 20
+      },
+      "bossHp": 75640675,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 227701.9385010875,
+        "hp": 76.02077905767074,
+        "helper": 49.29911060471018,
+        "damage": 42.530783836821385,
+        "risk": 56.86143966879973,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.19573446804522396,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 38,
+    "difficulty": "normal",
+    "boss": "无首断冠王",
+    "state": "win",
+    "seconds": 88,
+    "hp": 4362,
+    "damage": 2475,
+    "bossHp": 0,
+    "openings": 3,
+    "failures": 0,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 12,
+      "layer": 4,
+      "level": 128,
+      "maxHp": 4000,
+      "shield": 1400,
+      "dmg": 30,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 9.2,
+      "speed": 320,
+      "spells": {
+        "yujian": 24,
+        "wanjian": 24,
+        "wulei": 23,
+        "sanmei": 21,
+        "bingxin": 20,
+        "guanyin": 20
+      },
+      "bossHp": 84535106,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 227701.9385010875,
+        "hp": 76.02077905767074,
+        "helper": 49.29911060471018,
+        "damage": 42.530783836821385,
+        "risk": 56.86143966879973,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.19573446804522396,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 39,
+    "difficulty": "normal",
+    "boss": "封雨玉衡使",
+    "state": "win",
+    "seconds": 137,
+    "hp": 2979,
+    "damage": 8483,
+    "bossHp": 0,
+    "openings": 3,
+    "failures": 2,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 12,
+      "layer": 4,
+      "level": 128,
+      "maxHp": 4000,
+      "shield": 1400,
+      "dmg": 30,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 9.2,
+      "speed": 320,
+      "spells": {
+        "yujian": 24,
+        "wanjian": 24,
+        "wulei": 23,
+        "sanmei": 21,
+        "bingxin": 20,
+        "guanyin": 20
+      },
+      "bossHp": 94493828,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 227701.9385010875,
+        "hp": 76.02077905767074,
+        "helper": 49.29911060471018,
+        "damage": 42.530783836821385,
+        "risk": 56.86143966879973,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.19573446804522396,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 40,
+    "difficulty": "normal",
+    "boss": "九灵归账祖",
+    "state": "win",
+    "seconds": 118,
+    "hp": 3527,
+    "damage": 10297,
+    "bossHp": 0,
+    "openings": 2,
+    "failures": 2,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 13,
+      "layer": 4,
+      "level": 138,
+      "maxHp": 4450,
+      "shield": 1550,
+      "dmg": 34,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 10,
+      "speed": 320,
+      "spells": {
+        "yujian": 26,
+        "wanjian": 26,
+        "wulei": 25,
+        "sanmei": 23,
+        "bingxin": 22,
+        "guanyin": 22
+      },
+      "bossHp": 125804814,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 322750.5663317583,
+        "hp": 90.5070601681037,
+        "helper": 57.67853388166072,
+        "damage": 47.39230269050594,
+        "risk": 65.49303773008704,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.20083174108189158,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 41,
+    "difficulty": "normal",
+    "boss": "无主功德相",
+    "state": "win",
+    "seconds": 164,
+    "hp": 3186,
+    "damage": 11147,
+    "bossHp": 0,
+    "openings": 3,
+    "failures": 2,
+    "phases": [
+      1,
+      2
+    ],
+    "start": {
+      "realm": 13,
+      "layer": 4,
+      "level": 138,
+      "maxHp": 4450,
+      "shield": 1550,
+      "dmg": 34,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 10,
+      "speed": 320,
+      "spells": {
+        "yujian": 26,
+        "wanjian": 26,
+        "wulei": 25,
+        "sanmei": 23,
+        "bingxin": 22,
+        "guanyin": 22
+      },
+      "bossHp": 140647972,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 322750.5663317583,
+        "hp": 90.5070601681037,
+        "helper": 57.67853388166072,
+        "damage": 47.39230269050594,
+        "risk": 65.49303773008704,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.20083174108189158,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  },
+  {
+    "stage": 42,
+    "difficulty": "normal",
+    "boss": "执契天衡",
+    "state": "win",
+    "seconds": 174,
+    "hp": 4913,
+    "damage": 8284,
+    "bossHp": 0,
+    "openings": 4,
+    "failures": 2,
+    "phases": [
+      1,
+      2,
+      3
+    ],
+    "start": {
+      "realm": 13,
+      "layer": 4,
+      "level": 138,
+      "maxHp": 4450,
+      "shield": 1550,
+      "dmg": 34,
+      "cdr": 0.5,
+      "armor": 0.5,
+      "regen": 10,
+      "speed": 320,
+      "spells": {
+        "yujian": 26,
+        "wanjian": 26,
+        "wulei": 25,
+        "sanmei": 23,
+        "bingxin": 22,
+        "guanyin": 22
+      },
+      "bossHp": 157301271,
+      "threat": {
+        "version": 1,
+        "id": 1,
+        "kind": "boss",
+        "output": 322750.5663317583,
+        "hp": 90.5070601681037,
+        "helper": 57.67853388166072,
+        "damage": 47.39230269050594,
+        "risk": 65.49303773008704,
+        "rewards": {
+          "xp": 4,
+          "qi": 2.5,
+          "essence": 0.20083174108189158,
+          "medicine": 0.06,
+          "chest": 0.015,
+          "core": 0.5
+        }
+      }
+    }
+  }
+]

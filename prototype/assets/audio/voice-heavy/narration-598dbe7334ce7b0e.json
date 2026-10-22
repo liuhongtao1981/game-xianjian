@@ -1,0 +1,15 @@
+{
+  "id": "narration-598dbe7334ce7b0e",
+  "text": "你循着盘丝慈结线轴旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成黄眉司契的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "750e0d2b0970df71650c7fbb108b8a526b630947d81d747e25d6a507f3088da7",
+  "source_sha256": "1488221153f36bbdb0fac44e965f00a90f4747774206acb72945283aadc72a5c",
+  "sha256": "ea88ef339334697437f1306faf35201a07d7378926d48ace6c2b80b16315e667",
+  "duration": 10.446,
+  "file": "assets/audio/voice-heavy/narration-598dbe7334ce7b0e.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

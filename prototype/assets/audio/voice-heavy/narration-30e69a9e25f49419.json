@@ -1,0 +1,15 @@
+{
+  "id": "narration-30e69a9e25f49419",
+  "text": "小果敲响洞里最后一面空铃，听见被压住的声音顺着石壁回返。蝎尾将三片解毒扇面依次钉在地上；只要声音还传得出去，这份诊断就不能替所有人作主。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "6ef9f89f97100e8bb54df45c735dd0deb4e4778315f20f53a7e3013dac47f781",
+  "source_sha256": "0d950c8aa886177b584a018f6c3dd8c41abe048b347b4f6890f6390f980f6cf5",
+  "sha256": "aac357ec2e3edeb35d15bdc9ec0abf51ca42f57a215de58a1bb5c645c131b315",
+  "duration": 16.182,
+  "file": "assets/audio/voice-heavy/narration-30e69a9e25f49419.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

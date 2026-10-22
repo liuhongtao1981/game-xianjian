@@ -1,0 +1,15 @@
+{
+  "id": "narration-56f3945b9ee66cce",
+  "text": "上一难 · 九首归账。你带着「荆棘押问字契」来到荆棘岭 · 缚字林。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "e81adad6aeed7eda846534a0ec8704f6d182fec48441b4511182e19f304a5a71",
+  "source_sha256": "d1158ad7bfda69858464873240eb2a3d9e05ca0f3f491cc84d5cce4faa01c654",
+  "sha256": "72800fdc8c64173a4d08ae425281bb4708de7c6f3559f201f233aadeefc88173",
+  "duration": 11.262,
+  "file": "assets/audio/voice-heavy/narration-56f3945b9ee66cce.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

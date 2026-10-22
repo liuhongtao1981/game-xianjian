@@ -1,0 +1,15 @@
+{
+  "id": "narration-fc6eb656c2ea7efb",
+  "text": "你循着荆棘押问字契旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成九首账蛟的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "5414f79ccc22cf2afee1854239b6951de1057a35481e8b909f26fc750fa025b2",
+  "source_sha256": "b3ed4d584ac5a5703a4c05ea50069be6d96a0bf57ba47a0c6a8078c5ebe64b6a",
+  "sha256": "43fb120e6f3962222745969bb75c1dc7b2c6fc6f86e06d4fa6483595358b51e5",
+  "duration": 10.782,
+  "file": "assets/audio/voice-heavy/narration-fc6eb656c2ea7efb.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

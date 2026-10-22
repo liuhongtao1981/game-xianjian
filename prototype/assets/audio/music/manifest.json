@@ -336,6 +336,258 @@
       "bpm": 134,
       "duration": 28.657,
       "original": true
+    },
+    {
+      "file": "assets/audio/music/lifemirror-field.mp3",
+      "title": "照命非价·返照·行路",
+      "bpm": 70,
+      "duration": 54.857,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/lifemirror-boss.mp3",
+      "title": "照命非价·返照·守关",
+      "bpm": 124,
+      "duration": 30.968,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/scorpionecho-field.mp3",
+      "title": "毒敌还言·空铃·行路",
+      "bpm": 78,
+      "duration": 49.231,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/scorpionecho-boss.mp3",
+      "title": "毒敌还言·空铃·守关",
+      "bpm": 127,
+      "duration": 30.236,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/twinspring-field.mp3",
+      "title": "双生自择·合流·行路",
+      "bpm": 72,
+      "duration": 53.333,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/twinspring-boss.mp3",
+      "title": "双生自择·合流·守关",
+      "bpm": 130,
+      "duration": 29.538,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/ashfront-field.mp3",
+      "title": "火焰止界·穿山·行路",
+      "bpm": 84,
+      "duration": 45.714,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/ashfront-boss.mp3",
+      "title": "火焰止界·穿山·守关",
+      "bpm": 133,
+      "duration": 28.872,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/bloodrelic-field.mp3",
+      "title": "祭赛还珠·止供·行路",
+      "bpm": 74,
+      "duration": 51.892,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/bloodrelic-boss.mp3",
+      "title": "祭赛还珠·止供·守关",
+      "bpm": 136,
+      "duration": 28.235,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/nineledger-field.mp3",
+      "title": "九首归账·逆水·行路",
+      "bpm": 80,
+      "duration": 48,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/nineledger-boss.mp3",
+      "title": "九首归账·逆水·守关",
+      "bpm": 139,
+      "duration": 27.626,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/thornscript-field.mp3",
+      "title": "荆棘解字·前文·行路",
+      "bpm": 70,
+      "duration": 54.857,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/thornscript-boss.mp3",
+      "title": "荆棘解字·前文·守关",
+      "bpm": 124,
+      "duration": 30.968,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/falsebuddha-field.mp3",
+      "title": "雷音辨慈·开钵·行路",
+      "bpm": 78,
+      "duration": 49.231,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/falsebuddha-boss.mp3",
+      "title": "雷音辨慈·开钵·守关",
+      "bpm": 127,
+      "duration": 30.236,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/silkpledge-field.mp3",
+      "title": "盘丝解愿·松结·行路",
+      "bpm": 72,
+      "duration": 53.333,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/silkpledge-boss.mp3",
+      "title": "盘丝解愿·松结·守关",
+      "bpm": 130,
+      "duration": 29.538,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/bonecitadel-field.mp3",
+      "title": "狮驼还城·门牌·行路",
+      "bpm": 84,
+      "duration": 45.714,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/bonecitadel-boss.mp3",
+      "title": "狮驼还城·门牌·守关",
+      "bpm": 133,
+      "duration": 28.872,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/sixivory-field.mp3",
+      "title": "六牙断押·轮隙·行路",
+      "bpm": 74,
+      "duration": 51.892,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/sixivory-boss.mp3",
+      "title": "六牙断押·轮隙·守关",
+      "bpm": 136,
+      "duration": 28.235,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/lifedeer-field.mp3",
+      "title": "比丘还年·归衡·行路",
+      "bpm": 80,
+      "duration": 48,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/lifedeer-boss.mp3",
+      "title": "比丘还年·归衡·守关",
+      "bpm": 139,
+      "duration": 27.626,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/namelesspit-field.mp3",
+      "title": "无底留名·托梁·行路",
+      "bpm": 70,
+      "duration": 54.857,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/namelesspit-boss.mp3",
+      "title": "无底留名·托梁·守关",
+      "bpm": 124,
+      "duration": 30.968,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/crownless-field.mp3",
+      "title": "灭法还首·直立·行路",
+      "bpm": 78,
+      "duration": 49.231,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/crownless-boss.mp3",
+      "title": "灭法还首·直立·守关",
+      "bpm": 127,
+      "duration": 30.236,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/droughtgate-field.mp3",
+      "title": "凤仙开雨·首滴·行路",
+      "bpm": 72,
+      "duration": 53.333,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/droughtgate-boss.mp3",
+      "title": "凤仙开雨·首滴·守关",
+      "bpm": 130,
+      "duration": 29.538,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/foldedarms-field.mp3",
+      "title": "玉华归兵·回锋·行路",
+      "bpm": 84,
+      "duration": 45.714,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/foldedarms-boss.mp3",
+      "title": "玉华归兵·回锋·守关",
+      "bpm": 133,
+      "duration": 28.872,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/ownerless-field.mp3",
+      "title": "灵山问主·互证·行路",
+      "bpm": 74,
+      "duration": 51.892,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/ownerless-boss.mp3",
+      "title": "灵山问主·互证·守关",
+      "bpm": 136,
+      "duration": 28.235,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/returnstone-field.mp3",
+      "title": "天外归名·留笔·行路",
+      "bpm": 80,
+      "duration": 48,
+      "original": true
+    },
+    {
+      "file": "assets/audio/music/returnstone-boss.mp3",
+      "title": "天外归名·留笔·守关",
+      "bpm": 139,
+      "duration": 27.626,
+      "original": true
     }
   ]
 }

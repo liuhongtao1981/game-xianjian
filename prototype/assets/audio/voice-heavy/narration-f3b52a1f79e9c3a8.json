@@ -1,0 +1,15 @@
+{
+  "id": "narration-f3b52a1f79e9c3a8",
+  "text": "九道接货印把小果引入碧波宫。宫里的账册有九本，每本都说货从别处来，又已转往下一处；血珠绕了九圈，便被登记成没有来历的天赐。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "99931efa7f604c2e1d1e6dfa70aef6c1f57f8469aceae0c2576f1829f0361dfc",
+  "source_sha256": "8da7b7f819916a872a50be6f57263ae9e7e823b01c07d786160e77b587f7a3ed",
+  "sha256": "db151e17283bfe763984e6dd7fb27dfcd7170a2b7e3594f8d110a22d171a9c1c",
+  "duration": 14.31,
+  "file": "assets/audio/voice-heavy/narration-f3b52a1f79e9c3a8.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

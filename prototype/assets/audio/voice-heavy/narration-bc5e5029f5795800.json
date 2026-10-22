@@ -1,0 +1,15 @@
+{
+  "id": "narration-bc5e5029f5795800",
+  "text": "钩魂蝎后把毒分成三等：给富人的是安睡，给穷人的是顺从，给证人的是永不醒来的平静。每一剂都有官印，唯独没有知情者的签名。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "14f9728593087ff39e94c15f8185ce914d55beff155eb35fac03b32dfb9ae59b",
+  "source_sha256": "b4cb49ce2f0d594272f8c75f8279b57b932b83a2a68f23fbe4446bf1895fc770",
+  "sha256": "a30d027065e70a168ac7dcdeb10439e33418d837f43e80a2874b559d16ca7f24",
+  "duration": 13.782,
+  "file": "assets/audio/voice-heavy/narration-bc5e5029f5795800.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

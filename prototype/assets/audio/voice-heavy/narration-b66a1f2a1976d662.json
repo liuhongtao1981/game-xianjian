@@ -1,0 +1,15 @@
+{
+  "id": "narration-b66a1f2a1976d662",
+  "text": "两眼泉隔着一道玉闸，一边卖新生，一边卖解脱。借阳真君说两边都在救人，却把每个来者先分为有用的一半和该舍的一半。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "bc641a40bbeba0a65beea7e3fdcf8172a263bf7a74e2011eae0a04c9aa9511ae",
+  "source_sha256": "b9b7dc4102e93882dcfca26ceb40c263d39092cc01dc5639f227f99d722a0af7",
+  "sha256": "7b6078239ed0c7f656e7980613bbf7c075ef640980fe570aab66b8cac05952d4",
+  "duration": 13.398,
+  "file": "assets/audio/voice-heavy/narration-b66a1f2a1976d662.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

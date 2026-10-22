@@ -1,0 +1,15 @@
+{
+  "id": "narration-ca3697926655b4e8",
+  "text": "听澜翻过受让页，看见一条永远向同一边倾斜的寿秤。受益者说孩子还有很长的将来，取走的人说自己不过按规办事；被取走的那几年，却没有人问他们原想怎样过。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "07f8c3fd7652c596c44ef196cd4a596fb66d3df84f2da495aff7f229ec96fc7e",
+  "source_sha256": "2b164f23762ed260f42016e415a7e1ba7b0d30d3d05a2747849a6886bcbe98b8",
+  "sha256": "b29cca5ae4bb4a0c639ee4abad31a9ca71077f3804a7ee37490b577fcbd2f740",
+  "duration": 16.71,
+  "file": "assets/audio/voice-heavy/narration-ca3697926655b4e8.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

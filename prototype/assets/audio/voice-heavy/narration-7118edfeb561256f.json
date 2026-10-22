@@ -1,0 +1,15 @@
+{
+  "id": "narration-7118edfeb561256f",
+  "text": "听澜在牙根找到大圣打断又被接回的旧痕。今次不再只砸最外面的锁，先沿六道象牙空隙换位，斩掉把无关者绑在一起的总押结。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "7c348278ebcdb6185e852639ce0482ffeef30bf0aa0e4fb3b44fe83f82fca20b",
+  "source_sha256": "800d07793ec08dee545b82d1fb316fbe52cd063b929be54c0a1d3e990eb14b6e",
+  "sha256": "33289d8066cfee0e230e8a777cee75eecf249a1b5dbc4568bbf2a683c83b6a55",
+  "duration": 13.326,
+  "file": "assets/audio/voice-heavy/narration-7118edfeb561256f.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

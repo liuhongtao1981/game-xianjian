@@ -1,0 +1,15 @@
+{
+  "id": "narration-92be6050562fe09e",
+  "text": "小果在城根找到大圣留下的一面无冕石镜。镜里没有王，只有一张张能直视彼此的脸。他踏过先宽后窄的断冠台，又沿反向台返回，要证明站直不等于称王。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "c0aed7178930575b0c990dee568df936e3141701108254a3d1a8aeeaf1f6e31a",
+  "source_sha256": "f9e737da3ef00fa1b11681241b507e405869f5b592c257aba2c04c2f4c83643d",
+  "sha256": "c204e244d7f11086b22c6f5b4a5caa4b37023644a676bbedd37368142784eb4e",
+  "duration": 16.782,
+  "file": "assets/audio/voice-heavy/narration-92be6050562fe09e.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

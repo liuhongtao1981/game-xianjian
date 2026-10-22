@@ -1,0 +1,15 @@
+{
+  "id": "narration-4b06488dce7b0ded",
+  "text": "上一难 · 六牙断押。你带着「比丘余生受让页」来到比丘国 · 寿账城。这一次，账册翻到了新的受难者。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "601cc8b44f1c134f4ef24c1daca2fcc40ce7d910176908967eb5e840b915349a",
+  "source_sha256": "13de658b6e897278df6d52b47a67c336a87c2faf5d95b6c1a19916827b6f930b",
+  "sha256": "2f7c1ef764be3c8d771e05ad8d40b31b9bae85778e1664e3071053b5871bec14",
+  "duration": 11.358,
+  "file": "assets/audio/voice-heavy/narration-4b06488dce7b0ded.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

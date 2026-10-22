@@ -1,0 +1,15 @@
+{
+  "id": "narration-1f7a16f148032bb6",
+  "text": "你循着灭法收名断冠令旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成摄名地涌姬的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "7b6ed3bb418fbf890a492550c5ffa28d4e2aabbc5dbb98f180d3a62b7bf060e6",
+  "source_sha256": "303e2ee09ffcf9c8ca4de0ea11068727f1de214072c927551efb60ed501e578f",
+  "sha256": "9eae59bfd29d3ea60c5b5b51933d35aedd65dba0159874764988827827e80edb",
+  "duration": 10.83,
+  "file": "assets/audio/voice-heavy/narration-1f7a16f148032bb6.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

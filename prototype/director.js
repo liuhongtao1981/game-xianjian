@@ -214,7 +214,7 @@ const EncounterDirector=(()=>{
     if(!s||!Array.isArray(s.camps)||s.camps.length!==camps.length)throw new Error('Invalid encounters');
     reset();CombatScaling.importState(s.scaling);idle=Math.max(0,Math.min(8,s.idle||0));patrols=s.patrols||0;serial=s.serial||0;stats={...stats,...s.stats};
     for(const p of s.patrolSlots||[]){if(p.threat&&!CombatScaling.validSnapshot(p.threat))throw Error('Invalid patrol threat');pending.push({...p,source:'patrol',time:null,threat:p.threat||CombatScaling.snapshot('patrol')});}
-    for(const value of s.camps){const c=camps[value.id];if(!c||!['unseen','active','dormant','cleared'].includes(value.state)||!Number.isInteger(value.wave)||value.wave<0||value.wave>3||!Array.isArray(value.slots)||value.slots.length>60)throw new Error('Invalid camp');
+    for(const value of s.camps){const c=camps[value.id];if(!c||!['unseen','active','dormant','cleared'].includes(value.state)||!Number.isInteger(value.wave)||value.wave<0||value.wave>3||!Array.isArray(value.slots)||value.slots.length>Math.max(60,Journey.stage().wave+12))throw new Error('Invalid camp');
       if(value.threat&&!CombatScaling.validSnapshot(value.threat))throw Error('Invalid camp threat');
       Object.assign(c,{wave:value.wave,timer:value.timer,runesCreated:!!value.runesCreated,kills:value.kills||0,state:value.state==='active'?'dormant':value.state,threat:value.threat||null});
       CampTactics.restore(c,value.tactics);

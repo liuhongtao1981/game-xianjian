@@ -1,0 +1,15 @@
+{
+  "id": "narration-a449cfce7669e1e6",
+  "text": "调令尽头是一道烧不完的关墙。火焰山下，逃荒的人排队交愿：想去哪里，为什么要走，若一生不回谁替你作保。答不全，便被留在火里。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "37830a1513daff09e29df0eff775f0d6d0df5f5e878ea7e5ca70472d0c2b25bb",
+  "source_sha256": "f6ffc4991f8616262405ed013a60a18bed0380eefa74269321b70897d31b9784",
+  "sha256": "3cc36b4f955941499c4630e96e7a95c7f603681dae9902947c394feaf7387338",
+  "duration": 14.214,
+  "file": "assets/audio/voice-heavy/narration-a449cfce7669e1e6.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

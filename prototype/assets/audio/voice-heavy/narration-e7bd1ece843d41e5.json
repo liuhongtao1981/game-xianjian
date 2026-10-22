@@ -1,0 +1,15 @@
+{
+  "id": "narration-e7bd1ece843d41e5",
+  "text": "你循着毒敌山诊籍旁的裂痕，踏入域外。被斩落的恶念在这里重聚，化成照命女相的更强化身。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "7c510d3453362f00d7c3e46d6aff89daca6eecafe300fd1c79659ba0aabea288",
+  "source_sha256": "c56fecf5b72e0fdbdd590486ede1c933da36f55ed03ecc2ab8b37d1b18abc4a7",
+  "sha256": "867f426ce0da97120bc4b24d82ff0be58aa80b92296e182673f0a3ebe9fca84e",
+  "duration": 10.374,
+  "file": "assets/audio/voice-heavy/narration-e7bd1ece843d41e5.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

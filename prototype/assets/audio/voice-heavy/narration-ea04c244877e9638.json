@@ -1,0 +1,15 @@
+{
+  "id": "narration-ea04c244877e9638",
+  "text": "假愿塔僧说苦难需要归处，入珠者便能替后人积福。可后人的名字从来轮不到入珠者的家属，红光照亮的，总是另一本被挑选过的谱。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "523cb12a1c2ae9b9e2f50ceff7e3d6a3a2a17bcdff4baf5155e83442a9613a0d",
+  "source_sha256": "65f6864e4617dac5ab7311ddd21cfc658790267bf8390a335c8c6e9819053859",
+  "sha256": "0e4cb55827412e6714f5a36517cd275b268c3a95a9c193dc9e3b63f322c3979b",
+  "duration": 13.782,
+  "file": "assets/audio/voice-heavy/narration-ea04c244877e9638.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

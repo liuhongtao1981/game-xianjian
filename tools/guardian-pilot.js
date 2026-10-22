@@ -4,6 +4,7 @@ const GuardianPilot=(()=>{
   function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
   function danger(t,x,y){
     const dx=x-t.x,dy=y-t.y;
+    if(t.shape==='finale'){if(FinaleGuardians.safe(t,{x,y,r:P.r}))return 100;return -Math.hypot(x-t.target.x,y-t.target.y);}
     if(t.shape==='beyond'){const p={x,y,r:P.r};if(BeyondGuardians.safe(t,p))return 100;const target=BeyondGuardians.safePoint(t);return -Math.hypot(x-target.x,y-target.y);}
     if(t.shape==='heti'){const p={x,y,r:P.r};if(HetiGuardians.safe(t,p))return 100;const target=HetiGuardians.safePoint(t);return -Math.hypot(x-target.x,y-target.y);}
     if(t.shape==='lianxu'){const q=t.safe||t,d=Math.hypot(x-q.x,y-q.y);return t.safeMode==='outside'?d-t.safeRadius-P.r:t.safeRadius-P.r-d;}
@@ -21,6 +22,7 @@ const GuardianPilot=(()=>{
     const tide=G.telegraphs.find(t=>t.shape==='tide'&&t.bossSkill==='tide');
     if(tide)return {x:tide.gap,y:tide.y,ritual:true};
     if(boss.action==='exposed')return {x:boss.x,y:boss.y+55};
+    if(Journey.run.stage>=24){const t=G.telegraphs.filter(t=>t.shape==='finale').sort((a,b)=>a.life-b.life)[0];if(t)return {...t.target,ritual:true};const angle=Math.atan2(P.y-boss.y,P.x-boss.x)+.65;return {x:boss.x+Math.cos(angle)*320,y:boss.y+Math.sin(angle)*320};}
     if(Journey.run.stage>=18){const t=G.telegraphs.filter(t=>t.shape==='beyond').sort((a,b)=>a.life-b.life)[0];if(t)return {...BeyondGuardians.safePoint(t),ritual:true};if(Journey.run.stage===18)return {x:boss.x,y:boss.y+160};const radius=Journey.run.stage===23?260:330,angle=Math.atan2(P.y-boss.y,P.x-boss.x)+.65;return {x:boss.x+Math.cos(angle)*radius,y:boss.y+Math.sin(angle)*radius};}
     if(Journey.run.stage>=15){const t=G.telegraphs.filter(t=>t.shape==='heti').sort((a,b)=>a.life-b.life)[0];if(t)return {...HetiGuardians.safePoint(t),ritual:true};return {x:boss.x,y:boss.y+160};}
     if(Journey.run.stage>=12){const t=G.telegraphs.filter(t=>t.shape==='lianxu').sort((a,b)=>a.life-b.life)[0];if(t){const s=t.safe||t,a=Math.atan2(P.y-s.y,P.x-s.x),r=t.safeMode==='outside'?t.safeRadius+75:0;return {x:s.x+Math.cos(a)*r,y:s.y+Math.sin(a)*r,ritual:true};}return {x:boss.x,y:boss.y+160};}
@@ -60,6 +62,7 @@ const GuardianPilot=(()=>{
       if(ellipse>.98)cost+=1000+(ellipse-.98)*2000;
       if(!World.isWalkable(x,y,P.r))cost+=2000;
       for(const t of G.telegraphs){
+        if(t.shape==='finale'&&G.telegraphs.some(q=>q.shape==='finale'&&q.life<t.life))continue;
         if(t.shape==='beyond'&&G.telegraphs.some(q=>q.shape==='beyond'&&q.life<t.life))continue;
         if(t.shape==='heti'&&G.telegraphs.some(q=>q.shape==='heti'&&q.life<t.life))continue;
         if(t.shape==='lianxu'&&G.telegraphs.some(q=>q.shape==='lianxu'&&q.life<t.life))continue;
@@ -74,7 +77,10 @@ const GuardianPilot=(()=>{
       for(const e of G.enemies){
         if(e.boss||e.bossHelper||e.hp<=0)continue;
         const d=Math.hypot(x-e.x,y-e.y);
-        if(d<85&&['windup','strike'].includes(e.action))cost+=(85-d)*2;
+        if(Journey.run.stage>=24&&['windup','strike'].includes(e.action)){
+          if(e.attackKind==='rush'){const p=e.attackOrigin||e,dx=x-p.x,dy=y-p.y,u=dx*Math.cos(e.attackAngle)+dy*Math.sin(e.attackAngle),v=Math.abs(-dx*Math.sin(e.attackAngle)+dy*Math.cos(e.attackAngle));if(u>-45&&u<(e.attackDistance||290)+60&&v<75)cost+=(75-v)*6;}
+          else if(e.attackKind!=='ranged'){const reach=e.attackKind==='heavy'?155:120;if(d<reach)cost+=(reach-d)*6;}
+        }else if(d<85&&['windup','strike'].includes(e.action))cost+=(85-d)*2;
       }
       if(cost<score){score=cost;best=v;}
     }
@@ -82,6 +88,10 @@ const GuardianPilot=(()=>{
     const imminent=G.telegraphs.some(t=>t.life<.23&&danger(t,P.x,P.y)<5)||G.eshots.some(s=>Math.hypot(P.x-(s.x+s.vx*.15),P.y-(s.y+s.vy*.15))<P.r+s.r+5);
     // Never dash out of the green tide gap; the ritual requires being physically inside it.
     if(imminent&&!goal.ritual&&Math.hypot(best.x,best.y)>0&&P.dashCd<=0){P.facing.x=best.x;P.facing.y=best.y;tryDash();}
+    if(Journey.run.stage>=24&&!G.ultimate){
+      if(P.hp<P.maxHp*.6&&UltimateArts.ready('lotus'))tryUltimate('lotus');
+      else if(G.enemies.filter(e=>!e.boss&&e.hp>0).length>24&&UltimateArts.ready('river'))tryUltimate('river');
+    }
     if(G.boss.action==='exposed'&&G.boss.actionDuration-G.boss.actionT>1.3&&distance(P,G.boss)<420&&!G.ultimate&&UltimateArts.loadout().some(id=>UltimateArts.ready(id))){
       const d=distance(P,G.boss)||1;P.facing.x=(G.boss.x-P.x)/d;P.facing.y=(G.boss.y-P.y)/d;const id=UltimateArts.loadout().find(id=>UltimateArts.ready(id));if(id)tryUltimate(id);
     }

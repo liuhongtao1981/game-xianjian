@@ -1,0 +1,15 @@
+{
+  "id": "narration-69cccd282eb7fd71",
+  "text": "大圣从终契背后走出，身上的金箍不在头顶，而化成一行行替众生担过的旧名。他不是从未犯错的救主，也没有替后来者写好答案；他只是把那根始终没有交出去的笔，递到了沈听澜手边。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "86fb9cec09b64965603629042829ef0c2cd6439d7888b5b41b633feb1139414e",
+  "source_sha256": "a457826934f6df7730e87cadc2284cbcf481ac38b2c9b4497ce69c42d488349d",
+  "sha256": "0e8c29feac7c38e580413eb877f3ecca98acc133e549d914ea22702827fdd183",
+  "duration": 18.774,
+  "file": "assets/audio/voice-heavy/narration-69cccd282eb7fd71.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

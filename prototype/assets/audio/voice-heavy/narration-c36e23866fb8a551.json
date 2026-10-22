@@ -1,0 +1,15 @@
+{
+  "id": "narration-c36e23866fb8a551",
+  "text": "灵山总账殿比想象中安静，金座上空无一人。每一笔受难都被写成功德，每一笔受益都被记作众生共有；唯独真正的众生，进不了查阅这本账的门。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "4c66a45373b4c55326632b3b76d5723751209b030905a3408b31c2b9e2ba6758",
+  "source_sha256": "448e8244aab7709a67a4191422bb16fadda37b53ac9d6190b52d7eb7598cf5e2",
+  "sha256": "e989244930950609d5b151a692d7dc6c3829d1daa4ab2f0857de82217b5b982f",
+  "duration": 15.462,
+  "file": "assets/audio/voice-heavy/narration-c36e23866fb8a551.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

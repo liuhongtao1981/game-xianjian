@@ -1,0 +1,15 @@
+{
+  "id": "narration-3a6f3b8b17c52b64",
+  "text": "六牙镇账象说大账不能乱，松一根牙会使千家一起受损。可最大的账页后面，早有人把最安全的那一份转走，只留下不能承担损失的人彼此作保。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "b5472270879318b2f77ae4277dcf04331b1c56eb0effa060e27d174368a659b8",
+  "source_sha256": "12c7f86d04f4968ebd46d5487a288e2f635392e8e982d148f1459d7b5e19ae03",
+  "sha256": "796c901583cc232f98e10c7bcb88efc69f514cc27ca2bb470464592b32139449",
+  "duration": 14.502,
+  "file": "assets/audio/voice-heavy/narration-3a6f3b8b17c52b64.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

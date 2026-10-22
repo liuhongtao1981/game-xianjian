@@ -1,0 +1,15 @@
+{
+  "id": "narration-0f4f86cc43eef6f7",
+  "text": "金兜带出的半幅河图，在晨光里显出另一条河。沈听澜踏进照命渡，看见岸上人人低头：河中倒影先替他们报出身价，活人才被允许开口。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "e7a7f4488415eda893a51a6492e3ef986536148ddf50008ab32a1188e0f7e50a",
+  "source_sha256": "ae5da37def07e2c897a54fd612a91965fd49dd19997821e484ef651a6ab7143b",
+  "sha256": "f473d88fcd01d022d2799d17b54913b22749b9a52d52159a9364e14f5d3561bc",
+  "duration": 14.79,
+  "file": "assets/audio/voice-heavy/narration-0f4f86cc43eef6f7.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

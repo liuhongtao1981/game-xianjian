@@ -1,0 +1,15 @@
+{
+  "id": "narration-622a25090602fd7f",
+  "text": "诊籍记着许多相同的病名：不肯认命、反复申诉、仍问原由。回声穴的药池边，病人喝下止痛汤，先忘了疼，接着忘了是谁让他们疼。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "3026354c58352ac0b46d627604557ee08a2049c0befd1bac824a6bb16cef0764",
+  "source_sha256": "17b008540227d68985415d7753d63ae026e589ebe2ca85188b98a2be59e69e6c",
+  "sha256": "4ef3a88caca573c97ea194d8aec9001c897b3c00619f19cf14782b51d650d4d3",
+  "duration": 13.47,
+  "file": "assets/audio/voice-heavy/narration-622a25090602fd7f.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}

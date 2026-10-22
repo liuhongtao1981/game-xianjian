@@ -1,0 +1,15 @@
+{
+  "id": "narration-6400db81b33fa55a",
+  "text": "字狱木仙说落纸无改，改便是不守信。可他自己的笔下，主语能换，期限能续，唯独当事人的解释永远添不进去。太乙道莲就被压在那些删去的前后文里。",
+  "voice": "zh-CN-YunyangNeural",
+  "rate": "-12%",
+  "pitch": "-10Hz",
+  "body": 2.2,
+  "engine": "Microsoft Edge neural TTS",
+  "signature": "de615e42a9fadffe20ca4e0c144bea11e2e1cd1a91f7b71f3748b4e307462b1a",
+  "source_sha256": "d49ba9647e52885a299bd2d948c7c19993d43f1f46083c82dadb4501e782fdf5",
+  "sha256": "1b7ebb8f3fdb75171e82361a85ec1d904efdbb2ff97c8b2093099111499c6d75",
+  "duration": 16.326,
+  "file": "assets/audio/voice-heavy/narration-6400db81b33fa55a.mp3",
+  "filters": "highpass=f=65,lowpass=f=10000,equalizer=f=170:width_type=o:width=1.2:g=2.2,acompressor=threshold=0.16:ratio=2.1:attack=18:release=150,loudnorm=I=-17:TP=-2:LRA=8,apad=pad_dur=0.15"
+}
