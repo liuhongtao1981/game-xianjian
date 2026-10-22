@@ -86,19 +86,32 @@ const World=(()=>{
     for(let i=1;i<=steps;i++)if(!isWalkable(x+(tx-x)*i/steps,y+(ty-y)*i/steps,r))return false;
     return true;
   }
+  function navigationKey(){
+    // Geometry, obstacle and algorithm changes all invalidate the baked graph.
+    // Trigonometry differs by a final floating-point bit across JS engines.
+    // Six decimal places still detect sub-pixel map edits without rejecting an
+    // otherwise identical graph for a 0.00000000000000005 coordinate difference.
+    const source=JSON.stringify([1,64,23,16,width,height,data().polygons,TerrainScene.geometry(Journey.run.stage).obstacles],(key,value)=>typeof value==='number'?Math.round(value*1e6)/1e6:value);
+    let hash=2166136261;for(let i=0;i<source.length;i++)hash=Math.imul(hash^source.charCodeAt(i),16777619);return (hash>>>0).toString(16);
+  }
+  function navigationTopology(){
+    const cell=64,cols=Math.ceil(width/cell),rows=Math.ceil(height/cell),walk=new Uint8Array(cols*rows),neighbors=Array.from({length:cols*rows},()=>[]);
+    for(let y=0;y<rows;y++)for(let x=0;x<cols;x++)walk[y*cols+x]=isWalkable(x*cell,y*cell,23)?1:0;
+    for(let y=1;y<rows-1;y++)for(let x=1;x<cols-1;x++)if(walk[y*cols+x])for(let yy=-1;yy<=1;yy++)for(let xx=-1;xx<=1;xx++){
+      if(!(xx||yy)||!walk[(y+yy)*cols+x+xx])continue;
+      if(xx&&yy&&(!walk[y*cols+x+xx]||!walk[(y+yy)*cols+x]))continue;
+      if(lineClear(x*cell,y*cell,(x+xx)*cell,(y+yy)*cell,23))neighbors[y*cols+x].push((y+yy)*cols+x+xx);
+    }
+    return {key:navigationKey(),cols,rows,walk,neighbors};
+  }
   function steer(e,tx,ty){
     let dx=tx-e.x,dy=ty-e.y,d=Math.hypot(dx,dy)||1;
     if(active||d<40||lineClear(e.x,e.y,tx,ty,e.r||18))return {x:dx/d,y:dy/d};
     // One shared distance field guides nearby foes around shores and walls.
     const cell=64,cols=Math.ceil(width/cell),rows=Math.ceil(height/cell),id=(x,y)=>Math.round(y/cell)*cols+Math.round(x/cell);
     if(!nav){
-      const walk=new Uint8Array(cols*rows),neighbors=Array.from({length:cols*rows},()=>[]);
-      for(let y=0;y<rows;y++)for(let x=0;x<cols;x++)walk[y*cols+x]=isWalkable(x*cell,y*cell,23)?1:0;
-      for(let y=1;y<rows-1;y++)for(let x=1;x<cols-1;x++)if(walk[y*cols+x])for(let yy=-1;yy<=1;yy++)for(let xx=-1;xx<=1;xx++){
-        if(!(xx||yy)||!walk[(y+yy)*cols+x+xx])continue;
-        if(xx&&yy&&(!walk[y*cols+x+xx]||!walk[(y+yy)*cols+x]))continue;
-        if(lineClear(x*cell,y*cell,(x+xx)*cell,(y+yy)*cell,23))neighbors[y*cols+x].push((y+yy)*cols+x+xx);
-      }
+      const cached=typeof NavigationCache!=='undefined'&&NavigationCache.get(Journey.run.stage,navigationKey());
+      const {walk,neighbors}=cached||navigationTopology();
       nav={walk,neighbors,until:0,target:-1,dist:new Int16Array(cols*rows)};
     }
     let target=id(tx,ty);
@@ -323,6 +336,6 @@ const World=(()=>{
     const distance=Math.round(Math.hypot(P.x-sites[5].x,P.y-sites[5].y)/10);
     return '自由寻路 · '+distance+'丈外可挑战守关者 · E 交互 / Tab 舆图';
   }
-  return {bounds,arena,bossPoint,spawn,clipToArena,view,screen,camera,reset,resolve,isWalkable,steer,visible,enterBoss,update,interact,toggleMap,setGuide,guidance,guideMode:()=>guide,apply,drawBackground,drawGround,drawProps,drawLabels,drawScreen,region,objective,
+  return {bounds,arena,bossPoint,spawn,clipToArena,view,screen,camera,reset,resolve,isWalkable,steer,navigationKey,navigationTopology,visible,enterBoss,update,interact,toggleMap,setGuide,guidance,guideMode:()=>guide,apply,drawBackground,drawGround,drawProps,drawLabels,drawScreen,region,objective,
     exportState,importState,resumeLore,stationUnlocked,markers,guideTo,route,mapLayout,selectMap,active:()=>active,context:()=>near,status:()=>({width,height,camera:{...cam},active,mapOpen,visited,camps:EncounterDirector.status().discovered,loaded:images.map(i=>!!(i.complete&&i.naturalWidth))})};
 })();

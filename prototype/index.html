@@ -142,14 +142,16 @@
     .upcard .udesc{font-size:10px;}
   }
 </style>
-<link rel="stylesheet" href="cinematic.css?v=20261021-experience" />
-<link rel="stylesheet" href="journey.css?v=20261021-experience" />
-<link rel="stylesheet" href="sound.css?v=20261021-experience" />
-<link rel="stylesheet" href="character.css?v=20261021-experience" />
-<link rel="stylesheet" href="expedition.css?v=20261021-experience" />
-<link rel="stylesheet" href="reward-cards.css?v=20261021-experience" />
-<link rel="stylesheet" href="ascension-scene.css?v=20261021-experience" />
-<link rel="stylesheet" href="experience.css?v=20261021-experience" />
+<link rel="stylesheet" href="cinematic.css?v=20261023-alchemy-movement" />
+<link rel="stylesheet" href="journey.css?v=20261023-alchemy-movement" />
+<link rel="stylesheet" href="sound.css?v=20261023-alchemy-movement" />
+<link rel="stylesheet" href="character.css?v=20261023-alchemy-movement" />
+<link rel="stylesheet" href="expedition.css?v=20261023-alchemy-movement" />
+<link rel="stylesheet" href="reward-cards.css?v=20261023-alchemy-movement" />
+<link rel="stylesheet" href="ascension-scene.css?v=20261023-alchemy-movement" />
+<link rel="stylesheet" href="experience.css?v=20261023-alchemy-movement" />
+<link rel="stylesheet" href="alchemy.css?v=20261023-alchemy-movement" />
+<link rel="stylesheet" href="polish.css?v=20261023-alchemy-movement" />
 </head>
 <body>
 <canvas id="game"></canvas>
@@ -169,6 +171,7 @@
     <div class="pane left">
       <div class="identity"><span class="portrait" id="heroGlyph">果</span><div><strong id="heroName">孙小果</strong><small id="identitySub">无籍剑仙 · 循毫寻圣</small></div><span class="realm">剑修</span></div>
       <div class="hp"><i id="hpFill"></i><b id="hpText">100 / 100</b></div>
+      <div class="mana" aria-label="疾行仙力"><i id="manaBar"></i><b id="manaText">仙力 100 / 100</b></div>
       <div class="xp"><i id="xpFill"></i></div>
       <div class="meta"><span>等级 Lv.<b id="lvl">1</b></span><span id="shieldTxt">护盾 0</span></div>
       <div class="cultivation-hud"><span id="cultivationLabel">筑基·初期</span><span id="cultivationQi">突破修为 0 / 320</span><small id="saveStatus" role="status">自动存档待启用</small></div>
@@ -189,8 +192,8 @@
   <div class="objective"><span class="eyebrow">本关目标</span><button id="detailBtn" aria-expanded="false" aria-controls="objectiveDetail scalingStatus">展开战况</button><strong id="objectiveText">循金毫入劫，击败缄口监院</strong><span id="objectiveDetail">击杀守关首领才可通关 · 生命归零则失败</span><span id="scalingStatus" class="encounter-status"></span><span id="encounterStatus" class="encounter-status"></span><div id="pickupNotice" class="pickup-notice" role="status" aria-live="polite" hidden></div></div>
   <div class="bottom-hud">
     <div class="location"><span id="locationTitle">旧灵山 · 贬谪禅庭</span><small id="locationSubtitle">无籍剑仙 · 循毫寻圣</small></div>
-    <div class="hint"><kbd>W A S D</kbd> 移动 <kbd>空格</kbd> 闪避 <kbd>Q / R / T</kbd> 三式大招 <kbd>E</kbd> 交互 <kbd>Tab</kbd> 舆图</div>
-    <button id="interactBtn" class="interact-btn" hidden>E 交互</button><div class="actions"><button id="dashBtn" class="action" aria-label="闪避"><span>闪</span><small id="dashStatus">空格 · 闪避</small></button><div class="ultimate-bar" aria-label="携行大招"><button id="ultimateBtn" class="action ultimate" aria-label="释放大招：天剑归一"><span>天剑</span><small id="ultStatus">Q · 就绪</small><i id="ultFill"></i></button><button id="ultimateBtn1" class="action ultimate" aria-label="释放大招：莲华剑界"><span>莲界</span><small id="ultStatus1">R · 就绪</small><i id="ultFill1"></i></button><button id="ultimateBtn2" class="action ultimate" aria-label="释放大招：断流十八剑"><span>断流</span><small id="ultStatus2">T · 就绪</small><i id="ultFill2"></i></button></div></div>
+    <div class="hint"><kbd>W A S D</kbd> 移动 <kbd>空格</kbd> 点按闪避 / 按住疾行 <kbd>1 / 2</kbd> 服丹 <kbd>B</kbd> 丹炉 <kbd>Q / R / T</kbd> 大招</div>
+    <button id="interactBtn" class="interact-btn" hidden>E 交互</button><div class="actions"><button id="dashBtn" class="action" aria-label="点按闪避，按住消耗仙力疾行"><span>闪</span><small id="dashStatus">空格 · 闪避</small></button><div class="ultimate-bar" aria-label="携行大招"><button id="ultimateBtn" class="action ultimate" aria-label="释放大招：天剑归一"><span>天剑</span><small id="ultStatus">Q · 就绪</small><i id="ultFill"></i></button><button id="ultimateBtn1" class="action ultimate" aria-label="释放大招：莲华剑界"><span>莲界</span><small id="ultStatus1">R · 就绪</small><i id="ultFill1"></i></button><button id="ultimateBtn2" class="action ultimate" aria-label="释放大招：断流十八剑"><span>断流</span><small id="ultStatus2">T · 就绪</small><i id="ultFill2"></i></button></div></div>
   </div>
 </div>
 
@@ -198,50 +201,53 @@
 <nav class="map-guide" aria-label="探索目标指引"><span>选择指引</span><button data-guide="camp">巡营</button><button data-guide="elite">精英</button><button data-guide="rest">补给</button><button data-guide="boss">大妖</button><button data-guide="off">关闭指引</button></nav>
 
 <!-- Keep runtime resource versions aligned; build-pages replaces this tag with the release SHA. -->
-<script src="story-voices.js?v=20261022-fortytwo"></script>
-<script src="sound.js?v=20261022-fortytwo"></script>
-<script src="chapters.js?v=20261022-fortytwo"></script>
-<script src="chapters-content.js?v=20261022-fortytwo"></script>
-<script src="infant.js?v=20261022-fortytwo"></script>
-<script src="infant-uv.js?v=20261022-fortytwo"></script>
-<script src="huashen.js?v=20261022-fortytwo"></script>
-<script src="huashen-uv.js?v=20261022-fortytwo"></script>
-<script src="lianxu.js?v=20261022-fortytwo"></script>
-<script src="lianxu-uv.js?v=20261022-fortytwo"></script>
-<script src="heti.js?v=20261022-fortytwo"></script>
-<script src="heti-uv.js?v=20261022-fortytwo"></script>
-<script src="beyond-chapters.js?v=20261022-fortytwo"></script>
-<script src="beyond.js?v=20261022-fortytwo"></script>
-<script src="beyond-uv.js?v=20261022-fortytwo"></script>
-<script src="finale-chapters.js?v=20261022-fortytwo"></script>
-<script src="finale.js?v=20261022-fortytwo"></script>
-<script src="finale-uv.js?v=20261022-fortytwo"></script>
-<script src="ending.js?v=20261022-fortytwo"></script>
+<script src="story-voices.js?v=20261023-alchemy-movement"></script>
+<script src="sound.js?v=20261023-alchemy-movement"></script>
+<script src="chapters.js?v=20261023-alchemy-movement"></script>
+<script src="chapters-content.js?v=20261023-alchemy-movement"></script>
+<script src="infant.js?v=20261023-alchemy-movement"></script>
+<script src="infant-uv.js?v=20261023-alchemy-movement"></script>
+<script src="huashen.js?v=20261023-alchemy-movement"></script>
+<script src="huashen-uv.js?v=20261023-alchemy-movement"></script>
+<script src="lianxu.js?v=20261023-alchemy-movement"></script>
+<script src="lianxu-uv.js?v=20261023-alchemy-movement"></script>
+<script src="heti.js?v=20261023-alchemy-movement"></script>
+<script src="heti-uv.js?v=20261023-alchemy-movement"></script>
+<script src="beyond-chapters.js?v=20261023-alchemy-movement"></script>
+<script src="beyond.js?v=20261023-alchemy-movement"></script>
+<script src="beyond-uv.js?v=20261023-alchemy-movement"></script>
+<script src="finale-chapters.js?v=20261023-alchemy-movement"></script>
+<script src="finale.js?v=20261023-alchemy-movement"></script>
+<script src="finale-uv.js?v=20261023-alchemy-movement"></script>
+<script src="ending.js?v=20261023-alchemy-movement"></script>
 
-<script src="growth.js?v=20261022-fortytwo"></script>
-<script src="spell-combat.js?v=20261022-fortytwo"></script>
-<script src="items.js?v=20261022-fortytwo"></script>
-<script src="cultivation.js?v=20261022-fortytwo"></script>
-<script src="combat-scaling.js?v=20261022-fortytwo"></script>
-<script src="ultimate-arts.js?v=20261022-fortytwo"></script>
-<script src="progress.js?v=20261022-fortytwo"></script>
-<script src="golden-uv.js?v=20261022-fortytwo"></script>
-<script src="encounters.js?v=20261022-fortytwo"></script>
-<script src="journey.js?v=20261022-fortytwo"></script>
-<script src="bosses.js?v=20261022-fortytwo"></script>
-<script src="world-nav.js?v=20261022-fortytwo"></script>
-<script src="world.js?v=20261022-fortytwo"></script>
-<script src="director.js?v=20261022-fortytwo"></script>
-<script src="motion.js?v=20261022-fortytwo"></script>
-<script src="run-save.js?v=20261022-fortytwo"></script>
-<script src="character.js?v=20261022-fortytwo"></script>
-<script src="expedition.js?v=20261022-fortytwo"></script>
-<script src="reward-cards.js?v=20261022-fortytwo"></script>
-<script src="ascension-scene.js?v=20261022-fortytwo"></script>
-<script src="targeting.js?v=20261022-fortytwo"></script>
-<script src="camp-tactics.js?v=20261022-fortytwo"></script>
-<script src="experience.js?v=20261022-fortytwo"></script>
-<script src="game.js?v=20261022-fortytwo"></script>
+<script src="growth.js?v=20261023-alchemy-movement"></script>
+<script src="spell-combat.js?v=20261023-alchemy-movement"></script>
+<script src="items.js?v=20261023-alchemy-movement"></script>
+<script src="cultivation.js?v=20261023-alchemy-movement"></script>
+<script src="combat-scaling.js?v=20261023-alchemy-movement"></script>
+<script src="ultimate-arts.js?v=20261023-alchemy-movement"></script>
+<script src="immortal-movement.js?v=20261023-alchemy-movement"></script>
+<script src="alchemy.js?v=20261023-alchemy-movement"></script>
+<script src="progress.js?v=20261023-alchemy-movement"></script>
+<script src="golden-uv.js?v=20261023-alchemy-movement"></script>
+<script src="encounters.js?v=20261023-alchemy-movement"></script>
+<script src="journey.js?v=20261023-alchemy-movement"></script>
+<script src="bosses.js?v=20261023-alchemy-movement"></script>
+<script src="world-nav.js?v=20261023-alchemy-movement"></script>
+<script src="navigation-cache.js?v=20261023-alchemy-movement"></script>
+<script src="world.js?v=20261023-alchemy-movement"></script>
+<script src="director.js?v=20261023-alchemy-movement"></script>
+<script src="motion.js?v=20261023-alchemy-movement"></script>
+<script src="run-save.js?v=20261023-alchemy-movement"></script>
+<script src="character.js?v=20261023-alchemy-movement"></script>
+<script src="expedition.js?v=20261023-alchemy-movement"></script>
+<script src="reward-cards.js?v=20261023-alchemy-movement"></script>
+<script src="ascension-scene.js?v=20261023-alchemy-movement"></script>
+<script src="targeting.js?v=20261023-alchemy-movement"></script>
+<script src="camp-tactics.js?v=20261023-alchemy-movement"></script>
+<script src="experience.js?v=20261023-alchemy-movement"></script>
+<script src="game.js?v=20261023-alchemy-movement"></script>
 <aside id="cultivationNotice" class="cultivation-notice" role="status" aria-live="polite" hidden><canvas id="cultivationNoticeArt" width="110" height="130" aria-hidden="true"></canvas><div><strong id="cultivationNoticeTitle"></strong><span id="cultivationNoticeDetail"></span></div></aside>
 </body>
 </html>

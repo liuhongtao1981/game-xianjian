@@ -38,7 +38,7 @@ const Cultivation=(()=>{
   function addMaterial(key,n){P.cultivation.materials[key]=(P.cultivation.materials[key]||0)+n;notifyPickup('material',(key==='essence'?'灵蕴精华':cores[Number(key.slice(4))-1])+' +'+n);}
   function onKill(e){
     if(e.eventObjective||e.bossHelper||e.boss)return false;
-    const risk=CombatRewards.forEnemy(e);qi((e.elite?30:2)*risk.qi,false);
+    const risk=CombatRewards.forEnemy(e);qi((e.elite?30:2)*risk.qi*Alchemy.qiMultiplier(),false);
     const rare=!e.elite||RunSave.claim('elite:'+Journey.run.stage+':'+e.encounterId);
     if(e.elite&&rare)addMaterial('essence',Math.ceil(4*risk.qi));else if(!e.elite&&Math.random()<risk.essence)addMaterial('essence',1);
     return rare;
@@ -46,6 +46,7 @@ const Cultivation=(()=>{
   function victory(){
     if(Journey.run.extramural){
       if(RunSave.claim('outer:boss:'+Journey.run.stage)){
+        Alchemy.onVictory();
         const r=outsideReward(ChapterCatalog.get(Journey.run.stage).realm);
         if(r.core)addMaterial(r.core,r.coreCount);addMaterial('essence',r.essence);
         qi(r.qi,false);
@@ -54,7 +55,7 @@ const Cultivation=(()=>{
     }
     const reward=ChapterCatalog.reward(Journey.run.stage);
     const risk=CombatRewards.forEnemy(G.boss),first=RunSave.claim('boss:'+Journey.run.stage);
-    if(first){if(G.boss?.xp)gainXP(G.boss.xp,false);const initial=RunSave.claim('first:boss:'+Journey.run.stage);qi((initial?reward.qi:150)*risk.qi,false);addMaterial('essence',Math.ceil((initial?reward.essence:8)*risk.qi));
+    if(first){Alchemy.onVictory();if(G.boss?.xp)gainXP(G.boss.xp,false);const initial=RunSave.claim('first:boss:'+Journey.run.stage);qi((initial?reward.qi:150)*risk.qi,false);addMaterial('essence',Math.ceil((initial?reward.essence:8)*risk.qi));
       // The boss claim records both successful and failed rolls, so reload cannot reroll loot.
       if(reward.core&&Math.random()<.3){addMaterial(reward.core,Math.max(1,reward.count));RunSave.claim('drop:'+Journey.run.stage+':realm');}
     }

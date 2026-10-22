@@ -1,0 +1,1164 @@
+{
+  "date": "2026-10-23",
+  "environment": {
+    "cpu": "13th Gen Intel(R) Core(TM) i9-13900K",
+    "logicalCores": 32,
+    "node": "v22.20.0",
+    "browser": "Installed Microsoft Edge, headless, Playwright",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    }
+  },
+  "scenario": {
+    "stage": 41,
+    "difficulty": "nightmare",
+    "seed": 20261023,
+    "fixedStep": 0.016666666666666666,
+    "warmupFrames": 90,
+    "measuredFrames": 240,
+    "enemyCounts": [
+      0,
+      64,
+      128
+    ],
+    "spells": {
+      "yujian": 24,
+      "wanjian": 24,
+      "wulei": 23,
+      "sanmei": 21,
+      "bingxin": 20,
+      "guanyin": 20,
+      "gudu": 20,
+      "jiushen": 20
+    },
+    "controls": "Actual moving joystick and full update/render; fixed mob count; player invulnerable and enemy HP raised to keep load stable"
+  },
+  "cause": "First obstructed enemy chase synchronously built the entire exact 64-unit navigation graph inside World.steer.",
+  "change": "Bake unchanged walkability and eight-neighbor edges, verify geometry fingerprint, decode on demand, retain at most three maps, keep original fallback for missing/stale cache.",
+  "before": {
+    "label": "control-no-cache",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "navigation": [
+      {
+        "stage": 0,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 1,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 2,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 3,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 4,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 5,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 6,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 7,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 8,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 9,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 10,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 11,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 12,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 13,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 14,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 15,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 16,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 17,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 18,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 19,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 20,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 21,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 22,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 23,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 24,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 25,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 26,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 27,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 28,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 29,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 30,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 31,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 32,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 33,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 34,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 35,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 36,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 37,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 38,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 39,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 40,
+        "cached": true,
+        "equivalent": null
+      },
+      {
+        "stage": 41,
+        "cached": true,
+        "equivalent": null
+      }
+    ],
+    "rows": [
+      {
+        "count": 64,
+        "frames": 240,
+        "navigationKey": "4b54a6d6",
+        "navigationCached": false,
+        "actualMobs": 64,
+        "shots": 7,
+        "particles": 274,
+        "frame": {
+          "p50": 17.7,
+          "p95": 23.6,
+          "p99": 29.4,
+          "worst": 488.2,
+          "over50": 1
+        },
+        "cpu": {
+          "p50": 9.4,
+          "p95": 10.9,
+          "p99": 11.4,
+          "worst": 489.3,
+          "over50": 1
+        },
+        "update": {
+          "p50": 7.1,
+          "p95": 8.4,
+          "p99": 8.8,
+          "worst": 487.4,
+          "over50": 1
+        },
+        "render": {
+          "p50": 2.4,
+          "p95": 2.8,
+          "p99": 3.1,
+          "worst": 3.4,
+          "over50": 0
+        },
+        "profile": {}
+      },
+      {
+        "count": 128,
+        "frames": 240,
+        "navigationKey": "4b54a6d6",
+        "navigationCached": false,
+        "actualMobs": 128,
+        "shots": 5,
+        "particles": 357,
+        "frame": {
+          "p50": 23.5,
+          "p95": 29.4,
+          "p99": 29.5,
+          "worst": 500,
+          "over50": 1
+        },
+        "cpu": {
+          "p50": 18,
+          "p95": 20.6,
+          "p99": 25.3,
+          "worst": 497.5,
+          "over50": 1
+        },
+        "update": {
+          "p50": 15.2,
+          "p95": 17.6,
+          "p99": 20.3,
+          "worst": 494.4,
+          "over50": 1
+        },
+        "render": {
+          "p50": 2.8,
+          "p95": 3.2,
+          "p99": 4.8,
+          "worst": 5.1,
+          "over50": 0
+        },
+        "profile": {}
+      }
+    ],
+    "errors": []
+  },
+  "after": {
+    "label": "final",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "navigation": [
+      {
+        "stage": 0,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 1,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 2,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 3,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 4,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 5,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 6,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 7,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 8,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 9,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 10,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 11,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 12,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 13,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 14,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 15,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 16,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 17,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 18,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 19,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 20,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 21,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 22,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 23,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 24,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 25,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 26,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 27,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 28,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 29,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 30,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 31,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 32,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 33,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 34,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 35,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 36,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 37,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 38,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 39,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 40,
+        "cached": true,
+        "equivalent": true
+      },
+      {
+        "stage": 41,
+        "cached": true,
+        "equivalent": true
+      }
+    ],
+    "rows": [
+      {
+        "count": 0,
+        "frames": 240,
+        "navigationKey": "4b54a6d6",
+        "navigationCached": true,
+        "actualMobs": 0,
+        "shots": 0,
+        "particles": 0,
+        "frame": {
+          "p50": 11.8,
+          "p95": 17.7,
+          "p99": 17.8,
+          "worst": 17.8,
+          "over50": 0
+        },
+        "cpu": {
+          "p50": 0.7,
+          "p95": 0.9,
+          "p99": 1.1,
+          "worst": 1.3,
+          "over50": 0
+        },
+        "update": {
+          "p50": 0.1,
+          "p95": 0.2,
+          "p99": 0.3,
+          "worst": 0.8,
+          "over50": 0
+        },
+        "render": {
+          "p50": 0.6,
+          "p95": 0.8,
+          "p99": 1,
+          "worst": 1.2,
+          "over50": 0
+        },
+        "profile": {}
+      },
+      {
+        "count": 64,
+        "frames": 240,
+        "navigationKey": "4b54a6d6",
+        "navigationCached": true,
+        "actualMobs": 64,
+        "shots": 7,
+        "particles": 274,
+        "frame": {
+          "p50": 17.7,
+          "p95": 23.6,
+          "p99": 29.4,
+          "worst": 29.4,
+          "over50": 0
+        },
+        "cpu": {
+          "p50": 9.4,
+          "p95": 11.4,
+          "p99": 12.9,
+          "worst": 14.3,
+          "over50": 0
+        },
+        "update": {
+          "p50": 7.1,
+          "p95": 8.6,
+          "p99": 9.6,
+          "worst": 10.5,
+          "over50": 0
+        },
+        "render": {
+          "p50": 2.3,
+          "p95": 2.8,
+          "p99": 3.8,
+          "worst": 4.4,
+          "over50": 0
+        },
+        "profile": {}
+      },
+      {
+        "count": 128,
+        "frames": 240,
+        "navigationKey": "4b54a6d6",
+        "navigationCached": true,
+        "actualMobs": 128,
+        "shots": 5,
+        "particles": 357,
+        "frame": {
+          "p50": 23.5,
+          "p95": 29.4,
+          "p99": 29.6,
+          "worst": 41.2,
+          "over50": 0
+        },
+        "cpu": {
+          "p50": 18,
+          "p95": 20.2,
+          "p99": 24.6,
+          "worst": 33.7,
+          "over50": 0
+        },
+        "update": {
+          "p50": 15.4,
+          "p95": 17.3,
+          "p99": 20,
+          "worst": 28.7,
+          "over50": 0
+        },
+        "render": {
+          "p50": 2.7,
+          "p95": 3.2,
+          "p99": 5,
+          "worst": 6.1,
+          "over50": 0
+        },
+        "profile": {}
+      }
+    ],
+    "errors": []
+  },
+  "diagnosticProfile": {
+    "label": "navigation-profile",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "rows": [
+      {
+        "count": 64,
+        "frames": 240,
+        "actualMobs": 64,
+        "shots": 7,
+        "particles": 201,
+        "frame": {
+          "p50": 17.7,
+          "p95": 23.6,
+          "p99": 29.4,
+          "worst": 517.5,
+          "over50": 1
+        },
+        "cpu": {
+          "p50": 9.7,
+          "p95": 14,
+          "p99": 14.8,
+          "worst": 513.1,
+          "over50": 1
+        },
+        "update": {
+          "p50": 7.3,
+          "p95": 11.8,
+          "p99": 12.3,
+          "worst": 511.2,
+          "over50": 1
+        },
+        "render": {
+          "p50": 2.2,
+          "p95": 2.7,
+          "p99": 3.1,
+          "worst": 4.1,
+          "over50": 0
+        },
+        "profile": {
+          "save": {
+            "mean": 0.006,
+            "max": 1.2,
+            "calls": 330
+          },
+          "experience": {
+            "mean": 0.003,
+            "max": 0.2,
+            "calls": 330
+          },
+          "targeting": {
+            "mean": 0,
+            "max": 0.1,
+            "calls": 21450
+          },
+          "terrain": {
+            "mean": 0.268,
+            "max": 0.9,
+            "calls": 330
+          },
+          "terrainCollision": {
+            "mean": 0,
+            "max": 0.3,
+            "calls": 522580
+          },
+          "steer": {
+            "mean": 0.138,
+            "max": 501.6,
+            "calls": 15026
+          },
+          "resolve": {
+            "mean": 0.016,
+            "max": 1.1,
+            "calls": 42570
+          },
+          "enemyAttack": {
+            "mean": 0.099,
+            "max": 501.7,
+            "calls": 21120
+          },
+          "actors": {
+            "mean": 0.006,
+            "max": 0.2,
+            "calls": 21450
+          },
+          "motion": {
+            "mean": 0.016,
+            "max": 0.9,
+            "calls": 330
+          },
+          "cultivation": {
+            "mean": 0.004,
+            "max": 0.1,
+            "calls": 330
+          },
+          "passage": {
+            "mean": 0.001,
+            "max": 0.1,
+            "calls": 330
+          },
+          "updatePlayer": {
+            "mean": 0.064,
+            "max": 0.4,
+            "calls": 330
+          },
+          "updateUltimate": {
+            "mean": 0.001,
+            "max": 0.1,
+            "calls": 330
+          },
+          "updateSpells": {
+            "mean": 0.152,
+            "max": 1.2,
+            "calls": 330
+          },
+          "updateShots": {
+            "mean": 0.038,
+            "max": 0.3,
+            "calls": 330
+          },
+          "updateEnemies": {
+            "mean": 8.547,
+            "max": 510.9,
+            "calls": 330
+          },
+          "updateTelegraphs": {
+            "mean": 0.003,
+            "max": 0.1,
+            "calls": 330
+          },
+          "updatePools": {
+            "mean": 0.018,
+            "max": 0.4,
+            "calls": 330
+          },
+          "updateOrbs": {
+            "mean": 0.001,
+            "max": 0.1,
+            "calls": 330
+          },
+          "updateHeals": {
+            "mean": 0,
+            "max": 0,
+            "calls": 330
+          },
+          "updateChests": {
+            "mean": 0,
+            "max": 0,
+            "calls": 330
+          },
+          "updateFx": {
+            "mean": 0.015,
+            "max": 0.2,
+            "calls": 330
+          }
+        }
+      }
+    ],
+    "errors": []
+  },
+  "rejectedExperiment": {
+    "name": "Static polygon spatial buckets",
+    "reason": "Did not remove first-navigation-build pause; removed from final code",
+    "report": {
+      "label": "spatial-index",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "rows": [
+        {
+          "count": 64,
+          "frames": 240,
+          "actualMobs": 64,
+          "shots": 12,
+          "particles": 232,
+          "frame": {
+            "p50": 23.4,
+            "p95": 23.6,
+            "p99": 29.4,
+            "worst": 470.5,
+            "over50": 1
+          },
+          "cpu": {
+            "p50": 10.4,
+            "p95": 15.9,
+            "p99": 20.1,
+            "worst": 471.8,
+            "over50": 1
+          },
+          "update": {
+            "p50": 7.8,
+            "p95": 13.3,
+            "p99": 15.4,
+            "worst": 469.5,
+            "over50": 1
+          },
+          "render": {
+            "p50": 2.3,
+            "p95": 2.8,
+            "p99": 3.1,
+            "worst": 4.7,
+            "over50": 0
+          },
+          "profile": {
+            "save": {
+              "mean": 0.005,
+              "max": 1.2,
+              "calls": 330
+            },
+            "experience": {
+              "mean": 0.002,
+              "max": 0.1,
+              "calls": 330
+            },
+            "targeting": {
+              "mean": 0,
+              "max": 0.1,
+              "calls": 21450
+            },
+            "terrain": {
+              "mean": 0.273,
+              "max": 1,
+              "calls": 330
+            },
+            "terrainCollision": {
+              "mean": 0,
+              "max": 0.3,
+              "calls": 522654
+            },
+            "steer": {
+              "mean": 0.146,
+              "max": 458.7,
+              "calls": 14905
+            },
+            "resolve": {
+              "mean": 0.017,
+              "max": 0.4,
+              "calls": 42570
+            },
+            "enemyAttack": {
+              "mean": 0.104,
+              "max": 458.7,
+              "calls": 21120
+            },
+            "actors": {
+              "mean": 0.006,
+              "max": 0.3,
+              "calls": 21450
+            },
+            "motion": {
+              "mean": 0.019,
+              "max": 0.6,
+              "calls": 330
+            },
+            "cultivation": {
+              "mean": 0.006,
+              "max": 0.1,
+              "calls": 330
+            },
+            "passage": {
+              "mean": 0.001,
+              "max": 0.1,
+              "calls": 330
+            },
+            "updatePlayer": {
+              "mean": 0.069,
+              "max": 0.5,
+              "calls": 330
+            },
+            "updateUltimate": {
+              "mean": 0.001,
+              "max": 0.2,
+              "calls": 330
+            },
+            "updateSpells": {
+              "mean": 0.156,
+              "max": 1.1,
+              "calls": 330
+            },
+            "updateShots": {
+              "mean": 0.039,
+              "max": 0.3,
+              "calls": 330
+            },
+            "updateEnemies": {
+              "mean": 8.963,
+              "max": 469.2,
+              "calls": 330
+            },
+            "updateTelegraphs": {
+              "mean": 0.003,
+              "max": 0.1,
+              "calls": 330
+            },
+            "updatePools": {
+              "mean": 0.019,
+              "max": 0.4,
+              "calls": 330
+            },
+            "updateOrbs": {
+              "mean": 0.002,
+              "max": 0.1,
+              "calls": 330
+            },
+            "updateHeals": {
+              "mean": 0.001,
+              "max": 0.1,
+              "calls": 330
+            },
+            "updateChests": {
+              "mean": 0.001,
+              "max": 0.1,
+              "calls": 330
+            },
+            "updateFx": {
+              "mean": 0.019,
+              "max": 0.2,
+              "calls": 330
+            }
+          }
+        },
+        {
+          "count": 128,
+          "frames": 240,
+          "actualMobs": 128,
+          "shots": 2,
+          "particles": 267,
+          "frame": {
+            "p50": 23.6,
+            "p95": 35.3,
+            "p99": 41.1,
+            "worst": 488.2,
+            "over50": 1
+          },
+          "cpu": {
+            "p50": 19.4,
+            "p95": 31.8,
+            "p99": 33.3,
+            "worst": 484.3,
+            "over50": 1
+          },
+          "update": {
+            "p50": 16.6,
+            "p95": 29,
+            "p99": 30.1,
+            "worst": 481.6,
+            "over50": 1
+          },
+          "render": {
+            "p50": 2.7,
+            "p95": 3.5,
+            "p99": 4.6,
+            "worst": 5.1,
+            "over50": 0
+          },
+          "profile": {
+            "save": {
+              "mean": 0.119,
+              "max": 3.3,
+              "calls": 330
+            },
+            "experience": {
+              "mean": 0,
+              "max": 0.1,
+              "calls": 330
+            },
+            "targeting": {
+              "mean": 0,
+              "max": 0.1,
+              "calls": 42570
+            },
+            "terrain": {
+              "mean": 0.257,
+              "max": 0.7,
+              "calls": 330
+            },
+            "terrainCollision": {
+              "mean": 0,
+              "max": 0.3,
+              "calls": 1030122
+            },
+            "steer": {
+              "mean": 0.145,
+              "max": 460.8,
+              "calls": 30154
+            },
+            "resolve": {
+              "mean": 0.017,
+              "max": 0.4,
+              "calls": 84810
+            },
+            "enemyAttack": {
+              "mean": 0.104,
+              "max": 460.8,
+              "calls": 42240
+            },
+            "actors": {
+              "mean": 0.004,
+              "max": 0.5,
+              "calls": 42570
+            },
+            "motion": {
+              "mean": 0.018,
+              "max": 0.4,
+              "calls": 330
+            },
+            "cultivation": {
+              "mean": 0.006,
+              "max": 0.1,
+              "calls": 330
+            },
+            "passage": {
+              "mean": 0,
+              "max": 0.1,
+              "calls": 330
+            },
+            "updatePlayer": {
+              "mean": 0.054,
+              "max": 0.4,
+              "calls": 330
+            },
+            "updateUltimate": {
+              "mean": 0,
+              "max": 0,
+              "calls": 330
+            },
+            "updateSpells": {
+              "mean": 0.243,
+              "max": 0.7,
+              "calls": 330
+            },
+            "updateShots": {
+              "mean": 0.047,
+              "max": 0.4,
+              "calls": 330
+            },
+            "updateEnemies": {
+              "mean": 18.133,
+              "max": 481.2,
+              "calls": 330
+            },
+            "updateTelegraphs": {
+              "mean": 0.002,
+              "max": 0.1,
+              "calls": 330
+            },
+            "updatePools": {
+              "mean": 0.033,
+              "max": 0.3,
+              "calls": 330
+            },
+            "updateOrbs": {
+              "mean": 0,
+              "max": 0,
+              "calls": 330
+            },
+            "updateHeals": {
+              "mean": 0,
+              "max": 0.1,
+              "calls": 330
+            },
+            "updateChests": {
+              "mean": 0.002,
+              "max": 0.1,
+              "calls": 330
+            },
+            "updateFx": {
+              "mean": 0.02,
+              "max": 0.2,
+              "calls": 330
+            }
+          }
+        }
+      ],
+      "errors": []
+    }
+  },
+  "checks": {
+    "browserAll42GraphsExact": true,
+    "nodeAll42GraphsExact": true,
+    "geometryFingerprintsAndThreeMapLRU": true,
+    "worldGeometryChecks": 210
+  },
+  "limits": [
+    "Measured on this desktop in headless Edge, not a promise of fixed FPS on every device.",
+    "128-enemy stress scenario still has approximately 20 ms p95 CPU frame cost; fixed the reproducible half-second freeze, not all possible OS/driver pauses.",
+    "Stress setup keeps enemies alive and does not measure gameplay win rates."
+  ]
+}

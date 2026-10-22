@@ -8,11 +8,14 @@ const JourneyProgress=(()=>{
   function cleanBuild(b){SpellGift.reconcile(b);return {...Object.fromEntries(fields.map(k=>[k,b[k]])),
     ...Object.fromEntries(Object.entries(resources).map(([k,v])=>[k,b[k]??v])),
     ...(b.ultimateArts?{ultimateArts:UltimateArts.snapshot(b,b.ultimatePrimary||'heaven'),ultimatePrimary:b.ultimatePrimary}:{}),heroId:HeroIdentity.clean(b.heroId),growthChoices:b.growthChoices??Math.max(0,Math.floor(b.level)-1),t:{...b.t},
+    mana:b.mana??ImmortalMovement.max(b),alchemy:Alchemy.clean(b.alchemy),
     poison:b.poison===true,spells:{...b.spells},equips:[...b.equips],cultivation:Cultivation.clean(b.cultivation)};}
   function validBuild(b){
     return b&&fields.every(k=>Number.isFinite(b[k])&&Math.abs(b[k])<1e7)&&b.maxHp>0&&b.hp>0&&b.hp<=b.maxHp&&b.speed>0&&b.dmg>0&&b.cdr>0&&b.level>=1&&b.spells&&Object.entries(b.spells).every(([k,v])=>spellKeys.includes(k)&&SpellGrowth.validLevel(v,b.cultivation?.realm||0))&&Array.isArray(b.equips)&&b.equips.length<=8&&b.equips.every(v=>['mujian','jifeng','jiuhu','wudu','nvwa','tiangang','juling','huxin'].includes(v))
       &&(b.ultimateArts===undefined||UltimateArts.validState(b.ultimateArts))&&(b.ultimatePrimary===undefined||UltimateArts.keys.includes(b.ultimatePrimary))
       &&(b.heroId===undefined||HeroIdentity.valid(b.heroId))
+      &&(b.mana===undefined||Number.isFinite(b.mana)&&b.mana>=0&&b.mana<=ImmortalMovement.max(b))
+      &&(b.alchemy===undefined||Alchemy.valid(b.alchemy))
       &&Object.keys(resources).every(k=>b[k]===undefined||Number.isFinite(b[k])&&b[k]>=0&&b[k]<1e7)
       &&(b.shield===undefined||b.shield<=b.shieldMax)&&(b.energy===undefined||b.energy<=100)
       &&(b.growthChoices===undefined||Number.isInteger(b.growthChoices)&&b.growthChoices>=0&&b.growthChoices<1e7)

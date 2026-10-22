@@ -1,5 +1,18 @@
 /* Sword forms share a target budget; spare lightning strikes concentrate on survivors. */
 const SpellCombat=(()=>{
+  function hasThreat(range){
+    if(!P)return false;
+    // Long-range spells keep the reach earned through growth.
+    if(range===undefined)range=Math.max(900,...['gudu','jiushen'].map(id=>P.spells[id]?SpellGrowth.spec(id,P.spells[id]).range:0));
+    return !!nearest(P.x,P.y,range);
+  }
+  function canAutoCast(id,level){
+    const s=SpellGrowth.spec(id,level);
+    if(id==='sanmei')return hasThreat(s.radius+30);
+    if(id==='bingxin')return (P.shield<P.shieldMax||G.eshots.some(e=>(e.x-P.x)**2+(e.y-P.y)**2<s.radius*s.radius))&&hasThreat();
+    if(id==='guanyin')return P.hp<P.maxHp&&hasThreat();
+    return hasThreat(s.range||900);
+  }
   function pulse(id,x,y,s){
     G.spellPulses.push({id,x,y,s,left:s.pulses,timer:0});
   }
@@ -44,5 +57,5 @@ const SpellCombat=(()=>{
   function update(dt){for(const p of G.spellPulses){p.timer-=dt;if(p.timer>0)continue;p.timer+=p.id==='guanyin'?.5:.36;p.left--;const color=SPELLS[p.id].color;if(p.id==='guanyin'){if(Math.hypot(P.x-p.x,P.y-p.y)<=p.s.radius)heal(p.s.heal/p.s.pulses);Motion.emit('heal',p.x,p.y,{r:p.s.radius,duration:.65,color});}else{Motion.emit(p.id==='sanmei'?'fire':'blast',p.x,p.y,{r:p.s.radius,duration:.65,color});for(const e of G.enemies)if(e.hp>0&&Math.hypot(e.x-p.x,e.y-p.y)<p.s.radius+e.r)hurt(e,p.s.damage/p.s.pulses,color);}}G.spellPulses=G.spellPulses.filter(p=>p.left>0);}
   function drawGround(){for(const p of G.spellPulses.filter(p=>p.id==='guanyin')){ctx.save();ctx.fillStyle='#9fe3b80b';ctx.strokeStyle='#9fe3b866';ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(p.x,p.y,p.s.radius,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();}}
   function orbit(p){const s=SpellGrowth.spec('wanjian',p.spells.wanjian,p.cultivation?.realm||0);return s.ringCounts.flatMap((count,layer)=>Array.from({length:count},(_,i)=>{const a=p.orbitAngle*(layer%2?-1:1)+i*Math.PI*2/count,r=s.ringRadii[layer];return {x:p.x+Math.cos(a)*r,y:p.y+Math.sin(a)*r,a,layer,damage:s.damage};}));}
-  return {install,update,orbit,drawGround};
+  return {install,update,orbit,drawGround,hasThreat,canAutoCast};
 })();

@@ -13,14 +13,14 @@ const ExperienceUI=(()=>{
     const info=document.createElement('aside');info.id='mapDetail';info.hidden=true;document.body.appendChild(info);
   }
   function open(kind='settings'){
-    if(AscensionScene.active()||previous!==null)return;previous=G.state;focus=document.activeElement;G.state=kind;clearInput();
+    if(AscensionScene.active()||Alchemy.active()||previous!==null)return;previous=G.state;focus=document.activeElement;G.state=kind;clearInput();
     panel.hidden=false;panel.innerHTML=`<section class="experience-sheet"><header><div><span class="overline">寻圣 · 行旅手册</span><h2>${kind==='help'?'战 斗 与 探 路':'画 面 与 操 作'}</h2></div><button id="experienceClose" aria-label="关闭，返回之前内容">×</button></header>${kind==='help'?helpHTML():settingsHTML()}<footer><span id="preferenceStatus" role="status">设置保存在此浏览器 · 战斗已暂停</span><button class="btn" id="experienceDone">返回之前内容 <kbd>Esc</kbd></button></footer></section>`;
     document.getElementById('experienceClose').onclick=close;document.getElementById('experienceDone').onclick=close;
     panel.querySelectorAll('[data-preference]').forEach(n=>n.onchange=()=>{const name=n.dataset.preference,value=n.type==='checkbox'?n.checked:name==='scale'?Number(n.value):n.value;document.getElementById('preferenceStatus').textContent=set(name,value)?'设置已保存':'尚未保存 · 本次设置仍可使用';});
     document.getElementById('experienceClose').focus?.();
   }
   function settingsHTML(){const s=settings();return `<p class="sheet-lead">保留危险预警与真实攻击，按设备选择装饰细节。</p><label class="preference-row"><span>界面缩放<small>文字、按钮与面板尺寸</small></span><select data-preference="scale" aria-label="界面缩放">${[90,100,110,120].map(v=>`<option value="${v}" ${s.scale===v?'selected':''}>${v}%</option>`).join('')}</select></label><label class="preference-row"><span>装饰特效<small>简化粒子与拖影，攻击和奖励保持一致</small></span><select data-preference="effects" aria-label="装饰特效"><option value="standard" ${s.effects==='standard'?'selected':''}>标准</option><option value="simple" ${s.effects==='simple'?'selected':''}>简化</option></select></label><label class="preference-row"><span>屏幕震动<small>低动态偏好默认关闭</small></span><input type="checkbox" data-preference="shake" ${s.shake?'checked':''}></label><label class="preference-row"><span>鼠标瞄准剑河<small>关闭后朝集火目标、最近敌人或人物朝向释放</small></span><input type="checkbox" data-preference="mouseAim" ${s.mouseAim?'checked':''}></label>`;}
-  function helpHTML(){return `<div class="help-grid"><article><b>01 · 移动与集火</b><p>WASD 移动，空格闪避。右键妖怪设为集火目标；再次点击或右键空地取消。目标离开画面或超过900距离后解除。</p><p>手机：左侧拖动摇杆，右侧轻点妖怪集火，用独立按钮闪避。</p></article><article><b>02 · 三式大招</b><p>Q / R / T 使用携行大招。剑河朝鼠标方向，施放后方向锁定。五雷先覆盖不同敌人，再集中剩余雷击，集火目标优先。</p></article><article><b>03 · 因地制敌</b><p>断援：先击毁妖幡，打断远程妖众。借势：靠近机关按 E，0.8秒后令范围内妖众减速；每营3次，间隔6秒。</p><p>破障妖众消耗护盾，联射远程错峰攻击，侧袭妖众绕行。危险轮廓收满前离开。</p></article><article><b>04 · 探路与成长</b><p>Tab 开舆图，点击已发现标记查看详情、设定路线。已点亮驿站可在安全时传送。C 查看人物、术法赠礼和破境材料。</p><p>Esc 返回上层内容；面板期间战斗暂停。守关大妖始终受伤，成功破招可造成更高伤害。</p></article></div>`;}
+  function helpHTML(){return `<div class="help-grid"><article><b>01 · 移动与集火</b><p>WASD 移动，点按空格闪避（10仙力），按住空格疾行（1.7倍移速、每秒20仙力）；松开0.75秒后每秒恢复16仙力。右键妖怪设为集火目标；再次点击或右键空地取消。目标离开画面或超过900距离后解除。</p><p>手机：左侧拖动摇杆，右侧轻点妖怪集火，点按「闪」闪避，按住持续疾行。仙力用尽后需松开回气。</p></article><article><b>02 · 三式大招</b><p>Q / R / T 使用携行大招。剑河朝鼠标方向，施放后方向锁定。五雷先覆盖不同敌人，再集中剩余雷击，集火目标优先。</p></article><article><b>03 · 因地制敌</b><p>断援：先击毁妖幡，打断远程妖众。借势：靠近机关按 E，0.8秒后令范围内妖众减速；每营3次，间隔6秒。</p><p>破障妖众消耗护盾，联射远程错峰攻击，侧袭妖众绕行。危险轮廓收满前离开。</p></article><article><b>04 · 探路与成长</b><p>Tab 开舆图，点击已发现标记查看详情、设定路线。已点亮驿站可在安全时传送。C 查看人物、术法赠礼和破境材料。B 开丹炉查看合炼成功率与材料，1 / 2 快速服用回血 / 回仙力丹药；四类丹药共用18秒调息。</p><p>Esc 返回上层内容；面板期间战斗暂停。守关大妖始终受伤，成功破招可造成更高伤害。</p></article></div>`;}
   function close(){if(previous===null)return;panel.hidden=true;G.state=RunSave.conflicted()?'save-conflict':previous;previous=null;clearInput();last=performance.now();if(!RunSave.conflicted())focus?.focus?.();}
   function handleKey(e){
     const audio=document.getElementById('audioPanel');if(previous===null&&e.key==='Escape'&&audio?.hidden===false){e.preventDefault();document.getElementById('closeAudioBtn')?.onclick?.();return true;}
@@ -31,8 +31,8 @@ const ExperienceUI=(()=>{
     return false;
   }
   function teach(id,text){settings();if(seen[id])return;seen[id]=true;persist();tip={text,until:G.time+7};}
-  function tick(){if(G.state!=='playing')return;teach('controls','右键集火 · 空格闪避 · Q / R / T 大招 · E 机关 · Tab 路线 · Esc 操作手册');}
-  function campCleared(c){summary={title:CampTactics.title(c)+' '+(c.id+1)+' · 已清理',text:'斩妖 '+c.kills+' · 已拾取灵蕴 '+Math.round(c.tactics.rewards.xp)+' · 修为 +'+Math.round(c.tactics.rewards.qi)+' · 精华 +'+c.tactics.rewards.essence,until:G.time+9};const stations=World.markers().filter(s=>s.kind==='station').sort((a,b)=>Math.hypot(a.x-c.x,a.y-c.y)-Math.hypot(b.x-c.x,b.y-c.y));if(stations[0])summary.text+=' · '+stations[0].name+(stations[0].unlocked?'已点亮':'尚待清理周围营地');}
+  function tick(){if(G.state!=='playing')return;teach('controls-v2','空格点按闪避 / 按住疾行 · 1 / 2 服丹 · B 丹炉 · Q / R / T 大招 · E 机关 · Tab 路线');}
+  function campCleared(c){Alchemy.onCampCleared(c);summary={title:CampTactics.title(c)+' '+(c.id+1)+' · 已清理',text:'斩妖 '+c.kills+' · 已拾取灵蕴 '+Math.round(c.tactics.rewards.xp)+' · 修为 +'+Math.round(c.tactics.rewards.qi)+' · 精华 +'+c.tactics.rewards.essence,until:G.time+9};const stations=World.markers().filter(s=>s.kind==='station').sort((a,b)=>Math.hypot(a.x-c.x,a.y-c.y)-Math.hypot(b.x-c.x,b.y-c.y));if(stations[0])summary.text+=' · '+stations[0].name+(stations[0].unlocked?'已点亮':'尚待清理周围营地');}
   function sync(){
     if(!P)return;if(previous!==null&&RunSave.conflicted())close();const c=EncounterDirector.status().camps.filter(c=>c.state==='active').sort((a,b)=>Math.hypot(a.x-P.x,a.y-P.y)-Math.hypot(b.x-P.x,b.y-P.y))[0];
     if(G.state==='playing'&&!World.active()&&c)document.getElementById('objectiveText').textContent=c.title+' · 第'+c.wave+'/3波 · 剩余 '+c.remaining;
@@ -56,5 +56,5 @@ const ExperienceUI=(()=>{
   function danger(){return G.telegraphs.some(t=>Math.hypot(t.x-P.x,t.y-P.y)<(t.r||150)+200)||G.enemies.some(e=>e.action==='windup'&&Math.hypot(e.x-P.x,e.y-P.y)<450);}
   function friendly(fn){ctx.save();if(danger())ctx.globalAlpha*=.4;fn();ctx.restore();}
   function reset(){summary=null;tip=null;mapSelection=null;Targeting.reset();}
-  return {init,settings,set,open,close,handleKey,teach,tick,sync,campCleared,mapDetail,resultHTML,menu,damageText,friendly,reset,saveState:()=>EndingScene.active()?EndingScene.priorState():previous||G.state};
+  return {init,settings,set,open,close,handleKey,teach,tick,sync,campCleared,mapDetail,resultHTML,menu,damageText,friendly,reset,saveState:()=>Alchemy.active()?Alchemy.priorState():EndingScene.active()?EndingScene.priorState():previous||G.state};
 })();

@@ -54,7 +54,7 @@ const RunSave=(()=>{
       chests:G.chests.map(c=>({x:c.x,y:c.y,t:c.t||0,kind:c.kind,rewardId:c.rewardId||null})),world:World.exportState(),director:EncounterDirector.exportState(),bossSpawned:G.bossSpawned,bossEntry:clone(bossEntry)}};
   }
   function save(reason='自动保存'){
-    if(suppress||!enabled||!P||EndingScene.active()&&EndingScene.priorState()==='start')return true;if(conflict)return false;if(['start','character-preview'].includes(G.state))return true;
+    if(suppress||!enabled||!P||ExperienceUI.saveState()==='start')return true;if(conflict)return false;if(['start','character-preview'].includes(G.state))return true;
     const newer=read(key);if(newer&&newer.writer!==writer&&newer.revision>revision){receive(newer);return false;}
     try{const next=capture();if(!valid(next))throw new Error('Invalid runtime snapshot');const previous=read(key);if(previous)try{localStorage.setItem(backup,JSON.stringify(previous));}catch{}
       localStorage.setItem(key,JSON.stringify(next));revision=next.revision;data=next;elapsed=0;message='已保存 '+new Date(next.savedAt).toLocaleTimeString('zh-CN',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});return true;

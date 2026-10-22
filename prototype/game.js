@@ -218,7 +218,7 @@ function newPlayer(){
     heroId:HeroIdentity.clean(Journey.run.heroId),spells:{ yujian:1 }, t:{ yujian:0.5 },
     orbitAngle:0, orbitHit:new Map(),
     dash:0, dashCd:0, invuln:0, facing:{ x:1, y:0 }, flash:0,
-    equips:[], energy:100, ultCd:0, animTime:0,moving:false,attack:0,attackLength:.32,look:1,cultivation:Cultivation.fresh()
+    equips:[], energy:100, mana:100,alchemy:Alchemy.fresh(),ultCd:0, animTime:0,moving:false,attack:0,attackLength:.32,look:1,cultivation:Cultivation.fresh()
   };
 }
 
@@ -232,14 +232,14 @@ function reset(){
   G.telegraphs=[]; G.ultimate=null; G.ultimateCasts=0;
   G.pickups=[];G.chestReward=null;G.runChoices=0;
   G.pendingLore=null;G.coreReward=null;
-  Motion.reset();
+  Motion.reset();ImmortalMovement.reset();
   Sound.reset();
   clearInput();
   G.spawn=0; G.eliteT=42; G.chestT=58; G.boss=null; G.bossSpawned=false; G.uid=1;
   G.P = newPlayer();
   P = G.P;
   Journey.restore(P);
-  P.cdr=Math.max(.2,P.cdr);UltimateArts.ensure();
+  P.cdr=Math.max(.2,P.cdr);UltimateArts.ensure();ImmortalMovement.ensure();Alchemy.ensure();
   SpellGift.ensure();SpellGift.sync();
   G.runChoices=P.growthChoices;
   World.reset();
@@ -342,6 +342,7 @@ function killEnemy(e, fromUltimate=false){
   if(e.eventObjective){burst(e.x,e.y,Journey.stage().color,12,100);Sound.effects('chest');return;}
   Bosses.onHelperKilled(e);
   if(e.bossHelper){burst(e.x,e.y,e.color,12,100);return;}
+  Alchemy.onKill(e);
   const essence=P.cultivation.materials.essence,layer=P.cultivation.layer,qiBefore=P.cultivation.qi;const rare=Cultivation.onKill(e);
   CampTactics.reward(e.encounterId,'qi',P.cultivation.qi-qiBefore);CampTactics.reward(e.encounterId,'essence',P.cultivation.materials.essence-essence);
   G.kills++;
@@ -446,7 +447,7 @@ function update(dt){
   G.time += dt;
   RunSave.tick(dt);
   if(G.queue>0){showLevelUp(choicesCache.length?choicesCache:null);return;}
-  ExperienceUI.tick();Targeting.current();
+  ExperienceUI.tick();Alchemy.update(dt);Targeting.current();
   updatePickupNotices(dt);
   G.shake = Math.max(0, G.shake - dt * 26);
 
@@ -542,11 +543,12 @@ function updatePlayer(dt){
   P.flash = Math.max(0, P.flash - dt);
   UltimateArts.tick(dt);
 
+  const moveScale=ImmortalMovement.update(dt,len>.08);
   if (P.dash > 0){
     P.vx=P.facing.x*980;P.vy=P.facing.y*980;
   } else {
-    const commitment=P.attack>0?.78:1,accel=1-Math.exp(-dt*(len>.08?18:26));
-    P.vx+=(mx*P.speed*commitment-P.vx)*accel;P.vy+=(my*P.speed*commitment-P.vy)*accel;
+    const commitment=moveScale>1?1:P.attack>0?.78:1,accel=1-Math.exp(-dt*(len>.08?18:26));
+    P.vx+=(mx*P.speed*commitment*moveScale-P.vx)*accel;P.vy+=(my*P.speed*commitment*moveScale-P.vy)*accel;
     if(len<=.08&&Math.hypot(P.vx,P.vy)<4){P.vx=0;P.vy=0;}
   }
   P.x+=P.vx*dt;P.y+=P.vy*dt;World.resolve(P);
@@ -559,7 +561,7 @@ function updatePlayer(dt){
 }
 
 function tryDash(){
-  if (G.state !== 'playing' || !P || P.dashCd > 0) return;
+  if (G.state !== 'playing' || !P || P.dashCd > 0 || !ImmortalMovement.spendDash()) return;
   P.dash = .14; P.dashCd = 2.1; P.invuln = Math.max(P.invuln, .32);
   Sound.effects('dash');
   for (let i = 0; i < 10; i++){
@@ -640,17 +642,19 @@ function updateSpawning(dt){
 }
 
 function updateSpells(dt){
+  const threat=SpellCombat.hasThreat();
+  if(!threat){Motion.cancelSpells(Object.keys(P.spells));if(!G.ultimate)P.attack=0;}
   for (const key in P.spells){
     if (key === 'wanjian') continue;
     const lvl = P.spells[key];
-    P.t[key] = (P.t[key] || 0) - dt;
-    if (P.t[key] <= 0){
+    P.t[key] = Math.max(0,(P.t[key] || 0) - dt);
+    if (P.t[key] <= 0 && threat && SpellCombat.canAutoCast(key,lvl)){
       SPELLS[key].cast(lvl);
       P.t[key] = SPELLS[key].cd * Math.max(.2,P.cdr);
     }
   }
   SpellCombat.update(dt);
-  if(P.spells.wanjian){P.orbitAngle+=(1.6+Math.min(5,P.spells.wanjian)*.18)*dt;for(const sword of SpellCombat.orbit(P))for(const e of G.enemies){if(e.hp<=0)continue;if(Math.hypot(e.x-sword.x,e.y-sword.y)<e.r+9&&G.time-(P.orbitHit.get(e.id)??-9)>.45){P.orbitHit.set(e.id,G.time);hurt(e,sword.damage,'#cfe7f2');}}}
+  if(threat&&P.spells.wanjian){P.orbitAngle+=(1.6+Math.min(5,P.spells.wanjian)*.18)*dt;for(const sword of SpellCombat.orbit(P))for(const e of G.enemies){if(e.hp<=0)continue;if(Math.hypot(e.x-sword.x,e.y-sword.y)<e.r+9&&G.time-(P.orbitHit.get(e.id)??-9)>.45){P.orbitHit.set(e.id,G.time);hurt(e,sword.damage,'#cfe7f2');}}}
 }
 
 function updateShots(dt){
@@ -1219,7 +1223,7 @@ function drawPlayer(){
   shadow.addColorStop(0,'#0009');shadow.addColorStop(1,'#0000');ctx.fillStyle=shadow;
   ctx.beginPath();ctx.ellipse(p.x,p.y+5,34,11,0,0,TAU);ctx.fill();ctx.restore();
   RealmVisuals.draw(p.cultivation,p.x,p.y,G.time);
-  if(p.spells.wanjian){
+  if(p.spells.wanjian&&SpellCombat.hasThreat()){
     const swords=SpellCombat.orbit(p),crowded=swords.length>36,color=RealmVisuals.get(p.cultivation).color;
     for(const sword of swords){
       const at=World.screen(sword.x,sword.y);if(at.x< -40||at.y< -40||at.x>W+40||at.y>H+40)continue;
@@ -1385,8 +1389,7 @@ function syncHUD(){
   document.getElementById('timer').textContent = fmt(G.time);
   document.getElementById('kills').textContent = '斩妖 ' + G.kills;
   UltimateArts.hud();
-  document.getElementById('dashBtn').disabled=G.state!=='playing'||P.dashCd>0;
-  document.getElementById('dashStatus').textContent=P.dashCd>0?P.dashCd.toFixed(1)+'秒':matchMedia('(pointer: coarse)').matches?'闪避':'空格';
+  ImmortalMovement.sync();Alchemy.sync();
   const stage=Journey.stage(),profile=Journey.difficulty();
   document.getElementById('chapterTitle').textContent=stage.no+' · '+stage.title;
   document.getElementById('heroName').textContent=HeroIdentity.get(P.heroId).name;
@@ -1429,7 +1432,7 @@ function renderEquips(){
 /* ---------------- 输入 ---------------- */
 
 window.addEventListener('keydown', e => {
-  if(EndingScene.handleKey(e)||AscensionScene.handleKey(e)||ExperienceUI.handleKey(e))return;
+  if(EndingScene.handleKey(e)||AscensionScene.handleKey(e)||ExperienceUI.handleKey(e)||Alchemy.handleKey(e))return;
   // Let native card and sheet controls keep their focus and activation keys.
   if(['levelup','character','character-preview','chest','win'].includes(G.state)&&e.code==='Tab')return;
   if(['levelup','character','character-preview'].includes(G.state)&&['Space','Enter'].includes(e.code)&&e.target.closest?.('button,select,input')){if(e.repeat)e.preventDefault();return;}
@@ -1447,22 +1450,23 @@ window.addEventListener('keydown', e => {
   if (e.key === 'Escape'){ e.preventDefault(); togglePause(); return; }
   if (e.code === 'Space'){
     e.preventDefault();
-    if (G.state === 'playing') tryDash();
+    if (G.state === 'playing'&&ImmortalMovement.press('keyboard')) tryDash();
     else if (G.state === 'chest') closeChest();
   }
   if (e.key === 'Enter' && G.state === 'chest') closeChest();
   if (G.state === 'levelup' && ['1','2','3'].includes(e.key)) pickCard(Number(e.key) - 1);
   if (k === 'r' && G.state === 'dead') RunSave.retry();
 });
-window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
+window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false;if(e.code==='Space')ImmortalMovement.release('keyboard'); });
 function clearInput(){
+  ImmortalMovement.release();
   for(const k in keys) delete keys[k];
   joy.active=false;joy.id=null;joy.dx=0;joy.dy=0;Targeting.clearPointer();touchAim=null;
 }
 window.addEventListener('blur',()=>{ clearInput(); if(G.state==='playing'&&!AscensionScene.active())togglePause(); });
 document.addEventListener('visibilitychange',()=>{ if(document.hidden){ clearInput();if(G.state==='playing'&&!AscensionScene.active())togglePause(); } });
 for(let i=0;i<3;i++)document.getElementById('ultimateBtn'+(i||'')).onclick=()=>{const id=UltimateArts.loadout()[i];if(id)tryUltimate(id);};
-document.getElementById('dashBtn').onclick=tryDash;
+ImmortalMovement.bind(document.getElementById('dashBtn'));
 document.getElementById('journalBtn').onclick=Journey.journal;
 document.getElementById('mapBtn').onclick=World.toggleMap;
 document.getElementById('interactBtn').onclick=World.interact;
@@ -1617,10 +1621,10 @@ function bench(n, sec){
 RunSave.init();
 reset();
 CharacterUI.init();
-ExpeditionUI.init();ExperienceUI.init();
+ExpeditionUI.init();ExperienceUI.init();Alchemy.init();
 G.state = 'start';
 if ('ontouchstart' in window){
-  document.querySelector('.hint').innerHTML = '<kbd>左侧拖动</kbd> 移动 <kbd>轻点妖怪</kbd> 集火 <kbd>独立按钮</kbd> 闪避与大招';
+  document.querySelector('.hint').innerHTML = '<kbd>左侧拖动</kbd> 移动 <kbd>轻点妖怪</kbd> 集火 <kbd>按住闪</kbd> 耗仙力疾行 <kbd>丹炉</kbd> 合炼';
 }
 if (QS.has('bench')){
   bench(Math.max(1, Math.min(12, Number(QS.get('bench')) || 6)), 200);
