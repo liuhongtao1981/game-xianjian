@@ -5,6 +5,8 @@ const manifest=JSON.parse(fs.readFileSync(path.join(target,'.openai/hosting.json
 const worker=fs.readFileSync(path.join(root,'prototype/account-model.js'),'utf8')+'\n'+fs.readFileSync(path.join(root,'server/accounts/worker.mjs'),'utf8');
 for(const folder of ['worker','dist/server','dist/.openai','drizzle/meta'])fs.mkdirSync(path.join(target,folder),{recursive:true});
 fs.writeFileSync(path.join(target,'worker/index.js'),worker);fs.writeFileSync(path.join(target,'dist/server/index.js'),worker);fs.copyFileSync(path.join(target,'.openai/hosting.json'),path.join(target,'dist/.openai/hosting.json'));
+fs.writeFileSync(path.join(target,'build.mjs'),`import fs from 'node:fs';\nfor(const folder of ['dist/server','dist/.openai'])fs.mkdirSync(folder,{recursive:true});\nfs.copyFileSync('worker/index.js','dist/server/index.js');\nfs.copyFileSync('.openai/hosting.json','dist/.openai/hosting.json');\nconsole.log('Built account service');\n`);
+fs.writeFileSync(path.join(target,'package.json'),JSON.stringify({name:'xunsheng-account-service',private:true,type:'module',scripts:{build:'node build.mjs',validate:'node --check worker/index.js'}},null,2)+'\n');
 fs.copyFileSync(path.join(root,'server/accounts/migrations/0000_accounts.sql'),path.join(target,'drizzle/0000_accounts.sql'));
 fs.writeFileSync(path.join(target,'drizzle/meta/_journal.json'),JSON.stringify({version:'7',dialect:'sqlite',entries:[{idx:0,version:'6',when:1792702800000,tag:'0000_accounts',breakpoints:true}]},null,2));
 console.log('Built shared account model, Worker API and D1 migrations at '+target);

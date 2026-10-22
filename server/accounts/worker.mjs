@@ -35,7 +35,7 @@ async function route(request,env){
   const url=new URL(request.url),path=url.pathname.replace(/\/$/,'')||'/',method=request.method;
   if(path==='/health'){await env.DB.prepare('SELECT id FROM users LIMIT 1').first();return {ok:true,service:'xunsheng-accounts',version:1};}
   if(path==='/api/register'&&method==='POST'){
-    const input=await body(request),account=model.normalizeAccount(input.account),name=String(input.name||account).trim(),error=model.accountError(account)||model.passwordError(input.password)||model.nameError(name);if(error)throw fail(error);
+    const input=await body(request),account=model.normalizeAccount(input.account),name=String(input.name||'').trim()||Array.from(account).slice(0,20).join(''),error=model.accountError(account)||model.passwordError(input.password)||model.nameError(name);if(error)throw fail(error);
     await rate(env,request,'register','',20,3600000);const salt=random(),encoded=await passwordHash(String(input.password),salt),id=random(),now=Date.now();
     try{await env.DB.prepare('INSERT INTO users(id,account,display_name,password_salt,password_hash,created_at,updated_at) VALUES(?,?,?,?,?,?,?)').bind(id,account,name,salt,encoded,now,now).run();}catch(error){if(String(error).includes('UNIQUE'))throw fail('该账号已注册，请登录或更换账号',409);throw error;}
     return {user:{id,account,name,credentialVersion:1}};
